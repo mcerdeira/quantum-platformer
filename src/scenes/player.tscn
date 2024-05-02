@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://evskswf05b50"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_u3t4v"]
+[ext_resource type="Texture2D" uid="uid://cxgcmxydy1kml" path="res://sprites/graby_0.png" id="2_oxrjg"]
+[ext_resource type="Texture2D" uid="uid://5mgr3ysb3e0x" path="res://sprites/graby_1.png" id="3_irsro"]
+[ext_resource type="Texture2D" uid="uid://b7y26ij01nlqk" path="res://sprites/graby_2.png" id="4_l3tsl"]
+[ext_resource type="Texture2D" uid="uid://cc8l2l2ae483x" path="res://sprites/graby_3.png" id="5_w86tm"]
+[ext_resource type="Texture2D" uid="uid://ca8ambc2jnao" path="res://sprites/gun_spr_0.png" id="6_d4ar8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eqtew"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_oxrjg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_irsro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_l3tsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_w86tm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_l3tsl")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18lep"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4fvku"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_d4ar8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_u3t4v")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_eqtew")
+animation = &"walking"
+frame_progress = 0.24756
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_18lep")
+
+[node name="gun_sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -14)
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_4fvku")
+offset = Vector2(14, 1)
+
+[node name="mark" type="Marker2D" parent="gun_sprite"]
+position = Vector2(27, -3)
+rotation = 1.5708
