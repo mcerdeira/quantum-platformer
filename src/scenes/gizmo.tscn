@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ypq32fpaty8e"]
+[gd_scene load_steps=7 format=3 uid="uid://ypq32fpaty8e"]
 
 [ext_resource type="Script" path="res://scenes/gizmo.gd" id="1_x7ufw"]
 [ext_resource type="Texture2D" uid="uid://dbh84l3hbge3s" path="res://sprites/box.png" id="2_elark"]
+[ext_resource type="Texture2D" uid="uid://c23s3u7g3bdtm" path="res://sprites/simul_box.png" id="3_6el40"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3r5gg"]
 animations = [{
@@ -11,6 +12,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6el40")
+}],
+"loop": true,
+"name": &"simul",
 "speed": 5.0
 }]
 

@@ -14,12 +14,25 @@ var gizmo = preload("res://scenes/gizmo.tscn")
 var tspeed = 370.0
 var initial_rotation = 0
 var current_gizmo_instance = null 
+var gizmo_simul = null
 
 func _ready():
 	add_to_group("players")
 	$sprite.animation = "idle"
 	$gun_sprite.visible = false
 	initial_rotation = $gun_sprite.rotation
+	
+func create_gizmo_simul():
+	var pos = $gun_sprite/mark.global_position
+	gizmo_simul = gizmo.instantiate()
+	get_parent().add_child(gizmo_simul)
+	gizmo_simul.global_position = pos
+	gizmo_simul.droped(Vector2.from_angle($gun_sprite.rotation) * tspeed, true)
+	
+func destroy_gizmo_simul():
+	if gizmo_simul != null and is_instance_valid(gizmo_simul):
+		gizmo_simul.visible = false
+		gizmo_simul.queue_free()
 
 func is_on_floor_custom():
 	return is_on_floor() or buff > 0
@@ -50,10 +63,13 @@ func process_player(delta):
 		do_action(delta)
 	
 	if Input.is_action_pressed("shoot"):
+		if gizmo_simul == null or !is_instance_valid(gizmo_simul):
+			create_gizmo_simul()
 		shoot_mode = true
 		$gun_sprite.visible = true
 	
 	if shoot_mode and Input.is_action_just_released("shoot"):
+		destroy_gizmo_simul()
 		shoot_mode = false
 		shoot(delta)
 		await get_tree().create_timer(0.3).timeout
