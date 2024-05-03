@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://evskswf05b50"]
+[gd_scene load_steps=11 format=3 uid="uid://evskswf05b50"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_u3t4v"]
 [ext_resource type="Texture2D" uid="uid://cxgcmxydy1kml" path="res://sprites/graby_0.png" id="2_oxrjg"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b7y26ij01nlqk" path="res://sprites/graby_2.png" id="4_l3tsl"]
 [ext_resource type="Texture2D" uid="uid://cc8l2l2ae483x" path="res://sprites/graby_3.png" id="5_w86tm"]
 [ext_resource type="Texture2D" uid="uid://ca8ambc2jnao" path="res://sprites/gun_spr_0.png" id="6_d4ar8"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="7_1mbn0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eqtew"]
 animations = [{
@@ -69,3 +70,16 @@ offset = Vector2(14, 1)
 [node name="mark" type="Marker2D" parent="gun_sprite"]
 position = Vector2(27, -3)
 rotation = 1.5708
+
+[node name="lbl_action" type="Label" parent="."]
+visible = false
+offset_left = -29.0
+offset_top = -30.0
+offset_right = 41.0
+offset_bottom = -21.0
+theme_override_colors/font_color = Color(0.556863, 0.937255, 0.592157, 1)
+theme_override_fonts/font = ExtResource("7_1mbn0")
+theme_override_font_sizes/font_size = 8
+text = "TELEPORT"
+horizontal_alignment = 1
+vertical_alignment = 1

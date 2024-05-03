@@ -6,6 +6,9 @@ var MUSIC_ENABLED = true
 var MUSIC_PLAYING = false
 var MainTheme = "res://music/Bone Yard Waltz - Loopable.ogg"
 var JUMP_SFX = null
+var gunz = ["clone", "teleport"]
+var gunz_equiped = []
+var gunz_index = 0
 
 func emit(_global_position, count):
 	for i in range(count):
@@ -44,6 +47,11 @@ func load_game():
 func _ready():
 	load_sfx()
 	load_game()
+	randomize()
+	var _gunz = [] + gunz
+	for i in range(2):
+		_gunz.shuffle()
+		gunz_equiped.append(_gunz.pop_front())
 	
 func load_sfx():
 	pass

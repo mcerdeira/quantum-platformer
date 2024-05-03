@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 uniform bool apply = true;
-uniform float amount = 0.2;
+uniform float amount = 0.1;
 uniform sampler2D offset_texture : hint_default_white;
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 

@@ -10,11 +10,13 @@ var buff = 0
 var in_air = false
 var idle_time = 0
 var shoot_mode = false
-var gizmo = preload("res://scenes/gizmo.tscn")
+const gizmo = preload("res://scenes/gizmo.tscn")
 var tspeed = 370.0
 var initial_rotation = 0
 var current_gizmo_instance = null 
 var gizmo_simul = null
+var item_action = ""
+var iam_clone = false
 
 func _ready():
 	add_to_group("players")
@@ -25,7 +27,8 @@ func _ready():
 func create_gizmo_simul():
 	var pos = $gun_sprite/mark.global_position
 	gizmo_simul = gizmo.instantiate()
-	get_parent().add_child(gizmo_simul)
+	var parent = get_parent()
+	parent.add_child(gizmo_simul)
 	gizmo_simul.global_position = pos
 	gizmo_simul.droped(Vector2.from_angle($gun_sprite.rotation) * tspeed, true)
 	
@@ -61,6 +64,14 @@ func process_player(delta):
 	var moving = false
 	if Input.is_action_just_pressed("use"):
 		do_action(delta)
+		
+	if !iam_clone:
+		if Input.is_action_just_pressed("scroll"):
+			if Global.gunz_index == 0:
+				Global.gunz_index = 1
+			elif Global.gunz_index == 1:
+				Global.gunz_index = 0
+			get_parent().calc_selected()
 	
 	if Input.is_action_pressed("shoot"):
 		if gizmo_simul == null or !is_instance_valid(gizmo_simul):
@@ -108,11 +119,15 @@ func process_player(delta):
 		if idle_time >= 0.3:  
 			$sprite.animation = "idle"
 		
+func pirulo():
+	pass		
+		
 func shoot(delta):
 	var pos = $gun_sprite/mark.global_position
 	var p = gizmo.instantiate()
 	current_gizmo_instance = p
-	get_parent().add_child(p)
+	var parent = get_parent()
+	parent.add_child(p)
 	p.global_position = pos
 	Global.emit(pos, 5)
 	p.droped(Vector2.from_angle($gun_sprite.rotation) * tspeed)
@@ -126,4 +141,9 @@ func jump(delta):
 
 func do_action(delta):
 	if current_gizmo_instance != null:
-		current_gizmo_instance.do_action(self)
+		item_action = Global.gunz_equiped[Global.gunz_index]
+		current_gizmo_instance.do_action(self, $lbl_action, item_action)
+
+func lbl_hide_delegate(value, time):
+	await get_tree().create_timer(time).timeout
+	$lbl_action.visible = value
