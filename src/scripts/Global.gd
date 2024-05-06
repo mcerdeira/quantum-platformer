@@ -10,6 +10,9 @@ var gunz = ["clone", "teleport"]
 var gunz_equiped = []
 var gunz_index = 0
 var main_camera = null
+var targets : Array = []
+var time_speed = 1.0
+var GAMEOVER = false
 
 func emit(_global_position, count):
 	for i in range(count):

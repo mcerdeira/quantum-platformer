@@ -1,7 +1,5 @@
 extends Camera2D
 
-var targets : Array = []
-
 # How far ahead, is seconds we want each player to see
 # based on their current velocity
 @export_range(0,1,0.05) var STEP_SECS := 0.3 
@@ -28,13 +26,13 @@ func _ready() -> void:
 	viewport_size = get_viewport_rect().size
 
 func _physics_process(delta: float) -> void:
-	if targets.is_empty():
+	if Global.targets.is_empty():
 		return
 	
 	var player_rect := Rect2()
 	
 	# Expand the rect to include the rest of the positions
-	for player in targets:
+	for player in Global.targets:
 		player_rect = player_rect.expand(player.position + player.velocity * STEP_SECS)
 	
 	# Add some extra padding
@@ -52,7 +50,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
-	if targets.is_empty():
+	if Global.targets.is_empty():
 		return
 	# The lerping between current and target values can happen in process
 	position = lerp(position, center_point, 1 - pow(TRACK_SPEED,delta) )
@@ -64,9 +62,9 @@ func _process(delta: float) -> void:
 	
 	
 func register_target(target : Node2D):
-	if not target in targets:
-		targets.append(target)
+	if not target in Global.targets:
+		Global.targets.append(target)
 	
 func unregister_target(target : Node2D):
-	if target in targets:
-		targets.erase(target)
+	if target in Global.targets:
+		Global.targets.erase(target)

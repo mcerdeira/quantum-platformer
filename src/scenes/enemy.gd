@@ -1,8 +1,9 @@
 extends CharacterBody2D
 var gravity = 10.0
-var speed = 125.0
+var total_speed = 230.0
+var speed = total_speed
 var jump_speed = -300.0
-@export var direction = "right"
+@export var direction = ""
 var total_friction = 0.3
 var friction = total_friction
 var moving = false
@@ -12,6 +13,11 @@ var idle_time = 0
 var tspeed = 370.0
 var initial_rotation = 0
 var hostile = false
+var jump_delay = 0
+var current_target = null
+var check_delay = 1
+var total_killing = 4
+var killing = 0
 
 func _ready():
 	add_to_group("enemies")
@@ -21,8 +27,10 @@ func is_on_floor_custom():
 	return is_on_floor() or buff > 0
 
 func _physics_process(delta):
+	speed = total_speed * Global.time_speed
 	if is_on_floor():
 		if in_air:
+			check_delay = 0.1
 			in_air = false
 			Global.emit(global_position, 1)
 		buff = 0.2
@@ -42,40 +50,96 @@ func _physics_process(delta):
 
 func process_player(delta):
 	var moving = false
-					
-	if Input.is_action_just_pressed("jump"):
-		jump(delta)
 		
-	if !hostile:
-		pass
-	else:
-		if Input.is_action_pressed("left"):
-			direction = "left"
-			moving = true
-			idle_time = 0
-			velocity.x = -speed
-			$sprite.scale.x = -1
-		elif Input.is_action_pressed("right"):
-			direction = "right"
-			moving = true
-			idle_time = 0
-			velocity.x = speed
-			$sprite.scale.x = 1
+	if Global.GAMEOVER:
+		hostile = false
+	
+	if killing > 0:
+		killing -= 1 * delta 
+		hostile = false
+		if $sprite.animation != "killing":
+			$AnimationPlayer.play("killing")
+			$sprite.animation = "killing"
+			$sprite.play()
 		
-	if moving:
-		if $sprite.animation == "idle":
-			$sprite.animation = "walking"
-		$sprite.play()
-	else:
-		$sprite.stop()
-		idle_time += 1 * delta
-		if idle_time >= 0.3:  
+		if killing <= 0:
+			$AnimationPlayer.stop()
 			$sprite.animation = "idle"
+			hostile = true
+			killing = 0
+		
+	if hostile:
+		if Input.is_action_just_pressed("jump"):
+			jump_delay = 0.01
+		
+		if jump_delay > 0 or randi() % 200 == 0:
+			jump_delay -= 1 * delta
+			if jump_delay <= 0:
+				jump(delta)
+				
+		if current_target == null or current_target.dead or !is_instance_valid(current_target):
+			if !Global.targets.is_empty():
+				current_target = Global.pick_random(Global.targets)
+			else:
+				hostile = false
+			
+		if current_target != null and is_instance_valid(current_target):
+			if global_position.y > current_target.global_position.y:
+				if randi() % 5 == 0:
+					jump(delta)
+			
+			if is_on_wall():
+				jump(delta)
+				
+			if check_delay > 0:
+				check_delay -= 1 * delta
+				if check_delay <= 0:
+					check_delay = Global.pick_random([1, 0.5, 2, 2.5])
+					if global_position.x > current_target.global_position.x:
+						direction = "left"
+					else:
+						direction = "right"
+			
+			if direction == "right":
+				moving = true
+				idle_time = 0
+				velocity.x = speed
+				$sprite.flip_h = false
+			else:
+				moving = true
+				idle_time = 0
+				velocity.x = -speed
+				$sprite.flip_h = true
+	
+	if killing <= 0:
+		if moving:
+			if $sprite.animation == "idle":
+				$sprite.animation = "walking"
+			$sprite.play()
+		else:
+			$sprite.stop()
+			idle_time += 1 * delta
+			if idle_time >= 0.3:  
+				$sprite.animation = "idle"
 		
 func jump(delta):
-	if is_on_floor_custom():
-		buff = 0
-		Global.play_sound(Global.JUMP_SFX)
-		Global.emit(global_position, 2)
-		velocity.y = jump_speed
+	if !Global.GAMEOVER:
+		if is_on_floor_custom() and Global.time_speed == 1.0: 
+			buff = 0
+			Global.play_sound(Global.JUMP_SFX)
+			Global.emit(global_position, 2)
+			velocity.y = jump_speed
 
+func _on_area_body_entered(body):
+	if body and body.is_in_group("players"):
+		body.dead = true
+		killing = total_killing
+		if global_position.x > body.global_position.x:
+			$sprite.flip_h = true
+		else:
+			$sprite.flip_h = false
+
+func _on_agro_body_entered(body):
+	if body and body.is_in_group("players"):
+		current_target = body
+		hostile = true

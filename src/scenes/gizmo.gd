@@ -74,6 +74,5 @@ func do_action(_player, lbl, item_action):
 		queue_free()
 
 func _on_area_body_entered(body):
-	pass
-	#if body and body.is_in_group("players"):
-	#	queue_free()
+	if body and body.is_in_group("players"):
+		queue_free()

@@ -14,6 +14,13 @@ func calc_selected():
 			sel.visible = true
 
 func _physics_process(delta):
+	for player in Global.targets:
+		if !player.dead:
+			Global.GAMEOVER = false
+			break
+		
+		Global.GAMEOVER = true
+	
 	if Input.is_action_pressed("toggle_fullscreen"):
 		Global.FULLSCREEN = !Global.FULLSCREEN
 		if Global.FULLSCREEN:

@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://evskswf05b50"]
+[gd_scene load_steps=12 format=3 uid="uid://evskswf05b50"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_u3t4v"]
+[ext_resource type="Texture2D" uid="uid://cl4nf2bm3n8bx" path="res://sprites/graby_dead.png" id="2_ekk1a"]
 [ext_resource type="Texture2D" uid="uid://cxgcmxydy1kml" path="res://sprites/graby_0.png" id="2_oxrjg"]
 [ext_resource type="Texture2D" uid="uid://5mgr3ysb3e0x" path="res://sprites/graby_1.png" id="3_irsro"]
 [ext_resource type="Texture2D" uid="uid://b7y26ij01nlqk" path="res://sprites/graby_2.png" id="4_l3tsl"]
@@ -10,6 +11,14 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eqtew"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ekk1a")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_oxrjg")
@@ -54,8 +63,7 @@ script = ExtResource("1_u3t4v")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_eqtew")
-animation = &"walking"
-frame_progress = 0.24756
+animation = &"idle"
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
