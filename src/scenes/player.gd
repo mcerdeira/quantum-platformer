@@ -23,6 +23,7 @@ func _ready():
 	$sprite.animation = "idle"
 	$gun_sprite.visible = false
 	initial_rotation = $gun_sprite.rotation
+	Global.main_camera.register_target(self)
 	
 func create_gizmo_simul():
 	var pos = $gun_sprite/mark.global_position
@@ -118,9 +119,6 @@ func process_player(delta):
 		idle_time += 1 * delta
 		if idle_time >= 0.3:  
 			$sprite.animation = "idle"
-		
-func pirulo():
-	pass		
 		
 func shoot(delta):
 	var pos = $gun_sprite/mark.global_position

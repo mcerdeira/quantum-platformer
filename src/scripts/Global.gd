@@ -9,6 +9,7 @@ var JUMP_SFX = null
 var gunz = ["clone", "teleport"]
 var gunz_equiped = []
 var gunz_index = 0
+var main_camera = null
 
 func emit(_global_position, count):
 	for i in range(count):
