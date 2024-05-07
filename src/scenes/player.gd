@@ -161,3 +161,4 @@ func do_action(delta):
 func lbl_hide_delegate(value, time):
 	await get_tree().create_timer(time).timeout
 	$lbl_action.visible = value
+	

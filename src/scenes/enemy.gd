@@ -15,9 +15,14 @@ var initial_rotation = 0
 var hostile = false
 var jump_delay = 0
 var current_target = null
+var current_target_alerted = null
 var check_delay = 1
 var total_killing = 4
 var killing = 0
+var direction_change_ttl_total = 4
+var direction_change_ttl = direction_change_ttl_total
+var alerted = false
+var alerted_delay = 0
 
 func _ready():
 	add_to_group("enemies")
@@ -53,9 +58,14 @@ func process_player(delta):
 		
 	if Global.GAMEOVER:
 		hostile = false
+		alerted = false
+		
+	if hostile:
+		alerted = false
 	
 	if killing > 0:
 		killing -= 1 * delta 
+		alerted = false
 		hostile = false
 		if $sprite.animation != "killing":
 			$AnimationPlayer.play("killing")
@@ -67,8 +77,41 @@ func process_player(delta):
 			$sprite.animation = "idle"
 			hostile = true
 			killing = 0
+			
+	if alerted:
+		$lbl_status.text = "?"
+		$lbl_status.set("theme_override_colors/font_color", Color.YELLOW)
 		
-	if hostile:
+		if alerted_delay > 0:
+			alerted_delay -= 1 * delta
+			
+		if alerted_delay <= 0:
+			if current_target_alerted != null and is_instance_valid(current_target_alerted):
+				if global_position.x > current_target_alerted.global_position.x:
+					direction = "left"
+				else:
+					direction = "right"
+					
+				if is_on_wall():
+					jump(delta)
+				
+				if direction == "right":
+					moving = true
+					idle_time = 0
+					velocity.x = speed / 4
+					$sprite.flip_h = false
+					$Agro.scale.x = 1
+				else:
+					moving = true
+					idle_time = 0
+					velocity.x = -speed / 4
+					$sprite.flip_h = true
+					$Agro.scale.x = -1
+				
+	elif hostile:
+		$lbl_status.text = "!"
+		$lbl_status.set("theme_override_colors/font_color", Color.RED)
+		
 		if Input.is_action_just_pressed("jump"):
 			jump_delay = 0.01
 		
@@ -105,11 +148,27 @@ func process_player(delta):
 				idle_time = 0
 				velocity.x = speed
 				$sprite.flip_h = false
+				$Agro.scale.x = 1
 			else:
 				moving = true
 				idle_time = 0
 				velocity.x = -speed
 				$sprite.flip_h = true
+				$Agro.scale.x = -1
+	else:
+		$lbl_status.text = ""
+		
+		direction_change_ttl -= 1 * delta
+		if direction_change_ttl <= 0:
+			direction_change_ttl = direction_change_ttl_total
+			if direction == "right":
+				direction = "left"
+				$sprite.flip_h = true
+				$Agro.scale.x = -1
+			else:
+				direction = "right"
+				$sprite.flip_h = false
+				$Agro.scale.x = 1
 	
 	if killing <= 0:
 		if moving:
@@ -140,6 +199,16 @@ func _on_area_body_entered(body):
 			$sprite.flip_h = false
 
 func _on_agro_body_entered(body):
-	if body and body.is_in_group("players"):
+	if !hostile:
 		current_target = body
 		hostile = true
+
+func hearing_alerted(body):
+	if !hostile and !alerted:
+		alerted_delay = 2
+		current_target_alerted = body
+		alerted = true
+			
+func still_alert():
+	current_target_alerted = null
+	alerted = false

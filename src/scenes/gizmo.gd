@@ -8,6 +8,7 @@ var landed = false
 var simulation = false
 var ttl = 0.5
 var player_clone = load("res://scenes/player.tscn")
+var noise_time = 0
 
 func _ready():
 	add_to_group("interactuable")
@@ -27,8 +28,18 @@ func _physics_process(delta):
 	else:
 		rotation = 0
 		velocity.x = lerp(velocity.x, 0.0, friction)
+		if !landed:
+			noise_time = 0.3
+			Global.emit(global_position, 1)
+			$noise/collider.set_deferred("disabled", false)
+		
 		landed = true
-
+		
+		if noise_time > 0:
+			noise_time -= 1 * delta
+			if noise_time <= 0:
+				$noise/collider.set_deferred("disabled", true)
+	
 		if abs(velocity.x) <= 0.0:
 			velocity.x = 0.0
 			friction = total_friction
@@ -74,5 +85,15 @@ func do_action(_player, lbl, item_action):
 		queue_free()
 
 func _on_area_body_entered(body):
-	if body and body.is_in_group("players"):
+	if body and body.is_in_group("enemies"):
+		body.still_alert()
+		Global.emit(global_position, 1)
 		queue_free()
+	
+	if body and body.is_in_group("players"):
+		Global.emit(global_position, 1)
+		queue_free()
+
+func _on_noise_body_entered(body):
+	if body and body.is_in_group("enemies"):
+		body.hearing_alerted(body)

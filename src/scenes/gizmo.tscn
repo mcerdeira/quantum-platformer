@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ypq32fpaty8e"]
+[gd_scene load_steps=9 format=3 uid="uid://ypq32fpaty8e"]
 
 [ext_resource type="Script" path="res://scenes/gizmo.gd" id="1_x7ufw"]
 [ext_resource type="Texture2D" uid="uid://dbh84l3hbge3s" path="res://sprites/box.png" id="2_elark"]
@@ -38,6 +38,9 @@ size = Vector2(6, 6)
 [sub_resource type="CircleShape2D" id="CircleShape2D_4pttm"]
 radius = 7.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hcm05"]
+radius = 218.014
+
 [node name="Gizmo" type="CharacterBody2D"]
 script = ExtResource("1_x7ufw")
 
@@ -57,4 +60,11 @@ shape = SubResource("CircleShape2D_4pttm")
 [node name="mark" type="Marker2D" parent="."]
 position = Vector2(0, -10)
 
+[node name="noise" type="Area2D" parent="."]
+
+[node name="collider" type="CollisionShape2D" parent="noise"]
+shape = SubResource("CircleShape2D_hcm05")
+disabled = true
+
 [connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
+[connection signal="body_entered" from="noise" to="." method="_on_noise_body_entered"]
