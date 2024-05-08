@@ -198,7 +198,7 @@ visible = false
 position = Vector2(0, 2)
 scale = Vector2(4.44792, 4.44792)
 sprite_frames = SubResource("SpriteFrames_7uhnq")
-frame_progress = 0.367777
+frame_progress = 0.367801
 speed_scale = 3.0
 
 [node name="blast2" type="AnimatedSprite2D" parent="explosions"]
@@ -206,7 +206,7 @@ visible = false
 position = Vector2(-142, -108)
 scale = Vector2(2.40104, 2.40104)
 sprite_frames = SubResource("SpriteFrames_7uhnq")
-frame_progress = 0.517474
+frame_progress = 0.517498
 speed_scale = 3.0
 
 [node name="blast3" type="AnimatedSprite2D" parent="explosions"]
@@ -214,7 +214,7 @@ visible = false
 position = Vector2(144, 110)
 scale = Vector2(3.10677, 3.10677)
 sprite_frames = SubResource("SpriteFrames_7uhnq")
-frame_progress = 0.590402
+frame_progress = 0.590425
 speed_scale = 3.0
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]

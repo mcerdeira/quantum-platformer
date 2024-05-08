@@ -57,17 +57,24 @@ func load_game():
 func _ready():
 	load_sfx()
 	load_game()
-	randomize()
-	var _gunz = [] + gunz
-	for i in range(2):
-		_gunz.shuffle()
-		gunz_equiped.append(_gunz.pop_front())
+	init()
 	
 func load_sfx():
 	pass
 	
 func init():
-	pass
+	gunz_equiped = []
+	gunz_index = 0
+	main_camera = null
+	targets = []
+	time_speed = 1.0
+	GAMEOVER = false
+	
+	randomize()
+	var _gunz = [] + gunz
+	for i in range(2):
+		_gunz.shuffle()
+		gunz_equiped.append(_gunz.pop_front())
 
 func pick_random(container):
 	if typeof(container) == TYPE_DICTIONARY:
