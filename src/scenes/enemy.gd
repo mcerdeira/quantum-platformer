@@ -22,6 +22,7 @@ var killing = 0
 var direction_change_ttl_total = 4
 var direction_change_ttl = direction_change_ttl_total
 var alerted = false
+var blowed = 0
 var alerted_delay = 0
 
 func _ready():
@@ -48,13 +49,22 @@ func _physics_process(delta):
 	else:
 		if friction != total_friction:
 			friction = lerp(friction, total_friction, 0.01)
+	
+	if blowed <= 0:
+		velocity.x = lerp(velocity.x, 0.0, friction)
 		
-	velocity.x = lerp(velocity.x, 0.0, friction)
 	process_player(delta)
 	move_and_slide()
 
 func process_player(delta):
 	var moving = false
+	if blowed > 0:
+		$lbl_status.text = "@"
+		$lbl_status.set("theme_override_colors/font_color", Color.AQUAMARINE)
+		blowed -= 1 * delta
+		alerted = false
+		hostile = true
+		return
 		
 	if Global.GAMEOVER:
 		hostile = false
@@ -212,3 +222,9 @@ func hearing_alerted(body):
 func still_alert():
 	current_target_alerted = null
 	alerted = false
+
+func flyaway(direction):
+	if blowed <= 0:
+		blowed = 2
+		Global.emit(global_position, 2)
+		velocity = Global.flyaway(direction, jump_speed)

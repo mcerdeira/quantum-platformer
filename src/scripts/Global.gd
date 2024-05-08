@@ -6,7 +6,7 @@ var MUSIC_ENABLED = true
 var MUSIC_PLAYING = false
 var MainTheme = "res://music/Bone Yard Waltz - Loopable.ogg"
 var JUMP_SFX = null
-var gunz = ["clone", "teleport"]
+var gunz = ["bomb", "rock"] #["clone", "teleport", "rock", "bomb"]
 var gunz_equiped = []
 var gunz_index = 0
 var main_camera = null
@@ -19,6 +19,12 @@ func emit(_global_position, count):
 		var p = particle.instantiate()
 		add_child(p)
 		p.global_position = _global_position
+		
+func flyaway(direction, jump_speed):
+	var velocity = Vector2()
+	velocity.x = direction.x * 25.0
+	velocity.y = jump_speed * 1.3
+	return velocity
 
 func save_game():
 	pass

@@ -18,6 +18,7 @@ var gizmo_simul = null
 var item_action = ""
 var iam_clone = false
 var dead = false
+var blowed = 0
 
 func _ready():
 	add_to_group("players")
@@ -57,8 +58,11 @@ func _physics_process(delta):
 	else:
 		if friction != total_friction:
 			friction = lerp(friction, total_friction, 0.01)
+	if blowed <= 0:
+		velocity.x = lerp(velocity.x, 0.0, friction)
+	else:
+		blowed -= 1 * delta
 		
-	velocity.x = lerp(velocity.x, 0.0, friction)
 	process_player(delta)
 	move_and_slide()
 
@@ -157,8 +161,14 @@ func do_action(delta):
 		if current_gizmo_instance != null:
 			item_action = Global.gunz_equiped[Global.gunz_index]
 			current_gizmo_instance.do_action(self, $lbl_action, item_action)
+			current_gizmo_instance = null
 
 func lbl_hide_delegate(value, time):
 	await get_tree().create_timer(time).timeout
 	$lbl_action.visible = value
 	
+func flyaway(direction):
+	if blowed <= 0:
+		blowed = 2
+		Global.emit(global_position, 2)
+		velocity = Global.flyaway(direction, jump_speed)
