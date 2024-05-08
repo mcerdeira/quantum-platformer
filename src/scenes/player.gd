@@ -104,8 +104,12 @@ func process_player(delta):
 	if shoot_mode:
 		if Input.is_action_pressed("left"):
 			$gun_sprite.rotation -= 1 * delta
+			destroy_gizmo_simul()
+			create_gizmo_simul()
 		elif Input.is_action_pressed("right"):
 			$gun_sprite.rotation += 1 * delta
+			destroy_gizmo_simul()
+			create_gizmo_simul()
 	
 	if !dead and Input.is_action_just_pressed("jump"):
 		jump(delta)

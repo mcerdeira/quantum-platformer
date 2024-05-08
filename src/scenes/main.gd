@@ -1,4 +1,5 @@
 extends Node2D
+var particle = preload("res://scenes/particle2.tscn")
 
 func _ready():
 	for i in range(Global.gunz_equiped.size()):
@@ -12,6 +13,11 @@ func calc_selected():
 		sel.visible = false
 		if i == Global.gunz_index:
 			sel.visible = true
+			var count = 3
+			for ei in range(count):
+				var p = particle.instantiate()
+				sel.add_child(p)
+				p.global_position = sel.global_position
 
 func _physics_process(delta):
 	for player in Global.targets:

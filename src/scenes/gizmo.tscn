@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ypq32fpaty8e"]
+[gd_scene load_steps=20 format=3 uid="uid://ypq32fpaty8e"]
 
 [ext_resource type="Script" path="res://scenes/gizmo.gd" id="1_x7ufw"]
 [ext_resource type="Script" path="res://scenes/explosions.gd" id="2_84bkr"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://d2a4xvm7xjpjf" path="res://sprites/blast_spr_9.png" id="5_mmojl"]
 [ext_resource type="Texture2D" uid="uid://b1laesttuhnqw" path="res://sprites/blast_spr_10.png" id="6_5igsc"]
 [ext_resource type="Script" path="res://scenes/explosion.gd" id="7_54k6n"]
+[ext_resource type="Texture2D" uid="uid://mir8y6lk22v8" path="res://sprites/lines.png" id="13_v2dy3"]
+[ext_resource type="Script" path="res://scenes/Line2D.gd" id="14_cbp3x"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7uhnq"]
 animations = [{
@@ -218,9 +220,10 @@ frame_progress = 0.590425
 speed_scale = 3.0
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+position = Vector2(0, -5)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_3r5gg")
-animation = &"rock"
+animation = &"teleport"
 
 [node name="collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_odwe0")
@@ -245,6 +248,13 @@ script = ExtResource("7_54k6n")
 [node name="collider" type="CollisionShape2D" parent="explosion"]
 shape = SubResource("CircleShape2D_hcm05")
 disabled = true
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0)
+texture = ExtResource("13_v2dy3")
+texture_mode = 1
+script = ExtResource("14_cbp3x")
 
 [connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
 [connection signal="body_entered" from="noise" to="." method="_on_noise_body_entered"]

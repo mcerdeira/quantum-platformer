@@ -13,6 +13,7 @@ var main_camera = null
 var targets : Array = []
 var time_speed = 1.0
 var GAMEOVER = false
+var shaker_obj = null
 
 func emit(_global_position, count):
 	for i in range(count):

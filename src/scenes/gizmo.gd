@@ -17,12 +17,6 @@ func _ready():
 	add_to_group("interactuable")
 	
 func _physics_process(delta):
-	if simulation:
-		ttl -= 1 * delta 
-		if ttl <= 0:
-			visible = false
-			queue_free()
-	
 	if !is_on_floor():
 		landed = false
 		if !simulation:
@@ -36,9 +30,10 @@ func _physics_process(delta):
 			blowed -= 1 * delta
 
 		if !landed:
-			noise_time = 0.3
-			Global.emit(global_position, 1)
-			$noise/collider.set_deferred("disabled", false)
+			if !simulation:
+				noise_time = 0.3
+				Global.emit(global_position, 1)
+				$noise/collider.set_deferred("disabled", false)
 		
 		landed = true
 		
@@ -62,7 +57,9 @@ func droped(direction, _simulation = false):
 	velocity = direction
 	friction = 0.1
 	simulation = _simulation
+
 	if simulation:
+		$sprite.visible = false
 		set_collision_layer_value(2, true)
 		set_collision_mask_value(2, true)
 		set_collision_layer_value(1, false)
@@ -75,50 +72,56 @@ func droped(direction, _simulation = false):
 		modulate.a = 0.5
 	else:
 		$sprite.animation = Global.gunz_equiped[Global.gunz_index]
+		$Line2D.visible = false
+		$Line2D.queue_free()
 	
 func do_action(_player, lbl, item_action):
-	if landed:
-		if item_action != "rock":
-			lbl.visible = true
-			lbl.text =  item_action.to_upper() + "!"
-		if item_action == "teleport":
-			Global.emit(_player.global_position, 10)
-			_player.visible = false
-			_player.global_position = $mark.global_position
-			Global.emit(_player.global_position, 10)
-		elif item_action == "clone":
-			var pclone = player_clone.instantiate()
-			pclone.global_position = $mark.global_position
-			pclone.iam_clone = true
-			get_parent().add_child(pclone)
-			Global.emit(pclone.global_position, 10)
-		elif item_action == "bomb":
-			explode()
-			
-		if item_action != "rock":
-			_player.visible = true
-			_player.lbl_hide_delegate(false, 1)
-			if item_action != "bomb":
-				queue_free()
+	if !simulation:
+		if landed:
+			if item_action != "rock":
+				lbl.visible = true
+				lbl.text =  item_action.to_upper() + "!"
+			if item_action == "teleport":
+				Global.emit(_player.global_position, 10)
+				_player.visible = false
+				_player.global_position = $mark.global_position
+				Global.emit(_player.global_position, 10)
+			elif item_action == "clone":
+				var pclone = player_clone.instantiate()
+				pclone.global_position = $mark.global_position
+				pclone.iam_clone = true
+				get_parent().add_child(pclone)
+				Global.emit(pclone.global_position, 10)
+			elif item_action == "bomb":
+				explode()
+				
+			if item_action != "rock":
+				_player.visible = true
+				_player.lbl_hide_delegate(false, 1)
+				if item_action != "bomb":
+					queue_free()
 			
 func explode():
-	$explosion/collider.set_deferred("disabled", false)
-	explosion_delay = 1.2
-	$explosions.explode()
+	if !simulation:
+		$explosion/collider.set_deferred("disabled", false)
+		explosion_delay = 1.2
+		$explosions.explode()
 
 func _on_area_body_entered(body):
-	if body and body.is_in_group("enemies"):
-		body.still_alert()
-		Global.emit(global_position, 1)
-		queue_free()
+	if !simulation:
+		if body and body.is_in_group("enemies"):
+			body.still_alert()
+			Global.emit(global_position, 1)
+			queue_free()
 	
-	if body and body.is_in_group("players"):
-		Global.emit(global_position, 1)
-		queue_free()
+		if body and body.is_in_group("players"):
+			Global.emit(global_position, 1)
+			queue_free()
 
 func _on_noise_body_entered(body):
-	if body and body.is_in_group("enemies"):
-		body.hearing_alerted(body)
+	if !simulation:
+		if body and body.is_in_group("enemies"):
+			body.hearing_alerted(body)
 
 func flyaway(direction):
 	if blowed <= 0:
