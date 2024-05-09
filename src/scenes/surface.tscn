@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://duq0f6y40fuwc"]
+
+[ext_resource type="Script" path="res://scenes/surface.gd" id="1_r57qd"]
+
+[node name="Surface" type="Sprite2D"]
+z_index = 4096
+centered = false
+script = ExtResource("1_r57qd")

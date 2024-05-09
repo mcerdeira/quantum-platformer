@@ -19,6 +19,7 @@ var item_action = ""
 var iam_clone = false
 var dead = false
 var blowed = 0
+const blood = preload("res://scenes/blood.tscn")
 
 func _ready():
 	add_to_group("players")
@@ -176,3 +177,13 @@ func flyaway(direction):
 		blowed = 2
 		Global.emit(global_position, 2)
 		velocity = Global.flyaway(direction, jump_speed)
+
+func bleed():
+	for i in range(155):
+		var blood_instance : Area2D = blood.instantiate()
+		blood_instance.global_position = global_position
+		get_parent().add_child(blood_instance)
+
+func kill():
+	dead = true
+	bleed()

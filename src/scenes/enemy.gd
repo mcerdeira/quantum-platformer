@@ -201,7 +201,7 @@ func jump(delta):
 
 func _on_area_body_entered(body):
 	if body and body.is_in_group("players"):
-		body.dead = true
+		body.kill()
 		killing = total_killing
 		if global_position.x > body.global_position.x:
 			$sprite.flip_h = true
