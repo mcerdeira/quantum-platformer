@@ -14,6 +14,7 @@ var targets : Array = []
 var time_speed = 1.0
 var GAMEOVER = false
 var shaker_obj = null
+var level_doors = []
 
 func emit(_global_position, count):
 	for i in range(count):
@@ -83,6 +84,7 @@ func init():
 	targets = []
 	time_speed = 1.0
 	GAMEOVER = false
+	level_doors = []
 	
 	randomize()
 	var _gunz = [] + gunz

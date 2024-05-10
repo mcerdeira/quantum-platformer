@@ -1,5 +1,5 @@
 extends Marker2D
-var player_clone = load("res://scenes/player.tscn")
+var player_clone = load("res://scenes/prisoner.tscn")
 var done = false
 
 func _ready():

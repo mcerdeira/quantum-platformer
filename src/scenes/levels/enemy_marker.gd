@@ -2,6 +2,9 @@ extends Marker2D
 var player_clone = load("res://scenes/enemy.tscn")
 var done = false
 
+func _ready():
+	visible = false
+
 func _process(delta):
 	if !done:
 		var Main = get_node("/root/Main")
