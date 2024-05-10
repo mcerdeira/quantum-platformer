@@ -77,6 +77,8 @@ func process_player(delta):
 		killing -= 1 * delta 
 		alerted = false
 		hostile = false
+		$lbl_status.text = "!"
+		$lbl_status.set("theme_override_colors/font_color", Color.RED)
 		if $sprite.animation != "killing":
 			$AnimationPlayer.play("killing")
 			$sprite.animation = "killing"
@@ -104,6 +106,10 @@ func process_player(delta):
 					
 				if is_on_wall():
 					jump(delta)
+					if randi() % 10 == 0:
+						alerted = false
+						current_target_alerted = null
+						current_target = null
 				
 				if direction == "right":
 					moving = true
@@ -118,14 +124,14 @@ func process_player(delta):
 					$sprite.flip_h = true
 					$Agro.scale.x = -1
 				
-	elif hostile:
+	elif hostile and killing <= 0:
 		$lbl_status.text = "!"
 		$lbl_status.set("theme_override_colors/font_color", Color.RED)
 		
 		if Input.is_action_just_pressed("jump"):
 			jump_delay = 0.01
 		
-		if jump_delay > 0 or randi() % 200 == 0:
+		if jump_delay > 0 or randi() % 1500 == 0:
 			jump_delay -= 1 * delta
 			if jump_delay <= 0:
 				jump(delta)
@@ -166,19 +172,20 @@ func process_player(delta):
 				$sprite.flip_h = true
 				$Agro.scale.x = -1
 	else:
-		$lbl_status.text = ""
-		
-		direction_change_ttl -= 1 * delta
-		if direction_change_ttl <= 0:
-			direction_change_ttl = direction_change_ttl_total
-			if direction == "right":
-				direction = "left"
-				$sprite.flip_h = true
-				$Agro.scale.x = -1
-			else:
-				direction = "right"
-				$sprite.flip_h = false
-				$Agro.scale.x = 1
+		if killing <= 0:
+			$lbl_status.text = ""
+			
+			direction_change_ttl -= 1 * delta
+			if direction_change_ttl <= 0:
+				direction_change_ttl = direction_change_ttl_total
+				if direction == "right":
+					direction = "left"
+					$sprite.flip_h = true
+					$Agro.scale.x = -1
+				else:
+					direction = "right"
+					$sprite.flip_h = false
+					$Agro.scale.x = 1
 	
 	if killing <= 0:
 		if moving:

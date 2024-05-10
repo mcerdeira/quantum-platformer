@@ -121,7 +121,7 @@ func _on_area_body_entered(body):
 func _on_noise_body_entered(body):
 	if !simulation:
 		if body and body.is_in_group("enemies"):
-			body.hearing_alerted(body)
+			body.hearing_alerted(self)
 
 func flyaway(direction):
 	if blowed <= 0:

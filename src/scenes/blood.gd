@@ -10,7 +10,7 @@ var blood_acc = randf_range(0.05,0.1)
 
 var do_wobble = false
 
-var max_count = randf_range(10.0, 190.0)
+var max_count = randf_range(5.0, 190.0)
 var count  = 0
 
 @onready var draw_surface : paint = get_node("/root/Main/Surface")
@@ -59,7 +59,9 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 func _on_body_entered(body):
-	is_colliding = true
+	if !(body.is_in_group("players") or body.is_in_group("enemies") or body.is_in_group("interactuable")):
+		is_colliding = true
 
 func _on_body_exited(body):
-	is_colliding = false
+	if !(body.is_in_group("players") or body.is_in_group("enemies") or body.is_in_group("interactuable")):
+		is_colliding = false

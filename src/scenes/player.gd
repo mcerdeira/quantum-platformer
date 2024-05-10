@@ -178,12 +178,14 @@ func flyaway(direction):
 		Global.emit(global_position, 2)
 		velocity = Global.flyaway(direction, jump_speed)
 
-func bleed():
-	for i in range(155):
+func bleed(count):
+	for i in range(count):
 		var blood_instance : Area2D = blood.instantiate()
 		blood_instance.global_position = global_position
 		get_parent().add_child(blood_instance)
 
 func kill():
 	dead = true
-	bleed()
+	bleed(45)
+	await get_tree().create_timer(2).timeout
+	bleed(25)
