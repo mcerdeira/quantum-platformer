@@ -128,3 +128,7 @@ func flyaway(direction):
 		blowed = 2
 		Global.emit(global_position, 2)
 		velocity = Global.flyaway(direction, jump_speed)
+
+func kill_fall():
+	visible = false
+	queue_free()

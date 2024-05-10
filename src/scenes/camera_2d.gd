@@ -63,8 +63,10 @@ func _process(delta: float) -> void:
 	
 func register_target(target : Node2D):
 	if not target in Global.targets:
-		Global.targets.append(target)
+		if target.is_in_group("players"):
+			Global.targets.append(target)
 	
 func unregister_target(target : Node2D):
 	if target in Global.targets:
-		Global.targets.erase(target)
+		if target.is_in_group("players"):
+			Global.targets.erase(target)

@@ -229,6 +229,10 @@ func hearing_alerted(body):
 func still_alert():
 	current_target_alerted = null
 	alerted = false
+	
+func kill_fall():
+	visible = false
+	queue_free()
 
 func flyaway(direction):
 	if blowed <= 0:

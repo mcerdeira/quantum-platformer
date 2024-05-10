@@ -12,7 +12,7 @@ var idle_time = 0
 var shoot_mode = false
 const gizmo = preload("res://scenes/gizmo.tscn")
 var tspeed = 370.0
-var initial_rotation = 0
+var initial_rotation = -45
 var current_gizmo_instance = null 
 var gizmo_simul = null
 var item_action = ""
@@ -25,7 +25,9 @@ func _ready():
 	add_to_group("players")
 	$sprite.animation = "idle"
 	$gun_sprite.visible = false
-	initial_rotation = $gun_sprite.rotation
+	$gun_sprite.rotation = initial_rotation
+	$Cosito.play()
+	$Cosito.visible = false
 	Global.main_camera.register_target(self)
 	
 func create_gizmo_simul():
@@ -45,6 +47,8 @@ func is_on_floor_custom():
 	return is_on_floor() or buff > 0
 
 func _physics_process(delta):
+	$Cosito.visible = !iam_clone and !dead
+	
 	if is_on_floor():
 		if in_air:
 			in_air = false
@@ -100,7 +104,6 @@ func process_player(delta):
 		shoot(delta)
 		await get_tree().create_timer(0.3).timeout
 		$gun_sprite.visible = false
-		$gun_sprite.rotation = initial_rotation
 		
 	if shoot_mode:
 		if Input.is_action_pressed("left"):
@@ -122,12 +125,14 @@ func process_player(delta):
 			idle_time = 0
 			velocity.x = -speed
 			$sprite.flip_h = true
+			$gun_sprite.rotation = initial_rotation - 45
 		elif !shoot_mode and Input.is_action_pressed("right"):
 			direction = "right"
 			moving = true
 			idle_time = 0
 			velocity.x = speed
 			$sprite.flip_h = false
+			$gun_sprite.rotation = initial_rotation
 	
 	if !dead:
 		if moving:
@@ -184,8 +189,17 @@ func bleed(count):
 		blood_instance.global_position = global_position
 		get_parent().add_child(blood_instance)
 
-func kill():
+func kill_fall():
+	Global.main_camera.unregister_target(self)
 	dead = true
+	visible = false
+	Global.find_master()
+	queue_free()
+
+func kill():
+	Global.main_camera.unregister_target(self)
+	dead = true
+	Global.find_master()
 	bleed(45)
 	await get_tree().create_timer(2).timeout
 	bleed(25)

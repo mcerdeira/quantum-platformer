@@ -1,13 +1,33 @@
-[gd_scene load_steps=12 format=3 uid="uid://evskswf05b50"]
+[gd_scene load_steps=16 format=3 uid="uid://evskswf05b50"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_u3t4v"]
 [ext_resource type="Texture2D" uid="uid://cl4nf2bm3n8bx" path="res://sprites/graby_dead.png" id="2_ekk1a"]
 [ext_resource type="Texture2D" uid="uid://cxgcmxydy1kml" path="res://sprites/graby_0.png" id="2_oxrjg"]
+[ext_resource type="Texture2D" uid="uid://1t2cy30jae2s" path="res://sprites/cosito1.png" id="2_pa2cn"]
 [ext_resource type="Texture2D" uid="uid://5mgr3ysb3e0x" path="res://sprites/graby_1.png" id="3_irsro"]
+[ext_resource type="Texture2D" uid="uid://unxfi1oaw1bc" path="res://sprites/cosito2.png" id="3_rjg08"]
+[ext_resource type="Texture2D" uid="uid://dukosv1gmn6ky" path="res://sprites/cosito3.png" id="4_6wvl3"]
 [ext_resource type="Texture2D" uid="uid://b7y26ij01nlqk" path="res://sprites/graby_2.png" id="4_l3tsl"]
 [ext_resource type="Texture2D" uid="uid://cc8l2l2ae483x" path="res://sprites/graby_3.png" id="5_w86tm"]
 [ext_resource type="Texture2D" uid="uid://ca8ambc2jnao" path="res://sprites/gun_spr_0.png" id="6_d4ar8"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="7_1mbn0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8thie"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pa2cn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rjg08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6wvl3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eqtew"]
 animations = [{
@@ -61,6 +81,12 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_u3t4v")
 
+[node name="Cosito" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -28)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_8thie")
+frame_progress = 0.0612838
+
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_eqtew")
 animation = &"idle"
@@ -71,7 +97,7 @@ shape = SubResource("RectangleShape2D_18lep")
 
 [node name="gun_sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -14)
-rotation = -1.5708
+rotation = -0.785398
 sprite_frames = SubResource("SpriteFrames_4fvku")
 offset = Vector2(14, 1)
 

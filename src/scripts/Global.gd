@@ -26,6 +26,19 @@ func flyaway(direction, jump_speed):
 	velocity.x = direction.x * 25.0
 	velocity.y = jump_speed * 1.3
 	return velocity
+	
+func find_master():
+	var master_found = false
+	for player in Global.targets:
+		if player.dead == false and player.iam_clone == false:
+			master_found = true
+			
+	if !master_found:
+		if Global.targets.size() > 0:
+			for player in Global.targets:
+				if player.dead == false and player.iam_clone == true:
+					player.iam_clone = false
+					break
 
 func save_game():
 	pass
