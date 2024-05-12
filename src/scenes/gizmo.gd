@@ -3,7 +3,7 @@ var gravity = 10.0
 var speed = 75.0
 var jump_speed = -300.0
 var grabbed = false
-var total_friction = 0.3
+var total_friction = 0.6
 var friction = total_friction
 var landed = false
 var simulation = false
@@ -12,6 +12,7 @@ var player_clone = load("res://scenes/player.tscn")
 var noise_time = 0
 var explosion_delay = 0
 var blowed = 0
+var previus_velocity = Vector2.ZERO
 
 func _ready():
 	add_to_group("interactuable")
@@ -28,6 +29,10 @@ func _physics_process(delta):
 			velocity.x = lerp(velocity.x, 0.0, friction)
 		else:
 			blowed -= 1 * delta
+			if is_on_wall():
+				velocity.x = (previus_velocity.x / 2) * -1
+			else:
+				previus_velocity = velocity
 
 		if !landed:
 			if !simulation:

@@ -1,10 +1,6 @@
 Ajustes:
-- Hacer que la explosión tenga momentum (por ejemplo, al saltar que sume al salto si estamos saltando)
-- Hacer que la explosión empuje un poco más en el eje X
-- Probar que pasa si al explotar y chocar con la pared rebotara un poco el personaje.
-- Mejorar línea de tiro siguiendo más el video
-- La sangre que se queda en las puertas o cosas mobibles
 - Limite para sangre
+- Mejorar línea de tiro siguiendo más el video
 - Revisar cámara 
 
 Features:
@@ -13,3 +9,10 @@ Features:
 - Armas como items posta 
 - Las armas tienen ""municion"" ver uso infinito
 - Generación de niveles por bloques 
+
+
+DONE:
+- Hacer que la explosión tenga momentum (por ejemplo, al saltar que sume al salto si estamos saltando)
+- Hacer que la explosión empuje un poco más en el eje X
+- Probar que pasa si al explotar y chocar con la pared rebotara un poco el personaje.
+- La sangre que se queda en las puertas o cosas movibles

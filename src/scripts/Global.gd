@@ -24,8 +24,8 @@ func emit(_global_position, count):
 		
 func flyaway(direction, jump_speed):
 	var velocity = Vector2()
-	velocity.x = direction.x * 25.0
-	velocity.y = jump_speed * 1.3
+	velocity.x = direction.x * 65.0
+	velocity.y = jump_speed * 1.4
 	return velocity
 	
 func find_master():

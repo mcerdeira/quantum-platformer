@@ -4,7 +4,7 @@ var total_speed = 230.0
 var speed = total_speed
 var jump_speed = -300.0
 @export var direction = ""
-var total_friction = 0.3
+var total_friction = 0.6
 var friction = total_friction
 var moving = false
 var buff = 0
@@ -24,6 +24,7 @@ var direction_change_ttl = direction_change_ttl_total
 var alerted = false
 var blowed = 0
 var alerted_delay = 0
+var previus_velocity = Vector2.ZERO
 
 func _ready():
 	add_to_group("enemies")
@@ -52,7 +53,13 @@ func _physics_process(delta):
 	
 	if blowed <= 0:
 		velocity.x = lerp(velocity.x, 0.0, friction)
-		
+	else:
+		blowed -= 1 * delta
+		if is_on_wall():
+			velocity.x = (previus_velocity.x / 2) * -1
+		else:
+			previus_velocity = velocity
+
 	process_player(delta)
 	move_and_slide()
 
@@ -236,6 +243,6 @@ func kill_fall():
 
 func flyaway(direction):
 	if blowed <= 0:
-		blowed = 2
+		blowed = 3.2
 		Global.emit(global_position, 2)
 		velocity = Global.flyaway(direction, jump_speed)

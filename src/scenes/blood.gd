@@ -1,6 +1,7 @@
 extends Area2D
 
 var is_colliding = false
+var is_colliding_temp = false
 
 var vspeed = randf_range(-5.0,5.0)
 var hspeed = randf_range(-3.0,3.0)
@@ -26,7 +27,10 @@ func _physics_process(delta: float) -> void:
 		visible = true
 		
 	else: # touching platform
-		draw_surface.draw_blood(position) # draw blood to surface
+		if is_colliding_temp:
+			draw_surface.draw_blood_temp(position) # draw blood to surface
+		else:	
+			draw_surface.draw_blood(position) # draw blood to surface
 		
 		#Count increase until max_count, then delete
 		count += 1
@@ -59,6 +63,9 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 func _on_body_entered(body):
+	if body.is_in_group("movebable"):
+		is_colliding_temp = true
+		
 	if !(body.is_in_group("players") or body.is_in_group("enemies") or body.is_in_group("interactuable")):
 		is_colliding = true
 

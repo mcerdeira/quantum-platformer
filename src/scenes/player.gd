@@ -3,7 +3,7 @@ var gravity = 10.0
 var speed = 125.0
 var jump_speed = -300.0
 @export var direction = "right"
-var total_friction = 0.3
+var total_friction = 0.6
 var friction = total_friction
 var moving = false
 var buff = 0
@@ -19,6 +19,7 @@ var item_action = ""
 var iam_clone = false
 var dead = false
 var blowed = 0
+var previus_velocity = Vector2.ZERO
 const blood = preload("res://scenes/blood.tscn")
 
 func _ready():
@@ -63,10 +64,15 @@ func _physics_process(delta):
 	else:
 		if friction != total_friction:
 			friction = lerp(friction, total_friction, 0.01)
+			
 	if blowed <= 0:
 		velocity.x = lerp(velocity.x, 0.0, friction)
 	else:
 		blowed -= 1 * delta
+		if is_on_wall():
+			velocity.x = (previus_velocity.x / 2) * -1
+		else:
+			previus_velocity = velocity
 		
 	process_player(delta)
 	move_and_slide()
@@ -96,7 +102,7 @@ func process_player(delta):
 			create_gizmo_simul()
 		shoot_mode = true
 		$gun_sprite.visible = true
-	
+		
 	if shoot_mode and Input.is_action_just_released("shoot"):
 		Global.time_speed = 1.0
 		destroy_gizmo_simul()
@@ -126,6 +132,7 @@ func process_player(delta):
 			velocity.x = -speed
 			$sprite.flip_h = true
 			$gun_sprite.rotation = initial_rotation - 45
+			
 		elif !shoot_mode and Input.is_action_pressed("right"):
 			direction = "right"
 			moving = true

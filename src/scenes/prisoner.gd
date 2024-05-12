@@ -13,6 +13,7 @@ var tspeed = 370.0
 var dead = false
 var blowed = 0
 const blood = preload("res://scenes/blood.tscn")
+var previus_velocity = Vector2.ZERO
 
 func _ready():
 	add_to_group("players")
@@ -36,10 +37,15 @@ func _physics_process(delta):
 	else:
 		if friction != total_friction:
 			friction = lerp(friction, total_friction, 0.01)
+			
 	if blowed <= 0:
 		velocity.x = lerp(velocity.x, 0.0, friction)
 	else:
 		blowed -= 1 * delta
+		if is_on_wall():
+			velocity.x = (previus_velocity.x / 2) * -1
+		else:
+			previus_velocity = velocity
 		
 	process_player(delta)
 	move_and_slide()
