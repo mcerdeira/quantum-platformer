@@ -6,10 +6,12 @@ Ajustes:
 Features:
 - Rescatar al prisionero
 - Item Radar
+- Enemigo con alas que planea al caer 
 - Armas como items posta 
 - Las armas tienen ""municion"" ver uso infinito
 - Generación de niveles por bloques 
-
+- Setting (blackthorne???) 
+- Decoraciones 
 
 DONE:
 - Hacer que la explosión tenga momentum (por ejemplo, al saltar que sume al salto si estamos saltando)
