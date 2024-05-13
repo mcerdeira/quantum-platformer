@@ -5,6 +5,7 @@ Ajustes:
 Features:
 - Armas como items posta 
 - Las armas tienen ""municion"" ver uso infinito
+- Escaleras
 - Generación de niveles por bloques 
 - Enemigo con alas que planea al caer 
 - Setting (blackthorne???) 
