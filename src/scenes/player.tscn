@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://evskswf05b50"]
+[gd_scene load_steps=17 format=3 uid="uid://evskswf05b50"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_u3t4v"]
 [ext_resource type="Texture2D" uid="uid://cl4nf2bm3n8bx" path="res://sprites/graby_dead.png" id="2_ekk1a"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cc8l2l2ae483x" path="res://sprites/graby_3.png" id="5_w86tm"]
 [ext_resource type="Texture2D" uid="uid://ca8ambc2jnao" path="res://sprites/gun_spr_0.png" id="6_d4ar8"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="7_1mbn0"]
+[ext_resource type="PackedScene" uid="uid://d0otpjtodaem7" path="res://scenes/arrow.tscn" id="12_hgq3s"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8thie"]
 animations = [{
@@ -117,3 +118,10 @@ theme_override_font_sizes/font_size = 8
 text = "TELEPORT"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+
+[node name="Arrow" parent="." instance=ExtResource("12_hgq3s")]
+visible = false
+position = Vector2(0, -74)

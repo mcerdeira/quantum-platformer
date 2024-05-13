@@ -13,26 +13,34 @@ var noise_time = 0
 var explosion_delay = 0
 var blowed = 0
 var previus_velocity = Vector2.ZERO
+var parent = null
+var item_action = ""
+var action_executed = false
 
 func _ready():
 	add_to_group("interactuable")
+	add_to_group("gizmos")
 	
 func _physics_process(delta):
 	if !is_on_floor():
 		landed = false
-		if !simulation:
+		if !simulation and !action_executed:
 			rotation += 5 * delta
 		velocity.y += gravity
+		if is_on_wall():
+			velocity.x = (previus_velocity.x / 2) * -1
+		else:
+			previus_velocity = velocity
+		
 	else:
 		rotation = 0
-		if blowed <= 0:
-			velocity.x = lerp(velocity.x, 0.0, friction)
-		else:
+		if blowed > 0:
 			blowed -= 1 * delta
-			if is_on_wall():
-				velocity.x = (previus_velocity.x / 2) * -1
+		else:
+			if !is_on_floor():
+				velocity.x = lerp(velocity.x, 0.0, friction / 10)
 			else:
-				previus_velocity = velocity
+				velocity.x = lerp(velocity.x, 0.0, friction)
 
 		if !landed:
 			if !simulation:
@@ -41,27 +49,26 @@ func _physics_process(delta):
 				$noise/collider.set_deferred("disabled", false)
 		
 		landed = true
-		
-		if explosion_delay > 0:
-			explosion_delay -= 1 * delta
-			if explosion_delay <= 0:
-				queue_free()
-		
+				
 		if noise_time > 0:
 			noise_time -= 1 * delta
 			if noise_time <= 0:
 				$noise/collider.set_deferred("disabled", true)
+
+	if explosion_delay > 0:
+		explosion_delay -= 1 * delta
+		if explosion_delay <= 0:
+			queue_free()
 	
-		if abs(velocity.x) <= 0.0:
-			velocity.x = 0.0
-			friction = total_friction
-		
-	move_and_slide()
+	if !action_executed:
+		move_and_slide()
 	
-func droped(direction, _simulation = false):
+func droped(_parent, direction, _item_action, _simulation = false):
+	parent = _parent
 	velocity = direction
 	friction = 0.1
 	simulation = _simulation
+	item_action = _item_action
 
 	if simulation:
 		$sprite.visible = false
@@ -80,24 +87,28 @@ func droped(direction, _simulation = false):
 		$Line2D.visible = false
 		$Line2D.queue_free()
 	
-func do_action(_player, lbl, item_action):
-	if !simulation:
-		if landed:
+func do_action(_player, lbl):
+	if !simulation and !action_executed:
+		if true or landed:
 			if item_action != "rock":
+				action_executed = true
 				lbl.visible = true
 				lbl.text =  item_action.to_upper() + "!"
 			if item_action == "teleport":
 				Global.emit(_player.global_position, 10)
+				action_executed = true
 				_player.visible = false
 				_player.global_position = $mark.global_position
 				Global.emit(_player.global_position, 10)
 			elif item_action == "clone":
+				action_executed = true
 				var pclone = player_clone.instantiate()
 				pclone.global_position = $mark.global_position
 				pclone.iam_clone = true
 				get_parent().add_child(pclone)
 				Global.emit(pclone.global_position, 10)
 			elif item_action == "bomb":
+				action_executed = true
 				explode()
 				
 			if item_action != "rock":
@@ -108,6 +119,7 @@ func do_action(_player, lbl, item_action):
 			
 func explode():
 	if !simulation:
+		$sprite.visible = false
 		$explosion/collider.set_deferred("disabled", false)
 		explosion_delay = 1.2
 		$explosions.explode()
@@ -133,6 +145,7 @@ func flyaway(direction):
 		blowed = 2
 		Global.emit(global_position, 2)
 		velocity = Global.flyaway(direction, jump_speed)
+		previus_velocity = velocity
 
 func kill_fall():
 	visible = false

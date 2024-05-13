@@ -13,9 +13,7 @@ var shoot_mode = false
 const gizmo = preload("res://scenes/gizmo.tscn")
 var tspeed = 370.0
 var initial_rotation = -45
-var current_gizmo_instance = null 
 var gizmo_simul = null
-var item_action = ""
 var iam_clone = false
 var dead = false
 var blowed = 0
@@ -37,7 +35,7 @@ func create_gizmo_simul():
 	var parent = get_parent()
 	parent.add_child(gizmo_simul)
 	gizmo_simul.global_position = pos
-	gizmo_simul.droped(Vector2.from_angle($gun_sprite.rotation) * tspeed, true)
+	gizmo_simul.droped(self, Vector2.from_angle($gun_sprite.rotation) * tspeed, "", true)
 	
 func destroy_gizmo_simul():
 	if gizmo_simul != null and is_instance_valid(gizmo_simul):
@@ -61,18 +59,18 @@ func _physics_process(delta):
 	
 	if !is_on_floor_custom():
 		velocity.y += gravity
-	else:
-		if friction != total_friction:
-			friction = lerp(friction, total_friction, 0.01)
-			
-	if blowed <= 0:
-		velocity.x = lerp(velocity.x, 0.0, friction)
-	else:
+
+	if blowed > 0:
 		blowed -= 1 * delta
 		if is_on_wall():
 			velocity.x = (previus_velocity.x / 2) * -1
 		else:
 			previus_velocity = velocity
+	else:
+		if !is_on_floor_custom():
+			velocity.x = lerp(velocity.x, 0.0, friction / 10)
+		else:
+			velocity.x = lerp(velocity.x, 0.0, friction)
 		
 	process_player(delta)
 	move_and_slide()
@@ -95,21 +93,28 @@ func process_player(delta):
 			elif Global.gunz_index == 1:
 				Global.gunz_index = 0
 			get_parent().calc_selected()
+			if Global.gunz_equiped[0] == "radar" or Global.gunz_equiped[1] == "radar":
+				if Global.gunz_equiped[Global.gunz_index] == "radar":
+					$Arrow.activate(true)
+				else:
+					$Arrow.activate(false)
 	
 	if !dead and Input.is_action_pressed("shoot"):
-		Global.time_speed = 0.1
-		if gizmo_simul == null or !is_instance_valid(gizmo_simul):
-			create_gizmo_simul()
-		shoot_mode = true
-		$gun_sprite.visible = true
+		if Global.gunz_equiped[Global.gunz_index] != "radar":
+			Global.time_speed = 0.1
+			if gizmo_simul == null or !is_instance_valid(gizmo_simul):
+				create_gizmo_simul()
+			shoot_mode = true
+			#$gun_sprite.visible = true
 		
 	if shoot_mode and Input.is_action_just_released("shoot"):
-		Global.time_speed = 1.0
-		destroy_gizmo_simul()
-		shoot_mode = false
-		shoot(delta)
-		await get_tree().create_timer(0.3).timeout
-		$gun_sprite.visible = false
+		if Global.gunz_equiped[Global.gunz_index] != "radar":
+			Global.time_speed = 1.0
+			destroy_gizmo_simul()
+			shoot_mode = false
+			shoot(delta)
+			await get_tree().create_timer(0.3).timeout
+			$gun_sprite.visible = false
 		
 	if shoot_mode:
 		if Input.is_action_pressed("left"):
@@ -156,14 +161,15 @@ func process_player(delta):
 		
 func shoot(delta):
 	if !dead:
-		var pos = $gun_sprite/mark.global_position
-		var p = gizmo.instantiate()
-		current_gizmo_instance = p
-		var parent = get_parent()
-		parent.add_child(p)
-		p.global_position = pos
-		Global.emit(pos, 5)
-		p.droped(Vector2.from_angle($gun_sprite.rotation) * tspeed)
+		if Global.gunz_equiped[Global.gunz_index] != "radar":
+			var pos = $gun_sprite/mark.global_position
+			var p = gizmo.instantiate()
+			var parent = get_parent()
+			parent.add_child(p)
+			p.global_position = pos
+			Global.emit(pos, 5)
+			var item_action = Global.gunz_equiped[Global.gunz_index]
+			p.droped(self, Vector2.from_angle($gun_sprite.rotation) * tspeed, item_action, false)
 	
 func jump(delta):
 	if !dead:
@@ -175,10 +181,7 @@ func jump(delta):
 
 func do_action(delta):
 	if !dead:
-		if current_gizmo_instance != null:
-			item_action = Global.gunz_equiped[Global.gunz_index]
-			current_gizmo_instance.do_action(self, $lbl_action, item_action)
-			current_gizmo_instance = null
+		Global.GizmoWatcher.do_action(self, $lbl_action)
 
 func lbl_hide_delegate(value, time):
 	await get_tree().create_timer(time).timeout
@@ -189,6 +192,7 @@ func flyaway(direction):
 		blowed = 2
 		Global.emit(global_position, 2)
 		velocity = Global.flyaway(direction, jump_speed)
+		previus_velocity = velocity
 
 func bleed(count):
 	for i in range(count):

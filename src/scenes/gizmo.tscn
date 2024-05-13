@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ypq32fpaty8e"]
+[gd_scene load_steps=21 format=3 uid="uid://ypq32fpaty8e"]
 
 [ext_resource type="Script" path="res://scenes/gizmo.gd" id="1_x7ufw"]
 [ext_resource type="Script" path="res://scenes/explosions.gd" id="2_84bkr"]
@@ -86,6 +86,9 @@ radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hcm05"]
 radius = 218.014
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xxiqt"]
+radius = 295.015
 
 [node name="Gizmo" type="CharacterBody2D"]
 script = ExtResource("1_x7ufw")
@@ -246,7 +249,8 @@ disabled = true
 script = ExtResource("7_54k6n")
 
 [node name="collider" type="CollisionShape2D" parent="explosion"]
-shape = SubResource("CircleShape2D_hcm05")
+position = Vector2(5, 19)
+shape = SubResource("CircleShape2D_xxiqt")
 disabled = true
 
 [node name="Line2D" type="Line2D" parent="."]

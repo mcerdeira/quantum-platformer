@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0otpjtodaem7"]
+
+[ext_resource type="Texture2D" uid="uid://ca2pp2ubgnf6k" path="res://sprites/arrow.png" id="1_65t03"]
+[ext_resource type="Script" path="res://scenes/Arrow.gd" id="2_uega5"]
+[ext_resource type="Texture2D" uid="uid://drvg1tvja1ufg" path="res://sprites/notfound.png" id="2_yhjoq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_thlc7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_65t03")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yhjoq")
+}],
+"loop": true,
+"name": &"notfound",
+"speed": 5.0
+}]
+
+[node name="Arrow" type="AnimatedSprite2D"]
+position = Vector2(830, 450)
+sprite_frames = SubResource("SpriteFrames_thlc7")
+script = ExtResource("2_uega5")

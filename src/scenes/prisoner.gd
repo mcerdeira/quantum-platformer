@@ -14,41 +14,61 @@ var dead = false
 var blowed = 0
 const blood = preload("res://scenes/blood.tscn")
 var previus_velocity = Vector2.ZERO
+var trapped = true
+var dir = 1
+var liberating = 0
+var help_messages = ["HELP!", "SAVE ME!", "S.O.S"]
+var thanks_messages = ["THANKS!", "MY HERO!"]
+var thanks_message = Global.pick_random(thanks_messages)
 
 func _ready():
 	add_to_group("players")
-	$sprite.animation = "idle"
+	add_to_group("prisoners")
+	$sprite.animation = "trapped"
+	$sprite.play()
+	$lbl_action.text = Global.pick_random(help_messages)
 	
 func is_on_floor_custom():
 	return is_on_floor() or buff > 0
 
 func _physics_process(delta):
-	if is_on_floor():
-		if in_air:
-			in_air = false
-			Global.emit(global_position, 1)
-		buff = 0.2
+	if trapped:
+		if liberating > 0:
+			$lbl_action.text = thanks_message
+			liberating -= 1 * delta
+			if liberating <= 0:
+				$trapped_area.queue_free()
+				$collider.set_deferred("disabled", false)
+				trapped = false
+				$lbl_action.text = ""
+				$lbl_action.visible = false
 	else:
-		in_air = true
-		buff -= 1 * delta
-	
-	if !is_on_floor_custom():
-		velocity.y += gravity
-	else:
-		if friction != total_friction:
-			friction = lerp(friction, total_friction, 0.01)
-			
-	if blowed <= 0:
-		velocity.x = lerp(velocity.x, 0.0, friction)
-	else:
-		blowed -= 1 * delta
-		if is_on_wall():
-			velocity.x = (previus_velocity.x / 2) * -1
+		if is_on_floor():
+			if in_air:
+				in_air = false
+				Global.emit(global_position, 1)
+			buff = 0.2
 		else:
-			previus_velocity = velocity
+			in_air = true
+			buff -= 1 * delta
 		
-	process_player(delta)
-	move_and_slide()
+		if !is_on_floor_custom():
+			velocity.y += gravity
+
+		if blowed > 0:
+			blowed -= 1 * delta
+			if is_on_wall():
+				velocity.x = (previus_velocity.x / 2) * -1
+			else:
+				previus_velocity = velocity
+		else:
+			if !is_on_floor_custom():
+				velocity.x = lerp(velocity.x, 0.0, friction / 10)
+			else:
+				velocity.x = lerp(velocity.x, 0.0, friction)
+			
+		process_player(delta)
+		move_and_slide()
 
 func process_player(delta):
 	var moving = false
@@ -104,6 +124,7 @@ func flyaway(direction):
 		blowed = 2
 		Global.emit(global_position, 2)
 		velocity = Global.flyaway(direction, jump_speed)
+		previus_velocity = velocity
 
 func bleed(count):
 	for i in range(count):
@@ -125,3 +146,8 @@ func kill():
 	bleed(45)
 	await get_tree().create_timer(2).timeout
 	bleed(25)
+
+
+func _on_trapped_area_body_entered(body):
+	if body.is_in_group("players"):
+		liberating = 1.4

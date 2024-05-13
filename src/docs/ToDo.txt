@@ -1,15 +1,12 @@
 Ajustes:
-- Limite para sangre
 - Mejorar línea de tiro siguiendo más el video
-- Revisar cámara 
+- La camara debe seguir al pj principal y switchear según vayan muriendo. En Game over no resetear. 
 
 Features:
-- Rescatar al prisionero
-- Item Radar
-- Enemigo con alas que planea al caer 
 - Armas como items posta 
 - Las armas tienen ""municion"" ver uso infinito
 - Generación de niveles por bloques 
+- Enemigo con alas que planea al caer 
 - Setting (blackthorne???) 
 - Decoraciones 
 
@@ -18,3 +15,6 @@ DONE:
 - Hacer que la explosión empuje un poco más en el eje X
 - Probar que pasa si al explotar y chocar con la pared rebotara un poco el personaje.
 - La sangre que se queda en las puertas o cosas movibles
+- Limite para sangre
+- Rescatar al prisionero
+- Item Radar

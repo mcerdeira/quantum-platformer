@@ -6,7 +6,7 @@ var MUSIC_ENABLED = true
 var MUSIC_PLAYING = false
 var MainTheme = "res://music/Bone Yard Waltz - Loopable.ogg"
 var JUMP_SFX = null
-var gunz = ["clone", "teleport", "rock", "bomb"]
+var gunz = ["clone", "teleport", "rock", "bomb", "radar"]
 var gunz_equiped = []
 var gunz_index = 0
 var main_camera = null
@@ -15,6 +15,7 @@ var time_speed = 1.0
 var GAMEOVER = false
 var shaker_obj = null
 var level_doors = []
+var GizmoWatcher = null
 
 func emit(_global_position, count):
 	for i in range(count):

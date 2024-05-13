@@ -5,6 +5,7 @@ class_name paint
 var bloods_temp = []  
 var bloods = []
 var blood_texture =  preload("res://sprites/blood1.png")
+var blood_limit = 10000
 
 func clear_temps():
 	bloods_temp = []
@@ -12,10 +13,14 @@ func clear_temps():
 	
 func draw_blood_temp(draw_pos : Vector2):
 	bloods_temp.append(draw_pos)
-	queue_redraw()	
+	queue_redraw()
 	
 func draw_blood(draw_pos : Vector2):
-	bloods.append(draw_pos)
+	if bloods.size() > blood_limit:
+		bloods.pop_back()
+		bloods.push_front(draw_pos)
+	else:
+		bloods.append(draw_pos)
 	queue_redraw()
 		
 func _draw():

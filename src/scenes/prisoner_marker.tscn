@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://bfmdje7uoppc1"]
 
 [ext_resource type="Script" path="res://scenes/levels/prisoner_marker.gd" id="1_tn7ey"]
-[ext_resource type="Texture2D" uid="uid://cxgcmxydy1kml" path="res://sprites/graby_0.png" id="2_e7gi6"]
+[ext_resource type="Texture2D" uid="uid://dc5iy4hnblrha" path="res://sprites/sleepy_trap_0.png" id="2_0th4h"]
 
 [node name="prisoner_marker" type="Marker2D"]
 script = ExtResource("1_tn7ey")
 
 [node name="Graby0" type="Sprite2D" parent="."]
-texture = ExtResource("2_e7gi6")
+texture = ExtResource("2_0th4h")

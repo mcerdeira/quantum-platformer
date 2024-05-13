@@ -47,18 +47,18 @@ func _physics_process(delta):
 	
 	if !is_on_floor_custom():
 		velocity.y += gravity
-	else:
-		if friction != total_friction:
-			friction = lerp(friction, total_friction, 0.01)
 	
-	if blowed <= 0:
-		velocity.x = lerp(velocity.x, 0.0, friction)
-	else:
+	if blowed > 0:
 		blowed -= 1 * delta
 		if is_on_wall():
 			velocity.x = (previus_velocity.x / 2) * -1
 		else:
 			previus_velocity = velocity
+	else:
+		if !is_on_floor_custom():
+			velocity.x = lerp(velocity.x, 0.0, friction / 10)
+		else:
+			velocity.x = lerp(velocity.x, 0.0, friction)
 
 	process_player(delta)
 	move_and_slide()
@@ -246,3 +246,4 @@ func flyaway(direction):
 		blowed = 3.2
 		Global.emit(global_position, 2)
 		velocity = Global.flyaway(direction, jump_speed)
+		previus_velocity = velocity
