@@ -3,11 +3,14 @@ Ajustes:
 
 Features:
 - Armas como items posta 
-- Las armas tienen ""municion"" ver uso infinito
+- Las armas tienen ""municion"" / ver uso infinito
 - Generación de niveles por bloques 
+- Puerta de salida del nivel (debe habilitarse cuando tenemos el N% de prisioneros)
 - Enemigo con alas que planea al caer 
 - Setting (blackthorne???) 
 - Decoraciones 
+- SFX
+- Musica
 
 DONE:
 - Hacer que la explosión tenga momentum (por ejemplo, al saltar que sume al salto si estamos saltando)
