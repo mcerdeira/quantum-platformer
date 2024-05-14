@@ -10,5 +10,3 @@ func _ready():
 func _process(delta):
 	if get_point_count() < max_len:
 		add_point(parent.global_position)
-	
-		

@@ -19,6 +19,7 @@ var dead = false
 var blowed = 0
 var previus_velocity = Vector2.ZERO
 const blood = preload("res://scenes/blood.tscn")
+const gizmo_fake = preload("res://scenes/gizmo_fake.tscn")
 
 func _ready():
 	add_to_group("players")
@@ -44,10 +45,30 @@ func destroy_gizmo_simul():
 
 func is_on_floor_custom():
 	return is_on_floor() or buff > 0
+	
+func update_trayectory():
+	$Line2D.visible = true 
+	
+	var pos = $gun_sprite/mark.global_position
+	if gizmo_simul == null:
+		gizmo_simul = gizmo_fake.instantiate()
+		var parent = get_parent()
+		parent.add_child(gizmo_simul)
+		
+	gizmo_simul.global_position = pos
+	var init_pos = $gun_sprite/mark.global_position
+	$Line2D.update_trayectory(gizmo_simul, Vector2.from_angle($gun_sprite.rotation) * tspeed)
+
+func destroy_trayectory():
+	gizmo_simul.visible = false
+	gizmo_simul.queue_free()
+	gizmo_simul = null
+
+	$Line2D.visible = false 
+	$Line2D.clear_points()
 
 func _physics_process(delta):
 	$Cosito.visible = !iam_clone and !dead
-	
 	if is_on_floor():
 		if in_air:
 			in_air = false
@@ -102,15 +123,17 @@ func process_player(delta):
 	if !dead and Input.is_action_pressed("shoot"):
 		if Global.gunz_equiped[Global.gunz_index] != "radar":
 			Global.time_speed = 0.1
-			if gizmo_simul == null or !is_instance_valid(gizmo_simul):
-				create_gizmo_simul()
+			update_trayectory()
+			#if gizmo_simul == null or !is_instance_valid(gizmo_simul):
+			#	create_gizmo_simul()
 			shoot_mode = true
 			#$gun_sprite.visible = true
 		
 	if shoot_mode and Input.is_action_just_released("shoot"):
 		if Global.gunz_equiped[Global.gunz_index] != "radar":
 			Global.time_speed = 1.0
-			destroy_gizmo_simul()
+			#destroy_gizmo_simul()
+			destroy_trayectory()
 			shoot_mode = false
 			shoot(delta)
 			await get_tree().create_timer(0.3).timeout
@@ -119,12 +142,14 @@ func process_player(delta):
 	if shoot_mode:
 		if Input.is_action_pressed("left"):
 			$gun_sprite.rotation -= 1 * delta
-			destroy_gizmo_simul()
-			create_gizmo_simul()
+			update_trayectory()
+			#destroy_gizmo_simul()
+			#create_gizmo_simul()
 		elif Input.is_action_pressed("right"):
 			$gun_sprite.rotation += 1 * delta
-			destroy_gizmo_simul()
-			create_gizmo_simul()
+			update_trayectory()
+			#destroy_gizmo_simul()
+			#create_gizmo_simul()
 	
 	if !dead and Input.is_action_just_pressed("jump"):
 		jump(delta)
