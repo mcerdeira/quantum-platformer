@@ -2,6 +2,7 @@ Ajustes:
 - La camara debe seguir al pj principal y switchear según vayan muriendo. En Game over no resetear. 
 
 Features:
+- Contador de prisioneros
 - Armas como items posta 
 - Las armas tienen ""municion"" / ver uso infinito
 - Generación de niveles por bloques 

@@ -37,6 +37,7 @@ func _physics_process(delta):
 			$lbl_action.text = thanks_message
 			liberating -= 1 * delta
 			if liberating <= 0:
+				Global.prisoner_counter -= 1
 				$trapped_area.queue_free()
 				$collider.set_deferred("disabled", false)
 				trapped = false

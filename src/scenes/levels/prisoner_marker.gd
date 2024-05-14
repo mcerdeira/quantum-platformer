@@ -13,4 +13,6 @@ func _process(delta):
 		Main.add_child(pclone)
 		Global.emit(pclone.global_position, 10)
 		done = true
+		Global.prisoner_counter += 1
+		Global.prisoner_total += 1
 		queue_free()

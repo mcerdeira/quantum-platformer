@@ -33,6 +33,9 @@ func _physics_process(delta):
 			break
 		
 		Global.GAMEOVER = true
+	var sel = get_node("/root/Main/CanvasLayer/Control/PrisonerHead/counter")
+	if sel:
+		sel.text = "x" + str(Global.prisoner_counter)
 		
 	if Input.is_action_just_pressed("restart"):
 		Global.init()

@@ -16,6 +16,8 @@ var GAMEOVER = false
 var shaker_obj = null
 var level_doors = []
 var GizmoWatcher = null
+var prisoner_counter = 0
+var prisoner_total = 0
 
 func emit(_global_position, count):
 	for i in range(count):
