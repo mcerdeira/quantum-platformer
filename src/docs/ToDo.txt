@@ -1,11 +1,9 @@
 Ajustes:
-- Mejorar línea de tiro siguiendo más el video
 - La camara debe seguir al pj principal y switchear según vayan muriendo. En Game over no resetear. 
 
 Features:
 - Armas como items posta 
 - Las armas tienen ""municion"" ver uso infinito
-- Escaleras
 - Generación de niveles por bloques 
 - Enemigo con alas que planea al caer 
 - Setting (blackthorne???) 
@@ -19,3 +17,5 @@ DONE:
 - Limite para sangre
 - Rescatar al prisionero
 - Item Radar
+- Mejorar línea de tiro siguiendo más el video
+- Escaleras

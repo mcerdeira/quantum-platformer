@@ -18,6 +18,8 @@ var iam_clone = false
 var dead = false
 var blowed = 0
 var previus_velocity = Vector2.ZERO
+var is_on_stairs = false
+var grabbed = false
 const blood = preload("res://scenes/blood.tscn")
 const gizmo_fake = preload("res://scenes/gizmo_fake.tscn")
 
@@ -30,18 +32,18 @@ func _ready():
 	$Cosito.visible = false
 	Global.main_camera.register_target(self)
 	
-func create_gizmo_simul():
-	var pos = $gun_sprite/mark.global_position
-	gizmo_simul = gizmo.instantiate()
-	var parent = get_parent()
-	parent.add_child(gizmo_simul)
-	gizmo_simul.global_position = pos
-	gizmo_simul.droped(self, Vector2.from_angle($gun_sprite.rotation) * tspeed, "", true)
-	
-func destroy_gizmo_simul():
-	if gizmo_simul != null and is_instance_valid(gizmo_simul):
-		gizmo_simul.visible = false
-		gizmo_simul.queue_free()
+#func create_gizmo_simul():
+	#var pos = $gun_sprite/mark.global_position
+	#gizmo_simul = gizmo.instantiate()
+	#var parent = get_parent()
+	#parent.add_child(gizmo_simul)
+	#gizmo_simul.global_position = pos
+	#gizmo_simul.droped(self, Vector2.from_angle($gun_sprite.rotation) * tspeed, "", true)
+	#
+#func destroy_gizmo_simul():
+	#if gizmo_simul != null and is_instance_valid(gizmo_simul):
+		#gizmo_simul.visible = false
+		#gizmo_simul.queue_free()
 
 func is_on_floor_custom():
 	return is_on_floor() or buff > 0
@@ -69,7 +71,7 @@ func destroy_trayectory():
 
 func _physics_process(delta):
 	$Cosito.visible = !iam_clone and !dead
-	if is_on_floor():
+	if is_on_floor() or grabbed:
 		if in_air:
 			in_air = false
 			Global.emit(global_position, 1)
@@ -78,7 +80,7 @@ func _physics_process(delta):
 		in_air = true
 		buff -= 1 * delta
 	
-	if !is_on_floor_custom():
+	if !is_on_floor_custom() and !grabbed:
 		velocity.y += gravity
 
 	if blowed > 0:
@@ -88,6 +90,12 @@ func _physics_process(delta):
 		else:
 			previus_velocity = velocity
 	else:
+		if grabbed and Input.is_action_just_released("up"):
+			velocity.y = 0
+			
+		if grabbed and Input.is_action_just_released("jump"):
+			velocity.y = 0
+		
 		if !is_on_floor_custom():
 			velocity.x = lerp(velocity.x, 0.0, friction / 10)
 		else:
@@ -124,10 +132,7 @@ func process_player(delta):
 		if Global.gunz_equiped[Global.gunz_index] != "radar":
 			Global.time_speed = 0.1
 			update_trayectory()
-			#if gizmo_simul == null or !is_instance_valid(gizmo_simul):
-			#	create_gizmo_simul()
 			shoot_mode = true
-			#$gun_sprite.visible = true
 		
 	if shoot_mode and Input.is_action_just_released("shoot"):
 		if Global.gunz_equiped[Global.gunz_index] != "radar":
@@ -143,18 +148,25 @@ func process_player(delta):
 		if Input.is_action_pressed("left"):
 			$gun_sprite.rotation -= 1 * delta
 			update_trayectory()
-			#destroy_gizmo_simul()
-			#create_gizmo_simul()
 		elif Input.is_action_pressed("right"):
 			$gun_sprite.rotation += 1 * delta
 			update_trayectory()
-			#destroy_gizmo_simul()
-			#create_gizmo_simul()
 	
 	if !dead and Input.is_action_just_pressed("jump"):
-		jump(delta)
+		if is_on_stairs and grabbed:
+			velocity.y = -speed * 2
+			Global.emit(global_position, 2)
+		else:
+			jump(delta)
 		
 	if !dead:
+		if !shoot_mode and Input.is_action_pressed("up"):
+			if is_on_stairs:
+				grabbed = true 
+				moving = true
+				idle_time = 0
+				velocity.y = -speed
+		
 		if !shoot_mode and Input.is_action_pressed("left"):
 			direction = "left"
 			moving = true

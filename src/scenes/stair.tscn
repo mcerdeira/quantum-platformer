@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d254jydue6c5l"]
+
+[ext_resource type="Script" path="res://scenes/stair.gd" id="1_uadkp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fyajm"]
+size = Vector2(32, 32)
+
+[node name="Stair" type="Area2D"]
+script = ExtResource("1_uadkp")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_fyajm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
