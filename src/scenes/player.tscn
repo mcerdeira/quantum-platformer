@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://evskswf05b50"]
+[gd_scene load_steps=22 format=3 uid="uid://evskswf05b50"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_u3t4v"]
 [ext_resource type="Texture2D" uid="uid://cl4nf2bm3n8bx" path="res://sprites/graby_dead.png" id="2_ekk1a"]
@@ -15,6 +15,7 @@
 [ext_resource type="Shader" path="res://scenes/player.gdshader" id="13_1jkvy"]
 [ext_resource type="Texture2D" uid="uid://mir8y6lk22v8" path="res://sprites/lines.png" id="13_h7iaa"]
 [ext_resource type="Script" path="res://scenes/Line.gd" id="14_w3c12"]
+[ext_resource type="PackedScene" uid="uid://7oc21gjrycxp" path="res://scenes/gizmo_fake.tscn" id="16_cdixk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8thie"]
 animations = [{
@@ -137,9 +138,11 @@ position = Vector2(0, -74)
 texture_repeat = 2
 material = SubResource("ShaderMaterial_m4ack")
 use_parent_material = true
-position = Vector2(1, -23)
+position = Vector2(0.999998, -23)
 points = PackedVector2Array(0, 0)
 width = 5.0
 texture = ExtResource("13_h7iaa")
 texture_mode = 1
 script = ExtResource("14_w3c12")
+
+[node name="GizmoFake" parent="Line2D" instance=ExtResource("16_cdixk")]

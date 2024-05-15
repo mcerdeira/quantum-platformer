@@ -33,6 +33,18 @@ func _physics_process(delta):
 			break
 		
 		Global.GAMEOVER = true
+		
+	if Global.exit_door.closed:
+		var targets = get_tree().get_nodes_in_group("prisoners")
+		if targets.size() > 0:
+			var found = false
+			for t in targets:
+				if t.trapped:
+					found = true
+					break
+			if !found:
+				Global.exit_door.open()
+		
 	var sel = get_node("/root/Main/CanvasLayer/Control/PrisonerHead/counter")
 	if sel:
 		sel.text = "x" + str(Global.prisoner_counter)

@@ -2,11 +2,9 @@ Ajustes:
 - La camara debe seguir al pj principal y switchear según vayan muriendo. En Game over no resetear. 
 
 Features:
-- Contador de prisioneros
+- Generación de niveles por bloques 
 - Armas como items posta 
 - Las armas tienen ""municion"" / ver uso infinito
-- Generación de niveles por bloques 
-- Puerta de salida del nivel (debe habilitarse cuando tenemos el N% de prisioneros)
 - Enemigo con alas que planea al caer 
 - Setting (blackthorne???) 
 - Decoraciones 
@@ -14,6 +12,8 @@ Features:
 - Musica
 
 DONE:
+- Puerta de salida del nivel (debe habilitarse cuando tenemos el N% de prisioneros)
+- Contador de prisioneros
 - Hacer que la explosión tenga momentum (por ejemplo, al saltar que sume al salto si estamos saltando)
 - Hacer que la explosión empuje un poco más en el eje X
 - Probar que pasa si al explotar y chocar con la pared rebotara un poco el personaje.

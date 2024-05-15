@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://q767q018lep8"]
+
+[ext_resource type="Script" path="res://scenes/exit_door.gd" id="1_0vvlk"]
+[ext_resource type="Texture2D" uid="uid://nywbn485k5bj" path="res://sprites/crack_spr_0.png" id="1_btgo3"]
+[ext_resource type="Texture2D" uid="uid://c8tmvh50palpk" path="res://sprites/crack_spr_1.png" id="2_uhela"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_82tis"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_btgo3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uhela")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njti7"]
+size = Vector2(30, 27)
+
+[node name="ExitDoor" type="Area2D"]
+script = ExtResource("1_0vvlk")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -28)
+sprite_frames = SubResource("SpriteFrames_82tis")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13.5)
+shape = SubResource("RectangleShape2D_njti7")

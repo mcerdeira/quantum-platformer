@@ -1,6 +1,5 @@
 extends CharacterBody2D
-var gravity = 10.0
-var speed = 75.0
+var gravity = 1000.0
 var jump_speed = -300.0
 var grabbed = false
 var total_friction = 0.6
@@ -12,7 +11,6 @@ var player_clone = load("res://scenes/player.tscn")
 var noise_time = 0
 var explosion_delay = 0
 var blowed = 0
-var previus_velocity = Vector2.ZERO
 var parent = null
 var item_action = ""
 var action_executed = false
@@ -22,46 +20,51 @@ func _ready():
 	add_to_group("gizmos")
 	
 func _physics_process(delta):
-	if !is_on_floor():
-		landed = false
-		if !simulation and !action_executed:
-			rotation += 5 * delta
-		velocity.y += gravity
-		if is_on_wall():
-			velocity.x = (previus_velocity.x / 2) * -1
-		else:
-			previus_velocity = velocity
-		
-	else:
-		rotation = 0
-		if blowed > 0:
-			blowed -= 1 * delta
-		else:
-			if !is_on_floor():
-				velocity.x = lerp(velocity.x, 0.0, friction / 10)
-			else:
-				velocity.x = lerp(velocity.x, 0.0, friction)
-
-		if !landed:
-			if !simulation:
-				noise_time = 0.3
-				Global.emit(global_position, 1)
-				$noise/collider.set_deferred("disabled", false)
-		
-		landed = true
-				
-		if noise_time > 0:
-			noise_time -= 1 * delta
-			if noise_time <= 0:
-				$noise/collider.set_deferred("disabled", true)
-
-	if explosion_delay > 0:
-		explosion_delay -= 1 * delta
-		if explosion_delay <= 0:
-			queue_free()
+	velocity.y += gravity * delta
+	var collision = move_and_collide(velocity * delta)
+	if collision: 
+		velocity = velocity.bounce(collision.get_normal()) * 0.2 
 	
-	if !action_executed:
-		move_and_slide()
+	#if !is_on_floor():
+		#landed = false
+		#if !simulation and !action_executed:
+			#rotation += 5 * delta
+		#velocity.y += gravity
+		#if is_on_wall():
+			#velocity.x = (previus_velocity.x / 2) * -1
+		#else:
+			#previus_velocity = velocity
+		#
+	#else:
+		#rotation = 0
+		#if blowed > 0:
+			#blowed -= 1 * delta
+		#else:
+			#if !is_on_floor():
+				#velocity.x = lerp(velocity.x, 0.0, friction / 10)
+			#else:
+				#velocity.x = lerp(velocity.x, 0.0, friction)
+#
+		#if !landed:
+			#if !simulation:
+				#noise_time = 0.3
+				#Global.emit(global_position, 1)
+				#$noise/collider.set_deferred("disabled", false)
+		#
+		#landed = true
+				#
+		#if noise_time > 0:
+			#noise_time -= 1 * delta
+			#if noise_time <= 0:
+				#$noise/collider.set_deferred("disabled", true)
+#
+	#if explosion_delay > 0:
+		#explosion_delay -= 1 * delta
+		#if explosion_delay <= 0:
+			#queue_free()
+	#
+	#if !action_executed:
+		#move_and_slide()
 	
 func droped(_parent, direction, _item_action, _simulation = false):
 	parent = _parent
@@ -145,7 +148,6 @@ func flyaway(direction):
 		blowed = 2
 		Global.emit(global_position, 2)
 		velocity = Global.flyaway(direction, jump_speed)
-		previus_velocity = velocity
 
 func kill_fall():
 	visible = false

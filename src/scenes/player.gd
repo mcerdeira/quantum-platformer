@@ -11,17 +11,16 @@ var in_air = false
 var idle_time = 0
 var shoot_mode = false
 const gizmo = preload("res://scenes/gizmo.tscn")
-var tspeed = 370.0
+var tspeed = 500.0
 var initial_rotation = -45
-var gizmo_simul = null
 var iam_clone = false
 var dead = false
 var blowed = 0
 var previus_velocity = Vector2.ZERO
 var is_on_stairs = false
 var grabbed = false
+var LineTrayectory = null
 const blood = preload("res://scenes/blood.tscn")
-const gizmo_fake = preload("res://scenes/gizmo_fake.tscn")
 
 func _ready():
 	add_to_group("players")
@@ -31,43 +30,20 @@ func _ready():
 	$Cosito.play()
 	$Cosito.visible = false
 	Global.main_camera.register_target(self)
+	LineTrayectory = $Line2D
 	
-#func create_gizmo_simul():
-	#var pos = $gun_sprite/mark.global_position
-	#gizmo_simul = gizmo.instantiate()
-	#var parent = get_parent()
-	#parent.add_child(gizmo_simul)
-	#gizmo_simul.global_position = pos
-	#gizmo_simul.droped(self, Vector2.from_angle($gun_sprite.rotation) * tspeed, "", true)
-	#
-#func destroy_gizmo_simul():
-	#if gizmo_simul != null and is_instance_valid(gizmo_simul):
-		#gizmo_simul.visible = false
-		#gizmo_simul.queue_free()
-
 func is_on_floor_custom():
 	return is_on_floor() or buff > 0
 	
-func update_trayectory():
-	$Line2D.visible = true 
+func update_trayectory(delta):
+	LineTrayectory.visible = true 
 	
 	var pos = $gun_sprite/mark.global_position
-	if gizmo_simul == null:
-		gizmo_simul = gizmo_fake.instantiate()
-		var parent = get_parent()
-		parent.add_child(gizmo_simul)
-		
-	gizmo_simul.global_position = pos
-	var init_pos = $gun_sprite/mark.global_position
-	$Line2D.update_trayectory(gizmo_simul, Vector2.from_angle($gun_sprite.rotation) * tspeed)
+	LineTrayectory.update_trayectory(Vector2.from_angle($gun_sprite.rotation) * tspeed, delta)
 
 func destroy_trayectory():
-	gizmo_simul.visible = false
-	gizmo_simul.queue_free()
-	gizmo_simul = null
-
-	$Line2D.visible = false 
-	$Line2D.clear_points()
+	LineTrayectory.visible = false 
+	LineTrayectory.clear_points()
 
 func _physics_process(delta):
 	$Cosito.visible = !iam_clone and !dead
@@ -131,7 +107,7 @@ func process_player(delta):
 	if !dead and Input.is_action_pressed("shoot"):
 		if Global.gunz_equiped[Global.gunz_index] != "radar":
 			Global.time_speed = 0.1
-			update_trayectory()
+			update_trayectory(delta)
 			shoot_mode = true
 		
 	if shoot_mode and Input.is_action_just_released("shoot"):
@@ -147,10 +123,10 @@ func process_player(delta):
 	if shoot_mode:
 		if Input.is_action_pressed("left"):
 			$gun_sprite.rotation -= 1 * delta
-			update_trayectory()
+			update_trayectory(delta)
 		elif Input.is_action_pressed("right"):
 			$gun_sprite.rotation += 1 * delta
-			update_trayectory()
+			update_trayectory(delta)
 	
 	if !dead and Input.is_action_just_pressed("jump"):
 		if is_on_stairs and grabbed:

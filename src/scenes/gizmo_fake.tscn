@@ -1,65 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://7oc21gjrycxp"]
+[gd_scene load_steps=2 format=3 uid="uid://7oc21gjrycxp"]
 
-[ext_resource type="Texture2D" uid="uid://cmahogbn2aqwr" path="res://sprites/bomb.png" id="1_vhygp"]
-[ext_resource type="Texture2D" uid="uid://dbh84l3hbge3s" path="res://sprites/box.png" id="2_5omjv"]
-[ext_resource type="Texture2D" uid="uid://di4olx4un0owh" path="res://sprites/rock.png" id="3_0g8tj"]
-[ext_resource type="Texture2D" uid="uid://c23s3u7g3bdtm" path="res://sprites/simul_box.png" id="4_u03kn"]
-[ext_resource type="Texture2D" uid="uid://d3m4w8m7o2x0f" path="res://sprites/teleporter_box.png" id="5_qsuaf"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3r5gg"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_vhygp")
-}],
-"loop": true,
-"name": &"bomb",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_5omjv")
-}],
-"loop": true,
-"name": &"clone",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_0g8tj")
-}],
-"loop": true,
-"name": &"rock",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_u03kn")
-}],
-"loop": true,
-"name": &"simul",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_qsuaf")
-}],
-"loop": true,
-"name": &"teleport",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_odwe0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lg4rm"]
 size = Vector2(6, 6)
 
 [node name="GizmoFake" type="CharacterBody2D"]
-
-[node name="sprite" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(0, -5)
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_3r5gg")
-animation = &"teleport"
+collision_layer = 2
+collision_mask = 2
 
 [node name="collider" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_odwe0")
+shape = SubResource("RectangleShape2D_lg4rm")
