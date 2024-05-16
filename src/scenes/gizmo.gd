@@ -19,53 +19,45 @@ func _ready():
 	add_to_group("interactuable")
 	add_to_group("gizmos")
 	
+func is_on_floor_custom(normal):
+	return (normal == Vector2.UP)
+		
 func _physics_process(delta):
 	velocity.y += gravity * delta
 	var collision = move_and_collide(velocity * delta)
 	if collision: 
-		velocity = velocity.bounce(collision.get_normal()) * 0.2 
-	
-	#if !is_on_floor():
-		#landed = false
-		#if !simulation and !action_executed:
-			#rotation += 5 * delta
-		#velocity.y += gravity
-		#if is_on_wall():
-			#velocity.x = (previus_velocity.x / 2) * -1
-		#else:
-			#previus_velocity = velocity
-		#
-	#else:
-		#rotation = 0
-		#if blowed > 0:
-			#blowed -= 1 * delta
-		#else:
-			#if !is_on_floor():
-				#velocity.x = lerp(velocity.x, 0.0, friction / 10)
-			#else:
-				#velocity.x = lerp(velocity.x, 0.0, friction)
-#
-		#if !landed:
-			#if !simulation:
-				#noise_time = 0.3
-				#Global.emit(global_position, 1)
-				#$noise/collider.set_deferred("disabled", false)
-		#
-		#landed = true
-				#
-		#if noise_time > 0:
-			#noise_time -= 1 * delta
-			#if noise_time <= 0:
-				#$noise/collider.set_deferred("disabled", true)
-#
-	#if explosion_delay > 0:
-		#explosion_delay -= 1 * delta
-		#if explosion_delay <= 0:
-			#queue_free()
-	#
-	#if !action_executed:
-		#move_and_slide()
-	
+		var normal = collision.get_normal()
+		velocity = velocity.bounce(normal) * Global.bounce_amount
+		if is_on_floor_custom(normal):
+			if !landed:
+				noise_time = 0.3
+				Global.emit(global_position, 1)
+				$noise/collider.set_deferred("disabled", false)
+				
+			landed = true 
+			
+		if !landed:
+			rotation += 5 * delta
+		else:
+			if noise_time > 0:
+				noise_time -= 1 * delta
+				if noise_time <= 0:
+					$noise/collider.set_deferred("disabled", true)
+			
+			rotation = 0
+			if blowed > 0:
+				blowed -= 1 * delta
+			else:
+				if !is_on_floor():
+					velocity.x = lerp(velocity.x, 0.0, friction / 10)
+				else:
+					velocity.x = lerp(velocity.x, 0.0, friction)
+					
+		if explosion_delay > 0:
+			explosion_delay -= 1 * delta
+			if explosion_delay <= 0:
+				queue_free()
+		
 func droped(_parent, direction, _item_action, _simulation = false):
 	parent = _parent
 	velocity = direction

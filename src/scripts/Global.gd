@@ -19,6 +19,7 @@ var GizmoWatcher = null
 var exit_door = null
 var prisoner_counter = 0
 var prisoner_total = 0
+var bounce_amount = 0.3
 
 func emit(_global_position, count):
 	for i in range(count):
