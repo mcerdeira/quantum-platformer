@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsivubf6rebe8"]
+
+[ext_resource type="Texture2D" uid="uid://c0jfkevoydgh3" path="res://sprites/post.png" id="1_g0wtb"]
+
+[node name="Post" type="Sprite2D"]
+z_index = -4096
+texture = ExtResource("1_g0wtb")

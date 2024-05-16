@@ -1,7 +1,14 @@
 extends Node2D
 var particle = preload("res://scenes/particle2.tscn")
 
+func generate_level():
+	for w in range(4):
+		for h in range(4):
+			pass
+
 func _ready():
+	generate_level()
+	
 	Global.GizmoWatcher = self
 	for i in range(Global.gunz_equiped.size()):
 		var slot = get_node("CanvasLayer/Control/gun_slot" + str(i))

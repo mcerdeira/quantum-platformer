@@ -151,3 +151,4 @@ texture = ExtResource("7_rtry5")
 environment = SubResource("Environment_pu2uo")
 
 [node name="level" parent="." instance=ExtResource("11_p6ail")]
+position = Vector2(0, 36)
