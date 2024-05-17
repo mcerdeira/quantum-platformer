@@ -30,6 +30,7 @@ func _ready():
 	$Cosito.play()
 	$Cosito.visible = false
 	LineTrayectory = $Line2D
+	Global.shaker_obj.camera = $Camera2D
 	
 func is_on_floor_custom():
 	return is_on_floor() or buff > 0
@@ -70,10 +71,7 @@ func _physics_process(delta):
 		else:
 			previus_velocity = velocity
 	else:
-		if grabbed and Input.is_action_just_released("up"):
-			velocity.y = 0
-			
-		if grabbed and Input.is_action_just_released("jump"):
+		if grabbed and !Input.is_action_pressed("up") and !Input.is_action_pressed("jump") and !Input.is_action_pressed("down"):
 			velocity.y = 0
 		
 		if !is_on_floor_custom():
@@ -146,6 +144,13 @@ func process_player(delta):
 				moving = true
 				idle_time = 0
 				velocity.y = -speed
+				
+		if !shoot_mode and Input.is_action_pressed("down"):
+			if is_on_stairs:
+				grabbed = true 
+				moving = true
+				idle_time = 0
+				velocity.y = speed
 		
 		if !shoot_mode and Input.is_action_pressed("left"):
 			direction = "left"

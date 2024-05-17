@@ -57,10 +57,6 @@ func _physics_process(delta: float) -> void:
 	#update our position based on the vspeed and hspeed
 	position.y += vspeed
 	position.x += hspeed
-	
-	#delete this object if it left the screen downwards
-	if(position.y > 1000):
-		queue_free()
 
 func _on_body_entered(body):
 	if body.is_in_group("movebable"):

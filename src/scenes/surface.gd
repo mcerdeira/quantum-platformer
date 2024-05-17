@@ -17,8 +17,8 @@ func draw_blood_temp(draw_pos : Vector2):
 	
 func draw_blood(draw_pos : Vector2):
 	if bloods.size() > blood_limit:
-		bloods.pop_back()
-		bloods.push_front(draw_pos)
+		bloods.pop_front()
+		bloods.push_back(draw_pos)
 	else:
 		bloods.append(draw_pos)
 	queue_redraw()
