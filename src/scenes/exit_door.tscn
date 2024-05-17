@@ -25,7 +25,8 @@ size = Vector2(30, 27)
 script = ExtResource("1_0vvlk")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -28)
+position = Vector2(0, -27.25)
+scale = Vector2(1, 0.990909)
 sprite_frames = SubResource("SpriteFrames_82tis")
 
 [node name="collider" type="CollisionShape2D" parent="."]

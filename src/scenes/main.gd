@@ -1,10 +1,34 @@
 extends Node2D
 var particle = preload("res://scenes/particle2.tscn")
+var player_placed = false
+var rooms = [
+	preload("res://scenes/levels/room0.tscn"),
+	preload("res://scenes/levels/room1.tscn")
+]
 
 func generate_level():
-	for w in range(4):
-		for h in range(4):
-			pass
+	var player_room = Vector2(randi() % 4, 0)
+	var door_room = Vector2(randi() % 4, randi() % 4)
+	var size = DisplayServer.window_get_size()
+	var room_pos = Vector2.ZERO
+	
+	for h in range(4):
+		for w in range(4):
+			var room = Global.pick_random(rooms)
+			var r = room.instantiate()
+			
+			r.global_position = room_pos
+			room_pos.x += size.x
+			if player_room != Vector2(w, h):
+				r.delete_player()
+				
+			if door_room != Vector2(w, h):
+				r.delete_door()
+			
+			add_child(r)
+		
+		room_pos.y += size.y
+		room_pos.x = 0
 
 func _ready():
 	generate_level()
@@ -41,7 +65,7 @@ func _physics_process(delta):
 		
 		Global.GAMEOVER = true
 		
-	if Global.exit_door.closed:
+	if Global.exit_door and Global.exit_door.closed:
 		var targets = get_tree().get_nodes_in_group("prisoners")
 		if targets.size() > 0:
 			var found = false

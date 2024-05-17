@@ -134,14 +134,12 @@ func bleed(count):
 		get_parent().add_child(blood_instance)
 
 func kill_fall():
-	Global.main_camera.unregister_target(self)
 	dead = true
 	visible = false
 	Global.find_master()
 	queue_free()
 
 func kill():
-	Global.main_camera.unregister_target(self)
 	dead = true
 	Global.find_master()
 	bleed(45)

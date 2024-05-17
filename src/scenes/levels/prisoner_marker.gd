@@ -8,16 +8,19 @@ func _ready():
 
 func _process(delta):
 	if !done:
-		var Main = get_node("/root/Main")
-		var post = post_o.instantiate()
-		post.global_position = Vector2(global_position.x, global_position.y - 16)
-		Main.add_child(post)
-		
-		var pclone = player_clone.instantiate()
-		pclone.global_position = global_position
-		Main.add_child(pclone)
-		Global.emit(pclone.global_position, 10)
+		if randi() % 2 == 0: 
+			var Main = get_node("/root/Main")
+			var post = post_o.instantiate()
+			post.global_position = Vector2(global_position.x, global_position.y - 16)
+			Main.add_child(post)
+			
+			var pclone = player_clone.instantiate()
+			pclone.global_position = global_position
+			Main.add_child(pclone)
+			Global.emit(pclone.global_position, 10)
+			
+			Global.prisoner_counter += 1
+			Global.prisoner_total += 1
+			
 		done = true
-		Global.prisoner_counter += 1
-		Global.prisoner_total += 1
 		queue_free()

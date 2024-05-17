@@ -3,14 +3,14 @@
 [ext_resource type="Script" path="res://scenes/kill_zone.gd" id="1_1w1r3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_miixc"]
-size = Vector2(3708, 548)
+size = Vector2(20432, 548)
 
 [node name="KillZone" type="Area2D"]
 position = Vector2(-770, 351)
 script = ExtResource("1_1w1r3")
 
 [node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2(1030, 264)
+position = Vector2(264, 264)
 shape = SubResource("RectangleShape2D_miixc")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

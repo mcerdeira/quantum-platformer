@@ -29,7 +29,6 @@ func _ready():
 	$gun_sprite.rotation = initial_rotation
 	$Cosito.play()
 	$Cosito.visible = false
-	Global.main_camera.register_target(self)
 	LineTrayectory = $Line2D
 	
 func is_on_floor_custom():
@@ -46,6 +45,11 @@ func destroy_trayectory():
 	LineTrayectory.clear_points()
 
 func _physics_process(delta):
+	if Input.is_action_just_released("zoomin"):
+		$Camera2D.zoom += Vector2(10, 10) * delta
+	if Input.is_action_just_released("zoomout"):
+		$Camera2D.zoom -= Vector2(10, 10) * delta
+	
 	$Cosito.visible = !iam_clone and !dead
 	if is_on_floor() or grabbed:
 		if in_air:
@@ -214,14 +218,12 @@ func bleed(count):
 		get_parent().add_child(blood_instance)
 
 func kill_fall():
-	Global.main_camera.unregister_target(self)
 	dead = true
 	visible = false
 	Global.find_master()
 	queue_free()
 
 func kill():
-	Global.main_camera.unregister_target(self)
 	dead = true
 	Global.find_master()
 	bleed(45)
