@@ -1,6 +1,6 @@
 extends CharacterBody2D
 var gravity = 10.0
-var speed = 125.0
+var speed = 215.0
 var jump_speed = -300.0
 @export var direction = "right"
 var total_friction = 0.6

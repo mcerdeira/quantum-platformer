@@ -39,8 +39,17 @@ script = ExtResource("3_8qptw")
 [node name="enemy_marker" parent="." instance=ExtResource("4_qffos")]
 position = Vector2(1074, 496)
 
+[node name="enemy_marker2" parent="." instance=ExtResource("4_qffos")]
+position = Vector2(720, 592)
+
+[node name="enemy_marker3" parent="." instance=ExtResource("4_qffos")]
+position = Vector2(784, 560)
+
 [node name="prisoner_marker" parent="." instance=ExtResource("5_ku2ml")]
 position = Vector2(653, 496)
+
+[node name="prisoner_marker2" parent="." instance=ExtResource("5_ku2ml")]
+position = Vector2(913, 624)
 
 [node name="player_marker" parent="." instance=ExtResource("6_k7sik")]
 position = Vector2(181, 528)

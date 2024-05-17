@@ -40,6 +40,9 @@ script = ExtResource("3_ie2mc")
 [node name="enemy_marker" parent="." instance=ExtResource("4_7x54m")]
 position = Vector2(1074, 496)
 
+[node name="enemy_marker2" parent="." instance=ExtResource("4_7x54m")]
+position = Vector2(373, 592)
+
 [node name="prisoner_marker" parent="." instance=ExtResource("5_h06ao")]
 position = Vector2(653, 496)
 
