@@ -50,7 +50,7 @@ func _physics_process(delta):
 		$Camera2D.zoom += Vector2(10, 10) * delta
 	if Input.is_action_just_released("zoomout"):
 		$Camera2D.zoom -= Vector2(10, 10) * delta
-	
+
 	$Cosito.visible = !iam_clone and !dead
 	if is_on_floor() or grabbed:
 		if in_air:

@@ -2,16 +2,14 @@ extends Node2D
 var particle = preload("res://scenes/particle2.tscn")
 var player_placed = false
 var rooms_top = [
-	preload("res://scenes/levels/room0.tscn"),
-	preload("res://scenes/levels/room1.tscn")
+	preload("res://scenes/levels/room_top1.tscn") 
 ]
 var rooms_middle = [
-	preload("res://scenes/levels/room0.tscn"),
-	preload("res://scenes/levels/room1.tscn")
+	preload("res://scenes/levels/room_middle1.tscn")
 ]
 var rooms_bottom = [
-	preload("res://scenes/levels/room0.tscn"),
-	preload("res://scenes/levels/room1.tscn")
+	preload("res://scenes/levels/room_bottom0.tscn"),
+	preload("res://scenes/levels/room_bottom1.tscn")
 ]
 
 func generate_level():
@@ -33,8 +31,8 @@ func generate_level():
 				room = Global.pick_random(rooms_bottom)
 				
 			var r = room.instantiate()
-			
 			r.global_position = room_pos
+			
 			room_pos.x += size.x
 			if player_room != Vector2(w, h):
 				r.delete_player()

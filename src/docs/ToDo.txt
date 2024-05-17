@@ -2,8 +2,10 @@ Ajustes:
 - La camara debe seguir al pj principal y switchear según vayan muriendo. En Game over no resetear. 
 - Quedan apenas desfasados los rooms con respecto a el frame
 - La sangre se comporta medio rari, ver pop y push back y front  
+- Bugs en escaleras, es dificil subirse, bajar está controlando mal la colisión 
 
 Features:
+- Lava inferior, o liquido
 - Armas como items posta 
 - Las armas tienen ""municion"" / ver uso infinito
 - Enemigo con alas que planea al caer 
