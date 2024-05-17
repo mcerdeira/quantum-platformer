@@ -1,8 +1,9 @@
 Ajustes:
 - La camara debe seguir al pj principal y switchear según vayan muriendo. En Game over no resetear. 
+- Quedan apenas desfasados los rooms con respecto a el frame
+- La sangre se comporta medio rari, ver pop y push back y front  
 
 Features:
-- Generación de niveles por bloques (ver https://tinysubversions.com/spelunkyGen/)  
 - Armas como items posta 
 - Las armas tienen ""municion"" / ver uso infinito
 - Enemigo con alas que planea al caer 
@@ -12,6 +13,7 @@ Features:
 - Musica
 
 DONE:
+- Generación de niveles por bloques (ver https://tinysubversions.com/spelunkyGen/)  
 - Puerta de salida del nivel (debe habilitarse cuando tenemos el N% de prisioneros)
 - Contador de prisioneros
 - Hacer que la explosión tenga momentum (por ejemplo, al saltar que sume al salto si estamos saltando)
