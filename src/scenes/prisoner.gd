@@ -20,6 +20,8 @@ var liberating = 0
 var help_messages = ["HELP!", "SAVE ME!", "S.O.S"]
 var thanks_messages = ["THANKS!", "MY HERO!"]
 var thanks_message = Global.pick_random(thanks_messages)
+var is_on_stairs = false
+var grabbed = false
 
 func _ready():
 	add_to_group("players")
@@ -78,24 +80,16 @@ func process_player(delta):
 		set_collision_mask_value(2, true)
 		set_collision_layer_value(1, false)
 		set_collision_mask_value(1, false)
-		
-	#if !dead:
-		#if !shoot_mode and Input.is_action_pressed("left"):
-			#direction = "left"
-			#moving = true
-			#idle_time = 0
-			#velocity.x = -speed
-			#$sprite.flip_h = true
-			#$gun_sprite.rotation = initial_rotation - 45
-		#elif !shoot_mode and Input.is_action_pressed("right"):
-			#direction = "right"
-			#moving = true
-			#idle_time = 0
-			#velocity.x = speed
-			#$sprite.flip_h = false
-			#$gun_sprite.rotation = initial_rotation
-	
 	if !dead:
+		if blowed > 0:
+			$lbl_action.visible = true
+			$lbl_action.text = "@"
+			$lbl_action.set("theme_override_colors/font_color", Color.AQUAMARINE)
+			blowed -= 1 * delta
+			if blowed <= 0:
+				$lbl_action.visible = false
+			return
+		
 		if moving:
 			if $sprite.animation == "idle":
 				$sprite.animation = "walking"
@@ -122,7 +116,7 @@ func lbl_hide_delegate(value, time):
 	
 func flyaway(direction):
 	if blowed <= 0:
-		blowed = 2
+		blowed = 6.2
 		Global.emit(global_position, 2)
 		velocity = Global.flyaway(direction, jump_speed)
 		previus_velocity = velocity

@@ -70,7 +70,7 @@ func process_player(delta):
 		$lbl_status.set("theme_override_colors/font_color", Color.AQUAMARINE)
 		blowed -= 1 * delta
 		alerted = false
-		hostile = true
+		hostile = false
 		return
 		
 	if Global.GAMEOVER:
@@ -243,7 +243,7 @@ func kill_fall():
 
 func flyaway(direction):
 	if blowed <= 0:
-		blowed = 3.2
+		blowed = 6.2
 		Global.emit(global_position, 2)
 		velocity = Global.flyaway(direction, jump_speed)
 		previus_velocity = velocity

@@ -1,8 +1,13 @@
 extends Area2D
 var parent = null
+var size = Vector2(200, 200)
+var new_tile_id = 2
+var radius =  null
+var center = null
 
 func _ready():
 	parent = get_parent() 
+	radius = 295.2
 
 func _process(delta):
 	var overlapping_bodies = get_overlapping_bodies()

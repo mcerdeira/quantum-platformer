@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://ypq32fpaty8e"]
+[gd_scene load_steps=26 format=3 uid="uid://ypq32fpaty8e"]
 
 [ext_resource type="Script" path="res://scenes/gizmo.gd" id="1_x7ufw"]
 [ext_resource type="Script" path="res://scenes/explosions.gd" id="2_84bkr"]
 [ext_resource type="Texture2D" uid="uid://dbh84l3hbge3s" path="res://sprites/box.png" id="2_elark"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="2_j4rai"]
 [ext_resource type="Texture2D" uid="uid://cmahogbn2aqwr" path="res://sprites/bomb.png" id="2_qdwn1"]
 [ext_resource type="Texture2D" uid="uid://c23s3u7g3bdtm" path="res://sprites/simul_box.png" id="3_6el40"]
 [ext_resource type="Texture2D" uid="uid://d3m4w8m7o2x0f" path="res://sprites/teleporter_box.png" id="3_p6in1"]
@@ -14,6 +15,7 @@
 [ext_resource type="Script" path="res://scenes/explosion.gd" id="7_54k6n"]
 [ext_resource type="Texture2D" uid="uid://mir8y6lk22v8" path="res://sprites/lines.png" id="13_v2dy3"]
 [ext_resource type="Script" path="res://scenes/Line2D.gd" id="14_cbp3x"]
+[ext_resource type="Script" path="res://scenes/explosion_mini.gd" id="15_iwgc1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7uhnq"]
 animations = [{
@@ -88,10 +90,29 @@ radius = 7.0
 radius = 218.014
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xxiqt"]
-radius = 295.015
+radius = 254.159
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m8ghj"]
+radius = 67.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbbd1"]
+size = Vector2(253, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cuueo"]
+size = Vector2(20, 242)
 
 [node name="Gizmo" type="CharacterBody2D"]
 script = ExtResource("1_x7ufw")
+
+[node name="lbl_count" type="Label" parent="."]
+visible = false
+offset_left = -16.0
+offset_top = -22.0
+offset_right = 16.0
+offset_bottom = -14.0
+theme_override_fonts/font = ExtResource("2_j4rai")
+theme_override_font_sizes/font_size = 8
+text = "3..."
 
 [node name="explosions" type="Node2D" parent="."]
 script = ExtResource("2_84bkr")
@@ -249,7 +270,7 @@ disabled = true
 script = ExtResource("7_54k6n")
 
 [node name="collider" type="CollisionShape2D" parent="explosion"]
-position = Vector2(5, 19)
+position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_xxiqt")
 disabled = true
 
@@ -260,6 +281,23 @@ texture = ExtResource("13_v2dy3")
 texture_mode = 1
 script = ExtResource("14_cbp3x")
 
+[node name="explosion_mini" type="Area2D" parent="."]
+script = ExtResource("15_iwgc1")
+
+[node name="collider" type="CollisionShape2D" parent="explosion_mini"]
+shape = SubResource("CircleShape2D_m8ghj")
+disabled = true
+
+[node name="collider2" type="CollisionShape2D" parent="explosion_mini"]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_wbbd1")
+disabled = true
+
+[node name="collider3" type="CollisionShape2D" parent="explosion_mini"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_cuueo")
+disabled = true
+
 [connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
 [connection signal="body_entered" from="noise" to="." method="_on_noise_body_entered"]
-[connection signal="body_entered" from="explosion" to="." method="_on_explosion_body_entered"]
+[connection signal="body_shape_entered" from="explosion_mini" to="explosion_mini" method="_on_body_shape_entered"]

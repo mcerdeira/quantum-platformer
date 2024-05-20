@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://evskswf05b50"]
+[gd_scene load_steps=24 format=3 uid="uid://evskswf05b50"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_u3t4v"]
 [ext_resource type="Texture2D" uid="uid://cl4nf2bm3n8bx" path="res://sprites/graby_dead.png" id="2_ekk1a"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://mir8y6lk22v8" path="res://sprites/lines.png" id="13_h7iaa"]
 [ext_resource type="Script" path="res://scenes/Line.gd" id="14_w3c12"]
 [ext_resource type="PackedScene" uid="uid://7oc21gjrycxp" path="res://scenes/gizmo_fake.tscn" id="16_cdixk"]
+[ext_resource type="Script" path="res://scenes/stairs_test.gd" id="17_0h5lj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8thie"]
 animations = [{
@@ -87,6 +88,9 @@ animations = [{
 shader = ExtResource("13_1jkvy")
 shader_parameter/scrolling_speed = 1.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7li6r"]
+size = Vector2(26, 31)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_u3t4v")
 
@@ -147,3 +151,10 @@ texture_mode = 1
 script = ExtResource("14_w3c12")
 
 [node name="GizmoFake" parent="Line2D" instance=ExtResource("16_cdixk")]
+
+[node name="stairs_test" type="Area2D" parent="."]
+script = ExtResource("17_0h5lj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stairs_test"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_7li6r")

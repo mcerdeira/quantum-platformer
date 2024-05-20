@@ -12,8 +12,10 @@ var noise_time = 0
 var explosion_delay = 0
 var blowed = 0
 var parent = null
+var parent_lbl = null
 var item_action = ""
 var action_executed = false
+var count_down = 0
 
 func _ready():
 	add_to_group("interactuable")
@@ -23,42 +25,57 @@ func is_on_floor_custom(normal):
 	return (normal == Vector2.UP)
 		
 func _physics_process(delta):
-	velocity.y += gravity * delta
-	var collision = move_and_collide(velocity * delta)
-	if collision: 
-		var normal = collision.get_normal()
-		velocity = velocity.bounce(normal) * Global.bounce_amount
-		if is_on_floor_custom(normal):
-			if !landed:
-				noise_time = 0.3
-				Global.emit(global_position, 1)
-				$noise/collider.set_deferred("disabled", false)
-				
-			landed = true 
-			
-		if !landed:
-			rotation += 5 * delta
-		else:
-			if noise_time > 0:
-				noise_time -= 1 * delta
-				if noise_time <= 0:
-					$noise/collider.set_deferred("disabled", true)
-			
-			rotation = 0
-			if blowed > 0:
-				blowed -= 1 * delta
-			else:
-				if !is_on_floor():
-					velocity.x = lerp(velocity.x, 0.0, friction / 10)
-				else:
-					velocity.x = lerp(velocity.x, 0.0, friction)
+	if !action_executed:
+		velocity.y += gravity * delta
+		var collision = move_and_collide(velocity * delta)
+		if collision: 
+			var normal = collision.get_normal()
+			velocity = velocity.bounce(normal) * Global.bounce_amount
+			if is_on_floor_custom(normal):
+				if !landed:
+					if !action_executed:
+						if item_action != "rock":
+							count_down = 3
+							$lbl_count.visible = true
+						
+					noise_time = 0.3
+					Global.emit(global_position, 1)
+					$noise/collider.set_deferred("disabled", false)
 					
-		if explosion_delay > 0:
-			explosion_delay -= 1 * delta
-			if explosion_delay <= 0:
-				queue_free()
+				landed = true 
+				
+			if !landed:
+				rotation += 5 * delta
+			else:
+				if item_action != "rock":
+					if count_down > 0:
+						count_down -= 1 * delta
+						$lbl_count.text = str(round(count_down)) + "..."
+						if count_down <= 0:
+							$lbl_count.text = "GO!"
+							do_action(parent, parent_lbl)
+				
+				if noise_time > 0:
+					noise_time -= 1 * delta
+					if noise_time <= 0:
+						$noise/collider.set_deferred("disabled", true)
+				
+				rotation = 0
+				if blowed > 0:
+					blowed -= 1 * delta
+				else:
+					if !is_on_floor():
+						velocity.x = lerp(velocity.x, 0.0, friction / 10)
+					else:
+						velocity.x = lerp(velocity.x, 0.0, friction)
+					
+	if explosion_delay > 0:
+		explosion_delay -= 1 * delta
+		if explosion_delay <= 0:
+			queue_free()
 		
-func droped(_parent, direction, _item_action, _simulation = false):
+func droped(_parent, _parent_lbl, direction, _item_action, _simulation = false):
+	parent_lbl = _parent_lbl
 	parent = _parent
 	velocity = direction
 	friction = 0.1
@@ -116,6 +133,10 @@ func explode():
 	if !simulation:
 		$sprite.visible = false
 		$explosion/collider.set_deferred("disabled", false)
+		$explosion_mini/collider.set_deferred("disabled", false)
+		$explosion_mini/collider2.set_deferred("disabled", false)
+		$explosion_mini/collider3.set_deferred("disabled", false)
+		
 		explosion_delay = 1.2
 		$explosions.explode()
 
@@ -144,3 +165,5 @@ func flyaway(direction):
 func kill_fall():
 	visible = false
 	queue_free()
+
+

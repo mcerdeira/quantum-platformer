@@ -45,7 +45,7 @@ func destroy_trayectory():
 	LineTrayectory.visible = false 
 	LineTrayectory.clear_points()
 
-func _physics_process(delta):
+func _physics_process(delta):	
 	if Input.is_action_just_released("zoomin"):
 		$Camera2D.zoom += Vector2(10, 10) * delta
 	if Input.is_action_just_released("zoomout"):
@@ -66,6 +66,9 @@ func _physics_process(delta):
 
 	if blowed > 0:
 		blowed -= 1 * delta
+		if blowed <= 0:
+			$lbl_action.visible = false
+			
 		if is_on_wall():
 			velocity.x = (previus_velocity.x / 2) * -1
 		else:
@@ -85,13 +88,20 @@ func _physics_process(delta):
 func process_player(delta):
 	var moving = false
 	if dead:
+		blowed = 0
 		set_collision_layer_value(2, true)
 		set_collision_mask_value(2, true)
 		set_collision_layer_value(1, false)
 		set_collision_mask_value(1, false)
+		
+	if blowed > 0:
+		$lbl_action.visible = true
+		$lbl_action.text = "@"
+		$lbl_action.set("theme_override_colors/font_color", Color.AQUAMARINE)
+		return
 	
-	if Input.is_action_just_pressed("use"):
-		do_action(delta)
+	#if Input.is_action_just_pressed("use"):
+	#	do_action(delta)
 		
 	if !dead and !iam_clone:
 		if Input.is_action_just_pressed("scroll"):
@@ -191,7 +201,7 @@ func shoot(delta):
 			p.global_position = pos
 			Global.emit(pos, 5)
 			var item_action = Global.gunz_equiped[Global.gunz_index]
-			p.droped(self, Vector2.from_angle($gun_sprite.rotation) * tspeed, item_action, false)
+			p.droped(self, $lbl_action, Vector2.from_angle($gun_sprite.rotation) * tspeed, item_action, false)
 	
 func jump(delta):
 	if !dead:
@@ -211,7 +221,7 @@ func lbl_hide_delegate(value, time):
 	
 func flyaway(direction):
 	if blowed <= 0:
-		blowed = 2
+		blowed = 6.2
 		Global.emit(global_position, 2)
 		velocity = Global.flyaway(direction, jump_speed)
 		previus_velocity = velocity

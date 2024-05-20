@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://broe8l822ujj8"]
+[gd_scene load_steps=14 format=3 uid="uid://broe8l822ujj8"]
 
 [ext_resource type="Texture2D" uid="uid://djs78nqy60b6t" path="res://sprites/floor_spr_2.png" id="1_8dcu1"]
 [ext_resource type="Texture2D" uid="uid://6e6u7tx8wpp5" path="res://sprites/stair.png" id="2_ic7qv"]
+[ext_resource type="Texture2D" uid="uid://c2cg0s26dklew" path="res://sprites/floor_spr_blasted.png" id="3_q5pyv"]
 [ext_resource type="Script" path="res://scenes/levels/room.gd" id="3_rxbgx"]
 [ext_resource type="PackedScene" uid="uid://c4vd4vxwdwdqh" path="res://scenes/levels/enemy_marker.tscn" id="4_v8nfd"]
 [ext_resource type="PackedScene" uid="uid://bfmdje7uoppc1" path="res://scenes/levels/prisoner_marker.tscn" id="5_1vna7"]
@@ -24,12 +25,20 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5f8m4"]
+texture = ExtResource("3_q5pyv")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
 [sub_resource type="TileSet" id="TileSet_4lr5i"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 3
 physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_iwogt")
 sources/1 = SubResource("TileSetAtlasSource_qr43o")
+sources/2 = SubResource("TileSetAtlasSource_5f8m4")
 
 [node name="level" type="TileMap"]
 tile_set = SubResource("TileSet_4lr5i")

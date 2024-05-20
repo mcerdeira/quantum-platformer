@@ -54,12 +54,6 @@ func _ready():
 		slot.animation = Global.gunz_equiped[i]
 	calc_selected()
 	
-func do_action(parent, lbl_action):
-	var targets = get_tree().get_nodes_in_group("gizmos")
-	for t in targets:
-		if t.parent == parent:
-			t.do_action(parent, lbl_action)  
-	
 func calc_selected():
 	for i in range(Global.gunz_equiped.size()):
 		var sel = get_node("CanvasLayer/Control/selected" + str(i))

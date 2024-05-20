@@ -1,16 +1,15 @@
 Ajustes:
 - La camara debe seguir al pj principal y switchear según vayan muriendo. En Game over no resetear. 
-- Quedan apenas desfasados los rooms con respecto a el frame
+- Quedan apenas desfasados los rooms con respecto al frame
 - La sangre se comporta medio rari, ver pop y push back y front  
-- Bugs en escaleras, es dificil subirse, bajar está controlando mal la colisión 
 
 Features:
-- Los items cuentan 3, 2, 1 y hacen la acción
-- Lava inferior, o liquido
+- Mapa general
 - Item spring 
 - Item portable cover
 - Armas como items posta 
 - Las armas tienen ""municion"" / ver uso infinito
+- Lava inferior, o liquido
 - Enemigo con alas que planea al caer 
 - Setting (blackthorne???) 
 - Decoraciones 
@@ -18,6 +17,8 @@ Features:
 - Musica
 
 DONE:
+- Los items cuentan 3, 2, 1 y hacen la acción
+- Bomba: stunnear enemigos por mas tiempo, stunnear pj y destruir terreno
 - Generación de niveles por bloques (ver https://tinysubversions.com/spelunkyGen/)  
 - Puerta de salida del nivel (debe habilitarse cuando tenemos el N% de prisioneros)
 - Contador de prisioneros
@@ -30,3 +31,4 @@ DONE:
 - Item Radar
 - Mejorar línea de tiro siguiendo más el video
 - Escaleras
+- Bugs en escaleras, es dificil subirse, bajar está controlando mal la colisión 
