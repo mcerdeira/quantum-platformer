@@ -6,6 +6,8 @@ Ajustes:
 
 Features:
 - Lava inferior, o liquido
+- Item spring 
+- Item portable cover
 - Armas como items posta 
 - Las armas tienen ""municion"" / ver uso infinito
 - Enemigo con alas que planea al caer 
