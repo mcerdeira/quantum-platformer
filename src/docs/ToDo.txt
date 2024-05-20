@@ -5,6 +5,7 @@ Ajustes:
 - Bugs en escaleras, es dificil subirse, bajar está controlando mal la colisión 
 
 Features:
+- Los items cuentan 3, 2, 1 y hacen la acción
 - Lava inferior, o liquido
 - Item spring 
 - Item portable cover
