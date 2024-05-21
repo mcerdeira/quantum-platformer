@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bveav6ctdlmbu"]
+[gd_scene load_steps=27 format=3 uid="uid://bveav6ctdlmbu"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_tvtda"]
 [ext_resource type="Texture2D" uid="uid://dbh84l3hbge3s" path="res://sprites/box.png" id="2_6led8"]
@@ -51,8 +51,14 @@ sources/2 = SubResource("TileSetAtlasSource_da60i")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_knga3"]
 shader = ExtResource("2_82qdg")
-shader_parameter/apply = true
-shader_parameter/amount = 0.1
+shader_parameter/temperatureRange = null
+shader_parameter/hotColor = null
+shader_parameter/coldColor = null
+shader_parameter/heatAmplitude = null
+shader_parameter/heatPeriod = null
+shader_parameter/heatPhaseShift = null
+shader_parameter/heatUpperLimit = null
+shader_parameter/coldFXStrength = null
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yq7gw"]
 animations = [{
@@ -96,6 +102,17 @@ animations = [{
 "name": &"teleport",
 "speed": 5.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hb6nw"]
+shader = ExtResource("2_82qdg")
+shader_parameter/temperatureRange = 1.0
+shader_parameter/hotColor = Color(1, 1, 1, 0)
+shader_parameter/coldColor = null
+shader_parameter/heatAmplitude = 0.15
+shader_parameter/heatPeriod = 6.0
+shader_parameter/heatPhaseShift = 8.0
+shader_parameter/heatUpperLimit = 10.0
+shader_parameter/coldFXStrength = 1.0
 
 [sub_resource type="Environment" id="Environment_pu2uo"]
 background_mode = 3
@@ -188,6 +205,14 @@ animation = &"radar"
 visible = false
 position = Vector2(97.615, 18)
 texture = ExtResource("7_rtry5")
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control"]
+visible = false
+material = SubResource("ShaderMaterial_hb6nw")
+offset_left = -413.0
+offset_top = 40.0
+offset_right = 4008.0
+offset_bottom = 2639.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pu2uo")
