@@ -92,6 +92,8 @@ shader_parameter/scrolling_speed = 1.0
 size = Vector2(26, 31)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 9
+collision_mask = 9
 script = ExtResource("1_u3t4v")
 
 [node name="Cosito" type="AnimatedSprite2D" parent="."]
@@ -153,6 +155,8 @@ script = ExtResource("14_w3c12")
 [node name="GizmoFake" parent="Line2D" instance=ExtResource("16_cdixk")]
 
 [node name="stairs_test" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("17_0h5lj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stairs_test"]

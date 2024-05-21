@@ -5,7 +5,7 @@ class_name paint
 var bloods_temp = []  
 var bloods = []
 var blood_texture =  preload("res://sprites/blood1.png")
-var blood_limit = 10000
+var blood_limit = 35000
 
 func clear_temps():
 	bloods_temp = []

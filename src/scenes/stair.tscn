@@ -6,11 +6,10 @@
 size = Vector2(32, 32)
 
 [node name="Stair" type="Area2D"]
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_uadkp")
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_fyajm")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]

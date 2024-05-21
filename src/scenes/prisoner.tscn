@@ -67,6 +67,8 @@ animations = [{
 size = Vector2(30, 31)
 
 [node name="Prisoner" type="CharacterBody2D"]
+collision_layer = 9
+collision_mask = 9
 script = ExtResource("1_e8vj3")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
@@ -91,6 +93,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="trapped_area" type="Area2D" parent="."]
+collision_layer = 9
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="trapped_area"]
 position = Vector2(0, 0.5)

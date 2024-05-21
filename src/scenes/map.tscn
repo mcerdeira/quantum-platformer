@@ -1,0 +1,224 @@
+[gd_scene load_steps=11 format=3 uid="uid://c8j4ld6iulqjl"]
+
+[ext_resource type="Script" path="res://scenes/map.gd" id="1_gpqlg"]
+[ext_resource type="Texture2D" uid="uid://cntqolss3ykii" path="res://sprites/map.png" id="1_kq1xd"]
+[ext_resource type="Texture2D" uid="uid://dw6x4yl4rf43w" path="res://sprites/map_part.png" id="2_qkrqb"]
+[ext_resource type="Texture2D" uid="uid://coab8oki32v51" path="res://sprites/prisoner_marker.png" id="4_7wpv2"]
+[ext_resource type="Texture2D" uid="uid://bt5xbmefctj30" path="res://sprites/prisoner_marker_done.png" id="5_elii6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6866m"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qkrqb")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v65tv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7wpv2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_elii6")
+}],
+"loop": true,
+"name": &"done",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vrvb2"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qkrqb")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_awygn"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qkrqb")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rvxb4"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qkrqb")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_gpqlg")
+
+[node name="Map" type="Sprite2D" parent="."]
+texture = ExtResource("1_kq1xd")
+
+[node name="q1" type="AnimatedSprite2D" parent="."]
+position = Vector2(-25.5, -13.5)
+sprite_frames = SubResource("SpriteFrames_6866m")
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q1"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q5" type="AnimatedSprite2D" parent="."]
+position = Vector2(-25.5, -4.5)
+sprite_frames = SubResource("SpriteFrames_vrvb2")
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q5"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q9" type="AnimatedSprite2D" parent="."]
+position = Vector2(-25.5, 4.5)
+sprite_frames = SubResource("SpriteFrames_awygn")
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q9"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q13" type="AnimatedSprite2D" parent="."]
+position = Vector2(-25.5, 13.5)
+sprite_frames = SubResource("SpriteFrames_awygn")
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q13"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q14" type="AnimatedSprite2D" parent="."]
+position = Vector2(-8.5, 13.5)
+sprite_frames = SubResource("SpriteFrames_rvxb4")
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q14"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q15" type="AnimatedSprite2D" parent="."]
+position = Vector2(8.5, 13.5)
+sprite_frames = SubResource("SpriteFrames_rvxb4")
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q15"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q16" type="AnimatedSprite2D" parent="."]
+position = Vector2(25.5, 13.5)
+sprite_frames = SubResource("SpriteFrames_rvxb4")
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q16"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q10" type="AnimatedSprite2D" parent="."]
+position = Vector2(-8.5, 4.5)
+sprite_frames = SubResource("SpriteFrames_rvxb4")
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q10"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q11" type="AnimatedSprite2D" parent="."]
+position = Vector2(8.5, 4.5)
+sprite_frames = SubResource("SpriteFrames_rvxb4")
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q11"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q12" type="AnimatedSprite2D" parent="."]
+position = Vector2(25.5, 4.5)
+sprite_frames = SubResource("SpriteFrames_rvxb4")
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q12"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q6" type="AnimatedSprite2D" parent="."]
+position = Vector2(-8.5, -4.5)
+sprite_frames = SubResource("SpriteFrames_rvxb4")
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q6"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q7" type="AnimatedSprite2D" parent="."]
+position = Vector2(8.5, -4.5)
+sprite_frames = SubResource("SpriteFrames_rvxb4")
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q7"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q8" type="AnimatedSprite2D" parent="."]
+position = Vector2(25.5, -4.5)
+sprite_frames = SubResource("SpriteFrames_rvxb4")
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q8"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q2" type="AnimatedSprite2D" parent="."]
+position = Vector2(-8.5, -13.5)
+sprite_frames = SubResource("SpriteFrames_rvxb4")
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q2"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q3" type="AnimatedSprite2D" parent="."]
+position = Vector2(8.5, -13.5)
+sprite_frames = SubResource("SpriteFrames_rvxb4")
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q3"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q4" type="AnimatedSprite2D" parent="."]
+position = Vector2(25.5, -13.5)
+sprite_frames = SubResource("SpriteFrames_rvxb4")
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q4"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_v65tv")

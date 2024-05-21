@@ -20,6 +20,7 @@ var exit_door = null
 var prisoner_counter = 0
 var prisoner_total = 0
 var bounce_amount = 0.3
+var map_obj = null
 
 func emit(_global_position, count):
 	for i in range(count):
@@ -92,6 +93,7 @@ func init():
 	level_doors = []
 	prisoner_counter = 0
 	prisoner_total = 0
+	map_obj = null
 	
 	randomize()
 	var _gunz = [] + gunz

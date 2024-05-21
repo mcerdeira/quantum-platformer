@@ -1,4 +1,5 @@
 extends TileMap
+var q = 0
 
 func delete_player():
 	$player_marker.nope = true

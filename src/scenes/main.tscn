@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bveav6ctdlmbu"]
+[gd_scene load_steps=26 format=3 uid="uid://bveav6ctdlmbu"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_tvtda"]
 [ext_resource type="Texture2D" uid="uid://dbh84l3hbge3s" path="res://sprites/box.png" id="2_6led8"]
@@ -17,6 +17,7 @@
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="7_2v1dk"]
 [ext_resource type="Texture2D" uid="uid://duuicqxhleoua" path="res://sprites/selected.png" id="7_rtry5"]
 [ext_resource type="Texture2D" uid="uid://d0ggyyulssgq5" path="res://sprites/radar.png" id="8_fdv2s"]
+[ext_resource type="PackedScene" uid="uid://c8j4ld6iulqjl" path="res://scenes/map.tscn" id="10_wiiij"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qr43o"]
 texture = ExtResource("3_n8kdd")
@@ -144,6 +145,9 @@ layout_mode = 0
 offset_right = 1151.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 1)
+
+[node name="Map" parent="CanvasLayer/Control" instance=ExtResource("10_wiiij")]
+position = Vector2(424.615, 20)
 
 [node name="PrisonerHead" type="Sprite2D" parent="CanvasLayer/Control"]
 position = Vector2(776.154, 19.2308)
