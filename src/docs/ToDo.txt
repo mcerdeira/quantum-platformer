@@ -3,8 +3,6 @@ Ajustes:
 - Quedan apenas desfasados los rooms con respecto al frame
 
 Features:
-- Armas como items posta 
-- Las armas tienen ""municion"" / ver uso infinito
 - IA de los prisioneros
 - Lava inferior, o liquido
 - Enemigo con alas que planea al caer 
@@ -14,6 +12,8 @@ Features:
 - Musica
 
 DONE:
+- Armas como items posta 
+- Las armas tienen ""municion"" / ver uso infinito
 - Item portable cover
 - Item spring 
 - Mapa general
