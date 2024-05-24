@@ -50,17 +50,25 @@ func generate_level():
 
 func _ready():
 	generate_level()
-	
 	Global.GizmoWatcher = self
+	setHUD()
+
+func setHUD():
 	for i in range(Global.gunz_equiped.size()):
 		var slot = get_node("CanvasLayer/Control/gun_slot" + str(i))
-		slot.animation = Global.gunz_equiped[i]
+		slot.animation = Global.gunz_equiped[i].name
 	calc_selected()
 	
 func calc_selected():
 	for i in range(Global.gunz_equiped.size()):
 		var sel = get_node("CanvasLayer/Control/selected" + str(i))
 		sel.visible = false
+		var lbl = get_node("CanvasLayer/Control/gun_slot" + str(i) + "/lbl_stock")
+		if !Global.gunz_equiped[i].pasive and Global.gunz_equiped[i].name != "none":
+			lbl.text = "x" + str(Global.slots_stock[i])
+		else:
+			lbl.text = ""
+		
 		if i == Global.gunz_index:
 			sel.visible = true
 			var count = 3

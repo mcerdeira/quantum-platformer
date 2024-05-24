@@ -247,3 +247,8 @@ func flyaway(direction):
 		Global.emit(global_position, 2)
 		velocity = Global.flyaway(direction, jump_speed)
 		previus_velocity = velocity
+
+func super_jump():
+	Global.play_sound(Global.JUMP_SFX)
+	Global.emit(global_position, 2)
+	velocity.y = jump_speed * 2

@@ -8,12 +8,13 @@ var landed = false
 var simulation = false
 var ttl = 0.5
 var player_clone = load("res://scenes/player.tscn")
+var spring_obj = load("res://scenes/spring.tscn")
 var noise_time = 0
 var explosion_delay = 0
 var blowed = 0
 var parent = null
 var parent_lbl = null
-var item_action = ""
+var current_item = null
 var action_executed = false
 var count_down = 0
 
@@ -34,7 +35,7 @@ func _physics_process(delta):
 			if is_on_floor_custom(normal):
 				if !landed:
 					if !action_executed:
-						if item_action != "rock":
+						if current_item.has_action:
 							count_down = 3
 							$lbl_count.visible = true
 						
@@ -47,13 +48,15 @@ func _physics_process(delta):
 			if !landed:
 				rotation += 5 * delta
 			else:
-				if item_action != "rock":
+				if current_item.has_action:
 					if count_down > 0:
 						count_down -= 1 * delta
 						$lbl_count.text = str(round(count_down)) + "..."
 						if count_down <= 0:
 							$lbl_count.text = "GO!"
 							do_action(parent, parent_lbl)
+				else:
+					do_action(parent, parent_lbl)
 				
 				if noise_time > 0:
 					noise_time -= 1 * delta
@@ -74,13 +77,16 @@ func _physics_process(delta):
 		if explosion_delay <= 0:
 			queue_free()
 		
-func droped(_parent, _parent_lbl, direction, _item_action, _simulation = false):
+func droped(_parent, _parent_lbl, direction, _current_item, _simulation = false):
 	parent_lbl = _parent_lbl
 	parent = _parent
 	velocity = direction
 	friction = 0.1
 	simulation = _simulation
-	item_action = _item_action
+	current_item = _current_item
+	if current_item.full_scale:
+		$sprite.scale.x = 1
+		$sprite.scale.y = 1
 
 	if simulation:
 		$sprite.visible = false
@@ -95,40 +101,50 @@ func droped(_parent, _parent_lbl, direction, _item_action, _simulation = false):
 		$sprite.animation = "simul"
 		modulate.a = 0.5
 	else:
-		$sprite.animation = Global.gunz_equiped[Global.gunz_index]
+		$sprite.animation = Global.gunz_equiped[Global.gunz_index].name
 		$Line2D.visible = false
 		$Line2D.queue_free()
 	
 func do_action(_player, lbl):
 	if !simulation and !action_executed:
 		if true or landed:
-			if item_action != "rock":
+			if current_item.has_action:
 				action_executed = true
 				lbl.visible = true
-				lbl.text =  item_action.to_upper() + "!"
-			if item_action == "teleport":
+				lbl.text =  current_item.name.to_upper() + "!"
+				
+			if current_item.name == "teleport":
 				Global.emit(_player.global_position, 10)
 				action_executed = true
 				_player.visible = false
 				_player.global_position = $mark.global_position
 				Global.emit(_player.global_position, 10)
-			elif item_action == "clone":
+			elif current_item.name == "clone":
 				action_executed = true
 				var pclone = player_clone.instantiate()
 				pclone.global_position = $mark.global_position
 				pclone.iam_clone = true
 				get_parent().add_child(pclone)
 				Global.emit(pclone.global_position, 10)
-			elif item_action == "bomb":
+				queue_free()
+			elif current_item.name == "bomb":
 				action_executed = true
 				explode()
+			elif current_item.name == "spring":
+				action_executed = true
+				create_spring_object()
+				queue_free()
 				
-			if item_action != "rock":
+			if current_item.has_action:
 				_player.visible = true
 				_player.lbl_hide_delegate(false, 1)
-				if item_action != "bomb":
-					queue_free()
 			
+func create_spring_object():
+	var spring_o = spring_obj.instantiate()
+	spring_o.global_position = $mark.global_position - Vector2(0, 3)
+	get_parent().add_child(spring_o)
+	Global.emit(global_position, 10)
+	
 func explode():
 	if !simulation:
 		$sprite.visible = false
@@ -149,6 +165,7 @@ func _on_area_body_entered(body):
 	
 		if body and body.is_in_group("players"):
 			Global.emit(global_position, 1)
+			Global.get_item(current_item)
 			queue_free()
 
 func _on_noise_body_entered(body):
@@ -166,4 +183,7 @@ func kill_fall():
 	visible = false
 	queue_free()
 
-
+func super_jump():
+	Global.play_sound(Global.JUMP_SFX)
+	Global.emit(global_position, 2)
+	velocity.y = jump_speed * 2

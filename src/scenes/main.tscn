@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bveav6ctdlmbu"]
+[gd_scene load_steps=30 format=3 uid="uid://bveav6ctdlmbu"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_tvtda"]
 [ext_resource type="Texture2D" uid="uid://dbh84l3hbge3s" path="res://sprites/box.png" id="2_6led8"]
@@ -18,6 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://duuicqxhleoua" path="res://sprites/selected.png" id="7_rtry5"]
 [ext_resource type="Texture2D" uid="uid://d0ggyyulssgq5" path="res://sprites/radar.png" id="8_fdv2s"]
 [ext_resource type="PackedScene" uid="uid://c8j4ld6iulqjl" path="res://scenes/map.tscn" id="10_wiiij"]
+[ext_resource type="Texture2D" uid="uid://dxbkc1lh5f3bx" path="res://sprites/invisibility.png" id="15_7qhek"]
+[ext_resource type="Texture2D" uid="uid://rpr86laa62uq" path="res://sprites/none.png" id="16_lx8b7"]
+[ext_resource type="Texture2D" uid="uid://de1vyj25jt0t3" path="res://sprites/spring.png" id="17_3xuhu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qr43o"]
 texture = ExtResource("3_n8kdd")
@@ -80,6 +83,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("15_7qhek")
+}],
+"loop": true,
+"name": &"invisibility",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_lx8b7")
+}],
+"loop": true,
+"name": &"none",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("8_fdv2s")
 }],
 "loop": true,
@@ -92,6 +111,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"rock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_3xuhu")
+}],
+"loop": true,
+"name": &"spring",
 "speed": 5.0
 }, {
 "frames": [{
@@ -189,26 +216,47 @@ metadata/_edit_use_anchors_ = true
 [node name="gun_slot0" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
 position = Vector2(49.6154, 18)
 sprite_frames = SubResource("SpriteFrames_yq7gw")
-animation = &"bomb"
+animation = &"none"
+
+[node name="lbl_stock" type="Label" parent="CanvasLayer/Control/gun_slot0"]
+offset_left = -6.53847
+offset_top = 15.8462
+offset_right = 17.4615
+offset_bottom = 25.8462
+theme_override_colors/font_color = Color(0, 0.913725, 0.392157, 1)
+theme_override_fonts/font = ExtResource("7_2v1dk")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="selected0" type="Sprite2D" parent="CanvasLayer/Control"]
-visible = false
 position = Vector2(49.615, 18)
 texture = ExtResource("7_rtry5")
 
 [node name="gun_slot1" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
 position = Vector2(97.6154, 18)
 sprite_frames = SubResource("SpriteFrames_yq7gw")
-animation = &"radar"
+animation = &"none"
+
+[node name="lbl_stock" type="Label" parent="CanvasLayer/Control/gun_slot1"]
+offset_left = -6.53807
+offset_top = 15.8462
+offset_right = 17.4619
+offset_bottom = 25.8462
+theme_override_colors/font_color = Color(0, 0.913725, 0.392157, 1)
+theme_override_fonts/font = ExtResource("7_2v1dk")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="selected1" type="Sprite2D" parent="CanvasLayer/Control"]
-visible = false
 position = Vector2(97.615, 18)
 texture = ExtResource("7_rtry5")
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control"]
 visible = false
 material = SubResource("ShaderMaterial_hb6nw")
+layout_mode = 0
 offset_left = -413.0
 offset_top = 40.0
 offset_right = 4008.0

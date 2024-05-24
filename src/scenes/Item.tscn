@@ -1,0 +1,128 @@
+[gd_scene load_steps=15 format=3 uid="uid://c1hauk6vcsonh"]
+
+[ext_resource type="Texture2D" uid="uid://cmahogbn2aqwr" path="res://sprites/bomb.png" id="1_1wt4j"]
+[ext_resource type="Script" path="res://scenes/Item.gd" id="1_co2nu"]
+[ext_resource type="Shader" path="res://scenes/Item.gdshader" id="1_udi6n"]
+[ext_resource type="Texture2D" uid="uid://dbh84l3hbge3s" path="res://sprites/box.png" id="2_ere0c"]
+[ext_resource type="Texture2D" uid="uid://dxbkc1lh5f3bx" path="res://sprites/invisibility.png" id="3_kgqrp"]
+[ext_resource type="Texture2D" uid="uid://di4olx4un0owh" path="res://sprites/rock.png" id="4_150gj"]
+[ext_resource type="Texture2D" uid="uid://c23s3u7g3bdtm" path="res://sprites/simul_box.png" id="5_lqc3o"]
+[ext_resource type="Texture2D" uid="uid://de1vyj25jt0t3" path="res://sprites/spring.png" id="6_8fby7"]
+[ext_resource type="Texture2D" uid="uid://d0ggyyulssgq5" path="res://sprites/radar.png" id="6_x2qwg"]
+[ext_resource type="Texture2D" uid="uid://d3m4w8m7o2x0f" path="res://sprites/teleporter_box.png" id="7_ogk5g"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="10_7feub"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dym6o"]
+size = Vector2(37, 33)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jtgsv"]
+resource_local_to_scene = true
+shader = ExtResource("1_udi6n")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 3.0
+shader_parameter/shine_size = 0.01
+shader_parameter/white = null
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jkk80"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1wt4j")
+}],
+"loop": true,
+"name": &"bomb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ere0c")
+}],
+"loop": true,
+"name": &"clone",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_kgqrp")
+}],
+"loop": true,
+"name": &"invisibility",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_x2qwg")
+}],
+"loop": true,
+"name": &"radar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_150gj")
+}],
+"loop": true,
+"name": &"rock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_lqc3o")
+}],
+"loop": true,
+"name": &"simul",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_8fby7")
+}],
+"loop": true,
+"name": &"spring",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ogk5g")
+}],
+"loop": true,
+"name": &"teleport",
+"speed": 5.0
+}]
+
+[node name="Item" type="Area2D"]
+script = ExtResource("1_co2nu")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -16.5)
+shape = SubResource("RectangleShape2D_dym6o")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_jtgsv")
+sprite_frames = SubResource("SpriteFrames_jkk80")
+animation = &"radar"
+offset = Vector2(0, -16)
+
+[node name="back" type="ColorRect" parent="."]
+visible = false
+z_index = 4096
+offset_left = -201.0
+offset_top = -119.0
+offset_right = 191.0
+offset_bottom = -42.0
+color = Color(0, 0, 0, 1)
+
+[node name="lbl_item" type="Label" parent="back"]
+offset_left = -17.0
+offset_top = 2.0
+offset_right = 407.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("10_7feub")
+text = "==CLONE==
+Generates a copy of you. ddhydgasgdsagdsajd"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

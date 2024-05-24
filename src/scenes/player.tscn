@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://evskswf05b50"]
+[gd_scene load_steps=25 format=3 uid="uid://evskswf05b50"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_u3t4v"]
 [ext_resource type="Texture2D" uid="uid://cl4nf2bm3n8bx" path="res://sprites/graby_dead.png" id="2_ekk1a"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cc8l2l2ae483x" path="res://sprites/graby_3.png" id="5_w86tm"]
 [ext_resource type="Texture2D" uid="uid://ca8ambc2jnao" path="res://sprites/gun_spr_0.png" id="6_d4ar8"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="7_1mbn0"]
+[ext_resource type="Texture2D" uid="uid://dcu5ggxmosqtn" path="res://sprites/graby_inv.png" id="7_kaabs"]
 [ext_resource type="PackedScene" uid="uid://d0otpjtodaem7" path="res://scenes/arrow.tscn" id="12_hgq3s"]
 [ext_resource type="Shader" path="res://scenes/player.gdshader" id="13_1jkvy"]
 [ext_resource type="Texture2D" uid="uid://mir8y6lk22v8" path="res://sprites/lines.png" id="13_h7iaa"]
@@ -51,6 +52,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_kaabs")
+}],
+"loop": true,
+"name": &"invisible",
 "speed": 5.0
 }, {
 "frames": [{

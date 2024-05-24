@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://broe8l822ujj8"]
+[gd_scene load_steps=17 format=3 uid="uid://broe8l822ujj8"]
 
 [ext_resource type="Texture2D" uid="uid://djs78nqy60b6t" path="res://sprites/floor_spr_2.png" id="1_8dcu1"]
 [ext_resource type="Texture2D" uid="uid://6e6u7tx8wpp5" path="res://sprites/stair.png" id="2_ic7qv"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://q767q018lep8" path="res://scenes/exit_door.tscn" id="7_4bj5w"]
 [ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="8_gfvgv"]
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="10_vespp"]
+[ext_resource type="PackedScene" uid="uid://c1hauk6vcsonh" path="res://scenes/Item.tscn" id="12_380aa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
 texture = ExtResource("1_8dcu1")
@@ -51,7 +52,7 @@ script = ExtResource("3_rxbgx")
 [node name="prisoner_choose" parent="." instance=ExtResource("5_gq5lv")]
 
 [node name="prisoner_marker" parent="prisoner_choose" instance=ExtResource("5_1vna7")]
-position = Vector2(653, 496)
+position = Vector2(653, 501)
 
 [node name="enemy_marker" parent="." instance=ExtResource("4_v8nfd")]
 position = Vector2(1074, 496)
@@ -81,3 +82,19 @@ position = Vector2(944, 672)
 scale = Vector2(1, 21)
 
 [node name="qdtector" parent="." instance=ExtResource("10_vespp")]
+visible = false
+
+[node name="Item" parent="." instance=ExtResource("12_380aa")]
+position = Vector2(593, 160)
+
+[node name="Item2" parent="." instance=ExtResource("12_380aa")]
+position = Vector2(39, 608)
+
+[node name="Item3" parent="." instance=ExtResource("12_380aa")]
+position = Vector2(465, 576)
+
+[node name="Item4" parent="." instance=ExtResource("12_380aa")]
+position = Vector2(719, 608)
+
+[node name="Item5" parent="." instance=ExtResource("12_380aa")]
+position = Vector2(912, 640)

@@ -6,8 +6,68 @@ var MUSIC_ENABLED = true
 var MUSIC_PLAYING = false
 var MainTheme = "res://music/Bone Yard Waltz - Loopable.ogg"
 var JUMP_SFX = null
-var gunz = ["clone", "teleport", "rock", "bomb", "radar"]
+
+var clone = {
+	"name": "clone",
+	"description": "Generates a copy of you.",
+	"has_action": true,
+	"pasive": false,
+	"full_scale": false,
+}
+var teleport = {
+	"name": "teleport",
+	"description": "Instant travel through space.",
+	"has_action": true,
+	"pasive": false,
+	"full_scale": false,
+}
+var rock = {
+	"name": "rock",
+	"description": "Just a rock. A stone.",
+	"has_action": false,
+	"pasive": false,
+	"full_scale": false,
+}
+var bomb = {
+	"name": "bomb",
+	"description": "Kaboom!",
+	"has_action": true,
+	"pasive": false,
+	"full_scale": true,
+}
+var radar = {
+	"name": "radar",
+	"description": "Where is everybody?",
+	"has_action": false,
+	"pasive": true,
+	"full_scale": false,
+}
+var spring = {
+	"name": "spring",
+	"description": "Boing! Boing!",
+	"has_action": false,
+	"pasive": false,
+	"full_scale": true,
+}
+var invisibility = {
+	"name": "invisibility",
+	"description": "Now you see it, now you don't.",
+	"has_action": false,
+	"pasive": true,
+	"full_scale": false,
+}
+
+var none = {
+	"name": "none",
+	"description": "...",
+	"has_action": false,
+	"pasive": true,
+	"full_scale": false,
+}
+
+var gunz_objs = []
 var gunz_equiped = []
+var slots_stock = [0, 0]
 var gunz_index = 0
 var main_camera = null
 var targets : Array = []
@@ -22,6 +82,32 @@ var prisoner_total = 0
 var bounce_amount = 0.3
 var map_obj = null
 
+func remove_item():
+	Global.slots_stock[Global.gunz_index] -= 1
+	Global.GizmoWatcher.setHUD()
+
+func get_item(current_item):
+	var found = false
+	for i in range(Global.gunz_equiped.size()): #Try to add stock
+		if Global.gunz_equiped[i].name == current_item.name:
+			found = true
+			slots_stock[i] += 1
+			break;
+			
+	if !found:
+		for i in range(Global.gunz_equiped.size()):  #Try to find empty slot 
+			if Global.gunz_equiped[i].name == "none":
+				Global.gunz_equiped[i] = current_item
+				found = true
+				slots_stock[i] = 1
+				break;
+				
+	if !found: #If previus fails, override item to current selected
+		Global.gunz_equiped[Global.gunz_index] = current_item
+		slots_stock[Global.gunz_index] = 1
+	
+	Global.GizmoWatcher.setHUD()
+	
 func emit(_global_position, count):
 	for i in range(count):
 		var p = particle.instantiate()
@@ -94,12 +180,22 @@ func init():
 	prisoner_counter = 0
 	prisoner_total = 0
 	map_obj = null
+	gunz_objs = []
+	gunz_objs.append(clone)
+	gunz_objs.append(teleport)
+	gunz_objs.append(rock)
+	gunz_objs.append(bomb)
+	gunz_objs.append(radar)
+	gunz_objs.append(spring)
+	gunz_objs.append(invisibility)
+	
+	gunz_equiped = [none, none]
 	
 	randomize()
-	var _gunz = [] + gunz
-	for i in range(2):
-		_gunz.shuffle()
-		gunz_equiped.append(_gunz.pop_front())
+	#var _gunz = [] + gunz_objs
+	#for i in range(2):
+		#_gunz.shuffle()
+		#gunz_equiped.append(_gunz.pop_front())
 
 func pick_random(container):
 	if typeof(container) == TYPE_DICTIONARY:

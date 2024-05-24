@@ -4,6 +4,7 @@ var speed = 125.0
 var jump_speed = -300.0
 @export var direction = "right"
 var total_friction = 0.3
+var im_invisible = false
 var friction = total_friction
 var moving = false
 var buff = 0
@@ -140,6 +141,12 @@ func kill():
 	await get_tree().create_timer(2).timeout
 	bleed(25)
 
+func super_jump():
+	if !dead:
+		buff = 0
+		Global.play_sound(Global.JUMP_SFX)
+		Global.emit(global_position, 2)
+		velocity.y = jump_speed * 2
 
 func _on_trapped_area_body_entered(body):
 	if body.is_in_group("players"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://8vw15uexwo2s"]
+[gd_scene load_steps=17 format=3 uid="uid://8vw15uexwo2s"]
 
 [ext_resource type="Texture2D" uid="uid://djs78nqy60b6t" path="res://sprites/floor_spr_2.png" id="1_xx1vs"]
 [ext_resource type="Texture2D" uid="uid://6e6u7tx8wpp5" path="res://sprites/stair.png" id="2_g7fag"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://q767q018lep8" path="res://scenes/exit_door.tscn" id="7_56hic"]
 [ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="8_1tvy1"]
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="10_flmvt"]
+[ext_resource type="PackedScene" uid="uid://c1hauk6vcsonh" path="res://scenes/Item.tscn" id="12_418db"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
 texture = ExtResource("1_xx1vs")
@@ -83,3 +84,16 @@ position = Vector2(592, 544)
 scale = Vector2(1, 11)
 
 [node name="qdtector" parent="." instance=ExtResource("10_flmvt")]
+visible = false
+
+[node name="Item" parent="." instance=ExtResource("12_418db")]
+position = Vector2(497, 608)
+
+[node name="Item2" parent="." instance=ExtResource("12_418db")]
+position = Vector2(752, 640)
+
+[node name="Item3" parent="." instance=ExtResource("12_418db")]
+position = Vector2(848, 195)
+
+[node name="Item4" parent="." instance=ExtResource("12_418db")]
+position = Vector2(1104, 608)

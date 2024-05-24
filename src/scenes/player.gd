@@ -8,6 +8,8 @@ var friction = total_friction
 var moving = false
 var buff = 0
 var in_air = false
+var im_invisible = false
+var idle_animation = "idle"
 var idle_time = 0
 var shoot_mode = false
 const gizmo = preload("res://scenes/gizmo.tscn")
@@ -110,27 +112,36 @@ func process_player(delta):
 			elif Global.gunz_index == 1:
 				Global.gunz_index = 0
 			get_parent().calc_selected()
-			if Global.gunz_equiped[0] == "radar" or Global.gunz_equiped[1] == "radar":
-				if Global.gunz_equiped[Global.gunz_index] == "radar":
+			if Global.gunz_equiped[0].name == "invisibility" or Global.gunz_equiped[1].name == "invisibility":
+				if Global.gunz_equiped[Global.gunz_index].name == "invisibility":
+					set_invisible(true)
+				else:
+					set_invisible(false)
+			
+			if Global.gunz_equiped[0].name == "radar" or Global.gunz_equiped[1].name == "radar":
+				if Global.gunz_equiped[Global.gunz_index].name == "radar":
 					$Arrow.activate(true)
 				else:
 					$Arrow.activate(false)
 	
 	if !dead and Input.is_action_pressed("shoot"):
-		if Global.gunz_equiped[Global.gunz_index] != "radar":
-			Global.time_speed = 0.1
-			update_trayectory(delta)
-			shoot_mode = true
+		if !Global.gunz_equiped[Global.gunz_index].pasive:
+			if Global.slots_stock[Global.gunz_index] > 0:
+				Global.time_speed = 0.1
+				update_trayectory(delta)
+				shoot_mode = true
 		
 	if shoot_mode and Input.is_action_just_released("shoot"):
-		if Global.gunz_equiped[Global.gunz_index] != "radar":
-			Global.time_speed = 1.0
-			#destroy_gizmo_simul()
-			destroy_trayectory()
-			shoot_mode = false
-			shoot(delta)
-			await get_tree().create_timer(0.3).timeout
-			$gun_sprite.visible = false
+		if !Global.gunz_equiped[Global.gunz_index].pasive:
+			if Global.slots_stock[Global.gunz_index] > 0:
+				Global.time_speed = 1.0
+				#destroy_gizmo_simul()
+				destroy_trayectory()
+				shoot_mode = false
+				shoot(delta)
+				Global.remove_item()
+				await get_tree().create_timer(0.3).timeout
+				$gun_sprite.visible = false
 		
 	if shoot_mode:
 		if Input.is_action_pressed("left"):
@@ -180,28 +191,33 @@ func process_player(delta):
 	
 	if !dead:
 		if moving:
-			if $sprite.animation == "idle":
+			if $sprite.animation == idle_animation:
+				if idle_animation == "invisible":
+					im_invisible = false
+					
 				$sprite.animation = "walking"
 			$sprite.play()
 		else:
 			$sprite.stop()
+			if idle_animation == "invisible":
+				im_invisible = true
 			idle_time += 1 * delta
-			if idle_time >= 0.3:  
-				$sprite.animation = "idle"
+			if idle_time >= 0.3:
+				$sprite.animation = idle_animation
 	else:
 		$sprite.animation = "dead"
 		
 func shoot(delta):
 	if !dead:
-		if Global.gunz_equiped[Global.gunz_index] != "radar":
+		if !Global.gunz_equiped[Global.gunz_index].pasive:
 			var pos = $gun_sprite/mark.global_position
 			var p = gizmo.instantiate()
 			var parent = get_parent()
 			parent.add_child(p)
 			p.global_position = pos
 			Global.emit(pos, 5)
-			var item_action = Global.gunz_equiped[Global.gunz_index]
-			p.droped(self, $lbl_action, Vector2.from_angle($gun_sprite.rotation) * tspeed, item_action, false)
+			var current_item = Global.gunz_equiped[Global.gunz_index]
+			p.droped(self, $lbl_action, Vector2.from_angle($gun_sprite.rotation) * tspeed, current_item, false)
 	
 func jump(delta):
 	if !dead:
@@ -210,6 +226,13 @@ func jump(delta):
 			Global.play_sound(Global.JUMP_SFX)
 			Global.emit(global_position, 2)
 			velocity.y = jump_speed
+			
+func super_jump():
+	if !dead:
+		buff = 0
+		Global.play_sound(Global.JUMP_SFX)
+		Global.emit(global_position, 2)
+		velocity.y = jump_speed * 2
 
 func do_action(delta):
 	if !dead:
@@ -218,6 +241,16 @@ func do_action(delta):
 func lbl_hide_delegate(value, time):
 	await get_tree().create_timer(time).timeout
 	$lbl_action.visible = value
+	
+func set_invisible(val):
+	if val:
+		im_invisible = true
+		idle_animation = "invisible"
+		$sprite.animation = "invisible"
+	else:
+		im_invisible = false
+		idle_animation = "idle"
+		$sprite.animation = "idle"
 	
 func flyaway(direction):
 	if blowed <= 0:

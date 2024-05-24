@@ -7,4 +7,5 @@ func _ready():
 func _physics_process(delta):
 	var c = get_collider()
 	if c and c.is_in_group("players"):
-		EnemyObj._on_agro_body_entered(c)
+		if !c.im_invisible:
+			EnemyObj._on_agro_body_entered(c)

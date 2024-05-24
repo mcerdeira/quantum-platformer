@@ -3,10 +3,9 @@ Ajustes:
 - Quedan apenas desfasados los rooms con respecto al frame
 
 Features:
-- Item spring 
-- Item portable cover
 - Armas como items posta 
 - Las armas tienen ""municion"" / ver uso infinito
+- IA de los prisioneros
 - Lava inferior, o liquido
 - Enemigo con alas que planea al caer 
 - Setting (blackthorne???) 
@@ -15,6 +14,8 @@ Features:
 - Musica
 
 DONE:
+- Item portable cover
+- Item spring 
 - Mapa general
 - Los items cuentan 3, 2, 1 y hacen la acción
 - Bomba: stunnear enemigos por mas tiempo, stunnear pj y destruir terreno

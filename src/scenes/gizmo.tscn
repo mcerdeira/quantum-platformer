@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ypq32fpaty8e"]
+[gd_scene load_steps=28 format=3 uid="uid://ypq32fpaty8e"]
 
 [ext_resource type="Script" path="res://scenes/gizmo.gd" id="1_x7ufw"]
 [ext_resource type="Script" path="res://scenes/explosions.gd" id="2_84bkr"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://d2a4xvm7xjpjf" path="res://sprites/blast_spr_9.png" id="5_mmojl"]
 [ext_resource type="Texture2D" uid="uid://b1laesttuhnqw" path="res://sprites/blast_spr_10.png" id="6_5igsc"]
 [ext_resource type="Script" path="res://scenes/explosion.gd" id="7_54k6n"]
+[ext_resource type="Texture2D" uid="uid://dxbkc1lh5f3bx" path="res://sprites/invisibility.png" id="10_r3184"]
+[ext_resource type="Texture2D" uid="uid://de1vyj25jt0t3" path="res://sprites/spring.png" id="12_n3chn"]
 [ext_resource type="Texture2D" uid="uid://mir8y6lk22v8" path="res://sprites/lines.png" id="13_v2dy3"]
 [ext_resource type="Script" path="res://scenes/Line2D.gd" id="14_cbp3x"]
 [ext_resource type="Script" path="res://scenes/explosion_mini.gd" id="15_iwgc1"]
@@ -57,6 +59,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("10_r3184")
+}],
+"loop": true,
+"name": &"invisibility",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("4_tbud0")
 }],
 "loop": true,
@@ -69,6 +79,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"simul",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_n3chn")
+}],
+"loop": true,
+"name": &"spring",
 "speed": 5.0
 }, {
 "frames": [{
@@ -244,15 +262,17 @@ frame_progress = 0.590425
 speed_scale = 3.0
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(0, 3)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_3r5gg")
-animation = &"teleport"
+animation = &"invisibility"
+offset = Vector2(0, -16)
 
 [node name="collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_odwe0")
 
 [node name="area" type="Area2D" parent="."]
+visible = false
 
 [node name="collider" type="CollisionShape2D" parent="area"]
 shape = SubResource("CircleShape2D_4pttm")
@@ -261,12 +281,14 @@ shape = SubResource("CircleShape2D_4pttm")
 position = Vector2(0, -10)
 
 [node name="noise" type="Area2D" parent="."]
+visible = false
 
 [node name="collider" type="CollisionShape2D" parent="noise"]
 shape = SubResource("CircleShape2D_hcm05")
 disabled = true
 
 [node name="explosion" type="Area2D" parent="."]
+visible = false
 script = ExtResource("7_54k6n")
 
 [node name="collider" type="CollisionShape2D" parent="explosion"]
@@ -282,6 +304,7 @@ texture_mode = 1
 script = ExtResource("14_cbp3x")
 
 [node name="explosion_mini" type="Area2D" parent="."]
+visible = false
 script = ExtResource("15_iwgc1")
 
 [node name="collider" type="CollisionShape2D" parent="explosion_mini"]
