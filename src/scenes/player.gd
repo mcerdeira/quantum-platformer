@@ -153,7 +153,7 @@ func process_player(delta):
 	
 	if !dead and Input.is_action_just_pressed("jump"):
 		if is_on_stairs and grabbed:
-			velocity.y = -speed * 2
+			velocity.y = -speed * 1.1
 			Global.emit(global_position, 2)
 		else:
 			jump(delta)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1hauk6vcsonh"]
+[gd_scene load_steps=18 format=3 uid="uid://c1hauk6vcsonh"]
 
 [ext_resource type="Texture2D" uid="uid://cmahogbn2aqwr" path="res://sprites/bomb.png" id="1_1wt4j"]
 [ext_resource type="Script" path="res://scenes/Item.gd" id="1_co2nu"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://d0ggyyulssgq5" path="res://sprites/radar.png" id="6_x2qwg"]
 [ext_resource type="Texture2D" uid="uid://d3m4w8m7o2x0f" path="res://sprites/teleporter_box.png" id="7_ogk5g"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="10_7feub"]
+[ext_resource type="Texture2D" uid="uid://da14xud8tdoj" path="res://sprites/arrows1.png" id="12_adkqq"]
+[ext_resource type="Texture2D" uid="uid://b74uo51q2y58i" path="res://sprites/arrows2.png" id="13_p1otb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dym6o"]
 size = Vector2(37, 33)
@@ -90,6 +92,20 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_2inxc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_adkqq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_p1otb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Item" type="Area2D"]
 script = ExtResource("1_co2nu")
 
@@ -108,11 +124,12 @@ visible = false
 z_index = 4096
 offset_left = -201.0
 offset_top = -119.0
-offset_right = 191.0
+offset_right = 246.0
 offset_bottom = -42.0
 color = Color(0, 0, 0, 1)
 
 [node name="lbl_item" type="Label" parent="back"]
+layout_mode = 0
 offset_left = -17.0
 offset_top = 2.0
 offset_right = 407.0
@@ -123,6 +140,12 @@ Generates a copy of you. ddhydgasgdsagdsajd"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="arrows" type="AnimatedSprite2D" parent="back"]
+position = Vector2(419, 39)
+sprite_frames = SubResource("SpriteFrames_2inxc")
+autoplay = "default"
+frame_progress = 0.017781
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

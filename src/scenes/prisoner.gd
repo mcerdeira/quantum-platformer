@@ -77,8 +77,8 @@ func _physics_process(delta):
 func process_player(delta):
 	var moving = false
 	if dead:
-		set_collision_layer_value(2, true)
-		set_collision_mask_value(2, true)
+		set_collision_layer_value(5, true)
+		set_collision_mask_value(5, true)
 		set_collision_layer_value(1, false)
 		set_collision_mask_value(1, false)
 	if !dead:

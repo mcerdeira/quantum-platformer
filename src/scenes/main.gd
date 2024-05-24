@@ -15,7 +15,7 @@ var rooms_bottom = [
 func generate_level():
 	var player_room = Vector2(randi() % 4, 0)
 	var door_room = Vector2(randi() % 4, randi() % 4)
-	var size = DisplayServer.window_get_size()
+	var size = Vector2(1152, 640) #TODO: Cambiar
 	var room_pos = Vector2.ZERO
 	var room = null
 	var q = 1

@@ -37,8 +37,8 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_4lr5i"]
 tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 3
-physics_layer_0/collision_mask = 3
+physics_layer_0/collision_layer = 19
+physics_layer_0/collision_mask = 19
 sources/0 = SubResource("TileSetAtlasSource_iwogt")
 sources/1 = SubResource("TileSetAtlasSource_qr43o")
 sources/2 = SubResource("TileSetAtlasSource_5f8m4")
@@ -52,7 +52,7 @@ script = ExtResource("3_rxbgx")
 [node name="prisoner_choose" parent="." instance=ExtResource("5_gq5lv")]
 
 [node name="prisoner_marker" parent="prisoner_choose" instance=ExtResource("5_1vna7")]
-position = Vector2(653, 501)
+position = Vector2(653, 496)
 
 [node name="enemy_marker" parent="." instance=ExtResource("4_v8nfd")]
 position = Vector2(1074, 496)

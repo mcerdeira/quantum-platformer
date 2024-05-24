@@ -3,8 +3,8 @@ var current_item = null
 var active = false
 
 func _ready():
-	if randi() % 2 == 1:
-		current_item = Global.pick_random(Global.gunz_objs)
+	if randi() % 4 == 1:
+		current_item = Global.pick_random(Global.gunz_objs_prob)
 		$sprite.animation = current_item.name
 		$back/lbl_item.text = "== " + current_item.name.to_upper() + " ==" + "\n" + current_item.description
 	else:

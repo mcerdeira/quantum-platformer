@@ -66,6 +66,7 @@ var none = {
 }
 
 var gunz_objs = []
+var gunz_objs_prob = []
 var gunz_equiped = []
 var slots_stock = [0, 0]
 var gunz_index = 0
@@ -189,13 +190,15 @@ func init():
 	gunz_objs.append(spring)
 	gunz_objs.append(invisibility)
 	
+	gunz_objs_prob = [] + gunz_objs
+	for i in range(5):
+		gunz_objs_prob.append(rock)
+		gunz_objs_prob.append(bomb)
+		gunz_objs_prob.append(spring)
+	
 	gunz_equiped = [none, none]
 	
 	randomize()
-	#var _gunz = [] + gunz_objs
-	#for i in range(2):
-		#_gunz.shuffle()
-		#gunz_equiped.append(_gunz.pop_front())
 
 func pick_random(container):
 	if typeof(container) == TYPE_DICTIONARY:
