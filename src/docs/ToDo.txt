@@ -5,6 +5,9 @@ Ajustes:
 Features:
 - IA de los prisioneros
 - Lava inferior, o liquido
+- Ver que pasa si el enemigo "come" otros items 
+- Item paracaídas 
+- Item caja 
 - Enemigo con alas que planea al caer 
 - Setting (blackthorne???) 
 - Decoraciones 
