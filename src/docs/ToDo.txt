@@ -1,5 +1,6 @@
 Ajustes:
 - Hacer que los botones reciban por parámetro qué puertas
+- Al comer los enemigos quedan ocupados x más tiempo 
 - El ruido debe ser visible 
 - El contador 3...2...1 esta atrás del sprite
 - La camara debe seguir al pj principal y switchear según vayan muriendo. En Game over no resetear. 
