@@ -18,6 +18,9 @@ Features:
 - Enemigo con alas que planea al caer 
 - Setting (blackthorne???) 
 - Decoraciones 
+  . Gotas de agua 
+  . Plantitas en el piso 
+
 - SFX
 - Musica
 
