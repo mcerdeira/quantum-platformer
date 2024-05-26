@@ -1,12 +1,15 @@
 Ajustes:
+- El ruido debe ser visible 
+- El contador 3...2...1 esta atrás del sprite
 - La camara debe seguir al pj principal y switchear según vayan muriendo. En Game over no resetear. 
 - Quedan apenas desfasados los rooms con respecto al frame
 
 Features:
+- Hacer que los botones reciban por parámetro qué puertas 
 - IA de los prisioneros
 - Lava inferior, o liquido
 - IA de los enemigos 
-- Hacer ruido al caer
+- Hacer ruido al caer (y ser visible) 
 - Ver que pasa si el enemigo "come" otros items 
 - Item planta que crece o escalera 
 - Item algo que inunda (pensarlo) 
