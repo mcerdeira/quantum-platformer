@@ -5,6 +5,8 @@ Ajustes:
 Features:
 - IA de los prisioneros
 - Lava inferior, o liquido
+- IA de los enemigos 
+- Hacer ruido al caer
 - Ver que pasa si el enemigo "come" otros items 
 - Item planta que crece o escalera 
 - Item algo que inunda (pensarlo) 
