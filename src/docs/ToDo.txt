@@ -7,13 +7,14 @@ Ajustes:
 
 Features:
 - Peligros tipo pinches, bolas de fuego y bolas de fuego giratorio. 
+- Fuego como concepto
 - IA de los prisioneros
 - Lava inferior, o liquido
 - IA de los enemigos 
 - Hacer ruido al caer (y ser visible) 
 - Ver que pasa si el enemigo "come" otros items 
 - Item planta que crece o escalera 
-- Item algo que inunda (pensarlo) 
+- Item algo que inunda, humo (pensarlo) 
 - Item paracaídas 
 - Item caja 
 - Enemigo con alas que planea al caer 
