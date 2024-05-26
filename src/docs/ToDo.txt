@@ -1,11 +1,12 @@
 Ajustes:
+- Hacer que los botones reciban por parámetro qué puertas
 - El ruido debe ser visible 
 - El contador 3...2...1 esta atrás del sprite
 - La camara debe seguir al pj principal y switchear según vayan muriendo. En Game over no resetear. 
 - Quedan apenas desfasados los rooms con respecto al frame
 
 Features:
-- Hacer que los botones reciban por parámetro qué puertas 
+- Peligros tipo pinches, bolas de fuego y bolas de fuego giratorio. 
 - IA de los prisioneros
 - Lava inferior, o liquido
 - IA de los enemigos 
