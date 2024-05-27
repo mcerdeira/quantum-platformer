@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://bgf6ly14u3fi1"]
+
+[ext_resource type="Script" path="res://scenes/FireBall.gd" id="1_woemw"]
+[ext_resource type="Texture2D" uid="uid://bt0e3qaiq3h66" path="res://sprites/flame_spr_0.png" id="2_hfhlb"]
+[ext_resource type="Texture2D" uid="uid://dnm6kh4xp5a88" path="res://sprites/flame_spr_1.png" id="3_sugfa"]
+[ext_resource type="Texture2D" uid="uid://clfa0jf33wdb" path="res://sprites/flame_spr_2.png" id="4_4tovs"]
+[ext_resource type="Texture2D" uid="uid://cgjgfreorgs8q" path="res://sprites/flame_spr_3.png" id="5_16x0v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ku5o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hfhlb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sugfa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4tovs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_16x0v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_24l77"]
+radius = 6.0
+
+[node name="FireBall" type="Area2D"]
+collision_layer = 129
+collision_mask = 129
+script = ExtResource("1_woemw")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1ku5o")
+autoplay = "default"
+frame_progress = 0.646874
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_24l77")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

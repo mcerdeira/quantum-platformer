@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2hr571lqpqmf"]
+
+[ext_resource type="Script" path="res://scenes/Fireball_holder.gd" id="1_6r6mo"]
+[ext_resource type="PackedScene" uid="uid://bgf6ly14u3fi1" path="res://scenes/FireBall.tscn" id="1_e87hn"]
+
+[node name="FireballHolder" type="Node2D"]
+script = ExtResource("1_6r6mo")
+
+[node name="FireBall" parent="." instance=ExtResource("1_e87hn")]
+
+[node name="FireBall2" parent="." instance=ExtResource("1_e87hn")]
+position = Vector2(24, 0)
+
+[node name="FireBall3" parent="." instance=ExtResource("1_e87hn")]
+position = Vector2(48, 0)
+
+[node name="FireBall4" parent="." instance=ExtResource("1_e87hn")]
+position = Vector2(72, 0)
+
+[node name="FireBall5" parent="." instance=ExtResource("1_e87hn")]
+position = Vector2(96, 0)

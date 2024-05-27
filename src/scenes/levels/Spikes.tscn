@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://drudyu8hb2tx6"]
+
+[ext_resource type="Texture2D" uid="uid://b35x0rbjwt8et" path="res://sprites/spikes_blood.png" id="1_a6h05"]
+[ext_resource type="Script" path="res://scenes/levels/Spikes.gd" id="1_hyk3x"]
+[ext_resource type="Texture2D" uid="uid://carc0r01pxx8e" path="res://sprites/spikes.png" id="1_um738"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vn6em"]
+size = Vector2(31, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ews57"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_a6h05")
+}],
+"loop": true,
+"name": &"blood",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_um738")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2a1ag"]
+size = Vector2(2, 15)
+
+[node name="Spikes" type="Area2D"]
+script = ExtResource("1_hyk3x")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -12)
+shape = SubResource("RectangleShape2D_vn6em")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_ews57")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-15, -7.5)
+shape = SubResource("RectangleShape2D_2a1ag")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(14, -7.5)
+shape = SubResource("RectangleShape2D_2a1ag")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -23,6 +23,7 @@ var thanks_messages = ["THANKS!", "MY HERO!"]
 var thanks_message = Global.pick_random(thanks_messages)
 var is_on_stairs = false
 var grabbed = false
+var dead_animation = "dead"
 
 func _ready():
 	add_to_group("players")
@@ -101,7 +102,8 @@ func process_player(delta):
 			if idle_time >= 0.3:  
 				$sprite.animation = "idle"
 	else:
-		$sprite.animation = "dead"
+		$sprite.animation = dead_animation
+		$sprite.play()
 		
 func jump(delta):
 	if !dead:
@@ -138,6 +140,10 @@ func kill():
 	bleed(45)
 	await get_tree().create_timer(2).timeout
 	bleed(25)
+	
+func kill_fire():
+	dead = true
+	dead_animation = "dead_fire"
 
 func super_jump():
 	if !dead:

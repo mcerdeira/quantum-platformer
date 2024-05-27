@@ -91,6 +91,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("5_v07bx")
+}],
+"loop": true,
+"name": &"muffin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("16_lx8b7")
 }],
 "loop": true,
@@ -103,14 +111,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"radar",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_v07bx")
-}],
-"loop": true,
-"name": &"rock",
 "speed": 5.0
 }, {
 "frames": [{
@@ -216,7 +216,7 @@ metadata/_edit_use_anchors_ = true
 [node name="gun_slot0" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
 position = Vector2(49.6154, 18)
 sprite_frames = SubResource("SpriteFrames_yq7gw")
-animation = &"none"
+animation = &"muffin"
 
 [node name="lbl_stock" type="Label" parent="CanvasLayer/Control/gun_slot0"]
 offset_left = -6.53847
@@ -261,6 +261,18 @@ offset_left = -413.0
 offset_top = 40.0
 offset_right = 4008.0
 offset_bottom = 2639.0
+
+[node name="lbl_gameover" type="Label" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 0
+offset_top = 230.0
+offset_right = 886.0
+offset_bottom = 278.0
+theme_override_fonts/font = ExtResource("7_2v1dk")
+theme_override_font_sizes/font_size = 48
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pu2uo")

@@ -2,6 +2,7 @@ extends Area2D
 
 func _on_body_entered(body):
 	if body and body.is_in_group("players") and !body.is_in_group("prisoners"):
+		body.level_parent = get_parent() 
 		Global.map_obj.notify_map(get_parent().q)
 		
 	if body and body.is_in_group("prisoners"):

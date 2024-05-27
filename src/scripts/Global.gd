@@ -7,6 +7,7 @@ var MUSIC_PLAYING = false
 var MainTheme = "res://music/Bone Yard Waltz - Loopable.ogg"
 var JUMP_SFX = null
 
+
 var clone = {
 	"name": "clone",
 	"description": "Generates a copy of you.",
@@ -21,9 +22,9 @@ var teleport = {
 	"pasive": false,
 	"full_scale": false,
 }
-var rock = {
-	"name": "rock",
-	"description": "Just a rock. A stone.",
+var muffin = {
+	"name": "muffin",
+	"description": "Yuummy!",
 	"has_action": false,
 	"pasive": false,
 	"full_scale": false,
@@ -183,7 +184,7 @@ func init():
 	gunz_objs = []
 	gunz_objs.append(clone)
 	gunz_objs.append(teleport)
-	gunz_objs.append(rock)
+	gunz_objs.append(muffin)
 	gunz_objs.append(bomb)
 	gunz_objs.append(radar)
 	gunz_objs.append(spring)
@@ -191,13 +192,16 @@ func init():
 	
 	gunz_objs_prob = [] + gunz_objs
 	for i in range(5):
-		gunz_objs_prob.append(rock)
+		gunz_objs_prob.append(muffin)
 		gunz_objs_prob.append(bomb)
 		gunz_objs_prob.append(spring)
 	
 	gunz_equiped = [none, none]
 	
 	randomize()
+	
+func set_on_fire(body, body_rid, coords, global_coords):	
+	pass
 
 func pick_random(container):
 	if typeof(container) == TYPE_DICTIONARY:

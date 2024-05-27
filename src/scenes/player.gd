@@ -23,7 +23,11 @@ var is_on_stairs = false
 var grabbed = false
 var LineTrayectory = null
 var dead_fall = false
+var dead_animation = "dead"
 const blood = preload("res://scenes/blood.tscn")
+var fires = preload("res://scenes/Fires.tscn")
+var level_parent = null
+var fire_obj = null
 
 func _ready():
 	add_to_group("players")
@@ -49,6 +53,8 @@ func destroy_trayectory():
 	LineTrayectory.clear_points()
 
 func _physics_process(delta):
+	Global.GAMEOVER = dead
+	
 	if dead_fall:
 		return
 	
@@ -105,9 +111,9 @@ func process_player(delta):
 		$lbl_action.text = "@"
 		$lbl_action.set("theme_override_colors/font_color", Color.AQUAMARINE)
 		return
-	
-	#if Input.is_action_just_pressed("use"):
-	#	do_action(delta)
+
+	if fire_obj and is_instance_valid(fire_obj):
+		fire_obj.global_position = global_position
 		
 	if !dead and !iam_clone:
 		if Input.is_action_just_pressed("scroll"):
@@ -209,7 +215,8 @@ func process_player(delta):
 			if idle_time >= 0.3:
 				$sprite.animation = idle_animation
 	else:
-		$sprite.animation = "dead"
+		$sprite.animation = dead_animation
+		$sprite.play()
 		
 func shoot(delta):
 	if !dead:
@@ -279,3 +286,16 @@ func kill():
 	bleed(45)
 	await get_tree().create_timer(2).timeout
 	bleed(25)
+
+func kill_fire():
+	Global.emit(global_position, 10)
+	dead = true
+	dead_animation = "dead_fire"
+	await get_tree().create_timer(2).timeout
+	Global.emit(global_position, 20)
+	
+	var parent = level_parent
+	var p = fires.instantiate()
+	parent.add_child(p)
+	p.global_position = global_position
+	fire_obj = p

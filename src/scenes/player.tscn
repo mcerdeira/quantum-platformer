@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://evskswf05b50"]
+[gd_scene load_steps=28 format=3 uid="uid://evskswf05b50"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_u3t4v"]
 [ext_resource type="Texture2D" uid="uid://cl4nf2bm3n8bx" path="res://sprites/graby_dead.png" id="2_ekk1a"]
@@ -9,9 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://dukosv1gmn6ky" path="res://sprites/cosito3.png" id="4_6wvl3"]
 [ext_resource type="Texture2D" uid="uid://b7y26ij01nlqk" path="res://sprites/graby_2.png" id="4_l3tsl"]
 [ext_resource type="Texture2D" uid="uid://cc8l2l2ae483x" path="res://sprites/graby_3.png" id="5_w86tm"]
+[ext_resource type="Texture2D" uid="uid://cbm2ov3p75byk" path="res://sprites/dead_fire_spr_0.png" id="6_0puku"]
 [ext_resource type="Texture2D" uid="uid://ca8ambc2jnao" path="res://sprites/gun_spr_0.png" id="6_d4ar8"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="7_1mbn0"]
+[ext_resource type="Texture2D" uid="uid://cpq2gxdbvq4i6" path="res://sprites/dead_fire_spr_1.png" id="7_fp3j4"]
 [ext_resource type="Texture2D" uid="uid://dcu5ggxmosqtn" path="res://sprites/graby_inv.png" id="7_kaabs"]
+[ext_resource type="Texture2D" uid="uid://bn3j5ne0mc650" path="res://sprites/dead_fire_spr_2.png" id="8_dg0nu"]
 [ext_resource type="PackedScene" uid="uid://d0otpjtodaem7" path="res://scenes/arrow.tscn" id="12_hgq3s"]
 [ext_resource type="Shader" path="res://scenes/player.gdshader" id="13_1jkvy"]
 [ext_resource type="Texture2D" uid="uid://mir8y6lk22v8" path="res://sprites/lines.png" id="13_h7iaa"]
@@ -44,6 +47,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_0puku")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fp3j4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_dg0nu")
+}],
+"loop": true,
+"name": &"dead_fire",
 "speed": 5.0
 }, {
 "frames": [{

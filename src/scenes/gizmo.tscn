@@ -76,7 +76,7 @@ animations = [{
 "texture": ExtResource("4_tbud0")
 }],
 "loop": true,
-"name": &"rock",
+"name": &"muffin",
 "speed": 5.0
 }, {
 "frames": [{
@@ -320,7 +320,7 @@ material = SubResource("ShaderMaterial_nlsrr")
 position = Vector2(0, 3)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_3r5gg")
-animation = &"invisibility"
+animation = &"muffin"
 offset = Vector2(0, -16)
 
 [node name="collider" type="CollisionShape2D" parent="."]

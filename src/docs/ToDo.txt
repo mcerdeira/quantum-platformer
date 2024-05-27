@@ -1,16 +1,23 @@
 Ajustes:
-- El ruido debe ser visible 
+- El ruido debe ser visible
+- Terminar de sumar logica de incendio a enemigos y prisioneros  
 - Traer sprites de HoruSan
 
 Features:
-- Peligros tipo pinches, bolas de fuego y bolas de fuego giratorio. 
-- Enredaderas
-- Fuego como concepto (quema enredaderas)
-- IA de los prisioneros
-- IA de los enemigos
 - Enemigo tipo escarabajo que camina circular
-- Hacer ruido al caer (y ser visible) 
-- Ver que pasa si el enemigo "come" otros items 
+- Hacer ruido al caer
+- IA de los prisioneros
+- IA de los enemigos glotones
+- Si el enemigo glotón "come" otros items:
+  - Siempre: esta inactivo (no agresivo) mientras come  
+  - Muffin, se duerme un rato
+  - Clone machine: Genera un clon de si mismo
+  - Teleport: se teletransporta cerca nuestro
+  - Bomba: Explota
+  - Planta: Se vuelve gigante verticalmente
+  - Cohete: Sale disparado hacia arriba
+  - Humo: Se expande como el humo   
+  
 - Item planta que crece (sirve como escalera)
 - Item humo
 - Item cohete 
@@ -25,7 +32,14 @@ Features:
 - SFX
 - Musica
 
-DONE:
+--------------------------------- DONE ---------------------------------
+- Fuego como concepto (quema enredaderas)
+- Enredaderas
+- Peligros:
+   . Pinches
+   . Bolas de fuego
+   . Bolas de fuego giratorio. 
+- Cambiar roca por pastelito
 - Los items en pantalla deben se cofres
 - Hacer que los botones reciban por parámetro qué puertas interactua
 - El contador 3...2...1 esta atrás del sprite (hacer que se agite y que se coloree) 

@@ -55,18 +55,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_x2qwg")
+"texture": ExtResource("4_150gj")
 }],
 "loop": true,
-"name": &"radar",
+"name": &"muffin",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_150gj")
+"texture": ExtResource("6_x2qwg")
 }],
 "loop": true,
-"name": &"rock",
+"name": &"radar",
 "speed": 5.0
 }, {
 "frames": [{
@@ -148,7 +148,7 @@ material = SubResource("ShaderMaterial_jtgsv")
 position = Vector2(45, 61)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_jkk80")
-animation = &"radar"
+animation = &"muffin"
 offset = Vector2(0, -16)
 
 [node name="lbl_item" type="Label" parent="back"]

@@ -78,12 +78,7 @@ func calc_selected():
 				p.global_position = sel.global_position
 
 func _physics_process(delta):
-	for player in Global.targets:
-		if !player.dead:
-			Global.GAMEOVER = false
-			break
-		
-		Global.GAMEOVER = true
+	$CanvasLayer/Control/lbl_gameover.visible = Global.GAMEOVER
 		
 	if Global.exit_door and Global.exit_door.closed:
 		var targets = get_tree().get_nodes_in_group("prisoners")
