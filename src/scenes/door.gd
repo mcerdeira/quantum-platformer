@@ -3,7 +3,6 @@ extends StaticBody2D
 
 func _ready():
 	add_to_group("movebable")
-	Global.level_doors.append(self) 
 
 func open():
 	$CollisionShape2D.set_deferred("disabled", true)

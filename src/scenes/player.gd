@@ -22,6 +22,7 @@ var previus_velocity = Vector2.ZERO
 var is_on_stairs = false
 var grabbed = false
 var LineTrayectory = null
+var dead_fall = false
 const blood = preload("res://scenes/blood.tscn")
 
 func _ready():
@@ -47,7 +48,10 @@ func destroy_trayectory():
 	LineTrayectory.visible = false 
 	LineTrayectory.clear_points()
 
-func _physics_process(delta):	
+func _physics_process(delta):
+	if dead_fall:
+		return
+	
 	if Input.is_action_just_released("zoomin"):
 		$Camera2D.zoom += Vector2(10, 10) * delta
 	if Input.is_action_just_released("zoomout"):
@@ -268,12 +272,10 @@ func bleed(count):
 func kill_fall():
 	dead = true
 	visible = false
-	Global.find_master()
-	queue_free()
+	dead_fall = true
 
 func kill():
 	dead = true
-	Global.find_master()
 	bleed(45)
 	await get_tree().create_timer(2).timeout
 	bleed(25)

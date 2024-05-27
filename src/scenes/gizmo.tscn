@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ypq32fpaty8e"]
+[gd_scene load_steps=32 format=3 uid="uid://ypq32fpaty8e"]
 
 [ext_resource type="Script" path="res://scenes/gizmo.gd" id="1_x7ufw"]
 [ext_resource type="Script" path="res://scenes/explosions.gd" id="2_84bkr"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://d2a4xvm7xjpjf" path="res://sprites/blast_spr_9.png" id="5_mmojl"]
 [ext_resource type="Texture2D" uid="uid://b1laesttuhnqw" path="res://sprites/blast_spr_10.png" id="6_5igsc"]
 [ext_resource type="Script" path="res://scenes/explosion.gd" id="7_54k6n"]
+[ext_resource type="Shader" path="res://scenes/gizmo.gdshader" id="8_14h7y"]
 [ext_resource type="Texture2D" uid="uid://dxbkc1lh5f3bx" path="res://sprites/invisibility.png" id="10_r3184"]
 [ext_resource type="Texture2D" uid="uid://de1vyj25jt0t3" path="res://sprites/spring.png" id="12_n3chn"]
 [ext_resource type="Texture2D" uid="uid://mir8y6lk22v8" path="res://sprites/lines.png" id="13_v2dy3"]
@@ -38,6 +39,11 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nlsrr"]
+shader = ExtResource("8_14h7y")
+shader_parameter/blacked = null
+shader_parameter/crisis = false
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3r5gg"]
 animations = [{
@@ -118,6 +124,54 @@ size = Vector2(253, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cuueo"]
 size = Vector2(20, 242)
+
+[sub_resource type="Animation" id="Animation_18r8v"]
+resource_name = "shak_"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.174533, 0.0, -0.174533, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [true],
+"method": &"set_red_color"
+}, {
+"args": [false],
+"method": &"set_red_color"
+}, {
+"args": [true],
+"method": &"set_red_color"
+}, {
+"args": [false],
+"method": &"set_red_color"
+}, {
+"args": [true],
+"method": &"set_red_color"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hg3f8"]
+_data = {
+"shak_": SubResource("Animation_18r8v")
+}
 
 [node name="Gizmo" type="CharacterBody2D"]
 script = ExtResource("1_x7ufw")
@@ -262,6 +316,7 @@ frame_progress = 0.590425
 speed_scale = 3.0
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_nlsrr")
 position = Vector2(0, 3)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_3r5gg")
@@ -320,6 +375,12 @@ disabled = true
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_cuueo")
 disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hg3f8")
+}
+speed_scale = 10.0
 
 [connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
 [connection signal="body_entered" from="noise" to="." method="_on_noise_body_entered"]

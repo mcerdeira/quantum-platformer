@@ -131,12 +131,10 @@ func bleed(count):
 func kill_fall():
 	dead = true
 	visible = false
-	Global.find_master()
 	queue_free()
 
 func kill():
 	dead = true
-	Global.find_master()
 	bleed(45)
 	await get_tree().create_timer(2).timeout
 	bleed(25)

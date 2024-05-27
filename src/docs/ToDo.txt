@@ -1,33 +1,35 @@
 Ajustes:
-- Hacer que los botones reciban por parámetro qué puertas
-- Al comer los enemigos quedan ocupados x más tiempo 
 - El ruido debe ser visible 
-- El contador 3...2...1 esta atrás del sprite
-- La camara debe seguir al pj principal y switchear según vayan muriendo. En Game over no resetear. 
-- Quedan apenas desfasados los rooms con respecto al frame
+- Traer sprites de HoruSan
 
 Features:
 - Peligros tipo pinches, bolas de fuego y bolas de fuego giratorio. 
-- Fuego como concepto
+- Enredaderas
+- Fuego como concepto (quema enredaderas)
 - IA de los prisioneros
-- Lava inferior, o liquido
-- IA de los enemigos 
+- IA de los enemigos
+- Enemigo tipo escarabajo que camina circular
 - Hacer ruido al caer (y ser visible) 
 - Ver que pasa si el enemigo "come" otros items 
-- Item planta que crece o escalera 
-- Item algo que inunda, humo (pensarlo) 
-- Item paracaídas 
-- Item caja 
+- Item planta que crece (sirve como escalera)
+- Item humo
+- Item cohete 
+- Plantas para esconderse
 - Enemigo con alas que planea al caer 
 - Setting (blackthorne???) 
 - Decoraciones 
   . Gotas de agua 
   . Plantitas en el piso 
+  . Lava inferior, o liquido
 
 - SFX
 - Musica
 
 DONE:
+- Los items en pantalla deben se cofres
+- Hacer que los botones reciban por parámetro qué puertas interactua
+- El contador 3...2...1 esta atrás del sprite (hacer que se agite y que se coloree) 
+- La camara debe seguir al pj principal. En Game over no resetear. 
 - Armas como items posta 
 - Las armas tienen ""municion"" / ver uso infinito
 - Item portable cover

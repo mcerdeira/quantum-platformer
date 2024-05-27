@@ -1,5 +1,6 @@
 extends Area2D
 var closed = true
+@export var Doors : Array[StaticBody2D]
 
 func _process(delta):
 	var overlapping_bodies = get_overlapping_bodies()
@@ -14,12 +15,12 @@ func open():
 	if closed:
 		closed = false
 		$AnimatedSprite2D.frame = 1
-		for door in Global.level_doors:
+		for door in Doors:
 			door.open()
 
 func close():
 	if !closed:
 		closed = true
 		$AnimatedSprite2D.frame = 0
-		for door in Global.level_doors:
+		for door in Doors:
 			door.close()

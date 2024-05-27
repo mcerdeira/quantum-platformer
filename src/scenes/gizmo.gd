@@ -52,8 +52,13 @@ func _physics_process(delta):
 					if count_down > 0:
 						count_down -= 1 * delta
 						$lbl_count.text = str(round(count_down)) + "..."
+						if count_down < 2:
+							var a : AnimationPlayer = $AnimationPlayer
+							if !a.is_playing():
+								a.play("shak_")
+								a.speed_scale += 100 * delta
+						
 						if count_down <= 0:
-							$lbl_count.text = "GO!"
 							do_action(parent, parent_lbl)
 				else:
 					do_action(parent, parent_lbl)
@@ -187,3 +192,6 @@ func super_jump():
 	Global.play_sound(Global.JUMP_SFX)
 	Global.emit(global_position, 2)
 	velocity.y = jump_speed * 2
+
+func set_red_color(val):
+	$sprite.material.set_shader_parameter("crisis", val)

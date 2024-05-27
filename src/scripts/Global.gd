@@ -75,7 +75,6 @@ var targets : Array = []
 var time_speed = 1.0
 var GAMEOVER = false
 var shaker_obj = null
-var level_doors = []
 var GizmoWatcher = null
 var exit_door = null
 var prisoner_counter = 0
@@ -121,18 +120,19 @@ func flyaway(direction, jump_speed):
 	velocity.y = jump_speed * 1.4
 	return velocity
 	
-func find_master():
-	var master_found = false
-	for player in Global.targets:
-		if player.dead == false and player.iam_clone == false:
-			master_found = true
-			
-	if !master_found:
-		if Global.targets.size() > 0:
-			for player in Global.targets:
-				if player.dead == false and player.iam_clone == true:
-					player.iam_clone = false
-					break
+#DEPRECATED
+#func find_master():
+	#var master_found = false
+	#for player in Global.targets:
+		#if player.dead == false and player.iam_clone == false:
+			#master_found = true
+			#
+	#if !master_found:
+		#if Global.targets.size() > 0:
+			#for player in Global.targets:
+				#if player.dead == false and player.iam_clone == true:
+					#player.iam_clone = false
+					#break
 
 func save_game():
 	pass
@@ -177,7 +177,6 @@ func init():
 	targets = []
 	time_speed = 1.0
 	GAMEOVER = false
-	level_doors = []
 	prisoner_counter = 0
 	prisoner_total = 0
 	map_obj = null
