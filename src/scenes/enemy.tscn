@@ -113,6 +113,7 @@ shape = SubResource("RectangleShape2D_kwrcj")
 [node name="RayCast2D" type="RayCast2D" parent="Agro"]
 position = Vector2(25, 0)
 target_position = Vector2(500, 0)
+collision_mask = 524288
 collide_with_areas = true
 script = ExtResource("5_ermrk")
 

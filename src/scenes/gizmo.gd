@@ -27,6 +27,7 @@ func is_on_floor_custom(normal):
 		
 func _physics_process(delta):
 	if !action_executed:
+		$sprite.material.set_shader_parameter("crisis", false)
 		velocity.y += gravity * delta
 		var collision = move_and_collide(velocity * delta)
 		if collision: 
@@ -40,6 +41,7 @@ func _physics_process(delta):
 							$lbl_count.visible = true
 						
 					noise_time = 0.3
+					$AnimationPlayer2.play("new_animation")
 					Global.emit(global_position, 1)
 					$noise/collider.set_deferred("disabled", false)
 					
@@ -72,6 +74,7 @@ func _physics_process(delta):
 				if blowed > 0:
 					blowed -= 1 * delta
 				else:
+					pass
 					if !is_on_floor():
 						velocity.x = lerp(velocity.x, 0.0, friction / 10)
 					else:

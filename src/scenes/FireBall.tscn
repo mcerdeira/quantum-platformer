@@ -30,6 +30,7 @@ animations = [{
 radius = 6.0
 
 [node name="FireBall" type="Area2D"]
+z_index = 4096
 collision_layer = 129
 collision_mask = 129
 script = ExtResource("1_woemw")

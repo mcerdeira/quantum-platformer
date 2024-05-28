@@ -13,6 +13,9 @@ func update_trayectory(direction, delta):
 		var collision = char.move_and_collide(velocity * delta, false, true, true)
 		if collision: 
 			velocity = velocity.bounce(collision.get_normal()) * Global.bounce_amount 
-		
+			pos += velocity * delta
+			char.position = pos
+			break;
+			
 		pos += velocity * delta
 		char.position = pos

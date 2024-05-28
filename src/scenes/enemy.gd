@@ -25,6 +25,9 @@ var alerted = false
 var blowed = 0
 var alerted_delay = 0
 var previus_velocity = Vector2.ZERO
+var fire_obj = null
+var level_parent = null
+var fires = preload("res://scenes/Fires.tscn")
 
 func _ready():
 	add_to_group("enemies")
@@ -44,6 +47,10 @@ func _physics_process(delta):
 	else:
 		in_air = true
 		buff -= 1 * delta
+		
+	if fire_obj and is_instance_valid(fire_obj):
+		fire_obj.reparent(level_parent)
+		fire_obj.global_position = global_position
 	
 	if !is_on_floor_custom():
 		velocity.y += gravity
@@ -240,6 +247,19 @@ func still_alert():
 func kill_fall():
 	visible = false
 	queue_free()
+	
+func dead_fire():
+	pass
+
+func kill_fire():
+	if fire_obj == null:
+		Global.emit(global_position, 10)	
+		var parent = level_parent
+		var p = fires.instantiate()
+		parent.add_child(p)
+		p.global_position = global_position
+		p.kill_me = self
+		fire_obj = p
 
 func flyaway(direction):
 	if blowed <= 0:

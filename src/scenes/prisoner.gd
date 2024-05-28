@@ -24,6 +24,9 @@ var thanks_message = Global.pick_random(thanks_messages)
 var is_on_stairs = false
 var grabbed = false
 var dead_animation = "dead"
+var fires = preload("res://scenes/Fires.tscn")
+var fire_obj = null
+var level_parent = null
 
 func _ready():
 	add_to_group("players")
@@ -48,6 +51,10 @@ func _physics_process(delta):
 				$lbl_action.text = ""
 				$lbl_action.visible = false
 	else:
+		if fire_obj and is_instance_valid(fire_obj):
+			fire_obj.reparent(level_parent)
+			fire_obj.global_position = global_position
+	
 		if is_on_floor():
 			if in_air:
 				in_air = false
@@ -142,6 +149,16 @@ func kill():
 	bleed(25)
 	
 func kill_fire():
+	if fire_obj == null:
+		Global.emit(global_position, 10)	
+		var parent = level_parent
+		var p = fires.instantiate()
+		parent.add_child(p)
+		p.global_position = global_position
+		p.kill_me = self
+		fire_obj = p
+	
+func dead_fire():
 	dead = true
 	dead_animation = "dead_fire"
 

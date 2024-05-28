@@ -2,6 +2,7 @@ extends Area2D
 var ttl = 1
 var tt_total = 7
 var fires = preload("res://scenes/Fires.tscn")
+var kill_me = null
 
 func _physics_process(delta):
 	if ttl > 0:
@@ -17,6 +18,8 @@ func _physics_process(delta):
 	tt_total -= 1 * delta
 	if tt_total <= 0:
 		Global.emit(global_position, 5)
+		if kill_me and is_instance_valid(kill_me):
+			kill_me.dead_fire()
 		queue_free() 
 
 func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
@@ -34,5 +37,5 @@ func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index)
 			Global.emit(global_position, 5)
 			
 func _on_body_exited(body):
-	if body and body.is_in_group("players"):
+	if body and (body.is_in_group("players") or body.is_in_group("enemies")):
 		body.kill_fire()

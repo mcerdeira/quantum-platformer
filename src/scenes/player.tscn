@@ -118,8 +118,9 @@ shader_parameter/scrolling_speed = 1.0
 size = Vector2(26, 31)
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 9
-collision_mask = 9
+z_index = 4095
+collision_layer = 524297
+collision_mask = 524297
 script = ExtResource("1_u3t4v")
 
 [node name="Cosito" type="AnimatedSprite2D" parent="."]

@@ -1,11 +1,8 @@
 Ajustes:
-- El ruido debe ser visible
-- Terminar de sumar logica de incendio a enemigos y prisioneros  
 - Traer sprites de HoruSan
 
 Features:
 - Enemigo tipo escarabajo que camina circular
-- Hacer ruido al caer
 - IA de los prisioneros
 - IA de los enemigos glotones
 - Si el enemigo glotón "come" otros items:
@@ -28,11 +25,16 @@ Features:
   . Gotas de agua 
   . Plantitas en el piso 
   . Lava inferior, o liquido
+  . Lamparas colgantes
 
 - SFX
 - Musica
 
 --------------------------------- DONE ---------------------------------
+- El ruido debe ser visible
+- Bug raro en el gizmo al lanzarlo, en algunos casos la trayectoria se ve fea
+- Terminar de sumar logica de incendio a enemigos y prisioneros   
+- Ver movimientos en el aire, poco preciso
 - Fuego como concepto (quema enredaderas)
 - Enredaderas
 - Peligros:

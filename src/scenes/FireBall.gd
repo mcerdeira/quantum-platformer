@@ -2,7 +2,7 @@ extends Area2D
 var fires = preload("res://scenes/Fires.tscn")
 
 func _on_body_entered(body):
-	if body and body.is_in_group("players"):
+	if body and (body.is_in_group("players") or body.is_in_group("enemies")):
 		body.kill_fire()
 
 func _physics_process(delta):

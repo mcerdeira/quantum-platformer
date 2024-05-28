@@ -13,7 +13,7 @@ var idle_animation = "idle"
 var idle_time = 0
 var shoot_mode = false
 const gizmo = preload("res://scenes/gizmo.tscn")
-var tspeed = 500.0
+var tspeed = 700.0
 var initial_rotation = -45
 var iam_clone = false
 var dead = false
@@ -26,8 +26,8 @@ var dead_fall = false
 var dead_animation = "dead"
 const blood = preload("res://scenes/blood.tscn")
 var fires = preload("res://scenes/Fires.tscn")
-var level_parent = null
 var fire_obj = null
+var level_parent = null
 
 func _ready():
 	add_to_group("players")
@@ -89,10 +89,11 @@ func _physics_process(delta):
 		if grabbed and !Input.is_action_pressed("up") and !Input.is_action_pressed("jump") and !Input.is_action_pressed("down"):
 			velocity.y = 0
 		
-		if !is_on_floor_custom():
-			velocity.x = lerp(velocity.x, 0.0, friction / 10)
-		else:
-			velocity.x = lerp(velocity.x, 0.0, friction)
+		if !shoot_mode and !Input.is_action_pressed("left") and !Input.is_action_pressed("right"):
+			if !is_on_floor_custom():
+				velocity.x = lerp(velocity.x, 0.0, friction / 2)
+			else:
+				velocity.x = lerp(velocity.x, 0.0, friction)
 		
 	process_player(delta)
 	move_and_slide()
@@ -113,6 +114,7 @@ func process_player(delta):
 		return
 
 	if fire_obj and is_instance_valid(fire_obj):
+		fire_obj.reparent(level_parent)
 		fire_obj.global_position = global_position
 		
 	if !dead and !iam_clone:
@@ -187,7 +189,7 @@ func process_player(delta):
 			direction = "left"
 			moving = true
 			idle_time = 0
-			velocity.x = -speed
+			velocity.x = lerp(velocity.x, -speed, 0.7)
 			$sprite.flip_h = true
 			$gun_sprite.rotation = initial_rotation - 45
 			
@@ -195,7 +197,7 @@ func process_player(delta):
 			direction = "right"
 			moving = true
 			idle_time = 0
-			velocity.x = speed
+			velocity.x = lerp(velocity.x, speed, 0.7)
 			$sprite.flip_h = false
 			$gun_sprite.rotation = initial_rotation
 	
@@ -286,16 +288,17 @@ func kill():
 	bleed(45)
 	await get_tree().create_timer(2).timeout
 	bleed(25)
-
-func kill_fire():
-	Global.emit(global_position, 10)
+	
+func dead_fire():
 	dead = true
 	dead_animation = "dead_fire"
-	await get_tree().create_timer(2).timeout
-	Global.emit(global_position, 20)
-	
-	var parent = level_parent
-	var p = fires.instantiate()
-	parent.add_child(p)
-	p.global_position = global_position
-	fire_obj = p
+
+func kill_fire():
+	if fire_obj == null:
+		Global.emit(global_position, 10)
+		var parent = level_parent
+		var p = fires.instantiate()
+		parent.add_child(p)
+		p.global_position = global_position
+		p.kill_me = self
+		fire_obj = p
