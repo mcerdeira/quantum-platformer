@@ -28,10 +28,14 @@ const blood = preload("res://scenes/blood.tscn")
 var fires = preload("res://scenes/Fires.tscn")
 var fire_obj = null
 var level_parent = null
+var idle_play_total = 4 
+var idle_play = idle_play_total
 
 func _ready():
 	add_to_group("players")
 	$sprite.animation = "idle"
+	$sprite_eyes.animation = $sprite.animation
+	
 	$gun_sprite.visible = false
 	$gun_sprite.rotation = initial_rotation
 	$Cosito.play()
@@ -111,6 +115,7 @@ func process_player(delta):
 		$lbl_action.visible = true
 		$lbl_action.text = "@"
 		$lbl_action.set("theme_override_colors/font_color", Color.AQUAMARINE)
+		idle_play = idle_play_total
 		return
 
 	if fire_obj and is_instance_valid(fire_obj):
@@ -139,6 +144,7 @@ func process_player(delta):
 	if !dead and Input.is_action_pressed("shoot"):
 		if !Global.gunz_equiped[Global.gunz_index].pasive:
 			if Global.slots_stock[Global.gunz_index] > 0:
+				idle_play = idle_play_total
 				Global.time_speed = 0.1
 				update_trayectory(delta)
 				shoot_mode = true
@@ -146,6 +152,7 @@ func process_player(delta):
 	if shoot_mode and Input.is_action_just_released("shoot"):
 		if !Global.gunz_equiped[Global.gunz_index].pasive:
 			if Global.slots_stock[Global.gunz_index] > 0:
+				idle_play = idle_play_total
 				Global.time_speed = 1.0
 				#destroy_gizmo_simul()
 				destroy_trayectory()
@@ -158,12 +165,15 @@ func process_player(delta):
 	if shoot_mode:
 		if Input.is_action_pressed("left"):
 			$gun_sprite.rotation -= 1 * delta
+			idle_play = idle_play_total
 			update_trayectory(delta)
 		elif Input.is_action_pressed("right"):
 			$gun_sprite.rotation += 1 * delta
+			idle_play = idle_play_total
 			update_trayectory(delta)
 	
 	if !dead and Input.is_action_just_pressed("jump"):
+		idle_play = idle_play_total
 		if is_on_stairs and grabbed:
 			velocity.y = -speed * 1.1
 			Global.emit(global_position, 2)
@@ -172,6 +182,7 @@ func process_player(delta):
 		
 	if !dead:
 		if !shoot_mode and Input.is_action_pressed("up"):
+			idle_play = idle_play_total
 			if is_on_stairs:
 				grabbed = true 
 				moving = true
@@ -179,6 +190,7 @@ func process_player(delta):
 				velocity.y = -speed
 				
 		if !shoot_mode and Input.is_action_pressed("down"):
+			idle_play = idle_play_total
 			if is_on_stairs:
 				grabbed = true 
 				moving = true
@@ -186,20 +198,26 @@ func process_player(delta):
 				velocity.y = speed
 		
 		if !shoot_mode and Input.is_action_pressed("left"):
+			idle_play = idle_play_total
 			direction = "left"
 			moving = true
 			idle_time = 0
 			velocity.x = lerp(velocity.x, -speed, 0.7)
 			$sprite.flip_h = true
+			$sprite_eyes.flip_h = $sprite.flip_h
 			$gun_sprite.rotation = initial_rotation - 45
 			
 		elif !shoot_mode and Input.is_action_pressed("right"):
+			idle_play = idle_play_total
 			direction = "right"
 			moving = true
 			idle_time = 0
 			velocity.x = lerp(velocity.x, speed, 0.7)
 			$sprite.flip_h = false
+			$sprite_eyes.flip_h = $sprite.flip_h
 			$gun_sprite.rotation = initial_rotation
+			
+	idle_play -= 1 * delta
 	
 	if !dead:
 		if moving:
@@ -208,16 +226,24 @@ func process_player(delta):
 					im_invisible = false
 					
 				$sprite.animation = "walking"
+				$sprite_eyes.animation = $sprite.animation
 			$sprite.play()
 		else:
 			$sprite.stop()
+			if idle_play <= 0:
+				$sprite_eyes.play()
+			else:
+				$sprite_eyes.stop()
+			
 			if idle_animation == "invisible":
 				im_invisible = true
 			idle_time += 1 * delta
 			if idle_time >= 0.3:
 				$sprite.animation = idle_animation
+				$sprite_eyes.animation = $sprite.animation
 	else:
 		$sprite.animation = dead_animation
+		$sprite_eyes.animation = $sprite.animation
 		$sprite.play()
 		
 func shoot(delta):
@@ -260,10 +286,12 @@ func set_invisible(val):
 		im_invisible = true
 		idle_animation = "invisible"
 		$sprite.animation = "invisible"
+		$sprite_eyes.animation = $sprite.animation
 	else:
 		im_invisible = false
 		idle_animation = "idle"
 		$sprite.animation = "idle"
+		$sprite_eyes.animation = $sprite.animation
 	
 func flyaway(direction):
 	if blowed <= 0:

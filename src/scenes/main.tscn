@@ -188,7 +188,7 @@ offset_bottom = 149.0
 layout_mode = 0
 offset_right = 1151.0
 offset_bottom = 40.0
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0.12549, 1)
 
 [node name="Map" parent="CanvasLayer/Control" instance=ExtResource("10_wiiij")]
 position = Vector2(424.615, 20)

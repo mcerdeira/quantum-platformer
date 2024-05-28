@@ -134,6 +134,14 @@ script = ExtResource("1_co2nu")
 position = Vector2(0.5, -16.5)
 shape = SubResource("RectangleShape2D_dym6o")
 
+[node name="back2" type="ColorRect" parent="."]
+visible = false
+z_index = 4096
+offset_left = -303.0
+offset_top = -120.0
+offset_right = 247.0
+offset_bottom = -41.0
+
 [node name="back" type="ColorRect" parent="."]
 visible = false
 z_index = 4096

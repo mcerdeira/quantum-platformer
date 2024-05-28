@@ -12,6 +12,7 @@ func _ready():
 		queue_free()
 
 func _physics_process(delta):
+	$back2.visible = $back.visible 
 	if active and !opened:
 		if Input.is_action_just_pressed("up"):
 			opened = true
