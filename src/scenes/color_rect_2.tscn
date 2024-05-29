@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxggfxcj2ieke"]
+
+[ext_resource type="Shader" path="res://scenes/main.gdshader" id="1_cljwc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hb6nw"]
+shader = ExtResource("1_cljwc")
+shader_parameter/temperatureRange = 1.0
+shader_parameter/hotColor = Color(1, 1, 1, 0)
+shader_parameter/coldColor = null
+shader_parameter/heatAmplitude = 0.15
+shader_parameter/heatPeriod = 6.0
+shader_parameter/heatPhaseShift = 8.0
+shader_parameter/heatUpperLimit = 10.0
+shader_parameter/coldFXStrength = 1.0
+
+[node name="ColorRect2" type="ColorRect"]
+visible = false
+material = SubResource("ShaderMaterial_hb6nw")
+offset_left = -413.0
+offset_top = 40.0
+offset_right = 4008.0
+offset_bottom = 2639.0

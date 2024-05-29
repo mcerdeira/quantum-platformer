@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bveav6ctdlmbu"]
+[gd_scene load_steps=34 format=3 uid="uid://bveav6ctdlmbu"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_tvtda"]
 [ext_resource type="Texture2D" uid="uid://dbh84l3hbge3s" path="res://sprites/box.png" id="2_6led8"]
@@ -17,10 +17,14 @@
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="7_2v1dk"]
 [ext_resource type="Texture2D" uid="uid://duuicqxhleoua" path="res://sprites/selected.png" id="7_rtry5"]
 [ext_resource type="Texture2D" uid="uid://d0ggyyulssgq5" path="res://sprites/radar.png" id="8_fdv2s"]
+[ext_resource type="Shader" path="res://scenes/FX.gdshader" id="9_l7p0g"]
+[ext_resource type="Script" path="res://scenes/FX.gd" id="10_agwh5"]
 [ext_resource type="PackedScene" uid="uid://c8j4ld6iulqjl" path="res://scenes/map.tscn" id="10_wiiij"]
+[ext_resource type="Script" path="res://scenes/LavaFX.gd" id="12_wh2nv"]
 [ext_resource type="Texture2D" uid="uid://dxbkc1lh5f3bx" path="res://sprites/invisibility.png" id="15_7qhek"]
 [ext_resource type="Texture2D" uid="uid://rpr86laa62uq" path="res://sprites/none.png" id="16_lx8b7"]
 [ext_resource type="Texture2D" uid="uid://de1vyj25jt0t3" path="res://sprites/spring.png" id="17_3xuhu"]
+[ext_resource type="PackedScene" uid="uid://yw5hjnyqexic" path="res://scenes/lava.tscn" id="24_nijr5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qr43o"]
 texture = ExtResource("3_n8kdd")
@@ -53,15 +57,20 @@ sources/3 = SubResource("TileSetAtlasSource_kdlq4")
 sources/2 = SubResource("TileSetAtlasSource_da60i")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_knga3"]
+shader = ExtResource("9_l7p0g")
+shader_parameter/apply = true
+shader_parameter/amount = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hb6nw"]
 shader = ExtResource("2_82qdg")
-shader_parameter/temperatureRange = null
-shader_parameter/hotColor = null
+shader_parameter/temperatureRange = 4.75e-08
+shader_parameter/hotColor = Color(0.647059, 0.466667, 0.0352941, 0.101961)
 shader_parameter/coldColor = null
-shader_parameter/heatAmplitude = null
-shader_parameter/heatPeriod = null
-shader_parameter/heatPhaseShift = null
-shader_parameter/heatUpperLimit = null
-shader_parameter/coldFXStrength = null
+shader_parameter/heatAmplitude = 0.0
+shader_parameter/heatPeriod = 6.0
+shader_parameter/heatPhaseShift = 8.0
+shader_parameter/heatUpperLimit = 10.0
+shader_parameter/coldFXStrength = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yq7gw"]
 animations = [{
@@ -130,17 +139,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hb6nw"]
-shader = ExtResource("2_82qdg")
-shader_parameter/temperatureRange = 1.0
-shader_parameter/hotColor = Color(1, 1, 1, 0)
-shader_parameter/coldColor = null
-shader_parameter/heatAmplitude = 0.15
-shader_parameter/heatPeriod = 6.0
-shader_parameter/heatPhaseShift = 8.0
-shader_parameter/heatUpperLimit = 10.0
-shader_parameter/coldFXStrength = 1.0
-
 [sub_resource type="Environment" id="Environment_pu2uo"]
 background_mode = 3
 ambient_light_source = 2
@@ -160,7 +158,6 @@ layer_0/tile_data = PackedInt32Array(65535, 3, 0, 131071, 3, 0, 196607, 3, 0, 26
 script = ExtResource("4_t3tcr")
 
 [node name="KillZone" parent="." instance=ExtResource("5_atbjo")]
-visible = false
 position = Vector2(614, 2673)
 
 [node name="Surface" parent="." instance=ExtResource("2_pqtrm")]
@@ -169,10 +166,20 @@ position = Vector2(614, 2673)
 z_index = 4096
 material = SubResource("ShaderMaterial_knga3")
 offset_left = -279.0
-offset_top = -129.0
-offset_right = 1597.0
-offset_bottom = 776.0
+offset_top = -210.0
+offset_right = 4928.0
+offset_bottom = 2671.0
 mouse_filter = 2
+script = ExtResource("10_agwh5")
+
+[node name="LavaFX" type="ColorRect" parent="."]
+z_index = 4096
+material = SubResource("ShaderMaterial_hb6nw")
+offset_left = -506.0
+offset_top = -7.0
+offset_right = 5326.0
+offset_bottom = 2797.0
+script = ExtResource("12_wh2nv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 scale = Vector2(1.3, 1.3)
@@ -253,15 +260,6 @@ vertical_alignment = 1
 position = Vector2(97.615, 18)
 texture = ExtResource("7_rtry5")
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control"]
-visible = false
-material = SubResource("ShaderMaterial_hb6nw")
-layout_mode = 0
-offset_left = -413.0
-offset_top = 40.0
-offset_right = 4008.0
-offset_bottom = 2639.0
-
 [node name="lbl_gameover" type="Label" parent="CanvasLayer/Control"]
 visible = false
 layout_mode = 0
@@ -276,3 +274,6 @@ vertical_alignment = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pu2uo")
+
+[node name="Lava" parent="." instance=ExtResource("24_nijr5")]
+position = Vector2(1093, 2616)

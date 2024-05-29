@@ -6,7 +6,9 @@ var MUSIC_ENABLED = true
 var MUSIC_PLAYING = false
 var MainTheme = "res://music/Bone Yard Waltz - Loopable.ogg"
 var JUMP_SFX = null
-
+var CHROM_FX = null
+var lava_FX = null
+var player_obj = null
 
 var clone = {
 	"name": "clone",
@@ -197,12 +199,10 @@ func init():
 		gunz_objs_prob.append(spring)
 	
 	gunz_equiped = [none, none]
+	slots_stock = [0, 0]
 	
 	randomize()
 	
-func set_on_fire(body, body_rid, coords, global_coords):	
-	pass
-
 func pick_random(container):
 	if typeof(container) == TYPE_DICTIONARY:
 		return container.values()[randi() % container.size() ]

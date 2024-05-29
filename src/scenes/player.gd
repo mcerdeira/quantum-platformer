@@ -42,6 +42,7 @@ func _ready():
 	$Cosito.visible = false
 	LineTrayectory = $Line2D
 	Global.shaker_obj.camera = $Camera2D
+	Global.player_obj = self
 	
 func is_on_floor_custom():
 	return is_on_floor() or buff > 0

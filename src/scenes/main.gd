@@ -95,6 +95,9 @@ func _physics_process(delta):
 	if sel:
 		sel.text = "x" + str(Global.prisoner_counter)
 		
+	if Input.is_action_just_pressed("fx"):
+		$FX.visible = !$FX.visible
+		
 	if Input.is_action_just_pressed("restart"):
 		Global.init()
 		get_tree().reload_current_scene()

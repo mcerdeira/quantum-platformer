@@ -25,6 +25,7 @@ func _physics_process(delta):
 		camera.offset = Vector2(0, 0)
 		camera_shake_intensity = 0.0
 		camera_shake_duration = 0.0
+		Global.CHROM_FX.resetdistor()
 		return
 
 	camera_shake_duration = camera_shake_duration - delta
@@ -35,6 +36,7 @@ func _physics_process(delta):
 	if camera_shake_type == Type.Random:
 		offset = Vector2(randf(), randf()) * camera_shake_intensity
 
+	Global.CHROM_FX.setdistort(randf())
 	
 	offset = offset
 	

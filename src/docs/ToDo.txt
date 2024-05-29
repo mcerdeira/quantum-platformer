@@ -1,5 +1,4 @@
 Ajustes:
-- Traer sprites de HoruSan
 
 Features:
 - Enemigo tipo escarabajo que camina circular
@@ -24,13 +23,16 @@ Features:
 - Decoraciones 
   . Gotas de agua 
   . Plantitas en el piso 
-  . Lava inferior, o liquido
-  . Lamparas colgantes
+  . Lamparas colgantes (caen al tocarlas y generan fuego)
+  . Cascaditas
 
 - SFX
 - Musica
 
 --------------------------------- DONE ---------------------------------
+- Decoraciones 
+  . Lava inferior, o liquido
+- Traer sprites de HoruSan
 - El ruido debe ser visible
 - Bug raro en el gizmo al lanzarlo, en algunos casos la trayectoria se ve fea
 - Terminar de sumar logica de incendio a enemigos y prisioneros   
