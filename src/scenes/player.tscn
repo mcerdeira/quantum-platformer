@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://evskswf05b50"]
+[gd_scene load_steps=48 format=3 uid="uid://evskswf05b50"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_u3t4v"]
 [ext_resource type="Texture2D" uid="uid://1t2cy30jae2s" path="res://sprites/cosito1.png" id="2_pa2cn"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://cw52jq6iyamer" path="res://sprites/horu/images/player_face_idle_spr_12.png" id="29_g1c66"]
 [ext_resource type="Texture2D" uid="uid://dwn2ho5cyauvq" path="res://sprites/horu/images/player_face_idle_spr_13.png" id="30_8tlmh"]
 [ext_resource type="Texture2D" uid="uid://0bfb01n7cs3s" path="res://sprites/horu/images/player_face_invisible_spr_0.png" id="30_hlwjl"]
+[ext_resource type="Texture2D" uid="uid://mnse2a8pepu5" path="res://sprites/horu/images/player_face_stunned_spr_0.png" id="31_kt23e"]
 [ext_resource type="Texture2D" uid="uid://bfrq2rnrtl74" path="res://sprites/horu/images/player_face_idle_spr_14.png" id="31_rsqpf"]
 [ext_resource type="Texture2D" uid="uid://c4oq2l7mi3d2p" path="res://sprites/horu/images/player_face_idle_spr_15.png" id="32_okow2"]
 [ext_resource type="Texture2D" uid="uid://cncjijfwik48r" path="res://sprites/horu/images/player_face_idle_spr_16.png" id="33_bpw2c"]
@@ -89,6 +90,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"invisible",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_p217l")
+}],
+"loop": true,
+"name": &"stunned",
 "speed": 5.0
 }, {
 "frames": [{
@@ -196,6 +205,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("31_kt23e")
+}],
+"loop": true,
+"name": &"stunned",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("37_ntmvv")
 }],
 "loop": true,
@@ -237,12 +254,12 @@ frame_progress = 0.0612838
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g68ow")
-animation = &"invisible"
+animation = &"stunned"
 
 [node name="sprite_eyes" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 4)
 sprite_frames = SubResource("SpriteFrames_5rugl")
-animation = &"idle"
+animation = &"stunned"
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)

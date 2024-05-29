@@ -113,8 +113,10 @@ func process_player(delta):
 		set_collision_mask_value(1, false)
 		
 	if blowed > 0:
+		$sprite.animation = "stunned"
+		$sprite_eyes.animation = $sprite.animation
 		$lbl_action.visible = true
-		$lbl_action.text = "@"
+		$lbl_action.text = "..."
 		$lbl_action.set("theme_override_colors/font_color", Color.AQUAMARINE)
 		idle_play = idle_play_total
 		return

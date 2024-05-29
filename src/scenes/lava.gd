@@ -12,11 +12,11 @@ func _physics_process(delta):
 		var calc_val = 0.0
 		var calc_temp = 0.0
 		if abs(dist) < limit:
-			calc_val = lerp(val, upper_limit, 0.01)
-			calc_temp = lerp(calc_val, upper_limit_temp, 0.01)
+			calc_val = lerp(val, upper_limit, 0.05)
+			calc_temp = lerp(temp, upper_limit_temp, 0.05)
 		else:
-			calc_val = lerp(val, 0.0, 0.01)
-			calc_temp = lerp(calc_val, 0.0, 0.01)
+			calc_val = lerp(val, 0.0, 0.05)
+			calc_temp = lerp(temp, 0.0, 0.05)
 			
 		if calc_val != val or calc_temp != temp:
 			val = calc_val
