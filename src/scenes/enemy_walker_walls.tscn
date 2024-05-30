@@ -1,0 +1,191 @@
+[gd_scene load_steps=23 format=3 uid="uid://81vub78cngl3"]
+
+[ext_resource type="Script" path="res://scenes/enemy_walker_walls.gd" id="1_53he0"]
+[ext_resource type="Texture2D" uid="uid://dplov63g6dekc" path="res://sprites/horu/images/enemy_wall_spr_0.png" id="2_h33ti"]
+[ext_resource type="Texture2D" uid="uid://b8hrnanr11k4v" path="res://sprites/horu/images/enemy_berserk_wall_spr_0.png" id="3_5u07g"]
+[ext_resource type="Texture2D" uid="uid://0rw280tt0gfr" path="res://sprites/horu/images/enemy_berserk_wall_spr_1.png" id="4_cv7x8"]
+[ext_resource type="Texture2D" uid="uid://b7y0fkbugy0kp" path="res://sprites/horu/images/enemy_berserk_wall_spr_2.png" id="5_gy1m3"]
+[ext_resource type="Texture2D" uid="uid://bkeu3ofxhaban" path="res://sprites/horu/images/enemy_wall_spr_1.png" id="6_g6o2n"]
+[ext_resource type="Texture2D" uid="uid://hnj55avc6w2o" path="res://sprites/horu/images/enemy_wall_spr_2.png" id="7_h0l26"]
+[ext_resource type="Texture2D" uid="uid://qh7scm4lrjhs" path="res://sprites/horu/images/enemy_cool_face_spr_0.png" id="8_mdasq"]
+[ext_resource type="Texture2D" uid="uid://cxlh6d84e1cdy" path="res://sprites/horu/images/enemy_cool_face_spr_1.png" id="9_tb81d"]
+[ext_resource type="Texture2D" uid="uid://hsmcoddumqgd" path="res://sprites/horu/images/enemy_cool_face_spr_2.png" id="10_jlah5"]
+[ext_resource type="Texture2D" uid="uid://cyjqqycobhdq7" path="res://sprites/horu/images/enemy_anger_spr_0.png" id="11_aq6to"]
+[ext_resource type="Texture2D" uid="uid://csea0rkohqj2h" path="res://sprites/horu/images/enemy_anger_spr_1.png" id="12_kwrvl"]
+[ext_resource type="Texture2D" uid="uid://bfschs4nmrfbg" path="res://sprites/horu/images/enemy_anger_spr_2.png" id="13_wj0ph"]
+[ext_resource type="Texture2D" uid="uid://th5j476r6114" path="res://sprites/horu/images/enemy_danger_spr_0.png" id="14_fa8fp"]
+[ext_resource type="Texture2D" uid="uid://xbq2vgwne0bv" path="res://sprites/horu/images/enemy_danger_spr_1.png" id="15_krmdw"]
+[ext_resource type="Texture2D" uid="uid://hutlu6c76y5i" path="res://sprites/horu/images/enemy_danger_spr_2.png" id="16_brd5u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0vk2b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h33ti")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5u07g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cv7x8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gy1m3")
+}],
+"loop": true,
+"name": &"killing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h33ti")
+}],
+"loop": true,
+"name": &"stunned",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h33ti")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_g6o2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_h0l26")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efk2u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_mdasq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tb81d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jlah5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_aq6to")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_kwrvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_wj0ph")
+}],
+"loop": true,
+"name": &"killing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_fa8fp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_krmdw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_brd5u")
+}],
+"loop": true,
+"name": &"stunned",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_mdasq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tb81d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jlah5")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_44h00"]
+size = Vector2(32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6yeio"]
+radius = 15.7003
+
+[sub_resource type="Animation" id="Animation_k8fva"]
+resource_name = "killing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.5), Vector2(1.5, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b5rsm"]
+_data = {
+"killing": SubResource("Animation_k8fva")
+}
+
+[node name="EnemyWalkerWalls" type="CharacterBody2D"]
+script = ExtResource("1_53he0")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, -16)
+sprite_frames = SubResource("SpriteFrames_0vk2b")
+animation = &"killing"
+
+[node name="eyes" type="AnimatedSprite2D" parent="sprite"]
+sprite_frames = SubResource("SpriteFrames_efk2u")
+animation = &"stunned"
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(16, -16)
+shape = SubResource("RectangleShape2D_44h00")
+
+[node name="Area" type="Area2D" parent="."]
+position = Vector2(16, -16)
+
+[node name="collider" type="CollisionShape2D" parent="Area"]
+shape = SubResource("CircleShape2D_6yeio")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b5rsm")
+}
+speed_scale = 2.0
+
+[node name="ray_floor" type="RayCast2D" parent="."]
+position = Vector2(0, -16)
+target_position = Vector2(0, 18)
+collision_mask = 2
+
+[node name="ray_wall" type="RayCast2D" parent="."]
+position = Vector2(16, -32)
+target_position = Vector2(18, 0)
+collision_mask = 2
+
+[connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]

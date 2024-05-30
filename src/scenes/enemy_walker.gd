@@ -3,7 +3,7 @@ var gravity = 10.0
 var total_speed = 60.0
 var speed = total_speed
 var jump_speed = -300.0
-@export var direction = ""
+@export var direction = "right"
 var total_friction = 0.6
 var friction = total_friction
 var moving = false
@@ -86,6 +86,7 @@ func process_player(delta):
 			$sprite.animation = "idle"
 			killing = 0
 	else:
+	
 		if direction == "right":
 			moving = true
 			idle_time = 0

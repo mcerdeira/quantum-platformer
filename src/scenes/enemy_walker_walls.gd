@@ -1,0 +1,261 @@
+extends CharacterBody2D
+var gravity = 10.0
+var total_speed = 60.0
+var speed = total_speed
+var jump_speed = -300.0
+@export var direction = "right"
+var total_friction = 0.6
+var friction = total_friction
+var moving = false
+var buff = 0
+var in_air = false
+var idle_time = 0
+var tspeed = 370.0
+var initial_rotation = 0
+var total_killing = 4
+var killing = 0
+var direction_change_ttl_total = 1
+var direction_change_ttl = direction_change_ttl_total
+var blowed = 0
+var previus_velocity = Vector2.ZERO
+var fire_obj = null
+var level_parent = null
+var dead_frames = 5
+var delay_change_total = 0.05
+var delay_change = 0
+
+var fires = preload("res://scenes/Fires.tscn")
+enum States {
+	RIGHT,
+	LEFT,
+	UP,
+	DOWN,
+}
+
+var state = States.RIGHT
+
+func _ready():
+	add_to_group("enemies")
+	$sprite.animation = "idle"
+	
+func is_on_floor_custom():
+	return is_on_floor() or buff > 0
+	
+func _physics_process(delta):
+	speed = total_speed * Global.time_speed
+	
+	if blowed > 0:
+		if is_on_floor():
+			if in_air:
+				in_air = false
+				Global.emit(global_position, 1)
+			buff = 0.2
+		else:
+			in_air = true
+			buff -= 1 * delta
+			
+		if fire_obj and is_instance_valid(fire_obj):
+			fire_obj.reparent(level_parent)
+			fire_obj.global_position = global_position
+			fire_obj.z_index = z_index + 1
+		
+		if !is_on_floor_custom():
+			velocity.y += gravity
+		
+		if blowed > 0:
+			blowed -= 1 * delta
+			if is_on_wall():
+				velocity.x = (previus_velocity.x / 2) * -1
+			else:
+				previus_velocity = velocity
+		else:
+			if !is_on_floor_custom():
+				velocity.x = lerp(velocity.x, 0.0, friction / 10)
+			else:
+				velocity.x = lerp(velocity.x, 0.0, friction)
+	else:
+		if state == States.RIGHT:
+			velocity.y += gravity
+		if state == States.LEFT:
+			velocity.y -= gravity
+		if state == States.UP:
+			velocity.x += gravity
+		if state == States.DOWN:
+			velocity.x -= gravity
+
+	process_player(delta)
+	move_and_slide()
+	
+func detection_ok(col):
+	return (col and col is TileMap)
+	
+func process_player(delta):
+	var moving = false
+	if blowed > 0:
+		$sprite.animation = "stunned"
+		blowed -= 1 * delta
+		return
+		
+	if Global.GAMEOVER:
+		pass
+				
+	if killing > 0:
+		killing -= 1 * delta 
+		if $sprite.animation != "killing":
+			$AnimationPlayer.play("killing")
+			$sprite.animation = "killing"
+			$sprite/eyes.animation = "killing"
+			$sprite.play()
+		
+		if killing <= 0:
+			$AnimationPlayer.stop()
+			$sprite.animation = "idle"
+			killing = 0
+	else:
+		if dead_frames <= 0: 
+			var ray_floor : RayCast2D = $ray_floor
+			var ray_wall : RayCast2D = $ray_wall
+			
+			var col_floor = ray_floor.get_collider()
+			var col_wall = ray_wall.get_collider()
+			
+			if delay_change > 0:
+				delay_change -= 1 * delta 
+			else:	
+				if state == States.RIGHT:
+					if is_on_floor() and is_on_wall() and detection_ok(col_floor) and detection_ok(col_wall):
+						moving = false
+						delay_change = delay_change_total
+						velocity = Vector2.ZERO
+						rotation_degrees -= 90
+						position.x += 32
+						state = States.UP
+						
+					elif !is_on_floor() and !is_on_wall() and !detection_ok(col_floor) and !detection_ok(col_wall):
+						moving = false
+						delay_change = delay_change_total
+						velocity = Vector2.ZERO
+						rotation_degrees += 90
+						state = States.DOWN
+						
+					else:	
+						velocity.x = speed
+						moving = true
+				
+				elif state == States.UP:
+					if is_on_wall() and is_on_floor() and detection_ok(col_wall) and detection_ok(col_floor):
+						moving = false
+						delay_change = delay_change_total
+						velocity = Vector2.ZERO
+						rotation_degrees = -90
+						state = States.LEFT
+						
+					elif !is_on_floor() and !is_on_wall() and !detection_ok(col_wall) and !detection_ok(col_floor):
+						moving = false
+						delay_change = delay_change_total
+						velocity = Vector2.ZERO
+						rotation_degrees += 90
+						state = States.RIGHT
+					else:	
+						velocity.y = -speed
+						moving = true
+						
+				elif state == States.DOWN:
+					if is_on_wall() and is_on_floor() and detection_ok(col_wall) and detection_ok(col_floor):
+						moving = false
+						delay_change = delay_change_total
+						velocity = Vector2.ZERO
+						rotation_degrees = -90
+						state = States.RIGHT
+						
+					elif !is_on_floor() and !is_on_wall() and !detection_ok(col_wall) and !detection_ok(col_floor):
+						moving = false
+						delay_change = delay_change_total
+						velocity = Vector2.ZERO
+						rotation_degrees += 90
+						state = States.LEFT
+					else:	
+						velocity.y = speed
+						moving = true
+						
+				elif state == States.LEFT:
+					if is_on_ceiling() and is_on_wall() and detection_ok(col_floor) and detection_ok(col_wall):
+						moving = false
+						delay_change = delay_change_total
+						velocity = Vector2.ZERO
+						rotation_degrees -= 90
+						position.x -= 32
+						state = States.DOWN
+						
+					elif !is_on_ceiling() and !is_on_wall() and !detection_ok(col_floor) and !detection_ok(col_wall):
+						moving = false
+						delay_change = delay_change_total
+						velocity = Vector2.ZERO
+						rotation_degrees += 90
+						state = States.UP
+					else:	
+						velocity.x = -speed
+						moving = true
+				
+		if dead_frames > 0:
+			dead_frames -= 1
+
+	if killing <= 0:
+		if moving:
+			if $sprite.animation == "idle":
+				$sprite.animation = "walking"
+			$sprite.play()
+		else:
+			$sprite.stop()
+			idle_time += 1 * delta
+			if idle_time >= 0.3:  
+				$sprite.animation = "idle"
+		
+		$sprite/eyes.animation = $sprite.animation
+		$sprite/eyes.flip_h = $sprite.flip_h 
+
+func jump(delta):
+	if !Global.GAMEOVER:
+		if is_on_floor_custom() and Global.time_speed == 1.0: 
+			buff = 0
+			Global.play_sound(Global.JUMP_SFX)
+			Global.emit(global_position, 2)
+			velocity.y = jump_speed
+
+func _on_area_body_entered(body):
+	if body and body.is_in_group("players"):
+		body.kill()
+		killing = total_killing
+		if global_position.x > body.global_position.x:
+			$sprite.flip_h = true
+		else:
+			$sprite.flip_h = false
+
+func kill_fire():
+	if fire_obj == null:
+		Global.emit(global_position, 10)	
+		var parent = level_parent
+		var p = fires.instantiate()
+		parent.add_child(p)
+		p.global_position = global_position
+		p.kill_me = self
+		fire_obj = p
+
+func dead_fire():
+	pass
+	
+func kill_fall():
+	visible = false
+	queue_free()
+
+func flyaway(direction):
+	if blowed <= 0:
+		blowed = 6.2
+		Global.emit(global_position, 2)
+		velocity = Global.flyaway(direction, jump_speed)
+		previus_velocity = velocity
+
+func super_jump():
+	Global.play_sound(Global.JUMP_SFX)
+	Global.emit(global_position, 2)
+	velocity.y = jump_speed * 2

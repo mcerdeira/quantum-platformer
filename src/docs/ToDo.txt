@@ -3,10 +3,10 @@ Ajustes:
 - Ver límites de la cámara para que no se vaya off limit
 
 Features:
-- Enemigo tipo escarabajo que camina circular
 - IA de los prisioneros
 - IA de los enemigos glotones
 - Si el enemigo glotón "come" otros items:
+  - Ver logica de still_alert() en cada tipo de enemigo, si ahi metemos la logica de estar comiendo  
   - Siempre: esta inactivo (no agresivo) mientras come  
   - Muffin, se duerme un rato
   - Clone machine: Genera un clon de si mismo
@@ -32,6 +32,8 @@ Features:
 - Musica
 
 --------------------------------- DONE ---------------------------------
+- Enemigo tipo escarabajo que camina circular
+- Enemigo que camina de izquierda a derecha nada más 
 - Decoraciones 
   . Lava inferior, o liquido
 - Traer sprites de HoruSan
