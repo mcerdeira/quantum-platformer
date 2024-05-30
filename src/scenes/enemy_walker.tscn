@@ -154,11 +154,11 @@ script = ExtResource("1_tg6yi")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0vk2b")
-animation = &"idle"
+animation = &"stunned"
 
 [node name="eyes" type="AnimatedSprite2D" parent="sprite"]
 sprite_frames = SubResource("SpriteFrames_efk2u")
-animation = &"idle"
+animation = &"stunned"
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)

@@ -124,6 +124,7 @@ func process_player(delta):
 	if fire_obj and is_instance_valid(fire_obj):
 		fire_obj.reparent(level_parent)
 		fire_obj.global_position = global_position
+		fire_obj.z_index = z_index + 1
 		
 	if !dead and !iam_clone:
 		if Input.is_action_just_pressed("scroll"):

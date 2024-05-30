@@ -51,6 +51,7 @@ func _physics_process(delta):
 	if fire_obj and is_instance_valid(fire_obj):
 		fire_obj.reparent(level_parent)
 		fire_obj.global_position = global_position
+		fire_obj.z_index = z_index + 1
 	
 	if !is_on_floor_custom():
 		velocity.y += gravity

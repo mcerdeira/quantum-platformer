@@ -1,6 +1,6 @@
 extends CharacterBody2D
 var gravity = 10.0
-var total_speed = 230.0
+var total_speed = 60.0
 var speed = total_speed
 var jump_speed = -300.0
 @export var direction = ""
@@ -14,7 +14,7 @@ var tspeed = 370.0
 var initial_rotation = 0
 var total_killing = 4
 var killing = 0
-var direction_change_ttl_total = 4
+var direction_change_ttl_total = 1
 var direction_change_ttl = direction_change_ttl_total
 var blowed = 0
 var previus_velocity = Vector2.ZERO
@@ -43,6 +43,7 @@ func _physics_process(delta):
 	if fire_obj and is_instance_valid(fire_obj):
 		fire_obj.reparent(level_parent)
 		fire_obj.global_position = global_position
+		fire_obj.z_index = z_index + 1
 	
 	if !is_on_floor_custom():
 		velocity.y += gravity
@@ -77,13 +78,14 @@ func process_player(delta):
 		if $sprite.animation != "killing":
 			$AnimationPlayer.play("killing")
 			$sprite.animation = "killing"
+			$sprite/eyes.animation = "killing"
 			$sprite.play()
 		
 		if killing <= 0:
 			$AnimationPlayer.stop()
 			$sprite.animation = "idle"
 			killing = 0
-			
+	else:
 		if direction == "right":
 			moving = true
 			idle_time = 0
@@ -94,9 +96,11 @@ func process_player(delta):
 			idle_time = 0
 			velocity.x = -speed
 			$sprite.flip_h = true
-	else:
-		if killing <= 0:
+		
+		if direction_change_ttl > 0: 
 			direction_change_ttl -= 1 * delta
+		
+		if is_on_wall():
 			if direction_change_ttl <= 0:
 				direction_change_ttl = direction_change_ttl_total
 				if direction == "right":
@@ -115,9 +119,10 @@ func process_player(delta):
 			$sprite.stop()
 			idle_time += 1 * delta
 			if idle_time >= 0.3:  
-				$sprite.animation = "idle"	
-	
+				$sprite.animation = "idle"
+		
 		$sprite/eyes.animation = $sprite.animation
+		$sprite/eyes.flip_h = $sprite.flip_h 
 
 func jump(delta):
 	if !Global.GAMEOVER:
@@ -148,6 +153,10 @@ func kill_fire():
 
 func dead_fire():
 	pass
+	
+func kill_fall():
+	visible = false
+	queue_free()
 
 func flyaway(direction):
 	if blowed <= 0:
