@@ -3,6 +3,7 @@ Ajustes:
 - Ver límites de la cámara para que no se vaya off limit
 
 Features:
+- Enemigo papa que al acercarte grita y tira muchas balas estilos bullet hell
 - IA de los prisioneros
 - IA de los enemigos glotones
 - Si el enemigo glotón "come" otros items:
