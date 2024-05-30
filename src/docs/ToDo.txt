@@ -1,4 +1,6 @@
 Ajustes:
+- Arriba o abajo mueven los ojos del pj y se agacha un poquito 
+- Ver límites de la cámara para que no se vaya off limit
 
 Features:
 - Enemigo tipo escarabajo que camina circular
