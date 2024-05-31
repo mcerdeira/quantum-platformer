@@ -155,6 +155,9 @@ func kill_fire():
 func dead_fire():
 	pass
 	
+func hearing_alerted(body):
+	pass
+	
 func kill_fall():
 	visible = false
 	queue_free()
