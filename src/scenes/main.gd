@@ -2,7 +2,8 @@ extends Node2D
 var particle = preload("res://scenes/particle2.tscn")
 var player_placed = false
 var rooms_top = [
-	load("res://scenes/levels/room_top1.tscn") 
+	load("res://scenes/levels/room_top1.tscn"),
+	load("res://scenes/levels/room_top2.tscn")  
 ]
 var rooms_middle = [
 	load("res://scenes/levels/room_middle1.tscn")

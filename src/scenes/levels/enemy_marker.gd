@@ -11,9 +11,9 @@ func _ready():
 
 func _process(delta):
 	if !done:
-		if randi() % 2 == 0: 
+		var eobj = selected_enemy
+		if eobj or randi() % 2 == 0: 
 			var Main = get_node("/root/Main")
-			var eobj = selected_enemy
 			if !eobj:
 				eobj = Global.pick_random([enemy, enemy_walker])
 			else:

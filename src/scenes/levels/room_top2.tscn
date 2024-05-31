@@ -1,0 +1,122 @@
+[gd_scene load_steps=21 format=3 uid="uid://b4q5umwa0x5nn"]
+
+[ext_resource type="Texture2D" uid="uid://djs78nqy60b6t" path="res://sprites/floor_spr_2.png" id="1_kdqek"]
+[ext_resource type="Texture2D" uid="uid://6e6u7tx8wpp5" path="res://sprites/stair.png" id="2_ocor5"]
+[ext_resource type="Texture2D" uid="uid://c2cg0s26dklew" path="res://sprites/floor_spr_blasted.png" id="3_ktd77"]
+[ext_resource type="Texture2D" uid="uid://bk3kd8e8ysnn1" path="res://sprites/fireball_box.png" id="4_3vhst"]
+[ext_resource type="Script" path="res://scenes/levels/room.gd" id="5_xf745"]
+[ext_resource type="Texture2D" uid="uid://dm1ktaigtofob" path="res://sprites/vines.png" id="6_ti37a"]
+[ext_resource type="PackedScene" uid="uid://c0spdkief8ynm" path="res://scenes/levels/prisoner_choose.tscn" id="7_swpul"]
+[ext_resource type="PackedScene" uid="uid://bfmdje7uoppc1" path="res://scenes/levels/prisoner_marker.tscn" id="8_62mt2"]
+[ext_resource type="PackedScene" uid="uid://c4vd4vxwdwdqh" path="res://scenes/levels/enemy_marker.tscn" id="9_da3di"]
+[ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="10_t6m0p"]
+[ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="11_44au5"]
+[ext_resource type="PackedScene" uid="uid://q767q018lep8" path="res://scenes/exit_door.tscn" id="12_ogx81"]
+[ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="13_l88c5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
+texture = ExtResource("1_kdqek")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qr43o"]
+texture = ExtResource("2_ocor5")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uo14k"]
+texture = ExtResource("3_ktd77")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_susn1"]
+texture = ExtResource("4_3vhst")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_4lr5i"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 275
+physics_layer_0/collision_mask = 275
+sources/0 = SubResource("TileSetAtlasSource_iwogt")
+sources/1 = SubResource("TileSetAtlasSource_qr43o")
+sources/2 = SubResource("TileSetAtlasSource_uo14k")
+sources/3 = SubResource("TileSetAtlasSource_susn1")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1nakb"]
+texture = ExtResource("6_ti37a")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_cmcrj"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 128
+physics_layer_0/collision_mask = 128
+sources/4 = SubResource("TileSetAtlasSource_1nakb")
+
+[node name="level" type="TileMap"]
+tile_set = SubResource("TileSet_4lr5i")
+format = 2
+layer_0/tile_data = PackedInt32Array(1245219, 0, 0, 1245218, 0, 0, 1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0, 1245187, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245190, 0, 0, 1245191, 0, 0, 1245192, 0, 0, 1245217, 0, 0, 1245216, 0, 0, 1245215, 0, 0, 1245214, 0, 0, 1245212, 0, 0, 1245211, 0, 0, 1245210, 0, 0, 1245209, 0, 0, 1245205, 0, 0, 1245204, 0, 0, 1245203, 0, 0, 1245202, 0, 0, 1245201, 0, 0, 1245200, 0, 0, 1245199, 0, 0, 1245198, 0, 0, 1245197, 0, 0, 1245196, 0, 0, 1245207, 1, 0, 131072, 0, 0, 65536, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 65537, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 15, 0, 0, 16, 0, 0, 65551, 0, 0, 65547, 0, 0, 65543, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 30, 0, 0, 31, 0, 0, 32, 0, 0, 33, 0, 0, 65569, 0, 0, 35, 0, 0, 34, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 65550, 0, 0, 65549, 0, 0, 65548, 0, 0, 65568, 0, 0, 65546, 0, 0, 65545, 0, 0, 65544, 0, 0, 1245193, 0, 0, 1245195, 0, 0, 1245194, 1, 0, 1245213, 1, 0, 1245208, 0, 0, 1245206, 0, 0, 22, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 458759, 0, 0, 458760, 0, 0, 589831, 0, 0, 589832, 0, 0, 393240, 0, 0, 393241, 0, 0, 393242, 0, 0, 458774, 0, 0, 458775, 0, 0, 458776, 0, 0, 458777, 0, 0, 458778, 0, 0, 458779, 0, 0, 458780, 0, 0, 524312, 0, 0, 524313, 0, 0, 524314, 0, 0, 589840, 0, 0, 589841, 0, 0, 655377, 0, 0, 720913, 0, 0, 786449, 0, 0, 851985, 0, 0, 851984, 0, 0, 786448, 0, 0, 720912, 0, 0, 655376, 0, 0, 1179658, 1, 0, 1179671, 1, 0, 1179677, 1, 0)
+script = ExtResource("5_xf745")
+
+[node name="vines" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_cmcrj")
+format = 2
+layer_0/tile_data = PackedInt32Array(589829, 4, 0, 589830, 4, 0, 655366, 4, 0, 655367, 4, 0, 655368, 4, 0, 589833, 4, 0, 589834, 4, 0, 655370, 4, 0, 655371, 4, 0, 720910, 4, 0, 720911, 4, 0, 786447, 4, 0, 851983, 4, 0, 917519, 4, 0, 917520, 4, 0, 917521, 4, 0, 917522, 4, 0, 851986, 4, 0, 786450, 4, 0, 720914, 4, 0, 720915, 4, 0, 458773, 4, 0, 524309, 4, 0, 524310, 4, 0, 524311, 4, 0, 524312, 4, 0, 589848, 4, 0, 589849, 4, 0, 589850, 4, 0, 589851, 4, 0, 524315, 4, 0, 524316, 4, 0, 524317, 4, 0, 458781, 4, 0)
+
+[node name="prisoner_choose" parent="." instance=ExtResource("7_swpul")]
+
+[node name="prisoner_marker" parent="prisoner_choose" instance=ExtResource("8_62mt2")]
+position = Vector2(325, 240)
+
+[node name="prisoner_marker2" parent="prisoner_choose" instance=ExtResource("8_62mt2")]
+position = Vector2(898, 208)
+
+[node name="enemy_marker" parent="." instance=ExtResource("9_da3di")]
+position = Vector2(538, 272)
+selected_enemy = "walker_wall"
+
+[node name="enemy_marker2" parent="." instance=ExtResource("9_da3di")]
+position = Vector2(248, 208)
+selected_enemy = "walker_wall"
+
+[node name="enemy_marker3" parent="." instance=ExtResource("9_da3di")]
+position = Vector2(819, 176)
+selected_enemy = "walker_wall"
+
+[node name="player_marker" parent="." instance=ExtResource("10_t6m0p")]
+position = Vector2(548, 592)
+
+[node name="ExitDoor" parent="." instance=ExtResource("12_ogx81")]
+position = Vector2(737, 224)
+
+[node name="qdtector" parent="." instance=ExtResource("13_l88c5")]
+visible = false
+collision_layer = 9
+collision_mask = 9
+
+[node name="Stair" parent="." instance=ExtResource("11_44au5")]
+position = Vector2(336, 640)
+scale = Vector2(1, 2)
+
+[node name="Stair2" parent="." instance=ExtResource("11_44au5")]
+position = Vector2(752, 640)
+scale = Vector2(1, 2)
+
+[node name="Stair3" parent="." instance=ExtResource("11_44au5")]
+position = Vector2(944, 640)
+scale = Vector2(1, 2)
