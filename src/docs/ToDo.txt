@@ -4,6 +4,7 @@ Ajustes:
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 
 Features:
+- Enemigo papa que al acercarte grita y tira muchas balas estilos bullet hell
 - IA de los prisioneros
 - IA de los enemigos glotones
 - Si el enemigo glotón "come" otros items:
