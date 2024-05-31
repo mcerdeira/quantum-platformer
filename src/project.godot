@@ -103,6 +103,16 @@ fx={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Comun"
+2d_physics/layer_2="Switch para personaje al morir"
+2d_physics/layer_4="Escaleras/QDetector"
+2d_physics/layer_5="Switch para prisioneros al morir"
+2d_physics/layer_8="Vines y cosas incendiables"
+2d_physics/layer_9="Enemigos Walkers_Walls"
+2d_physics/layer_20="RayCast del enemigo"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

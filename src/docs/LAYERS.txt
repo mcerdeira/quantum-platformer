@@ -1,0 +1,11 @@
+1  - Comun (personaje, prisioneros, items, enemigos en general, etc)
+2  - Switch para personaje al morir (asi deja de colisionar con enemigos, pero sigue con fisica del nivel)
+5  - Switch para prisioneros al morir
+
+4  - Escaleras y QDetector
+8  - Vines y cosas incendiables (para colisionar y prender fuego pero no ser un obstaculo) 
+9  - Enemigos Walkers_Walls, para que no caminen por arriba de otras cosas que no sea el terreno
+20 - RayCast del enemigo que tiene raycast =) 
+
+
+El nivel tiene que tener los siguientes Layers: 1, 2, 9, 5 

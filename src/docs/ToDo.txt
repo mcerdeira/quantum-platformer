@@ -1,6 +1,7 @@
 Ajustes:
 - Arriba o abajo mueven los ojos del pj y se agacha un poquito 
 - Ver límites de la cámara para que no se vaya off limit
+- Enemigo tipo escarabajo que camina circular (tiene bugs)
 
 Features:
 - IA de los prisioneros

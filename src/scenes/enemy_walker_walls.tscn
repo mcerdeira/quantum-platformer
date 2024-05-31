@@ -151,6 +151,8 @@ _data = {
 }
 
 [node name="EnemyWalkerWalls" type="CharacterBody2D"]
+collision_layer = 256
+collision_mask = 256
 script = ExtResource("1_53he0")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
@@ -179,12 +181,12 @@ libraries = {
 speed_scale = 2.0
 
 [node name="ray_floor" type="RayCast2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(3, -16)
 target_position = Vector2(0, 18)
 collision_mask = 2
 
 [node name="ray_wall" type="RayCast2D" parent="."]
-position = Vector2(16, -32)
+position = Vector2(16, -24)
 target_position = Vector2(18, 0)
 collision_mask = 2
 
