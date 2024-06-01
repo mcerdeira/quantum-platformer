@@ -2,10 +2,12 @@ Ajustes:
 - Arriba o abajo mueven los ojos del pj y se agacha un poquito 
 - Ver límites de la cámara para que no se vaya off limit
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
+- El rango de visión de los glotones tiene que ser visible. 
 
 Features:
 - Enemigo sapo que al acercarte grita y tira muchas balas estilos bullet hell
-- IA de los prisioneros
+- IA de los prisioneros, al pasar por encima dar la opción de que te sigan. 
+- Si muere un prisionero aparece un fantasma que te sigue por todo el nivel. 
 - IA de los enemigos glotones
 - Si el enemigo glotón "come" otros items:
   - Ver logica de still_alert() en cada tipo de enemigo, si ahi metemos la logica de estar comiendo  
