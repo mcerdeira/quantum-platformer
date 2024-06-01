@@ -3,6 +3,7 @@ Ajustes:
 - Ver límites de la cámara para que no se vaya off limit
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 - El rango de visión de los glotones tiene que ser visible. 
+Al liberar un prisionero tiene que estar en un layer separado para no chocar con ellos. 
 
 Features:
 - Enemigo sapo que al acercarte grita y tira muchas balas estilos bullet hell
