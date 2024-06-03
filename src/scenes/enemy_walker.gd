@@ -12,7 +12,7 @@ var in_air = false
 var idle_time = 0
 var tspeed = 370.0
 var initial_rotation = 0
-var total_killing = 4
+var total_killing = 6
 var killing = 0
 var direction_change_ttl_total = 1
 var direction_change_ttl = direction_change_ttl_total
@@ -157,6 +157,9 @@ func dead_fire():
 	
 func hearing_alerted(body):
 	pass
+	
+func eat_gizmo():
+	killing = total_killing
 	
 func kill_fall():
 	visible = false

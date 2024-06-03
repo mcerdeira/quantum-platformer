@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://irdn6sjvaj0e"]
+[gd_scene load_steps=14 format=3 uid="uid://irdn6sjvaj0e"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_8vrwn"]
 [ext_resource type="Texture2D" uid="uid://b3d305p22pnls" path="res://sprites/chest_idle.png" id="2_ckle5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/RayCast2D.gd" id="5_ermrk"]
 [ext_resource type="Texture2D" uid="uid://wpjotc6uharg" path="res://sprites/chest_stunned.png" id="6_7gypa"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="6_mlrcm"]
+[ext_resource type="Texture2D" uid="uid://c52d6ydpddgln" path="res://sprites/vision.png" id="7_2aecm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eqtew"]
 animations = [{
@@ -118,9 +119,15 @@ shape = SubResource("RectangleShape2D_kwrcj")
 
 [node name="Agro" type="Node2D" parent="."]
 
+[node name="Vision" type="Sprite2D" parent="Agro"]
+modulate = Color(1, 1, 1, 0.129412)
+position = Vector2(9, -13)
+texture = ExtResource("7_2aecm")
+offset = Vector2(250, 0)
+
 [node name="RayCast2D" type="RayCast2D" parent="Agro"]
 position = Vector2(25, 0)
-target_position = Vector2(500, 0)
+target_position = Vector2(484, 0)
 collision_mask = 524288
 collide_with_areas = true
 script = ExtResource("5_ermrk")

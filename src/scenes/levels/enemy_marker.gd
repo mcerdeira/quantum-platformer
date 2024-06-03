@@ -2,6 +2,7 @@ extends Marker2D
 var enemy = load("res://scenes/enemy.tscn")
 var enemy_walker = load("res://scenes/enemy_walker.tscn")
 var enemy_walker_walls = load("res://scenes/enemy_walker_walls.tscn")
+var enemy_bullet = load("res://scenes/enemy_bullet.tscn")
 @export var selected_enemy: String 
 
 var done = false
@@ -15,7 +16,7 @@ func _process(delta):
 		if eobj or randi() % 2 == 0: 
 			var Main = get_node("/root/Main")
 			if !eobj:
-				eobj = Global.pick_random([enemy, enemy_walker])
+				eobj = Global.pick_random([enemy, enemy_walker, enemy_bullet])
 			else:
 				eobj = enemy_walker_walls
 			

@@ -30,6 +30,7 @@ var fire_obj = null
 var level_parent = null
 var idle_play_total = 4 
 var idle_play = idle_play_total
+var dont_camera = false
 
 func _ready():
 	add_to_group("players")
@@ -60,7 +61,11 @@ func destroy_trayectory():
 func _physics_process(delta):
 	Global.GAMEOVER = dead
 	
+	if dead and is_on_stairs:
+		velocity = Vector2.ZERO
+	
 	if dead_fall:
+		velocity = Vector2.ZERO
 		return
 	
 	if Input.is_action_just_released("zoomin"):
@@ -102,6 +107,24 @@ func _physics_process(delta):
 		
 	process_player(delta)
 	move_and_slide()
+	
+func camera_limits():
+	if direction == "right":
+		$Camera2D.position.x = lerp($Camera2D.position.x, 200.00, 0.01)
+	else:
+		$Camera2D.position.x = lerp($Camera2D.position.x, -200.00, 0.01)
+	
+	if $Camera2D.global_position.x < 446:
+		$Camera2D.global_position.x = 446
+		
+	if $Camera2D.global_position.x > 4152:
+		$Camera2D.global_position.x = 4152
+		
+	if $Camera2D.global_position.y < 176:
+		$Camera2D.global_position.y = 176
+		
+	if $Camera2D.global_position.y > 2450:
+		$Camera2D.global_position.y = 2450
 
 func process_player(delta):
 	var moving = false
@@ -153,7 +176,7 @@ func process_player(delta):
 				update_trayectory(delta)
 				shoot_mode = true
 		
-	if shoot_mode and Input.is_action_just_released("shoot"):
+	if !dead and shoot_mode and Input.is_action_just_released("shoot"):
 		if !Global.gunz_equiped[Global.gunz_index].pasive:
 			if Global.slots_stock[Global.gunz_index] > 0:
 				idle_play = idle_play_total
@@ -166,7 +189,7 @@ func process_player(delta):
 				await get_tree().create_timer(0.3).timeout
 				$gun_sprite.visible = false
 		
-	if shoot_mode:
+	if !dead and shoot_mode:
 		if Input.is_action_pressed("left"):
 			$gun_sprite.rotation -= 1 * delta
 			idle_play = idle_play_total
@@ -183,8 +206,36 @@ func process_player(delta):
 			Global.emit(global_position, 2)
 		else:
 			jump(delta)
+					
+	camera_limits()
+	
+	if $sprite_eyes.position.y != 4:
+		if !Input.is_action_pressed("up") and !Input.is_action_pressed("down"):
+			$sprite_eyes.position.y = lerp($sprite_eyes.position.y, 4.0, 0.1)
+			$Camera2D.position.y  = lerp($Camera2D.position.y, -100.00, 0.1)
 		
 	if !dead:
+		if !shoot_mode and Input.is_action_pressed("down"):
+			if is_on_floor_custom() and !dont_camera:
+				$sprite_eyes.position.y = 8
+				var sp = 0
+				if is_on_stairs:
+					sp = 0.01
+				else:
+					sp = 0.1
+		
+				$Camera2D.position.y = lerp($Camera2D.position.y, 150.0, sp)
+			
+		if !shoot_mode and Input.is_action_pressed("up"):
+			if is_on_floor_custom() and !dont_camera:
+				$sprite_eyes.position.y = 0
+				var sp = 0
+				if is_on_stairs:
+					sp = 0.01
+				else:
+					sp = 0.1
+				$Camera2D.position.y = lerp($Camera2D.position.y, -250.0, sp)
+		
 		if !shoot_mode and Input.is_action_pressed("up"):
 			idle_play = idle_play_total
 			if is_on_stairs:

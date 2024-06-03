@@ -1,0 +1,97 @@
+[gd_scene load_steps=12 format=3 uid="uid://cwlt1clvornbo"]
+
+[ext_resource type="Texture2D" uid="uid://csml7untl5odh" path="res://sprites/horu/images/monkey_spr_0.png" id="1_coiab"]
+[ext_resource type="Script" path="res://scenes/enemy_bullet.gd" id="1_jcpgp"]
+[ext_resource type="Texture2D" uid="uid://dx68fiifggvis" path="res://sprites/horu/images/monkey_awake1.png" id="2_6xtrx"]
+[ext_resource type="Texture2D" uid="uid://dla1uq4pf1855" path="res://sprites/horu/images/monkey_face_spr_0.png" id="2_reept"]
+[ext_resource type="Texture2D" uid="uid://cdxntp1xk56hd" path="res://sprites/horu/images/monkey_face_spr_1.png" id="3_s3pon"]
+[ext_resource type="Texture2D" uid="uid://dmrgn7rm4xls2" path="res://sprites/horu/images/monkey_awake2.png" id="3_ve755"]
+[ext_resource type="Texture2D" uid="uid://bwnj642ijhni0" path="res://sprites/horu/images/monkey_face_spr_2.png" id="4_jg462"]
+[ext_resource type="Texture2D" uid="uid://dsc0t63c1s7yc" path="res://sprites/horu/images/monkey_awake_shoot1.png" id="7_1um5l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oeaso"]
+radius = 271.671
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3ov1t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_coiab")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xutts"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6xtrx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6xtrx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6xtrx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6xtrx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ve755")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ve755")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ve755")
+}],
+"loop": false,
+"name": &"awake",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_1um5l")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_reept")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s3pon")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jg462")
+}],
+"loop": true,
+"name": &"slepping",
+"speed": 5.0
+}]
+
+[node name="EnemyBullet" type="Area2D"]
+script = ExtResource("1_jcpgp")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oeaso")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3ov1t")
+
+[node name="sprite_eyes" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 8)
+sprite_frames = SubResource("SpriteFrames_xutts")
+animation = &"shoot"
+autoplay = "slepping"
+speed_scale = 0.4
+
+[node name="shoot_pos" type="Marker2D" parent="."]
+position = Vector2(17, 15)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="sprite_eyes" to="." method="_on_sprite_eyes_animation_finished"]

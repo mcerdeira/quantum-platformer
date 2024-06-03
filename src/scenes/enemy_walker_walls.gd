@@ -12,7 +12,7 @@ var in_air = false
 var idle_time = 0
 var tspeed = 370.0
 var initial_rotation = 0
-var total_killing = 4
+var total_killing = 6
 var killing = 0
 var direction_change_ttl_total = 1
 var direction_change_ttl = direction_change_ttl_total
@@ -254,6 +254,9 @@ func hearing_alerted(body):
 func kill_fall():
 	visible = false
 	queue_free()
+	
+func eat_gizmo():
+	killing = total_killing
 
 func flyaway(direction):
 	if blowed <= 0:

@@ -17,7 +17,7 @@ var jump_delay = 0
 var current_target = null
 var current_target_alerted = null
 var check_delay = 1
-var total_killing = 4
+var total_killing = 6
 var killing = 0
 var direction_change_ttl_total = 4
 var direction_change_ttl = direction_change_ttl_total
@@ -73,6 +73,9 @@ func _physics_process(delta):
 
 func process_player(delta):
 	var moving = false
+	
+	$Agro/Vision.visible = !hostile
+	
 	if blowed > 0:
 		$sprite.animation = "stunned"
 		$lbl_status.text = "@"
@@ -90,6 +93,7 @@ func process_player(delta):
 		alerted = false
 	
 	if killing > 0:
+		$Agro/Vision.visible = false
 		killing -= 1 * delta 
 		alerted = false
 		hostile = false
@@ -242,9 +246,11 @@ func hearing_alerted(body):
 		current_target_alerted = body
 		alerted = true
 			
-func still_alert():
+func eat_gizmo():
 	current_target_alerted = null
 	alerted = false
+	hostile = false
+	killing = total_killing
 	
 func kill_fall():
 	visible = false

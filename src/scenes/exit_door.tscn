@@ -1,17 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://q767q018lep8"]
 
 [ext_resource type="Script" path="res://scenes/exit_door.gd" id="1_0vvlk"]
-[ext_resource type="Texture2D" uid="uid://nywbn485k5bj" path="res://sprites/crack_spr_0.png" id="1_btgo3"]
-[ext_resource type="Texture2D" uid="uid://c8tmvh50palpk" path="res://sprites/crack_spr_1.png" id="2_uhela"]
+[ext_resource type="Texture2D" uid="uid://diqcmmrm2bdeb" path="res://sprites/horu/images/exit_spr_0.png" id="4_186lq"]
+[ext_resource type="Texture2D" uid="uid://cr3uij3812lyq" path="res://sprites/horu/images/exit_spr_1.png" id="5_kdr3r"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_82tis"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_3viko"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_btgo3")
+"texture": ExtResource("4_186lq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_uhela")
+"texture": ExtResource("5_kdr3r")
 }],
 "loop": true,
 "name": &"default",
@@ -19,16 +19,15 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njti7"]
-size = Vector2(30, 27)
+size = Vector2(36, 31)
 
 [node name="ExitDoor" type="Area2D"]
 script = ExtResource("1_0vvlk")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -27.25)
-scale = Vector2(1, 0.990909)
-sprite_frames = SubResource("SpriteFrames_82tis")
+position = Vector2(39, -37)
+sprite_frames = SubResource("SpriteFrames_3viko")
 
 [node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -13.5)
+position = Vector2(1, -15.5)
 shape = SubResource("RectangleShape2D_njti7")

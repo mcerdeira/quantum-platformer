@@ -94,7 +94,7 @@ func _physics_process(delta):
 		
 	var sel = get_node("/root/Main/CanvasLayer/Control/PrisonerHead/counter")
 	if sel:
-		sel.text = "x" + str(Global.prisoner_counter)
+		sel.text = str(Global.prisoner_total - Global.prisoner_counter) + "/" + str(Global.prisoner_total) 
 		
 	if Input.is_action_just_pressed("fx"):
 		$FX.visible = !$FX.visible

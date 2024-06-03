@@ -167,7 +167,7 @@ func explode():
 func _on_area_body_entered(body):
 	if !simulation:
 		if body and body.is_in_group("enemies"):
-			body.still_alert()
+			body.eat_gizmo()
 			Global.emit(global_position, 1)
 			queue_free()
 	
