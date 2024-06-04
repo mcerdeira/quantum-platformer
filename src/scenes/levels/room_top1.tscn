@@ -144,4 +144,5 @@ position = Vector2(433, 593)
 
 [node name="enemy_marker3" parent="." instance=ExtResource("4_7x54m")]
 position = Vector2(1015, 240)
-selected_enemy = "walker_wall"
+selected_enemy = "enemy_walker_walls"
+by_chance = false

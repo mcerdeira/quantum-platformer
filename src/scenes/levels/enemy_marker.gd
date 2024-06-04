@@ -3,7 +3,9 @@ var enemy = load("res://scenes/enemy.tscn")
 var enemy_walker = load("res://scenes/enemy_walker.tscn")
 var enemy_walker_walls = load("res://scenes/enemy_walker_walls.tscn")
 var enemy_bullet = load("res://scenes/enemy_bullet.tscn")
+
 @export var selected_enemy: String 
+@export var by_chance : bool = true
 
 var done = false
 
@@ -12,13 +14,20 @@ func _ready():
 
 func _process(delta):
 	if !done:
-		var eobj = selected_enemy
-		if eobj or randi() % 2 == 0: 
+		var eobj
+		var rand = 0
+		if by_chance:
+			rand = randi() % 2
+		
+		if selected_enemy or rand == 0: 
 			var Main = get_node("/root/Main")
-			if !eobj:
-				eobj = Global.pick_random([enemy, enemy_walker, enemy_bullet])
+			if !selected_enemy:
+				eobj = Global.pick_random([enemy, enemy_walker])
 			else:
-				eobj = enemy_walker_walls
+				if selected_enemy == "enemy_walker_walls":
+					eobj = enemy_walker_walls
+				elif selected_enemy == "enemy_bullet":
+					eobj = enemy_bullet
 			
 			var pclone = eobj.instantiate()
 			pclone.global_position = global_position

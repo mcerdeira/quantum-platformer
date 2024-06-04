@@ -1,13 +1,14 @@
 Ajustes:
-- Arte de los prisioneros
-- Al liberar un prisionero tiene que estar en un layer separado para no chocar con ellos. 
+- Prisioneros
+  . Arte de los prisioneros
+  . IA de los prisioneros, al pasar por encima dar la opción de que te sigan.   
+  . Al liberar un prisionero tiene que estar en un layer separado para no chocar con ellos. 
+  . Si muere un prisionero aparece un fantasma que te sigue por todo el nivel. 
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 
 
 Features:
 - Enemigo sapo que al acercarte grita y tira muchas balas estilos bullet hell
-- IA de los prisioneros, al pasar por encima dar la opción de que te sigan. 
-- Si muere un prisionero aparece un fantasma que te sigue por todo el nivel. 
 - IA de los enemigos glotones
 - Si el enemigo glotón "come" otros items:
   - Ver logica de still_alert() en cada tipo de enemigo, si ahi metemos la logica de estar comiendo  
@@ -26,6 +27,7 @@ Features:
 - Plantas para esconderse
 - Enemigo con alas que planea al caer 
 - Setting (blackthorne???) 
+- Nombre: Grotto algo?
 - Decoraciones 
   . Gotas de agua 
   . Plantitas en el piso 

@@ -78,20 +78,22 @@ animations = [{
 script = ExtResource("1_jcpgp")
 
 [node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
 shape = SubResource("CircleShape2D_oeaso")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_3ov1t")
 
 [node name="sprite_eyes" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_xutts")
 animation = &"shoot"
 autoplay = "slepping"
 speed_scale = 0.4
 
 [node name="shoot_pos" type="Marker2D" parent="."]
-position = Vector2(17, 15)
+position = Vector2(17, -1)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="sprite_eyes" to="." method="_on_sprite_eyes_animation_finished"]
