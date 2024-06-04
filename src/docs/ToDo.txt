@@ -11,7 +11,7 @@ Ajustes:
 Features:
 - IA de los enemigos glotones
 - Si el enemigo glotón "come" otros items:
-  - Ver logica de still_alert() en cada tipo de enemigo, si ahi metemos la logica de estar comiendo  
+  - Ver logica de still_alert() en cada tipo de enemigo, si ahi metemos la logica de estar comiendo 
   - Siempre: esta inactivo (no agresivo) mientras come  
   - Muffin, se duerme un rato
   - Clone machine: Genera un clon de si mismo
@@ -26,7 +26,8 @@ Features:
 - Item cohete 
 - Plantas para esconderse
 - Enemigo con alas que planea al caer 
-- Setting (blackthorne???) 
+
+- Secretos
 - Nombre: Grotto algo?
 - Decoraciones 
   . Gotas de agua 
