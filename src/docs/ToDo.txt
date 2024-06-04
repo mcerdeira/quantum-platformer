@@ -4,6 +4,7 @@ Ajustes:
   . IA de los prisioneros, al pasar por encima dar la opción de que te sigan.   
   . Al liberar un prisionero tiene que estar en un layer separado para no chocar con ellos. 
   . Si muere un prisionero aparece un fantasma que te sigue por todo el nivel. 
+- Los enemigos deben morir si se prenden fuego
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 
 
