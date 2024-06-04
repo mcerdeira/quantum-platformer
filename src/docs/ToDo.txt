@@ -5,11 +5,10 @@ Ajustes:
   . Al liberar un prisionero tiene que estar en un layer separado para no chocar con ellos. 
   . Si muere un prisionero aparece un fantasma que te sigue por todo el nivel. 
 - Los enemigos deben morir si se prenden fuego
+- Enemigo bullet hell tiene que prenderse fuego y tener una forma de apagarse (además espaciar más los tiros) 
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 
-
 Features:
-- Enemigo sapo que al acercarte grita y tira muchas balas estilos bullet hell
 - IA de los enemigos glotones
 - Si el enemigo glotón "come" otros items:
   - Ver logica de still_alert() en cada tipo de enemigo, si ahi metemos la logica de estar comiendo  
@@ -32,6 +31,8 @@ Features:
 - Decoraciones 
   . Gotas de agua 
   . Plantitas en el piso 
+  . Tumbas
+  . Splash al caer en la lava
   . Lamparas colgantes (caen al tocarlas y generan fuego)
   . Cascaditas
 
@@ -39,6 +40,7 @@ Features:
 - Musica
 
 --------------------------------- DONE ---------------------------------
+- Enemigo sapo que al acercarte grita y tira muchas balas estilos bullet hell 
 - Contador de prisioneros debe ser N / N
 - El rango de visión de los glotones tiene que ser visible. 
 - Ver límites de la cámara para que no se vaya off limit
