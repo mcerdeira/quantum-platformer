@@ -1,4 +1,5 @@
 Ajustes:
+- Al stunnearse, deben mostrar estrellas girando 
 - Prisioneros
   . Arte de los prisioneros
   . IA de los prisioneros, al pasar por encima dar la opción de que te sigan.   
