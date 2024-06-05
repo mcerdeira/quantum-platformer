@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://irdn6sjvaj0e"]
+[gd_scene load_steps=18 format=3 uid="uid://irdn6sjvaj0e"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_8vrwn"]
 [ext_resource type="Texture2D" uid="uid://b3d305p22pnls" path="res://sprites/chest_idle.png" id="2_ckle5"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://wpjotc6uharg" path="res://sprites/chest_stunned.png" id="6_7gypa"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="6_mlrcm"]
 [ext_resource type="Texture2D" uid="uid://c52d6ydpddgln" path="res://sprites/vision.png" id="7_2aecm"]
+[ext_resource type="Texture2D" uid="uid://hpuda2eg601m" path="res://sprites/horu/images/stars1.png" id="7_7jtwr"]
+[ext_resource type="Texture2D" uid="uid://b7ra00yssdsct" path="res://sprites/horu/images/stars2.png" id="8_wvmb0"]
+[ext_resource type="Texture2D" uid="uid://dv4833kftjwfh" path="res://sprites/horu/images/stars3.png" id="9_2r3ry"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eqtew"]
 animations = [{
@@ -50,6 +53,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rw2kj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_7jtwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wvmb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2r3ry")
+}],
+"loop": true,
+"name": &"default",
 "speed": 5.0
 }]
 
@@ -100,6 +120,14 @@ position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_eqtew")
 animation = &"walking"
 offset = Vector2(0, -16)
+
+[node name="stars_stunned" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -7)
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_rw2kj")
+autoplay = "default"
+frame_progress = 0.790569
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)

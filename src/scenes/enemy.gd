@@ -63,6 +63,7 @@ func _physics_process(delta):
 		else:
 			previus_velocity = velocity
 	else:
+		$stars_stunned.visible = false
 		if !is_on_floor_custom():
 			velocity.x = lerp(velocity.x, 0.0, friction / 10)
 		else:
@@ -78,9 +79,8 @@ func process_player(delta):
 	
 	if blowed > 0:
 		$sprite.animation = "stunned"
-		$lbl_status.text = "@"
-		$lbl_status.set("theme_override_colors/font_color", Color.AQUAMARINE)
-		blowed -= 1 * delta
+		$stars_stunned.visible = true
+		$lbl_status.text = ""
 		alerted = false
 		hostile = false
 		return

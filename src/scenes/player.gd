@@ -59,7 +59,8 @@ func destroy_trayectory():
 	LineTrayectory.clear_points()
 
 func _physics_process(delta):
-	Global.GAMEOVER = dead
+	if !iam_clone:
+		Global.GAMEOVER = dead
 	
 	if dead and is_on_stairs:
 		velocity = Vector2.ZERO
@@ -89,6 +90,7 @@ func _physics_process(delta):
 	if blowed > 0:
 		blowed -= 1 * delta
 		if blowed <= 0:
+			$stars_stunned.visible = false
 			$lbl_action.visible = false
 			
 		if is_on_wall():
@@ -129,6 +131,7 @@ func camera_limits():
 func process_player(delta):
 	var moving = false
 	if dead:
+		$stars_stunned.visible = false
 		blowed = 0
 		set_collision_layer_value(2, true)
 		set_collision_mask_value(2, true)
@@ -136,11 +139,10 @@ func process_player(delta):
 		set_collision_mask_value(1, false)
 		
 	if blowed > 0:
+		$stars_stunned.visible = false
 		$sprite.animation = "stunned"
 		$sprite_eyes.animation = $sprite.animation
-		$lbl_action.visible = true
-		$lbl_action.text = "..."
-		$lbl_action.set("theme_override_colors/font_color", Color.AQUAMARINE)
+		$lbl_action.visible = false
 		idle_play = idle_play_total
 		return
 

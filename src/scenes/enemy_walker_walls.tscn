@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://81vub78cngl3"]
+[gd_scene load_steps=27 format=3 uid="uid://81vub78cngl3"]
 
 [ext_resource type="Script" path="res://scenes/enemy_walker_walls.gd" id="1_53he0"]
 [ext_resource type="Texture2D" uid="uid://dplov63g6dekc" path="res://sprites/horu/images/enemy_wall_spr_0.png" id="2_h33ti"]
@@ -16,6 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://th5j476r6114" path="res://sprites/horu/images/enemy_danger_spr_0.png" id="14_fa8fp"]
 [ext_resource type="Texture2D" uid="uid://xbq2vgwne0bv" path="res://sprites/horu/images/enemy_danger_spr_1.png" id="15_krmdw"]
 [ext_resource type="Texture2D" uid="uid://hutlu6c76y5i" path="res://sprites/horu/images/enemy_danger_spr_2.png" id="16_brd5u"]
+[ext_resource type="Texture2D" uid="uid://hpuda2eg601m" path="res://sprites/horu/images/stars1.png" id="17_lq5dc"]
+[ext_resource type="Texture2D" uid="uid://b7ra00yssdsct" path="res://sprites/horu/images/stars2.png" id="18_3nj8t"]
+[ext_resource type="Texture2D" uid="uid://dv4833kftjwfh" path="res://sprites/horu/images/stars3.png" id="19_0ghtu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0vk2b"]
 animations = [{
@@ -150,6 +153,23 @@ _data = {
 "killing": SubResource("Animation_k8fva")
 }
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_3tn2l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_lq5dc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_3nj8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_0ghtu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="EnemyWalkerWalls" type="CharacterBody2D"]
 collision_layer = 256
 collision_mask = 256
@@ -189,5 +209,13 @@ collision_mask = 2
 position = Vector2(16, -24)
 target_position = Vector2(18, 0)
 collision_mask = 2
+
+[node name="stars_stunned" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(16, -21)
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_3tn2l")
+autoplay = "default"
+frame_progress = 0.742966
 
 [connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]

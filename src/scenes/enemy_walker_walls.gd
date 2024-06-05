@@ -69,6 +69,7 @@ func _physics_process(delta):
 			else:
 				previus_velocity = velocity
 		else:
+			$stars_stunned.visible = false
 			if !is_on_floor_custom():
 				velocity.x = lerp(velocity.x, 0.0, friction / 10)
 			else:
@@ -93,7 +94,7 @@ func process_player(delta):
 	var moving = false
 	if blowed > 0:
 		$sprite.animation = "stunned"
-		blowed -= 1 * delta
+		$stars_stunned.visible = true
 		return
 		
 	if Global.GAMEOVER:

@@ -1,24 +1,21 @@
-[gd_scene load_steps=17 format=3 uid="uid://co7t0ic7dgox4"]
+[gd_scene load_steps=14 format=3 uid="uid://co7t0ic7dgox4"]
 
 [ext_resource type="Script" path="res://scenes/prisoner.gd" id="1_e8vj3"]
-[ext_resource type="Texture2D" uid="uid://bq313btg5ehti" path="res://sprites/sleepy_dead.png" id="2_l5jyv"]
-[ext_resource type="Texture2D" uid="uid://dottac36tqqnf" path="res://sprites/sleepy_0.png" id="2_pp4hu"]
-[ext_resource type="Texture2D" uid="uid://cbm2ov3p75byk" path="res://sprites/dead_fire_spr_0.png" id="3_m1awj"]
-[ext_resource type="Texture2D" uid="uid://bfhcnmqml3xsm" path="res://sprites/sleepy_1.png" id="3_qtk0x"]
-[ext_resource type="Texture2D" uid="uid://cnm8f3w276cay" path="res://sprites/sleepy_2.png" id="4_18u4k"]
-[ext_resource type="Texture2D" uid="uid://cpq2gxdbvq4i6" path="res://sprites/dead_fire_spr_1.png" id="4_juvd8"]
+[ext_resource type="Texture2D" uid="uid://bjfjws7k16wlx" path="res://sprites/horu/images/player_prisoner_fire_spr_0.png" id="2_42st0"]
+[ext_resource type="Texture2D" uid="uid://dvpx8v5ontbdf" path="res://sprites/horu/images/player_prisoner_dead_spr_0.png" id="2_nndgd"]
 [ext_resource type="Texture2D" uid="uid://dc5iy4hnblrha" path="res://sprites/sleepy_trap_0.png" id="4_n5scw"]
-[ext_resource type="Texture2D" uid="uid://bn3j5ne0mc650" path="res://sprites/dead_fire_spr_2.png" id="5_fjvcs"]
 [ext_resource type="Texture2D" uid="uid://cghefrirh1r18" path="res://sprites/sleepy_trap_1.png" id="5_wpxcc"]
-[ext_resource type="Texture2D" uid="uid://cv75cem5hlexd" path="res://sprites/sleepy_3.png" id="5_wr0b2"]
 [ext_resource type="Texture2D" uid="uid://bs35paxf142ou" path="res://sprites/sleepy_trap_2.png" id="6_n6gfv"]
+[ext_resource type="Texture2D" uid="uid://bnu7qox5rd7f1" path="res://sprites/horu/images/prisoner1.png" id="6_u7wjf"]
+[ext_resource type="Texture2D" uid="uid://b2wsw6mqocn3u" path="res://sprites/horu/images/prisoner2.png" id="10_4resd"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="10_s4hmp"]
+[ext_resource type="Texture2D" uid="uid://bwjggynfja1fm" path="res://sprites/horu/images/prisoner3.png" id="11_u3fe3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ssvs2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_l5jyv")
+"texture": ExtResource("2_nndgd")
 }],
 "loop": true,
 "name": &"dead",
@@ -26,13 +23,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_m1awj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_juvd8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_fjvcs")
+"texture": ExtResource("2_42st0")
 }],
 "loop": true,
 "name": &"dead_fire",
@@ -40,7 +31,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_pp4hu")
+"texture": ExtResource("6_u7wjf")
 }],
 "loop": true,
 "name": &"idle",
@@ -62,16 +53,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_qtk0x")
+"texture": ExtResource("6_u7wjf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_18u4k")
+"texture": ExtResource("10_4resd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_wr0b2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_18u4k")
+"texture": ExtResource("11_u3fe3")
 }],
 "loop": true,
 "name": &"walking",
@@ -90,7 +78,7 @@ script = ExtResource("1_e8vj3")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ssvs2")
-animation = &"idle"
+animation = &"trapped"
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)

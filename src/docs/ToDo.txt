@@ -1,16 +1,13 @@
 Ajustes:
-- Al stunnearse, deben mostrar estrellas girando 
 - Prisioneros
-  . Arte de los prisioneros
   . IA de los prisioneros, al pasar por encima dar la opción de que te sigan.   
   . Al liberar un prisionero tiene que estar en un layer separado para no chocar con ellos. 
   . Si muere un prisionero aparece un fantasma que te sigue por todo el nivel. 
 - Los enemigos deben morir si se prenden fuego
-- Enemigo bullet hell tiene que prenderse fuego y tener una forma de apagarse (además espaciar más los tiros) 
+- Enemigo bullet hell tiene que prenderse fuego y tener una forma de cambiar de estado "hostil" (además espaciar más los tiros) 
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 
 Features:
-- IA de los enemigos glotones
 - Si el enemigo glotón "come" otros items:
   - Ver logica de still_alert() en cada tipo de enemigo, si ahi metemos la logica de estar comiendo 
   - Siempre: esta inactivo (no agresivo) mientras come  
@@ -26,6 +23,7 @@ Features:
 - Item humo
 - Item cohete 
 - Plantas para esconderse
+- Terminarles donde podemos acceder a un mapa del nivel
 - Enemigo con alas que planea al caer 
 
 - Secretos
@@ -41,7 +39,17 @@ Features:
 - SFX
 - Musica
 
+== OBJETIVO ==
+- Al stunnearse, deben mostrar estrellas girando 
+- Liberar a todos los prisioneros, encontrar la puerta e irse (simil alien 3/sega)
+- Secundario: si ademas nos llevamos prisioneros a la puerta con nosotros, algún perk
+- Secretos:
+  . Nos vamos a encontrar alguna puerta "distinta" a la puerta normal: ???
+  . En las terminales vamos a poder hacer algo?
+
 --------------------------------- DONE ---------------------------------
+- Arte de los prisioneros
+- IA de los enemigos glotones
 - Enemigo sapo que al acercarte grita y tira muchas balas estilos bullet hell 
 - Contador de prisioneros debe ser N / N
 - El rango de visión de los glotones tiene que ser visible. 
