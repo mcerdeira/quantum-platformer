@@ -21,6 +21,7 @@ var previus_velocity = Vector2.ZERO
 var fire_obj = null
 var level_parent = null
 var fires = preload("res://scenes/Fires.tscn")
+var dead = false
 
 func _ready():
 	add_to_group("enemies")
@@ -73,6 +74,14 @@ func process_player(delta):
 		
 	if Global.GAMEOVER:
 		pass
+		
+	if dead:
+		$sprite/eyes.animation = $sprite.animation
+		$sprite/eyes.flip_h = $sprite.flip_h 
+		$AnimationPlayer.stop()
+		$stars_stunned.visible = false
+		return
+		
 				
 	if killing > 0:
 		killing -= 1 * delta 
@@ -135,13 +144,14 @@ func jump(delta):
 			velocity.y = jump_speed
 
 func _on_area_body_entered(body):
-	if body and body.is_in_group("players"):
-		body.kill()
-		killing = total_killing
-		if global_position.x > body.global_position.x:
-			$sprite.flip_h = true
-		else:
-			$sprite.flip_h = false
+	if !dead:
+		if body and body.is_in_group("players"):
+			body.kill()
+			killing = total_killing
+			if global_position.x > body.global_position.x:
+				$sprite.flip_h = true
+			else:
+				$sprite.flip_h = false
 
 func kill_fire():
 	if fire_obj == null:
@@ -154,7 +164,13 @@ func kill_fire():
 		fire_obj = p
 
 func dead_fire():
-	pass
+	dead = true
+	$sprite.animation = "dead_fire"
+	$sprite.play()
+	set_collision_layer_value(5, true)
+	set_collision_mask_value(5, true)
+	set_collision_layer_value(1, false)
+	set_collision_mask_value(1, false)
 	
 func hearing_alerted(body):
 	pass

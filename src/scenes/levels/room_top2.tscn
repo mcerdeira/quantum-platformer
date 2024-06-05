@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b4q5umwa0x5nn"]
+[gd_scene load_steps=23 format=3 uid="uid://b4q5umwa0x5nn"]
 
 [ext_resource type="Texture2D" uid="uid://djs78nqy60b6t" path="res://sprites/floor_spr_2.png" id="1_kdqek"]
 [ext_resource type="Texture2D" uid="uid://6e6u7tx8wpp5" path="res://sprites/stair.png" id="2_ocor5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bk3kd8e8ysnn1" path="res://sprites/fireball_box.png" id="4_3vhst"]
 [ext_resource type="Script" path="res://scenes/levels/room.gd" id="5_xf745"]
 [ext_resource type="Texture2D" uid="uid://dm1ktaigtofob" path="res://sprites/vines.png" id="6_ti37a"]
+[ext_resource type="Texture2D" uid="uid://d4c7vtq3agr88" path="res://sprites/vines_burn.png" id="7_rdr2a"]
 [ext_resource type="PackedScene" uid="uid://c0spdkief8ynm" path="res://scenes/levels/prisoner_choose.tscn" id="7_swpul"]
 [ext_resource type="PackedScene" uid="uid://bfmdje7uoppc1" path="res://scenes/levels/prisoner_marker.tscn" id="8_62mt2"]
 [ext_resource type="PackedScene" uid="uid://c4vd4vxwdwdqh" path="res://scenes/levels/enemy_marker.tscn" id="9_da3di"]
@@ -61,11 +62,19 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g20sr"]
+texture = ExtResource("7_rdr2a")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
 [sub_resource type="TileSet" id="TileSet_cmcrj"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 128
 physics_layer_0/collision_mask = 128
 sources/4 = SubResource("TileSetAtlasSource_1nakb")
+sources/5 = SubResource("TileSetAtlasSource_g20sr")
 
 [node name="level" type="TileMap"]
 tile_set = SubResource("TileSet_4lr5i")

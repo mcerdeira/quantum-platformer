@@ -1,10 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://irdn6sjvaj0e"]
+[gd_scene load_steps=21 format=3 uid="uid://irdn6sjvaj0e"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_8vrwn"]
 [ext_resource type="Texture2D" uid="uid://b3d305p22pnls" path="res://sprites/chest_idle.png" id="2_ckle5"]
 [ext_resource type="Texture2D" uid="uid://dr2lobddxj7lc" path="res://sprites/chest_mimic1.png" id="2_olm78"]
 [ext_resource type="Texture2D" uid="uid://c1xssh4duhhqx" path="res://sprites/chest_mimic12png.png" id="3_65gl7"]
+[ext_resource type="Texture2D" uid="uid://cbm2ov3p75byk" path="res://sprites/dead_fire_spr_0.png" id="3_ogy5d"]
+[ext_resource type="Texture2D" uid="uid://cpq2gxdbvq4i6" path="res://sprites/dead_fire_spr_1.png" id="4_er13g"]
 [ext_resource type="Script" path="res://scenes/RayCast2D.gd" id="5_ermrk"]
+[ext_resource type="Texture2D" uid="uid://bn3j5ne0mc650" path="res://sprites/dead_fire_spr_2.png" id="5_xdald"]
 [ext_resource type="Texture2D" uid="uid://wpjotc6uharg" path="res://sprites/chest_stunned.png" id="6_7gypa"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="6_mlrcm"]
 [ext_resource type="Texture2D" uid="uid://c52d6ydpddgln" path="res://sprites/vision.png" id="7_2aecm"]
@@ -14,6 +17,20 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eqtew"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ogy5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_er13g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xdald")
+}],
+"loop": true,
+"name": &"dead_fire",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_ckle5")
@@ -118,7 +135,7 @@ vertical_alignment = 1
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_eqtew")
-animation = &"walking"
+animation = &"idle"
 offset = Vector2(0, -16)
 
 [node name="stars_stunned" type="AnimatedSprite2D" parent="."]

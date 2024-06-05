@@ -27,6 +27,7 @@ var alerted_delay = 0
 var previus_velocity = Vector2.ZERO
 var fire_obj = null
 var level_parent = null
+var dead = false
 var fires = preload("res://scenes/Fires.tscn")
 
 func _ready():
@@ -83,6 +84,14 @@ func process_player(delta):
 		$lbl_status.text = ""
 		alerted = false
 		hostile = false
+		return
+		
+	if dead:
+		$AnimationPlayer.stop()
+		$stars_stunned.visible = false
+		$lbl_status.text = ""
+		hostile = false
+		alerted = false
 		return
 		
 	if Global.GAMEOVER:
@@ -227,13 +236,14 @@ func jump(delta):
 			velocity.y = jump_speed
 
 func _on_area_body_entered(body):
-	if body and body.is_in_group("players"):
-		body.kill()
-		killing = total_killing
-		if global_position.x > body.global_position.x:
-			$sprite.flip_h = true
-		else:
-			$sprite.flip_h = false
+	if !dead:
+		if body and body.is_in_group("players"):
+			body.kill()
+			killing = total_killing
+			if global_position.x > body.global_position.x:
+				$sprite.flip_h = true
+			else:
+				$sprite.flip_h = false
 
 func _on_agro_body_entered(body):
 	if !hostile:
@@ -257,7 +267,13 @@ func kill_fall():
 	queue_free()
 	
 func dead_fire():
-	pass
+	dead = true
+	$sprite.animation = "dead_fire"
+	$sprite.play()
+	set_collision_layer_value(5, true)
+	set_collision_mask_value(5, true)
+	set_collision_layer_value(1, false)
+	set_collision_mask_value(1, false)
 
 func kill_fire():
 	if fire_obj == null:

@@ -14,7 +14,7 @@ func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index)
 		if body.get_cell_source_id(0, coords) == 4:
 			var c = body.map_to_local(coords)
 			var global_coords = c
-			body.set_cell(0, coords, -1, Vector2(0, 0))
+			body.set_cell(0, coords, 5, Vector2(0, 0))
 			
 			var parent = get_parent().get_parent()
 			var p = fires.instantiate()

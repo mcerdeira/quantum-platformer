@@ -1,9 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://81vub78cngl3"]
+[gd_scene load_steps=30 format=3 uid="uid://81vub78cngl3"]
 
 [ext_resource type="Script" path="res://scenes/enemy_walker_walls.gd" id="1_53he0"]
 [ext_resource type="Texture2D" uid="uid://dplov63g6dekc" path="res://sprites/horu/images/enemy_wall_spr_0.png" id="2_h33ti"]
+[ext_resource type="Texture2D" uid="uid://cbm2ov3p75byk" path="res://sprites/dead_fire_spr_0.png" id="2_tbwkb"]
 [ext_resource type="Texture2D" uid="uid://b8hrnanr11k4v" path="res://sprites/horu/images/enemy_berserk_wall_spr_0.png" id="3_5u07g"]
+[ext_resource type="Texture2D" uid="uid://cpq2gxdbvq4i6" path="res://sprites/dead_fire_spr_1.png" id="3_ulw2m"]
 [ext_resource type="Texture2D" uid="uid://0rw280tt0gfr" path="res://sprites/horu/images/enemy_berserk_wall_spr_1.png" id="4_cv7x8"]
+[ext_resource type="Texture2D" uid="uid://bn3j5ne0mc650" path="res://sprites/dead_fire_spr_2.png" id="4_fs5nf"]
 [ext_resource type="Texture2D" uid="uid://b7y0fkbugy0kp" path="res://sprites/horu/images/enemy_berserk_wall_spr_2.png" id="5_gy1m3"]
 [ext_resource type="Texture2D" uid="uid://bkeu3ofxhaban" path="res://sprites/horu/images/enemy_wall_spr_1.png" id="6_g6o2n"]
 [ext_resource type="Texture2D" uid="uid://hnj55avc6w2o" path="res://sprites/horu/images/enemy_wall_spr_2.png" id="7_h0l26"]
@@ -22,6 +25,20 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0vk2b"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tbwkb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ulw2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fs5nf")
+}],
+"loop": true,
+"name": &"dead_fire",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_h33ti")
@@ -69,6 +86,11 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_efk2u"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"dead_fire",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("8_mdasq")
@@ -178,11 +200,11 @@ script = ExtResource("1_53he0")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(16, -16)
 sprite_frames = SubResource("SpriteFrames_0vk2b")
-animation = &"killing"
+animation = &"idle"
 
 [node name="eyes" type="AnimatedSprite2D" parent="sprite"]
 sprite_frames = SubResource("SpriteFrames_efk2u")
-animation = &"stunned"
+animation = &"idle"
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(16, -16)

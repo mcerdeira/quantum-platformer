@@ -1,9 +1,22 @@
+==================================================================================================================
+==================================================== OBJETIVO ====================================================
+==================================================================================================================
+
+- Liberar a todos los prisioneros, encontrar la puerta e irse (simil alien 3/sega)
+- Secundario: si ademas nos llevamos prisioneros a la puerta con nosotros, algún perk
+- Secretos:
+  . Nos vamos a encontrar alguna puerta "distinta" a la puerta normal: ???
+  . En las terminales vamos a poder hacer algo?
+
+==================================================================================================================
+==================================================================================================================
+==================================================================================================================
+
 Ajustes:
 - Prisioneros
   . IA de los prisioneros, al pasar por encima dar la opción de que te sigan.   
   . Al liberar un prisionero tiene que estar en un layer separado para no chocar con ellos. 
   . Si muere un prisionero aparece un fantasma que te sigue por todo el nivel. 
-- Los enemigos deben morir si se prenden fuego
 - Enemigo bullet hell tiene que prenderse fuego y tener una forma de cambiar de estado "hostil" (además espaciar más los tiros) 
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 
@@ -39,15 +52,11 @@ Features:
 - SFX
 - Musica
 
-== OBJETIVO ==
-- Al stunnearse, deben mostrar estrellas girando 
-- Liberar a todos los prisioneros, encontrar la puerta e irse (simil alien 3/sega)
-- Secundario: si ademas nos llevamos prisioneros a la puerta con nosotros, algún perk
-- Secretos:
-  . Nos vamos a encontrar alguna puerta "distinta" a la puerta normal: ???
-  . En las terminales vamos a poder hacer algo?
 
 --------------------------------- DONE ---------------------------------
+- Los enemigos deben morir si se prenden fuego
+- Vines al quemarse, deben dejar un vine quemado
+- Al stunnearse, deben mostrar estrellas girando 
 - Arte de los prisioneros
 - IA de los enemigos glotones
 - Enemigo sapo que al acercarte grita y tira muchas balas estilos bullet hell 

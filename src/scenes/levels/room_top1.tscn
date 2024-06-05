@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bu8jnjwcac08u"]
+[gd_scene load_steps=26 format=3 uid="uid://bu8jnjwcac08u"]
 
 [ext_resource type="Texture2D" uid="uid://djs78nqy60b6t" path="res://sprites/floor_spr_2.png" id="1_ln5kr"]
 [ext_resource type="Texture2D" uid="uid://6e6u7tx8wpp5" path="res://sprites/stair.png" id="2_4jdgr"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c0spdkief8ynm" path="res://scenes/levels/prisoner_choose.tscn" id="5_cjdi0"]
 [ext_resource type="PackedScene" uid="uid://bfmdje7uoppc1" path="res://scenes/levels/prisoner_marker.tscn" id="5_h06ao"]
 [ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="6_7p1jh"]
+[ext_resource type="Texture2D" uid="uid://d4c7vtq3agr88" path="res://sprites/vines_burn.png" id="6_kltub"]
 [ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="7_if8ih"]
 [ext_resource type="PackedScene" uid="uid://q767q018lep8" path="res://scenes/exit_door.tscn" id="8_jg5en"]
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="10_83vfq"]
@@ -64,11 +65,20 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6icf"]
+texture = ExtResource("6_kltub")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
 [sub_resource type="TileSet" id="TileSet_cmcrj"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 128
 physics_layer_0/collision_mask = 128
 sources/4 = SubResource("TileSetAtlasSource_1nakb")
+sources/5 = SubResource("TileSetAtlasSource_l6icf")
 
 [node name="level" type="TileMap"]
 tile_set = SubResource("TileSet_4lr5i")
