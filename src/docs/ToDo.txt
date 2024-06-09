@@ -30,13 +30,15 @@ Features:
   - Bomba: Explota
   - Planta: Se vuelve gigante verticalmente
   - Cohete: Sale disparado hacia arriba
-  - Humo: Se expande como el humo   
+  - Humo: Se expande como el humo  
   
 - Item planta que crece (sirve como escalera)
 - Item humo
 - Item cohete 
 - Plantas para esconderse
 - Terminarles donde podemos acceder a un mapa del nivel
+- Gusanitos qué se le meten a los prisioneros y los convierten en zombies 
+- Red Blue switches 
 - Enemigo con alas que planea al caer 
 
 - Secretos
