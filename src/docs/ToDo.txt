@@ -2,10 +2,17 @@
 ==================================================== OBJETIVO ====================================================
 ==================================================================================================================
 
-- Liberar a todos los prisioneros, encontrar la puerta e irse (simil alien 3/sega)
-- Secundario: si ademas nos llevamos prisioneros a la puerta con nosotros, algún perk
+- Estructura:
+  . Escena Casa: Estamos en casa, nos avisan de algo y nos vamos.
+  . Escena Afuera: Caminamos por un lugar y hay un pozo, nos tiramos al pozo.
+  . Escena Caer: Caemos y camos mucho tiempo
+  . Escena Main Hub: Llegamos al main hub, aca hay 5 plataformas con 5 puertas. Solo 1 puerta está abierta, al entrar a la puerta vamos al primer nivel
+                     procedural, donde tenemos que rescatar a un numero de prisioneros fijo.
+                     Se destraban las demas puertas rescatando mas prisioneros. 
+
+- Escena Nivel Procedural: Liberar a todos los prisioneros, encontrar la puerta e irse (simil alien 3/sega)
 - Secretos:
-  . Nos vamos a encontrar alguna puerta "distinta" a la puerta normal: ???
+  . Hay una puerta en el main hub distinta que se abre solo si venimos con un numero X de fantasmas.
   . En las terminales vamos a poder hacer algo?
 
 ==================================================================================================================
@@ -41,8 +48,14 @@ Features:
 - Red Blue switches 
 - Enemigo con alas que planea al caer 
 
+- Escena casa
+- Escena afuera
+- Escena Cayendo
+- Escena main hub
+
 - Secretos
-- Nombre: Grotto algo?
+- Nombre: Grunky Grotto
+
 - Decoraciones 
   . Gotas de agua 
   . Plantitas en el piso 
