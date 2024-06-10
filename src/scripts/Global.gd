@@ -84,6 +84,7 @@ var prisoner_counter = 0
 var prisoner_total = 0
 var bounce_amount = 0.3
 var map_obj = null
+var commands : Dictionary
 
 func remove_item():
 	Global.slots_stock[Global.gunz_index] -= 1
@@ -184,6 +185,7 @@ func init():
 	prisoner_total = 0
 	map_obj = null
 	gunz_objs = []
+	commands = {}
 	gunz_objs.append(clone)
 	gunz_objs.append(teleport)
 	gunz_objs.append(muffin)

@@ -95,6 +95,8 @@ animations = [{
 }]
 
 [node name="EnemyBullet" type="Area2D"]
+collision_layer = 33
+collision_mask = 33
 script = ExtResource("1_jcpgp")
 
 [node name="collider" type="CollisionShape2D" parent="."]

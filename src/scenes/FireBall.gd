@@ -1,5 +1,7 @@
 extends Area2D
 var fires = preload("res://scenes/Fires.tscn")
+@export var free_fireball = false
+
 
 func _on_body_entered(body):
 	if body and (body.is_in_group("players") or body.is_in_group("enemies")):
@@ -17,6 +19,8 @@ func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index)
 			body.set_cell(0, coords, 5, Vector2(0, 0))
 			
 			var parent = get_parent().get_parent()
+			if free_fireball:
+				parent = get_parent().master_parent
 			var p = fires.instantiate()
 			parent.add_child(p)
 			p.position = global_coords

@@ -30,6 +30,8 @@ animations = [{
 size = Vector2(2, 15)
 
 [node name="Spikes" type="Area2D"]
+collision_layer = 33
+collision_mask = 33
 script = ExtResource("1_hyk3x")
 
 [node name="collider" type="CollisionShape2D" parent="."]
@@ -41,6 +43,8 @@ position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_ews57")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 33
+collision_mask = 33
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-15, -7.5)

@@ -68,7 +68,7 @@ func _physics_process(delta):
 	if dead_fall:
 		velocity = Vector2.ZERO
 		return
-	
+		
 	if Input.is_action_just_released("zoomin"):
 		$Camera2D.zoom += Vector2(10, 10) * delta
 	if Input.is_action_just_released("zoomout"):
@@ -131,6 +131,7 @@ func camera_limits():
 func process_player(delta):
 	var moving = false
 	if dead:
+		velocity.x = 0
 		$stars_stunned.visible = false
 		blowed = 0
 		set_collision_layer_value(2, true)
@@ -139,7 +140,7 @@ func process_player(delta):
 		set_collision_mask_value(1, false)
 		
 	if blowed > 0:
-		$stars_stunned.visible = false
+		$stars_stunned.visible = true
 		$sprite.animation = "stunned"
 		$sprite_eyes.animation = $sprite.animation
 		$lbl_action.visible = false
@@ -200,8 +201,11 @@ func process_player(delta):
 			$gun_sprite.rotation += 1 * delta
 			idle_play = idle_play_total
 			update_trayectory(delta)
+			
+	var some_command = ""
 	
 	if !dead and Input.is_action_just_pressed("jump"):
+		some_command = "jump"
 		idle_play = idle_play_total
 		if is_on_stairs and grabbed:
 			velocity.y = -speed * 1.1
@@ -240,14 +244,15 @@ func process_player(delta):
 		
 		if !shoot_mode and Input.is_action_pressed("up"):
 			idle_play = idle_play_total
+			some_command += "|up"
 			if is_on_stairs:
 				grabbed = true 
 				moving = true
 				idle_time = 0
 				velocity.y = -speed
-				
-		if !shoot_mode and Input.is_action_pressed("down"):
+		elif !shoot_mode and Input.is_action_pressed("down"):
 			idle_play = idle_play_total
+			some_command += "|down"
 			if is_on_stairs:
 				grabbed = true 
 				moving = true
@@ -255,6 +260,7 @@ func process_player(delta):
 				velocity.y = speed
 		
 		if !shoot_mode and Input.is_action_pressed("left"):
+			some_command += "|left"
 			idle_play = idle_play_total
 			direction = "left"
 			moving = true
@@ -265,6 +271,7 @@ func process_player(delta):
 			$gun_sprite.rotation = initial_rotation - 45
 			
 		elif !shoot_mode and Input.is_action_pressed("right"):
+			some_command += "|right"
 			idle_play = idle_play_total
 			direction = "right"
 			moving = true
@@ -275,6 +282,14 @@ func process_player(delta):
 			$gun_sprite.rotation = initial_rotation
 			
 	idle_play -= 1 * delta
+	
+	$lbl_action.text = str(Time.get_ticks_msec() / 1000)
+	$lbl_action.visible = true
+	
+	if !some_command:
+		add_to_followers("stop")
+	else:
+		add_to_followers(some_command)
 	
 	if !dead:
 		if moving:
@@ -302,6 +317,10 @@ func process_player(delta):
 		$sprite.animation = dead_animation
 		$sprite_eyes.animation = $sprite.animation
 		$sprite.play()
+		
+func add_to_followers(cmd):
+	var ts = Time.get_ticks_msec()  / 1000
+	Global.commands[ts] = cmd
 		
 func shoot(delta):
 	if !dead:

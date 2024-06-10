@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://co7t0ic7dgox4"]
+[gd_scene load_steps=18 format=3 uid="uid://co7t0ic7dgox4"]
 
 [ext_resource type="Script" path="res://scenes/prisoner.gd" id="1_e8vj3"]
 [ext_resource type="Texture2D" uid="uid://bjfjws7k16wlx" path="res://sprites/horu/images/player_prisoner_fire_spr_0.png" id="2_42st0"]
@@ -9,7 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bnu7qox5rd7f1" path="res://sprites/horu/images/prisoner1.png" id="6_u7wjf"]
 [ext_resource type="Texture2D" uid="uid://b2wsw6mqocn3u" path="res://sprites/horu/images/prisoner2.png" id="10_4resd"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="10_s4hmp"]
+[ext_resource type="Texture2D" uid="uid://hpuda2eg601m" path="res://sprites/horu/images/stars1.png" id="10_x7mk8"]
+[ext_resource type="Texture2D" uid="uid://b7ra00yssdsct" path="res://sprites/horu/images/stars2.png" id="11_8qxkh"]
 [ext_resource type="Texture2D" uid="uid://bwjggynfja1fm" path="res://sprites/horu/images/prisoner3.png" id="11_u3fe3"]
+[ext_resource type="Texture2D" uid="uid://dv4833kftjwfh" path="res://sprites/horu/images/stars3.png" id="12_uifnd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ssvs2"]
 animations = [{
@@ -68,6 +71,23 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5c5g8"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_8jmkh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_x7mk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8qxkh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_uifnd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vb36x"]
 size = Vector2(30, 31)
 
@@ -78,12 +98,19 @@ script = ExtResource("1_e8vj3")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ssvs2")
-animation = &"trapped"
+animation = &"idle"
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_5c5g8")
 disabled = true
+
+[node name="stars_stunned" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_8jmkh")
+autoplay = "default"
+frame_progress = 0.615567
 
 [node name="lbl_action" type="Label" parent="."]
 offset_left = -29.0

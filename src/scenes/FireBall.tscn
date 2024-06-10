@@ -31,8 +31,8 @@ radius = 6.0
 
 [node name="FireBall" type="Area2D"]
 z_index = 4096
-collision_layer = 129
-collision_mask = 129
+collision_layer = 161
+collision_mask = 161
 script = ExtResource("1_woemw")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]

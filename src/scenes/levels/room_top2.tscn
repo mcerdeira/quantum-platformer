@@ -47,8 +47,8 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_4lr5i"]
 tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 524563
-physics_layer_0/collision_mask = 524563
+physics_layer_0/collision_layer = 524595
+physics_layer_0/collision_mask = 524595
 sources/0 = SubResource("TileSetAtlasSource_iwogt")
 sources/1 = SubResource("TileSetAtlasSource_qr43o")
 sources/2 = SubResource("TileSetAtlasSource_uo14k")
@@ -118,8 +118,8 @@ position = Vector2(737, 224)
 
 [node name="qdtector" parent="." instance=ExtResource("13_l88c5")]
 visible = false
-collision_layer = 9
-collision_mask = 9
+collision_layer = 41
+collision_mask = 41
 
 [node name="Stair" parent="." instance=ExtResource("11_44au5")]
 position = Vector2(336, 640)

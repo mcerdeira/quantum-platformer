@@ -109,6 +109,7 @@ fx={
 2d_physics/layer_2="Switch para personaje al morir"
 2d_physics/layer_4="Escaleras/QDetector"
 2d_physics/layer_5="Switch para prisioneros al morir"
+2d_physics/layer_6="Switch para prisioneros al liberarse"
 2d_physics/layer_8="Vines y cosas incendiables"
 2d_physics/layer_9="Enemigos Walkers_Walls"
 2d_physics/layer_20="RayCast del enemigo"

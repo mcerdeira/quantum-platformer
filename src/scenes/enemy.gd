@@ -92,6 +92,7 @@ func process_player(delta):
 		$lbl_status.text = ""
 		hostile = false
 		alerted = false
+		$Agro/Vision.visible = false
 		return
 		
 	if Global.GAMEOVER:

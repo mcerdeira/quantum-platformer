@@ -13,5 +13,8 @@ func _on_body_entered(body):
 		Global.map_obj.notify_prisoner_done(get_parent().q)
 
 func _on_area_entered(area):
+	if area and area.is_in_group("fireballholder"):
+		area.master_parent =  get_parent()
+	
 	if area and area.get_parent() and area.get_parent().is_in_group("prisoners"):
 		Global.map_obj.notify_prisoner(get_parent().q)

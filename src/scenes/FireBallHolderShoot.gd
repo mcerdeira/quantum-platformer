@@ -1,6 +1,10 @@
 extends Area2D
 var speed = 80.0
 var direction = Vector2.RIGHT
+var master_parent = null
+
+func _ready():
+	add_to_group("fireballholder")
 
 func _physics_process(delta):
 	translate(direction * speed * delta)

@@ -24,6 +24,7 @@ Ajustes:
   . IA de los prisioneros, al pasar por encima dar la opción de que te sigan.   
   . Al liberar un prisionero tiene que estar en un layer separado para no chocar con ellos. 
   . Si muere un prisionero aparece un fantasma que te sigue por todo el nivel. 
+- Enemigo bullet hell: las balas no salen en un circulo perfecto 
 - Enemigo bullet hell tiene que prenderse fuego y tener una forma de cambiar de estado "hostil" (además espaciar más los tiros) 
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 
@@ -44,7 +45,7 @@ Features:
 - Item cohete 
 - Plantas para esconderse
 - Terminarles donde podemos acceder a un mapa del nivel
-- Gusanitos qué se le meten a los prisioneros y los convierten en zombies 
+- Gusanitos qué se le meten a los prisioneros y los convierten en zombies que nos atacan 
 - Red Blue switches 
 - Enemigo con alas que planea al caer 
 
@@ -69,6 +70,7 @@ Features:
 
 
 --------------------------------- DONE ---------------------------------
+- BUG: El fuego de las bolas no quema bien los vines
 - Los enemigos deben morir si se prenden fuego
 - Vines al quemarse, deben dejar un vine quemado
 - Al stunnearse, deben mostrar estrellas girando 

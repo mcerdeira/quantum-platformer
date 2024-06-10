@@ -1,6 +1,7 @@
 1  - Comun (personaje, prisioneros, items, enemigos en general, etc)
 2  - Switch para personaje al morir (asi deja de colisionar con enemigos, pero sigue con fisica del nivel)
 5  - Switch para prisioneros al morir
+6 - Switch para prisioneros al liberarse
 
 4  - Escaleras y QDetector
 8  - Vines y cosas incendiables (para colisionar y prender fuego pero no ser un obstaculo) 

@@ -27,6 +27,8 @@ var dead_animation = "dead"
 var fires = preload("res://scenes/Fires.tscn")
 var fire_obj = null
 var level_parent = null
+var delay_time = 0
+var command = null
 
 func _ready():
 	add_to_group("players")
@@ -44,10 +46,18 @@ func _physics_process(delta):
 			$lbl_action.text = thanks_message
 			liberating -= 1 * delta
 			if liberating <= 0:
+				set_collision_layer_value(6, true)
+				set_collision_mask_value(6, true)
+				set_collision_layer_value(1, false)
+				set_collision_mask_value(1, false)
+				set_collision_layer_value(4, false)
+				set_collision_mask_value(4, false)
+				
 				Global.prisoner_counter -= 1
 				$trapped_area.queue_free()
 				$collider.set_deferred("disabled", false)
 				trapped = false
+				$sprite.animation = "idle"
 				$lbl_action.text = ""
 				$lbl_action.visible = false
 	else:
@@ -88,17 +98,82 @@ func process_player(delta):
 	if dead:
 		set_collision_layer_value(5, true)
 		set_collision_mask_value(5, true)
-		set_collision_layer_value(1, false)
-		set_collision_mask_value(1, false)
+		set_collision_layer_value(6, false)
+		set_collision_mask_value(6, false)
+		velocity.x = 0
+		
 	if !dead:
 		if blowed > 0:
 			$lbl_action.visible = true
-			$lbl_action.text = "@"
-			$lbl_action.set("theme_override_colors/font_color", Color.AQUAMARINE)
+			$lbl_action.visible = false
+			$stars_stunned.visible = true
+			
 			blowed -= 1 * delta
 			if blowed <= 0:
+				$stars_stunned.visible = false
 				$lbl_action.visible = false
 			return
+			
+		$lbl_action.text = str((Time.get_ticks_msec()  / 1000) - delay_time)
+		$lbl_action.visible = true
+		
+		var jump = false
+		var left = false
+		var right = false
+		var up = false
+		var down = false
+		
+		var new_command = Global.commands.get((Time.get_ticks_msec()  / 1000) - delay_time)
+		if new_command:
+			command = new_command
+			
+		if command:
+			var cmd = command.split("|")
+			for c in cmd:
+				if c == "jump":
+					jump = true
+				if c == "up":
+					up = true
+				if c == "down":
+					down = true
+				if c == "left":
+					left = true
+				if c == "right":
+					right = true
+			
+		if jump:
+			if is_on_stairs and grabbed:
+				velocity.y = -speed * 1.1
+				Global.emit(global_position, 2)
+			else:
+				jump(delta)
+			
+		if up:
+			if is_on_stairs:
+				grabbed = true 
+				moving = true
+				idle_time = 0
+				velocity.y = -speed
+		elif down:
+			if is_on_stairs:
+				grabbed = true 
+				moving = true
+				idle_time = 0
+				velocity.y = speed
+		
+		if left:
+			direction = "left"
+			moving = true
+			idle_time = 0
+			velocity.x = lerp(velocity.x, -speed, 0.7)
+			$sprite.flip_h = true
+			
+		elif right:
+			direction = "right"
+			moving = true
+			idle_time = 0
+			velocity.x = lerp(velocity.x, speed, 0.7)
+			$sprite.flip_h = false
 		
 		if moving:
 			if $sprite.animation == "idle":
@@ -127,6 +202,7 @@ func lbl_hide_delegate(value, time):
 	
 func flyaway(direction):
 	if blowed <= 0:
+		$stars_stunned.visible = true
 		blowed = 6.2
 		Global.emit(global_position, 2)
 		velocity = Global.flyaway(direction, jump_speed)
@@ -151,7 +227,7 @@ func kill():
 	
 func kill_fire():
 	if fire_obj == null:
-		Global.emit(global_position, 10)	
+		Global.emit(global_position, 10)
 		var parent = level_parent
 		var p = fires.instantiate()
 		parent.add_child(p)
@@ -172,4 +248,6 @@ func super_jump():
 
 func _on_trapped_area_body_entered(body):
 	if body.is_in_group("players"):
-		liberating = 1.4
+		liberating = 2.0
+		delay_time = (Time.get_ticks_msec()  / 1000)
+		print(delay_time)
