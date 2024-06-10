@@ -208,6 +208,8 @@ _data = {
 }
 
 [node name="Gizmo" type="CharacterBody2D"]
+collision_layer = 33
+collision_mask = 33
 script = ExtResource("1_x7ufw")
 
 [node name="lbl_count" type="Label" parent="."]
@@ -362,6 +364,8 @@ shape = SubResource("RectangleShape2D_odwe0")
 
 [node name="area" type="Area2D" parent="."]
 visible = false
+collision_layer = 33
+collision_mask = 33
 
 [node name="collider" type="CollisionShape2D" parent="area"]
 shape = SubResource("CircleShape2D_4pttm")
@@ -370,6 +374,8 @@ shape = SubResource("CircleShape2D_4pttm")
 position = Vector2(0, -10)
 
 [node name="noise" type="Area2D" parent="."]
+collision_layer = 33
+collision_mask = 33
 
 [node name="collider" type="CollisionShape2D" parent="noise"]
 shape = SubResource("CircleShape2D_hcm05")
@@ -377,6 +383,8 @@ disabled = true
 
 [node name="explosion" type="Area2D" parent="."]
 visible = false
+collision_layer = 33
+collision_mask = 33
 script = ExtResource("7_54k6n")
 
 [node name="collider" type="CollisionShape2D" parent="explosion"]
@@ -393,6 +401,8 @@ script = ExtResource("14_cbp3x")
 
 [node name="explosion_mini" type="Area2D" parent="."]
 visible = false
+collision_layer = 33
+collision_mask = 33
 script = ExtResource("15_iwgc1")
 
 [node name="collider" type="CollisionShape2D" parent="explosion_mini"]

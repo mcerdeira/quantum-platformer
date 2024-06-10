@@ -30,8 +30,8 @@ size = Vector2(32, 20)
 size = Vector2(30, 2)
 
 [node name="Spring" type="CharacterBody2D"]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 35
+collision_mask = 35
 script = ExtResource("1_cl2rg")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]

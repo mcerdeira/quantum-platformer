@@ -31,6 +31,7 @@ var level_parent = null
 var idle_play_total = 4 
 var idle_play = idle_play_total
 var dont_camera = false
+var frame = 0
 
 func _ready():
 	add_to_group("players")
@@ -282,9 +283,10 @@ func process_player(delta):
 			$gun_sprite.rotation = initial_rotation
 			
 	idle_play -= 1 * delta
+	frame += 1
 	
-	$lbl_action.text = str(Time.get_ticks_msec() / 1000)
-	$lbl_action.visible = true
+	#$lbl_action.text = str(frame)
+	#$lbl_action.visible = true
 	
 	if !some_command:
 		add_to_followers("stop")
@@ -319,7 +321,7 @@ func process_player(delta):
 		$sprite.play()
 		
 func add_to_followers(cmd):
-	var ts = Time.get_ticks_msec()  / 1000
+	var ts = frame
 	Global.commands[ts] = cmd
 		
 func shoot(delta):

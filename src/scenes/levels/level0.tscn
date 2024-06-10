@@ -38,8 +38,8 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_4lr5i"]
 tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 524547
-physics_layer_0/collision_mask = 524547
+physics_layer_0/collision_layer = 524579
+physics_layer_0/collision_mask = 524579
 sources/0 = SubResource("TileSetAtlasSource_iwogt")
 sources/1 = SubResource("TileSetAtlasSource_qr43o")
 
@@ -84,7 +84,8 @@ position = Vector2(-2032, -352)
 texture = ExtResource("2_5cvhr")
 
 [node name="prisoner_marker2" parent="." instance=ExtResource("5_fnoy6")]
-position = Vector2(-2032, -342)
+position = Vector2(680, -48)
+fixed = true
 
 [node name="Stair" parent="." instance=ExtResource("9_f8kah")]
 position = Vector2(-1648, -64)
@@ -94,15 +95,15 @@ scale = Vector2(1, 10)
 position = Vector2(-2223, -352)
 
 [node name="Player" parent="." instance=ExtResource("10_uro1m")]
-position = Vector2(337, -49)
+position = Vector2(338, -48)
 
 [node name="FX" type="ColorRect" parent="."]
 z_index = 4096
 material = SubResource("ShaderMaterial_ymeuy")
-offset_left = -279.0
-offset_top = -210.0
-offset_right = 4928.0
-offset_bottom = 2671.0
+offset_left = -251.0
+offset_top = -200.0
+offset_right = 4956.0
+offset_bottom = 2681.0
 mouse_filter = 2
 script = ExtResource("13_1mimv")
 
@@ -125,7 +126,7 @@ position = Vector2(-454, 208)
 position = Vector2(-838, 224)
 
 [node name="EnemyWalkerWalls2" parent="." instance=ExtResource("19_co6cb")]
-position = Vector2(-835, -5)
+position = Vector2(-1126, 25)
 
 [node name="EnemyBullet" parent="." instance=ExtResource("20_cm7ya")]
 position = Vector2(1085, 191)

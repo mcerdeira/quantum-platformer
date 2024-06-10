@@ -42,6 +42,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("6_u7wjf")
+}],
+"loop": true,
+"name": &"stunned",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("4_n5scw")
 }, {
 "duration": 1.0,
@@ -98,7 +106,7 @@ script = ExtResource("1_e8vj3")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ssvs2")
-animation = &"idle"
+animation = &"stunned"
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)

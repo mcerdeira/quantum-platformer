@@ -1,9 +1,9 @@
 extends CharacterBody2D
 var gravity = 10.0
-var speed = 125.0
+var speed = 215.0
 var jump_speed = -300.0
 @export var direction = "right"
-var total_friction = 0.3
+var total_friction = 0.6
 var im_invisible = false
 var friction = total_friction
 var moving = false
@@ -29,6 +29,13 @@ var fire_obj = null
 var level_parent = null
 var delay_time = 0
 var command = null
+var frame = 0
+var dead_fall = false
+var jump_cmd = false
+var left_cmd = false
+var right_cmd = false
+var up_cmd = false
+var down_cmd = false
 
 func _ready():
 	add_to_group("players")
@@ -61,12 +68,14 @@ func _physics_process(delta):
 				$lbl_action.text = ""
 				$lbl_action.visible = false
 	else:
-		if fire_obj and is_instance_valid(fire_obj):
-			fire_obj.reparent(level_parent)
-			fire_obj.global_position = global_position
-			fire_obj.z_index = z_index + 1
-	
-		if is_on_floor():
+		if dead and is_on_stairs:
+			velocity = Vector2.ZERO
+		
+		if dead_fall:
+			velocity = Vector2.ZERO
+			return
+			
+		if is_on_floor() or grabbed:
 			if in_air:
 				in_air = false
 				Global.emit(global_position, 1)
@@ -75,20 +84,28 @@ func _physics_process(delta):
 			in_air = true
 			buff -= 1 * delta
 		
-		if !is_on_floor_custom():
+		if !is_on_floor_custom() and !grabbed:
 			velocity.y += gravity
 
 		if blowed > 0:
 			blowed -= 1 * delta
+			if blowed <= 0:
+				$stars_stunned.visible = false
+				$lbl_action.visible = false
+				
 			if is_on_wall():
 				velocity.x = (previus_velocity.x / 2) * -1
 			else:
 				previus_velocity = velocity
 		else:
-			if !is_on_floor_custom():
-				velocity.x = lerp(velocity.x, 0.0, friction / 10)
-			else:
-				velocity.x = lerp(velocity.x, 0.0, friction)
+			if grabbed and !up_cmd and !jump_cmd and !down_cmd:
+				velocity.y = 0
+			
+			if !left_cmd and !right_cmd:
+				if !is_on_floor_custom():
+					velocity.x = lerp(velocity.x, 0.0, friction / 2)
+				else:
+					velocity.x = lerp(velocity.x, 0.0, friction)
 			
 		process_player(delta)
 		move_and_slide()
@@ -96,34 +113,38 @@ func _physics_process(delta):
 func process_player(delta):
 	var moving = false
 	if dead:
+		velocity.x = 0
+		$stars_stunned.visible = false
+		blowed = 0
 		set_collision_layer_value(5, true)
 		set_collision_mask_value(5, true)
 		set_collision_layer_value(6, false)
 		set_collision_mask_value(6, false)
-		velocity.x = 0
+		
+	if blowed > 0:
+		$stars_stunned.visible = true
+		$sprite.animation = "stunned"
+		$lbl_action.visible = false
+		return
+		
+	if fire_obj and is_instance_valid(fire_obj):
+		fire_obj.reparent(level_parent)
+		fire_obj.global_position = global_position
+		fire_obj.z_index = z_index + 1
 		
 	if !dead:
-		if blowed > 0:
-			$lbl_action.visible = true
-			$lbl_action.visible = false
-			$stars_stunned.visible = true
+		frame += 1
 			
-			blowed -= 1 * delta
-			if blowed <= 0:
-				$stars_stunned.visible = false
-				$lbl_action.visible = false
-			return
-			
-		$lbl_action.text = str((Time.get_ticks_msec()  / 1000) - delay_time)
-		$lbl_action.visible = true
+		#$lbl_action.text = str(frame)
+		#$lbl_action.visible = true
 		
-		var jump = false
-		var left = false
-		var right = false
-		var up = false
-		var down = false
+		jump_cmd = false
+		left_cmd = false
+		right_cmd = false
+		up_cmd = false
+		down_cmd = false
 		
-		var new_command = Global.commands.get((Time.get_ticks_msec()  / 1000) - delay_time)
+		var new_command = Global.commands.get(frame)
 		if new_command:
 			command = new_command
 			
@@ -131,44 +152,44 @@ func process_player(delta):
 			var cmd = command.split("|")
 			for c in cmd:
 				if c == "jump":
-					jump = true
+					jump_cmd = true
 				if c == "up":
-					up = true
+					up_cmd = true
 				if c == "down":
-					down = true
+					down_cmd = true
 				if c == "left":
-					left = true
+					left_cmd = true
 				if c == "right":
-					right = true
+					right_cmd = true
 			
-		if jump:
+		if jump_cmd:
 			if is_on_stairs and grabbed:
 				velocity.y = -speed * 1.1
 				Global.emit(global_position, 2)
 			else:
 				jump(delta)
 			
-		if up:
+		if up_cmd:
 			if is_on_stairs:
 				grabbed = true 
 				moving = true
 				idle_time = 0
 				velocity.y = -speed
-		elif down:
+		elif down_cmd:
 			if is_on_stairs:
 				grabbed = true 
 				moving = true
 				idle_time = 0
 				velocity.y = speed
 		
-		if left:
+		if left_cmd:
 			direction = "left"
 			moving = true
 			idle_time = 0
 			velocity.x = lerp(velocity.x, -speed, 0.7)
 			$sprite.flip_h = true
 			
-		elif right:
+		elif right_cmd:
 			direction = "right"
 			moving = true
 			idle_time = 0
@@ -217,6 +238,7 @@ func bleed(count):
 func kill_fall():
 	dead = true
 	visible = false
+	dead_fall = true
 	queue_free()
 
 func kill():
@@ -249,5 +271,4 @@ func super_jump():
 func _on_trapped_area_body_entered(body):
 	if body.is_in_group("players"):
 		liberating = 2.0
-		delay_time = (Time.get_ticks_msec()  / 1000)
-		print(delay_time)
+		frame = body.frame - 1

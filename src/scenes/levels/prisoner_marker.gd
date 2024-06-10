@@ -2,9 +2,11 @@ extends Marker2D
 var post_o = load("res://scenes/post.tscn")
 var player_clone = load("res://scenes/prisoner.tscn")
 var done = false
+@export var fixed = false
 
 func _ready():
 	visible = false
+	done = fixed
 
 func _process(delta):
 	if done:
