@@ -400,7 +400,7 @@ func dead_fire():
 	dead_animation = "dead_fire"
 
 func kill_fire():
-	if fire_obj == null:
+	if fire_obj == null or !is_instance_valid(fire_obj):
 		Global.emit(global_position, 10)
 		var parent = level_parent
 		var p = fires.instantiate()

@@ -8,6 +8,7 @@ z_index = 4096
 script = ExtResource("1_6r6mo")
 
 [node name="FireBall" parent="." instance=ExtResource("1_e87hn")]
+z_index = 4090
 
 [node name="FireBall2" parent="." instance=ExtResource("1_e87hn")]
 position = Vector2(24, 0)
