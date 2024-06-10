@@ -1,6 +1,12 @@
 extends Node2D
 var particle = preload("res://scenes/particle2.tscn")
 var player_placed = false
+
+var room_home = load("res://scenes/levels/room_house.tscn")
+var room_outside = load("res://scenes/levels/room_outside.tscn")
+var room_falling = load("res://scenes/levels/room_falling.tscn")
+var room_overworld = load("res://scenes/levels/room_overworld.tscn")
+
 var rooms_top = [
 	load("res://scenes/levels/room_top1.tscn"),
 	load("res://scenes/levels/room_top2.tscn")  
@@ -13,6 +19,24 @@ var rooms_bottom = [
 	load("res://scenes/levels/room_bottom1.tscn")
 ]
 
+enum GameStates {
+	HOME,
+	OUTSIDE,
+	FALLING,
+	OVERWORLD,
+	RANDOMLEVEL,
+}
+
+var CurrentState : GameStates = GameStates.HOME
+
+func generate_fixed_level(room):
+	var q = 1
+	$frame.visible = false
+	var r = room.instantiate()
+	r.global_position =  Vector2.ZERO
+	r.q = q
+	add_child(r)
+		
 func generate_level():
 	var player_room = Vector2(randi() % 4, 0)
 	var door_room = Vector2(randi() % 4, randi() % 4)
@@ -50,7 +74,17 @@ func generate_level():
 		room_pos.x = 0
 
 func _ready():
-	generate_level()
+	if CurrentState == GameStates.RANDOMLEVEL:
+		generate_level()
+	if CurrentState == GameStates.HOME:
+		generate_fixed_level(room_home)
+	if CurrentState == GameStates.OUTSIDE:
+		generate_fixed_level(room_outside)
+	if CurrentState == GameStates.FALLING:
+		generate_fixed_level(room_falling)
+	if CurrentState == GameStates.OVERWORLD:
+		generate_fixed_level(room_overworld)
+		
 	Global.GizmoWatcher = self
 	setHUD()
 

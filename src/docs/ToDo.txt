@@ -68,6 +68,7 @@ Features:
 
 
 --------------------------------- DONE ---------------------------------
+- Bugs en shader de calor
 - Enemigo bullet hell: espaciar más los tiros
 - Prisioneros
   . IA de los prisioneros, al pasar por encima dar la opción de que te sigan.   
