@@ -32,6 +32,7 @@ var idle_play_total = 4
 var idle_play = idle_play_total
 var dont_camera = false
 var frame = 0
+var gravityon = true
 
 func _ready():
 	add_to_group("players")
@@ -45,6 +46,9 @@ func _ready():
 	LineTrayectory = $Line2D
 	Global.shaker_obj.camera = $Camera2D
 	Global.player_obj = self
+	
+func hide_eyes():
+	$sprite_eyes.visible = false
 	
 func is_on_floor_custom():
 	return is_on_floor() or buff > 0
@@ -86,7 +90,8 @@ func _physics_process(delta):
 		buff -= 1 * delta
 	
 	if !is_on_floor_custom() and !grabbed:
-		velocity.y += gravity
+		if gravityon:
+			velocity.y += gravity
 
 	if blowed > 0:
 		blowed -= 1 * delta
@@ -110,6 +115,9 @@ func _physics_process(delta):
 		
 	process_player(delta)
 	move_and_slide()
+	
+func enable_camera(val):
+	$Camera2D.enabled = val 
 	
 func camera_limits():
 	if direction == "right":
@@ -281,8 +289,10 @@ func process_player(delta):
 			$sprite.flip_h = false
 			$sprite_eyes.flip_h = $sprite.flip_h
 			$gun_sprite.rotation = initial_rotation
-			
-	idle_play -= 1 * delta
+	
+	if gravityon:
+		idle_play -= 1 * delta
+	
 	frame += 1
 	
 	#$lbl_action.text = str(frame)
@@ -292,6 +302,9 @@ func process_player(delta):
 		add_to_followers("stop")
 	else:
 		add_to_followers(some_command)
+		
+	if !gravityon:
+		moving = false
 	
 	if !dead:
 		if moving:

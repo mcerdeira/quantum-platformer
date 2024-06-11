@@ -19,23 +19,14 @@ var rooms_bottom = [
 	load("res://scenes/levels/room_bottom1.tscn")
 ]
 
-enum GameStates {
-	HOME,
-	OUTSIDE,
-	FALLING,
-	OVERWORLD,
-	RANDOMLEVEL,
-}
-
-var CurrentState : GameStates = GameStates.HOME
-
-func generate_fixed_level(room):
+func generate_fixed_level(room, visible_hud):
 	var q = 1
 	$frame.visible = false
 	var r = room.instantiate()
 	r.global_position =  Vector2.ZERO
 	r.q = q
 	add_child(r)
+	$CanvasLayer/Control.visible = visible_hud
 		
 func generate_level():
 	var player_room = Vector2(randi() % 4, 0)
@@ -74,16 +65,18 @@ func generate_level():
 		room_pos.x = 0
 
 func _ready():
-	if CurrentState == GameStates.RANDOMLEVEL:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
+	if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
 		generate_level()
-	if CurrentState == GameStates.HOME:
-		generate_fixed_level(room_home)
-	if CurrentState == GameStates.OUTSIDE:
-		generate_fixed_level(room_outside)
-	if CurrentState == GameStates.FALLING:
-		generate_fixed_level(room_falling)
-	if CurrentState == GameStates.OVERWORLD:
-		generate_fixed_level(room_overworld)
+	if Global.CurrentState == Global.GameStates.HOME:
+		generate_fixed_level(room_home, false)
+	if Global.CurrentState == Global.GameStates.OUTSIDE:
+		generate_fixed_level(room_outside, false)
+	if Global.CurrentState == Global.GameStates.FALLING:
+		generate_fixed_level(room_falling, false)
+	if Global.CurrentState == Global.GameStates.OVERWORLD:
+		generate_fixed_level(room_overworld, false)
 		
 	Global.GizmoWatcher = self
 	setHUD()
@@ -115,7 +108,7 @@ func calc_selected():
 func _physics_process(delta):
 	$CanvasLayer/Control/lbl_gameover.visible = Global.GAMEOVER
 		
-	if Global.exit_door and Global.exit_door.closed:
+	if Global.exit_door and is_instance_valid(Global.exit_door) and Global.exit_door.closed:
 		var targets = get_tree().get_nodes_in_group("prisoners")
 		if targets.size() > 0:
 			var found = false

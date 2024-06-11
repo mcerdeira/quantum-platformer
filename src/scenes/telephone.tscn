@@ -1,0 +1,137 @@
+[gd_scene load_steps=13 format=3 uid="uid://ddh78hbx6awk6"]
+
+[ext_resource type="Texture2D" uid="uid://by5hjga63ct0i" path="res://sprites/computer2.png" id="1_n8nc0"]
+[ext_resource type="Texture2D" uid="uid://cw0susl3lvh2x" path="res://sprites/computer1.png" id="2_rriwl"]
+[ext_resource type="Script" path="res://scenes/telephone.gd" id="3_oguwn"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="13_kvgbd"]
+[ext_resource type="Texture2D" uid="uid://da14xud8tdoj" path="res://sprites/arrows1.png" id="14_so8u7"]
+[ext_resource type="Texture2D" uid="uid://b74uo51q2y58i" path="res://sprites/arrows2.png" id="15_nd38w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3es1"]
+size = Vector2(52, 52)
+
+[sub_resource type="Animation" id="Animation_g0s8s"]
+resource_name = "new_animation"
+length = 2.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Computer:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.174533, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vco7g"]
+_data = {
+"new_animation": SubResource("Animation_g0s8s")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t7d8p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_n8nc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rriwl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nw0se"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_so8u7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_nd38w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nd76e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rriwl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ComputerOB" type="Area2D"]
+position = Vector2(480, 351)
+script = ExtResource("3_oguwn")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(1, -24)
+shape = SubResource("RectangleShape2D_n3es1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vco7g")
+}
+speed_scale = 10.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Computer" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_t7d8p")
+offset = Vector2(1, -18)
+
+[node name="back2" type="ColorRect" parent="."]
+visible = false
+z_index = 4096
+offset_left = -303.0
+offset_top = -120.0
+offset_right = 247.0
+offset_bottom = -41.0
+
+[node name="back" type="ColorRect" parent="."]
+visible = false
+z_index = 4096
+offset_left = -302.0
+offset_top = -119.0
+offset_right = 246.0
+offset_bottom = -42.0
+color = Color(0, 0, 0, 1)
+
+[node name="lbl_item" type="Label" parent="back"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 2.0
+offset_right = 508.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("13_kvgbd")
+text = "RINGGG!! RINGGG!!!!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="arrows" type="AnimatedSprite2D" parent="back"]
+position = Vector2(520, 39)
+sprite_frames = SubResource("SpriteFrames_nw0se")
+autoplay = "default"
+
+[node name="sprite" type="AnimatedSprite2D" parent="back"]
+position = Vector2(40, 32)
+sprite_frames = SubResource("SpriteFrames_nd76e")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

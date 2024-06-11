@@ -33,3 +33,5 @@ sprite_frames = SubResource("SpriteFrames_3viko")
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(1, -15.5)
 shape = SubResource("RectangleShape2D_njti7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -86,6 +86,28 @@ var bounce_amount = 0.3
 var map_obj = null
 var commands : Dictionary
 
+enum GameStates {
+	HOME,
+	OUTSIDE,
+	FALLING,
+	OVERWORLD,
+	RANDOMLEVEL,
+}
+
+var CurrentState : GameStates = GameStates.HOME
+
+func scene_next():
+	if Global.CurrentState == Global.GameStates.FALLING:
+		Global.CurrentState = Global.GameStates.OVERWORLD
+	elif Global.CurrentState == Global.GameStates.HOME:
+		Global.CurrentState = Global.GameStates.OUTSIDE
+	elif Global.CurrentState == Global.GameStates.OUTSIDE:
+		Global.CurrentState = Global.GameStates.FALLING
+	elif Global.CurrentState == Global.GameStates.FALLING:
+		Global.CurrentState = Global.GameStates.RANDOMLEVEL
+		
+	get_tree().reload_current_scene()
+
 func remove_item():
 	Global.slots_stock[Global.gunz_index] -= 1
 	Global.GizmoWatcher.setHUD()
