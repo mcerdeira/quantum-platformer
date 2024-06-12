@@ -20,6 +20,7 @@
 ==================================================================================================================
 
 Ajustes:
+- Ver tema de trepar la escalera y como eso hace un salto 
 - Prisioneros
   . Si muere un prisionero aparece un fantasma que te sigue por todo el nivel. 
 - Enemigo bullet hell: las balas no salen en un circulo perfecto 
@@ -63,6 +64,8 @@ Features:
 
 
 --------------------------------- DONE ---------------------------------
+- Decoraciones 
+  . Plantitas en el piso 
 - Escena casa
 - Escena afuera
 - Escena Cayendo
