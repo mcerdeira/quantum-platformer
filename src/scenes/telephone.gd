@@ -31,6 +31,7 @@ func _physics_process(delta):
 			opened = true
 			active = false
 			Global.emit(global_position, 5)
+			$back/sprite.animation = "prisoner"
 			$back/lbl_item.text = "S.O.S. BLAH BLAH BLAH!!"
 			$back/arrows.visible = false
 			ringing = false

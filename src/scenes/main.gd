@@ -21,7 +21,7 @@ var rooms_bottom = [
 
 func generate_fixed_level(room, visible_hud):
 	var q = 1
-	$frame.visible = false
+	$frame.queue_free()
 	var r = room.instantiate()
 	r.global_position =  Vector2.ZERO
 	r.q = q

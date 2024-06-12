@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bnvseeuaf6lc8"]
+[gd_scene load_steps=21 format=3 uid="uid://bnvseeuaf6lc8"]
 
 [ext_resource type="Texture2D" uid="uid://djs78nqy60b6t" path="res://sprites/floor_spr_2.png" id="1_8es5h"]
 [ext_resource type="Texture2D" uid="uid://6e6u7tx8wpp5" path="res://sprites/stair.png" id="2_udnot"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="11_yjbld"]
 [ext_resource type="PackedScene" uid="uid://q767q018lep8" path="res://scenes/exit_door.tscn" id="12_eedce"]
 [ext_resource type="PackedScene" uid="uid://ddh78hbx6awk6" path="res://scenes/telephone.tscn" id="12_qircy"]
-[ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="13_l6gs6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
 texture = ExtResource("1_8es5h")
@@ -98,11 +97,6 @@ position = Vector2(181, 624)
 
 [node name="ExitDoor" parent="." instance=ExtResource("12_eedce")]
 position = Vector2(912, 640)
-
-[node name="qdtector" parent="." instance=ExtResource("13_l6gs6")]
-visible = false
-collision_layer = 41
-collision_mask = 41
 
 [node name="Stair" parent="." instance=ExtResource("11_6c4sg")]
 position = Vector2(592, 640)

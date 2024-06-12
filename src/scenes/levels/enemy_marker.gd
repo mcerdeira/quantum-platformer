@@ -32,7 +32,6 @@ func _process(delta):
 			var pclone = eobj.instantiate()
 			pclone.global_position = global_position
 			Main.add_child(pclone)
-			Global.emit(pclone.global_position, 10)
 			
 		done = true
 		queue_free()

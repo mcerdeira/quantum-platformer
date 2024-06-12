@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bveav6ctdlmbu"]
+[gd_scene load_steps=37 format=3 uid="uid://bveav6ctdlmbu"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_tvtda"]
 [ext_resource type="Texture2D" uid="uid://dbh84l3hbge3s" path="res://sprites/box.png" id="2_6led8"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://rpr86laa62uq" path="res://sprites/none.png" id="16_lx8b7"]
 [ext_resource type="Texture2D" uid="uid://de1vyj25jt0t3" path="res://sprites/spring.png" id="17_3xuhu"]
 [ext_resource type="PackedScene" uid="uid://yw5hjnyqexic" path="res://scenes/lava.tscn" id="24_nijr5"]
+[ext_resource type="Script" path="res://scenes/FADE.gd" id="26_4o44h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qr43o"]
 texture = ExtResource("3_n8kdd")
@@ -144,6 +145,27 @@ shader_parameter/heatPeriod = 6.0
 shader_parameter/heatPhaseShift = 8.0
 shader_parameter/heatUpperLimit = 10.0
 shader_parameter/coldFXStrength = 0.0
+
+[sub_resource type="Animation" id="Animation_8d1w7"]
+resource_name = "new_animation"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FADE:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(0.615573, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_at5wx"]
+_data = {
+"new_animation": SubResource("Animation_8d1w7")
+}
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_tvtda")
@@ -276,3 +298,19 @@ offset_top = 1359.0
 offset_right = 5338.0
 offset_bottom = 3263.0
 script = ExtResource("12_wh2nv")
+
+[node name="FADE" type="ColorRect" parent="."]
+z_index = 4096
+offset_left = -1803.0
+offset_top = -1168.0
+offset_right = 6372.0
+offset_bottom = 4712.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("26_4o44h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FADE"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_at5wx")
+}
+speed_scale = 0.5

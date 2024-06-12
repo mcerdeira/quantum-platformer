@@ -18,7 +18,6 @@ func _process(delta):
 		var pclone = player_clone.instantiate()
 		pclone.global_position = global_position
 		Main.add_child(pclone)
-		Global.emit(pclone.global_position, 10)
 		
 		Global.prisoner_counter += 1
 		Global.prisoner_total += 1

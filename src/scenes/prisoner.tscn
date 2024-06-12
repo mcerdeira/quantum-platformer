@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://co7t0ic7dgox4"]
+[gd_scene load_steps=19 format=3 uid="uid://co7t0ic7dgox4"]
 
 [ext_resource type="Script" path="res://scenes/prisoner.gd" id="1_e8vj3"]
 [ext_resource type="Texture2D" uid="uid://bjfjws7k16wlx" path="res://sprites/horu/images/player_prisoner_fire_spr_0.png" id="2_42st0"]
 [ext_resource type="Texture2D" uid="uid://dvpx8v5ontbdf" path="res://sprites/horu/images/player_prisoner_dead_spr_0.png" id="2_nndgd"]
 [ext_resource type="Texture2D" uid="uid://dc5iy4hnblrha" path="res://sprites/sleepy_trap_0.png" id="4_n5scw"]
+[ext_resource type="Texture2D" uid="uid://56ay8t7odkr6" path="res://sprites/horu/images/prisoner1_stunned.png" id="5_gd5h8"]
 [ext_resource type="Texture2D" uid="uid://cghefrirh1r18" path="res://sprites/sleepy_trap_1.png" id="5_wpxcc"]
 [ext_resource type="Texture2D" uid="uid://bs35paxf142ou" path="res://sprites/sleepy_trap_2.png" id="6_n6gfv"]
 [ext_resource type="Texture2D" uid="uid://bnu7qox5rd7f1" path="res://sprites/horu/images/prisoner1.png" id="6_u7wjf"]
@@ -42,7 +43,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_u7wjf")
+"texture": ExtResource("5_gd5h8")
 }],
 "loop": true,
 "name": &"stunned",
@@ -106,7 +107,7 @@ script = ExtResource("1_e8vj3")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ssvs2")
-animation = &"stunned"
+animation = &"idle"
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)

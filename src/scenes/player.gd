@@ -33,6 +33,7 @@ var idle_play = idle_play_total
 var dont_camera = false
 var frame = 0
 var gravityon = true
+var cameralimits_on = true
 
 func _ready():
 	add_to_group("players")
@@ -46,12 +47,14 @@ func _ready():
 	LineTrayectory = $Line2D
 	Global.shaker_obj.camera = $Camera2D
 	Global.player_obj = self
+	Global.Fader.fade_out()
 	
 func hide_eyes():
 	$sprite_eyes.visible = false
 	
 func is_on_floor_custom():
-	return is_on_floor() or buff > 0
+	var real_of = is_on_floor()
+	return real_of or buff > 0
 	
 func update_trayectory(delta):
 	LineTrayectory.visible = true 
@@ -62,6 +65,9 @@ func update_trayectory(delta):
 func destroy_trayectory():
 	LineTrayectory.visible = false 
 	LineTrayectory.clear_points()
+	
+func center_camera():
+	$Camera2D.position = Vector2.ZERO
 
 func _physics_process(delta):
 	if !iam_clone:
@@ -83,7 +89,14 @@ func _physics_process(delta):
 	if is_on_floor() or grabbed:
 		if in_air:
 			in_air = false
-			Global.emit(global_position, 1)
+			if !cameralimits_on:
+				Global.shaker_obj.shake(10, 2.1)
+				cameralimits_on = true
+				Global.emit(global_position, 3)
+				blowed = 5
+			else:
+				Global.emit(global_position, 1)
+			
 		buff = 0.2
 	else:
 		in_air = true
@@ -120,22 +133,23 @@ func enable_camera(val):
 	$Camera2D.enabled = val 
 	
 func camera_limits():
-	if direction == "right":
-		$Camera2D.position.x = lerp($Camera2D.position.x, 200.00, 0.01)
-	else:
-		$Camera2D.position.x = lerp($Camera2D.position.x, -200.00, 0.01)
-	
-	if $Camera2D.global_position.x < 446:
-		$Camera2D.global_position.x = 446
+	if cameralimits_on:
+		if direction == "right":
+			$Camera2D.position.x = lerp($Camera2D.position.x, 200.00, 0.01)
+		else:
+			$Camera2D.position.x = lerp($Camera2D.position.x, -200.00, 0.01)
 		
-	if $Camera2D.global_position.x > 4152:
-		$Camera2D.global_position.x = 4152
-		
-	if $Camera2D.global_position.y < 176:
-		$Camera2D.global_position.y = 176
-		
-	if $Camera2D.global_position.y > 2450:
-		$Camera2D.global_position.y = 2450
+		if $Camera2D.global_position.x < 446:
+			$Camera2D.global_position.x = 446
+			
+		if $Camera2D.global_position.x > 4152:
+			$Camera2D.global_position.x = 4152
+			
+		if $Camera2D.global_position.y < 176:
+			$Camera2D.global_position.y = 176
+			
+		if $Camera2D.global_position.y > 2450:
+			$Camera2D.global_position.y = 2450
 
 func process_player(delta):
 	var moving = false

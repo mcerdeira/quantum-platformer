@@ -85,6 +85,8 @@ var prisoner_total = 0
 var bounce_amount = 0.3
 var map_obj = null
 var commands : Dictionary
+var first_time = true
+var Fader = null
 
 enum GameStates {
 	HOME,
@@ -97,15 +99,14 @@ enum GameStates {
 var CurrentState : GameStates = GameStates.HOME
 
 func scene_next():
-	if Global.CurrentState == Global.GameStates.FALLING:
-		Global.CurrentState = Global.GameStates.OVERWORLD
-	elif Global.CurrentState == Global.GameStates.HOME:
+	if Global.CurrentState == Global.GameStates.HOME:
 		Global.CurrentState = Global.GameStates.OUTSIDE
 	elif Global.CurrentState == Global.GameStates.OUTSIDE:
 		Global.CurrentState = Global.GameStates.FALLING
 	elif Global.CurrentState == Global.GameStates.FALLING:
-		Global.CurrentState = Global.GameStates.RANDOMLEVEL
-		
+		Global.CurrentState = Global.GameStates.OVERWORLD
+
+	Global.Fader.fade_in()
 	get_tree().reload_current_scene()
 
 func remove_item():

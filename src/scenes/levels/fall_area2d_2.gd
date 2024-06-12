@@ -1,6 +1,6 @@
 extends Area2D
 var target = null
-var fall_ttl = 1
+var fall_ttl = 6
 var total_ttl = 1.5
 var fade = null
 
@@ -20,7 +20,6 @@ func _process(delta):
 		if total_ttl <= 0:
 			Global.scene_next()
 			
-
 func _on_body_entered(body):
 	if body.is_in_group("players"):
 		target = body
