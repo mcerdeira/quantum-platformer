@@ -47,11 +47,6 @@ Features:
 - Red Blue switches 
 - Enemigo con alas que planea al caer 
 
-- Escena casa
-- Escena afuera
-- Escena Cayendo
-- Escena main hub
-
 - Secretos
 - Nombre: Grunky Grotto
 
@@ -68,6 +63,10 @@ Features:
 
 
 --------------------------------- DONE ---------------------------------
+- Escena casa
+- Escena afuera
+- Escena Cayendo
+- Escena main hub
 - Bugs en shader de calor
 - Enemigo bullet hell: espaciar más los tiros
 - Prisioneros

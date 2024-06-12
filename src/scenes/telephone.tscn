@@ -122,12 +122,13 @@ color = Color(0, 0, 0, 1)
 
 [node name="lbl_item" type="Label" parent="back"]
 layout_mode = 0
-offset_left = 84.0
+offset_left = 64.0
 offset_top = 2.0
-offset_right = 508.0
+offset_right = 488.0
 offset_bottom = 64.0
 theme_override_fonts/font = ExtResource("13_kvgbd")
-text = "RINGGG!! RINGGG!!!!!!"
+text = "== TELEPHONE ==
+A device for communication"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

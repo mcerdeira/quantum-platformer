@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cer2o3pqwtaqs"]
+
+[ext_resource type="Script" path="res://scenes/levels/PlantGroup.gd" id="1_80ikm"]
+[ext_resource type="PackedScene" uid="uid://ba5hq2bchhv8x" path="res://scenes/Plants.tscn" id="2_5f2dc"]
+
+[node name="PlantGroup" type="Node2D"]
+script = ExtResource("1_80ikm")
+
+[node name="Plants" parent="." instance=ExtResource("2_5f2dc")]
+position = Vector2(220, 640)
+
+[node name="Plants2" parent="." instance=ExtResource("2_5f2dc")]
+position = Vector2(236, 640)
+
+[node name="Plants3" parent="." instance=ExtResource("2_5f2dc")]
+position = Vector2(252, 640)

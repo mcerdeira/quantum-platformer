@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://be63rv3buvrmc"]
+[gd_scene load_steps=25 format=3 uid="uid://be63rv3buvrmc"]
 
 [ext_resource type="Texture2D" uid="uid://djs78nqy60b6t" path="res://sprites/floor_spr_2.png" id="1_vgbv1"]
 [ext_resource type="Texture2D" uid="uid://6e6u7tx8wpp5" path="res://sprites/stair.png" id="2_wnwd8"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cr3uij3812lyq" path="res://sprites/horu/images/exit_spr_1.png" id="10_h8b32"]
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="10_t0j1c"]
 [ext_resource type="Script" path="res://scenes/levels/fall_area2D.gd" id="12_3tuvj"]
+[ext_resource type="PackedScene" uid="uid://cer2o3pqwtaqs" path="res://scenes/plant_group.tscn" id="13_l586e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2vkbw"]
 texture = ExtResource("1_vgbv1")
@@ -138,5 +139,22 @@ offset_top = -4648.0
 offset_right = 12587.0
 offset_bottom = 6160.0
 color = Color(0, 0, 0, 0)
+
+[node name="PlantGroup" parent="." instance=ExtResource("13_l586e")]
+
+[node name="PlantGroup2" parent="." instance=ExtResource("13_l586e")]
+position = Vector2(666, -32)
+
+[node name="PlantGroup3" parent="." instance=ExtResource("13_l586e")]
+position = Vector2(714, -32)
+
+[node name="PlantGroup4" parent="." instance=ExtResource("13_l586e")]
+position = Vector2(1461, -64)
+
+[node name="PlantGroup5" parent="." instance=ExtResource("13_l586e")]
+position = Vector2(3444, -64)
+
+[node name="PlantGroup6" parent="." instance=ExtResource("13_l586e")]
+position = Vector2(3700, -64)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

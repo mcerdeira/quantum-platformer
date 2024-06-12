@@ -90,8 +90,8 @@ func _physics_process(delta):
 		if in_air:
 			in_air = false
 			if !cameralimits_on:
+				velocity.x = 0
 				Global.shaker_obj.shake(10, 2.1)
-				cameralimits_on = true
 				Global.emit(global_position, 3)
 				blowed = 5
 			else:
@@ -111,6 +111,9 @@ func _physics_process(delta):
 		if blowed <= 0:
 			$stars_stunned.visible = false
 			$lbl_action.visible = false
+			velocity.x = lerp(velocity.x, 0.0, 0.1)
+			if !cameralimits_on:
+				cameralimits_on = true
 			
 		if is_on_wall():
 			velocity.x = (previus_velocity.x / 2) * -1
