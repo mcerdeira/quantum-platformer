@@ -34,6 +34,7 @@ var dont_camera = false
 var frame = 0
 var gravityon = true
 var cameralimits_on = true
+var terminal_mode = false
 
 func _ready():
 	add_to_group("players")
@@ -70,6 +71,9 @@ func center_camera():
 	$Camera2D.position = Vector2.ZERO
 
 func _physics_process(delta):
+	if terminal_mode:
+		return
+	
 	if !iam_clone:
 		Global.GAMEOVER = dead
 	

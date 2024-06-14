@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://1bt2t2jgbtos"]
+[gd_scene load_steps=10 format=3 uid="uid://1bt2t2jgbtos"]
 
+[ext_resource type="Script" path="res://scenes/terminal_computer.gd" id="1_12f75"]
 [ext_resource type="Texture2D" uid="uid://dkimwbya1l66v" path="res://sprites/terminal_computer.png" id="1_hm5o6"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="2_bxupf"]
 [ext_resource type="Texture2D" uid="uid://da14xud8tdoj" path="res://sprites/arrows1.png" id="3_q5fdc"]
@@ -46,6 +47,7 @@ animations = [{
 
 [node name="TerminalComputer" type="Area2D"]
 position = Vector2(194, 597)
+script = ExtResource("1_12f75")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -11)
@@ -81,7 +83,7 @@ offset_right = 535.0
 offset_bottom = 64.0
 theme_override_fonts/font = ExtResource("2_bxupf")
 text = "== TERMINAL ==
-Hacke the world!"
+Hack the world!"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -106,6 +108,295 @@ color = Color(0.203922, 0.164706, 0.592157, 1)
 
 [node name="TextEdit" type="TextEdit" parent="Terminal"]
 layout_mode = 0
-offset_right = 703.0
+offset_left = 1.0
+offset_right = 704.0
 offset_bottom = 334.0
-text = ">:"
+theme_override_colors/font_color = Color(0.501961, 0.498039, 0.556863, 1)
+theme_override_fonts/font = ExtResource("2_bxupf")
+text = "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+caret_blink = true
+caret_draw_when_editable_disabled = true
+
+[node name="ColorRect" type="ColorRect" parent="Terminal"]
+layout_mode = 0
+offset_top = -24.0
+offset_right = 700.0
+color = Color(0.866667, 0, 0.866667, 1)
+
+[node name="Label" type="Label" parent="Terminal"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -20.0
+offset_right = 434.0
+offset_bottom = -4.0
+theme_override_fonts/font = ExtResource("2_bxupf")
+text = "G TERMINAL v1.0"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
