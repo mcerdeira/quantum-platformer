@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbdrxsosrboxh"]
+
+[ext_resource type="PackedScene" uid="uid://dgdfvbn0wb37l" path="res://scenes/waterdrop.tscn" id="1_hqkv4"]
+[ext_resource type="Script" path="res://scenes/water_drop_spawn.gd" id="1_jtgut"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4fl0t"]
+
+[node name="WaterDropSpawn" type="Node2D"]
+script = ExtResource("1_jtgut")
+
+[node name="waterdrop" parent="." instance=ExtResource("1_hqkv4")]
+collision_layer = 33
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_4fl0t")
+disabled = true
+
+[connection signal="area_entered" from="waterdrop" to="waterdrop" method="_on_area_entered"]
+[connection signal="body_entered" from="waterdrop" to="waterdrop" method="_on_body_entered"]

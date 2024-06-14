@@ -25,7 +25,7 @@ Ajustes:
 - Prisioneros
   . Si muere un prisionero aparece un fantasma que te sigue por todo el nivel. 
 - Enemigo bullet hell: las balas no salen en un circulo perfecto 
-- Enemigo bullet hell tiene que prenderse fuego y tener una forma de cambiar de estado "hostil"
+- Enemigo bullet hell tiene que tener una forma de cambiar de estado "hostil"
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 
 Features:
@@ -53,11 +53,7 @@ Features:
 - Nombre: Grunky Grotto
 
 - Decoraciones 
-  . Gotas de agua 
-  . Plantitas en el piso 
-  . Tumbas
   . Splash al caer en la lava
-  . Lamparas colgantes (caen al tocarlas y generan fuego)
   . Cascaditas
 
 - SFX
@@ -67,6 +63,9 @@ Features:
 --------------------------------- DONE ---------------------------------
 - Decoraciones 
   . Plantitas en el piso 
+  . Gotas de agua 
+  . Lamparas colgantes (caen al tocarlas y generan fuego)
+  . Tumbas
 - Escena casa
 - Escena afuera
 - Escena Cayendo

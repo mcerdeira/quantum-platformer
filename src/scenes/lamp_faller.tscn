@@ -1,0 +1,96 @@
+[gd_scene load_steps=15 format=3 uid="uid://vul133gn10w3"]
+
+[ext_resource type="Texture2D" uid="uid://ddu0xatijetd3" path="res://sprites/lamp.png" id="1_5gu63"]
+[ext_resource type="Script" path="res://scenes/lamp_faller.gd" id="1_wlu64"]
+[ext_resource type="Texture2D" uid="uid://yl8p1y6bajph" path="res://sprites/fire_lamp1.png" id="2_qccrt"]
+[ext_resource type="PackedScene" uid="uid://bgf6ly14u3fi1" path="res://scenes/FireBall.tscn" id="2_sw0qo"]
+[ext_resource type="Texture2D" uid="uid://bedso0w7utfv8" path="res://sprites/lamp_boken.png" id="3_4jlm0"]
+[ext_resource type="Texture2D" uid="uid://co4ier6jb7lj0" path="res://sprites/fire_lamp2.png" id="3_hyuuv"]
+[ext_resource type="Texture2D" uid="uid://chlmeerd48jek" path="res://sprites/lamp_bright.png" id="4_voj88"]
+[ext_resource type="Texture2D" uid="uid://d0p2pe1qd4p47" path="res://sprites/fire_lamp3.png" id="5_sudkn"]
+[ext_resource type="Texture2D" uid="uid://dydcaeqkg36b2" path="res://sprites/fire_lamp4.png" id="6_aswk8"]
+[ext_resource type="Texture2D" uid="uid://lk1u4b3bkexp" path="res://sprites/fire_lamp5.png" id="7_nvqq6"]
+[ext_resource type="Texture2D" uid="uid://cok35s7fm8xm0" path="res://sprites/fire_lamp6.png" id="8_x1dfw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wpqrd"]
+radius = 11.0454
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qpfni"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4jlm0")
+}],
+"loop": true,
+"name": &"broken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5gu63")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_75mua"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qccrt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hyuuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_voj88")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sudkn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_aswk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_voj88")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nvqq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_x1dfw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_voj88")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="LampFaller" type="CharacterBody2D"]
+position = Vector2(0, 6)
+collision_layer = 33
+collision_mask = 33
+script = ExtResource("1_wlu64")
+
+[node name="FireBall" parent="." instance=ExtResource("2_sw0qo")]
+visible = false
+position = Vector2(0, 4)
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_wpqrd")
+
+[node name="Lamp" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qpfni")
+
+[node name="sprite" type="AnimatedSprite2D" parent="Lamp"]
+z_index = -1
+z_as_relative = false
+position = Vector2(-0.25, 4.5)
+sprite_frames = SubResource("SpriteFrames_75mua")
+autoplay = "default"
+frame_progress = 0.761492
+speed_scale = 2.0

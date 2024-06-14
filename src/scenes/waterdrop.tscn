@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgdfvbn0wb37l"]
+
+[ext_resource type="Script" path="res://scenes/waterdrop.gd" id="1_w3xcw"]
+[ext_resource type="Texture2D" uid="uid://cpmk4py84ofc6" path="res://sprites/drop.png" id="2_nku20"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4s2i1"]
+size = Vector2(2, 2)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u8wfu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nku20")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1efmg"]
+lifetime_randomness = 0.56
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 5.32
+angle_min = -535.1
+angle_max = 68.1
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = -100.0
+initial_velocity_max = -100.0
+gravity = Vector3(0, 98, 0)
+turbulence_noise_strength = 16.06
+turbulence_noise_scale = 8.315
+
+[node name="waterdrop" type="Area2D"]
+script = ExtResource("1_w3xcw")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_4s2i1")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(1, 1e-05)
+sprite_frames = SubResource("SpriteFrames_u8wfu")
+offset = Vector2(0, 1)
+
+[node name="particles" type="GPUParticles2D" parent="."]
+position = Vector2(0, -1)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_1efmg")
+texture = ExtResource("2_nku20")
