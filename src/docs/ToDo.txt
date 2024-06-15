@@ -13,8 +13,8 @@
 
 - Escena Nivel Procedural: Liberar a todos los prisioneros, encontrar la puerta e irse (simil alien 3/sega)
 - Secretos:
-  . Hay una puerta en el main hub distinta que se abre solo si venimos con un numero X de fantasmas.
-  . En las terminales vamos a poder hacer algo?
+  . Ver Lifo y el QR 
+  . Hay terminales en los niveles que no vamos a saber para que son. En cada una podemos apagar variables. Luego, al desbloquear la fase final, vemos que hay un sector al que no podemos ir por lasers y otros (relacionados con la variable), entonces hay que ir a cada nivel a apagar las variables.  
 
 ==================================================================================================================
 ==================================================================================================================
