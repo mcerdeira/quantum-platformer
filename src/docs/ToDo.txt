@@ -28,6 +28,7 @@ Ajustes:
 - Enemigo bullet hell: hacerlo ciclope y que el ojo siga al personaje
 - Al aparecer el fantasma y elevarse, cambiar el Sprite 
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
+- Al teléfono nos llama nuestra mascota. Al salir al patio, nos encontramos con uno de los prisioneros que nos "dice" que hay otros como el secuestrados 
 
 Features:
 - Si el enemigo glotón "come" otros items:
