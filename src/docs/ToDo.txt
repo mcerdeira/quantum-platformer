@@ -22,8 +22,6 @@
 
 Ajustes:
 - Ver tema de trepar la escalera y como eso hace un salto 
-- Prisioneros
-  . Si muere un prisionero aparece un fantasma que te sigue por todo el nivel. 
 - Enemigo bullet hell: las balas no salen en un circulo perfecto 
 - Enemigo bullet hell tiene que tener una forma de cambiar de estado "hostil"
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
@@ -61,6 +59,8 @@ Features:
 
 
 --------------------------------- DONE ---------------------------------
+- Prisioneros
+  . Si muere un prisionero aparece un fantasma que te sigue por todo el nivel. 
 - Traer fire_emiter (lasers) desde el juego de ghost
 - Traer moving_platform desde el juego de ghost
 - Decoraciones 

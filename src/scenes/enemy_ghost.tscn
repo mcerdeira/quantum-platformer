@@ -1,0 +1,234 @@
+[gd_scene load_steps=27 format=3 uid="uid://5ixpeq5o4t2w"]
+
+[ext_resource type="Script" path="res://scenes/enemy_ghost.gd" id="1_2penp"]
+[ext_resource type="Texture2D" uid="uid://cbm2ov3p75byk" path="res://sprites/dead_fire_spr_0.png" id="2_dtjm2"]
+[ext_resource type="PackedScene" uid="uid://dsb6dbx10a67k" path="res://scenes/ray_particles.tscn" id="2_mji0h"]
+[ext_resource type="Texture2D" uid="uid://cpq2gxdbvq4i6" path="res://sprites/dead_fire_spr_1.png" id="3_rluvq"]
+[ext_resource type="Texture2D" uid="uid://bn3j5ne0mc650" path="res://sprites/dead_fire_spr_2.png" id="4_y54sl"]
+[ext_resource type="Texture2D" uid="uid://3fsfbc6oq5x" path="res://sprites/horu/images/prisoner_ghost1.png" id="5_u7c02"]
+[ext_resource type="Texture2D" uid="uid://dhek3rmty2ktt" path="res://sprites/horu/images/prisoner_ghost2.png" id="6_ma4or"]
+[ext_resource type="Texture2D" uid="uid://dfsr75jl65j5r" path="res://sprites/horu/images/prisoner_ghost3.png" id="7_7tjrn"]
+[ext_resource type="Texture2D" uid="uid://qh7scm4lrjhs" path="res://sprites/horu/images/enemy_cool_face_spr_0.png" id="11_t2cle"]
+[ext_resource type="Texture2D" uid="uid://cxlh6d84e1cdy" path="res://sprites/horu/images/enemy_cool_face_spr_1.png" id="12_1ad0w"]
+[ext_resource type="Texture2D" uid="uid://hsmcoddumqgd" path="res://sprites/horu/images/enemy_cool_face_spr_2.png" id="13_ke1d0"]
+[ext_resource type="Texture2D" uid="uid://cyjqqycobhdq7" path="res://sprites/horu/images/enemy_anger_spr_0.png" id="14_hvedu"]
+[ext_resource type="Texture2D" uid="uid://csea0rkohqj2h" path="res://sprites/horu/images/enemy_anger_spr_1.png" id="15_jui8r"]
+[ext_resource type="Texture2D" uid="uid://bfschs4nmrfbg" path="res://sprites/horu/images/enemy_anger_spr_2.png" id="16_rdjma"]
+[ext_resource type="Texture2D" uid="uid://th5j476r6114" path="res://sprites/horu/images/enemy_danger_spr_0.png" id="17_rtnws"]
+[ext_resource type="Texture2D" uid="uid://xbq2vgwne0bv" path="res://sprites/horu/images/enemy_danger_spr_1.png" id="18_dbfe5"]
+[ext_resource type="Texture2D" uid="uid://hutlu6c76y5i" path="res://sprites/horu/images/enemy_danger_spr_2.png" id="19_nyre3"]
+[ext_resource type="Texture2D" uid="uid://hpuda2eg601m" path="res://sprites/horu/images/stars1.png" id="20_di3es"]
+[ext_resource type="Texture2D" uid="uid://b7ra00yssdsct" path="res://sprites/horu/images/stars2.png" id="21_ufnkr"]
+[ext_resource type="Texture2D" uid="uid://dv4833kftjwfh" path="res://sprites/horu/images/stars3.png" id="22_fo3f4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0vk2b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dtjm2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rluvq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y54sl")
+}],
+"loop": true,
+"name": &"dead_fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_u7c02")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_u7c02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ma4or")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7tjrn")
+}],
+"loop": true,
+"name": &"killing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_u7c02")
+}],
+"loop": true,
+"name": &"stunned",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_u7c02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ma4or")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ma4or")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7tjrn")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efk2u"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"dead_fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_t2cle")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_1ad0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ke1d0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_hvedu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_jui8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_rdjma")
+}],
+"loop": true,
+"name": &"killing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_rtnws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_dbfe5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_nyre3")
+}],
+"loop": true,
+"name": &"stunned",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_t2cle")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_1ad0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ke1d0")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6yeio"]
+radius = 15.7003
+
+[sub_resource type="Animation" id="Animation_k8fva"]
+resource_name = "killing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.5), Vector2(1.5, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b5rsm"]
+_data = {
+"killing": SubResource("Animation_k8fva")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4xq1w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_di3es")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ufnkr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_fo3f4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EnemyGhost" type="CharacterBody2D"]
+script = ExtResource("1_2penp")
+
+[node name="RayParticles" parent="." instance=ExtResource("2_mji0h")]
+z_index = 4094
+z_as_relative = false
+position = Vector2(-2, -7)
+scale = Vector2(1.5, 1.5)
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0vk2b")
+animation = &"walking"
+autoplay = "dead_fire"
+frame_progress = 0.978403
+speed_scale = 2.0
+
+[node name="eyes" type="AnimatedSprite2D" parent="sprite"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_efk2u")
+animation = &"idle"
+
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 33
+collision_mask = 33
+
+[node name="collider" type="CollisionShape2D" parent="Area"]
+shape = SubResource("CircleShape2D_6yeio")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b5rsm")
+}
+speed_scale = 2.0
+
+[node name="stars_stunned" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_4xq1w")
+autoplay = "default"
+frame_progress = 0.742572
+
+[connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]

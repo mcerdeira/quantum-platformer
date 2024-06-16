@@ -25,6 +25,7 @@ var is_on_stairs = false
 var grabbed = false
 var dead_animation = "dead"
 var fires = preload("res://scenes/Fires.tscn")
+var ghost = preload("res://scenes/enemy_ghost.tscn")
 var fire_obj = null
 var level_parent = null
 var delay_time = 0
@@ -36,6 +37,7 @@ var left_cmd = false
 var right_cmd = false
 var up_cmd = false
 var down_cmd = false
+var ghost_created = false
 
 func _ready():
 	add_to_group("players")
@@ -68,6 +70,14 @@ func _physics_process(delta):
 				$lbl_action.text = ""
 				$lbl_action.visible = false
 	else:
+		if dead and !ghost_created:
+			ghost_created = true
+			Global.emit(global_position, 10)
+			var parent = level_parent
+			var p = ghost.instantiate()
+			parent.add_child(p)
+			p.global_position = global_position
+		
 		if dead and is_on_stairs:
 			velocity = Vector2.ZERO
 		

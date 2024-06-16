@@ -96,7 +96,7 @@ enum GameStates {
 	RANDOMLEVEL,
 }
 
-var CurrentState : GameStates = GameStates.HOME
+var CurrentState : GameStates = GameStates.RANDOMLEVEL
 
 func scene_next():
 	if Global.CurrentState == Global.GameStates.HOME:

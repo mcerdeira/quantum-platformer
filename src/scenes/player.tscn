@@ -304,13 +304,13 @@ rotation = 1.5708
 
 [node name="lbl_action" type="Label" parent="."]
 visible = false
-offset_left = -29.0
-offset_top = -30.0
-offset_right = 41.0
+offset_left = -92.0
+offset_top = -45.0
+offset_right = 100.0
 offset_bottom = -21.0
 theme_override_colors/font_color = Color(0.556863, 0.937255, 0.592157, 1)
 theme_override_fonts/font = ExtResource("7_1mbn0")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 24
 text = "TELEPORT"
 horizontal_alignment = 1
 vertical_alignment = 1
