@@ -54,6 +54,7 @@ Features:
 - Decoraciones 
   . Splash al caer en la lava
   . Cascaditas
+  . Backgrounds con parallax
 
 - SFX
 - Musica
