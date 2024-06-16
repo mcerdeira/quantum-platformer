@@ -155,6 +155,7 @@ func create_spring_object():
 	
 func explode():
 	if !simulation:
+		visible = true
 		$sprite.visible = false
 		$explosion/collider.set_deferred("disabled", false)
 		$explosion_mini/collider.set_deferred("disabled", false)
@@ -167,10 +168,19 @@ func explode():
 func _on_area_body_entered(body):
 	if !simulation:
 		if body and body.is_in_group("enemies"):
-			body.eat_gizmo()
+			body.eat_gizmo(current_item)
 			Global.emit(global_position, 1)
-			queue_free()
-	
+			if current_item.name == "teleport":
+				queue_free()
+			elif current_item.name == "clone":
+				queue_free()
+			elif current_item.name == "bomb":
+				visible = false
+			elif current_item.name == "spring":
+				queue_free()
+			elif current_item.name == "muffin":
+				queue_free()
+			
 		if body and body.is_in_group("players"):
 			Global.emit(global_position, 1)
 			Global.get_item(current_item)

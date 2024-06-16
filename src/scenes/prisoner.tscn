@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://co7t0ic7dgox4"]
+[gd_scene load_steps=21 format=3 uid="uid://co7t0ic7dgox4"]
 
 [ext_resource type="Script" path="res://scenes/prisoner.gd" id="1_e8vj3"]
 [ext_resource type="Texture2D" uid="uid://bjfjws7k16wlx" path="res://sprites/horu/images/player_prisoner_fire_spr_0.png" id="2_42st0"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://b7ra00yssdsct" path="res://sprites/horu/images/stars2.png" id="11_8qxkh"]
 [ext_resource type="Texture2D" uid="uid://bwjggynfja1fm" path="res://sprites/horu/images/prisoner3.png" id="11_u3fe3"]
 [ext_resource type="Texture2D" uid="uid://dv4833kftjwfh" path="res://sprites/horu/images/stars3.png" id="12_uifnd"]
+[ext_resource type="Script" path="res://scenes/stairs_test.gd" id="15_lsw7a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ssvs2"]
 animations = [{
@@ -98,7 +99,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vb36x"]
-size = Vector2(30, 31)
+size = Vector2(17, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjttf"]
+size = Vector2(26, 31)
 
 [node name="Prisoner" type="CharacterBody2D"]
 collision_layer = 9
@@ -107,7 +111,7 @@ script = ExtResource("1_e8vj3")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ssvs2")
-animation = &"dead"
+animation = &"idle"
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
@@ -138,7 +142,17 @@ collision_layer = 9
 collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="trapped_area"]
-position = Vector2(0, 0.5)
+position = Vector2(0.5, 14.5)
 shape = SubResource("RectangleShape2D_vb36x")
+
+[node name="stairs_test" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("15_lsw7a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stairs_test"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_rjttf")
 
 [connection signal="body_entered" from="trapped_area" to="." method="_on_trapped_area_body_entered"]

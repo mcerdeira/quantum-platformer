@@ -154,7 +154,7 @@ func dead_fire():
 func hearing_alerted(body):
 	pass
 	
-func eat_gizmo():
+func eat_gizmo(current_item):
 	killing = total_killing
 	
 func kill_fall():

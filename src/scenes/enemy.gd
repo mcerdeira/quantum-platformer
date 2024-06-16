@@ -19,6 +19,7 @@ var current_target_alerted = null
 var check_delay = 1
 var total_killing = 6
 var killing = 0
+var do_when_finish_killing = ""
 var direction_change_ttl_total = 4
 var direction_change_ttl = direction_change_ttl_total
 var alerted = false
@@ -28,7 +29,10 @@ var previus_velocity = Vector2.ZERO
 var fire_obj = null
 var level_parent = null
 var dead = false
+var jumper = false
+var sleep = false
 var fires = preload("res://scenes/Fires.tscn")
+var enemy = load("res://scenes/enemy.tscn")
 
 func _ready():
 	add_to_group("enemies")
@@ -78,8 +82,18 @@ func process_player(delta):
 	
 	$Agro/Vision.visible = !hostile
 	
+	if sleep:
+		$sprite.animation = "sleep"
+		$stars_stunned.animation = "sleep"
+		$stars_stunned.visible = true
+		$lbl_status.text = ""
+		alerted = false
+		hostile = false
+		return
+	
 	if blowed > 0:
 		$sprite.animation = "stunned"
+		$stars_stunned.animation = "stunned"
 		$stars_stunned.visible = true
 		$lbl_status.text = ""
 		alerted = false
@@ -119,7 +133,27 @@ func process_player(delta):
 			$sprite.animation = "idle"
 			hostile = true
 			killing = 0
-			
+			if do_when_finish_killing != "":
+				if do_when_finish_killing == "teleport":
+					var where = Vector2(Global.player_obj.global_position.x - 32, Global.player_obj.global_position.y - 32)
+					Global.emit(global_position, 10)
+					global_position = where
+				elif do_when_finish_killing == "clone":
+					var where = Vector2(global_position.x - 32, global_position.y - 32)
+					Global.emit(where, 10)
+					var Main = get_node("/root/Main")
+					var pclone = enemy.instantiate()
+					pclone.global_position = where
+					Main.add_child(pclone)
+				elif do_when_finish_killing == "bomb":
+					pass
+				elif do_when_finish_killing == "muffin":
+					sleep = true
+					$sprite.animation = "sleep"
+					$sprite.play()
+				elif do_when_finish_killing == "spring":
+					jumper = true
+	
 	if alerted:
 		$lbl_status.text = "?"
 		$lbl_status.set("theme_override_colors/font_color", Color.YELLOW)
@@ -160,11 +194,14 @@ func process_player(delta):
 		
 		if Input.is_action_just_pressed("jump"):
 			jump_delay = 0.01
-		
-		if jump_delay > 0 or randi() % 1500 == 0:
-			jump_delay -= 1 * delta
-			if jump_delay <= 0:
-				jump(delta)
+			
+		if jumper:
+			jump(delta)
+		else:
+			if jump_delay > 0 or randi() % 1500 == 0:
+				jump_delay -= 1 * delta
+				if jump_delay <= 0:
+					jump(delta)
 				
 		if current_target == null or current_target.dead or !is_instance_valid(current_target):
 			if !Global.targets.is_empty():
@@ -237,7 +274,7 @@ func jump(delta):
 			velocity.y = jump_speed
 
 func _on_area_body_entered(body):
-	if !dead:
+	if !dead and !sleep and blowed <= 0:
 		if body and body.is_in_group("players"):
 			body.kill()
 			killing = total_killing
@@ -257,11 +294,21 @@ func hearing_alerted(body):
 		current_target_alerted = body
 		alerted = true
 			
-func eat_gizmo():
+func eat_gizmo(current_item):
 	current_target_alerted = null
 	alerted = false
 	hostile = false
 	killing = total_killing
+	if current_item.name == "teleport":
+		do_when_finish_killing = "teleport"
+	elif current_item.name == "clone":
+		do_when_finish_killing = "clone"
+	elif current_item.name == "bomb":
+		pass
+	elif current_item.name == "spring":
+		do_when_finish_killing = "spring"
+	elif current_item.name == "muffin":
+		do_when_finish_killing = "muffin"
 	
 func kill_fall():
 	visible = false

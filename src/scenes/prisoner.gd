@@ -38,6 +38,7 @@ var right_cmd = false
 var up_cmd = false
 var down_cmd = false
 var ghost_created = false
+var initial_pos = Vector2.ZERO
 
 func _ready():
 	add_to_group("players")
@@ -69,6 +70,7 @@ func _physics_process(delta):
 				$sprite.animation = "idle"
 				$lbl_action.text = ""
 				$lbl_action.visible = false
+				global_position = initial_pos
 	else:
 		if dead and !ghost_created:
 			ghost_created = true
@@ -281,4 +283,5 @@ func super_jump():
 func _on_trapped_area_body_entered(body):
 	if body.is_in_group("players"):
 		liberating = 2.0
-		frame = body.frame - 1
+		frame = body.frame
+		initial_pos = body.global_position

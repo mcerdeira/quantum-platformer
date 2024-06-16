@@ -21,6 +21,7 @@
 ==================================================================================================================
 
 Ajustes:
+- Si estamos con followers y hacemos TP, deberían hacer TP con nosotros
 - Ver tema de trepar la escalera y como eso hace un salto 
 - Enemigo bullet hell: las balas no salen en un circulo perfecto 
 - Enemigo bullet hell tiene que tener una forma de cambiar de estado "hostil"
@@ -57,8 +58,14 @@ Features:
 - SFX
 - Musica
 
-
 --------------------------------- DONE ---------------------------------
+- Si el enemigo glotón "come" otros items:
+  - Ver logica de still_alert() en cada tipo de enemigo, si ahi metemos la logica de estar comiendo 
+  - Siempre: esta inactivo (no agresivo) mientras come  
+  - Muffin, se duerme un rato
+  - Bomba: Explota
+  - Spring: Salta todo el tiempo
+- Prisioneros: No trepan por la escalera
 - Prisioneros
   . Si muere un prisionero aparece un fantasma que te sigue por todo el nivel. 
 - Traer fire_emiter (lasers) desde el juego de ghost

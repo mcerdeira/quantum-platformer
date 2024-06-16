@@ -235,7 +235,7 @@ func process_player(delta):
 	var some_command = ""
 	
 	if !dead and Input.is_action_just_pressed("jump"):
-		some_command = "jump"
+		some_command += add_command("jump")
 		idle_play = idle_play_total
 		if is_on_stairs and grabbed:
 			velocity.y = -speed * 1.1
@@ -274,7 +274,7 @@ func process_player(delta):
 		
 		if !shoot_mode and Input.is_action_pressed("up"):
 			idle_play = idle_play_total
-			some_command += "|up"
+			some_command += add_command("up")
 			if is_on_stairs:
 				grabbed = true 
 				moving = true
@@ -282,7 +282,7 @@ func process_player(delta):
 				velocity.y = -speed
 		elif !shoot_mode and Input.is_action_pressed("down"):
 			idle_play = idle_play_total
-			some_command += "|down"
+			some_command += add_command("down")
 			if is_on_stairs:
 				grabbed = true 
 				moving = true
@@ -290,7 +290,7 @@ func process_player(delta):
 				velocity.y = speed
 		
 		if !shoot_mode and Input.is_action_pressed("left"):
-			some_command += "|left"
+			some_command += add_command("left")
 			idle_play = idle_play_total
 			direction = "left"
 			moving = true
@@ -301,7 +301,7 @@ func process_player(delta):
 			$gun_sprite.rotation = initial_rotation - 45
 			
 		elif !shoot_mode and Input.is_action_pressed("right"):
-			some_command += "|right"
+			some_command += add_command("right")
 			idle_play = idle_play_total
 			direction = "right"
 			moving = true
@@ -357,6 +357,12 @@ func process_player(delta):
 func add_to_followers(cmd):
 	var ts = frame
 	Global.commands[ts] = cmd
+	
+func add_command(cmd):
+	if cmd == "":
+		return cmd
+	else:
+		return "|" + cmd
 		
 func shoot(delta):
 	if !dead:

@@ -271,7 +271,7 @@ func kill_fall():
 	visible = false
 	queue_free()
 	
-func eat_gizmo():
+func eat_gizmo(current_item):
 	killing = total_killing
 
 func flyaway(direction):

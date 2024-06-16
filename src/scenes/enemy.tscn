@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://irdn6sjvaj0e"]
+[gd_scene load_steps=26 format=3 uid="uid://irdn6sjvaj0e"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_8vrwn"]
 [ext_resource type="Texture2D" uid="uid://b3d305p22pnls" path="res://sprites/chest_idle.png" id="2_ckle5"]
@@ -14,6 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://hpuda2eg601m" path="res://sprites/horu/images/stars1.png" id="7_7jtwr"]
 [ext_resource type="Texture2D" uid="uid://b7ra00yssdsct" path="res://sprites/horu/images/stars2.png" id="8_wvmb0"]
 [ext_resource type="Texture2D" uid="uid://dv4833kftjwfh" path="res://sprites/horu/images/stars3.png" id="9_2r3ry"]
+[ext_resource type="Texture2D" uid="uid://bkj5uojixgwkn" path="res://sprites/chest_sleep1.png" id="9_mywad"]
+[ext_resource type="Texture2D" uid="uid://b1wccooa0b2i1" path="res://sprites/chest_sleep2.png" id="10_hiu7x"]
+[ext_resource type="Texture2D" uid="uid://hwgo1b1mg7sg" path="res://sprites/horu/images/sleep1.png" id="15_4vsls"]
+[ext_resource type="Texture2D" uid="uid://dkqyy0d27ly5x" path="res://sprites/horu/images/sleep2.png" id="16_udmmr"]
+[ext_resource type="Texture2D" uid="uid://g4v527wlxgws" path="res://sprites/horu/images/sleep3.png" id="17_jmgi5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eqtew"]
 animations = [{
@@ -55,6 +60,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("9_mywad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mywad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mywad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mywad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_hiu7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_hiu7x")
+}],
+"loop": true,
+"name": &"sleep",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("6_7gypa")
 }],
 "loop": true,
@@ -87,6 +115,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_4vsls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_udmmr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_jmgi5")
+}],
+"loop": true,
+"name": &"sleep",
 "speed": 5.0
 }]
 
@@ -136,6 +178,7 @@ vertical_alignment = 1
 position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_eqtew")
 animation = &"idle"
+frame_progress = 0.378545
 offset = Vector2(0, -16)
 
 [node name="stars_stunned" type="AnimatedSprite2D" parent="."]
@@ -144,7 +187,6 @@ position = Vector2(0, -7)
 scale = Vector2(1.3, 1.3)
 sprite_frames = SubResource("SpriteFrames_rw2kj")
 autoplay = "default"
-frame_progress = 0.790569
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
