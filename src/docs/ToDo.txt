@@ -61,6 +61,8 @@ Features:
 
 
 --------------------------------- DONE ---------------------------------
+- Traer fire_emiter (lasers) desde el juego de ghost
+- Traer moving_platform desde el juego de ghost
 - Decoraciones 
   . Plantitas en el piso 
   . Gotas de agua 

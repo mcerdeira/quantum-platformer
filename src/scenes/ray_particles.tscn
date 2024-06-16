@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsb6dbx10a67k"]
+
+[ext_resource type="Texture2D" uid="uid://cm3ybnxwvy31f" path="res://sprites/glowing_circle.png" id="1_0ep4b"]
+
+[sub_resource type="Gradient" id="Gradient_1wgbc"]
+offsets = PackedFloat32Array(0.03125, 0.46875)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xt2r8"]
+gradient = SubResource("Gradient_1wgbc")
+
+[sub_resource type="Curve" id="Curve_6oddk"]
+_data = [Vector2(0, 0.894737), 0.0, 0.0, 0, 0, Vector2(0.404389, 0.905263), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2ldrl"]
+curve = SubResource("Curve_6oddk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_up8q0"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+particle_flag_disable_z = true
+spread = 117.63
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 100.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_2ldrl")
+color = Color(5, 5, 5, 1)
+color_ramp = SubResource("GradientTexture1D_xt2r8")
+
+[node name="RayParticles" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(2, 8)
+process_material = SubResource("ParticleProcessMaterial_up8q0")
+texture = ExtResource("1_0ep4b")
+lifetime = 0.3
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="."]
+position = Vector2(9, 6)
+process_material = SubResource("ParticleProcessMaterial_up8q0")
+texture = ExtResource("1_0ep4b")
+lifetime = 0.3
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(-8, 8)
+process_material = SubResource("ParticleProcessMaterial_up8q0")
+texture = ExtResource("1_0ep4b")
+lifetime = 0.3
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="."]
+position = Vector2(-5, 1)
+process_material = SubResource("ParticleProcessMaterial_up8q0")
+texture = ExtResource("1_0ep4b")
+lifetime = 0.3
+
+[node name="GPUParticles2D5" type="GPUParticles2D" parent="."]
+position = Vector2(4, -1)
+process_material = SubResource("ParticleProcessMaterial_up8q0")
+texture = ExtResource("1_0ep4b")
+lifetime = 0.3

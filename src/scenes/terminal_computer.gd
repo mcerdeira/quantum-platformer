@@ -64,7 +64,7 @@ func parser(_cmd):
 		current_line += 4
 	elif _cmd == "CLEAR":
 		CMD.text = ""
-		current_line = 0
+		current_line = 0 
 	elif _cmd == "EXIT":
 		CMD.text = ""
 		current_line = 2

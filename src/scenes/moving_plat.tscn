@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccrniksfhd6lb"]
+
+[ext_resource type="Script" path="res://scenes/moving_plat.gd" id="1_cwmde"]
+[ext_resource type="Script" path="res://scenes/moving_platform.gd" id="1_y82u2"]
+[ext_resource type="Texture2D" uid="uid://criu3evics500" path="res://sprites/moving_plat_3.png" id="2_nac3b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7rqct"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nac3b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lu05r"]
+size = Vector2(96, 32)
+
+[sub_resource type="Animation" id="Animation_jyy2v"]
+resource_name = "new_animation"
+length = 12.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 6, 8, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(320, 0), Vector2(320, 0), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 6, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"_emit"
+}, {
+"args": [],
+"method": &"_emit"
+}, {
+"args": [],
+"method": &"_emit"
+}, {
+"args": [],
+"method": &"_emit"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u335w"]
+_data = {
+"new_animation": SubResource("Animation_jyy2v")
+}
+
+[node name="moving_plat" type="Node2D"]
+script = ExtResource("1_y82u2")
+
+[node name="plat" type="AnimatableBody2D" parent="."]
+collision_layer = 33
+collision_mask = 33
+script = ExtResource("1_cwmde")
+
+[node name="sprite" type="AnimatedSprite2D" parent="plat"]
+sprite_frames = SubResource("SpriteFrames_7rqct")
+
+[node name="collision" type="CollisionShape2D" parent="plat"]
+shape = SubResource("RectangleShape2D_lu05r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="plat"]
+libraries = {
+"": SubResource("AnimationLibrary_u335w")
+}
+autoplay = "new_animation"
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(320, 0)
