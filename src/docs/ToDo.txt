@@ -25,6 +25,8 @@ Ajustes:
 - Ver tema de trepar la escalera y como eso hace un salto 
 - Enemigo bullet hell: las balas no salen en un circulo perfecto 
 - Enemigo bullet hell tiene que tener una forma de cambiar de estado "hostil"
+- Enemigo bullet hell: hacerlo ciclope y que el ojo siga al personaje
+- Al aparecer el fantasma y elevarse, cambiar el Sprite 
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 
 Features:
