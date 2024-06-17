@@ -13,6 +13,7 @@
 
 - Escena Nivel Procedural: Liberar a todos los prisioneros, encontrar la puerta e irse (simil alien 3/sega)
 - Secretos:
+  . 3 finales: malo: los niveles y chau, bueno: hay que apagar las terminales y esta la zona y boss final y secreto:???? 
   . Ver Lifo y el QR 
   . Hay terminales en los niveles que no vamos a saber para que son. En cada una podemos apagar variables. Luego, al desbloquear la fase final, vemos que hay un sector al que no podemos ir por lasers y otros (relacionados con la variable), entonces hay que ir a cada nivel a apagar las variables.  
 
@@ -46,7 +47,7 @@ Features:
 - Item humo
 - Item cohete 
 - Plantas para esconderse
-- Terminarles donde podemos acceder a un mapa del nivel
+- Terminarles: se puede desactivar cosas para el final bueno (necesita password) podemos listar el estado de las demás y print de un manual, infograma. Las terminales aparecen en los niveles, necesitan una bomba xq están bloqueadas por terreno. El password es único y está en ???? 
 - Gusanitos qué se le meten a los prisioneros y los convierten en zombies que nos atacan 
 - Red Blue switches 
 - Enemigo con alas que planea al caer 
