@@ -108,8 +108,9 @@ func _physics_process(delta):
 	
 	if !is_on_floor_custom() and !grabbed:
 		if gravityon:
-			velocity.y += gravity
-
+			if velocity.y < 1080: 
+				velocity.y += gravity
+			
 	if blowed > 0:
 		blowed -= 1 * delta
 		if blowed <= 0:
@@ -117,6 +118,7 @@ func _physics_process(delta):
 			$lbl_action.visible = false
 			velocity.x = lerp(velocity.x, 0.0, 0.1)
 			if !cameralimits_on:
+				$sprite.animation = idle_animation
 				cameralimits_on = true
 			
 		if is_on_wall():

@@ -8,6 +8,16 @@ var current_message = ""
 var ttl = 0
 var CMD : TextEdit
 var command = ""
+var is_writing = false 
+@export var terminal_number = 0
+var terminal_commands = [
+	[
+		"TERMINALS",
+		"HELP",
+		"CLEAR",
+		"EXIT",
+	]
+]
 
 func _ready():
 	CMD = $Terminal/TextEdit
@@ -29,13 +39,13 @@ func _physics_process(delta):
 			$back.visible = false
 			$back/arrows.visible = false
 			$Terminal.visible = true
-			current_message = "WELCOME TO GROTTO TERMINAL v1.0 \nREADY"
+			current_message = "WELCOME TO GROTTO TERMINAL #" + str(terminal_number) + " " + Global.TerminalNames[terminal_number] + "\nREADY"
 			Global.player_obj.terminal_mode = true
 			Global.player_obj.visible = false
 			
 func _process(delta):
 	if current_message:
-		CMD.editable = false
+		is_writing = true
 		ttl -= 1 * delta
 		if ttl <= 0:
 			ttl = 0.1
@@ -44,8 +54,8 @@ func _process(delta):
 			CMD.insert_text_at_caret(current_message.substr(0, 1))
 			current_message = current_message.substr(1, current_message.length() - 1)
 			if current_message == "":
-				CMD.editable = true
 				CMD.set_caret_line(current_line)
+				is_writing = false
 				
 func _input(event):
 	if opened and current_message == "": 
@@ -56,15 +66,24 @@ func _input(event):
 				parser(command)
 				command = ""
 			else:
-				command += key_text
+				if (event.keycode >= 65 and event.keycode <= 90) or event.keycode == 32:
+					command += key_text
 		
 func parser(_cmd):
 	if _cmd == "HELP":
-		current_message = "AVAILABLE COMMANDS:\nHELP\nCLEAR\nEXIT"
-		current_line += 4
+		var commands = "\n".join(terminal_commands[terminal_number])
+		current_message = "AVAILABLE COMMANDS:\n" + commands
+		current_line += terminal_commands[terminal_number].size() + 1
 	elif _cmd == "CLEAR":
 		CMD.text = ""
 		current_line = 0 
+	elif _cmd == "TERMINALS":
+		var commands = ""
+		for i in range(Global.TerminalNames.size()):
+			commands += "#" + str(i) + " " + Global.TerminalNames[i] + " - STATUS: " + Global.TerminalStatus[i] + "\n"
+		current_message = "LIST OF TERMINALS:\n" + commands
+		current_line += Global.TerminalNames.size() + 1
+			
 	elif _cmd == "EXIT":
 		CMD.text = ""
 		current_line = 2

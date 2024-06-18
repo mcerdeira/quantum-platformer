@@ -7,6 +7,7 @@ var nope = false
 @export var first_time_based = false
 @export var createme_on_firsttime = false
 @export var cameralimits_on = true
+@export var starting_valocity : Vector2 = Vector2.ZERO  
 
 func _ready():
 	visible = false
@@ -28,6 +29,9 @@ func _process(delta):
 			var pclone = player_clone.instantiate()
 			pclone.global_position = global_position
 			pclone.cameralimits_on = cameralimits_on
+			if starting_valocity != Vector2.ZERO:
+				pclone.velocity = starting_valocity
+			
 			if !cameralimits_on:
 				pclone.center_camera()
 				

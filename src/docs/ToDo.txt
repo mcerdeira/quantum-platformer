@@ -12,6 +12,14 @@
 - Tienen que ser distintos los más "mundos" puertas, e incrementalmente más grandes.
 
 - Escena Nivel Procedural: Liberar a todos los prisioneros, encontrar la puerta e irse (simil alien 3/sega)
+- Niveles/Zonas:
+  0 - The Eye (main hub)
+  1 - The Leaf (lots of vines)   
+  2 - The Tomb (lots of worms)
+  3 - The Mermaid (lots of waterfalls)
+  4 - The Dragon (fire and lava)
+  5 - The Seraph (secret)
+
 - Secretos:
   . 3 finales: malo: los niveles y chau, bueno: hay que apagar las terminales y esta la zona y boss final y secreto:???? 
   . Ver Lifo y el QR 
@@ -33,25 +41,22 @@ Ajustes:
 - Al teléfono nos llama nuestra mascota. Al salir al patio, nos encontramos con uno de los prisioneros que nos "dice" que hay otros como el secuestrados 
 
 Features:
-- Si el enemigo glotón "come" otros items:
-  - Ver logica de still_alert() en cada tipo de enemigo, si ahi metemos la logica de estar comiendo 
-  - Siempre: esta inactivo (no agresivo) mientras come  
-  - Muffin, se duerme un rato
-  - Clone machine: Genera un clon de si mismo
-  - Teleport: se teletransporta cerca nuestro
-  - Bomba: Explota
-  - Planta: Se vuelve gigante verticalmente
-  - Cohete: Sale disparado hacia arriba
-  - Humo: Se expande como el humo  
-  
 - Item planta que crece (sirve como escalera)
 - Item humo
 - Item cohete 
 - Plantas para esconderse
-- Terminarles: se puede desactivar cosas para el final bueno (necesita password) podemos listar el estado de las demás y print de un manual, infograma. Las terminales aparecen en los niveles, necesitan una bomba xq están bloqueadas por terreno. El password es único y está en ???? 
+- Terminarles: se puede desactivar cosas para el final bueno (necesita password) podemos listar el estado de las demás y print de un manual, infograma. 
+  Las terminales aparecen en los niveles, necesitan una bomba xq están bloqueadas por terreno. 
+  El password es único y está en ???? 
+
 - Gusanitos qué se le meten a los prisioneros y los convierten en zombies que nos atacan 
 - Red Blue switches 
-- Enemigo con alas que planea al caer 
+- Enemigo volador
+
+- Si el enemigo glotón "come" otros items:
+  - Planta: Se vuelve gigante verticalmente
+  - Cohete: Sale disparado hacia arriba
+  - Humo: Se expande como el humo  
 
 - Secretos
 - Nombre: Grunky Grotto
@@ -65,6 +70,7 @@ Features:
 - Musica
 
 --------------------------------- DONE ---------------------------------
+- Hacer que el inicio de hub-world caigamos a la velocidad maxima de caida 
 - Si el enemigo glotón "come" otros items:
   - Ver logica de still_alert() en cada tipo de enemigo, si ahi metemos la logica de estar comiendo 
   - Siempre: esta inactivo (no agresivo) mientras come  

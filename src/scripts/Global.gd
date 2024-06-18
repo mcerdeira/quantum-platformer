@@ -87,7 +87,31 @@ var map_obj = null
 var commands : Dictionary
 var first_time = true
 var Fader = null
-
+var TerminalNames = [
+	"The Eye    ",
+	"The Leaf   ",
+	"The Tomb   ",
+	"The Mermaid",
+	"The Dragon ",
+	"The S3r4ph "
+]
+var TerminalStatus = [
+	"ON",
+	"ON",
+	"ON",
+	"ON",
+	"ON",
+	"UNKNOWN",
+]
+var TerminalDoors = [
+	true,
+	true,
+	false,
+	false,
+	false,
+	false,
+]
+	
 enum GameStates {
 	HOME,
 	OUTSIDE,
@@ -96,15 +120,18 @@ enum GameStates {
 	RANDOMLEVEL,
 }
 
-var CurrentState : GameStates = GameStates.RANDOMLEVEL
+var CurrentState : GameStates = GameStates.OVERWORLD
 
-func scene_next():
+func scene_next(terminal_number = -1):
 	if Global.CurrentState == Global.GameStates.HOME:
 		Global.CurrentState = Global.GameStates.OUTSIDE
 	elif Global.CurrentState == Global.GameStates.OUTSIDE:
 		Global.CurrentState = Global.GameStates.FALLING
 	elif Global.CurrentState == Global.GameStates.FALLING:
 		Global.CurrentState = Global.GameStates.OVERWORLD
+	elif Global.CurrentState == Global.GameStates.OVERWORLD:
+		#TODO: ver en funcion de terminal_number
+		Global.CurrentState = Global.GameStates.RANDOMLEVEL
 
 	Global.Fader.fade_in()
 	get_tree().reload_current_scene()
