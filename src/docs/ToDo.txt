@@ -23,14 +23,16 @@
 - Secretos:
   . 3 finales: malo: los niveles y chau, bueno: hay que apagar las terminales y esta la zona y boss final y secreto:???? 
   . Ver Lifo y el QR 
-  . Hay terminales en los niveles que no vamos a saber para que son. En cada una podemos apagar variables. Luego, al desbloquear la fase final, vemos que hay un sector al que no podemos ir por lasers y otros (relacionados con la variable), entonces hay que ir a cada nivel a apagar las variables.  
+  . Hay terminales en los niveles que no vamos a saber para que son. En cada una podemos apagar variables. 
+    Luego, al desbloquear la fase final, vemos que hay un sector al que no podemos ir por lasers y otros (relacionados con la variable), 
+    entonces hay que ir a cada nivel a apagar las variables.  
 
 ==================================================================================================================
 ==================================================================================================================
 ==================================================================================================================
 
 Ajustes:
-- Hacer que las puertas del hubworld tengan un sistema de cuales están abiertas y cuales no
+- Al teléfono nos llama nuestra mascota. Al salir al patio, nos encontramos con uno de los prisioneros que nos "dice" que hay otros como el secuestrados 
 - Si estamos con followers y hacemos TP, deberían hacer TP con nosotros
 - Ver tema de trepar la escalera y como eso hace un salto 
 - Enemigo bullet hell: las balas no salen en un circulo perfecto 
@@ -38,7 +40,6 @@ Ajustes:
 - Enemigo bullet hell: hacerlo ciclope y que el ojo siga al personaje y que no esté en el piso, así las balas 360 tienen sentido 
 - Al aparecer el fantasma y elevarse, cambiar el Sprite 
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
-- Al teléfono nos llama nuestra mascota. Al salir al patio, nos encontramos con uno de los prisioneros que nos "dice" que hay otros como el secuestrados 
 
 Features:
 - Item planta que crece (sirve como escalera)
@@ -46,12 +47,12 @@ Features:
 - Item cohete 
 - Plantas para esconderse
 - Terminarles: se puede desactivar cosas para el final bueno (necesita password) podemos listar el estado de las demás y print de un manual, infograma. 
-  Las terminales aparecen en los niveles, necesitan una bomba xq están bloqueadas por terreno. 
-  El password es único y está en ???? 
+- Agregar las terminales en los niveles, necesitan una bomba xq están bloqueadas por terreno. 
+  PENSAR: El password es único y está en ???? 
 
-- Gusanitos qué se le meten a los prisioneros y los convierten en zombies que nos atacan 
 - Red Blue switches 
-- Enemigo volador
+- Enemigo: Gusanitos qué se le meten a los prisioneros y los convierten en zombies que nos atacan 
+- Enemigo: volador
 
 - Si el enemigo glotón "come" otros items:
   - Planta: Se vuelve gigante verticalmente
@@ -70,6 +71,7 @@ Features:
 - Musica
 
 --------------------------------- DONE ---------------------------------
+- Hacer que las puertas del hubworld tengan un sistema de cuales están abiertas y cuales no
 - Hacer que el inicio de hub-world caigamos a la velocidad maxima de caida 
 - Si el enemigo glotón "come" otros items:
   - Ver logica de still_alert() en cada tipo de enemigo, si ahi metemos la logica de estar comiendo 

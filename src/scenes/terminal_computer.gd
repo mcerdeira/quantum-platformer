@@ -14,6 +14,7 @@ var terminal_commands = [
 	[
 		"TERMINALS",
 		"HELP",
+		"PRINT",
 		"CLEAR",
 		"EXIT",
 	]
@@ -77,6 +78,9 @@ func parser(_cmd):
 	elif _cmd == "CLEAR":
 		CMD.text = ""
 		current_line = 0 
+	elif _cmd == "PRINT":
+		#TODO: Generar un item que sea el infograma que explique algo segun que terminal sea
+		pass
 	elif _cmd == "TERMINALS":
 		var commands = ""
 		for i in range(Global.TerminalNames.size()):
@@ -110,4 +114,3 @@ func _on_body_exited(body):
 		$back.visible = false
 		active = false
 		body.dont_camera = false
-
