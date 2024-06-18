@@ -22,6 +22,7 @@
 ==================================================================================================================
 
 Ajustes:
+- Hacer que las puertas del hubworld tengan un sistema de cuales están abiertas y cuales no
 - Si estamos con followers y hacemos TP, deberían hacer TP con nosotros
 - Ver tema de trepar la escalera y como eso hace un salto 
 - Enemigo bullet hell: las balas no salen en un circulo perfecto 
