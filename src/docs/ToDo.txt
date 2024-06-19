@@ -40,9 +40,7 @@ Ajustes:
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 
 Features:
-- Item humo
 - Item infograma que se genera con el comando print (con un QR para bajarlo en PDF)
-- Plantas para esconderse
 - Terminales: se puede desactivar cosas para el final bueno (necesita password) podemos listar el estado de las demás y print de un manual, infograma. 
 - Agregar las terminales en los niveles, necesitan una bomba xq están bloqueadas por terreno. 
   PENSAR: El password es único y está en ???? 
@@ -67,8 +65,8 @@ Features:
 - Musica
 
 --------------------------------- DONE ---------------------------------
-- Item planta que crece (sirve como escalera)
-- Item cohete (CANCELADO) 
+- Plantas para esconderse
+- Item humo
 - Hacer que el numero de Prisioneros sea fijo por numer ode terminal
 - Enemigo bullet hell tiene que tener una forma de cambiar de estado "hostil"
 - Enemigo bullet hell: las balas no salen en un circulo perfecto 
@@ -155,3 +153,7 @@ Features:
 - Escaleras
 - Bugs en escaleras, es dificil subirse, bajar está controlando mal la colisión 
 - La sangre se comporta medio rari, ver pop y push back y front  
+
+--------------------------------- CANCELADO ---------------------------------
+- Item cohete 
+- Plantas para esconderse
