@@ -1,0 +1,128 @@
+[gd_scene load_steps=10 format=3 uid="uid://cmngwtmohtfn"]
+
+[ext_resource type="Script" path="res://scenes/smoke_obj.gd" id="1_wvj51"]
+[ext_resource type="Texture2D" uid="uid://nopifoxtlsek" path="res://sprites/smoke_smoke1.png" id="2_1nm4b"]
+[ext_resource type="Texture2D" uid="uid://c5v4yndnlbfce" path="res://sprites/smoke_smoke2.png" id="3_p33w8"]
+[ext_resource type="Texture2D" uid="uid://c62sdgxyntmkv" path="res://sprites/smoke_smoke3.png" id="4_aibk3"]
+[ext_resource type="PackedScene" uid="uid://dyadmvl6kecqf" path="res://scenes/position_free.tscn" id="5_2keaw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_whhvl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_p33w8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1nm4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_aibk3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bpf3"]
+size = Vector2(52, 54)
+
+[sub_resource type="Animation" id="Animation_62cga"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.162316, 0.162316, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2.5, 2.5), Vector2(2, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.523599, -0.523599, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.0117647), Color(1, 1, 1, 0.737255), Color(1, 1, 1, 0.939839)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cr5xp"]
+_data = {
+"new_animation": SubResource("Animation_62cga")
+}
+
+[node name="SmokeObj" type="Area2D"]
+z_index = 4096
+z_as_relative = false
+collision_layer = 524289
+collision_mask = 524289
+script = ExtResource("1_wvj51")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.0798423)
+rotation = 0.425333
+scale = Vector2(2.33753, 2.33753)
+skew = -0.131854
+sprite_frames = SubResource("SpriteFrames_whhvl")
+autoplay = "default"
+frame_progress = 0.950162
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_8bpf3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cr5xp")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[node name="position_free_right" parent="." instance=ExtResource("5_2keaw")]
+position = Vector2(30, 0)
+
+[node name="position_free_left" parent="." instance=ExtResource("5_2keaw")]
+position = Vector2(-30, 0)
+
+[node name="position_free_up" parent="." instance=ExtResource("5_2keaw")]
+position = Vector2(0, -29)
+
+[node name="position_free_down" parent="." instance=ExtResource("5_2keaw")]
+position = Vector2(0, 31)
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

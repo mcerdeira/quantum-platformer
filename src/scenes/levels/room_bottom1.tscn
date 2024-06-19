@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://8vw15uexwo2s"]
+[gd_scene load_steps=25 format=3 uid="uid://8vw15uexwo2s"]
 
 [ext_resource type="Texture2D" uid="uid://djs78nqy60b6t" path="res://sprites/floor_spr_2.png" id="1_xx1vs"]
 [ext_resource type="Texture2D" uid="uid://6e6u7tx8wpp5" path="res://sprites/stair.png" id="2_g7fag"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://c4vd4vxwdwdqh" path="res://scenes/levels/enemy_marker.tscn" id="4_2g7cw"]
 [ext_resource type="Texture2D" uid="uid://bk3kd8e8ysnn1" path="res://sprites/fireball_box.png" id="4_4e4sc"]
 [ext_resource type="Texture2D" uid="uid://dm1ktaigtofob" path="res://sprites/vines.png" id="5_m5g4m"]
-[ext_resource type="PackedScene" uid="uid://c0spdkief8ynm" path="res://scenes/levels/prisoner_choose.tscn" id="5_rpy4g"]
 [ext_resource type="PackedScene" uid="uid://bfmdje7uoppc1" path="res://scenes/levels/prisoner_marker.tscn" id="5_sd6dx"]
 [ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="6_xg0v2"]
 [ext_resource type="PackedScene" uid="uid://q767q018lep8" path="res://scenes/exit_door.tscn" id="7_56hic"]
@@ -97,12 +96,10 @@ tile_set = SubResource("TileSet_5hgil")
 format = 2
 layer_0/tile_data = PackedInt32Array(1245195, 4, 0, 1179659, 4, 0, 1114123, 4, 0, 1114124, 4, 0, 1179660, 4, 0, 1179661, 4, 0, 1245197, 4, 0, 1114125, 4, 0, 1048589, 4, 0, 1048588, 4, 0, 983052, 4, 0, 917517, 4, 0, 655387, 4, 0, 720923, 4, 0, 786459, 4, 0, 786458, 4, 0, 851994, 4, 0, 851993, 4, 0, 917530, 4, 0, 983066, 4, 0, 1048602, 4, 0, 1048601, 4, 0, 983065, 4, 0, 917529, 4, 0, 917531, 4, 0, 851995, 4, 0, 655388, 4, 0, 655389, 4, 0, 655390, 4, 0, 720926, 4, 0, 786462, 4, 0, 786463, 4, 0, 851999, 4, 0, 589852, 4, 0, 589853, 4, 0)
 
-[node name="prisoner_choose" parent="." instance=ExtResource("5_rpy4g")]
-
-[node name="prisoner_marker" parent="prisoner_choose" instance=ExtResource("5_sd6dx")]
+[node name="prisoner_marker" parent="." instance=ExtResource("5_sd6dx")]
 position = Vector2(475, 176)
 
-[node name="prisoner_marker2" parent="prisoner_choose" instance=ExtResource("5_sd6dx")]
+[node name="prisoner_marker2" parent="." instance=ExtResource("5_sd6dx")]
 position = Vector2(722, 176)
 
 [node name="enemy_marker" parent="." instance=ExtResource("4_2g7cw")]

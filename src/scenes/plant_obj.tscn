@@ -1,0 +1,119 @@
+[gd_scene load_steps=17 format=3 uid="uid://crr473i00vwtl"]
+
+[ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="1_6n7ab"]
+[ext_resource type="Script" path="res://scenes/plant_obj.gd" id="1_56u4b"]
+[ext_resource type="PackedScene" uid="uid://ba5hq2bchhv8x" path="res://scenes/Plants.tscn" id="2_vf7bl"]
+[ext_resource type="Texture2D" uid="uid://bavkpns5fglhn" path="res://sprites/growing_plant1.png" id="3_muev2"]
+[ext_resource type="Texture2D" uid="uid://cdltlihgrgunt" path="res://sprites/growing_plant2.png" id="4_tqqtb"]
+[ext_resource type="Texture2D" uid="uid://kj3euax8ewqm" path="res://sprites/growing_plant3.png" id="5_rilh0"]
+[ext_resource type="Texture2D" uid="uid://mg7xohlygd2w" path="res://sprites/growing_plant4.png" id="6_hhmhw"]
+[ext_resource type="Texture2D" uid="uid://hy23uluxayj0" path="res://sprites/growing_plant5.png" id="7_lygua"]
+[ext_resource type="Texture2D" uid="uid://bjgc517yp71s1" path="res://sprites/plant_grow.png" id="8_f86lk"]
+[ext_resource type="Texture2D" uid="uid://ykjnxk2tcca3" path="res://sprites/flower1.png" id="9_jjpjk"]
+[ext_resource type="Texture2D" uid="uid://b48po2plnil4a" path="res://sprites/flower2.png" id="10_gstbk"]
+[ext_resource type="Texture2D" uid="uid://bvf4n40ecm5fa" path="res://sprites/flower3.png" id="11_q4a3c"]
+[ext_resource type="Texture2D" uid="uid://btpm1vg61s30p" path="res://sprites/flower4.png" id="12_neoci"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vs1pb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_muev2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tqqtb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rilh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hhmhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lygua")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kkbwi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_jjpjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gstbk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_q4a3c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_neoci")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l71j0"]
+radius = 3.16228
+
+[node name="PlantObj" type="Node2D"]
+script = ExtResource("1_56u4b")
+
+[node name="Stair" parent="." instance=ExtResource("1_6n7ab")]
+
+[node name="Plants" parent="." instance=ExtResource("2_vf7bl")]
+position = Vector2(-25, 0)
+scale = Vector2(2, 2)
+fixed = true
+
+[node name="Plants2" parent="." instance=ExtResource("2_vf7bl")]
+position = Vector2(31, 0)
+scale = Vector2(3, 3)
+fixed = true
+
+[node name="Plants3" parent="." instance=ExtResource("2_vf7bl")]
+position = Vector2(-12, 0)
+scale = Vector2(2, 2)
+fixed = true
+
+[node name="Plants4" parent="." instance=ExtResource("2_vf7bl")]
+position = Vector2(6, 0)
+fixed = true
+
+[node name="Plants5" parent="." instance=ExtResource("2_vf7bl")]
+position = Vector2(20, 0)
+scale = Vector2(2, 2)
+fixed = true
+
+[node name="GrowingPlant" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vs1pb")
+autoplay = "default"
+offset = Vector2(0, -16)
+
+[node name="flowerline" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, -32, 0, -32)
+width = 20.0
+texture = ExtResource("8_f86lk")
+texture_mode = 1
+
+[node name="flower" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_kkbwi")
+
+[node name="detect" type="Area2D" parent="flower"]
+
+[node name="collider" type="CollisionShape2D" parent="flower/detect"]
+shape = SubResource("CircleShape2D_l71j0")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="animation_finished" from="GrowingPlant" to="." method="_on_growing_plant_animation_finished"]
+[connection signal="body_shape_entered" from="flower/detect" to="." method="_on_detect_body_shape_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

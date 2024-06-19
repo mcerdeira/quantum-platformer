@@ -10,6 +10,20 @@ var CHROM_FX = null
 var lava_FX = null
 var player_obj = null
 
+var smoke_bomb = {
+	"name": "smoke",
+	"description": "Smoke bomb!",
+	"has_action": true,
+	"pasive": false,
+	"full_scale": true,
+}
+var plant = {
+	"name": "plant",
+	"description": "Grows!",
+	"has_action": true,
+	"pasive": false,
+	"full_scale": true,
+}
 var clone = {
 	"name": "clone",
 	"description": "Generates a copy of you.",
@@ -87,6 +101,17 @@ var map_obj = null
 var commands : Dictionary
 var first_time = true
 var Fader = null
+var TerminalNumber = -1
+
+var TerminalPrisoners = [
+	0,
+	5,
+	5,
+	7,
+	7,
+	10,
+]
+
 var TerminalNames = [
 	"The Eye    ",
 	"The Leaf   ",
@@ -120,9 +145,10 @@ enum GameStates {
 	RANDOMLEVEL,
 }
 
-var CurrentState : GameStates = GameStates.HOME
+var CurrentState : GameStates = GameStates.RANDOMLEVEL
 
 func scene_next(terminal_number = -1):
+	Global.TerminalNumber = terminal_number
 	if Global.CurrentState == Global.GameStates.HOME:
 		Global.CurrentState = Global.GameStates.OUTSIDE
 	elif Global.CurrentState == Global.GameStates.OUTSIDE:
@@ -243,6 +269,7 @@ func init():
 	gunz_objs.append(radar)
 	gunz_objs.append(spring)
 	gunz_objs.append(invisibility)
+	gunz_objs.append(plant)
 	
 	gunz_objs_prob = [] + gunz_objs
 	for i in range(5):
@@ -251,7 +278,10 @@ func init():
 		gunz_objs_prob.append(spring)
 	
 	gunz_equiped = [none, none]
-	slots_stock = [0, 0]
+	
+	#DEBUG
+	slots_stock = [2, 0]
+	gunz_equiped[0] = smoke_bomb
 	
 	randomize()
 	

@@ -9,6 +9,8 @@ var simulation = false
 var ttl = 0.5
 var player_clone = load("res://scenes/player.tscn")
 var spring_obj = load("res://scenes/spring.tscn")
+var plant_obj = load("res://scenes/plant_obj.tscn")
+var smoke_obj = load("res://scenes/smoke_obj.tscn")
 var noise_time = 0
 var explosion_delay = 0
 var blowed = 0
@@ -53,7 +55,7 @@ func _physics_process(delta):
 				if current_item.has_action:
 					if count_down > 0:
 						count_down -= 1 * delta
-						$lbl_count.text = str(round(count_down)) + "..."
+						$lbl_count.text = str(round(count_down)) 
 						if count_down < 2:
 							var a : AnimationPlayer = $AnimationPlayer
 							if !a.is_playing():
@@ -142,6 +144,14 @@ func do_action(_player, lbl):
 				action_executed = true
 				create_spring_object()
 				queue_free()
+			elif current_item.name == "plant":
+				action_executed = true
+				create_plant_object()
+				queue_free()
+			elif current_item.name == "smoke":
+				action_executed = true
+				create_smoke_object()
+				queue_free()	
 				
 			if current_item.has_action:
 				_player.visible = true
@@ -152,6 +162,19 @@ func create_spring_object():
 	spring_o.global_position = $mark.global_position - Vector2(0, 3)
 	get_parent().add_child(spring_o)
 	Global.emit(global_position, 10)
+	
+func create_plant_object():
+	var plant_o = plant_obj.instantiate()
+	plant_o.global_position = $mark.global_position - Vector2(0, 3)
+	get_parent().add_child(plant_o)
+	Global.emit(global_position, 10)
+	
+func create_smoke_object():
+	var smoke_o = smoke_obj.instantiate()
+	smoke_o.global_position = $mark.global_position - Vector2(0, 16)
+	get_parent().add_child(smoke_o)
+	Global.emit(global_position, 10)
+	Global.shaker_obj.shake(20, 2.1)
 	
 func explode():
 	if !simulation:
@@ -179,6 +202,10 @@ func _on_area_body_entered(body):
 			elif current_item.name == "spring":
 				queue_free()
 			elif current_item.name == "muffin":
+				queue_free()
+			elif current_item.name == "plant":
+				queue_free()
+			elif current_item.name == "smoke":
 				queue_free()
 			
 		if body and body.is_in_group("players"):

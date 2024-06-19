@@ -5,6 +5,7 @@ var done = false
 @export var fixed = false
 
 func _ready():
+	add_to_group("prisoner_markers")
 	visible = false
 	done = fixed
 

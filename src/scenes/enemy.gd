@@ -153,6 +153,10 @@ func process_player(delta):
 					$sprite.play()
 				elif do_when_finish_killing == "spring":
 					jumper = true
+				elif do_when_finish_killing == "plant":
+					sleep = true
+					$sprite.animation = "sleep"
+					$sprite.play()
 	
 	if alerted:
 		$lbl_status.text = "?"
@@ -309,6 +313,8 @@ func eat_gizmo(current_item):
 		do_when_finish_killing = "spring"
 	elif current_item.name == "muffin":
 		do_when_finish_killing = "muffin"
+	elif current_item.name == "plant":
+		do_when_finish_killing = "plant"
 	
 func kill_fall():
 	visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bveav6ctdlmbu"]
+[gd_scene load_steps=39 format=3 uid="uid://bveav6ctdlmbu"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_tvtda"]
 [ext_resource type="Texture2D" uid="uid://dbh84l3hbge3s" path="res://sprites/box.png" id="2_6led8"]
@@ -24,6 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://dxbkc1lh5f3bx" path="res://sprites/invisibility.png" id="15_7qhek"]
 [ext_resource type="Texture2D" uid="uid://rpr86laa62uq" path="res://sprites/none.png" id="16_lx8b7"]
 [ext_resource type="Texture2D" uid="uid://de1vyj25jt0t3" path="res://sprites/spring.png" id="17_3xuhu"]
+[ext_resource type="Texture2D" uid="uid://munfls4yrggx" path="res://sprites/growing_plant.png" id="17_s4wuu"]
+[ext_resource type="Texture2D" uid="uid://c7v26dk2ya7hd" path="res://sprites/smoke_bomb.png" id="19_28d2y"]
 [ext_resource type="PackedScene" uid="uid://yw5hjnyqexic" path="res://scenes/lava.tscn" id="24_nijr5"]
 [ext_resource type="Script" path="res://scenes/FADE.gd" id="26_4o44h"]
 
@@ -101,10 +103,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("17_s4wuu")
+}],
+"loop": true,
+"name": &"plant",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("8_fdv2s")
 }],
 "loop": true,
 "name": &"radar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_28d2y")
+}],
+"loop": true,
+"name": &"smoke",
 "speed": 5.0
 }, {
 "frames": [{
@@ -203,7 +221,7 @@ color = Color(0, 0, 0.12549, 1)
 position = Vector2(424.615, 20)
 
 [node name="PrisonerHead" type="Sprite2D" parent="CanvasLayer/Control"]
-position = Vector2(776.154, 19.2308)
+position = Vector2(765.385, 19.2308)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("6_rjva8")
 
@@ -224,7 +242,7 @@ metadata/_edit_use_anchors_ = true
 [node name="gun_slot0" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
 position = Vector2(49.6154, 18)
 sprite_frames = SubResource("SpriteFrames_yq7gw")
-animation = &"muffin"
+animation = &"none"
 
 [node name="lbl_stock" type="Label" parent="CanvasLayer/Control/gun_slot0"]
 offset_left = -6.53847

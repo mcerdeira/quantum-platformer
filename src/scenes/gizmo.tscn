@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ypq32fpaty8e"]
+[gd_scene load_steps=37 format=3 uid="uid://ypq32fpaty8e"]
 
 [ext_resource type="Script" path="res://scenes/gizmo.gd" id="1_x7ufw"]
 [ext_resource type="Script" path="res://scenes/explosions.gd" id="2_84bkr"]
@@ -16,8 +16,10 @@
 [ext_resource type="Shader" path="res://scenes/gizmo.gdshader" id="8_14h7y"]
 [ext_resource type="Texture2D" uid="uid://dxbkc1lh5f3bx" path="res://sprites/invisibility.png" id="10_r3184"]
 [ext_resource type="Texture2D" uid="uid://de1vyj25jt0t3" path="res://sprites/spring.png" id="12_n3chn"]
+[ext_resource type="Texture2D" uid="uid://munfls4yrggx" path="res://sprites/growing_plant.png" id="13_mn6kf"]
 [ext_resource type="Texture2D" uid="uid://mir8y6lk22v8" path="res://sprites/lines.png" id="13_v2dy3"]
 [ext_resource type="Script" path="res://scenes/Line2D.gd" id="14_cbp3x"]
+[ext_resource type="Texture2D" uid="uid://c7v26dk2ya7hd" path="res://sprites/smoke_bomb.png" id="14_wv34c"]
 [ext_resource type="Script" path="res://scenes/explosion_mini.gd" id="15_iwgc1"]
 [ext_resource type="Texture2D" uid="uid://co5pm5d4osgam" path="res://sprites/noise.png" id="20_736su"]
 
@@ -82,10 +84,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("13_mn6kf")
+}],
+"loop": true,
+"name": &"plant",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("3_6el40")
 }],
 "loop": true,
 "name": &"simul",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_wv34c")
+}],
+"loop": true,
+"name": &"smoke",
 "speed": 5.0
 }, {
 "frames": [{
@@ -211,16 +229,6 @@ _data = {
 collision_layer = 33
 collision_mask = 33
 script = ExtResource("1_x7ufw")
-
-[node name="lbl_count" type="Label" parent="."]
-visible = false
-offset_left = -16.0
-offset_top = -22.0
-offset_right = 16.0
-offset_bottom = -14.0
-theme_override_fonts/font = ExtResource("2_j4rai")
-theme_override_font_sizes/font_size = 8
-text = "3..."
 
 [node name="explosions" type="Node2D" parent="."]
 script = ExtResource("2_84bkr")
@@ -356,8 +364,19 @@ material = SubResource("ShaderMaterial_nlsrr")
 position = Vector2(0, 3)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_3r5gg")
-animation = &"muffin"
+animation = &"smoke"
 offset = Vector2(0, -16)
+
+[node name="lbl_count" type="Label" parent="."]
+visible = false
+offset_left = -16.0
+offset_top = -22.0
+offset_right = 16.0
+offset_bottom = -14.0
+theme_override_fonts/font = ExtResource("2_j4rai")
+theme_override_font_sizes/font_size = 8
+text = "3"
+horizontal_alignment = 1
 
 [node name="collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_odwe0")

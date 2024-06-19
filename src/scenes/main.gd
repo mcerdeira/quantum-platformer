@@ -35,6 +35,7 @@ func generate_level():
 	var room_pos = Vector2.ZERO
 	var room = null
 	var q = 1
+	var prisonercount = Global.TerminalPrisoners[Global.TerminalNumber]
 	
 	for h in range(4):
 		for w in range(4):
@@ -64,6 +65,16 @@ func generate_level():
 		room_pos.y += size.y
 		room_pos.x = 0
 
+	var prisoner_markers = get_tree().get_nodes_in_group("prisoner_markers")
+	while prisoner_markers.size() > prisonercount:
+		prisoner_markers.shuffle()
+		var pm = prisoner_markers.pop_front()
+		pm.queue_free()
+	
+	prisoner_markers = get_tree().get_nodes_in_group("prisoner_markers")
+	for _pm in prisoner_markers:
+		_pm.done = true
+		
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	

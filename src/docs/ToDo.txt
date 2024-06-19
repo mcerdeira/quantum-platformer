@@ -33,19 +33,17 @@
 ==================================================================================================================
 
 Ajustes:
-- Hacer que el numero de prisioneros y el tamaño del nivel sea fijo 
+- Hacer que el tamaño del nivel sea variable (y parametrizable según que terminal sea) 
 - Si estamos con followers y hacemos TP, deberían hacer TP con nosotros
 - Ver tema de trepar la escalera y como eso hace un salto 
 - Al aparecer el fantasma y elevarse, cambiar el Sprite 
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 
 Features:
-- Item planta que crece (sirve como escalera)
 - Item humo
-- Item cohete 
 - Item infograma que se genera con el comando print (con un QR para bajarlo en PDF)
 - Plantas para esconderse
-- Terminarles: se puede desactivar cosas para el final bueno (necesita password) podemos listar el estado de las demás y print de un manual, infograma. 
+- Terminales: se puede desactivar cosas para el final bueno (necesita password) podemos listar el estado de las demás y print de un manual, infograma. 
 - Agregar las terminales en los niveles, necesitan una bomba xq están bloqueadas por terreno. 
   PENSAR: El password es único y está en ???? 
 
@@ -57,7 +55,6 @@ Features:
 - Sistema de Save/Load
 
 - Si el enemigo glotón "come" otros items:
-  - Planta: Se vuelve gigante verticalmente
   - Cohete: Sale disparado hacia arriba
   - Humo: Se expande como el humo  
 
@@ -70,6 +67,9 @@ Features:
 - Musica
 
 --------------------------------- DONE ---------------------------------
+- Item planta que crece (sirve como escalera)
+- Item cohete (CANCELADO) 
+- Hacer que el numero de Prisioneros sea fijo por numer ode terminal
 - Enemigo bullet hell tiene que tener una forma de cambiar de estado "hostil"
 - Enemigo bullet hell: las balas no salen en un circulo perfecto 
 - Enemigo bullet hell: hacerlo ciclope y que el ojo siga al personaje y que no esté en el piso, así las balas 360 tienen sentido 
@@ -83,6 +83,7 @@ Features:
   - Muffin, se duerme un rato
   - Bomba: Explota
   - Spring: Salta todo el tiempo
+  - Planta: Idem muffin
 - Prisioneros: No trepan por la escalera
 - Prisioneros
   . Si muere un prisionero aparece un fantasma que te sigue por todo el nivel. 
