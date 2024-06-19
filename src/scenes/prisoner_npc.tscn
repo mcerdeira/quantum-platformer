@@ -1,0 +1,176 @@
+[gd_scene load_steps=19 format=3 uid="uid://dvlc4ydhtggsb"]
+
+[ext_resource type="Script" path="res://scenes/prisoner_npc.gd" id="1_1mpam"]
+[ext_resource type="Texture2D" uid="uid://dxe6h3w5inx2l" path="res://sprites/horu/images/prisoner_cry.png" id="2_a0o5m"]
+[ext_resource type="Texture2D" uid="uid://th5j476r6114" path="res://sprites/horu/images/enemy_danger_spr_0.png" id="3_gi0x4"]
+[ext_resource type="Texture2D" uid="uid://xbq2vgwne0bv" path="res://sprites/horu/images/enemy_danger_spr_1.png" id="4_63cxl"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="4_lhypj"]
+[ext_resource type="Texture2D" uid="uid://hutlu6c76y5i" path="res://sprites/horu/images/enemy_danger_spr_2.png" id="5_3gbfd"]
+[ext_resource type="Texture2D" uid="uid://da14xud8tdoj" path="res://sprites/arrows1.png" id="5_11l7x"]
+[ext_resource type="Texture2D" uid="uid://dc5iy4hnblrha" path="res://sprites/sleepy_trap_0.png" id="6_6wuvg"]
+[ext_resource type="Texture2D" uid="uid://b74uo51q2y58i" path="res://sprites/arrows2.png" id="6_dr5ym"]
+[ext_resource type="Texture2D" uid="uid://bs35paxf142ou" path="res://sprites/sleepy_trap_2.png" id="7_p0h4m"]
+[ext_resource type="Texture2D" uid="uid://blfc4dcq4ns02" path="res://sprites/horu/images/well1.png" id="8_r3548"]
+[ext_resource type="Texture2D" uid="uid://drr6j8t5ihwcv" path="res://sprites/horu/images/well2.png" id="9_22qm3"]
+[ext_resource type="Texture2D" uid="uid://d1kdxbbwh7b22" path="res://sprites/horu/images/well3.png" id="10_pt783"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3es1"]
+size = Vector2(52, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t7d8p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a0o5m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_erya2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_gi0x4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_63cxl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3gbfd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nw0se"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_11l7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dr5ym")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nd76e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_6wuvg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6wuvg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_p0h4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_r3548")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_22qm3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pt783")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_r3548")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_22qm3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pt783")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_r3548")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_22qm3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pt783")
+}],
+"loop": true,
+"name": &"prisoner",
+"speed": 5.0
+}]
+
+[node name="prisoner_npc" type="Area2D"]
+position = Vector2(480, 351)
+script = ExtResource("1_1mpam")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(1, -24)
+shape = SubResource("RectangleShape2D_n3es1")
+
+[node name="Computer" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 1)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_t7d8p")
+offset = Vector2(1, -18)
+
+[node name="cry" type="AnimatedSprite2D" parent="Computer"]
+position = Vector2(1, -14)
+sprite_frames = SubResource("SpriteFrames_erya2")
+autoplay = "default"
+frame_progress = 0.515534
+
+[node name="back2" type="ColorRect" parent="."]
+visible = false
+z_index = 4096
+offset_left = -273.0
+offset_top = -120.0
+offset_right = 277.0
+offset_bottom = -41.0
+
+[node name="back" type="ColorRect" parent="."]
+visible = false
+z_index = 4096
+offset_left = -272.0
+offset_top = -119.0
+offset_right = 276.0
+offset_bottom = -42.0
+color = Color(0, 0, 0, 1)
+
+[node name="lbl_item" type="Label" parent="back"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 2.0
+offset_right = 488.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("4_lhypj")
+text = "== PIP ==
+TALK TO ME"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="arrows" type="AnimatedSprite2D" parent="back"]
+position = Vector2(520, 39)
+sprite_frames = SubResource("SpriteFrames_nw0se")
+autoplay = "default"
+
+[node name="sprite" type="AnimatedSprite2D" parent="back"]
+position = Vector2(44, 36)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_nd76e")
+frame_progress = 0.690517
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

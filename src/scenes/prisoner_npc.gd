@@ -1,21 +1,8 @@
 extends Area2D
-var ringing = false
 var active = false
 var opened = false
 var player = null
 var delay_camera = 0.2
-@export var Door : Area2D
-
-func _on_timer_timeout():
-	if !opened:
-		if !ringing:
-			ringing = true
-			$AnimationPlayer.play("new_animation")
-			$Computer.play()
-		else:
-			ringing = false
-			$AnimationPlayer.stop()
-			$Computer.stop()
 
 func _physics_process(delta):
 	$back2.visible = $back.visible 
@@ -32,12 +19,9 @@ func _physics_process(delta):
 			active = false
 			Global.emit(global_position, 5)
 			$back/sprite.animation = "prisoner"
-			$back/lbl_item.text = "HELP!! HELP!! HELP!!!"
+			$back/sprite.play()
+			$back/lbl_item.text = "MY FRIENDS!!"
 			$back/arrows.visible = false
-			ringing = false
-			$AnimationPlayer.stop()
-			$Computer.stop()
-			Door.open()
 
 func _on_body_entered(body):
 	if !opened and body.is_in_group("players") and !body.is_in_group("prisoners"):
@@ -52,3 +36,4 @@ func _on_body_exited(body):
 		$back.visible = false
 		active = false
 		body.dont_camera = false
+

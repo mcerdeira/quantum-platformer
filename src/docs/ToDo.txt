@@ -34,12 +34,8 @@
 
 Ajustes:
 - Hacer que el numero de prisioneros y el tamaño del nivel sea fijo 
-- Al teléfono nos llama nuestra mascota. Al salir al patio, nos encontramos con uno de los prisioneros que nos "dice" que hay otros como el secuestrados 
 - Si estamos con followers y hacemos TP, deberían hacer TP con nosotros
 - Ver tema de trepar la escalera y como eso hace un salto 
-- Enemigo bullet hell: las balas no salen en un circulo perfecto 
-- Enemigo bullet hell tiene que tener una forma de cambiar de estado "hostil"
-- Enemigo bullet hell: hacerlo ciclope y que el ojo siga al personaje y que no esté en el piso, así las balas 360 tienen sentido 
 - Al aparecer el fantasma y elevarse, cambiar el Sprite 
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 
@@ -47,6 +43,7 @@ Features:
 - Item planta que crece (sirve como escalera)
 - Item humo
 - Item cohete 
+- Item infograma que se genera con el comando print (con un QR para bajarlo en PDF)
 - Plantas para esconderse
 - Terminarles: se puede desactivar cosas para el final bueno (necesita password) podemos listar el estado de las demás y print de un manual, infograma. 
 - Agregar las terminales en los niveles, necesitan una bomba xq están bloqueadas por terreno. 
@@ -55,6 +52,9 @@ Features:
 - Red Blue switches 
 - Enemigo: Gusanitos qué se le meten a los prisioneros y los convierten en zombies que nos atacan 
 - Enemigo: volador
+- Title Screen
+- Menu de opciones
+- Sistema de Save/Load
 
 - Si el enemigo glotón "come" otros items:
   - Planta: Se vuelve gigante verticalmente
@@ -70,6 +70,10 @@ Features:
 - Musica
 
 --------------------------------- DONE ---------------------------------
+- Enemigo bullet hell tiene que tener una forma de cambiar de estado "hostil"
+- Enemigo bullet hell: las balas no salen en un circulo perfecto 
+- Enemigo bullet hell: hacerlo ciclope y que el ojo siga al personaje y que no esté en el piso, así las balas 360 tienen sentido 
+- Al teléfono nos llama nuestra mascota. Al salir al patio, nos encontramos con uno de los prisioneros que nos "dice" que hay otros como el secuestrados 
 - Definir Secretos
 - Hacer que las puertas del hubworld tengan un sistema de cuales están abiertas y cuales no
 - Hacer que el inicio de hub-world caigamos a la velocidad maxima de caida 

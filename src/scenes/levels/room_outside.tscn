@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://be63rv3buvrmc"]
+[gd_scene load_steps=28 format=3 uid="uid://be63rv3buvrmc"]
 
 [ext_resource type="Texture2D" uid="uid://djs78nqy60b6t" path="res://sprites/floor_spr_2.png" id="1_vgbv1"]
 [ext_resource type="Texture2D" uid="uid://6e6u7tx8wpp5" path="res://sprites/stair.png" id="2_wnwd8"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="10_t0j1c"]
 [ext_resource type="Script" path="res://scenes/levels/fall_area2D.gd" id="12_3tuvj"]
 [ext_resource type="PackedScene" uid="uid://cer2o3pqwtaqs" path="res://scenes/plant_group.tscn" id="13_l586e"]
+[ext_resource type="PackedScene" uid="uid://dvlc4ydhtggsb" path="res://scenes/prisoner_npc.tscn" id="13_tnky2"]
 [ext_resource type="Texture2D" uid="uid://dfqtc1m508o0k" path="res://sprites/jupi/1.jpg" id="14_x5cqw"]
 [ext_resource type="Texture2D" uid="uid://bwf3p6qvvyiqs" path="res://sprites/jupi/2.jpg" id="15_6pqu6"]
 
@@ -141,6 +142,9 @@ offset_top = -4648.0
 offset_right = 12587.0
 offset_bottom = 6160.0
 color = Color(0, 0, 0, 0)
+
+[node name="prisoner_npc" parent="." instance=ExtResource("13_tnky2")]
+position = Vector2(3261, 641)
 
 [node name="PlantGroup" parent="." instance=ExtResource("13_l586e")]
 

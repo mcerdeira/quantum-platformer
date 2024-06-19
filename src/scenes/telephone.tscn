@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://by5hjga63ct0i" path="res://sprites/computer2.png" id="1_n8nc0"]
 [ext_resource type="Texture2D" uid="uid://cw0susl3lvh2x" path="res://sprites/computer1.png" id="2_rriwl"]
 [ext_resource type="Script" path="res://scenes/telephone.gd" id="3_oguwn"]
-[ext_resource type="Texture2D" uid="uid://dc5iy4hnblrha" path="res://sprites/sleepy_trap_0.png" id="7_l3bsk"]
+[ext_resource type="Texture2D" uid="uid://c3wss40js8xh7" path="res://sprites/horu/images/pet1.png" id="7_v1qgc"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="13_kvgbd"]
 [ext_resource type="Texture2D" uid="uid://da14xud8tdoj" path="res://sprites/arrows1.png" id="14_so8u7"]
 [ext_resource type="Texture2D" uid="uid://b74uo51q2y58i" path="res://sprites/arrows2.png" id="15_nd38w"]
@@ -73,7 +73,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_l3bsk")
+"texture": ExtResource("7_v1qgc")
 }],
 "loop": true,
 "name": &"prisoner",

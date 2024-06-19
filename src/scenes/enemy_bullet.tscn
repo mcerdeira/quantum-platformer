@@ -73,7 +73,7 @@ animations = [{
 "texture": ExtResource("4_jg462")
 }],
 "loop": true,
-"name": &"slepping",
+"name": &"sleeping",
 "speed": 5.0
 }]
 
@@ -104,18 +104,17 @@ position = Vector2(0, -16)
 shape = SubResource("CircleShape2D_oeaso")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_3ov1t")
 
 [node name="sprite_eyes" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(0, 5)
 sprite_frames = SubResource("SpriteFrames_xutts")
-animation = &"shoot"
-autoplay = "slepping"
+animation = &"sleeping"
+autoplay = "sleeping"
 speed_scale = 0.4
 
 [node name="shoot_pos" type="Marker2D" parent="."]
-position = Vector2(17, -1)
+position = Vector2(16, 12)
 
 [node name="stars_stunned" type="AnimatedSprite2D" parent="."]
 visible = false
