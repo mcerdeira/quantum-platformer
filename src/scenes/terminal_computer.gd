@@ -80,7 +80,7 @@ func parser(_cmd):
 		CMD.text = ""
 		current_line = 0 
 	elif found != -1 and _cmd == "PRINT":
-		#TODO: Generar un item que sea el infograma que explique algo segun que terminal sea
+		#$Info.visible = true
 		pass
 	elif found != -1 and _cmd == "TERMINALS":
 		var commands = ""

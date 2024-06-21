@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxyls5gbo1c1i"]
+
+[ext_resource type="Texture2D" uid="uid://dv2y3twuvyw0y" path="res://sprites/info.png" id="1_sl63s"]
+[ext_resource type="FontFile" uid="uid://df8tenaf40ylu" path="res://fonts/cour.ttf" id="2_xwgrf"]
+
+[node name="Info" type="Node2D"]
+
+[node name="Info" type="Sprite2D" parent="."]
+texture = ExtResource("1_sl63s")
+
+[node name="lbl_title" type="Label" parent="."]
+offset_left = -129.0
+offset_top = -73.0
+offset_right = 146.0
+offset_bottom = -54.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_xwgrf")
+theme_override_font_sizes/font_size = 14
+text = "== THE LEAF =="
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="lbl_body" type="Label" parent="."]
+offset_left = -129.0
+offset_top = -55.0
+offset_right = 146.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_xwgrf")
+theme_override_font_sizes/font_size = 14
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis."
+autowrap_mode = 2

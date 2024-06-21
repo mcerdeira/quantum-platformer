@@ -22,6 +22,7 @@ func _process(delta):
 				
 				if !createme_on_firsttime and Global.first_time:
 					Global.first_time = false
+					Global.save_game()
 					queue_free()
 					return
 			
