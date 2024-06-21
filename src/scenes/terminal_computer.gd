@@ -10,6 +10,7 @@ var CMD : TextEdit
 var command = ""
 var is_writing = false 
 @export var terminal_number = 0
+@export var InfoPosition : Marker2D
 var terminal_commands = [
 	[
 		"TERMINALS",

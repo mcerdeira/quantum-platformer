@@ -36,16 +36,16 @@ Ajustes:
 - Hacer que el tamaño del nivel sea variable (y parametrizable según que terminal sea) 
 - Si estamos con followers y hacemos TP, deberían hacer TP con nosotros
 - Ver tema de trepar la escalera y como eso hace un salto 
-- Al aparecer el fantasma y elevarse, cambiar el Sprite 
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 
 Features:
-- Item infograma que se genera con el comando print (con un QR para bajarlo en PDF)
+- Item infograma que se genera con el comando print (con un QR para bajarlo en PDF) <------
 - Terminales: se puede desactivar cosas para el final bueno (necesita password) podemos listar el estado de las demás y print de un manual, infograma. 
 - Agregar las terminales en los niveles, necesitan una bomba xq están bloqueadas por terreno. 
   PENSAR: El password es único y está en ???? 
 
 - Red Blue switches 
+- Bloques mortales si los pisas (los que son negros y tienen una calavera)
 - Enemigo: Gusanitos qué se le meten a los prisioneros y los convierten en zombies que nos atacan 
 - Enemigo: volador
 - Title Screen
@@ -65,6 +65,7 @@ Features:
 - Musica
 
 --------------------------------- DONE ---------------------------------
+- Al aparecer el fantasma y elevarse, cambiar el Sprite 
 - Plantas para esconderse
 - Item humo
 - Hacer que el numero de Prisioneros sea fijo por numer ode terminal
