@@ -1,6 +1,9 @@
 extends TileMap
 var q = 0
 
+func _ready():
+	Global.save_game()
+
 func delete_player():
 	$player_marker.nope = true
 	

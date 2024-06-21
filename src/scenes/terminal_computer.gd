@@ -71,24 +71,24 @@ func _input(event):
 					command += key_text
 		
 func parser(_cmd):
-	if _cmd == "HELP":
+	var found = terminal_commands[terminal_number].find(_cmd)
+	if found != -1 and _cmd == "HELP":
 		var commands = "\n".join(terminal_commands[terminal_number])
 		current_message = "AVAILABLE COMMANDS:\n" + commands
 		current_line += terminal_commands[terminal_number].size() + 1
-	elif _cmd == "CLEAR":
+	elif found != -1 and _cmd == "CLEAR":
 		CMD.text = ""
 		current_line = 0 
-	elif _cmd == "PRINT":
+	elif found != -1 and _cmd == "PRINT":
 		#TODO: Generar un item que sea el infograma que explique algo segun que terminal sea
 		pass
-	elif _cmd == "TERMINALS":
+	elif found != -1 and _cmd == "TERMINALS":
 		var commands = ""
 		for i in range(Global.TerminalNames.size()):
 			commands += "#" + str(i) + " " + Global.TerminalNames[i] + " - STATUS: " + Global.TerminalStatus[i] + "\n"
 		current_message = "LIST OF TERMINALS:\n" + commands
 		current_line += Global.TerminalNames.size() + 1
-			
-	elif _cmd == "EXIT":
+	elif found != -1 and _cmd == "EXIT":
 		CMD.text = ""
 		current_line = 2
 		$Terminal.visible = false

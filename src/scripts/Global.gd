@@ -145,7 +145,7 @@ enum GameStates {
 	RANDOMLEVEL,
 }
 
-var CurrentState : GameStates = GameStates.RANDOMLEVEL
+var CurrentState : GameStates = GameStates.HOME
 
 func scene_next(terminal_number = -1):
 	Global.TerminalNumber = terminal_number
@@ -200,47 +200,20 @@ func flyaway(direction, jump_speed):
 	velocity.y = jump_speed * 1.4
 	return velocity
 	
-#DEPRECATED
-#func find_master():
-	#var master_found = false
-	#for player in Global.targets:
-		#if player.dead == false and player.iam_clone == false:
-			#master_found = true
-			#
-	#if !master_found:
-		#if Global.targets.size() > 0:
-			#for player in Global.targets:
-				#if player.dead == false and player.iam_clone == true:
-					#player.iam_clone = false
-					#break
-
 func save_game():
-	pass
-#	var saved_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
-#	saved_game.store_var(Global.LEVEL)
-#	saved_game.close()
-#
-#	var saved_poss = FileAccess.open("user://savepos.save", FileAccess.WRITE)
-#	saved_poss.store_var(Global.POSSESSIONS)
-#	saved_poss.close()
+	var saved_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	saved_game.store_var(Global.CurrentState)
+	saved_game.store_var(Global.first_time)
+	saved_game.close()
 	
 func load_game():
-	pass
-#	var saved_game = FileAccess.open("user://savegame.save", FileAccess.READ)
-#	PLAY_INTRO = !saved_game
-#	if saved_game:
-#		var level = saved_game.get_var()
-#		if level:
-#			SAVED_GAME = true
-#			Global.LEVEL = level
-#			saved_game.close()
-#
-#	var saved_poss = FileAccess.open("user://savepos.save", FileAccess.READ)
-#	if saved_poss:
-#		var pos = saved_poss.get_var()
-#		if pos:
-#			Global.POSSESSIONS = pos
-#			saved_poss.close()
+	var saved_game = FileAccess.open("user://savegame.save", FileAccess.READ)
+	if saved_game:
+		var cur_state = saved_game.get_var()
+		var f_time = saved_game.get_var()
+		if cur_state:
+			Global.CurrentState = cur_state
+			Global.first_time = f_time
 
 func _ready():
 	load_sfx()
@@ -280,8 +253,8 @@ func init():
 	gunz_equiped = [none, none]
 	
 	#DEBUG
-	slots_stock = [2, 0]
-	gunz_equiped[0] = smoke_bomb
+	#slots_stock = [2, 0]
+	#gunz_equiped[0] = smoke_bomb
 	
 	randomize()
 	

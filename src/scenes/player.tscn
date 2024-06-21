@@ -275,6 +275,7 @@ frame_progress = 0.0612838
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g68ow")
 animation = &"idle"
+speed_scale = 2.0
 
 [node name="sprite_eyes" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 4)
