@@ -15,9 +15,9 @@
 - Escena Nivel Procedural: Liberar a todos los prisioneros, encontrar la puerta e irse (simil alien 3/sega)
 - Niveles/Zonas:
   0 - The Eye (main hub)
-  1 - The Leaf (lots of vines)   
-  2 - The Tomb (lots of worms)
-  3 - The Mermaid (lots of waterfalls)
+  1 - The Leaf (selvatico, lots of vines)   
+  2 - The Tomb (tumbas, enemigos fantasma, worms)
+  3 - The Mermaid (algo de selva, lots of waterfalls, lluvia y truenos, trampas piso)
   4 - The Dragon (fire and lava, todo el tiempo el distort de calor)
   5 - The Seraph (secret)
 
@@ -41,6 +41,7 @@ Ajustes:
 Features:
 - Las terminales, lamparas, items, tumbas son parte de los niveles generados procedural
 - Terminales: se puede desactivar cosas para el final bueno (necesita password)
+- Terminales: hacer un jueguito 
 - Agregar las terminales en los niveles, necesitan una bomba xq están bloqueadas por terreno. 
   PENSAR: El password es para modo admin, en cada terminal se puede apagar de una si se puede acceder
   PENSAR: Uso para las tumbas
@@ -60,6 +61,9 @@ Features:
   - Humo: Se expande como el humo  
 
 - Decoraciones 
+  . Rayitos de sol en la intro
+  . Lluvia
+  . Truenos
   . Splash al caer en la lava
   . Cascaditas
   . Backgrounds con parallax
