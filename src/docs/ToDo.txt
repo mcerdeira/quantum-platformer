@@ -17,7 +17,7 @@
   0 - The Eye (main hub)
   1 - The Leaf (selvatico, lots of vines)   
   2 - The Tomb (tumbas, enemigos fantasma, worms)
-  3 - The Mermaid (algo de selva, lots of waterfalls, trampas piso)
+  3 - The Mermaid (algo de selva, lots of waterfalls, lluvia y truenos, trampas piso)
   4 - The Dragon (fire and lava, todo el tiempo el distort de calor)
   5 - The Seraph (secret)
 
@@ -62,6 +62,9 @@ Features:
 
 
 - Decoraciones 
+  . Rayitos de sol en la intro
+  . Lluvia
+  . Truenos
   . Splash al caer en la lava
   . Cascaditas
   . Backgrounds con parallax
