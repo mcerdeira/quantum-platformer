@@ -413,11 +413,11 @@ func set_invisible(val):
 		$sprite.animation = "idle"
 		$sprite_eyes.animation = $sprite.animation
 	
-func flyaway(direction):
+func flyaway(_direction):
 	if blowed <= 0:
 		blowed = 6.2
 		Global.emit(global_position, 2)
-		velocity = Global.flyaway(direction, jump_speed)
+		velocity = Global.flyaway(_direction, jump_speed)
 		previus_velocity = velocity
 
 func bleed(count):

@@ -108,47 +108,49 @@ var GHOSTS = true
 var WATERFALLS = true
 var FIREBALLS = true
 
-var TerminalPrisoners = [
-	0,
-	5,
-	5,
-	7,
-	7,
-	10,
-]
-
-var TerminalNames = [
-	"The Eye    ",
-	"The Leaf   ",
-	"The Tomb   ",
-	"The Mermaid",
-	"The Dragon ",
-	"The S3r4ph "
-]
-var TerminalDescriptions = [
-	"The Eye    ",
-	"The Leaf   ",
-	"The Tomb   ",
-	"The Mermaid",
-	"The Dragon ",
-	"The S3r4ph "
-]
-
-var TerminalStatus = [
-	"ON",
-	"ON",
-	"ON",
-	"ON",
-	"ON",
-	"UNKNOWN",
-]
-var TerminalDoors = [
-	true,
-	true,
-	false,
-	false,
-	false,
-	false,
+var Terminals = [
+	{
+		"name": "The Eye    ",
+		"description" : "The Eye    ",
+		"status": true,
+		"prisoners": 0,
+		"variable" : {}
+	},
+	{
+		"name": "The Leaf   ",
+		"description" : "The Leaf   ",
+		"status": true,
+		"prisoners": 5,
+		"variable" : {"LASERS": true}
+	},
+	{
+		"name": "The Tomb   ",
+		"description" : "The Tomb   ",
+		"status": false,
+		"prisoners": 5,
+		"variable" : {"GHOSTS": true}
+	},
+	{
+		"name": "The Mermaid",
+		"description" : "The Mermaid   ",
+		"status": false,
+		"prisoners": 7,
+		"variable" : {"WATERFALLS": true}
+	},
+	{
+		"name": "The Dragon ",
+		"description" : "The Dragon   ",
+		"status": false,
+		"prisoners": 7,
+		"variable" : {"FIREBALLS": true}
+	},
+	{
+		"name": "The S3r4ph ",
+		"description" : "The S3r4ph   ",
+		"status": null,
+		"prisoners": 10,
+		"variable" :{"$5&/#/()":null}
+	},
 ]
 	
 enum GameStates {

@@ -35,7 +35,7 @@ func generate_level():
 	var room_pos = Vector2.ZERO
 	var room = null
 	var q = 1
-	var prisonercount = Global.TerminalPrisoners[Global.TerminalNumber]
+	var prisonercount = Global.Terminals[Global.TerminalNumber].prisoners
 	
 	for h in range(4):
 		for w in range(4):

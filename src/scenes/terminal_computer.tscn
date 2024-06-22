@@ -523,7 +523,7 @@ script = ExtResource("6_sqpbu")
 [node name="ColorRect" type="ColorRect" parent="Terminal"]
 layout_mode = 0
 offset_top = -24.0
-offset_right = 700.0
+offset_right = 704.0
 color = Color(0.866667, 0, 0.866667, 1)
 
 [node name="Label" type="Label" parent="Terminal"]

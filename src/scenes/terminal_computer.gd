@@ -13,12 +13,44 @@ var is_writing = false
 @export var InfoPosition : Marker2D
 var terminal_commands = [
 	[
-		"TERMINALS",
+		"LIST",
 		"HELP",
 		"PRINT",
 		"CLEAR",
 		"EXIT",
-	]
+	],
+	[
+		"SET",
+		"VARIABLES",
+		"HELP",
+		"PRINT",
+		"CLEAR",
+		"EXIT",
+	],
+	[
+		"SET",
+		"VARIABLES",
+		"HELP",
+		"PRINT",
+		"CLEAR",
+		"EXIT",
+	],
+	[
+		"SET",
+		"VARIABLES",
+		"HELP",
+		"PRINT",
+		"CLEAR",
+		"EXIT",
+	],
+	[
+		"SET",
+		"VARIABLES",
+		"HELP",
+		"PRINT",
+		"CLEAR",
+		"EXIT",
+	],
 ]
 
 func _ready():
@@ -42,7 +74,7 @@ func _physics_process(delta):
 			$back.visible = false
 			$back/arrows.visible = false
 			$Terminal.visible = true
-			current_message = "WELCOME TO GROTTO TERMINAL #" + str(terminal_number) + " " + Global.TerminalNames[terminal_number] + "\nREADY"
+			current_message = "WELCOME TO GROTTO TERMINAL #" + str(terminal_number) + " " + Global.Terminals[terminal_number].name + "\nREADY"
 			Global.player_obj.terminal_mode = true
 			Global.player_obj.visible = false
 			
@@ -64,7 +96,7 @@ func _input(event):
 	if !is_writing and opened and current_message == "": 
 		if event is InputEventKey and event.is_pressed():
 			var key_text  = OS.get_keycode_string(event.keycode)
-			if key_text == "Enter":
+			if event.keycode == Key.KEY_KP_ENTER or event.keycode == Key.KEY_ENTER:
 				current_line += 1
 				parser(command)
 				command = ""
@@ -84,16 +116,22 @@ func parser(_cmd):
 		CMD.text = ""
 		current_line = 0 
 	elif found != -1 and _cmd == "PRINT":
-		current_message = "PRINTING...\nDONE"
+		current_message = "PRINTING...\nREADY"
 		current_line += 2
 		$Info.visible = true
 		$Info.terminal_number = terminal_number
-	elif found != -1 and _cmd == "TERMINALS":
+	elif found != -1 and _cmd == "LIST":
 		var commands = ""
-		for i in range(Global.TerminalNames.size()):
-			commands += "#" + str(i) + " " + Global.TerminalNames[i] + " - STATUS: " + Global.TerminalStatus[i] + "\n"
-		current_message = "LIST OF TERMINALS:\n" + commands
-		current_line += Global.TerminalNames.size() + 1
+		var lines = 0
+		for i in range(Global.Terminals.size()):
+			commands += "#" + str(i) + " " + Global.Terminals[i].name + " | STATUS: " + trad_state(Global.Terminals[i].status) + "\n"
+			lines += 1
+			var vars = trad_vars(Global.Terminals[i].variable)
+			if vars != "":
+				commands += "\t" + vars+ "\n\n"
+				lines += 2
+		current_message = "LIST OF TERMINALS:\n" + commands + "\nREADY"
+		current_line += lines + 3
 	elif found != -1 and _cmd == "EXIT":
 		CMD.text = ""
 		current_line = 2
@@ -106,6 +144,21 @@ func parser(_cmd):
 	else:
 		current_message = "ERROR: TYPE HELP <COMMAND> OR HELP FOR A LIST OF COMMANDS"
 		current_line += 1
+		
+func trad_vars(val):
+	if val != {}:
+		return str(val).replace("{", "").replace("}", "")
+	else:
+		return ""
+		
+func trad_state(val):
+	if val == true:
+		return "ON"
+	elif val == false:
+		return "OFF"
+	elif val == null:
+		return "UNKNOWN"
+	
 			
 func _on_body_entered(body):
 	if !opened and body.is_in_group("players") and !body.is_in_group("prisoners"):

@@ -9,7 +9,7 @@ func _ready():
 		if !nope:
 			Global.exit_door = self
 	else:
-		if Global.TerminalDoors[terminal_number]:
+		if Global.Terminals[terminal_number].status:
 			open()
 		
 func _physics_process(delta):
