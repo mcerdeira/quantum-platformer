@@ -15,9 +15,9 @@
 - Escena Nivel Procedural: Liberar a todos los prisioneros, encontrar la puerta e irse (simil alien 3/sega)
 - Niveles/Zonas:
   0 - The Eye (main hub)
-  1 - The Leaf (lots of vines)   
-  2 - The Tomb (lots of worms)
-  3 - The Mermaid (lots of waterfalls)
+  1 - The Leaf (selvatico, lots of vines)   
+  2 - The Tomb (tumbas, enemigos fantasma, worms)
+  3 - The Mermaid (algo de selva, lots of waterfalls, trampas piso)
   4 - The Dragon (fire and lava, todo el tiempo el distort de calor)
   5 - The Seraph (secret)
 
