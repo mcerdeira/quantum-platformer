@@ -170,7 +170,6 @@ autoplay = "default"
 position = Vector2(44, 36)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nd76e")
-frame_progress = 0.690517
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

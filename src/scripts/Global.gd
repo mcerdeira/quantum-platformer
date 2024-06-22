@@ -103,6 +103,11 @@ var first_time = true
 var Fader = null
 var TerminalNumber = -1
 
+var LASERS = true
+var GHOSTS = true
+var WATERFALLS = true
+var FIREBALLS = true
+
 var TerminalPrisoners = [
 	0,
 	5,
@@ -120,6 +125,15 @@ var TerminalNames = [
 	"The Dragon ",
 	"The S3r4ph "
 ]
+var TerminalDescriptions = [
+	"The Eye    ",
+	"The Leaf   ",
+	"The Tomb   ",
+	"The Mermaid",
+	"The Dragon ",
+	"The S3r4ph "
+]
+
 var TerminalStatus = [
 	"ON",
 	"ON",
@@ -204,6 +218,12 @@ func save_game():
 	var saved_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	saved_game.store_var(Global.CurrentState)
 	saved_game.store_var(Global.first_time)
+	
+	saved_game.store_var(Global.LASERS) #LEAF
+	saved_game.store_var(Global.GHOSTS) #TOMB
+	saved_game.store_var(Global.WATERFALLS) #MERMAID
+	saved_game.store_var(Global.FIREBALLS) #DRAGON
+
 	saved_game.close()
 	
 func load_game():
@@ -211,9 +231,22 @@ func load_game():
 	if saved_game:
 		var cur_state = saved_game.get_var()
 		var f_time = saved_game.get_var()
+		var lasers = saved_game.get_var()
+		var ghosts = saved_game.get_var()
+		var waterfalls = saved_game.get_var()
+		var fireballs = saved_game.get_var()
+		
 		if cur_state:
 			Global.CurrentState = cur_state
 			Global.first_time = f_time
+			if lasers != null:
+				Global.LASERS = lasers
+			if ghosts != null:
+				Global.GHOSTS = ghosts
+			if waterfalls != null:
+				Global.WATERFALLS = waterfalls
+			if fireballs != null:
+				Global.FIREBALLS = fireballs
 
 func _ready():
 	load_sfx()

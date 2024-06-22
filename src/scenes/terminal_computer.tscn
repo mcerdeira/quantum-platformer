@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://1bt2t2jgbtos"]
+[gd_scene load_steps=12 format=3 uid="uid://1bt2t2jgbtos"]
 
 [ext_resource type="Script" path="res://scenes/terminal_computer.gd" id="1_12f75"]
 [ext_resource type="Texture2D" uid="uid://dkimwbya1l66v" path="res://sprites/terminal_computer.png" id="1_hm5o6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://da14xud8tdoj" path="res://sprites/arrows1.png" id="3_q5fdc"]
 [ext_resource type="Texture2D" uid="uid://b74uo51q2y58i" path="res://sprites/arrows2.png" id="4_fd7sn"]
 [ext_resource type="Script" path="res://scenes/TextEdit.gd" id="6_sqpbu"]
+[ext_resource type="PackedScene" uid="uid://bxyls5gbo1c1i" path="res://scenes/Info.tscn" id="7_bwgqr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pcoxa"]
 animations = [{
@@ -49,6 +50,11 @@ animations = [{
 [node name="TerminalComputer" type="Area2D"]
 position = Vector2(194, 597)
 script = ExtResource("1_12f75")
+
+[node name="Info" parent="." instance=ExtResource("7_bwgqr")]
+visible = false
+z_index = 4096
+position = Vector2(15, -139)
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -11)

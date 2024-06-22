@@ -23,6 +23,7 @@ var terminal_commands = [
 
 func _ready():
 	CMD = $Terminal/TextEdit
+	$Info.global_position = InfoPosition.global_position
 
 func _physics_process(delta):
 	$back2.visible = $back.visible 
@@ -60,7 +61,7 @@ func _process(delta):
 				is_writing = false
 				
 func _input(event):
-	if opened and current_message == "": 
+	if !is_writing and opened and current_message == "": 
 		if event is InputEventKey and event.is_pressed():
 			var key_text  = OS.get_keycode_string(event.keycode)
 			if key_text == "Enter":
@@ -68,7 +69,9 @@ func _input(event):
 				parser(command)
 				command = ""
 			else:
-				if (event.keycode >= 65 and event.keycode <= 90) or event.keycode == 32:
+				if event.keycode == Key.KEY_BACKSPACE:
+					command = command.left(command.length() - 1)
+				elif (event.keycode >= 65 and event.keycode <= 90) or event.keycode == 32:
 					command += key_text
 		
 func parser(_cmd):
@@ -81,8 +84,10 @@ func parser(_cmd):
 		CMD.text = ""
 		current_line = 0 
 	elif found != -1 and _cmd == "PRINT":
-		#$Info.visible = true
-		pass
+		current_message = "PRINTING...\nDONE"
+		current_line += 2
+		$Info.visible = true
+		$Info.terminal_number = terminal_number
 	elif found != -1 and _cmd == "TERMINALS":
 		var commands = ""
 		for i in range(Global.TerminalNames.size()):
