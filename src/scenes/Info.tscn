@@ -84,6 +84,7 @@ position = Vector2(-2, -10)
 shape = SubResource("RectangleShape2D_xc2co")
 
 [node name="InfoDisplay" type="Node2D" parent="."]
+visible = false
 position = Vector2(282, -157)
 scale = Vector2(2, 2)
 

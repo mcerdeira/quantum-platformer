@@ -42,7 +42,7 @@ Features:
 - Las terminales, lamparas, items, tumbas son parte de los niveles generados procedural
 - Terminales: se puede desactivar cosas para el final bueno (necesita password)
 - Agregar las terminales en los niveles, necesitan una bomba xq están bloqueadas por terreno. 
-  PENSAR: El password es único y está en ???? 
+  PENSAR: El password es para modo admin, en cada terminal se puede apagar de una si se puede acceder
   PENSAR: Uso para las tumbas
   PENSAR: Uso para las cascadas
 
@@ -58,7 +58,6 @@ Features:
 
 - Si el enemigo glotón "come" otros items:
   - Humo: Se expande como el humo  
-
 
 - Decoraciones 
   . Splash al caer en la lava
