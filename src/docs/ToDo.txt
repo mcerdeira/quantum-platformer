@@ -41,6 +41,7 @@ Ajustes:
 Features:
 - Las terminales, lamparas, items, tumbas son parte de los niveles generados procedural
 - Terminales: se puede desactivar cosas para el final bueno (necesita password)
+- Terminales: hacer un jueguito 
 - Agregar las terminales en los niveles, necesitan una bomba xq están bloqueadas por terreno. 
   PENSAR: El password es único y está en ???? 
   PENSAR: Uso para las tumbas
