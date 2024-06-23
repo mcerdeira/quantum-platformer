@@ -10,7 +10,7 @@
   . Escena Main Hub: Llegamos al main hub, aca hay 5 plataformas con 5 puertas. Solo 1 puerta está abierta, al entrar a la puerta vamos al primer nivel
                      procedural, donde tenemos que rescatar a un numero de prisioneros fijo.
                      Se destraban las demas puertas rescatando mas prisioneros. 
-- Tienen que ser distintos los más "mundos" puertas, e incrementalmente más grandes.
+- Tienen que ser distintos los mundos/puertas, e incrementalmente más grandes.
 
 - Escena Nivel Procedural: Liberar a todos los prisioneros, encontrar la puerta e irse (simil alien 3/sega)
 - Niveles/Zonas:
@@ -33,17 +33,17 @@
 ==================================================================================================================
 
 Ajustes:
+- Bug con las lamparas, queman las vines pero el fuego no se propaga
 - Hacer que el tamaño del nivel sea variable (y parametrizable según que terminal sea) 
 - Si estamos con followers y hacemos TP, deberían hacer TP con nosotros
 - Ver tema de trepar la escalera y como eso hace un salto 
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 
 Features:
-- Las terminales, lamparas, items, tumbas son parte de los niveles generados procedural
+- Las lamparas son parte de los niveles generados procedural
 - Terminales: se puede desactivar cosas para el final bueno (necesita password)
 - Terminales: hacer un jueguito 
-- Agregar las terminales en los niveles, necesitan una bomba xq están bloqueadas por terreno. 
-  PENSAR: El password es para modo admin, en cada terminal se puede apagar de una si se puede acceder
+- Cada terminal tiene sus propias variables asociadas
   PENSAR: Uso para las tumbas
   PENSAR: Uso para las cascadas
 
@@ -72,6 +72,8 @@ Features:
 - Musica
 
 --------------------------------- DONE ---------------------------------
+- Tumbas son parte de los niveles generados procedural
+- Agregar las terminales en los niveles, necesitan una bomba xq están bloqueadas por terreno. 
 - Terminales: podemos listar el estado de las demás y print de un manual, infograma
 - Sistema de Save/Load
 - Item infograma que se genera con el comando print (con un QR para bajarlo en PDF)

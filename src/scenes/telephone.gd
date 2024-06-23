@@ -32,7 +32,8 @@ func _physics_process(delta):
 			active = false
 			Global.emit(global_position, 5)
 			$back/sprite.animation = "prisoner"
-			$back/lbl_item.text = "WOOF!! WOOF!! WOOF!!!"
+			$back/sprite.play()
+			$back/lbl_item.text = "WOOF!! WOOF!! WOOF!!!\nHELP!! HELP!! HELP!!!"
 			$back/arrows.visible = false
 			ringing = false
 			$AnimationPlayer.stop()

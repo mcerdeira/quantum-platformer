@@ -64,6 +64,12 @@ func generate_level():
 		
 		room_pos.y += size.y
 		room_pos.x = 0
+		
+	var terminals = get_tree().get_nodes_in_group("terminals")
+	while terminals.size() > 1:
+		terminals.shuffle()
+		var t = terminals.pop_front()
+		t.queue_free()	
 
 	var prisoner_markers = get_tree().get_nodes_in_group("prisoner_markers")
 	while prisoner_markers.size() > prisonercount:

@@ -54,6 +54,7 @@ var terminal_commands = [
 ]
 
 func _ready():
+	add_to_group("terminals")
 	CMD = $Terminal/TextEdit
 	$Info.global_position = InfoPosition.global_position
 

@@ -11,7 +11,7 @@ var damping = 0.995  #Arbitrary dampening force
 var angular_velocity = 0.0
 var angular_acceleration = 0.0
 
-var health = 35
+var health = 15
 
 @export var LampDown : Node2D
 @export var Chain : Line2D
@@ -51,7 +51,7 @@ func _physics_process(delta)->void:										#example of in game swing kick
 func _on_lamp_area_body_entered(body):
 	if health > 0:
 		if body and (body.is_in_group("players") or body.is_in_group("prisoners") or body.is_in_group("interactuable")):
-			var dir = sign(body.velocity.y * -1)
+			var dir = sign(body.velocity.x)
 			add_angular_velocity(dir * 0.02) 	
 			health -= 5
 			if health <= 0:
@@ -60,5 +60,5 @@ func _on_lamp_area_body_entered(body):
 				p.velocity = body.velocity
 				p.position = LampDown.global_position
 				Global.emit(LampDown.global_position, 5)
-				get_parent().get_parent().add_child(p)
+				get_parent().get_parent().get_parent().add_child(p)
 		

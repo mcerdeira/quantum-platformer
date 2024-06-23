@@ -4,6 +4,8 @@ var active = false
 var opened = false
 var player = null
 var delay_camera = 0.2
+var tomb = load("res://scenes/Tomb.tscn")
+var killme = false
 
 func _ready():
 	if randi() % 4 == 1:
@@ -11,9 +13,20 @@ func _ready():
 		$back/sprite.animation = current_item.name
 		$back/lbl_item.text = "== " + current_item.name.to_upper() + " ==" + "\n" + current_item.description
 	else:
-		queue_free()
+		if randi() % 3 == 0:
+			killme = true
+		else:
+			queue_free()
 
 func _physics_process(delta):
+	if killme:
+		var p = tomb.instantiate()
+		var parent = get_parent()
+		parent.add_child(p)
+		p.global_position = global_position
+		queue_free()
+		return
+	
 	$back2.visible = $back.visible 
 	if !active and opened:
 		if player:

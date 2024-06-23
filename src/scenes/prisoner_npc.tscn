@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dvlc4ydhtggsb"]
+[gd_scene load_steps=23 format=3 uid="uid://dvlc4ydhtggsb"]
 
 [ext_resource type="Script" path="res://scenes/prisoner_npc.gd" id="1_1mpam"]
 [ext_resource type="Texture2D" uid="uid://dxe6h3w5inx2l" path="res://sprites/horu/images/prisoner_cry.png" id="2_a0o5m"]
@@ -13,6 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://blfc4dcq4ns02" path="res://sprites/horu/images/well1.png" id="8_r3548"]
 [ext_resource type="Texture2D" uid="uid://drr6j8t5ihwcv" path="res://sprites/horu/images/well2.png" id="9_22qm3"]
 [ext_resource type="Texture2D" uid="uid://d1kdxbbwh7b22" path="res://sprites/horu/images/well3.png" id="10_pt783"]
+[ext_resource type="Texture2D" uid="uid://c3wss40js8xh7" path="res://sprites/horu/images/pet1.png" id="11_fyhv3"]
+[ext_resource type="Texture2D" uid="uid://dgu6dtl88tnql" path="res://sprites/horu/images/pet2.png" id="12_l2hlw"]
+[ext_resource type="Texture2D" uid="uid://dfgdj70v8v3u2" path="res://sprites/horu/images/plus.png" id="12_tpajq"]
+[ext_resource type="Texture2D" uid="uid://cisg0krrcfm7y" path="res://sprites/horu/images/pet3.png" id="13_507yq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n3es1"]
 size = Vector2(52, 52)
@@ -74,10 +78,55 @@ animations = [{
 "texture": ExtResource("6_6wuvg")
 }, {
 "duration": 1.0,
+"texture": ExtResource("7_p0h4m")
+}, {
+"duration": 1.0,
 "texture": ExtResource("6_6wuvg")
 }, {
 "duration": 1.0,
 "texture": ExtResource("7_p0h4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6wuvg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_p0h4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tpajq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tpajq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tpajq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tpajq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tpajq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tpajq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_fyhv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_l2hlw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_fyhv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_l2hlw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_507yq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_507yq")
 }, {
 "duration": 1.0,
 "texture": ExtResource("8_r3548")
@@ -170,6 +219,8 @@ autoplay = "default"
 position = Vector2(44, 36)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nd76e")
+animation = &"prisoner"
+frame_progress = 0.073714
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -71,8 +71,8 @@ animations = [{
 
 [node name="LampFaller" type="CharacterBody2D"]
 position = Vector2(0, 6)
-collision_layer = 33
-collision_mask = 33
+collision_layer = 41
+collision_mask = 41
 script = ExtResource("1_wlu64")
 
 [node name="FireBall" parent="." instance=ExtResource("2_sw0qo")]
