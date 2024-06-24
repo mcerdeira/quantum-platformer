@@ -174,6 +174,8 @@ func scene_next(terminal_number = -1):
 	elif Global.CurrentState == Global.GameStates.OVERWORLD:
 		#TODO: ver en funcion de terminal_number
 		Global.CurrentState = Global.GameStates.RANDOMLEVEL
+	elif Global.CurrentState == Global.GameStates.RANDOMLEVEL:
+		Global.CurrentState == Global.GameStates.OVERWORLD
 
 	Global.Fader.fade_in()
 	get_tree().reload_current_scene()
@@ -207,8 +209,8 @@ func get_item(current_item):
 func emit(_global_position, count):
 	for i in range(count):
 		var p = particle.instantiate()
-		add_child(p)
 		p.global_position = _global_position
+		add_child(p)
 		
 func flyaway(direction, jump_speed):
 	var velocity = Vector2()
@@ -238,8 +240,8 @@ func load_game():
 		var waterfalls = saved_game.get_var()
 		var fireballs = saved_game.get_var()
 		
-		if cur_state:
-			Global.CurrentState = cur_state
+		if cur_state != null:
+			Global.CurrentState =  Global.GameStates.OVERWORLD
 			Global.first_time = f_time
 			if lasers != null:
 				Global.LASERS = lasers

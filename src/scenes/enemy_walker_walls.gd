@@ -250,9 +250,9 @@ func kill_fire():
 		Global.emit(global_position, 10)	
 		var parent = level_parent
 		var p = fires.instantiate()
-		parent.add_child(p)
 		p.global_position = global_position
 		p.kill_me = self
+		parent.add_child(p)
 		fire_obj = p
 
 func dead_fire():

@@ -22,8 +22,8 @@ func _physics_process(delta):
 	if killme:
 		var p = tomb.instantiate()
 		var parent = get_parent()
-		parent.add_child(p)
 		p.global_position = global_position
+		parent.add_child(p)
 		queue_free()
 		return
 	

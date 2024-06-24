@@ -13,40 +13,41 @@ var is_writing = false
 @export var InfoPosition : Marker2D
 var terminal_commands = [
 	[
+		"GAME",
+		"HELP",
 		"LIST",
-		"HELP",
 		"PRINT",
 		"CLEAR",
 		"EXIT",
 	],
 	[
+		"HELP",
 		"SET",
 		"VARIABLES",
-		"HELP",
 		"PRINT",
 		"CLEAR",
 		"EXIT",
 	],
 	[
+		"HELP",
 		"SET",
 		"VARIABLES",
-		"HELP",
 		"PRINT",
 		"CLEAR",
 		"EXIT",
 	],
 	[
+		"HELP",
 		"SET",
 		"VARIABLES",
-		"HELP",
 		"PRINT",
 		"CLEAR",
 		"EXIT",
 	],
 	[
+		"HELP",
 		"SET",
 		"VARIABLES",
-		"HELP",
 		"PRINT",
 		"CLEAR",
 		"EXIT",
@@ -84,7 +85,7 @@ func _process(delta):
 		is_writing = true
 		ttl -= 1 * delta
 		if ttl <= 0:
-			ttl = 0.1
+			ttl = 0.05
 			CMD.set_focus_mode(2)
 			CMD.grab_focus()
 			CMD.insert_text_at_caret(current_message.substr(0, 1))
@@ -116,6 +117,11 @@ func parser(_cmd):
 	elif found != -1 and _cmd == "CLEAR":
 		CMD.text = ""
 		current_line = 0 
+	elif found != -1 and _cmd == "GAME":
+		current_message = "STARTING..."
+		current_line += 1
+		await get_tree().create_timer(1.5).timeout
+		get_tree().change_scene_to_file("res://scenes/levels/room_retro_game.tscn")
 	elif found != -1 and _cmd == "PRINT":
 		current_message = "PRINTING...\nREADY"
 		current_line += 2

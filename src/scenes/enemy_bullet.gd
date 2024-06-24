@@ -36,9 +36,9 @@ func _physics_process(delta):
 			for i in range(num_bullets):
 				var p = FireBallHolderShoot.instantiate()
 				var parent = get_parent()
-				parent.add_child(p)
 				p.global_position = $shoot_pos.global_position
 				p.direction = Vector2.RIGHT.rotated(360 * i)
+				parent.add_child(p)
 				Global.emit($shoot_pos.global_position, 5)
 
 func _on_body_entered(body):

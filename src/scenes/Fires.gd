@@ -32,8 +32,8 @@ func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index)
 			
 			var parent = get_parent()
 			var p = fires.instantiate()
-			parent.add_child(p)
 			p.position = global_coords
+			parent.add_child(p)
 			Global.emit(global_position, 5)
 			
 func _on_body_exited(body):

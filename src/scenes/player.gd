@@ -372,8 +372,8 @@ func shoot(delta):
 			var pos = $gun_sprite/mark.global_position
 			var p = gizmo.instantiate()
 			var parent = get_parent()
-			parent.add_child(p)
 			p.global_position = pos
+			parent.add_child(p)
 			Global.emit(pos, 5)
 			var current_item = Global.gunz_equiped[Global.gunz_index]
 			p.droped(self, $lbl_action, Vector2.from_angle($gun_sprite.rotation) * tspeed, current_item, false)
@@ -446,7 +446,7 @@ func kill_fire():
 		Global.emit(global_position, 10)
 		var parent = level_parent
 		var p = fires.instantiate()
-		parent.add_child(p)
 		p.global_position = global_position
 		p.kill_me = self
+		parent.add_child(p)
 		fire_obj = p

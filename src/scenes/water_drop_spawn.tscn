@@ -16,6 +16,3 @@ collision_mask = 33
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_4fl0t")
 disabled = true
-
-[connection signal="area_entered" from="waterdrop" to="waterdrop" method="_on_area_entered"]
-[connection signal="body_entered" from="waterdrop" to="waterdrop" method="_on_body_entered"]

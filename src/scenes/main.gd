@@ -1,6 +1,8 @@
 extends Node2D
 var particle = preload("res://scenes/particle2.tscn")
 var player_placed = false
+var gameover_ttl_total = 3
+var gameover_ttl = gameover_ttl_total
 
 var room_home = load("res://scenes/levels/room_house.tscn")
 var room_outside = load("res://scenes/levels/room_outside.tscn")
@@ -119,11 +121,19 @@ func calc_selected():
 			var count = 3
 			for ei in range(count):
 				var p = particle.instantiate()
-				sel.add_child(p)
 				p.global_position = sel.global_position
+				sel.add_child(p)
 
 func _physics_process(delta):
 	$CanvasLayer/Control/lbl_gameover.visible = Global.GAMEOVER
+	
+	if Global.GAMEOVER:
+		gameover_ttl -= 1 * delta
+		if gameover_ttl <= 0:
+			gameover_ttl = gameover_ttl_total
+			Global.GAMEOVER = false
+			Global.scene_next()
+			return
 		
 	if Global.exit_door and is_instance_valid(Global.exit_door) and Global.exit_door.closed:
 		var targets = get_tree().get_nodes_in_group("prisoners")

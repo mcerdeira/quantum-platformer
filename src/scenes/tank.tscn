@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://mfjn0x6s8n7s"]
+
+[ext_resource type="Script" path="res://scenes/levels/Tank.gd" id="1_atump"]
+[ext_resource type="Texture2D" uid="uid://dk1fo5o8he27t" path="res://sprites/tank.png" id="2_qoqti"]
+[ext_resource type="Texture2D" uid="uid://cw6g2oqtxam3y" path="res://sprites/tank_canon.png" id="3_lo1qg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lhwd0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qoqti")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qpfrp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lo1qg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Tank" type="Node2D"]
+script = ExtResource("1_atump")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lhwd0")
+
+[node name="sprite" type="AnimatedSprite2D" parent="sprite"]
+rotation = -1.30725
+sprite_frames = SubResource("SpriteFrames_qpfrp")
+offset = Vector2(16, 0)
+
+[node name="Marker2D" type="Marker2D" parent="sprite/sprite"]
+position = Vector2(32, 0)
