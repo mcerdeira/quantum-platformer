@@ -37,6 +37,7 @@ IN_PROGRESS:
 
 
 BUGS/Ajustes:
+- Traer bloques de hielo de horu, podrían ser los bloques destruibles 
 - Hacer que el tamaño del nivel sea variable (y parametrizable según que terminal sea) 
 - Ver tema de trepar la escalera y como eso hace un salto 
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
