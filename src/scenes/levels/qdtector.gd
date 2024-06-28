@@ -1,6 +1,9 @@
 extends Area2D
 
 func _on_body_entered(body):
+	if body and body.is_in_group("fireballholder"):
+		body.master_parent =  get_parent()
+	
 	if body and body.is_in_group("enemies"):
 		body.level_parent = get_parent()
 	

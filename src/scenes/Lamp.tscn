@@ -53,6 +53,8 @@ animations = [{
 }]
 
 [node name="Lamp" type="Node2D"]
+z_index = 4094
+z_as_relative = false
 script = ExtResource("1_tg0cb")
 
 [node name="LampUp" type="Sprite2D" parent="."]

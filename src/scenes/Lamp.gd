@@ -8,8 +8,6 @@ func _ready():
 	else:
 		if randi() % 3 == 0:
 			killme = true
-		else:
-			queue_free()
 
 func _physics_process(delta):
 	if killme:

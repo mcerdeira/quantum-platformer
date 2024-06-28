@@ -78,6 +78,7 @@ script = ExtResource("1_wlu64")
 [node name="FireBall" parent="." instance=ExtResource("2_sw0qo")]
 visible = false
 position = Vector2(0, 4)
+free_fireball = true
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)

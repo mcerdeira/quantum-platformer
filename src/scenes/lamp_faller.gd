@@ -8,6 +8,7 @@ var ttl = 0.5
 var blowed = 0
 var count_down = 0
 var broken = false
+var master_parent = null
 
 func _ready():
 	add_to_group("interactuable")

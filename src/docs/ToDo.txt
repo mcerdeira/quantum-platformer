@@ -33,9 +33,8 @@
 ==================================================================================================================
 
 Ajustes:
-- Bug con las lamparas, queman las vines pero el fuego no se propaga
-- Hacer que el tamaño del nivel sea variable (y parametrizable según que terminal sea) 
 - Si estamos con followers y hacemos TP, deberían hacer TP con nosotros
+- Hacer que el tamaño del nivel sea variable (y parametrizable según que terminal sea) 
 - Ver tema de trepar la escalera y como eso hace un salto 
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 
@@ -72,6 +71,7 @@ Features:
 - Musica
 
 --------------------------------- DONE ---------------------------------
+- Bug con las lamparas, queman las vines pero el fuego no se propaga
 - Tumbas son parte de los niveles generados procedural
 - Agregar las terminales en los niveles, necesitan una bomba xq están bloqueadas por terreno. 
 - Terminales: podemos listar el estado de las demás y print de un manual, infograma

@@ -175,7 +175,7 @@ func scene_next(terminal_number = -1):
 		#TODO: ver en funcion de terminal_number
 		Global.CurrentState = Global.GameStates.RANDOMLEVEL
 	elif Global.CurrentState == Global.GameStates.RANDOMLEVEL:
-		Global.CurrentState == Global.GameStates.OVERWORLD
+		Global.CurrentState = Global.GameStates.OVERWORLD
 
 	Global.Fader.fade_in()
 	get_tree().reload_current_scene()

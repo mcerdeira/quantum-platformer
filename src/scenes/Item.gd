@@ -8,7 +8,7 @@ var tomb = load("res://scenes/Tomb.tscn")
 var killme = false
 
 func _ready():
-	if randi() % 4 == 1:
+	if randi() % 3 == 0:
 		current_item = Global.pick_random(Global.gunz_objs_prob)
 		$back/sprite.animation = current_item.name
 		$back/lbl_item.text = "== " + current_item.name.to_upper() + " ==" + "\n" + current_item.description
