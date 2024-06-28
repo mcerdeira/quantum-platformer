@@ -241,7 +241,7 @@ func load_game():
 		var fireballs = saved_game.get_var()
 		
 		if cur_state != null:
-			Global.CurrentState =  Global.GameStates.OVERWORLD
+			Global.CurrentState = cur_state
 			Global.first_time = f_time
 			if lasers != null:
 				Global.LASERS = lasers
