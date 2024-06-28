@@ -37,6 +37,7 @@ var left_cmd = false
 var right_cmd = false
 var up_cmd = false
 var down_cmd = false
+var teleport_cmd = false
 var ghost_created = false
 var initial_pos = Vector2.ZERO
 
@@ -155,6 +156,7 @@ func process_player(delta):
 		right_cmd = false
 		up_cmd = false
 		down_cmd = false
+		teleport_cmd = false
 		
 		var new_command = Global.commands.get(frame)
 		if new_command:
@@ -173,6 +175,8 @@ func process_player(delta):
 					left_cmd = true
 				if c == "right":
 					right_cmd = true
+				if c == "teleport":
+					teleport_cmd = true 
 			
 		if jump_cmd:
 			if is_on_stairs and grabbed:
@@ -207,6 +211,10 @@ func process_player(delta):
 			idle_time = 0
 			velocity.x = lerp(velocity.x, speed, 0.7)
 			$sprite.flip_h = false
+			
+		if teleport_cmd:
+			global_position = Global.player_obj.global_position
+			Global.emit(global_position, 10)
 		
 		if moving:
 			if $sprite.animation == "idle":

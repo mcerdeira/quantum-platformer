@@ -32,14 +32,16 @@
 ==================================================================================================================
 ==================================================================================================================
 
-Ajustes:
-- Si estamos con followers y hacemos TP, deberían hacer TP con nosotros
+IN_PROGRESS:
+
+
+
+BUGS/Ajustes:
 - Hacer que el tamaño del nivel sea variable (y parametrizable según que terminal sea) 
 - Ver tema de trepar la escalera y como eso hace un salto 
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 
 Features:
-- Las lamparas son parte de los niveles generados procedural
 - Terminales: se puede desactivar cosas para el final bueno (necesita password)
 - Terminales: hacer un jueguito 
 - Cada terminal tiene sus propias variables asociadas
@@ -71,6 +73,8 @@ Features:
 - Musica
 
 --------------------------------- DONE ---------------------------------
+- Las lamparas son parte de los niveles generados procedural
+- Si estamos con followers y hacemos TP, deberían hacer TP con nosotros
 - Bug con las lamparas, queman las vines pero el fuego no se propaga
 - Tumbas son parte de los niveles generados procedural
 - Agregar las terminales en los niveles, necesitan una bomba xq están bloqueadas por terreno. 

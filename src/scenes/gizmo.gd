@@ -128,6 +128,7 @@ func do_action(_player, lbl):
 				action_executed = true
 				_player.visible = false
 				_player.global_position = $mark.global_position
+				_player.teleported()
 				Global.emit(_player.global_position, 10)
 			elif current_item.name == "clone":
 				action_executed = true

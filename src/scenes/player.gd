@@ -360,6 +360,10 @@ func add_to_followers(cmd):
 	var ts = frame
 	Global.commands[ts] = cmd
 	
+func teleported():
+	var ts = frame
+	Global.commands[ts] = "teleport"
+	
 func add_command(cmd):
 	if cmd == "":
 		return cmd
