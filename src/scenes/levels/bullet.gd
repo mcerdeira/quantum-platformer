@@ -34,3 +34,9 @@ func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shap
 		if body.get_cell_source_id(0, coords) == 1:
 			body.set_cell(0, coords, -1, Vector2(0, 0))
 			explode()
+
+func _on_area_2d_body_entered(body):
+	if body and body.is_in_group("tanks"):
+		body.die()
+		explode()
+		$Area2D/collidermax.set_deferred("disabled", false)

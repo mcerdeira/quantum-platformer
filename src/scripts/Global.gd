@@ -9,6 +9,7 @@ var JUMP_SFX = null
 var CHROM_FX = null
 var lava_FX = null
 var player_obj = null
+var retro_game_high_score = 0
 
 var smoke_bomb = {
 	"name": "smoke",
@@ -227,6 +228,7 @@ func save_game():
 	saved_game.store_var(Global.GHOSTS) #TOMB
 	saved_game.store_var(Global.WATERFALLS) #MERMAID
 	saved_game.store_var(Global.FIREBALLS) #DRAGON
+	saved_game.store_var(Global.retro_game_high_score)
 
 	saved_game.close()
 	
@@ -239,10 +241,17 @@ func load_game():
 		var ghosts = saved_game.get_var()
 		var waterfalls = saved_game.get_var()
 		var fireballs = saved_game.get_var()
+		var high_score = saved_game.get_var()
 		
 		if cur_state != null:
 			Global.CurrentState = cur_state
+			if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
+				#No se puede guardar en un randomlevel
+				Global.CurrentState = Global.GameStates.OVERWORLD
+			
 			Global.first_time = f_time
+			if high_score:
+				Global.retro_game_high_score = high_score
 			if lasers != null:
 				Global.LASERS = lasers
 			if ghosts != null:

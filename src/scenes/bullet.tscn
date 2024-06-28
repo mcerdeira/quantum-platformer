@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ben51hnbkc3ta"]
+[gd_scene load_steps=7 format=3 uid="uid://ben51hnbkc3ta"]
 
 [ext_resource type="Script" path="res://scenes/levels/bullet.gd" id="1_fp7mu"]
 [ext_resource type="Texture2D" uid="uid://dxuwgip5cccig" path="res://sprites/tank_bullet.png" id="2_gq4e6"]
@@ -11,6 +11,9 @@ radius = 4.12311
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ewubn"]
 radius = 22.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uuixs"]
+radius = 108.157
 
 [node name="bullet" type="CharacterBody2D"]
 position = Vector2(128, 228)
@@ -37,4 +40,9 @@ shape = SubResource("CircleShape2D_1htn6")
 shape = SubResource("CircleShape2D_ewubn")
 disabled = true
 
+[node name="collidermax" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_uuixs")
+disabled = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]

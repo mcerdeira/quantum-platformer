@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://mfjn0x6s8n7s"]
+[gd_scene load_steps=7 format=3 uid="uid://mfjn0x6s8n7s"]
 
 [ext_resource type="Script" path="res://scenes/levels/Tank.gd" id="1_atump"]
 [ext_resource type="Texture2D" uid="uid://dk1fo5o8he27t" path="res://sprites/tank.png" id="2_qoqti"]
@@ -26,16 +26,22 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Tank" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwjli"]
+size = Vector2(30, 17)
+
+[node name="Tank" type="CharacterBody2D"]
 script = ExtResource("1_atump")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lhwd0")
 
 [node name="sprite" type="AnimatedSprite2D" parent="sprite"]
-rotation = -1.30725
 sprite_frames = SubResource("SpriteFrames_qpfrp")
 offset = Vector2(16, 0)
 
 [node name="Marker2D" type="Marker2D" parent="sprite/sprite"]
 position = Vector2(32, 0)
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_rwjli")
