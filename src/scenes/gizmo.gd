@@ -207,7 +207,7 @@ func _on_area_body_entered(body):
 			elif current_item.name == "plant":
 				queue_free()
 			elif current_item.name == "smoke":
-				queue_free()
+				visible = false
 			
 		if body and body.is_in_group("players"):
 			Global.emit(global_position, 1)

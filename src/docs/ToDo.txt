@@ -58,9 +58,6 @@ Features:
 - Armar textos de cada terminal 
 - Armar manuales de cada terminal, subirlos a drive y generar los QR (QRS: https://qr.io/dashboard/)
 
-- Si el enemigo glotón "come" otros items:
-  - Humo: Se expande como el humo  
-
 - Decoraciones 
   . Rayitos de sol en la intro
   . Lluvia
@@ -99,6 +96,7 @@ Features:
   - Bomba: Explota
   - Spring: Salta todo el tiempo
   - Planta: Idem muffin
+  - Humo: Se expande como el humo  
 - Prisioneros: No trepan por la escalera
 - Prisioneros
   . Si muere un prisionero aparece un fantasma que te sigue por todo el nivel. 

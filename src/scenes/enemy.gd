@@ -147,6 +147,8 @@ func process_player(delta):
 					Main.add_child(pclone)
 				elif do_when_finish_killing == "bomb":
 					pass
+				elif do_when_finish_killing == "smoke":
+					pass
 				elif do_when_finish_killing == "muffin":
 					sleep = true
 					$sprite.animation = "sleep"
@@ -308,6 +310,8 @@ func eat_gizmo(current_item):
 	elif current_item.name == "clone":
 		do_when_finish_killing = "clone"
 	elif current_item.name == "bomb":
+		pass
+	elif current_item.name == "smoke":
 		pass
 	elif current_item.name == "spring":
 		do_when_finish_killing = "spring"
