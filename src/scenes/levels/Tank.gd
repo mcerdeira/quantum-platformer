@@ -24,7 +24,7 @@ func die():
 		gameman.win()
 
 func _physics_process(delta):
-	if !visible:
+	if !visible or gameman.game_ended:
 		return
 		
 	if player_input:

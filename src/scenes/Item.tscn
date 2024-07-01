@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bfoh66346jcx5" path="res://sprites/chest_open.png" id="15_5bc42"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dym6o"]
-size = Vector2(37, 33)
+size = Vector2(30, 21)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jtgsv"]
 resource_local_to_scene = true
@@ -131,7 +131,7 @@ animations = [{
 script = ExtResource("1_co2nu")
 
 [node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -16.5)
+position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_dym6o")
 
 [node name="back2" type="ColorRect" parent="."]

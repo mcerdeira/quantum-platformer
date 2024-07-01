@@ -335,6 +335,7 @@ fixed = true
 
 [node name="TerminalComputer" parent="." node_paths=PackedStringArray("InfoPosition") instance=ExtResource("13_56lm4")]
 position = Vector2(1634, 597)
+terminal_number = 0
 InfoPosition = NodePath("../PrintMarker")
 
 [node name="PrintMarker" type="Marker2D" parent="."]

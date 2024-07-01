@@ -9,8 +9,9 @@ var JUMP_SFX = null
 var CHROM_FX = null
 var lava_FX = null
 var player_obj = null
-var retro_game_high_score = 0
+var retro_game_high_score = 9000
 var SwitchColorActive = "blue"
+var LevelCurrentTerminalNumber = -1
 
 var smoke_bomb = {
 	"name": "smoke",
@@ -175,6 +176,7 @@ func scene_next(terminal_number = -1):
 		Global.CurrentState = Global.GameStates.OVERWORLD
 	elif Global.CurrentState == Global.GameStates.OVERWORLD:
 		#TODO: ver en funcion de terminal_number
+		Global.LevelCurrentTerminalNumber = terminal_number
 		Global.CurrentState = Global.GameStates.RANDOMLEVEL
 	elif Global.CurrentState == Global.GameStates.RANDOMLEVEL:
 		Global.CurrentState = Global.GameStates.OVERWORLD

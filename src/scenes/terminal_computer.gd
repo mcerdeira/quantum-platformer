@@ -9,7 +9,7 @@ var ttl = 0
 var CMD : TextEdit
 var command = ""
 var is_writing = false 
-@export var terminal_number = 0
+@export var terminal_number = -1
 @export var InfoPosition : Marker2D
 var terminal_commands = [
 	[
@@ -55,6 +55,9 @@ var terminal_commands = [
 ]
 
 func _ready():
+	if terminal_number == -1:
+		terminal_number = Global.LevelCurrentTerminalNumber
+		 
 	add_to_group("terminals")
 	CMD = $Terminal/TextEdit
 	$Info.global_position = InfoPosition.global_position

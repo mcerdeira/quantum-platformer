@@ -78,8 +78,8 @@ func _physics_process(delta):
 			Global.emit(global_position, 10)
 			var parent = level_parent
 			var p = ghost.instantiate()
-			p.global_position = global_position
 			parent.add_child(p)
+			p.global_position = global_position
 		
 		if dead and is_on_stairs:
 			velocity = Vector2.ZERO

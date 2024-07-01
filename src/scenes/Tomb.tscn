@@ -32,5 +32,4 @@ script = ExtResource("1_onnxa")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_f8jax")
-frame = 3
 offset = Vector2(0, -11)

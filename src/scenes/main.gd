@@ -4,18 +4,22 @@ var player_placed = false
 var gameover_ttl_total = 3
 var gameover_ttl = gameover_ttl_total
 
-var room_home = load("res://scenes/levels/room_house.tscn")
-var room_outside = load("res://scenes/levels/room_outside.tscn")
-var room_falling = load("res://scenes/levels/room_falling.tscn")
-var room_overworld = load("res://scenes/levels/room_overworld.tscn")
+var room_home = preload("res://scenes/levels/room_house.tscn")
+var room_outside = preload("res://scenes/levels/room_outside.tscn")
+var room_falling = preload("res://scenes/levels/room_falling.tscn")
+var room_overworld = preload("res://scenes/levels/room_overworld.tscn")
 
 var rooms_top = [
-	load("res://scenes/levels/room_top1.tscn"),
-	load("res://scenes/levels/room_top2.tscn")  
+	preload("res://scenes/levels/room_top1.tscn"),
+	preload("res://scenes/levels/room_top2.tscn")  
 ]
-var rooms_middle = [
-	load("res://scenes/levels/room_middle1.tscn")
+var rooms_middle1 = [
+	preload("res://scenes/levels/room_middle1.tscn")
 ]
+var rooms_middle2 = [
+	preload("res://scenes/levels/room_middle2.tscn")
+]
+
 var rooms_bottom = [
 	load("res://scenes/levels/room_bottom0.tscn"),
 	load("res://scenes/levels/room_bottom1.tscn")
@@ -44,8 +48,11 @@ func generate_level():
 			if h == 0:
 				room = Global.pick_random(rooms_top)
 
-			if h == 1 or h == 2:
-				room = Global.pick_random(rooms_middle)
+			if h == 1:
+				room = Global.pick_random(rooms_middle1)
+				
+			if h == 2:
+				room = Global.pick_random(rooms_middle2)
 			
 			if h == 3:
 				room = Global.pick_random(rooms_bottom)
