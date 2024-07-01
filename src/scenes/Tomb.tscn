@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://q5jba1wlplcx"]
+[gd_scene load_steps=7 format=3 uid="uid://q5jba1wlplcx"]
 
 [ext_resource type="Texture2D" uid="uid://cueiw2bufrutu" path="res://sprites/gravestone_spr_0.png" id="1_16odb"]
 [ext_resource type="Script" path="res://scenes/Tomb.gd" id="1_onnxa"]
 [ext_resource type="Texture2D" uid="uid://bhubq2fubf5me" path="res://sprites/gravestone_spr_1.png" id="2_a0p5i"]
-[ext_resource type="Texture2D" uid="uid://y115ssh8g5js" path="res://sprites/gravestone_spr_2.png" id="3_r5j4q"]
 [ext_resource type="Texture2D" uid="uid://bh2oel655m4f3" path="res://sprites/gravestone_spr_3.png" id="4_wmt0x"]
 [ext_resource type="Texture2D" uid="uid://dy7n6ejvjptba" path="res://sprites/gravestone_spr_4.png" id="5_4gq4g"]
 
@@ -15,9 +14,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("2_a0p5i")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_r5j4q")
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_wmt0x")
@@ -36,4 +32,5 @@ script = ExtResource("1_onnxa")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_f8jax")
+frame = 3
 offset = Vector2(0, -11)

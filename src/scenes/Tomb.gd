@@ -1,4 +1,4 @@
 extends Node2D
 
 func _ready():
-	$sprite.frame = randi() % 5
+	$sprite.frame = randi() % 4

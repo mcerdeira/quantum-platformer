@@ -28,6 +28,8 @@ func _process(delta):
 					eobj = enemy_walker_walls
 				elif selected_enemy == "enemy_bullet":
 					eobj = enemy_bullet
+				elif selected_enemy == "enemy":
+					eobj = enemy
 			
 			var pclone = eobj.instantiate()
 			pclone.global_position = global_position

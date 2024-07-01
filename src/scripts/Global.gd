@@ -10,6 +10,7 @@ var CHROM_FX = null
 var lava_FX = null
 var player_obj = null
 var retro_game_high_score = 0
+var SwitchColorActive = "blue"
 
 var smoke_bomb = {
 	"name": "smoke",

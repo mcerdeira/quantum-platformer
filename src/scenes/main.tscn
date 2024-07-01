@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cmahogbn2aqwr" path="res://sprites/bomb.png" id="3_gqofx"]
 [ext_resource type="Texture2D" uid="uid://d3m4w8m7o2x0f" path="res://sprites/teleporter_box.png" id="3_ma848"]
 [ext_resource type="Texture2D" uid="uid://6e6u7tx8wpp5" path="res://sprites/stair.png" id="3_n8kdd"]
-[ext_resource type="Texture2D" uid="uid://c2cg0s26dklew" path="res://sprites/floor_spr_blasted.png" id="4_21lft"]
+[ext_resource type="Texture2D" path="res://sprites/floor_spr_blasted.png" id="4_21lft"]
 [ext_resource type="Texture2D" uid="uid://b6tuiw7dghwgg" path="res://sprites/floor_no_destruct.png" id="4_gd61u"]
 [ext_resource type="Script" path="res://scenes/levels/room.gd" id="4_t3tcr"]
 [ext_resource type="PackedScene" uid="uid://bheswcl3ede2p" path="res://scenes/kill_zone.tscn" id="5_atbjo"]
