@@ -3,9 +3,14 @@ var score = 0
 var tries = 0 
 var score_mult = [0, 500, 200, 100, 10, 5]
 var game_ended = false
+var player_turn = true
 
 func _ready():
 	update_score()
+	var pos1 = Global.pick_random([$mark_p1_1, $mark_p1_2, $mark_p1_3, $mark_p1_4])
+	var pos2 = Global.pick_random([$mark_p2_1, $mark_p2_2, $mark_p2_3, $mark_p2_4])
+	$Tank.global_position = pos1.global_position
+	$Tank2.global_position = pos2.global_position
 
 func rotation_update(rot):
 	$lbl_angle.text = "ANGLE: " + str(abs(round(rad_to_deg(rot))))

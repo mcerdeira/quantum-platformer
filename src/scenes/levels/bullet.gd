@@ -5,6 +5,8 @@ var friction = total_friction
 var shoted = false
 var _explode = false 
 var ttl = 0.1
+var gameman = null
+var tank = null
 
 func _physics_process(delta):
 	if shoted and !_explode:
@@ -14,6 +16,9 @@ func _physics_process(delta):
 	elif shoted and _explode:
 		ttl -= 1 * delta
 		if ttl <= 0:
+			gameman.player_turn = !gameman.player_turn
+			if tank:
+				tank.reboot()
 			queue_free()
 		
 func droped(_direction):
