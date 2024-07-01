@@ -72,6 +72,12 @@ func generate_level():
 		terminals.shuffle()
 		var t = terminals.pop_front()
 		t.queue_free()	
+		
+	var color_buttons = get_tree().get_nodes_in_group("color_button")
+	while color_buttons.size() > 1:
+		color_buttons.shuffle()
+		var t = color_buttons.pop_front()
+		t.queue_free()
 
 	var prisoner_markers = get_tree().get_nodes_in_group("prisoner_markers")
 	while prisoner_markers.size() > prisonercount:

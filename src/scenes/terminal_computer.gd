@@ -70,15 +70,16 @@ func _physics_process(delta):
 	
 	if active and !opened:
 		if Input.is_action_just_pressed("up"):
-			opened = true
-			active = false
-			Global.emit(global_position, 5)
-			$back.visible = false
-			$back/arrows.visible = false
-			$Terminal.visible = true
-			current_message = "WELCOME TO GROTTO TERMINAL #" + str(terminal_number) + " " + Global.Terminals[terminal_number].name + "\nREADY"
-			Global.player_obj.terminal_mode = true
-			Global.player_obj.visible = false
+			if Global.player_obj.is_on_floor_custom():
+				opened = true
+				active = false
+				Global.emit(global_position, 5)
+				$back.visible = false
+				$back/arrows.visible = false
+				$Terminal.visible = true
+				current_message = "WELCOME TO GROTTO TERMINAL #" + str(terminal_number) + " " + Global.Terminals[terminal_number].name + "\nREADY"
+				Global.player_obj.terminal_mode = true
+				Global.player_obj.visible = false
 			
 func _process(delta):
 	if current_message:

@@ -1,16 +1,16 @@
 extends Node2D
 
 func _ready():
+	add_to_group("color_button")
 	show_button_color()
 
-
 func _on_red_body_entered(body):
-	if (body.is_in_group("enemies") or body.is_in_group("players") or body.is_in_group("interactuable")):
+	if body.is_in_group("players") or body.is_in_group("interactuable"):
 		switch_button()
 		show_button_color()
 		
 func _on_blue_body_entered(body):
-	if (body.is_in_group("enemies") or body.is_in_group("players") or body.is_in_group("interactuable")):
+	if body.is_in_group("players") or body.is_in_group("interactuable"):
 		switch_button()
 		show_button_color()
 
