@@ -41,6 +41,7 @@ BUGS/Ajustes:
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 
 Features:
+- Texto de diálogo que no aparezca todo de una junto. 
 - Terminales: se puede desactivar cosas para el final bueno (necesita password)
 - Terminales: hacer un jueguito 
 - Cada terminal tiene sus propias variables asociadas
