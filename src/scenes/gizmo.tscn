@@ -451,9 +451,9 @@ libraries = {
 speed_scale = 5.0
 
 [node name="Noise" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.0196078)
+self_modulate = Color(1, 1, 1, 0.192157)
 position = Vector2(-1, -1)
-scale = Vector2(24, 24)
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("20_736su")
 
 [connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]

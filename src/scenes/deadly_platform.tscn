@@ -1,0 +1,226 @@
+[gd_scene load_steps=16 format=3 uid="uid://b2w80dxra5rut"]
+
+[ext_resource type="Script" path="res://scenes/deadly_platform.gd" id="1_fntm8"]
+[ext_resource type="Texture2D" uid="uid://bdtuhpobtbt5r" path="res://sprites/tetris_die_spr_0.png" id="1_h830m"]
+[ext_resource type="Texture2D" uid="uid://du6ivs62ryj2c" path="res://sprites/tetris_die_spr_1.png" id="3_rhuff"]
+[ext_resource type="Texture2D" uid="uid://b30xr5fn5s716" path="res://sprites/tetris_die_spr_2.png" id="4_m52mt"]
+[ext_resource type="Script" path="res://scenes/explosion.gd" id="5_fdiky"]
+[ext_resource type="Script" path="res://scenes/explosions.gd" id="6_7sbsu"]
+[ext_resource type="Texture2D" uid="uid://chfjhbn6k8nut" path="res://sprites/blast_spr_3.png" id="7_uejul"]
+[ext_resource type="Texture2D" uid="uid://c0f25qx0cfkgy" path="res://sprites/blast_spr_4.png" id="8_4ic2u"]
+[ext_resource type="Texture2D" uid="uid://d2a4xvm7xjpjf" path="res://sprites/blast_spr_9.png" id="9_pw1et"]
+[ext_resource type="Texture2D" uid="uid://b1laesttuhnqw" path="res://sprites/blast_spr_10.png" id="10_j5xgb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4isx"]
+size = Vector2(32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dxcmr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h830m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rhuff")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_m52mt")
+}],
+"loop": true,
+"name": &"exploded",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjur7"]
+size = Vector2(28, 2)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rxwj7"]
+radius = 254.159
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ftpgk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_uejul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4ic2u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pw1et")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_j5xgb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DeadlyPlatform" type="StaticBody2D"]
+collision_layer = 307
+collision_mask = 307
+script = ExtResource("1_fntm8")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(1.90735e-06, 2.5)
+scale = Vector2(6.4, 5.35)
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_l4isx")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dxcmr")
+
+[node name="area" type="Area2D" parent="."]
+collision_layer = 289
+collision_mask = 289
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area"]
+position = Vector2(0, -17)
+shape = SubResource("RectangleShape2D_hjur7")
+
+[node name="explosion" type="Area2D" parent="."]
+visible = false
+collision_layer = 33
+collision_mask = 33
+script = ExtResource("5_fdiky")
+
+[node name="collider" type="CollisionShape2D" parent="explosion"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_rxwj7")
+disabled = true
+
+[node name="explosions" type="Node2D" parent="."]
+script = ExtResource("6_7sbsu")
+
+[node name="Marker2D" type="Marker2D" parent="explosions"]
+position = Vector2(77, -158)
+
+[node name="Marker2D16" type="Marker2D" parent="explosions"]
+position = Vector2(185, -18)
+
+[node name="Marker2D17" type="Marker2D" parent="explosions"]
+position = Vector2(-42, -42)
+
+[node name="Marker2D18" type="Marker2D" parent="explosions"]
+position = Vector2(-173, -5)
+
+[node name="Marker2D19" type="Marker2D" parent="explosions"]
+position = Vector2(0, -192)
+
+[node name="Marker2D20" type="Marker2D" parent="explosions"]
+position = Vector2(-35, 186)
+
+[node name="Marker2D21" type="Marker2D" parent="explosions"]
+position = Vector2(137, 125)
+
+[node name="Marker2D22" type="Marker2D" parent="explosions"]
+position = Vector2(68, -43)
+
+[node name="Marker2D2" type="Marker2D" parent="explosions"]
+position = Vector2(158, 52)
+
+[node name="Marker2D3" type="Marker2D" parent="explosions"]
+position = Vector2(50, 180)
+
+[node name="Marker2D4" type="Marker2D" parent="explosions"]
+position = Vector2(-88, 141)
+
+[node name="Marker2D5" type="Marker2D" parent="explosions"]
+position = Vector2(-165, 62)
+
+[node name="Marker2D6" type="Marker2D" parent="explosions"]
+position = Vector2(-170, -73)
+
+[node name="Marker2D7" type="Marker2D" parent="explosions"]
+position = Vector2(-69, -174)
+
+[node name="Marker2D8" type="Marker2D" parent="explosions"]
+position = Vector2(-99, -90)
+
+[node name="Marker2D9" type="Marker2D" parent="explosions"]
+position = Vector2(120, -75)
+
+[node name="Marker2D10" type="Marker2D" parent="explosions"]
+position = Vector2(-82, 61)
+
+[node name="Marker2D11" type="Marker2D" parent="explosions"]
+position = Vector2(61, 96)
+
+[node name="Marker2D12" type="Marker2D" parent="explosions"]
+position = Vector2(-104, -12)
+
+[node name="Marker2D13" type="Marker2D" parent="explosions"]
+position = Vector2(61, 17)
+
+[node name="Marker2D14" type="Marker2D" parent="explosions"]
+position = Vector2(21, -118)
+
+[node name="Marker2D15" type="Marker2D" parent="explosions"]
+position = Vector2(-18, 119)
+
+[node name="Marker2D23" type="Marker2D" parent="explosions"]
+position = Vector2(-197, -183)
+
+[node name="Marker2D26" type="Marker2D" parent="explosions"]
+position = Vector2(-230, -56)
+
+[node name="Marker2D24" type="Marker2D" parent="explosions"]
+position = Vector2(-237, -118)
+
+[node name="Marker2D25" type="Marker2D" parent="explosions"]
+position = Vector2(-125, -211)
+
+[node name="Marker2D27" type="Marker2D" parent="explosions"]
+position = Vector2(248, 52)
+
+[node name="Marker2D28" type="Marker2D" parent="explosions"]
+position = Vector2(69, 226)
+
+[node name="Marker2D29" type="Marker2D" parent="explosions"]
+position = Vector2(152, 240)
+
+[node name="Marker2D30" type="Marker2D" parent="explosions"]
+position = Vector2(260, 143)
+
+[node name="Marker2D31" type="Marker2D" parent="explosions"]
+position = Vector2(218, 219)
+
+[node name="Marker2D32" type="Marker2D" parent="explosions"]
+position = Vector2(122, 201)
+
+[node name="Marker2D33" type="Marker2D" parent="explosions"]
+position = Vector2(187, 159)
+
+[node name="Marker2D34" type="Marker2D" parent="explosions"]
+position = Vector2(213, 86)
+
+[node name="blast" type="AnimatedSprite2D" parent="explosions"]
+visible = false
+position = Vector2(0, 2)
+scale = Vector2(4.44792, 4.44792)
+sprite_frames = SubResource("SpriteFrames_ftpgk")
+speed_scale = 3.0
+
+[node name="blast2" type="AnimatedSprite2D" parent="explosions"]
+visible = false
+position = Vector2(-142, -108)
+scale = Vector2(2.40104, 2.40104)
+sprite_frames = SubResource("SpriteFrames_ftpgk")
+speed_scale = 3.0
+
+[node name="blast3" type="AnimatedSprite2D" parent="explosions"]
+visible = false
+position = Vector2(144, 110)
+scale = Vector2(3.10677, 3.10677)
+sprite_frames = SubResource("SpriteFrames_ftpgk")
+speed_scale = 3.0
+
+[connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_entered"]
+[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]

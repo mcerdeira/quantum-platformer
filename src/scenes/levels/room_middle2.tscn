@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ib5chslixe6r"]
+[gd_scene load_steps=29 format=3 uid="uid://ib5chslixe6r"]
 
 [ext_resource type="Texture2D" uid="uid://djs78nqy60b6t" path="res://sprites/floor_spr_2.png" id="1_jocl4"]
 [ext_resource type="Texture2D" uid="uid://6e6u7tx8wpp5" path="res://sprites/stair.png" id="2_eifdf"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://1bt2t2jgbtos" path="res://scenes/terminal_computer.tscn" id="16_7gjkp"]
 [ext_resource type="PackedScene" uid="uid://cv3n3jd3p3yty" path="res://scenes/Lamp.tscn" id="17_4na25"]
 [ext_resource type="PackedScene" uid="uid://lcdyg55itdyt" path="res://scenes/switch_platform.tscn" id="18_ck6gi"]
+[ext_resource type="PackedScene" uid="uid://b2w80dxra5rut" path="res://scenes/deadly_platform.tscn" id="19_dlbx7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
 texture = ExtResource("1_jocl4")
@@ -269,3 +270,6 @@ color = "red"
 [node name="SwitchPlatform3" parent="." instance=ExtResource("18_ck6gi")]
 position = Vector2(176, 656)
 color = "red"
+
+[node name="DeadlyPlatform" parent="." instance=ExtResource("19_dlbx7")]
+position = Vector2(272, 592)

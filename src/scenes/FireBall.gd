@@ -13,10 +13,10 @@ func _physics_process(delta):
 func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	if body is TileMap:
 		var coords = body.get_coords_for_body_rid(body_rid)
-		if body.get_cell_source_id(0, coords) == 4:
+		if body.get_cell_source_id(0, coords) == Global.BurnableID:
 			var c = body.map_to_local(coords)
 			var global_coords = c
-			body.set_cell(0, coords, 5, Vector2(0, 0))
+			body.set_cell(0, coords, Global.BurnedID, Vector2(0, 0))
 			
 			var parent = get_parent().get_parent()
 			if free_fireball:

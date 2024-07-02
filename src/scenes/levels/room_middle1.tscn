@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://broe8l822ujj8"]
+[gd_scene load_steps=28 format=3 uid="uid://broe8l822ujj8"]
 
 [ext_resource type="Texture2D" uid="uid://djs78nqy60b6t" path="res://sprites/floor_spr_2.png" id="1_8dcu1"]
 [ext_resource type="Texture2D" uid="uid://6e6u7tx8wpp5" path="res://sprites/stair.png" id="2_ic7qv"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://c2hr571lqpqmf" path="res://scenes/Fireball_holder.tscn" id="15_jq35f"]
 [ext_resource type="PackedScene" uid="uid://cv3n3jd3p3yty" path="res://scenes/Lamp.tscn" id="17_xcesk"]
 [ext_resource type="PackedScene" uid="uid://ccrniksfhd6lb" path="res://scenes/moving_plat.tscn" id="17_y58vg"]
+[ext_resource type="PackedScene" uid="uid://b2w80dxra5rut" path="res://scenes/deadly_platform.tscn" id="18_7tv6k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
 texture = ExtResource("1_8dcu1")
@@ -225,3 +226,15 @@ position = Vector2(274, 102)
 
 [node name="moving_plat" parent="." instance=ExtResource("17_y58vg")]
 position = Vector2(272, 176)
+
+[node name="DeadlyPlatform" parent="." instance=ExtResource("18_7tv6k")]
+position = Vector2(240, 592)
+
+[node name="DeadlyPlatform2" parent="." instance=ExtResource("18_7tv6k")]
+position = Vector2(496, 560)
+
+[node name="DeadlyPlatform3" parent="." instance=ExtResource("18_7tv6k")]
+position = Vector2(464, 592)
+
+[node name="DeadlyPlatform4" parent="." instance=ExtResource("18_7tv6k")]
+position = Vector2(1040, 528)

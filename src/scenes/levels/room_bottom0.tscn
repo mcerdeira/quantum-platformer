@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://l10oo6ayv2lj"]
+[gd_scene load_steps=30 format=3 uid="uid://l10oo6ayv2lj"]
 
 [ext_resource type="Texture2D" uid="uid://djs78nqy60b6t" path="res://sprites/floor_spr_2.png" id="1_dhvkq"]
 [ext_resource type="Texture2D" uid="uid://6e6u7tx8wpp5" path="res://sprites/stair.png" id="2_sqopp"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c4vd4vxwdwdqh" path="res://scenes/levels/enemy_marker.tscn" id="4_qffos"]
 [ext_resource type="Texture2D" uid="uid://dm1ktaigtofob" path="res://sprites/vines.png" id="5_4gpkk"]
 [ext_resource type="PackedScene" uid="uid://bfmdje7uoppc1" path="res://scenes/levels/prisoner_marker.tscn" id="5_ku2ml"]
+[ext_resource type="Texture2D" uid="uid://ctgutvser0wq3" path="res://sprites/ice_cube_spr_0.png" id="6_jvs12"]
 [ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="6_k7sik"]
 [ext_resource type="Texture2D" uid="uid://d4c7vtq3agr88" path="res://sprites/vines_burn.png" id="7_1thhc"]
 [ext_resource type="PackedScene" uid="uid://q767q018lep8" path="res://scenes/exit_door.tscn" id="7_chklc"]
@@ -17,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://1bt2t2jgbtos" path="res://scenes/terminal_computer.tscn" id="15_lgkkn"]
 [ext_resource type="PackedScene" uid="uid://lcdyg55itdyt" path="res://scenes/switch_platform.tscn" id="16_xveyk"]
 [ext_resource type="PackedScene" uid="uid://cemy1qgtp317t" path="res://scenes/color_button.tscn" id="17_m7cg0"]
+[ext_resource type="PackedScene" uid="uid://b2w80dxra5rut" path="res://scenes/deadly_platform.tscn" id="18_vbp3u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
 texture = ExtResource("1_dhvkq")
@@ -111,6 +113,14 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b6s60"]
+texture = ExtResource("6_jvs12")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
 [sub_resource type="TileSet" id="TileSet_4lr5i"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 307
@@ -120,6 +130,7 @@ sources/1 = SubResource("TileSetAtlasSource_qr43o")
 sources/2 = SubResource("TileSetAtlasSource_m7uhl")
 sources/3 = SubResource("TileSetAtlasSource_wjy0w")
 sources/4 = SubResource("TileSetAtlasSource_eguy3")
+sources/9 = SubResource("TileSetAtlasSource_b6s60")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_75di2"]
 texture = ExtResource("5_4gpkk")
@@ -226,3 +237,12 @@ position = Vector2(1136, 560)
 
 [node name="ColorButton" parent="." instance=ExtResource("17_m7cg0")]
 position = Vector2(602, 496)
+
+[node name="DeadlyPlatform" parent="." instance=ExtResource("18_vbp3u")]
+position = Vector2(368, 560)
+
+[node name="DeadlyPlatform2" parent="." instance=ExtResource("18_vbp3u")]
+position = Vector2(880, 528)
+
+[node name="DeadlyPlatform3" parent="." instance=ExtResource("18_vbp3u")]
+position = Vector2(336, 656)

@@ -12,6 +12,10 @@ var player_obj = null
 var retro_game_high_score = 9000
 var SwitchColorActive = "blue"
 var LevelCurrentTerminalNumber = -1
+var DestructibleID = 9
+var DestructedID = 2
+var BurnableID = 4
+var BurnedID = 5
 
 var smoke_bomb = {
 	"name": "smoke",
