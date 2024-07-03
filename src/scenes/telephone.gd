@@ -4,6 +4,8 @@ var active = false
 var opened = false
 var player = null
 var delay_camera = 0.2
+var current_message = ""
+var ttl = 0
 @export var Door : Area2D
 
 func _on_timer_timeout():
@@ -16,7 +18,7 @@ func _on_timer_timeout():
 			ringing = false
 			$AnimationPlayer.stop()
 			$Computer.stop()
-
+			
 func _physics_process(delta):
 	$back2.visible = $back.visible 
 	if !active and opened:
@@ -25,6 +27,13 @@ func _physics_process(delta):
 				delay_camera -= 1 * delta
 				if delay_camera <= 0:
 					player.dont_camera = false
+					
+	if current_message:
+		ttl -= 1 * delta
+		if ttl <= 0:
+			ttl = 0.05
+			$back/lbl_item.text += current_message.substr(0, 1)
+			current_message = current_message.substr(1, current_message.length() - 1)
 	
 	if active and !opened:
 		if Input.is_action_just_pressed("up"):
@@ -33,7 +42,8 @@ func _physics_process(delta):
 			Global.emit(global_position, 5)
 			$back/sprite.animation = "prisoner"
 			$back/sprite.play()
-			$back/lbl_item.text = "WOOF!! WOOF!! WOOF!!!\nHELP!! HELP!! HELP!!!"
+			$back/lbl_item.text = ""
+			current_message = "WOOF!! WOOF!! WOOF!!!\nHELP!! HELP!! HELP!!!"
 			$back/arrows.visible = false
 			ringing = false
 			$AnimationPlayer.stop()

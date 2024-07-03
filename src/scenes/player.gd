@@ -36,6 +36,11 @@ var gravityon = true
 var cameralimits_on = true
 var terminal_mode = false
 
+var last_input_time = 0.0
+var shake_count = 0
+var shake_timeout = 0.9
+var required_shakes = 3
+
 func _ready():
 	add_to_group("players")
 	$sprite.animation = "idle"
@@ -124,6 +129,8 @@ func _physics_process(delta):
 		if is_on_wall():
 			velocity.x = (previus_velocity.x / 2) * -1
 		else:
+			if is_on_floor():
+				velocity.x = lerp(velocity.x, 0.0, 0.04)
 			previus_velocity = velocity
 	else:
 		if grabbed and !Input.is_action_pressed("up") and !Input.is_action_pressed("jump") and !Input.is_action_pressed("down"):
@@ -290,6 +297,8 @@ func process_player(delta):
 				moving = true
 				idle_time = 0
 				velocity.y = speed
+				
+		var input_time = Time.get_ticks_msec() / 1000.0
 		
 		if !shoot_mode and Input.is_action_pressed("left"):
 			some_command += add_command("left")
@@ -298,6 +307,7 @@ func process_player(delta):
 			moving = true
 			idle_time = 0
 			velocity.x = lerp(velocity.x, -speed, 0.7)
+			check_shake("left", input_time)
 			$sprite.flip_h = true
 			$sprite_eyes.flip_h = $sprite.flip_h
 			$gun_sprite.rotation = initial_rotation - 45
@@ -309,6 +319,7 @@ func process_player(delta):
 			moving = true
 			idle_time = 0
 			velocity.x = lerp(velocity.x, speed, 0.7)
+			check_shake("right", input_time)
 			$sprite.flip_h = false
 			$sprite_eyes.flip_h = $sprite.flip_h
 			$gun_sprite.rotation = initial_rotation
@@ -369,6 +380,21 @@ func add_command(cmd):
 		return cmd
 	else:
 		return "|" + cmd
+		
+func check_shake(direction, current_time):
+	if fire_obj != null and is_instance_valid(fire_obj):
+		if direction == "left" and Input.is_action_pressed("right") and (current_time - last_input_time) <= shake_timeout:
+			shake_count += 1
+		elif direction == "right" and Input.is_action_pressed("left") and (current_time - last_input_time) <= shake_timeout:
+			shake_count += 1
+		else:
+			shake_count = 0
+
+		last_input_time = current_time
+		
+		if shake_count >= required_shakes:
+			fire_obj.extinguish_fire()
+			fire_obj = null
 		
 func shoot(delta):
 	if !dead:

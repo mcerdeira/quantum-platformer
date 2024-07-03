@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://l10oo6ayv2lj"]
+[gd_scene load_steps=28 format=3 uid="uid://l10oo6ayv2lj"]
 
 [ext_resource type="Texture2D" uid="uid://djs78nqy60b6t" path="res://sprites/floor_spr_2.png" id="1_dhvkq"]
 [ext_resource type="Texture2D" uid="uid://6e6u7tx8wpp5" path="res://sprites/stair.png" id="2_sqopp"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://c1hauk6vcsonh" path="res://scenes/Item.tscn" id="11_sjsi2"]
 [ext_resource type="PackedScene" uid="uid://c2hr571lqpqmf" path="res://scenes/Fireball_holder.tscn" id="14_4lxmd"]
 [ext_resource type="PackedScene" uid="uid://1bt2t2jgbtos" path="res://scenes/terminal_computer.tscn" id="15_lgkkn"]
-[ext_resource type="PackedScene" uid="uid://lcdyg55itdyt" path="res://scenes/switch_platform.tscn" id="16_xveyk"]
 [ext_resource type="PackedScene" uid="uid://cemy1qgtp317t" path="res://scenes/color_button.tscn" id="17_m7cg0"]
 [ext_resource type="PackedScene" uid="uid://b2w80dxra5rut" path="res://scenes/deadly_platform.tscn" id="18_vbp3u"]
 
@@ -106,13 +105,6 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eguy3"]
-texture = ExtResource("5_4gpkk")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b6s60"]
 texture = ExtResource("6_jvs12")
 texture_region_size = Vector2i(32, 32)
@@ -129,7 +121,6 @@ sources/0 = SubResource("TileSetAtlasSource_iwogt")
 sources/1 = SubResource("TileSetAtlasSource_qr43o")
 sources/2 = SubResource("TileSetAtlasSource_m7uhl")
 sources/3 = SubResource("TileSetAtlasSource_wjy0w")
-sources/4 = SubResource("TileSetAtlasSource_eguy3")
 sources/9 = SubResource("TileSetAtlasSource_b6s60")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_75di2"]
@@ -157,7 +148,7 @@ sources/5 = SubResource("TileSetAtlasSource_5x0v5")
 [node name="level" type="TileMap"]
 tile_set = SubResource("TileSet_4lr5i")
 format = 2
-layer_0/tile_data = PackedInt32Array(1114115, 131072, 0, 1114116, 196608, 0, 1114117, 65536, 0, 1114123, 655360, 0, 1114124, 196608, 0, 1114125, 196608, 0, 1114126, 196608, 0, 1048592, 131072, 0, 1048593, 196608, 0, 1048594, 196608, 0, 1048595, 196608, 0, 1048596, 65536, 0, 1048597, 3, 0, 1048601, 131072, 0, 1048602, 720896, 0, 1048603, 65536, 0, 1310754, 196608, 0, 1310753, 196608, 0, 1310752, 196608, 0, 1310751, 786432, 0, 1310748, 3, 0, 1310747, 917504, 0, 1310745, 917504, 0, 1310741, 851968, 0, 1310728, 65536, 0, 1310720, 131072, 0, 1245184, 3, 0, 1245185, 131072, 0, 1245191, 65536, 0, 1179660, 786432, 0, 1114137, 917504, 0, 1114139, 917504, 0, 1114142, 131072, 0, 1114143, 65536, 0, 1245211, 917504, 0, 1245209, 917504, 0, 1245205, 851968, 0, 1245196, 786432, 0, 1179650, 131072, 0, 1179654, 65536, 0, 1179675, 917504, 0, 1179678, 458752, 0, 1179672, 655360, 0, 1310730, 0, 0, 327690, 2, 0, 327691, 2, 0, 393227, 2, 0, 393228, 2, 0, 458764, 2, 0, 393246, 2, 0, 458782, 2, 0, 524318, 2, 0, 458781, 2, 0, 458783, 2, 0, 720900, 2, 0, 786436, 2, 0, 786437, 2, 0, 720901, 2, 0, 655365, 2, 0, 655366, 2, 0, 720902, 2, 0, 786438, 2, 0, 786439, 2, 0, 851975, 2, 0, 1179670, 393216, 0, 1179673, 851968, 0, 1310755, 851968, 0, 1245219, 0, 0, 1245215, 917504, 0, 1179679, 851968, 0, 1114127, 196608, 0, 1114133, 196608, 0, 1114134, 65536, 0, 1310732, 786432, 0, 1376266, 917504, 0, 1376281, 917504, 0, 1376283, 917504, 0, 1376291, 851968, 0, 1376287, 786432, 0, 1376277, 851968, 0, 1376264, 851968, 0, 1376268, 786432, 0, 1376256, 786432, 0, 1441792, 786432, 0, 1507328, 786432, 0, 1572864, 786432, 0, 1441804, 786432, 0, 1507340, 786432, 0, 1572876, 786432, 0, 1441817, 917504, 0, 1441823, 786432, 0, 1507359, 786432, 0, 1572895, 786432, 0, 1441800, 851968, 0, 1507336, 851968, 0, 1572872, 851968, 0, 1441802, 917504, 0, 1507338, 917504, 0, 1572874, 917504, 0, 1507353, 917504, 0, 1572889, 917504, 0, 1441819, 917504, 0, 1507355, 917504, 0, 1572891, 917504, 0, 1441813, 851968, 0, 1507349, 851968, 0, 1572885, 851968, 0, 1441827, 851968, 0, 1507363, 851968, 0, 1572899, 851968, 0)
+layer_0/tile_data = PackedInt32Array(1114115, 131072, 0, 1114116, 196608, 0, 1114117, 65536, 0, 1114123, 655360, 0, 1114124, 196608, 0, 1114125, 196608, 0, 1114126, 196608, 0, 1048592, 131072, 0, 1048593, 196608, 0, 1048594, 196608, 0, 1048595, 196608, 0, 1048596, 65536, 0, 1048597, 3, 0, 1048601, 131072, 0, 1048602, 720896, 0, 1048603, 65536, 0, 1310754, 196608, 0, 1310753, 196608, 0, 1310752, 196608, 0, 1310751, 786432, 0, 1310748, 3, 0, 1310747, 917504, 0, 1310745, 917504, 0, 1310741, 851968, 0, 1310728, 65536, 0, 1310720, 131072, 0, 1245184, 3, 0, 1245185, 131072, 0, 1245191, 65536, 0, 1179660, 786432, 0, 1114137, 917504, 0, 1114139, 917504, 0, 1114142, 131072, 0, 1114143, 65536, 0, 1245211, 917504, 0, 1245209, 917504, 0, 1245205, 851968, 0, 1245196, 786432, 0, 1179650, 131072, 0, 1179654, 65536, 0, 1179675, 917504, 0, 1179678, 458752, 0, 1179672, 655360, 0, 1310730, 0, 0, 327690, 2, 0, 327691, 2, 0, 393227, 2, 0, 393228, 2, 0, 458764, 2, 0, 393246, 2, 0, 458782, 2, 0, 524318, 2, 0, 458781, 2, 0, 458783, 2, 0, 720900, 2, 0, 786436, 2, 0, 786437, 2, 0, 720901, 2, 0, 655365, 2, 0, 655366, 2, 0, 720902, 2, 0, 786438, 2, 0, 786439, 2, 0, 851975, 2, 0, 1179670, 393216, 0, 1179673, 851968, 0, 1310755, 851968, 0, 1245219, 0, 0, 1245215, 917504, 0, 1179679, 851968, 0, 1114127, 196608, 0, 1114133, 196608, 0, 1114134, 65536, 0, 1310732, 786432, 0, 1376266, 917504, 0, 1376281, 917504, 0, 1376283, 917504, 0, 1376291, 851968, 0, 1376287, 786432, 0, 1376277, 851968, 0, 1376264, 851968, 0, 1376268, 786432, 0, 1376256, 786432, 0, 1441792, 786432, 0, 1507328, 786432, 0, 1572864, 786432, 0, 1441804, 786432, 0, 1507340, 786432, 0, 1572876, 786432, 0, 1441817, 917504, 0, 1441823, 786432, 0, 1507359, 786432, 0, 1572895, 786432, 0, 1441800, 851968, 0, 1507336, 851968, 0, 1572872, 851968, 0, 1441802, 917504, 0, 1507338, 917504, 0, 1572874, 917504, 0, 1507353, 917504, 0, 1572889, 917504, 0, 1441819, 917504, 0, 1507355, 917504, 0, 1572891, 917504, 0, 1441813, 851968, 0, 1507349, 851968, 0, 1572885, 851968, 0, 1441827, 851968, 0, 1507363, 851968, 0, 1572899, 851968, 0, 1048608, 9, 0, 1048609, 9, 0, 1048610, 9, 0, 1179683, 9, 0, 1114147, 9, 0, 1048611, 9, 0, 1048606, 9, 0, 1048607, 9, 0, 1114144, 9, 0, 1114145, 9, 0, 1114146, 9, 0, 1179682, 9, 0, 1245218, 9, 0)
 script = ExtResource("3_8qptw")
 
 [node name="vines" type="TileMap" parent="."]
@@ -213,27 +204,6 @@ InfoPosition = NodePath("../PrintMarker")
 [node name="PrintMarker" type="Marker2D" parent="."]
 position = Vector2(1107, 640)
 scale = Vector2(129.327, -5.55232)
-
-[node name="SwitchPlatform" parent="." instance=ExtResource("16_xveyk")]
-position = Vector2(1136, 592)
-
-[node name="SwitchPlatform3" parent="." instance=ExtResource("16_xveyk")]
-position = Vector2(1136, 592)
-
-[node name="SwitchPlatform2" parent="." instance=ExtResource("16_xveyk")]
-position = Vector2(1040, 528)
-
-[node name="SwitchPlatform4" parent="." instance=ExtResource("16_xveyk")]
-position = Vector2(1072, 528)
-
-[node name="SwitchPlatform5" parent="." instance=ExtResource("16_xveyk")]
-position = Vector2(1104, 528)
-
-[node name="SwitchPlatform6" parent="." instance=ExtResource("16_xveyk")]
-position = Vector2(1136, 528)
-
-[node name="SwitchPlatform7" parent="." instance=ExtResource("16_xveyk")]
-position = Vector2(1136, 560)
 
 [node name="ColorButton" parent="." instance=ExtResource("17_m7cg0")]
 position = Vector2(602, 496)

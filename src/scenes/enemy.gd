@@ -67,6 +67,11 @@ func _physics_process(delta):
 			velocity.x = (previus_velocity.x / 2) * -1
 		else:
 			previus_velocity = velocity
+			
+		if blowed <= 0:
+			if fire_obj != null and is_instance_valid(fire_obj):
+				hostile = true
+			
 	else:
 		$stars_stunned.visible = false
 		if !is_on_floor_custom():
@@ -335,6 +340,9 @@ func dead_fire():
 
 func kill_fire():
 	if fire_obj == null or !is_instance_valid(fire_obj):
+		if !hostile:
+			hostile = true
+			current_target = Global.player_obj
 		Global.emit(global_position, 10)	
 		var parent = level_parent
 		var p = fires.instantiate()

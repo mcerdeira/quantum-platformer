@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ib5chslixe6r"]
+[gd_scene load_steps=28 format=3 uid="uid://ib5chslixe6r"]
 
 [ext_resource type="Texture2D" uid="uid://djs78nqy60b6t" path="res://sprites/floor_spr_2.png" id="1_jocl4"]
 [ext_resource type="Texture2D" uid="uid://6e6u7tx8wpp5" path="res://sprites/stair.png" id="2_eifdf"]
@@ -106,13 +106,6 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m4o8f"]
-texture = ExtResource("5_j10b5")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-
 [sub_resource type="TileSet" id="TileSet_4lr5i"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 524595
@@ -121,7 +114,6 @@ sources/0 = SubResource("TileSetAtlasSource_iwogt")
 sources/1 = SubResource("TileSetAtlasSource_qr43o")
 sources/2 = SubResource("TileSetAtlasSource_5f8m4")
 sources/3 = SubResource("TileSetAtlasSource_ba0bd")
-sources/4 = SubResource("TileSetAtlasSource_m4o8f")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e5oqw"]
 texture = ExtResource("5_j10b5")

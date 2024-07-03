@@ -33,7 +33,7 @@
 ==================================================================================================================
 
 IN_PROGRESS:
-
+ 
 
 BUGS/Ajustes:
 - Hacer que el tamaño del nivel sea variable (y parametrizable según que terminal sea) 
@@ -41,11 +41,6 @@ BUGS/Ajustes:
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 
 Features:
-- Texto de diálogo que no aparezca todo de una junto. 
-- Si te prendes fuego, podes sacudirte y safar. 
-- El terreno que se puede destruir son las piedras (de horu) 
-Las bombas/explosiones además spawnean fuego en los markers.
-- Si el enemigo se prende fuego, sale corriendo a lo loco. 
 - Terminales: se puede desactivar cosas para el final bueno (necesita password)
 - Terminales: hacer un jueguito 
 - Cada terminal tiene sus propias variables asociadas
@@ -72,6 +67,11 @@ Las bombas/explosiones además spawnean fuego en los markers.
 - Musica
 
 --------------------------------- DONE ---------------------------------
+- Si te prendes fuego, podes sacudirte y safar.
+- El terreno que se puede destruir son las piedras (de horu) 
+- Las bombas/explosiones además spawnean fuego en los markers.
+- Si el enemigo se prende fuego, sale corriendo a lo loco. 
+- Texto de diálogo que no aparezca todo de una junto.  
 - Traer bloques de hielo de horu, podrían ser los bloques destruibles 
 - Bloques mortales si los pisas (los que son negros y tienen una calavera)
 - Red Blue switches 
