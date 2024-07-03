@@ -43,6 +43,7 @@ BUGS/Ajustes:
 Features:
 - Texto de diálogo que no aparezca todo de una junto. 
 - Si te prendes fuego, podes sacudirte y safar. 
+- El terreno que se puede destruir son las piedras (de horu) 
 Las bombas/explosiones además spawnean fuego en los markers.
 - Si el enemigo se prende fuego, sale corriendo a lo loco. 
 - Terminales: se puede desactivar cosas para el final bueno (necesita password)
