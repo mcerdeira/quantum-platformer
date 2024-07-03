@@ -42,6 +42,8 @@ BUGS/Ajustes:
 
 Features:
 - Texto de diálogo que no aparezca todo de una junto. 
+- Si te prendes fuego, podes sacudirte y safar. 
+- Si el enemigo se prende fuego, sale corriendo a lo loco. 
 - Terminales: se puede desactivar cosas para el final bueno (necesita password)
 - Terminales: hacer un jueguito 
 - Cada terminal tiene sus propias variables asociadas
