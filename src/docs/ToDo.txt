@@ -36,6 +36,13 @@ IN_PROGRESS:
  
 
 BUGS/Ajustes:
+- En los cofres tiene que salir algún ítem (oro?) que sirva para levelar y ganar habilidades 
+- Separar items de la run e items de habilidades que persisten
+- Habilidades:
+  . Radar
+  . Invisible 
+  . Doble salto 
+
 - El item planta, no tiene icono en el dialogo
 - Si hay una lampara overlapeando con una plataforma, queda ahi como trabada
 - Hacer que el tamaño del nivel sea variable (y parametrizable según que terminal sea) 
