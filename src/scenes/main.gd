@@ -172,9 +172,6 @@ func _physics_process(delta):
 	#if Input.is_action_just_pressed("fx"):
 		#$FX.visible = !$FX.visible
 		##
-	#if Input.is_action_just_pressed("restart"):
-		#Global.init()
-		#get_tree().reload_current_scene()
 	
 	if Input.is_action_pressed("toggle_fullscreen"):
 		Global.FULLSCREEN = !Global.FULLSCREEN

@@ -35,10 +35,12 @@ var frame = 0
 var gravityon = true
 var cameralimits_on = true
 var terminal_mode = false
+var double_jumped = false
 #PERKS
 var double_jump = false
-var invisible = false 
+var invisible = false
 var resurrect = false
+var radar = false
 
 var last_input_time = 0.0
 var shake_count = 0
@@ -46,9 +48,10 @@ var shake_timeout = 0.9
 var required_shakes = 3
 
 func _ready():
-	var double_jump = Global.find_my_item("wings")
-	var invisible = Global.find_my_item("invisibility") 
-	var resurrect = Global.find_my_item("resurrect")
+	double_jump = Global.find_my_item("wings")
+	invisible = Global.find_my_item("invisibility") 
+	resurrect = Global.find_my_item("resurrect")
+	radar = Global.find_my_item("radar")
 	
 	add_to_group("players")
 	$sprite.animation = "idle"
@@ -62,6 +65,8 @@ func _ready():
 	Global.shaker_obj.camera = $Camera2D
 	Global.player_obj = self
 	Global.Fader.fade_out()
+	if invisible:
+		set_invisible(true)
 	
 func hide_eyes():
 	$sprite_eyes.visible = false
@@ -106,6 +111,7 @@ func _physics_process(delta):
 	if is_on_floor() or grabbed:
 		if in_air:
 			in_air = false
+			double_jumped = false
 			if !cameralimits_on:
 				velocity.x = 0
 				Global.shaker_obj.shake(10, 2.1)
@@ -206,18 +212,14 @@ func process_player(delta):
 			elif Global.gunz_index == 1:
 				Global.gunz_index = 0
 			get_parent().calc_selected()
-			if Global.gunz_equiped[0].name == "invisibility" or Global.gunz_equiped[1].name == "invisibility":
-				if Global.gunz_equiped[Global.gunz_index].name == "invisibility":
-					set_invisible(true)
-				else:
-					set_invisible(false)
-			
-			if Global.gunz_equiped[0].name == "radar" or Global.gunz_equiped[1].name == "radar":
-				if Global.gunz_equiped[Global.gunz_index].name == "radar":
-					$Arrow.activate(true)
-				else:
+						
+		if radar:
+			if Input.is_action_just_pressed("radar"):
+				if $Arrow.visible:
 					$Arrow.activate(false)
-	
+				else:
+					$Arrow.activate(true)
+					
 	if !dead and Input.is_action_pressed("shoot"):
 		if !Global.gunz_equiped[Global.gunz_index].pasive:
 			if Global.slots_stock[Global.gunz_index] > 0:
@@ -418,7 +420,11 @@ func shoot(delta):
 	
 func jump(delta):
 	if !dead:
-		if is_on_floor_custom():
+		var on_floor = is_on_floor_custom()
+		if on_floor or (!on_floor and double_jump and !double_jumped):
+			if !on_floor:
+				double_jumped = true
+				
 			buff = 0
 			Global.play_sound(Global.JUMP_SFX)
 			Global.emit(global_position, 2)

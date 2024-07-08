@@ -33,10 +33,7 @@
 ==================================================================================================================
 
 IN_PROGRESS:
-- Implementar Radar como perk
-- Implementar Invisible como perk
-- Implementar Doble salto como perk
-- Implementar Resureccion como perk 
+- Implementar Resurreccion como perk 
 
 BUGS/Ajustes:
 - Si hay una lampara overlapeando con una plataforma, queda ahi como trabada
@@ -71,6 +68,9 @@ Features:
 - Musica
 
 --------------------------------- DONE ---------------------------------
+- Implementar Radar como perk
+- Implementar Invisible como perk
+- Implementar Doble salto como perk
 - Implementar Mapa como perk
 - Ajustar la consola del overworld para poder levelear y comprar items. 
 - En los cofres tiene que salir algún ítem (oro?) que sirva para levelar y ganar habilidades 
