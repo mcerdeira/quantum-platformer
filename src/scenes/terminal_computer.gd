@@ -11,8 +11,12 @@ var command = ""
 var is_writing = false 
 @export var terminal_number = -1
 @export var InfoPosition : Marker2D
-var terminal_commands = [
+var BUY_ITEMS = ["BOMB", "SMOKE", "CLONE", "SPRING", "PLANT", "MUFFIN"]
+
+var terminal_commands_with_help = [
 	[
+		"BUY <ITEM> <QUANTITY>",
+		"DONATE <QUANTITY>",
 		"GAME",
 		"HELP",
 		"LIST",
@@ -21,6 +25,56 @@ var terminal_commands = [
 		"EXIT",
 	],
 	[
+		"BUY <ITEM> <QUANTITY>",
+		"HELP",
+		"SET <VARIABLE> <VALUE>",
+		"VARIABLES",
+		"PRINT",
+		"CLEAR",
+		"EXIT",
+	],
+	[
+		"BUY <ITEM> <QUANTITY>",
+		"HELP",
+		"SET <VARIABLE> <VALUE>",
+		"VARIABLES",
+		"PRINT",
+		"CLEAR",
+		"EXIT",
+	],
+	[
+		"BUY <ITEM> <QUANTITY>",
+		"HELP",
+		"SET <VARIABLE> <VALUE>",
+		"VARIABLES",
+		"PRINT",
+		"CLEAR",
+		"EXIT",
+	],
+	[
+		"BUY <ITEM> <QUANTITY>",
+		"HELP",
+		"SET <VARIABLE> <VALUE>",
+		"VARIABLES",
+		"PRINT",
+		"CLEAR",
+		"EXIT",
+	],
+]
+
+var terminal_commands = [
+	[
+		"BUY",
+		"DONATE",
+		"GAME",
+		"HELP",
+		"LIST",
+		"PRINT",
+		"CLEAR",
+		"EXIT",
+	],
+	[
+		"BUY",
 		"HELP",
 		"SET",
 		"VARIABLES",
@@ -29,6 +83,7 @@ var terminal_commands = [
 		"EXIT",
 	],
 	[
+		"BUY",
 		"HELP",
 		"SET",
 		"VARIABLES",
@@ -37,6 +92,7 @@ var terminal_commands = [
 		"EXIT",
 	],
 	[
+		"BUY",
 		"HELP",
 		"SET",
 		"VARIABLES",
@@ -45,6 +101,7 @@ var terminal_commands = [
 		"EXIT",
 	],
 	[
+		"BUY",
 		"HELP",
 		"SET",
 		"VARIABLES",
@@ -63,6 +120,10 @@ func _ready():
 	$Info.global_position = InfoPosition.global_position
 
 func _physics_process(delta):
+	if $collider.disabled:
+		if Global.fade_finished:
+			$collider.set_deferred("disabled", false)
+	
 	$back2.visible = $back.visible 
 	if !active and opened:
 		if player:
@@ -109,21 +170,128 @@ func _input(event):
 			else:
 				if event.keycode == Key.KEY_BACKSPACE:
 					command = command.left(command.length() - 1)
-				elif (event.keycode >= 65 and event.keycode <= 90) or event.keycode == 32:
+				elif (event.keycode >= 65 and event.keycode <= 90):
 					command += key_text
+				elif event.keycode == 32:
+					command += " "
 		
 func parser(_cmd):
+	var pepe : String
+	_cmd = _cmd.strip_edges()
+	var cmd_c = _cmd.split(" ")
+	var param1 = null
+	var param2 = null
+	if cmd_c.size() > 0:
+		_cmd = cmd_c[0]
+		if  cmd_c.size() >= 2:
+			param1 = cmd_c[1]
+		if  cmd_c.size() >= 3:
+			param2 = cmd_c[2]
+	
 	var found = terminal_commands[terminal_number].find(_cmd)
 	if found != -1 and _cmd == "HELP":
-		var commands = "\n".join(terminal_commands[terminal_number])
-		current_message = "AVAILABLE COMMANDS:\n" + commands
-		current_line += terminal_commands[terminal_number].size() + 1
+		if !param1:
+			var commands = "\n".join(terminal_commands_with_help[terminal_number])
+			current_message = "AVAILABLE COMMANDS:\n" + commands
+			current_line += terminal_commands_with_help[terminal_number].size() + 1
+		else:
+			var cmd_found = terminal_commands[terminal_number].find(param1)
+			if cmd_found == -1:
+				current_message = "INVALID COMMAND: TYPE HELP <COMMAND> OR HELP FOR A LIST OF COMMANDS"
+				current_line += 1
+			else:
+				if param1 == "BUY":
+					current_message = "BUYS AN ITEM USING GOLD\n"
+					current_message += "USAGE BUY <ITEM> or BUY <ITEM> <QUANTITY>\n"
+					current_message += "AVAILABLE ITEMS:\n"
+					current_line += 2
+					for i in BUY_ITEMS:
+						current_message += i + "\n"
+						current_line += 1
+				elif param1 == "DONATE":
+					current_message = "MAKES A GOLD DONATION FOR THE CAUSE\n"
+					current_message += "USAGE DONATE <QUANTITY>\n"
+					current_line += 2
+				elif param1 == "GAME":
+					current_message = "LAUNCHS A GAME TO PASS TIME\n"
+					current_line += 1
+				elif param1 == "HELP":
+					current_message = "THIS COMMAND\n"
+					current_line += 1
+				elif param1 == "LIST":
+					current_message = "LISTS AVAILABLE TERMINALS AND STATUS\n"
+					current_line += 1
+				elif param1 == "PRINT":
+					current_message = "PRINTS CURRENT TERMINAL MANUAL\n"
+					current_line += 1
+				elif param1 == "CLEAR":
+					current_message = "CLEARS CONSOLE SCREEN\n"
+					current_line += 1
+				elif param1 == "EXIT":
+					current_message = "EXITS CONSOLE SCREEN\n"
+					current_line += 1
+				elif param1 == "SET":
+					current_message = "SETS A VARIABLE VALUE (TRUE OR FALSE)\n"
+					current_message += "USAGE SET <VARIABLE> <T OR F>\n"
+					current_line += 2
+		
+	elif found != -1 and _cmd == "BUY":
+		if !param1:
+			current_message = "ERROR: USE BUY <ITEM> or BUY <ITEM> <QUANTITY>\n"
+			current_message += "AVAILABLE ITEMS:\n"
+			current_line += 2
+			for i in BUY_ITEMS:
+				current_message += i + "\n"
+				current_line += 1
+		elif param1:
+			var itm_found =  BUY_ITEMS.find(param1)
+			if itm_found == -1:
+				current_message = "ERROR: INVALID ITEM\n"
+				current_message += "AVAILABLE ITEMS:\n"
+				current_line += 2
+				for i in BUY_ITEMS:
+					current_message += i + "\n"
+					current_line += 1
+			else:	
+				if !param2:
+					param2 = 1
+				else:
+					if !param2.is_valid_integer():
+						param2 = 1
+					else:
+						param2 = int(param2)
+					
+				if Global.buy_item(param1, param2):
+					current_message = "TRANSACTION DONE\nREADY"
+					current_line +=1
+				else:
+					current_message = "ERROR: NOT ENOUGH GOLD\nREADY"
+					current_line +=1
+		
+	elif found != -1 and _cmd == "DONATE":
+		if !param1:
+			current_message = "ERROR: USE DONATE <QUANTITY>\n"
+			current_line += 1
+		else:
+			if !param1.is_valid_integer():
+				param1 = 1
+			else:
+				param1 = int(param1)
+			
+			if Global.donate(param1):
+				current_message = "TRANSACTION DONE\nREADY"
+				current_line +=1
+			else:
+				current_message = "ERROR: NOT ENOUGH GOLD\nREADY"
+				current_line +=1
+
 	elif found != -1 and _cmd == "CLEAR":
 		CMD.text = ""
 		current_line = 0 
 	elif found != -1 and _cmd == "GAME":
 		current_message = "STARTING..."
 		current_line += 1
+		Global.CameFromConsole = true
 		await get_tree().create_timer(1.5).timeout
 		get_tree().change_scene_to_file("res://scenes/levels/room_retro_game.tscn")
 	elif found != -1 and _cmd == "PRINT":

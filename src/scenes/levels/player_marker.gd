@@ -21,10 +21,17 @@ func _process(delta):
 					return
 				
 				if !createme_on_firsttime and Global.first_time:
+					Global.CameFromConsole = false
 					Global.first_time = false
 					Global.save_game()
 					queue_free()
 					return
+					
+			if !createme_on_firsttime:
+				if Global.CameFromConsole:
+					global_position = $"../player_marker_terminal".global_position
+				
+				Global.CameFromConsole = false
 			
 			var Main = get_node("/root/Main")
 			var pclone = player_clone.instantiate()

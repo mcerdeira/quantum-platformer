@@ -33,17 +33,23 @@
 ==================================================================================================================
 
 IN_PROGRESS:
- 
-
-BUGS/Ajustes:
+- Ajustar la consola del overworld para poder levelear y comprar items. 
+- Ajustar la consola de los niveles para poder comprar items.
 - En los cofres tiene que salir algún ítem (oro?) que sirva para levelar y ganar habilidades 
 - Separar items de la run e items de habilidades que persisten
 - Habilidades:
   . Radar
   . Invisible 
   . Doble salto 
+- Items Run:
+  . Bomba
+  . Bomba de humo
+  . Clones
+  . Resorte
+  . Planta
+  . Muffin
 
-- El item planta, no tiene icono en el dialogo
+BUGS/Ajustes:
 - Si hay una lampara overlapeando con una plataforma, queda ahi como trabada
 - Hacer que el tamaño del nivel sea variable (y parametrizable según que terminal sea) 
 - Ver tema de trepar la escalera y como eso hace un salto 
@@ -76,6 +82,8 @@ Features:
 - Musica
 
 --------------------------------- DONE ---------------------------------
+- Si se vuelve del game al overworld, deberías aparecer en donde está la consola, y no en la ubicación default.
+- El item planta, no tiene icono en el dialogo
 - Si te prendes fuego, podes sacudirte y safar.
 - El terreno que se puede destruir son las piedras (de horu) 
 - Las bombas/explosiones además spawnean fuego en los markers.

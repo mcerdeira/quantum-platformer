@@ -64,6 +64,7 @@ sprite_frames = SubResource("SpriteFrames_pcoxa")
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_eccn0")
+disabled = true
 
 [node name="back2" type="ColorRect" parent="."]
 visible = false

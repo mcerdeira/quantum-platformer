@@ -16,6 +16,8 @@ var DestructibleID = 9
 var DestructedID = 2
 var BurnableID = 4
 var BurnedID = 5
+var CameFromConsole = false
+var fade_finished = false
 
 var smoke_bomb = {
 	"name": "smoke",
@@ -109,6 +111,9 @@ var commands : Dictionary
 var first_time = true
 var Fader = null
 var TerminalNumber = -1
+var Gold = 0
+var CurrentLevel = 0
+var GoldDonation = 0
 
 var LASERS = true
 var GHOSTS = true
@@ -192,7 +197,41 @@ func remove_item():
 	Global.slots_stock[Global.gunz_index] -= 1
 	Global.GizmoWatcher.setHUD()
 
-func get_item(current_item):
+func donate(qty):
+	if Global.Gold < qty:
+		return false
+	else:
+		Global.Gold -= qty
+		levelup()
+		save_game()
+		
+func levelup():
+	pass
+
+func buy_item(item, qty):
+	if Global.Gold < qty:
+		return false
+	else:
+		var itm = null
+		if item == "BOMB":
+			itm = bomb
+		elif item == "SMOKE":
+			itm = smoke_bomb
+		elif item == "CLONE":
+			itm = clone
+		elif item == "SPRING":
+			itm = spring
+		elif item == "PLANT":
+			itm = plant
+		elif item == "MUFFIN":
+			itm = muffin
+			
+		if itm:
+			Global.Gold -= qty
+			get_item(itm, qty)
+			save_game()
+
+func get_item(current_item, qty = 1):
 	var found = false
 	for i in range(Global.gunz_equiped.size()): #Try to add stock
 		if Global.gunz_equiped[i].name == current_item.name:
@@ -230,13 +269,14 @@ func save_game():
 	var saved_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	saved_game.store_var(Global.CurrentState)
 	saved_game.store_var(Global.first_time)
-	
 	saved_game.store_var(Global.LASERS) #LEAF
 	saved_game.store_var(Global.GHOSTS) #TOMB
 	saved_game.store_var(Global.WATERFALLS) #MERMAID
 	saved_game.store_var(Global.FIREBALLS) #DRAGON
 	saved_game.store_var(Global.retro_game_high_score)
-
+	saved_game.store_var(Global.Gold)
+	saved_game.store_var(Global.CurrentLevel)
+	saved_game.store_var(Global.GoldDonation)
 	saved_game.close()
 	
 func load_game():
@@ -249,6 +289,9 @@ func load_game():
 		var waterfalls = saved_game.get_var()
 		var fireballs = saved_game.get_var()
 		var high_score = saved_game.get_var()
+		var gold = saved_game.get_var()
+		var curr_level = saved_game.get_var()
+		var g_donation = saved_game.get_var()
 		
 		if cur_state != null:
 			Global.CurrentState = cur_state
@@ -267,6 +310,12 @@ func load_game():
 				Global.WATERFALLS = waterfalls
 			if fireballs != null:
 				Global.FIREBALLS = fireballs
+			if gold != null:
+				Global.Gold = gold
+			if curr_level != null:
+				Global.CurrentLevel = curr_level
+			if g_donation != null:
+				Global.GoldDonation = g_donation
 
 func _ready():
 	load_sfx()

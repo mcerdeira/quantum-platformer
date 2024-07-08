@@ -341,3 +341,6 @@ InfoPosition = NodePath("../PrintMarker")
 [node name="PrintMarker" type="Marker2D" parent="."]
 position = Vector2(1749, 640)
 scale = Vector2(129.327, -5.55232)
+
+[node name="player_marker_terminal" type="Marker2D" parent="."]
+position = Vector2(1632, 592)
