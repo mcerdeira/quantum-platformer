@@ -116,7 +116,7 @@ offset_right = 602.0
 offset_bottom = 129.0
 color = Color(0.203922, 0.164706, 0.592157, 1)
 
-[node name="TextEdit" type="TextEdit" parent="Terminal"]
+[node name="TextEdit" type="TextEdit" parent="Terminal" node_paths=PackedStringArray("TerminalManager")]
 layout_mode = 0
 offset_left = 1.0
 offset_right = 704.0
@@ -520,6 +520,7 @@ wrap_mode = 1
 caret_blink = true
 caret_draw_when_editable_disabled = true
 script = ExtResource("6_sqpbu")
+TerminalManager = NodePath("../..")
 
 [node name="ColorRect" type="ColorRect" parent="Terminal"]
 layout_mode = 0

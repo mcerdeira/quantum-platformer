@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bveav6ctdlmbu"]
+[gd_scene load_steps=45 format=3 uid="uid://bveav6ctdlmbu"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_tvtda"]
 [ext_resource type="Texture2D" uid="uid://dbh84l3hbge3s" path="res://sprites/box.png" id="2_6led8"]
@@ -26,6 +26,10 @@
 [ext_resource type="Texture2D" uid="uid://de1vyj25jt0t3" path="res://sprites/spring.png" id="17_3xuhu"]
 [ext_resource type="Texture2D" uid="uid://munfls4yrggx" path="res://sprites/growing_plant.png" id="17_s4wuu"]
 [ext_resource type="Texture2D" uid="uid://c7v26dk2ya7hd" path="res://sprites/smoke_bomb.png" id="19_28d2y"]
+[ext_resource type="Texture2D" uid="uid://clers23mxmah8" path="res://sprites/map_item.png" id="22_8rem2"]
+[ext_resource type="Texture2D" uid="uid://byvh241kbwlen" path="res://sprites/coin.png" id="23_l8g3j"]
+[ext_resource type="Texture2D" uid="uid://xbdw7r3j6qr8" path="res://sprites/resurrect.png" id="24_fxvvi"]
+[ext_resource type="Texture2D" uid="uid://6pcmhokwxyw0" path="res://sprites/wings.png" id="24_m12jp"]
 [ext_resource type="PackedScene" uid="uid://yw5hjnyqexic" path="res://scenes/lava.tscn" id="24_nijr5"]
 [ext_resource type="Script" path="res://scenes/FADE.gd" id="26_4o44h"]
 
@@ -131,14 +135,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("15_7qhek")
-}],
-"loop": true,
-"name": &"invisibility",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": ExtResource("5_v07bx")
 }],
 "loop": true,
@@ -163,14 +159,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_fdv2s")
-}],
-"loop": true,
-"name": &"radar",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": ExtResource("19_28d2y")
 }],
 "loop": true,
@@ -191,6 +179,60 @@ animations = [{
 }],
 "loop": true,
 "name": &"teleport",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hurq8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_7qhek")
+}],
+"loop": true,
+"name": &"invisibility",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_8rem2")
+}],
+"loop": true,
+"name": &"map",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_fdv2s")
+}],
+"loop": true,
+"name": &"radar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_fxvvi")
+}],
+"loop": true,
+"name": &"resurrect",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_m12jp")
+}],
+"loop": true,
+"name": &"wings",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_10vji"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_l8g3j")
+}],
+"loop": true,
+"name": &"default",
 "speed": 5.0
 }]
 
@@ -270,19 +312,22 @@ offset_bottom = 40.0
 color = Color(0, 0, 0.12549, 1)
 
 [node name="Map" parent="CanvasLayer/Control" instance=ExtResource("10_wiiij")]
-position = Vector2(424.615, 20)
+visible = false
+modulate = Color(1, 1, 1, 0.741176)
+position = Vector2(432.308, 240.769)
+scale = Vector2(5, 5)
 
 [node name="PrisonerHead" type="Sprite2D" parent="CanvasLayer/Control"]
-position = Vector2(765.385, 19.2308)
+position = Vector2(789.232, 19.2308)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("6_rjva8")
 
 [node name="counter" type="Label" parent="CanvasLayer/Control/PrisonerHead"]
 anchors_preset = -1
-anchor_left = -0.0157793
+anchor_left = -0.0157807
 anchor_top = -0.459829
-anchor_right = 0.484221
-anchor_bottom = -0.459829
+anchor_right = 0.291911
+anchor_bottom = -0.459827
 offset_left = 16.4103
 offset_top = -4.10256
 offset_right = 56.4103
@@ -292,7 +337,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="gun_slot0" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
-position = Vector2(49.6154, 18)
+position = Vector2(60, 18)
 sprite_frames = SubResource("SpriteFrames_yq7gw")
 animation = &"none"
 
@@ -306,15 +351,16 @@ theme_override_fonts/font = ExtResource("7_2v1dk")
 theme_override_font_sizes/font_size = 8
 horizontal_alignment = 2
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="selected0" type="Sprite2D" parent="CanvasLayer/Control"]
-position = Vector2(49.615, 18)
+position = Vector2(60, 18)
 texture = ExtResource("7_rtry5")
 
 [node name="gun_slot1" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
-position = Vector2(97.6154, 18)
+position = Vector2(100, 18)
 sprite_frames = SubResource("SpriteFrames_yq7gw")
-animation = &"smoke"
+animation = &"clone"
 
 [node name="lbl_stock" type="Label" parent="CanvasLayer/Control/gun_slot1"]
 offset_left = -6.53807
@@ -328,8 +374,53 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="selected1" type="Sprite2D" parent="CanvasLayer/Control"]
-position = Vector2(97.615, 18)
+position = Vector2(100, 18)
 texture = ExtResource("7_rtry5")
+
+[node name="perks1" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+visible = false
+position = Vector2(380.461, 18)
+sprite_frames = SubResource("SpriteFrames_hurq8")
+animation = &"map"
+
+[node name="perks2" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+visible = false
+position = Vector2(420.461, 18)
+sprite_frames = SubResource("SpriteFrames_hurq8")
+animation = &"radar"
+
+[node name="perks3" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+visible = false
+position = Vector2(460.461, 18)
+sprite_frames = SubResource("SpriteFrames_hurq8")
+animation = &"invisibility"
+
+[node name="perks4" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+visible = false
+position = Vector2(500.462, 18)
+sprite_frames = SubResource("SpriteFrames_hurq8")
+animation = &"wings"
+
+[node name="perks5" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+visible = false
+position = Vector2(540.461, 18)
+sprite_frames = SubResource("SpriteFrames_hurq8")
+animation = &"resurrect"
+
+[node name="coin_slot2" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(20, 18)
+sprite_frames = SubResource("SpriteFrames_10vji")
+
+[node name="lbl_stock" type="Label" parent="CanvasLayer/Control/coin_slot2"]
+offset_left = -6.53789
+offset_top = 15.8462
+offset_right = 17.4621
+offset_bottom = 25.8462
+theme_override_colors/font_color = Color(0, 0.913725, 0.392157, 1)
+theme_override_fonts/font = ExtResource("7_2v1dk")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="lbl_gameover" type="Label" parent="CanvasLayer/Control"]
 visible = false

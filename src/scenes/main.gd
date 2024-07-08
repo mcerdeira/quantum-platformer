@@ -108,12 +108,19 @@ func _ready():
 	if Global.CurrentState == Global.GameStates.FALLING:
 		generate_fixed_level(room_falling, false)
 	if Global.CurrentState == Global.GameStates.OVERWORLD:
-		generate_fixed_level(room_overworld, false)
+		generate_fixed_level(room_overworld, true)
 		
 	Global.GizmoWatcher = self
 	setHUD()
 
 func setHUD():
+	var lbl_coin = get_node("CanvasLayer/Control/coin_slot2/lbl_stock")
+	lbl_coin.text = "x" + str(Global.Gold)
+	
+	for i in range(1, Global.CurrentLevel + 1):
+		var perk = get_node("CanvasLayer/Control/perks" + str(i))
+		perk.visible = true
+
 	for i in range(Global.gunz_equiped.size()):
 		var slot = get_node("CanvasLayer/Control/gun_slot" + str(i))
 		slot.animation = Global.gunz_equiped[i].name
@@ -134,7 +141,6 @@ func calc_selected():
 			var count = 3
 			for ei in range(count):
 				var p = particle.instantiate()
-				p.global_position = sel.global_position
 				sel.add_child(p)
 
 func _physics_process(delta):

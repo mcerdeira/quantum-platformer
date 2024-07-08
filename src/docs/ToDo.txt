@@ -33,21 +33,10 @@
 ==================================================================================================================
 
 IN_PROGRESS:
-- Ajustar la consola del overworld para poder levelear y comprar items. 
-- Ajustar la consola de los niveles para poder comprar items.
-- En los cofres tiene que salir algún ítem (oro?) que sirva para levelar y ganar habilidades 
-- Separar items de la run e items de habilidades que persisten
-- Habilidades:
-  . Radar
-  . Invisible 
-  . Doble salto 
-- Items Run:
-  . Bomba
-  . Bomba de humo
-  . Clones
-  . Resorte
-  . Planta
-  . Muffin
+- Implementar Radar como perk
+- Implementar Invisible como perk
+- Implementar Doble salto como perk
+- Implementar Resureccion como perk 
 
 BUGS/Ajustes:
 - Si hay una lampara overlapeando con una plataforma, queda ahi como trabada
@@ -82,6 +71,24 @@ Features:
 - Musica
 
 --------------------------------- DONE ---------------------------------
+- Implementar Mapa como perk
+- Ajustar la consola del overworld para poder levelear y comprar items. 
+- En los cofres tiene que salir algún ítem (oro?) que sirva para levelar y ganar habilidades 
+- Separar items de la run e items de habilidades que persisten
+- Habilidades:
+  . Mapa
+  . Radar
+  . Invisible 
+  . Doble salto 
+  . Resureccion 
+- Items Run:
+  . Bomba
+  . Bomba de humo
+  . Clones
+  . Resorte
+  . Planta
+  . Muffin
+- Ajustar la consola de los niveles para poder comprar items.
 - Si se vuelve del game al overworld, deberías aparecer en donde está la consola, y no en la ubicación default.
 - El item planta, no tiene icono en el dialogo
 - Si te prendes fuego, podes sacudirte y safar.

@@ -68,6 +68,35 @@ var radar = {
 	"pasive": true,
 	"full_scale": false,
 }
+var map = {
+	"name": "map",
+	"description": "Where is everybody, accurately?",
+	"has_action": false,
+	"pasive": true,
+	"full_scale": false,
+}
+var double_jump = {
+	"name": "wings",
+	"description": "Fly! Kinda.",
+	"has_action": false,
+	"pasive": true,
+	"full_scale": false,
+}
+var resurrect = {
+	"name": "resurrect",
+	"description": "One more chance",
+	"has_action": false,
+	"pasive": true,
+	"full_scale": false,
+}
+
+var coin = {
+	"name": "coin",
+	"description": "Grotto coins!",
+	"has_action": false,
+	"pasive": true,
+	"full_scale": false,
+}
 var spring = {
 	"name": "spring",
 	"description": "Boing! Boing!",
@@ -82,7 +111,6 @@ var invisibility = {
 	"pasive": true,
 	"full_scale": false,
 }
-
 var none = {
 	"name": "none",
 	"description": "...",
@@ -91,7 +119,6 @@ var none = {
 	"full_scale": false,
 }
 
-var gunz_objs = []
 var gunz_objs_prob = []
 var gunz_equiped = []
 var slots_stock = [0, 0]
@@ -114,6 +141,9 @@ var TerminalNumber = -1
 var Gold = 0
 var CurrentLevel = 0
 var GoldDonation = 0
+var GOLD_PER_LEVEL = [0, 10, 25, 50, 125, 200]
+var UNLOCKS_PER_LEVEL = [null, map, radar, invisibility, double_jump, resurrect]
+var perks_equiped = [null, null, null, null, null, null]
 
 var LASERS = true
 var GHOSTS = true
@@ -196,6 +226,13 @@ func scene_next(terminal_number = -1):
 func remove_item():
 	Global.slots_stock[Global.gunz_index] -= 1
 	Global.GizmoWatcher.setHUD()
+	
+func find_my_item(itm):
+	for p in Global.perks_equiped:
+		if p and p.name == itm:
+			return true
+			
+	return false
 
 func donate(qty):
 	if Global.Gold < qty:
@@ -204,9 +241,19 @@ func donate(qty):
 		Global.Gold -= qty
 		levelup()
 		save_game()
+		return true
 		
 func levelup():
-	pass
+	var new_level = 0
+	for lvl in Global.GOLD_PER_LEVEL:
+		if Global.Gold < lvl:
+			break;
+		else:
+			new_level += 1
+			if new_level >= Global.CurrentLevel:
+				Global.perks_equiped[new_level - 1] = Global.UNLOCKS_PER_LEVEL[new_level]
+		
+	Global.CurrentLevel = new_level
 
 func buy_item(item, qty):
 	if Global.Gold < qty:
@@ -230,27 +277,32 @@ func buy_item(item, qty):
 			Global.Gold -= qty
 			get_item(itm, qty)
 			save_game()
+			return true
 
 func get_item(current_item, qty = 1):
 	var found = false
-	for i in range(Global.gunz_equiped.size()): #Try to add stock
-		if Global.gunz_equiped[i].name == current_item.name:
-			found = true
-			slots_stock[i] += 1
-			break;
-			
-	if !found:
-		for i in range(Global.gunz_equiped.size()):  #Try to find empty slot 
-			if Global.gunz_equiped[i].name == "none":
-				Global.gunz_equiped[i] = current_item
+	if current_item.name == "coin":
+		Global.Gold += qty
+		save_game()
+	else:
+		for i in range(Global.gunz_equiped.size()): #Try to add stock
+			if Global.gunz_equiped[i].name == current_item.name:
 				found = true
-				slots_stock[i] = 1
+				slots_stock[i] += qty
 				break;
 				
-	if !found: #If previus fails, override item to current selected
-		Global.gunz_equiped[Global.gunz_index] = current_item
-		slots_stock[Global.gunz_index] = 1
-	
+		if !found:
+			for i in range(Global.gunz_equiped.size()):  #Try to find empty slot 
+				if Global.gunz_equiped[i].name == "none":
+					Global.gunz_equiped[i] = current_item
+					found = true
+					slots_stock[i] = qty
+					break;
+					
+		if !found: #If previus fails, override item to current selected
+			Global.gunz_equiped[Global.gunz_index] = current_item
+			slots_stock[Global.gunz_index] = 1
+		
 	Global.GizmoWatcher.setHUD()
 	
 func emit(_global_position, count):
@@ -314,6 +366,7 @@ func load_game():
 				Global.Gold = gold
 			if curr_level != null:
 				Global.CurrentLevel = curr_level
+				levelup()
 			if g_donation != null:
 				Global.GoldDonation = g_donation
 
@@ -335,22 +388,27 @@ func init():
 	prisoner_counter = 0
 	prisoner_total = 0
 	map_obj = null
-	gunz_objs = []
+	var gunz_objs = []
 	commands = {}
+	#gunz_objs.append(invisibility)
+	#gunz_objs.append(radar)
+	#gunz_objs.append(map)
+	#gunz_objs.append(double_jump)
+	
 	gunz_objs.append(clone)
 	gunz_objs.append(teleport)
+	gunz_objs.append(coin)
 	gunz_objs.append(muffin)
 	gunz_objs.append(bomb)
-	gunz_objs.append(radar)
 	gunz_objs.append(spring)
-	gunz_objs.append(invisibility)
 	gunz_objs.append(plant)
 	
 	gunz_objs_prob = [] + gunz_objs
 	for i in range(5):
 		gunz_objs_prob.append(muffin)
 		gunz_objs_prob.append(bomb)
-		gunz_objs_prob.append(spring)
+		gunz_objs_prob.append(coin)
+		gunz_objs_prob.append(coin)
 	
 	gunz_equiped = [none, none]
 	

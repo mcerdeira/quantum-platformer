@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c1hauk6vcsonh"]
+[gd_scene load_steps=24 format=3 uid="uid://c1hauk6vcsonh"]
 
 [ext_resource type="Texture2D" uid="uid://cmahogbn2aqwr" path="res://sprites/bomb.png" id="1_1wt4j"]
 [ext_resource type="Script" path="res://scenes/Item.gd" id="1_co2nu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dbh84l3hbge3s" path="res://sprites/box.png" id="2_ere0c"]
 [ext_resource type="Texture2D" uid="uid://dxbkc1lh5f3bx" path="res://sprites/invisibility.png" id="3_kgqrp"]
 [ext_resource type="Texture2D" uid="uid://di4olx4un0owh" path="res://sprites/rock.png" id="4_150gj"]
+[ext_resource type="Texture2D" uid="uid://byvh241kbwlen" path="res://sprites/coin.png" id="5_kmp7s"]
 [ext_resource type="Texture2D" uid="uid://c23s3u7g3bdtm" path="res://sprites/simul_box.png" id="5_lqc3o"]
 [ext_resource type="Texture2D" uid="uid://de1vyj25jt0t3" path="res://sprites/spring.png" id="6_8fby7"]
 [ext_resource type="Texture2D" uid="uid://d0ggyyulssgq5" path="res://sprites/radar.png" id="6_x2qwg"]
@@ -45,6 +46,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"clone",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_kmp7s")
+}],
+"loop": true,
+"name": &"coin",
 "speed": 5.0
 }, {
 "frames": [{
@@ -174,7 +183,7 @@ material = SubResource("ShaderMaterial_jtgsv")
 position = Vector2(45, 61)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_jkk80")
-animation = &"smoke"
+animation = &"invisibility"
 offset = Vector2(0, -16)
 
 [node name="lbl_item" type="Label" parent="back"]

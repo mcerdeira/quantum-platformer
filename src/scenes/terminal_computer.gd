@@ -9,6 +9,7 @@ var ttl = 0
 var CMD : TextEdit
 var command = ""
 var is_writing = false 
+var command_ok = false
 @export var terminal_number = -1
 @export var InfoPosition : Marker2D
 var BUY_ITEMS = ["BOMB", "SMOKE", "CLONE", "SPRING", "PLANT", "MUFFIN"]
@@ -160,23 +161,30 @@ func _process(delta):
 				is_writing = false
 				
 func _input(event):
+	command_ok = false
 	if !is_writing and opened and current_message == "": 
 		if event is InputEventKey and event.is_pressed():
 			var key_text  = OS.get_keycode_string(event.keycode)
 			if event.keycode == Key.KEY_KP_ENTER or event.keycode == Key.KEY_ENTER:
+				command_ok = true
 				current_line += 1
 				parser(command)
 				command = ""
 			else:
 				if event.keycode == Key.KEY_BACKSPACE:
-					command = command.left(command.length() - 1)
+					if !command: 
+						command_ok = false
+					else:
+						command = command.left(command.length() - 1)
+						command_ok = true
 				elif (event.keycode >= 65 and event.keycode <= 90):
+					command_ok = true
 					command += key_text
 				elif event.keycode == 32:
+					command_ok = true
 					command += " "
 		
 func parser(_cmd):
-	var pepe : String
 	_cmd = _cmd.strip_edges()
 	var cmd_c = _cmd.split(" ")
 	var param1 = null
@@ -201,15 +209,15 @@ func parser(_cmd):
 				current_line += 1
 			else:
 				if param1 == "BUY":
-					current_message = "BUYS AN ITEM USING GOLD\n"
+					current_message = "BUYS AN ITEM USING G-COINS\n"
 					current_message += "USAGE BUY <ITEM> or BUY <ITEM> <QUANTITY>\n"
 					current_message += "AVAILABLE ITEMS:\n"
-					current_line += 2
+					current_line += 3
 					for i in BUY_ITEMS:
 						current_message += i + "\n"
 						current_line += 1
 				elif param1 == "DONATE":
-					current_message = "MAKES A GOLD DONATION FOR THE CAUSE\n"
+					current_message = "MAKES A G-COIN DONATION FOR THE CAUSE\n"
 					current_message += "USAGE DONATE <QUANTITY>\n"
 					current_line += 2
 				elif param1 == "GAME":
@@ -265,25 +273,29 @@ func parser(_cmd):
 					current_message = "TRANSACTION DONE\nREADY"
 					current_line +=1
 				else:
-					current_message = "ERROR: NOT ENOUGH GOLD\nREADY"
-					current_line +=1
+					current_message = "ERROR: NOT ENOUGH G-COINS\nREADY"
+					current_line += 2
 		
 	elif found != -1 and _cmd == "DONATE":
-		if !param1:
-			current_message = "ERROR: USE DONATE <QUANTITY>\n"
-			current_line += 1
+		if Global.CurrentLevel == Global.GOLD_PER_LEVEL.size() - 1:
+			current_message = "ERROR: NO MORE DONATIONS ALLOWED\nREADY"
+			current_line += 2
 		else:
-			if !param1.is_valid_integer():
-				param1 = 1
+			if !param1:
+				current_message = "ERROR: USE DONATE <QUANTITY>\n"
+				current_line += 1
 			else:
-				param1 = int(param1)
-			
-			if Global.donate(param1):
-				current_message = "TRANSACTION DONE\nREADY"
-				current_line +=1
-			else:
-				current_message = "ERROR: NOT ENOUGH GOLD\nREADY"
-				current_line +=1
+				if !param1.is_valid_integer():
+					param1 = 1
+				else:
+					param1 = int(param1)
+				
+				if Global.donate(param1):
+					current_message = "TRANSACTION DONE\nREADY"
+					current_line +=1
+				else:
+					current_message = "ERROR: NOT ENOUGH G-COINS\nREADY"
+					current_line += 2
 
 	elif found != -1 and _cmd == "CLEAR":
 		CMD.text = ""

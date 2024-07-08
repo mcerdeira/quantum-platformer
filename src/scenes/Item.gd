@@ -6,12 +6,26 @@ var player = null
 var delay_camera = 0.2
 var tomb = load("res://scenes/Tomb.tscn")
 var killme = false
+var QTY = 1
 
 func _ready():
 	if randi() % 3 == 0:
 		current_item = Global.pick_random(Global.gunz_objs_prob)
+		if current_item.name == "bomb":
+			QTY = Global.pick_random([2, 3, 5])
+		elif current_item.name == "smoke":
+			QTY = Global.pick_random([2, 3, 5])
+		elif current_item.name == "coin":
+			QTY = Global.pick_random([1, 5, 10])
+		elif current_item.name == "muffin":
+			QTY = Global.pick_random([2, 3, 5])
+		
 		$back/sprite.animation = current_item.name
-		$back/lbl_item.text = "== " + current_item.name.to_upper() + " ==" + "\n" + current_item.description
+		var qty_str = ""
+		if QTY != 1:
+			qty_str = " (x" + str(QTY) + ")"
+		
+		$back/lbl_item.text = "== " + current_item.name.to_upper() + qty_str + " ==" + "\n" + current_item.description
 	else:
 		if randi() % 3 == 0:
 			killme = true
@@ -45,7 +59,7 @@ func _physics_process(delta):
 			$back.visible = false
 		
 func get_item():
-	Global.get_item(current_item)
+	Global.get_item(current_item, QTY)
 
 func _on_body_entered(body):
 	if !opened and body.is_in_group("players") and !body.is_in_group("prisoners"):

@@ -35,6 +35,10 @@ var frame = 0
 var gravityon = true
 var cameralimits_on = true
 var terminal_mode = false
+#PERKS
+var double_jump = false
+var invisible = false 
+var resurrect = false
 
 var last_input_time = 0.0
 var shake_count = 0
@@ -42,6 +46,10 @@ var shake_timeout = 0.9
 var required_shakes = 3
 
 func _ready():
+	var double_jump = Global.find_my_item("wings")
+	var invisible = Global.find_my_item("invisibility") 
+	var resurrect = Global.find_my_item("resurrect")
+	
 	add_to_group("players")
 	$sprite.animation = "idle"
 	$sprite_eyes.animation = $sprite.animation
