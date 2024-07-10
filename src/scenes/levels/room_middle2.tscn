@@ -219,10 +219,10 @@ scale = Vector2(129.327, -5.55232)
 position = Vector2(53, 678)
 
 [node name="Lamp2" parent="." instance=ExtResource("17_4na25")]
-position = Vector2(846, 742)
+position = Vector2(976, 613)
 
 [node name="Lamp3" parent="." instance=ExtResource("17_4na25")]
-position = Vector2(499, 710)
+position = Vector2(717, 645)
 
 [node name="Lamp4" parent="." instance=ExtResource("17_4na25")]
 position = Vector2(274, 709)

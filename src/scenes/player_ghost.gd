@@ -9,7 +9,7 @@ func _ready():
 func _physics_process(delta):
 	if intro > 0:
 		intro -= 1 * delta
-		velocity.y = lerp(velocity.y, -speed * 1.3, 0.7)
+		velocity.y = lerp(velocity.y, -speed / 3, 0.7)
 	if intro <= 0:
 		velocity.y = 0
 	

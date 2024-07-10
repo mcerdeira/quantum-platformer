@@ -2,7 +2,7 @@ extends Area2D
 var total_ttl = 8
 var ttl = total_ttl
 var falling = false
-var speed = 250
+var speed = 180
 var initial_position = Vector2.ZERO 
 
 func _ready():

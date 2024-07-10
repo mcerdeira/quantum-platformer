@@ -33,7 +33,8 @@
 ==================================================================================================================
 
 IN_PROGRESS:
-- Si hay una lampara overlapeando con una plataforma, queda ahi como trabada
+- SFX
+- Musica
 
 
 BUGS/Ajustes:
@@ -60,17 +61,16 @@ Features:
 - Armar manuales de cada terminal, subirlos a drive y generar los QR (QRS: https://qr.io/dashboard/)
 
 - Decoraciones 
-  . Rayitos de sol en la intro
   . Lluvia
   . Truenos
   . Splash al caer en la lava
   . Cascaditas
   . Backgrounds con parallax
 
-- SFX
-- Musica
-
 --------------------------------- DONE ---------------------------------
+- Bug con la sangre que se superpone por sobre la lava
+-Decoraciones: Rayitos de sol en la intro
+- Si hay una lampara overlapeando con una plataforma, queda ahi como trabada
 - Implementar Resurreccion como perk 
 - Implementar Radar como perk
 - Implementar Invisible como perk
