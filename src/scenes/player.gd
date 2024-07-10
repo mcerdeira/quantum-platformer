@@ -26,6 +26,7 @@ var dead_fall = false
 var dead_animation = "dead"
 const blood = preload("res://scenes/blood.tscn")
 var fires = preload("res://scenes/Fires.tscn")
+var ghost = preload("res://scenes/player_ghost.tscn")
 var fire_obj = null
 var level_parent = null
 var idle_play_total = 4 
@@ -41,17 +42,24 @@ var double_jump = false
 var invisible = false
 var resurrect = false
 var radar = false
+var lifes = 1
+var resurrecting = 0
+var ghost_inst = null
 
 var last_input_time = 0.0
 var shake_count = 0
 var shake_timeout = 0.9
 var required_shakes = 3
+var pending_reactivate = 0
 
 func _ready():
 	double_jump = Global.find_my_item("wings")
 	invisible = Global.find_my_item("invisibility") 
-	resurrect = Global.find_my_item("resurrect")
+	resurrect = true #Global.find_my_item("resurrect")
 	radar = Global.find_my_item("radar")
+	
+	if resurrect:
+		lifes = 2
 	
 	add_to_group("players")
 	$sprite.animation = "idle"
@@ -93,7 +101,47 @@ func _physics_process(delta):
 		return
 	
 	if !iam_clone:
+		if dead and resurrect and resurrecting <= 0:
+			lifes -= 1
+			if lifes <= 0:
+				dead = true
+			else:
+				Global.shaker_obj.shake(3, 2.1)
+				ghost_inst = ghost.instantiate()
+				ghost_inst.global_position = global_position
+				get_parent().add_child(ghost_inst)
+				resurrecting = 5
+		
 		Global.GAMEOVER = dead
+		
+	if resurrecting > 0:
+		if fire_obj != null and is_instance_valid(fire_obj):
+			fire_obj.kill_me = null
+			fire_obj.queue_free()
+			fire_obj = null
+		
+		Global.GAMEOVER = false
+		resurrecting -= 1 * delta
+		ghost_inst.resurrecting = resurrecting
+		if resurrecting <= 0:
+			Global.shaker_obj.shake(3, 2.1)
+			visible = true
+			$sprite.animation = idle_animation
+			$sprite_eyes.animation = $sprite.animation
+			dead_fall = false
+			dead = false
+			global_position = ghost_inst.global_position
+			ghost_inst.queue_free()
+			ghost_inst = null
+			pending_reactivate = 1
+			
+	if pending_reactivate > 0:
+		pending_reactivate -= 1 * delta
+		if pending_reactivate <= 0:
+			set_collision_layer_value(1, true)
+			set_collision_mask_value(1, true)
+			set_collision_layer_value(2, false)
+			set_collision_mask_value(2, false)
 	
 	if dead and is_on_stairs:
 		velocity = Vector2.ZERO

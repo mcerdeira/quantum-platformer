@@ -33,15 +33,18 @@
 ==================================================================================================================
 
 IN_PROGRESS:
-- Implementar Resurreccion como perk 
+- Si hay una lampara overlapeando con una plataforma, queda ahi como trabada
+
 
 BUGS/Ajustes:
-- Si hay una lampara overlapeando con una plataforma, queda ahi como trabada
-- Hacer que el tamaño del nivel sea variable (y parametrizable según que terminal sea) 
-- Ver tema de trepar la escalera y como eso hace un salto 
-- Enemigo tipo escarabajo que camina circular (tiene bugs)
+
 
 Features:
+- Pensar: Tema de los prisioneros, no estaría tan copado hacer que te sigan por todo el nivel.
+  . Mantener: que puedan morir y volver como fantasmas (dificultando el nivel y el boss fight)
+  . Mantener: que cuantos mas prisioneros vivos logramos sea mejor para la boss fight
+  . Definir: que hay que hacer para liberarlos y rescatarlos
+
 - Terminales: se puede desactivar cosas para el final bueno (necesita password)
 - Terminales: hacer un jueguito 
 - Cada terminal tiene sus propias variables asociadas
@@ -68,6 +71,7 @@ Features:
 - Musica
 
 --------------------------------- DONE ---------------------------------
+- Implementar Resurreccion como perk 
 - Implementar Radar como perk
 - Implementar Invisible como perk
 - Implementar Doble salto como perk
@@ -201,3 +205,6 @@ Features:
 --------------------------------- CANCELADO ---------------------------------
 - Item cohete 
 - Plantas para esconderse
+- Hacer que el tamaño del nivel sea variable (y parametrizable según que terminal sea) 
+- Ver tema de trepar la escalera y como eso hace un salto 
+- Enemigo tipo escarabajo que camina circular (tiene bugs)
