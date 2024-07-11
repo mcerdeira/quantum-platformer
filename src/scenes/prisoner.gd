@@ -33,6 +33,10 @@ var delay_time = 0
 var dead_fall = false
 var ghost_created = false
 var initial_pos = Vector2.ZERO
+var ttl_stop_total = 25
+var ttl_stop_total2 = 10
+var ttl_stop = Global.pick_random([ttl_stop_total, ttl_stop_total2])
+var stoped = false
 
 func _ready():
 	add_to_group("players")
@@ -138,29 +142,37 @@ func process_player(delta):
 		fire_obj.z_index = z_index + 1
 		
 	if !dead:
-		if direction == "right":
-			moving = true
-			idle_time = 0
-			velocity.x = speed
-			$sprite.flip_h = false
-		else:
-			moving = true
-			idle_time = 0
-			velocity.x = -speed
-			$sprite.flip_h = true
+		ttl_stop -= 1 * delta
+		if ttl_stop <= 0:
+			if stoped:
+				direction = Global.pick_random(["right", "left"])
+			ttl_stop =  Global.pick_random([ttl_stop_total, ttl_stop_total2])
+			stoped = !stoped
 		
-		if direction_change_ttl > 0: 
-			direction_change_ttl -= 1 * delta
+		if !stoped:
+			if direction == "right":
+				moving = true
+				idle_time = 0
+				velocity.x = speed
+				$sprite.flip_h = false
+			else:
+				moving = true
+				idle_time = 0
+				velocity.x = -speed
+				$sprite.flip_h = true
+			
+			if direction_change_ttl > 0:
+				direction_change_ttl -= 1 * delta
 		
-		if is_on_wall():
-			if direction_change_ttl <= 0:
-				direction_change_ttl = direction_change_ttl_total
-				if direction == "right":
-					direction = "left"
-					$sprite.flip_h = true
-				else:
-					direction = "right"
-					$sprite.flip_h = false
+			if is_on_wall():
+				if direction_change_ttl <= 0:
+					direction_change_ttl = direction_change_ttl_total
+					if direction == "right":
+						direction = "left"
+						$sprite.flip_h = true
+					else:
+						direction = "right"
+						$sprite.flip_h = false
 			
 		if moving:
 			if $sprite.animation == "idle":
