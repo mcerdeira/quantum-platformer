@@ -1,8 +1,10 @@
 extends CharacterBody2D
 var gravity = 10.0
-var speed = 215.0
+var speed = 25.0
 var jump_speed = -300.0
 @export var direction = "right"
+var direction_change_ttl_total = 1
+var direction_change_ttl = direction_change_ttl_total
 var total_friction = 0.6
 var im_invisible = false
 var friction = total_friction
@@ -10,7 +12,6 @@ var moving = false
 var buff = 0
 var in_air = false
 var idle_time = 0
-var tspeed = 370.0
 var dead = false
 var blowed = 0
 const blood = preload("res://scenes/blood.tscn")
@@ -29,15 +30,7 @@ var ghost = preload("res://scenes/enemy_ghost.tscn")
 var fire_obj = null
 var level_parent = null
 var delay_time = 0
-var command = null
-var frame = 0
 var dead_fall = false
-var jump_cmd = false
-var left_cmd = false
-var right_cmd = false
-var up_cmd = false
-var down_cmd = false
-var teleport_cmd = false
 var ghost_created = false
 var initial_pos = Vector2.ZERO
 
@@ -111,14 +104,13 @@ func _physics_process(delta):
 			else:
 				previus_velocity = velocity
 		else:
-			if grabbed and !up_cmd and !jump_cmd and !down_cmd:
+			if grabbed: 
 				velocity.y = 0
 			
-			if !left_cmd and !right_cmd:
-				if !is_on_floor_custom():
-					velocity.x = lerp(velocity.x, 0.0, friction / 2)
-				else:
-					velocity.x = lerp(velocity.x, 0.0, friction)
+			if !is_on_floor_custom():
+				velocity.x = lerp(velocity.x, 0.0, friction / 2)
+			else:
+				velocity.x = lerp(velocity.x, 0.0, friction)
 			
 		process_player(delta)
 		move_and_slide()
@@ -146,76 +138,30 @@ func process_player(delta):
 		fire_obj.z_index = z_index + 1
 		
 	if !dead:
-		frame += 1
-			
-		#$lbl_action.text = str(frame)
-		#$lbl_action.visible = true
-		
-		jump_cmd = false
-		left_cmd = false
-		right_cmd = false
-		up_cmd = false
-		down_cmd = false
-		teleport_cmd = false
-		
-		var new_command = Global.commands.get(frame)
-		if new_command:
-			command = new_command
-			
-		if command:
-			var cmd = command.split("|")
-			for c in cmd:
-				if c == "jump":
-					jump_cmd = true
-				if c == "up":
-					up_cmd = true
-				if c == "down":
-					down_cmd = true
-				if c == "left":
-					left_cmd = true
-				if c == "right":
-					right_cmd = true
-				if c == "teleport":
-					teleport_cmd = true 
-			
-		if jump_cmd:
-			if is_on_stairs and grabbed:
-				velocity.y = -speed * 1.1
-				Global.emit(global_position, 2)
-			else:
-				jump(delta)
-			
-		if up_cmd:
-			if is_on_stairs:
-				grabbed = true 
-				moving = true
-				idle_time = 0
-				velocity.y = -speed
-		elif down_cmd:
-			if is_on_stairs:
-				grabbed = true 
-				moving = true
-				idle_time = 0
-				velocity.y = speed
-		
-		if left_cmd:
-			direction = "left"
+		if direction == "right":
 			moving = true
 			idle_time = 0
-			velocity.x = lerp(velocity.x, -speed, 0.7)
-			$sprite.flip_h = true
-			
-		elif right_cmd:
-			direction = "right"
-			moving = true
-			idle_time = 0
-			velocity.x = lerp(velocity.x, speed, 0.7)
+			velocity.x = speed
 			$sprite.flip_h = false
-			
-		if teleport_cmd:
-			global_position = Global.player_obj.global_position
-			Global.emit(global_position, 10)
+		else:
+			moving = true
+			idle_time = 0
+			velocity.x = -speed
+			$sprite.flip_h = true
 		
+		if direction_change_ttl > 0: 
+			direction_change_ttl -= 1 * delta
+		
+		if is_on_wall():
+			if direction_change_ttl <= 0:
+				direction_change_ttl = direction_change_ttl_total
+				if direction == "right":
+					direction = "left"
+					$sprite.flip_h = true
+				else:
+					direction = "right"
+					$sprite.flip_h = false
+			
 		if moving:
 			if $sprite.animation == "idle":
 				$sprite.animation = "walking"
@@ -291,5 +237,4 @@ func super_jump():
 func _on_trapped_area_body_entered(body):
 	if body.is_in_group("players"):
 		liberating = 2.0
-		frame = body.frame
 		initial_pos = body.global_position

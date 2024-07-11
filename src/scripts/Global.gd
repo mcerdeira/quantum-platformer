@@ -134,7 +134,6 @@ var prisoner_counter = 0
 var prisoner_total = 0
 var bounce_amount = 0.3
 var map_obj = null
-var commands : Dictionary
 var first_time = true
 var Fader = null
 var TerminalNumber = -1
@@ -389,7 +388,6 @@ func init():
 	prisoner_total = 0
 	map_obj = null
 	var gunz_objs = []
-	commands = {}
 	#gunz_objs.append(invisibility)
 	#gunz_objs.append(radar)
 	#gunz_objs.append(map)

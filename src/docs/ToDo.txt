@@ -33,6 +33,12 @@
 ==================================================================================================================
 
 IN_PROGRESS:
+- Prisioneros: si los liberas te agradecen y quedan ahi dando vueltas por el lugar: caminando de izquierda a derecha, parando cada tanto, no se caen 
+   por los bordes. Si algun peligro los mata, se vuelven fantasmas.   
+  . Pueden morir y volver como fantasmas (dificultando el nivel y el boss fight)
+  . Cuantos mas prisioneros vivos logramos es mejor para la boss fight
+  . No te siguen mas, pero podemos activar algun item para protegerlos, como un elevador que los sube y se quedan ahi.  
+
 - SFX
 - Musica
 
@@ -41,16 +47,12 @@ BUGS/Ajustes:
 
 
 Features:
-- Pensar: Tema de los prisioneros, no estaría tan copado hacer que te sigan por todo el nivel.
-  . Mantener: que puedan morir y volver como fantasmas (dificultando el nivel y el boss fight)
-  . Mantener: que cuantos mas prisioneros vivos logramos sea mejor para la boss fight
-  . Definir: que hay que hacer para liberarlos y rescatarlos
-
 - Terminales: se puede desactivar cosas para el final bueno (necesita password)
-- Terminales: hacer un jueguito 
 - Cada terminal tiene sus propias variables asociadas
-  PENSAR: Uso para las tumbas
-  PENSAR: Uso para las cascadas
+- Hay un item super raro, con muy bajo rate de aparición que no sirve para nada
+- Uso para las tumbas: Te sale un mensaje "Aqui yace tal" y una parte del password, hay que unirlos para tener el password completo  
+
+- PENSAR: Uso para las cascadas
 
 - Enemigo: Gusanitos qué se le meten a los prisioneros y los convierten en zombies que nos atacan 
 - Enemigo: volador
@@ -68,6 +70,7 @@ Features:
   . Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- Terminales: hacer un jueguito 
 - Bug con la sangre que se superpone por sobre la lava
 -Decoraciones: Rayitos de sol en la intro
 - Si hay una lampara overlapeando con una plataforma, queda ahi como trabada

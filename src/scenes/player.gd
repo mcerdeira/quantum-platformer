@@ -32,7 +32,6 @@ var level_parent = null
 var idle_play_total = 4 
 var idle_play = idle_play_total
 var dont_camera = false
-var frame = 0
 var gravityon = true
 var cameralimits_on = true
 var terminal_mode = false
@@ -55,7 +54,7 @@ var pending_reactivate = 0
 func _ready():
 	double_jump = Global.find_my_item("wings")
 	invisible = Global.find_my_item("invisibility") 
-	resurrect = true #Global.find_my_item("resurrect")
+	resurrect = Global.find_my_item("resurrect")
 	radar = Global.find_my_item("radar")
 	
 	if resurrect:
@@ -298,11 +297,8 @@ func process_player(delta):
 			$gun_sprite.rotation += 1 * delta
 			idle_play = idle_play_total
 			update_trayectory(delta)
-			
-	var some_command = ""
 	
 	if !dead and Input.is_action_just_pressed("jump"):
-		some_command += add_command("jump")
 		idle_play = idle_play_total
 		if is_on_stairs and grabbed:
 			velocity.y = -speed * 1.1
@@ -341,7 +337,6 @@ func process_player(delta):
 		
 		if !shoot_mode and Input.is_action_pressed("up"):
 			idle_play = idle_play_total
-			some_command += add_command("up")
 			if is_on_stairs:
 				grabbed = true 
 				moving = true
@@ -349,7 +344,6 @@ func process_player(delta):
 				velocity.y = -speed
 		elif !shoot_mode and Input.is_action_pressed("down"):
 			idle_play = idle_play_total
-			some_command += add_command("down")
 			if is_on_stairs:
 				grabbed = true 
 				moving = true
@@ -359,7 +353,6 @@ func process_player(delta):
 		var input_time = Time.get_ticks_msec() / 1000.0
 		
 		if !shoot_mode and Input.is_action_pressed("left"):
-			some_command += add_command("left")
 			idle_play = idle_play_total
 			direction = "left"
 			moving = true
@@ -371,7 +364,6 @@ func process_player(delta):
 			$gun_sprite.rotation = initial_rotation - 45
 			
 		elif !shoot_mode and Input.is_action_pressed("right"):
-			some_command += add_command("right")
 			idle_play = idle_play_total
 			direction = "right"
 			moving = true
@@ -385,16 +377,6 @@ func process_player(delta):
 	if gravityon:
 		idle_play -= 1 * delta
 	
-	frame += 1
-	
-	#$lbl_action.text = str(frame)
-	#$lbl_action.visible = true
-	
-	if !some_command:
-		add_to_followers("stop")
-	else:
-		add_to_followers(some_command)
-		
 	if !gravityon:
 		moving = false
 	
@@ -425,20 +407,9 @@ func process_player(delta):
 		$sprite_eyes.animation = $sprite.animation
 		$sprite.play()
 		
-func add_to_followers(cmd):
-	var ts = frame
-	Global.commands[ts] = cmd
-	
 func teleported():
-	var ts = frame
-	Global.commands[ts] = "teleport"
+	pass
 	
-func add_command(cmd):
-	if cmd == "":
-		return cmd
-	else:
-		return "|" + cmd
-		
 func check_shake(direction, current_time):
 	if fire_obj != null and is_instance_valid(fire_obj):
 		if direction == "left" and Input.is_action_pressed("right") and (current_time - last_input_time) <= shake_timeout:
