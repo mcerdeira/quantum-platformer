@@ -1,8 +1,10 @@
-[gd_scene load_steps=45 format=3 uid="uid://bveav6ctdlmbu"]
+[gd_scene load_steps=48 format=3 uid="uid://bveav6ctdlmbu"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_tvtda"]
 [ext_resource type="Texture2D" uid="uid://dbh84l3hbge3s" path="res://sprites/box.png" id="2_6led8"]
 [ext_resource type="Shader" path="res://scenes/main.gdshader" id="2_82qdg"]
+[ext_resource type="Script" path="res://scenes/GlobalCamera.gd" id="2_l3o6v"]
+[ext_resource type="PackedScene" uid="uid://wyy20tm0bhda" path="res://scenes/cheats.tscn" id="2_pfq3c"]
 [ext_resource type="PackedScene" uid="uid://duq0f6y40fuwc" path="res://scenes/surface.tscn" id="2_pqtrm"]
 [ext_resource type="PackedScene" uid="uid://ba2tdpbkss4pb" path="res://scenes/shaker.tscn" id="2_ybhrg"]
 [ext_resource type="Texture2D" uid="uid://cmahogbn2aqwr" path="res://sprites/bomb.png" id="3_gqofx"]
@@ -26,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://de1vyj25jt0t3" path="res://sprites/spring.png" id="17_3xuhu"]
 [ext_resource type="Texture2D" uid="uid://munfls4yrggx" path="res://sprites/growing_plant.png" id="17_s4wuu"]
 [ext_resource type="Texture2D" uid="uid://c7v26dk2ya7hd" path="res://sprites/smoke_bomb.png" id="19_28d2y"]
+[ext_resource type="Texture2D" uid="uid://dgo8fuk7viunt" path="res://sprites/binocular.png" id="21_ghkmb"]
 [ext_resource type="Texture2D" uid="uid://clers23mxmah8" path="res://sprites/map_item.png" id="22_8rem2"]
 [ext_resource type="Texture2D" uid="uid://byvh241kbwlen" path="res://sprites/coin.png" id="23_l8g3j"]
 [ext_resource type="Texture2D" uid="uid://xbdw7r3j6qr8" path="res://sprites/resurrect.png" id="24_fxvvi"]
@@ -186,6 +189,14 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("21_ghkmb")
+}],
+"loop": true,
+"name": &"binocular",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("15_7qhek")
 }],
 "loop": true,
@@ -282,6 +293,13 @@ _data = {
 [node name="Main" type="Node2D"]
 script = ExtResource("1_tvtda")
 
+[node name="GlobalCamera" type="Camera2D" parent="."]
+position = Vector2(-436, -58)
+anchor_mode = 0
+enabled = false
+zoom = Vector2(0.2, 0.2)
+script = ExtResource("2_l3o6v")
+
 [node name="Shaker" parent="." instance=ExtResource("2_ybhrg")]
 
 [node name="frame" type="TileMap" parent="."]
@@ -304,6 +322,10 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 149.0
+
+[node name="Cheats" parent="CanvasLayer/Control" instance=ExtResource("2_pfq3c")]
+visible = false
+position = Vector2(6.92308, 55.3846)
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
 layout_mode = 0
@@ -393,17 +415,23 @@ animation = &"radar"
 visible = false
 position = Vector2(460.461, 18)
 sprite_frames = SubResource("SpriteFrames_hurq8")
-animation = &"invisibility"
+animation = &"binocular"
 
 [node name="perks4" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
 visible = false
 position = Vector2(500.462, 18)
 sprite_frames = SubResource("SpriteFrames_hurq8")
-animation = &"wings"
+animation = &"invisibility"
 
 [node name="perks5" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
 visible = false
 position = Vector2(540.461, 18)
+sprite_frames = SubResource("SpriteFrames_hurq8")
+animation = &"wings"
+
+[node name="perks6" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+visible = false
+position = Vector2(580, 18)
 sprite_frames = SubResource("SpriteFrames_hurq8")
 animation = &"resurrect"
 

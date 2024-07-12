@@ -37,7 +37,7 @@ IN_PROGRESS:
    por los bordes. Si algun peligro los mata, se vuelven fantasmas.   
   . Pueden morir y volver como fantasmas (dificultando el nivel y el boss fight)
   . Cuantos mas prisioneros vivos logramos es mejor para la boss fight
-  . No te siguen mas, pero podemos activar algun item para protegerlos, como un elevador que los sube y se quedan ahi.  
+  . No te siguen mas, pero si les ponemos la plantita, se suben y quedan arriba de todo bastante protegidos
 
 - SFX
 - Musica
@@ -70,6 +70,7 @@ Features:
   . Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- Implementar Zoom (binoculares) como perk
 - Terminales: hacer un jueguito 
 - Bug con la sangre que se superpone por sobre la lava
 -Decoraciones: Rayitos de sol en la intro

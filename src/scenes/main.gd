@@ -111,22 +111,25 @@ func _ready():
 		generate_fixed_level(room_overworld, true)
 		
 	Global.GizmoWatcher = self
-	setHUD()
+	setHUD(false, true)
 
-func setHUD():
+func setHUD(only_gold = false, first_time = false):
 	var lbl_coin = get_node("CanvasLayer/Control/coin_slot2/lbl_stock")
 	lbl_coin.text = "x" + str(Global.Gold)
 	
 	for i in range(1, Global.CurrentLevel + 1):
 		var perk = get_node("CanvasLayer/Control/perks" + str(i))
 		perk.visible = true
-
+	
+	if only_gold:
+		return
+		
 	for i in range(Global.gunz_equiped.size()):
 		var slot = get_node("CanvasLayer/Control/gun_slot" + str(i))
 		slot.animation = Global.gunz_equiped[i].name
-	calc_selected()
+	calc_selected(first_time)
 	
-func calc_selected():
+func calc_selected(first_time = false):
 	for i in range(Global.gunz_equiped.size()):
 		var sel = get_node("CanvasLayer/Control/selected" + str(i))
 		sel.visible = false
@@ -138,10 +141,11 @@ func calc_selected():
 		
 		if i == Global.gunz_index:
 			sel.visible = true
-			var count = 3
-			for ei in range(count):
-				var p = particle.instantiate()
-				sel.add_child(p)
+			if !first_time:
+				var count = 3
+				for ei in range(count):
+					var p = particle.instantiate()
+					sel.add_child(p)
 
 func _physics_process(delta):
 	$CanvasLayer/Control/lbl_gameover.visible = Global.GAMEOVER

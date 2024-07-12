@@ -1,0 +1,113 @@
+[gd_scene load_steps=2 format=3 uid="uid://wyy20tm0bhda"]
+
+[ext_resource type="Script" path="res://scenes/cheats.gd" id="1_px3bt"]
+
+[node name="Cheats" type="Node2D"]
+script = ExtResource("1_px3bt")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 13.0
+offset_top = 14.0
+offset_right = 639.0
+offset_bottom = 342.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 626.0
+offset_bottom = 328.0
+color = Color(0.0901961, 0, 0.52549, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 624.0
+offset_bottom = 23.0
+text = "==================== CHEATS ==================== "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bnt_coin" type="Button" parent="."]
+offset_left = 8.0
+offset_top = 34.0
+offset_right = 79.0
+offset_bottom = 65.0
+text = "Coins+1"
+
+[node name="bnt_plant" type="Button" parent="."]
+offset_left = 8.0
+offset_top = 90.0
+offset_right = 79.0
+offset_bottom = 121.0
+text = "Plant"
+
+[node name="bnt_spring" type="Button" parent="."]
+offset_left = 104.0
+offset_top = 90.0
+offset_right = 175.0
+offset_bottom = 121.0
+text = "Spring"
+
+[node name="bnt_level" type="Button" parent="."]
+offset_left = 197.0
+offset_top = 90.0
+offset_right = 268.0
+offset_bottom = 121.0
+text = "LevelUp"
+
+[node name="bnt_muffin" type="Button" parent="."]
+offset_left = 103.0
+offset_top = 34.0
+offset_right = 174.0
+offset_bottom = 65.0
+text = "Muffin"
+
+[node name="bnt_clone" type="Button" parent="."]
+offset_left = 196.0
+offset_top = 34.0
+offset_right = 267.0
+offset_bottom = 65.0
+text = "Clone"
+
+[node name="bnt_teleport" type="Button" parent="."]
+offset_left = 292.0
+offset_top = 34.0
+offset_right = 365.0
+offset_bottom = 65.0
+text = "Teleport"
+
+[node name="bnt_bomb" type="Button" parent="."]
+offset_left = 388.0
+offset_top = 34.0
+offset_right = 459.0
+offset_bottom = 65.0
+text = "Bomb"
+
+[node name="bnt_smoke" type="Button" parent="."]
+offset_left = 485.0
+offset_top = 34.0
+offset_right = 556.0
+offset_bottom = 65.0
+text = "Smoke"
+
+[node name="btn_nextscene" type="Button" parent="."]
+offset_left = 40.0
+offset_top = 231.0
+offset_right = 178.0
+offset_bottom = 286.0
+text = "Next Scene"
+
+[node name="btn_reset" type="Button" parent="."]
+offset_left = 208.0
+offset_top = 231.0
+offset_right = 346.0
+offset_bottom = 286.0
+text = "Reset"
+
+[connection signal="pressed" from="bnt_coin" to="." method="_on_bnt_coin_pressed"]
+[connection signal="pressed" from="bnt_plant" to="." method="_on_bnt_plant_pressed"]
+[connection signal="pressed" from="bnt_spring" to="." method="_on_bnt_spring_pressed"]
+[connection signal="pressed" from="bnt_level" to="." method="_on_bnt_level_pressed"]
+[connection signal="pressed" from="bnt_muffin" to="." method="_on_bnt_muffin_pressed"]
+[connection signal="pressed" from="bnt_clone" to="." method="_on_bnt_clone_pressed"]
+[connection signal="pressed" from="bnt_teleport" to="." method="_on_bnt_teleport_pressed"]
+[connection signal="pressed" from="bnt_bomb" to="." method="_on_bnt_bomb_pressed"]
+[connection signal="pressed" from="bnt_smoke" to="." method="_on_bnt_smoke_pressed"]
+[connection signal="pressed" from="btn_nextscene" to="." method="_on_btn_nextscene_pressed"]
+[connection signal="pressed" from="btn_reset" to="." method="_on_btn_reset_pressed"]

@@ -111,6 +111,13 @@ var invisibility = {
 	"pasive": true,
 	"full_scale": false,
 }
+var binocular = {
+	"name": "binocular",
+	"description": "Perspective",
+	"has_action": false,
+	"pasive": true,
+	"full_scale": false,
+}
 var none = {
 	"name": "none",
 	"description": "...",
@@ -140,14 +147,15 @@ var TerminalNumber = -1
 var Gold = 0
 var CurrentLevel = 0
 var GoldDonation = 0
-var GOLD_PER_LEVEL = [0, 10, 25, 50, 125, 200]
-var UNLOCKS_PER_LEVEL = [null, map, radar, invisibility, double_jump, resurrect]
-var perks_equiped = [null, null, null, null, null, null]
+var GOLD_PER_LEVEL = [0, 10, 25, 50, 125, 200, 220]
+var UNLOCKS_PER_LEVEL = [null, map, radar, binocular, invisibility, double_jump, resurrect]
+var perks_equiped = [null, null, null, null, null, null, null]
 
 var LASERS = true
 var GHOSTS = true
 var WATERFALLS = true
 var FIREBALLS = true
+var global_camera = null
 
 var Terminals = [
 	{
@@ -235,24 +243,33 @@ func find_my_item(itm):
 
 func donate(qty):
 	if Global.Gold < qty:
-		return false
+		return null
 	else:
+		var result = levelup()
+		Global.GoldDonation += qty
 		Global.Gold -= qty
-		levelup()
 		save_game()
-		return true
+		Global.GizmoWatcher.setHUD(true)
+		return result
 		
 func levelup():
 	var new_level = 0
-	for lvl in Global.GOLD_PER_LEVEL:
-		if Global.Gold < lvl:
-			break;
-		else:
-			new_level += 1
-			if new_level >= Global.CurrentLevel:
-				Global.perks_equiped[new_level - 1] = Global.UNLOCKS_PER_LEVEL[new_level]
-		
-	Global.CurrentLevel = new_level
+	for l in range(Global.GOLD_PER_LEVEL.size()):
+		if Global.CurrentLevel < l:
+			if Global.GoldDonation >= Global.GOLD_PER_LEVEL[l]:
+				new_level += 1
+			else:
+				break
+			
+	if new_level >= Global.CurrentLevel:
+		var level_coso = [Global.CurrentLevel, new_level]
+		Global.CurrentLevel = new_level
+		set_current_perks()
+		return level_coso
+	
+func set_current_perks():
+	for i in range(Global.CurrentLevel + 1):
+		Global.perks_equiped[i] = Global.UNLOCKS_PER_LEVEL[i]
 
 func buy_item(item, qty):
 	if Global.Gold < qty:
@@ -301,8 +318,9 @@ func get_item(current_item, qty = 1):
 		if !found: #If previus fails, override item to current selected
 			Global.gunz_equiped[Global.gunz_index] = current_item
 			slots_stock[Global.gunz_index] = 1
-		
-	Global.GizmoWatcher.setHUD()
+			
+	var coin = (current_item.name == "coin")
+	Global.GizmoWatcher.setHUD(coin)
 	
 func emit(_global_position, count):
 	for i in range(count):
@@ -365,13 +383,13 @@ func load_game():
 				Global.Gold = gold
 			if curr_level != null:
 				Global.CurrentLevel = curr_level
-				levelup()
 			if g_donation != null:
 				Global.GoldDonation = g_donation
 
 func _ready():
 	load_sfx()
 	load_game()
+	set_current_perks()
 	init()
 	
 func load_sfx():

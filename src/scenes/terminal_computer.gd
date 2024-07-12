@@ -180,6 +180,9 @@ func _input(event):
 				elif (event.keycode >= 65 and event.keycode <= 90):
 					command_ok = true
 					command += key_text
+				elif (event.keycode >= 48 and event.keycode <= 57):
+					command_ok = true
+					command += key_text
 				elif event.keycode == 32:
 					command_ok = true
 					command += " "
@@ -285,14 +288,16 @@ func parser(_cmd):
 				current_message = "ERROR: USE DONATE <QUANTITY>\n"
 				current_line += 1
 			else:
-				if !param1.is_valid_integer():
+				if !param1.is_valid_int():
 					param1 = 1
 				else:
 					param1 = int(param1)
 				
-				if Global.donate(param1):
+				if Global.donate(param1) != null:
 					current_message = "TRANSACTION DONE\nREADY"
-					current_line +=1
+					current_line += 2
+					# [Global.CurrentLevel, new_level]
+					
 				else:
 					current_message = "ERROR: NOT ENOUGH G-COINS\nREADY"
 					current_line += 2

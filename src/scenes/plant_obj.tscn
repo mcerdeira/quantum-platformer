@@ -64,6 +64,7 @@ radius = 3.16228
 script = ExtResource("1_56u4b")
 
 [node name="Stair" parent="." instance=ExtResource("1_6n7ab")]
+plant_stair = true
 
 [node name="Plants" parent="." instance=ExtResource("2_vf7bl")]
 position = Vector2(-25, 0)

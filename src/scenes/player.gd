@@ -20,6 +20,7 @@ var dead = false
 var blowed = 0
 var previus_velocity = Vector2.ZERO
 var is_on_stairs = false
+var is_on_plant_stair = false
 var grabbed = false
 var LineTrayectory = null
 var dead_fall = false
@@ -41,6 +42,7 @@ var double_jump = false
 var invisible = false
 var resurrect = false
 var radar = false
+var binocular = false
 var lifes = 1
 var resurrecting = 0
 var ghost_inst = null
@@ -56,6 +58,7 @@ func _ready():
 	invisible = Global.find_my_item("invisibility") 
 	resurrect = Global.find_my_item("resurrect")
 	radar = Global.find_my_item("radar")
+	binocular = Global.find_my_item("binocular")
 	
 	if resurrect:
 		lifes = 2
@@ -149,10 +152,10 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 		return
 		
-	if Input.is_action_just_released("zoomin"):
-		$Camera2D.zoom += Vector2(10, 10) * delta
-	if Input.is_action_just_released("zoomout"):
-		$Camera2D.zoom -= Vector2(10, 10) * delta
+	if binocular:
+		if Input.is_action_just_released("zoomin"):
+			$Camera2D.enabled = !$Camera2D.enabled
+			Global.global_camera.enabled = !Global.global_camera.enabled
 
 	$Cosito.visible = !iam_clone and !dead
 	if is_on_floor() or grabbed:

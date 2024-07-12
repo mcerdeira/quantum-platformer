@@ -23,6 +23,7 @@ var help_messages = ["HELP!", "SAVE ME!", "S.O.S"]
 var thanks_messages = ["THANKS!", "MY HERO!"]
 var thanks_message = Global.pick_random(thanks_messages)
 var is_on_stairs = false
+var is_on_plant_stair = false
 var grabbed = false
 var dead_animation = "dead"
 var fires = preload("res://scenes/Fires.tscn")
@@ -150,16 +151,22 @@ func process_player(delta):
 			stoped = !stoped
 		
 		if !stoped:
-			if direction == "right":
+			if is_on_stairs and is_on_plant_stair:
 				moving = true
+				grabbed = true 
 				idle_time = 0
-				velocity.x = speed
-				$sprite.flip_h = false
+				velocity.y = -speed
 			else:
-				moving = true
-				idle_time = 0
-				velocity.x = -speed
-				$sprite.flip_h = true
+				if direction == "right":
+					moving = true
+					idle_time = 0
+					velocity.x = speed
+					$sprite.flip_h = false
+				else:
+					moving = true
+					idle_time = 0
+					velocity.x = -speed
+					$sprite.flip_h = true
 			
 			if direction_change_ttl > 0:
 				direction_change_ttl -= 1 * delta
