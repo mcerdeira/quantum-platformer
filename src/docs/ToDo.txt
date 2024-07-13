@@ -47,6 +47,7 @@ BUGS/Ajustes:
 
 
 Features:
+- Hacer que la terminal y los cartelitos de los items aparezcan de forma tal que no quede una parte fuera de la cámara 
 - Terminales: se puede desactivar cosas para el final bueno (necesita password)
 - Cada terminal tiene sus propias variables asociadas
 - Hay un item super raro, con muy bajo rate de aparición que no sirve para nada
