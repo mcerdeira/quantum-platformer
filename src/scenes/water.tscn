@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://vhwoh2cbshha"]
+
+[ext_resource type="Script" path="res://scenes/levels/water.gd" id="1_ljxr6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rw54y"]
+size = Vector2(4687, 623)
+
+[node name="water" type="Area2D"]
+script = ExtResource("1_ljxr6")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(2333.5, 301.5)
+shape = SubResource("RectangleShape2D_rw54y")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

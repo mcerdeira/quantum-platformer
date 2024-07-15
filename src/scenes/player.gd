@@ -53,12 +53,16 @@ var shake_timeout = 0.9
 var required_shakes = 3
 var pending_reactivate = 0
 
+var last_safe_position = null
+
 func _ready():
 	double_jump = Global.find_my_item("wings")
 	invisible = Global.find_my_item("invisibility") 
 	resurrect = Global.find_my_item("resurrect")
 	radar = Global.find_my_item("radar")
 	binocular = Global.find_my_item("binocular")
+	
+	last_safe_position = global_position
 	
 	if resurrect:
 		lifes = 2
@@ -159,6 +163,7 @@ func _physics_process(delta):
 
 	$Cosito.visible = !iam_clone and !dead
 	if is_on_floor() or grabbed:
+		last_safe_position = global_position
 		if in_air:
 			in_air = false
 			double_jumped = false
@@ -506,6 +511,10 @@ func kill():
 func dead_fire():
 	dead = true
 	dead_animation = "dead_fire"
+	
+func reset_to_last():
+	global_position = last_safe_position
+	$AnimationPlayer.play("reset_position")
 
 func kill_fire():
 	if fire_obj == null or !is_instance_valid(fire_obj):
