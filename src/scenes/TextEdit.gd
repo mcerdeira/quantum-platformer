@@ -2,7 +2,7 @@ extends TextEdit
 @export var TerminalManager : Area2D
 
 func _gui_input(event: InputEvent) -> void:
-	if get_parent().get_parent().is_writing:
+	if get_parent().get_parent().get_parent().is_writing:
 		accept_event()
 		return 
 	if event is InputEventKey:

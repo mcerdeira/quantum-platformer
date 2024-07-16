@@ -155,6 +155,7 @@ func _physics_process(delta):
 		if gameover_ttl <= 0:
 			gameover_ttl = gameover_ttl_total
 			Global.GAMEOVER = false
+			Global.reset_gunz()
 			Global.scene_next()
 			return
 		

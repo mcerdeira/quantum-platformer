@@ -22,6 +22,25 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dym6o"]
 size = Vector2(30, 21)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_kipbu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_ex0y7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_5bc42")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jtgsv"]
 resource_local_to_scene = true
 shader = ExtResource("1_udi6n")
@@ -135,25 +154,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_kipbu"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("14_ex0y7")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("15_5bc42")
-}],
-"loop": true,
-"name": &"open",
-"speed": 5.0
-}]
-
 [node name="Item" type="Area2D"]
 script = ExtResource("1_co2nu")
 
@@ -161,24 +161,29 @@ script = ExtResource("1_co2nu")
 position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_dym6o")
 
-[node name="back2" type="ColorRect" parent="."]
-visible = false
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_kipbu")
+
+[node name="display" type="Node2D" parent="."]
+position = Vector2(0, -87)
+
+[node name="back2" type="ColorRect" parent="display"]
 z_index = 4096
 offset_left = -303.0
-offset_top = -120.0
+offset_top = -32.0
 offset_right = 247.0
-offset_bottom = -41.0
+offset_bottom = 47.0
 
-[node name="back" type="ColorRect" parent="."]
-visible = false
+[node name="back" type="ColorRect" parent="display"]
 z_index = 4096
 offset_left = -302.0
-offset_top = -119.0
+offset_top = -31.0
 offset_right = 246.0
-offset_bottom = -42.0
+offset_bottom = 46.0
 color = Color(0, 0, 0, 1)
 
-[node name="sprite" type="AnimatedSprite2D" parent="back"]
+[node name="sprite" type="AnimatedSprite2D" parent="display/back"]
 material = SubResource("ShaderMaterial_jtgsv")
 position = Vector2(45, 61)
 scale = Vector2(1.5, 1.5)
@@ -186,7 +191,7 @@ sprite_frames = SubResource("SpriteFrames_jkk80")
 animation = &"invisibility"
 offset = Vector2(0, -16)
 
-[node name="lbl_item" type="Label" parent="back"]
+[node name="lbl_item" type="Label" parent="display/back"]
 layout_mode = 0
 offset_left = 84.0
 offset_top = 2.0
@@ -199,15 +204,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="arrows" type="AnimatedSprite2D" parent="back"]
+[node name="arrows" type="AnimatedSprite2D" parent="display/back"]
 position = Vector2(520, 39)
 sprite_frames = SubResource("SpriteFrames_2inxc")
 autoplay = "default"
 frame_progress = 0.017781
-
-[node name="sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -16)
-sprite_frames = SubResource("SpriteFrames_kipbu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

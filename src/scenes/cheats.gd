@@ -4,13 +4,16 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("cheat"):
 		visible = !visible
 		if visible:
-			if Global.CurrentState == Global.GameStates.HOME or Global.CurrentState == Global.GameStates.OUTSIDE:
+			if special_rooms():
 				get_parent().visible = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		else:
-			if Global.CurrentState == Global.GameStates.HOME or Global.CurrentState == Global.GameStates.OUTSIDE:
+			if special_rooms():
 				get_parent().visible = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+			
+func special_rooms():
+	return Global.CurrentState == Global.GameStates.HOME or Global.CurrentState == Global.GameStates.FALLING or Global.CurrentState == Global.GameStates.OUTSIDE
 
 func _on_bnt_coin_pressed():
 	Global.get_item(Global.coin, 1)
@@ -47,7 +50,8 @@ func _on_btn_reset_pressed():
 	Global.CurrentLevel = 0
 	Global.Gold = 0
 	Global.GoldDonation = 0
-	
+	Global.first_time = true
+	Global.erase_game()
 	Global.CurrentState = Global.GameStates.HOME
 	Global.Fader.fade_in()
 	get_tree().reload_current_scene()

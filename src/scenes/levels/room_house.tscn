@@ -152,6 +152,7 @@ layer_0/tile_data = PackedInt32Array(1310754, 196613, 0, 1310753, 196613, 0, 131
 script = ExtResource("6_3a1uv")
 
 [node name="vines" type="TileMap" parent="."]
+position = Vector2(0, 2)
 tile_set = SubResource("TileSet_me5q7")
 format = 2
 

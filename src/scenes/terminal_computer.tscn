@@ -66,24 +66,27 @@ position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_eccn0")
 disabled = true
 
-[node name="back2" type="ColorRect" parent="."]
-visible = false
-z_index = 4096
-offset_left = -303.0
-offset_top = -120.0
-offset_right = 247.0
-offset_bottom = -41.0
+[node name="display" type="Node2D" parent="."]
+position = Vector2(-6, -68)
 
-[node name="back" type="ColorRect" parent="."]
+[node name="back2" type="ColorRect" parent="display"]
 visible = false
 z_index = 4096
-offset_left = -302.0
-offset_top = -119.0
-offset_right = 246.0
-offset_bottom = -42.0
+offset_left = -273.0
+offset_top = -42.0
+offset_right = 277.0
+offset_bottom = 37.0
+
+[node name="back" type="ColorRect" parent="display"]
+visible = false
+z_index = 4096
+offset_left = -272.0
+offset_top = -41.0
+offset_right = 276.0
+offset_bottom = 36.0
 color = Color(0, 0, 0, 1)
 
-[node name="lbl_item" type="Label" parent="back"]
+[node name="lbl_item" type="Label" parent="display/back"]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 2.0
@@ -96,27 +99,27 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="arrows" type="AnimatedSprite2D" parent="back"]
+[node name="arrows" type="AnimatedSprite2D" parent="display/back"]
 position = Vector2(520, 39)
 sprite_frames = SubResource("SpriteFrames_qmq6u")
 autoplay = "default"
 
-[node name="sprite" type="AnimatedSprite2D" parent="back"]
+[node name="sprite" type="AnimatedSprite2D" parent="display/back"]
 position = Vector2(37, 37)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_6b3ab")
 
-[node name="Terminal" type="ColorRect" parent="."]
+[node name="Terminal" type="ColorRect" parent="display"]
 visible = false
 z_index = 4096
 z_as_relative = false
-offset_left = -98.0
-offset_top = -206.0
-offset_right = 602.0
-offset_bottom = 129.0
+offset_left = -321.0
+offset_top = -95.0
+offset_right = 379.0
+offset_bottom = 240.0
 color = Color(0.203922, 0.164706, 0.592157, 1)
 
-[node name="TextEdit" type="TextEdit" parent="Terminal" node_paths=PackedStringArray("TerminalManager")]
+[node name="TextEdit" type="TextEdit" parent="display/Terminal" node_paths=PackedStringArray("TerminalManager")]
 layout_mode = 0
 offset_left = 1.0
 offset_right = 704.0
@@ -125,248 +128,6 @@ mouse_filter = 2
 mouse_default_cursor_shape = 16
 theme_override_fonts/font = ExtResource("2_bxupf")
 text = "
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -520,15 +281,15 @@ wrap_mode = 1
 caret_blink = true
 caret_draw_when_editable_disabled = true
 script = ExtResource("6_sqpbu")
-TerminalManager = NodePath("../..")
+TerminalManager = NodePath("../../..")
 
-[node name="ColorRect" type="ColorRect" parent="Terminal"]
+[node name="ColorRect" type="ColorRect" parent="display/Terminal"]
 layout_mode = 0
 offset_top = -24.0
 offset_right = 704.0
 color = Color(0.866667, 0, 0.866667, 1)
 
-[node name="Label" type="Label" parent="Terminal"]
+[node name="Label" type="Label" parent="display/Terminal"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = -20.0

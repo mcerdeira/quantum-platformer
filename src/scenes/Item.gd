@@ -9,6 +9,7 @@ var killme = false
 var QTY = 1
 
 func _ready():
+	$display.visible = false
 	if randi() % 3 == 0:
 		current_item = Global.pick_random(Global.gunz_objs_prob)
 		if current_item.name == "bomb":
@@ -20,12 +21,12 @@ func _ready():
 		elif current_item.name == "muffin":
 			QTY = Global.pick_random([2, 3, 5])
 		
-		$back/sprite.animation = current_item.name
+		$display/back/sprite.animation = current_item.name
 		var qty_str = ""
 		if QTY != 1:
 			qty_str = " (x" + str(QTY) + ")"
 		
-		$back/lbl_item.text = "== " + current_item.name.to_upper() + qty_str + " ==" + "\n" + current_item.description
+		$display/back/lbl_item.text = "== " + current_item.name.to_upper() + qty_str + " ==" + "\n" + current_item.description
 	else:
 		if randi() % 3 == 0:
 			killme = true
@@ -41,7 +42,6 @@ func _physics_process(delta):
 		queue_free()
 		return
 	
-	$back2.visible = $back.visible 
 	if !active and opened:
 		if player:
 			if delay_camera > 0:
@@ -56,7 +56,7 @@ func _physics_process(delta):
 			Global.emit(global_position, 5)
 			get_item()
 			$sprite.animation = "open"
-			$back.visible = false
+			$display.visible = false
 		
 func get_item():
 	Global.get_item(current_item, QTY)
@@ -64,13 +64,15 @@ func get_item():
 func _on_body_entered(body):
 	if !opened and body.is_in_group("players") and !body.is_in_group("prisoners"):
 		body.dont_camera = true
-		$back.visible = true
+		$display.visible = true
+		var center = Global.shaker_obj.camera.get_screen_center_position()
+		$display.global_position = center
 		active = true
 		player = body
 
 func _on_body_exited(body):
 	if body.is_in_group("players") and !body.is_in_group("prisoners"):
 		body.dont_camera = false
-		$back.visible = false
+		$display.visible = false
 		active = false
 		body.dont_camera = false

@@ -409,13 +409,13 @@ animation = &"map"
 visible = false
 position = Vector2(420.461, 18)
 sprite_frames = SubResource("SpriteFrames_hurq8")
-animation = &"radar"
+animation = &"wings"
 
 [node name="perks3" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
 visible = false
 position = Vector2(460.461, 18)
 sprite_frames = SubResource("SpriteFrames_hurq8")
-animation = &"binocular"
+animation = &"radar"
 
 [node name="perks4" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
 visible = false
@@ -427,7 +427,7 @@ animation = &"invisibility"
 visible = false
 position = Vector2(540.461, 18)
 sprite_frames = SubResource("SpriteFrames_hurq8")
-animation = &"wings"
+animation = &"binocular"
 
 [node name="perks6" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
 visible = false

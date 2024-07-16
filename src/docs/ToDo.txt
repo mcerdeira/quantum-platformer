@@ -33,6 +33,7 @@
 ==================================================================================================================
 
 IN_PROGRESS:
+- Terminar de hacer las donaciones que te digan que items desbloqueaste (sumar una barrita o similar para mostrar el nivel actual de donaciones)
 - Prisioneros: si los liberas te agradecen y quedan ahi dando vueltas por el lugar: caminando de izquierda a derecha, parando cada tanto, no se caen 
    por los bordes. Si algun peligro los mata, se vuelven fantasmas.   
   . Pueden morir y volver como fantasmas (dificultando el nivel y el boss fight)
@@ -48,7 +49,6 @@ BUGS/Ajustes:
 
 Features:
 - En el overworld, a la derecha hay un lago/río y solo podemos ir con la canoa
-- Hacer que la terminal y los cartelitos de los items aparezcan de forma tal que no quede una parte fuera de la cámara 
 - Terminales: se puede desactivar cosas para el final bueno (necesita password)
 - Cada terminal tiene sus propias variables asociadas
 - Hay un item super raro, con muy bajo rate de aparición que no sirve para nada
@@ -72,6 +72,8 @@ Features:
   . Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- Hacer que la terminal y los cartelitos de los items aparezcan de forma tal que no quede una parte fuera de la cámara 
+- El radar te debe apuntar a la puerta unicamente
 - Implementar Zoom (binoculares) como perk
 - Terminales: hacer un jueguito 
 - Bug con la sangre que se superpone por sobre la lava

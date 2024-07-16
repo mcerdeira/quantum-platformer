@@ -63,14 +63,14 @@ var bomb = {
 }
 var radar = {
 	"name": "radar",
-	"description": "Where is everybody?",
+	"description": "Shows an arrow pointing to the exit door. Press 'R' to access it.",
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
 }
 var map = {
 	"name": "map",
-	"description": "Where is everybody, accurately?",
+	"description": "Where is everybody? Press 'M' to access it.",
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
@@ -84,7 +84,7 @@ var double_jump = {
 }
 var resurrect = {
 	"name": "resurrect",
-	"description": "One more chance",
+	"description": "One more try.",
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
@@ -106,14 +106,14 @@ var spring = {
 }
 var invisibility = {
 	"name": "invisibility",
-	"description": "Now you see it, now you don't.",
+	"description": "Now you see me, now you don't.",
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
 }
 var binocular = {
 	"name": "binocular",
-	"description": "Perspective",
+	"description": "Perspective. Press 'H' to access it.",
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
@@ -147,8 +147,8 @@ var TerminalNumber = -1
 var Gold = 0
 var CurrentLevel = 0
 var GoldDonation = 0
+var UNLOCKS_PER_LEVEL = [null, map, double_jump, radar, invisibility, binocular, resurrect]
 var GOLD_PER_LEVEL = [0, 10, 25, 50, 125, 200, 220]
-var UNLOCKS_PER_LEVEL = [null, map, radar, binocular, invisibility, double_jump, resurrect]
 var perks_equiped = [null, null, null, null, null, null, null]
 
 var LASERS = true
@@ -245,9 +245,9 @@ func donate(qty):
 	if Global.Gold < qty:
 		return null
 	else:
-		var result = levelup()
 		Global.GoldDonation += qty
 		Global.Gold -= qty
+		var result = levelup()
 		save_game()
 		Global.GizmoWatcher.setHUD(true)
 		return result
@@ -262,10 +262,12 @@ func levelup():
 				break
 			
 	if new_level >= Global.CurrentLevel:
-		var level_coso = [Global.CurrentLevel, new_level]
+		var perks_equiped_prev = [] + Global.perks_equiped
 		Global.CurrentLevel = new_level
 		set_current_perks()
-		return level_coso
+		return perks_equiped_prev
+	else:
+		return Global.perks_equiped
 	
 func set_current_perks():
 	for i in range(Global.CurrentLevel + 1):
@@ -333,6 +335,9 @@ func flyaway(direction, jump_speed):
 	velocity.x = direction.x * 65.0
 	velocity.y = jump_speed * 1.4
 	return velocity
+	
+func erase_game():
+	var result = DirAccess.remove_absolute("user://savegame.save")
 	
 func save_game():
 	var saved_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
@@ -433,6 +438,9 @@ func init():
 	#gunz_equiped[0] = smoke_bomb
 	
 	randomize()
+	
+func reset_gunz():
+	gunz_equiped = [none, none]
 	
 func pick_random(container):
 	if typeof(container) == TYPE_DICTIONARY:

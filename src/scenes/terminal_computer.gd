@@ -14,6 +14,10 @@ var command_ok = false
 @export var InfoPosition : Marker2D
 var BUY_ITEMS = ["BOMB", "SMOKE", "CLONE", "SPRING", "PLANT", "MUFFIN"]
 
+var PB_YES = ">"
+var PB_NO = "-" 
+var PB_LEN = 40
+
 var terminal_commands_with_help = [
 	[
 		"BUY <ITEM> <QUANTITY>",
@@ -117,7 +121,7 @@ func _ready():
 		terminal_number = Global.LevelCurrentTerminalNumber
 		 
 	add_to_group("terminals")
-	CMD = $Terminal/TextEdit
+	CMD = $display/Terminal/TextEdit
 	$Info.global_position = InfoPosition.global_position
 
 func _physics_process(delta):
@@ -125,7 +129,7 @@ func _physics_process(delta):
 		if Global.fade_finished:
 			$collider.set_deferred("disabled", false)
 	
-	$back2.visible = $back.visible 
+	$display/back2.visible = $display/back.visible 
 	if !active and opened:
 		if player:
 			if delay_camera > 0:
@@ -139,9 +143,9 @@ func _physics_process(delta):
 				opened = true
 				active = false
 				Global.emit(global_position, 5)
-				$back.visible = false
-				$back/arrows.visible = false
-				$Terminal.visible = true
+				$display/back.visible = false
+				$display/back/arrows.visible = false
+				$display/Terminal.visible = true
 				current_message = "WELCOME TO GROTTO TERMINAL #" + str(terminal_number) + " " + Global.Terminals[terminal_number].name + "\nREADY"
 				Global.player_obj.terminal_mode = true
 				Global.player_obj.visible = false
@@ -186,6 +190,17 @@ func _input(event):
 				elif event.keycode == 32:
 					command_ok = true
 					command += " "
+					
+func calc_progress():
+	if Global.CurrentLevel == Global.GOLD_PER_LEVEL.size() - 1:
+		return "[" + PB_YES.repeat(PB_LEN) + "]"
+	else:
+		var total = Global.GOLD_PER_LEVEL[Global.CurrentLevel + 1]
+		var current = Global.GoldDonation
+		var percent = current * 100 / total
+		var count = percent * PB_LEN / 100
+		var rest =  PB_NO.repeat(PB_LEN - count)
+		return "[" + PB_YES.repeat(count) + rest + "]"
 		
 func parser(_cmd):
 	_cmd = _cmd.strip_edges()
@@ -293,11 +308,23 @@ func parser(_cmd):
 				else:
 					param1 = int(param1)
 				
-				if Global.donate(param1) != null:
-					current_message = "TRANSACTION DONE\nREADY"
+				var result = Global.donate(param1)
+				if result != null:
+					current_message = "TRANSACTION DONE"
+					current_message += calc_progress() + "\n"
 					current_line += 2
-					# [Global.CurrentLevel, new_level]
+					if result != Global.perks_equiped:
+						current_message +=  "\nNEW ITEMS AVAILABLE:\n"
+						current_line += 2
+						for i in range(Global.perks_equiped.size()):
+							if i > 0:
+								if result[i] == null and Global.perks_equiped[i] != null:
+									current_message += "\t. " + Global.perks_equiped[i].name.to_upper() + "\n"
+									current_message += "\t\t" + Global.perks_equiped[i].description + "\n"
+									current_line += 2
 					
+					current_message +=  "\nREADY\n"
+					current_line += 1
 				else:
 					current_message = "ERROR: NOT ENOUGH G-COINS\nREADY"
 					current_line += 2
@@ -331,8 +358,8 @@ func parser(_cmd):
 	elif found != -1 and _cmd == "EXIT":
 		CMD.text = ""
 		current_line = 2
-		$Terminal.visible = false
-		$back.visible = false
+		$display/Terminal.visible = false
+		$display/back.visible = false
 		active = false
 		opened = false
 		Global.player_obj.terminal_mode = false
@@ -359,13 +386,15 @@ func trad_state(val):
 func _on_body_entered(body):
 	if !opened and body.is_in_group("players") and !body.is_in_group("prisoners"):
 		body.dont_camera = true
-		$back.visible = true
+		var center = Global.shaker_obj.camera.get_screen_center_position()
+		$display.global_position = center
+		$display/back.visible = true
 		active = true
 		player = body
 
 func _on_body_exited(body):
 	if body.is_in_group("players") and !body.is_in_group("prisoners"):
 		body.dont_camera = false
-		$back.visible = false
+		$display/back.visible = false
 		active = false
 		body.dont_camera = false
