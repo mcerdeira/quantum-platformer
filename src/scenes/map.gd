@@ -15,7 +15,7 @@ func _physics_process(delta):
 
 func notify_map(q):
 	var qq = get_node("q" + str(q))
-	qq.animation = "on"
+	qq.animation = str(q)
 
 func notify_prisoner(q):
 	var qq = get_node("q" + str(q) + "/prisoner")

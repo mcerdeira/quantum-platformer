@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://cusnut7c2fjy3"]
+
+[ext_resource type="Texture2D" uid="uid://clers23mxmah8" path="res://sprites/map_item.png" id="1_qyeb5"]
+[ext_resource type="Script" path="res://scenes/MeshInstance3D.gd" id="2_eadms"]
+
+[sub_resource type="Environment" id="Environment_r74ps"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hqefb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76bpf"]
+albedo_texture = ExtResource("1_qyeb5")
+normal_scale = 13.29
+texture_filter = 0
+
+[node name="Item3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_r74ps")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, -2.38419e-07, 0, 1, 0, 2.38419e-07, 0, 1, 0, 1, 11)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.98112, 0, -4.01409, 0, 10, 0, 4.01409, 0, -2.98112, 0, 0, 0)
+mesh = SubResource("BoxMesh_hqefb")
+surface_material_override/0 = SubResource("StandardMaterial3D_76bpf")
+script = ExtResource("2_eadms")

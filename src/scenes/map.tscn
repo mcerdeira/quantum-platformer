@@ -1,24 +1,160 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8j4ld6iulqjl"]
+[gd_scene load_steps=24 format=3 uid="uid://c8j4ld6iulqjl"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_gpqlg"]
-[ext_resource type="Texture2D" uid="uid://cntqolss3ykii" path="res://sprites/map.png" id="1_kq1xd"]
-[ext_resource type="Texture2D" uid="uid://dw6x4yl4rf43w" path="res://sprites/map_part.png" id="2_qkrqb"]
+[ext_resource type="Texture2D" uid="uid://cq5txpdg0gq40" path="res://sprites/map1.png" id="2_q1thl"]
+[ext_resource type="Texture2D" uid="uid://dku680dt4jcyf" path="res://sprites/map_parts1.png" id="3_fkevg"]
+[ext_resource type="Texture2D" uid="uid://t6nvrx8730bw" path="res://sprites/map2.png" id="3_naoea"]
 [ext_resource type="Texture2D" uid="uid://coab8oki32v51" path="res://sprites/prisoner_marker.png" id="4_7wpv2"]
+[ext_resource type="Texture2D" uid="uid://bkfvgmiobrb4u" path="res://sprites/map_parts10.png" id="4_qr5xc"]
 [ext_resource type="Texture2D" uid="uid://bt5xbmefctj30" path="res://sprites/prisoner_marker_done.png" id="5_elii6"]
+[ext_resource type="Texture2D" uid="uid://dgxer3dj6byjl" path="res://sprites/map_parts11.png" id="5_qnrp3"]
+[ext_resource type="Texture2D" uid="uid://bqfpxaodfbha5" path="res://sprites/map_parts2.png" id="6_a7hp2"]
+[ext_resource type="Texture2D" uid="uid://dvyldik6p2dsa" path="res://sprites/map_parts12.png" id="6_w3gcy"]
+[ext_resource type="Texture2D" uid="uid://bsdvdc10im85j" path="res://sprites/map_parts3.png" id="7_38st0"]
+[ext_resource type="Texture2D" uid="uid://dx60rwgmfb1ct" path="res://sprites/map_parts13.png" id="7_c53fc"]
+[ext_resource type="Texture2D" uid="uid://bt0iaugrl4f56" path="res://sprites/map_parts4.png" id="8_gjig6"]
+[ext_resource type="Texture2D" uid="uid://c3b7au57oruaj" path="res://sprites/map_parts14.png" id="8_w10pk"]
+[ext_resource type="Texture2D" uid="uid://wbpyyu4m0nwe" path="res://sprites/map_parts15.png" id="9_tc6c5"]
+[ext_resource type="Texture2D" uid="uid://b1ybsd7o17raq" path="res://sprites/map_parts16.png" id="10_84wlt"]
+[ext_resource type="Texture2D" uid="uid://dfn4epuyxrqoa" path="res://sprites/map_parts5.png" id="14_mldj5"]
+[ext_resource type="Texture2D" uid="uid://dqfbhheb61b4m" path="res://sprites/map_parts6.png" id="15_2g1ms"]
+[ext_resource type="Texture2D" uid="uid://ca7r5y5js6wqk" path="res://sprites/map_parts7.png" id="16_sdful"]
+[ext_resource type="Texture2D" uid="uid://dnnnyurtr5xra" path="res://sprites/map_parts8.png" id="17_8h4dt"]
+[ext_resource type="Texture2D" uid="uid://nwf4uc4fndmp" path="res://sprites/map_parts9.png" id="18_ch3gj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6866m"]
 animations = [{
 "frames": [],
 "loop": true,
-"name": &"default",
+"name": &"0",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_qkrqb")
+"texture": ExtResource("3_fkevg")
 }],
 "loop": true,
-"name": &"on",
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_qr5xc")
+}],
+"loop": true,
+"name": &"10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_qnrp3")
+}],
+"loop": true,
+"name": &"11",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_w3gcy")
+}],
+"loop": true,
+"name": &"12",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_c53fc")
+}],
+"loop": true,
+"name": &"13",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_w10pk")
+}],
+"loop": true,
+"name": &"14",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_tc6c5")
+}],
+"loop": true,
+"name": &"15",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_84wlt")
+}],
+"loop": true,
+"name": &"16",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_a7hp2")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_38st0")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_gjig6")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_mldj5")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_2g1ms")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_sdful")
+}],
+"loop": true,
+"name": &"7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_8h4dt")
+}],
+"loop": true,
+"name": &"8",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_ch3gj")
+}],
+"loop": true,
+"name": &"9",
 "speed": 5.0
 }]
 
@@ -41,184 +177,155 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_vrvb2"]
-animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_qkrqb")
-}],
-"loop": true,
-"name": &"on",
-"speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_awygn"]
-animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_qkrqb")
-}],
-"loop": true,
-"name": &"on",
-"speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_rvxb4"]
-animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_qkrqb")
-}],
-"loop": true,
-"name": &"on",
-"speed": 5.0
-}]
-
 [node name="Map" type="Node2D"]
 script = ExtResource("1_gpqlg")
 
-[node name="Map" type="Sprite2D" parent="."]
-texture = ExtResource("1_kq1xd")
+[node name="Map2" type="Sprite2D" parent="."]
+texture = ExtResource("3_naoea")
 
 [node name="q1" type="AnimatedSprite2D" parent="."]
-position = Vector2(-25.5, -13.5)
 sprite_frames = SubResource("SpriteFrames_6866m")
+animation = &"0"
 
 [node name="prisoner" type="AnimatedSprite2D" parent="q1"]
 visible = false
-sprite_frames = SubResource("SpriteFrames_v65tv")
-
-[node name="q5" type="AnimatedSprite2D" parent="."]
-position = Vector2(-25.5, -4.5)
-sprite_frames = SubResource("SpriteFrames_vrvb2")
-
-[node name="prisoner" type="AnimatedSprite2D" parent="q5"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_v65tv")
-
-[node name="q9" type="AnimatedSprite2D" parent="."]
-position = Vector2(-25.5, 4.5)
-sprite_frames = SubResource("SpriteFrames_awygn")
-
-[node name="prisoner" type="AnimatedSprite2D" parent="q9"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_v65tv")
-
-[node name="q13" type="AnimatedSprite2D" parent="."]
-position = Vector2(-25.5, 13.5)
-sprite_frames = SubResource("SpriteFrames_awygn")
-
-[node name="prisoner" type="AnimatedSprite2D" parent="q13"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_v65tv")
-
-[node name="q14" type="AnimatedSprite2D" parent="."]
-position = Vector2(-8.5, 13.5)
-sprite_frames = SubResource("SpriteFrames_rvxb4")
-
-[node name="prisoner" type="AnimatedSprite2D" parent="q14"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_v65tv")
-
-[node name="q15" type="AnimatedSprite2D" parent="."]
-position = Vector2(8.5, 13.5)
-sprite_frames = SubResource("SpriteFrames_rvxb4")
-
-[node name="prisoner" type="AnimatedSprite2D" parent="q15"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_v65tv")
-
-[node name="q16" type="AnimatedSprite2D" parent="."]
-position = Vector2(25.5, 13.5)
-sprite_frames = SubResource("SpriteFrames_rvxb4")
-
-[node name="prisoner" type="AnimatedSprite2D" parent="q16"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_v65tv")
-
-[node name="q10" type="AnimatedSprite2D" parent="."]
-position = Vector2(-8.5, 4.5)
-sprite_frames = SubResource("SpriteFrames_rvxb4")
-
-[node name="prisoner" type="AnimatedSprite2D" parent="q10"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_v65tv")
-
-[node name="q11" type="AnimatedSprite2D" parent="."]
-position = Vector2(8.5, 4.5)
-sprite_frames = SubResource("SpriteFrames_rvxb4")
-
-[node name="prisoner" type="AnimatedSprite2D" parent="q11"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_v65tv")
-
-[node name="q12" type="AnimatedSprite2D" parent="."]
-position = Vector2(25.5, 4.5)
-sprite_frames = SubResource("SpriteFrames_rvxb4")
-
-[node name="prisoner" type="AnimatedSprite2D" parent="q12"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_v65tv")
-
-[node name="q6" type="AnimatedSprite2D" parent="."]
-position = Vector2(-8.5, -4.5)
-sprite_frames = SubResource("SpriteFrames_rvxb4")
-
-[node name="prisoner" type="AnimatedSprite2D" parent="q6"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_v65tv")
-
-[node name="q7" type="AnimatedSprite2D" parent="."]
-position = Vector2(8.5, -4.5)
-sprite_frames = SubResource("SpriteFrames_rvxb4")
-
-[node name="prisoner" type="AnimatedSprite2D" parent="q7"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_v65tv")
-
-[node name="q8" type="AnimatedSprite2D" parent="."]
-position = Vector2(25.5, -4.5)
-sprite_frames = SubResource("SpriteFrames_rvxb4")
-
-[node name="prisoner" type="AnimatedSprite2D" parent="q8"]
-visible = false
+position = Vector2(-28, -15)
 sprite_frames = SubResource("SpriteFrames_v65tv")
 
 [node name="q2" type="AnimatedSprite2D" parent="."]
-position = Vector2(-8.5, -13.5)
-sprite_frames = SubResource("SpriteFrames_rvxb4")
+sprite_frames = SubResource("SpriteFrames_6866m")
+animation = &"0"
 
 [node name="prisoner" type="AnimatedSprite2D" parent="q2"]
 visible = false
+position = Vector2(-8, -16)
 sprite_frames = SubResource("SpriteFrames_v65tv")
 
 [node name="q3" type="AnimatedSprite2D" parent="."]
-position = Vector2(8.5, -13.5)
-sprite_frames = SubResource("SpriteFrames_rvxb4")
+sprite_frames = SubResource("SpriteFrames_6866m")
+animation = &"0"
 
 [node name="prisoner" type="AnimatedSprite2D" parent="q3"]
 visible = false
+position = Vector2(9, -15)
 sprite_frames = SubResource("SpriteFrames_v65tv")
 
 [node name="q4" type="AnimatedSprite2D" parent="."]
-position = Vector2(25.5, -13.5)
-sprite_frames = SubResource("SpriteFrames_rvxb4")
+sprite_frames = SubResource("SpriteFrames_6866m")
+animation = &"0"
 
 [node name="prisoner" type="AnimatedSprite2D" parent="q4"]
 visible = false
+position = Vector2(29, -16)
 sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q5" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6866m")
+animation = &"0"
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q5"]
+visible = false
+position = Vector2(-28, -5)
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q6" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6866m")
+animation = &"0"
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q6"]
+visible = false
+position = Vector2(-9, -5)
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q7" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6866m")
+animation = &"0"
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q7"]
+visible = false
+position = Vector2(7, -5)
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q8" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6866m")
+animation = &"0"
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q8"]
+visible = false
+position = Vector2(28, -5)
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q9" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6866m")
+animation = &"0"
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q9"]
+visible = false
+position = Vector2(-28, 3)
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q10" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6866m")
+animation = &"0"
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q10"]
+visible = false
+position = Vector2(-12, 3)
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q11" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6866m")
+animation = &"0"
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q11"]
+visible = false
+position = Vector2(9, 4)
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q12" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6866m")
+animation = &"0"
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q12"]
+visible = false
+position = Vector2(27, 4)
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q13" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6866m")
+animation = &"0"
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q13"]
+visible = false
+position = Vector2(-28, 14)
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q14" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6866m")
+animation = &"0"
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q14"]
+visible = false
+position = Vector2(-8, 15)
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q15" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6866m")
+animation = &"0"
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q15"]
+visible = false
+position = Vector2(10, 15)
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="q16" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6866m")
+animation = &"0"
+
+[node name="prisoner" type="AnimatedSprite2D" parent="q16"]
+visible = false
+position = Vector2(28, 15)
+sprite_frames = SubResource("SpriteFrames_v65tv")
+
+[node name="Map" type="Sprite2D" parent="."]
+texture = ExtResource("2_q1thl")
