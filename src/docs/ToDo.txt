@@ -48,6 +48,7 @@ BUGS/Ajustes:
 
 
 Features:
+- En algunas tumbas, vamos a encontrar un objeto. Ese objeto es 3D y es una pieza de un objeto más grande que es como un rodillo con varias piezas giratorias. Al conseguir todas las piezas y armar el objeto grande, se puede obtener la password (es un QR) 
 - En el overworld, a la derecha hay un lago/río y solo podemos ir con la canoa
 - Terminales: se puede desactivar cosas para el final bueno (necesita password)
 - Cada terminal tiene sus propias variables asociadas
@@ -72,6 +73,7 @@ Features:
   . Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- POC del 3D
 - Hacer que la terminal y los cartelitos de los items aparezcan de forma tal que no quede una parte fuera de la cámara 
 - El radar te debe apuntar a la puerta unicamente
 - Implementar Zoom (binoculares) como perk
