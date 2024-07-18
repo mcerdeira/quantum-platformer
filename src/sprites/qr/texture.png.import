@@ -2,26 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3m4w8m7o2x0f"
-path="res://.godot/imported/teleporter_box.png-b3731dfeaa818e327588481d408d726e.ctex"
+uid="uid://bm4n46o0radkr"
+path.s3tc="res://.godot/imported/texture.png-50296981880810f49318d83120317cc8.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://sprites/teleporter_box.png"
-dest_files=["res://.godot/imported/teleporter_box.png-b3731dfeaa818e327588481d408d726e.ctex"]
+source_file="res://sprites/qr/texture.png"
+dest_files=["res://.godot/imported/texture.png-50296981880810f49318d83120317cc8.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

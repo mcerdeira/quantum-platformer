@@ -3,26 +3,25 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://clers23mxmah8"
-path.s3tc="res://.godot/imported/map_item.png-ae6f1aa1ef800f64d9fe083b82113c5c.s3tc.ctex"
+path="res://.godot/imported/map_item.png-ae6f1aa1ef800f64d9fe083b82113c5c.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://sprites/map_item.png"
-dest_files=["res://.godot/imported/map_item.png-ae6f1aa1ef800f64d9fe083b82113c5c.s3tc.ctex"]
+dest_files=["res://.godot/imported/map_item.png-ae6f1aa1ef800f64d9fe083b82113c5c.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

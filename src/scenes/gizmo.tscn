@@ -364,7 +364,7 @@ material = SubResource("ShaderMaterial_nlsrr")
 position = Vector2(0, 3)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_3r5gg")
-animation = &"smoke"
+animation = &"clone"
 offset = Vector2(0, -16)
 
 [node name="lbl_count" type="Label" parent="."]

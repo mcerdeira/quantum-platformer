@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3m4w8m7o2x0f"
-path="res://.godot/imported/teleporter_box.png-b3731dfeaa818e327588481d408d726e.ctex"
+uid="uid://vfqtds30qekn"
+path="res://.godot/imported/question_mark.png-c48aefcbcafd2b17c9089875ed431a1c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/teleporter_box.png"
-dest_files=["res://.godot/imported/teleporter_box.png-b3731dfeaa818e327588481d408d726e.ctex"]
+source_file="res://sprites/question_mark.png"
+dest_files=["res://.godot/imported/question_mark.png-c48aefcbcafd2b17c9089875ed431a1c.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
