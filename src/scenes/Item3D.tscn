@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cusnut7c2fjy3"]
 
-[ext_resource type="Texture2D" uid="uid://dlqtqqu2x001u" path="res://sprites/qr/pngwing.com.png" id="1_kx3o2"]
+[ext_resource type="Texture2D" uid="uid://bprwu2xhbkspj" path="res://sprites/qr/example.png" id="1_7v1ip"]
 [ext_resource type="Script" path="res://scenes/MeshInstance3D.gd" id="2_eadms"]
 
 [sub_resource type="Environment" id="Environment_r74ps"]
@@ -8,7 +8,7 @@
 [sub_resource type="BoxMesh" id="BoxMesh_hqefb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76bpf"]
-albedo_texture = ExtResource("1_kx3o2")
+albedo_texture = ExtResource("1_7v1ip")
 normal_scale = 13.29
 texture_filter = 0
 
@@ -24,7 +24,7 @@ current = true
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.98112, 0, -8.02818, 0, 5, 0, 4.01409, 0, -5.96224, 0, 0, 0)
+transform = Transform3D(-2.80319, 0, 8.2806, 0, 5, 0, -4.1403, 0, -5.60639, 0, 0, 0)
 mesh = SubResource("BoxMesh_hqefb")
 surface_material_override/0 = SubResource("StandardMaterial3D_76bpf")
 script = ExtResource("2_eadms")
