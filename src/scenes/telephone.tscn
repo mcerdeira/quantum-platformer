@@ -1,14 +1,14 @@
 [gd_scene load_steps=16 format=3 uid="uid://ddh78hbx6awk6"]
 
-[ext_resource type="Texture2D" uid="uid://by5hjga63ct0i" path="res://sprites/computer2.png" id="1_n8nc0"]
-[ext_resource type="Texture2D" uid="uid://cw0susl3lvh2x" path="res://sprites/computer1.png" id="2_rriwl"]
+[ext_resource type="Texture2D" uid="uid://bsax38kvmxu7" path="res://sprites/computer2.png" id="1_n8nc0"]
+[ext_resource type="Texture2D" uid="uid://ch7dpggaokml5" path="res://sprites/computer1.png" id="2_rriwl"]
 [ext_resource type="Script" path="res://scenes/telephone.gd" id="3_oguwn"]
-[ext_resource type="Texture2D" uid="uid://b7ol22to8q8xl" path="res://sprites/horu/images/pet3.png" id="7_qhf5i"]
-[ext_resource type="Texture2D" uid="uid://cjx4s0cgoqt00" path="res://sprites/horu/images/pet1.png" id="7_v1qgc"]
-[ext_resource type="Texture2D" uid="uid://x5lh83w8xqwo" path="res://sprites/horu/images/pet2.png" id="8_r5vts"]
+[ext_resource type="Texture2D" uid="uid://buyi5kind5agu" path="res://sprites/horu/images/pet3.png" id="7_qhf5i"]
+[ext_resource type="Texture2D" uid="uid://cykicgnhr3ojp" path="res://sprites/horu/images/pet1.png" id="7_v1qgc"]
+[ext_resource type="Texture2D" uid="uid://btxspjx88sugq" path="res://sprites/horu/images/pet2.png" id="8_r5vts"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="13_kvgbd"]
-[ext_resource type="Texture2D" uid="uid://da14xud8tdoj" path="res://sprites/arrows1.png" id="14_so8u7"]
-[ext_resource type="Texture2D" uid="uid://b74uo51q2y58i" path="res://sprites/arrows2.png" id="15_nd38w"]
+[ext_resource type="Texture2D" uid="uid://b3n7eech0mndx" path="res://sprites/arrows1.png" id="14_so8u7"]
+[ext_resource type="Texture2D" uid="uid://dkompgmyj4pmk" path="res://sprites/arrows2.png" id="15_nd38w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n3es1"]
 size = Vector2(52, 52)

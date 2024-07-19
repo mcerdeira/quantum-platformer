@@ -24,7 +24,7 @@ current = true
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.80319, 0, 8.2806, 0, 5, 0, -4.1403, 0, -5.60639, 0, 0, 0)
+transform = Transform3D(-5.60638, 0, 8.28061, 0, 1, 0, -8.28061, 0, -5.60638, 0, 0, 0)
 mesh = SubResource("BoxMesh_hqefb")
 surface_material_override/0 = SubResource("StandardMaterial3D_76bpf")
 script = ExtResource("2_eadms")

@@ -28,7 +28,7 @@ var smoke_bomb = {
 }
 var plant = {
 	"name": "plant",
-	"description": "Grows!",
+	"description": "It grows!",
 	"has_action": true,
 	"pasive": false,
 	"full_scale": true,
@@ -63,14 +63,14 @@ var bomb = {
 }
 var radar = {
 	"name": "radar",
-	"description": "Shows an arrow pointing to the exit door. Press 'R' to access it.",
+	"description": "Points to the exit door. Press 'R' to access it.",
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
 }
 var map = {
 	"name": "map",
-	"description": "Where is everybody? Press 'M' to access it.",
+	"description": "Press 'M' to access it.",
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
@@ -411,10 +411,6 @@ func init():
 	prisoner_total = 0
 	map_obj = null
 	var gunz_objs = []
-	#gunz_objs.append(invisibility)
-	#gunz_objs.append(radar)
-	#gunz_objs.append(map)
-	#gunz_objs.append(double_jump)
 	
 	gunz_objs.append(clone)
 	gunz_objs.append(teleport)
@@ -435,7 +431,7 @@ func init():
 	
 	#DEBUG
 	#slots_stock = [2, 0]
-	#gunz_equiped[0] = smoke_bomb
+	#gunz_equiped[0] = plant
 	
 	randomize()
 	

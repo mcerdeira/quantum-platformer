@@ -1,19 +1,19 @@
 [gd_scene load_steps=21 format=3 uid="uid://co7t0ic7dgox4"]
 
 [ext_resource type="Script" path="res://scenes/prisoner.gd" id="1_e8vj3"]
-[ext_resource type="Texture2D" uid="uid://ctroayhe6261e" path="res://sprites/horu/images/player_prisoner_fire_spr_0.png" id="2_42st0"]
-[ext_resource type="Texture2D" uid="uid://r8s3b3bt40bi" path="res://sprites/horu/images/player_prisoner_dead_spr_0.png" id="2_nndgd"]
-[ext_resource type="Texture2D" uid="uid://dc5iy4hnblrha" path="res://sprites/sleepy_trap_0.png" id="4_n5scw"]
-[ext_resource type="Texture2D" uid="uid://hjpwcw0pt63u" path="res://sprites/horu/images/prisoner1_stunned.png" id="5_gd5h8"]
-[ext_resource type="Texture2D" uid="uid://cghefrirh1r18" path="res://sprites/sleepy_trap_1.png" id="5_wpxcc"]
-[ext_resource type="Texture2D" uid="uid://bs35paxf142ou" path="res://sprites/sleepy_trap_2.png" id="6_n6gfv"]
-[ext_resource type="Texture2D" uid="uid://sv2im6rwbta0" path="res://sprites/horu/images/prisoner1.png" id="6_u7wjf"]
-[ext_resource type="Texture2D" uid="uid://bawmfkawksem7" path="res://sprites/horu/images/prisoner2.png" id="10_4resd"]
+[ext_resource type="Texture2D" uid="uid://f4cqdxodmt74" path="res://sprites/horu/images/player_prisoner_fire_spr_0.png" id="2_42st0"]
+[ext_resource type="Texture2D" uid="uid://befkupx1pjfhj" path="res://sprites/horu/images/player_prisoner_dead_spr_0.png" id="2_nndgd"]
+[ext_resource type="Texture2D" uid="uid://cjfk1120ldllh" path="res://sprites/sleepy_trap_0.png" id="4_n5scw"]
+[ext_resource type="Texture2D" uid="uid://chkuprvhuj83f" path="res://sprites/horu/images/prisoner1_stunned.png" id="5_gd5h8"]
+[ext_resource type="Texture2D" uid="uid://kd7pxwwkplin" path="res://sprites/sleepy_trap_1.png" id="5_wpxcc"]
+[ext_resource type="Texture2D" uid="uid://b0gexhvekbt6j" path="res://sprites/sleepy_trap_2.png" id="6_n6gfv"]
+[ext_resource type="Texture2D" uid="uid://c0h8avoardet5" path="res://sprites/horu/images/prisoner1.png" id="6_u7wjf"]
+[ext_resource type="Texture2D" uid="uid://cpjy1h50de0nb" path="res://sprites/horu/images/prisoner2.png" id="10_4resd"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="10_s4hmp"]
-[ext_resource type="Texture2D" uid="uid://d1i1y774yooqs" path="res://sprites/horu/images/stars1.png" id="10_x7mk8"]
-[ext_resource type="Texture2D" uid="uid://cjmf5vd58ejs0" path="res://sprites/horu/images/stars2.png" id="11_8qxkh"]
-[ext_resource type="Texture2D" uid="uid://cjafyn04oalj1" path="res://sprites/horu/images/prisoner3.png" id="11_u3fe3"]
-[ext_resource type="Texture2D" uid="uid://bcu5xp5vhu8p8" path="res://sprites/horu/images/stars3.png" id="12_uifnd"]
+[ext_resource type="Texture2D" uid="uid://capc1hdlw0gpl" path="res://sprites/horu/images/stars1.png" id="10_x7mk8"]
+[ext_resource type="Texture2D" uid="uid://caxf4k5okg3cr" path="res://sprites/horu/images/stars2.png" id="11_8qxkh"]
+[ext_resource type="Texture2D" uid="uid://sg4lts8inuoj" path="res://sprites/horu/images/prisoner3.png" id="11_u3fe3"]
+[ext_resource type="Texture2D" uid="uid://bpaljgkr5iu14" path="res://sprites/horu/images/stars3.png" id="12_uifnd"]
 [ext_resource type="Script" path="res://scenes/stairs_test.gd" id="15_lsw7a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ssvs2"]
@@ -102,7 +102,7 @@ animations = [{
 size = Vector2(17, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjttf"]
-size = Vector2(26, 31)
+size = Vector2(2, 32)
 
 [node name="Prisoner" type="CharacterBody2D"]
 collision_layer = 9
@@ -146,13 +146,11 @@ position = Vector2(0.5, 14.5)
 shape = SubResource("RectangleShape2D_vb36x")
 
 [node name="stairs_test" type="Area2D" parent="."]
-visible = false
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("15_lsw7a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stairs_test"]
-position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_rjttf")
 
 [connection signal="body_entered" from="trapped_area" to="." method="_on_trapped_area_body_entered"]

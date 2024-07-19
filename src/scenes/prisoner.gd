@@ -38,6 +38,7 @@ var ttl_stop_total = 25
 var ttl_stop_total2 = 10
 var ttl_stop = Global.pick_random([ttl_stop_total, ttl_stop_total2])
 var stoped = false
+var stairdetect_ttl = 1
 
 func _ready():
 	add_to_group("players")
@@ -146,12 +147,21 @@ func process_player(delta):
 		ttl_stop -= 1 * delta
 		if ttl_stop <= 0:
 			if stoped:
-				direction = Global.pick_random(["right", "left"])
+				if randi() % 4 == 0:
+					direction = Global.pick_random(["right", "left"])
 			ttl_stop =  Global.pick_random([ttl_stop_total, ttl_stop_total2])
 			stoped = !stoped
+			if is_on_stairs and is_on_plant_stair and stoped:
+				stoped = true 
 		
 		if !stoped:
 			if is_on_stairs and is_on_plant_stair:
+				if stairdetect_ttl > 0:
+					stairdetect_ttl -= 1 * delta 
+			
+			if is_on_stairs and is_on_plant_stair and stairdetect_ttl <= 0:
+				if !grabbed:
+					ttl_stop = Global.pick_random([4.5, 3])
 				moving = true
 				grabbed = true 
 				idle_time = 0
@@ -255,5 +265,6 @@ func super_jump():
 
 func _on_trapped_area_body_entered(body):
 	if body.is_in_group("players"):
+		direction = Global.pick_random(["right", "left"])
 		liberating = 2.0
 		initial_pos = body.global_position

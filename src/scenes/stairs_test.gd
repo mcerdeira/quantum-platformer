@@ -9,9 +9,9 @@ func _process(delta):
 	for a in areas:
 		if a.is_in_group("stairs"):
 			parent.is_on_stairs = true
-			return
-		if a.is_in_group("plant_stair"):
-			parent.is_on_plant_stair = true
+			if a.is_in_group("plant_stair"):
+				parent.is_on_plant_stair = true
+				
 			return
 			
 	parent.is_on_plant_stair = false

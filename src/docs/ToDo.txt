@@ -33,13 +33,6 @@
 ==================================================================================================================
 
 IN_PROGRESS:
-- Terminar de hacer las donaciones que te digan que items desbloqueaste (sumar una barrita o similar para mostrar el nivel actual de donaciones)
-- Prisioneros: si los liberas te agradecen y quedan ahi dando vueltas por el lugar: caminando de izquierda a derecha, parando cada tanto, no se caen 
-   por los bordes. Si algun peligro los mata, se vuelven fantasmas.   
-  . Pueden morir y volver como fantasmas (dificultando el nivel y el boss fight)
-  . Cuantos mas prisioneros vivos logramos es mejor para la boss fight
-  . No te siguen mas, pero si les ponemos la plantita, se suben y quedan arriba de todo bastante protegidos
-
 - SFX
 - Musica
 
@@ -48,8 +41,10 @@ BUGS/Ajustes:
 
 
 Features:
-- En algunas tumbas, vamos a encontrar un objeto. Ese objeto es 3D y es una pieza de un objeto más grande que es como un rodillo con varias piezas giratorias. Al conseguir todas las piezas y armar el objeto grande, se puede obtener la password (es un QR) 
-- En el overworld, a la derecha hay un lago/río y solo podemos ir con la canoa
+- Armar items 3D que se puede girar en todas las direcciones con una porción del QR, algun titulo y forma de cerrarlo
+- Logica para que haya chances de tocarnos el item 3D 
+- Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR
+
 - Terminales: se puede desactivar cosas para el final bueno (necesita password)
 - Cada terminal tiene sus propias variables asociadas
 - Hay un item super raro, con muy bajo rate de aparición que no sirve para nada
@@ -73,6 +68,14 @@ Features:
   . Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- Prisioneros: si los liberas te agradecen y quedan ahi dando vueltas por el lugar: caminando de izquierda a derecha, parando cada 
+  tanto, no se caen por los bordes. Si algun peligro los mata, se vuelven fantasmas.   
+  . Pueden morir y volver como fantasmas (dificultando el nivel y el boss fight)
+  . Cuantos mas prisioneros vivos logramos es mejor para la boss fight
+  . No te siguen mas, pero si les ponemos la plantita, se suben y quedan arriba de todo bastante protegidos
+- Terminar de hacer las donaciones que te digan que items desbloqueaste (sumar una barrita o similar para mostrar el nivel actual 
+  de donaciones)
+- En el overworld, a la derecha hay un lago/río y solo podemos ir con la canoa
 - POC del 3D
 - Hacer que la terminal y los cartelitos de los items aparezcan de forma tal que no quede una parte fuera de la cámara 
 - El radar te debe apuntar a la puerta unicamente

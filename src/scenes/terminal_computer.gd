@@ -310,7 +310,7 @@ func parser(_cmd):
 				
 				var result = Global.donate(param1)
 				if result != null:
-					current_message = "TRANSACTION DONE"
+					current_message = "TRANSACTION DONE\n"
 					current_message += calc_progress() + "\n"
 					current_line += 2
 					if result != Global.perks_equiped:

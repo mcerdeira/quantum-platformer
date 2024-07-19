@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctgutvser0wq3"
+uid="uid://dtccd8i2ldgvb"
 path="res://.godot/imported/ice_cube_spr_0.png-ded784f153ca14ddab4cd038e3aa08b2.ctex"
 metadata={
 "vram_texture": false
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

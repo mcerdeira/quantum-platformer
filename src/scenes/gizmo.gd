@@ -185,7 +185,6 @@ func explode():
 		$explosion_mini/collider.set_deferred("disabled", false)
 		$explosion_mini/collider2.set_deferred("disabled", false)
 		$explosion_mini/collider3.set_deferred("disabled", false)
-		
 		explosion_delay = 1.2
 		$explosions.explode()
 
@@ -209,7 +208,7 @@ func _on_area_body_entered(body):
 			elif current_item.name == "smoke":
 				visible = false
 			
-		if body and body.is_in_group("players"):
+		if body and body.is_in_group("players") and !body.is_in_group("prisoners"):
 			Global.emit(global_position, 1)
 			Global.get_item(current_item)
 			queue_free()
