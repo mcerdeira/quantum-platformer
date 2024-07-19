@@ -68,6 +68,7 @@ Features:
   . Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- Armar el artefacto en el overworld
 - Prisioneros: si los liberas te agradecen y quedan ahi dando vueltas por el lugar: caminando de izquierda a derecha, parando cada 
   tanto, no se caen por los bordes. Si algun peligro los mata, se vuelven fantasmas.   
   . Pueden morir y volver como fantasmas (dificultando el nivel y el boss fight)

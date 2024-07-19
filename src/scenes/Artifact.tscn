@@ -1,0 +1,224 @@
+[gd_scene load_steps=25 format=3 uid="uid://c30c81wrrb650"]
+
+[ext_resource type="Script" path="res://scenes/Artifact.gd" id="1_kw1kc"]
+[ext_resource type="Texture2D" uid="uid://cgpb467kik2wx" path="res://sprites/artifact.png" id="2_uvc2b"]
+[ext_resource type="Shader" path="res://scenes/Item.gdshader" id="6_1o2ag"]
+[ext_resource type="Texture2D" uid="uid://cog7sk80ykf4o" path="res://sprites/bomb.png" id="7_dpdhf"]
+[ext_resource type="Texture2D" uid="uid://cwjka3w6mxat3" path="res://sprites/slots.png" id="8_6gr44"]
+[ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="8_e212i"]
+[ext_resource type="Texture2D" uid="uid://c6gf7vjf30biq" path="res://sprites/coin.png" id="9_hqs1v"]
+[ext_resource type="Texture2D" uid="uid://bljcg74u2x5sd" path="res://sprites/invisibility.png" id="10_l38pi"]
+[ext_resource type="Texture2D" uid="uid://b3tca6epdaoix" path="res://sprites/rock.png" id="11_063ln"]
+[ext_resource type="Texture2D" uid="uid://df545tsy68qs1" path="res://sprites/growing_plant.png" id="12_dl3gu"]
+[ext_resource type="Texture2D" uid="uid://pm7mhxqnqxtq" path="res://sprites/radar.png" id="13_83s8u"]
+[ext_resource type="Texture2D" uid="uid://mpqlvpcht35a" path="res://sprites/simul_box.png" id="14_jx6lu"]
+[ext_resource type="Texture2D" uid="uid://trxeowv3jmbb" path="res://sprites/smoke_bomb.png" id="15_rp4la"]
+[ext_resource type="Texture2D" uid="uid://csp0ardyjl54b" path="res://sprites/spring.png" id="16_536k3"]
+[ext_resource type="Texture2D" uid="uid://c3wmt7870xukn" path="res://sprites/teleporter_box.png" id="17_15gm1"]
+[ext_resource type="Texture2D" uid="uid://cjg71ls267rbj" path="res://sprites/question_mark.png" id="18_7mrj4"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="19_i0cif"]
+[ext_resource type="Texture2D" uid="uid://b3n7eech0mndx" path="res://sprites/arrows1.png" id="20_sg32k"]
+[ext_resource type="Texture2D" uid="uid://dkompgmyj4pmk" path="res://sprites/arrows2.png" id="21_1catj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evds0"]
+size = Vector2(31, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f8jax"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_uvc2b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5125a"]
+resource_local_to_scene = true
+shader = ExtResource("6_1o2ag")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 3.0
+shader_parameter/shine_size = 0.01
+shader_parameter/white = null
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o1tye"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_dpdhf")
+}],
+"loop": true,
+"name": &"bomb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_e212i")
+}],
+"loop": true,
+"name": &"clone",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_hqs1v")
+}],
+"loop": true,
+"name": &"coin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_l38pi")
+}],
+"loop": true,
+"name": &"invisibility",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_6gr44")
+}],
+"loop": true,
+"name": &"monolith",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_063ln")
+}],
+"loop": true,
+"name": &"muffin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_dl3gu")
+}],
+"loop": true,
+"name": &"plant",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_83s8u")
+}],
+"loop": true,
+"name": &"radar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_jx6lu")
+}],
+"loop": true,
+"name": &"simul",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_rp4la")
+}],
+"loop": true,
+"name": &"smoke",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_536k3")
+}],
+"loop": true,
+"name": &"spring",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_15gm1")
+}],
+"loop": true,
+"name": &"teleport",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_7mrj4")
+}],
+"loop": true,
+"name": &"unknown",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fbffi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_sg32k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_1catj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Artifact" type="Area2D"]
+script = ExtResource("1_kw1kc")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -5)
+shape = SubResource("RectangleShape2D_evds0")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -55)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_f8jax")
+offset = Vector2(0, -11)
+
+[node name="display" type="Node2D" parent="."]
+position = Vector2(0, -87)
+
+[node name="back2" type="ColorRect" parent="display"]
+z_index = 4096
+offset_left = -295.0
+offset_top = -118.0
+offset_right = 255.0
+offset_bottom = -39.0
+metadata/_edit_use_anchors_ = true
+
+[node name="back" type="ColorRect" parent="display"]
+z_index = 4096
+offset_left = -294.0
+offset_top = -117.0
+offset_right = 254.0
+offset_bottom = -40.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="sprite" type="AnimatedSprite2D" parent="display/back"]
+material = SubResource("ShaderMaterial_5125a")
+position = Vector2(45, 61)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_o1tye")
+animation = &"unknown"
+offset = Vector2(0, -16)
+
+[node name="lbl_item" type="Label" parent="display/back"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 2.0
+offset_right = 494.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("19_i0cif")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="arrows" type="AnimatedSprite2D" parent="display/back"]
+position = Vector2(520, 39)
+sprite_frames = SubResource("SpriteFrames_fbffi")
+autoplay = "default"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

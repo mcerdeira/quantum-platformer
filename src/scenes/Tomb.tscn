@@ -1,26 +1,26 @@
 [gd_scene load_steps=27 format=3 uid="uid://q5jba1wlplcx"]
 
-[ext_resource type="Texture2D" uid="uid://cueiw2bufrutu" path="res://sprites/gravestone_spr_0.png" id="1_16odb"]
+[ext_resource type="Texture2D" uid="uid://cwiafy02tr7dy" path="res://sprites/gravestone_spr_0.png" id="1_16odb"]
 [ext_resource type="Script" path="res://scenes/Tomb.gd" id="1_onnxa"]
-[ext_resource type="Texture2D" uid="uid://bhubq2fubf5me" path="res://sprites/gravestone_spr_1.png" id="2_a0p5i"]
-[ext_resource type="Texture2D" uid="uid://bh2oel655m4f3" path="res://sprites/gravestone_spr_3.png" id="4_wmt0x"]
-[ext_resource type="Texture2D" uid="uid://dy7n6ejvjptba" path="res://sprites/gravestone_spr_4.png" id="5_4gq4g"]
+[ext_resource type="Texture2D" uid="uid://bmjy1jkwima0m" path="res://sprites/gravestone_spr_1.png" id="2_a0p5i"]
+[ext_resource type="Texture2D" uid="uid://dp75s2t7pnhpr" path="res://sprites/gravestone_spr_3.png" id="4_wmt0x"]
+[ext_resource type="Texture2D" uid="uid://b1sq8wju3n8o0" path="res://sprites/gravestone_spr_4.png" id="5_4gq4g"]
 [ext_resource type="Shader" path="res://scenes/Item.gdshader" id="6_dniun"]
-[ext_resource type="Texture2D" uid="uid://cmahogbn2aqwr" path="res://sprites/bomb.png" id="7_8cckg"]
-[ext_resource type="Texture2D" uid="uid://dbh84l3hbge3s" path="res://sprites/box.png" id="8_udsty"]
-[ext_resource type="Texture2D" uid="uid://byvh241kbwlen" path="res://sprites/coin.png" id="9_xlkwx"]
-[ext_resource type="Texture2D" uid="uid://dxbkc1lh5f3bx" path="res://sprites/invisibility.png" id="10_ljxx5"]
-[ext_resource type="Texture2D" uid="uid://di4olx4un0owh" path="res://sprites/rock.png" id="11_ftxux"]
-[ext_resource type="Texture2D" uid="uid://munfls4yrggx" path="res://sprites/growing_plant.png" id="12_2oy25"]
-[ext_resource type="Texture2D" uid="uid://d0ggyyulssgq5" path="res://sprites/radar.png" id="13_xlhu5"]
-[ext_resource type="Texture2D" uid="uid://c23s3u7g3bdtm" path="res://sprites/simul_box.png" id="14_17744"]
-[ext_resource type="Texture2D" uid="uid://c7v26dk2ya7hd" path="res://sprites/smoke_bomb.png" id="15_tyk71"]
-[ext_resource type="Texture2D" uid="uid://de1vyj25jt0t3" path="res://sprites/spring.png" id="16_novat"]
-[ext_resource type="Texture2D" uid="uid://d3m4w8m7o2x0f" path="res://sprites/teleporter_box.png" id="17_87skl"]
+[ext_resource type="Texture2D" uid="uid://cog7sk80ykf4o" path="res://sprites/bomb.png" id="7_8cckg"]
+[ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="8_udsty"]
+[ext_resource type="Texture2D" uid="uid://c6gf7vjf30biq" path="res://sprites/coin.png" id="9_xlkwx"]
+[ext_resource type="Texture2D" uid="uid://bljcg74u2x5sd" path="res://sprites/invisibility.png" id="10_ljxx5"]
+[ext_resource type="Texture2D" uid="uid://b3tca6epdaoix" path="res://sprites/rock.png" id="11_ftxux"]
+[ext_resource type="Texture2D" uid="uid://df545tsy68qs1" path="res://sprites/growing_plant.png" id="12_2oy25"]
+[ext_resource type="Texture2D" uid="uid://pm7mhxqnqxtq" path="res://sprites/radar.png" id="13_xlhu5"]
+[ext_resource type="Texture2D" uid="uid://mpqlvpcht35a" path="res://sprites/simul_box.png" id="14_17744"]
+[ext_resource type="Texture2D" uid="uid://trxeowv3jmbb" path="res://sprites/smoke_bomb.png" id="15_tyk71"]
+[ext_resource type="Texture2D" uid="uid://csp0ardyjl54b" path="res://sprites/spring.png" id="16_novat"]
+[ext_resource type="Texture2D" uid="uid://c3wmt7870xukn" path="res://sprites/teleporter_box.png" id="17_87skl"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="18_lmm28"]
-[ext_resource type="Texture2D" uid="uid://vfqtds30qekn" path="res://sprites/question_mark.png" id="18_ne0n8"]
-[ext_resource type="Texture2D" uid="uid://da14xud8tdoj" path="res://sprites/arrows1.png" id="19_xl1wy"]
-[ext_resource type="Texture2D" uid="uid://b74uo51q2y58i" path="res://sprites/arrows2.png" id="20_vjs6a"]
+[ext_resource type="Texture2D" uid="uid://cjg71ls267rbj" path="res://sprites/question_mark.png" id="18_ne0n8"]
+[ext_resource type="Texture2D" uid="uid://b3n7eech0mndx" path="res://sprites/arrows1.png" id="19_xl1wy"]
+[ext_resource type="Texture2D" uid="uid://dkompgmyj4pmk" path="res://sprites/arrows2.png" id="20_vjs6a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evds0"]
 size = Vector2(31, 10)
@@ -213,7 +213,7 @@ offset_top = 2.0
 offset_right = 508.0
 offset_bottom = 64.0
 theme_override_fonts/font = ExtResource("18_lmm28")
-text = "==GRAVESTONE==
+text = "== GRAVESTONE ==
 EXAMINE?"
 horizontal_alignment = 1
 vertical_alignment = 1

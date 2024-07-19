@@ -1,21 +1,22 @@
-[gd_scene load_steps=27 format=3 uid="uid://owqspaw5kj07"]
+[gd_scene load_steps=28 format=3 uid="uid://owqspaw5kj07"]
 
-[ext_resource type="Texture2D" uid="uid://djs78nqy60b6t" path="res://sprites/floor_spr_2.png" id="1_aus13"]
-[ext_resource type="Texture2D" uid="uid://6e6u7tx8wpp5" path="res://sprites/stair.png" id="2_omadn"]
-[ext_resource type="Texture2D" uid="uid://c2cg0s26dklew" path="res://sprites/floor_spr_blasted.png" id="3_2o0w1"]
-[ext_resource type="Texture2D" uid="uid://bk3kd8e8ysnn1" path="res://sprites/fireball_box.png" id="4_draje"]
-[ext_resource type="Texture2D" uid="uid://dm1ktaigtofob" path="res://sprites/vines.png" id="5_m48kl"]
-[ext_resource type="Texture2D" uid="uid://dlrd4jtu7hugv" path="res://sprites/water1-sheet.png" id="6_636ql"]
+[ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="1_aus13"]
+[ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_omadn"]
+[ext_resource type="Texture2D" uid="uid://bx06swrbyq4p3" path="res://sprites/floor_spr_blasted.png" id="3_2o0w1"]
+[ext_resource type="Texture2D" uid="uid://cvgek1xj28trv" path="res://sprites/fireball_box.png" id="4_draje"]
+[ext_resource type="Texture2D" uid="uid://dw02vd8s8wsrw" path="res://sprites/vines.png" id="5_m48kl"]
+[ext_resource type="Texture2D" uid="uid://cucuujbtynsrv" path="res://sprites/water1-sheet.png" id="6_636ql"]
 [ext_resource type="Script" path="res://scenes/levels/room.gd" id="6_h8iqh"]
-[ext_resource type="Texture2D" uid="uid://d4c7vtq3agr88" path="res://sprites/vines_burn.png" id="7_kaylp"]
+[ext_resource type="Texture2D" uid="uid://dpcrtwqa2mio7" path="res://sprites/vines_burn.png" id="7_kaylp"]
 [ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="8_vk4ef"]
 [ext_resource type="PackedScene" uid="uid://q767q018lep8" path="res://scenes/exit_door.tscn" id="9_hgtxn"]
 [ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="10_y3x5j"]
 [ext_resource type="PackedScene" uid="uid://c2hr571lqpqmf" path="res://scenes/Fireball_holder.tscn" id="11_0ulxh"]
 [ext_resource type="PackedScene" uid="uid://ba5hq2bchhv8x" path="res://scenes/Plants.tscn" id="12_01ouc"]
 [ext_resource type="PackedScene" uid="uid://1bt2t2jgbtos" path="res://scenes/terminal_computer.tscn" id="13_56lm4"]
-[ext_resource type="Texture2D" uid="uid://4tvp45kmwfh1" path="res://sprites/horu/images/light.png" id="15_tbb2n"]
+[ext_resource type="Texture2D" uid="uid://xqd6pmw2bxyy" path="res://sprites/horu/images/light.png" id="15_tbb2n"]
 [ext_resource type="PackedScene" uid="uid://vhwoh2cbshha" path="res://scenes/water.tscn" id="16_llciw"]
+[ext_resource type="PackedScene" uid="uid://c30c81wrrb650" path="res://scenes/Artifact.tscn" id="17_hfakf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
 texture = ExtResource("1_aus13")
@@ -347,6 +348,18 @@ position = Vector2(252, 640)
 scale = Vector2(3, 3)
 fixed = true
 
+[node name="PlantGroup9" type="Node2D" parent="."]
+position = Vector2(1700, -56)
+
+[node name="Plants2" parent="PlantGroup9" instance=ExtResource("12_01ouc")]
+position = Vector2(192, 632)
+fixed = true
+
+[node name="Plants3" parent="PlantGroup9" instance=ExtResource("12_01ouc")]
+position = Vector2(156, 632)
+scale = Vector2(3, 3)
+fixed = true
+
 [node name="TerminalComputer" parent="." node_paths=PackedStringArray("InfoPosition") instance=ExtResource("13_56lm4")]
 position = Vector2(1634, 597)
 terminal_number = 0
@@ -374,3 +387,6 @@ texture = ExtResource("15_tbb2n")
 
 [node name="water" parent="." instance=ExtResource("16_llciw")]
 position = Vector2(1930, 657)
+
+[node name="Artifact" parent="." instance=ExtResource("17_hfakf")]
+position = Vector2(1872, 576)
