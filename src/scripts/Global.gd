@@ -170,28 +170,28 @@ var Terminals = [
 		"description" : "The Leaf   ",
 		"status": true,
 		"prisoners": 5,
-		"variable" : {"LASERS": true}
+		"variable" : {"LASERS": false}
 	},
 	{
 		"name": "The Tomb   ",
 		"description" : "The Tomb   ",
 		"status": false,
 		"prisoners": 5,
-		"variable" : {"GHOSTS": true}
+		"variable" : {"GHOSTS": false}
 	},
 	{
 		"name": "The Mermaid",
 		"description" : "The Mermaid   ",
 		"status": false,
 		"prisoners": 7,
-		"variable" : {"WATERFALLS": true}
+		"variable" : {"WATERFALLS": false}
 	},
 	{
 		"name": "The Dragon ",
 		"description" : "The Dragon   ",
 		"status": false,
 		"prisoners": 7,
-		"variable" : {"FIREBALLS": true}
+		"variable" : {"FIREBALLS": false}
 	},
 	{
 		"name": "The S3r4ph ",

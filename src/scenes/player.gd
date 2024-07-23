@@ -71,7 +71,7 @@ func _ready():
 	$sprite.animation = "idle"
 	$sprite_eyes.animation = $sprite.animation
 	
-	$gun_sprite.visible = false
+	#$gun_sprite.visible = true
 	$gun_sprite.rotation = initial_rotation
 	$Cosito.play()
 	$Cosito.visible = false
@@ -292,7 +292,7 @@ func process_player(delta):
 				shoot(delta)
 				Global.remove_item()
 				await get_tree().create_timer(0.3).timeout
-				$gun_sprite.visible = false
+				#$gun_sprite.visible = true
 		
 	if !dead and shoot_mode:
 		if Input.is_action_pressed("left"):
@@ -434,7 +434,7 @@ func check_shake(current_time):
 func shoot(_delta):
 	if !dead:
 		if !Global.gunz_equiped[Global.gunz_index].pasive:
-			var pos = $gun_sprite/mark.global_position
+			var pos = $Line2D.global_position
 			var p = gizmo.instantiate()
 			var parent = get_parent()
 			p.global_position = pos

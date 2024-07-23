@@ -315,6 +315,7 @@ position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_18lep")
 
 [node name="gun_sprite" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(0, -14)
 rotation = -0.785398
 sprite_frames = SubResource("SpriteFrames_4fvku")
@@ -346,16 +347,17 @@ position_smoothing_enabled = true
 visible = false
 position = Vector2(0, -74)
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="Line2D" type="Line2D" parent="." node_paths=PackedStringArray("mark")]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_m4ack")
 use_parent_material = true
 position = Vector2(0.999998, -23)
-points = PackedVector2Array(0, 0)
 width = 5.0
 texture = ExtResource("13_h7iaa")
 texture_mode = 1
+joint_mode = 2
 script = ExtResource("14_w3c12")
+mark = NodePath("../gun_sprite/mark")
 
 [node name="GizmoFake" parent="Line2D" instance=ExtResource("16_cdixk")]
 

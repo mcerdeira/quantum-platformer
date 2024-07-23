@@ -22,6 +22,7 @@ var terminal_commands_with_help = [
 	[
 		"BUY <ITEM> <QUANTITY>",
 		"DONATE <QUANTITY>",
+		"STATUS",
 		"GAME",
 		"HELP",
 		"LIST",
@@ -71,6 +72,7 @@ var terminal_commands = [
 	[
 		"BUY",
 		"DONATE",
+		"STATUS",
 		"GAME",
 		"HELP",
 		"LIST",
@@ -146,7 +148,7 @@ func _physics_process(delta):
 				$display/back.visible = false
 				$display/back/arrows.visible = false
 				$display/Terminal.visible = true
-				current_message = "WELCOME TO GROTTO TERMINAL #" + str(terminal_number) + " " + Global.Terminals[terminal_number].name + "\nREADY"
+				current_message = "WELCOME TO GROTTO TERMINAL #" + str(terminal_number) + " " + Global.Terminals[terminal_number].name.strip_edges() + "# \nREADY"
 				Global.player_obj.terminal_mode = true
 				Global.player_obj.visible = false
 			
@@ -238,6 +240,9 @@ func parser(_cmd):
 					current_message = "MAKES A G-COIN DONATION FOR THE CAUSE\n"
 					current_message += "USAGE DONATE <QUANTITY>\n"
 					current_line += 2
+				elif param1 == "STATUS":
+					current_message = "SHOWS CURRENT DONATIONS STATUS\n"
+					current_line += 2
 				elif param1 == "GAME":
 					current_message = "LAUNCHS A GAME TO PASS TIME\n"
 					current_line += 1
@@ -324,7 +329,7 @@ func parser(_cmd):
 									current_line += 2
 					
 					current_message +=  "\nREADY\n"
-					current_line += 1
+					current_line += 2
 				else:
 					current_message = "ERROR: NOT ENOUGH G-COINS\nREADY"
 					current_line += 2
@@ -332,6 +337,11 @@ func parser(_cmd):
 	elif found != -1 and _cmd == "CLEAR":
 		CMD.text = ""
 		current_line = 0 
+	elif found != -1 and _cmd == "STATUS":
+		current_message += calc_progress() + "\n"
+		current_line += 1
+		current_message +=  "READY\n"
+		current_line += 2
 	elif found != -1 and _cmd == "GAME":
 		current_message = "STARTING..."
 		current_line += 1
@@ -347,7 +357,7 @@ func parser(_cmd):
 		var commands = ""
 		var lines = 0
 		for i in range(Global.Terminals.size()):
-			commands += "#" + str(i) + " " + Global.Terminals[i].name + " | STATUS: " + trad_state(Global.Terminals[i].status) + "\n"
+			commands += "#" + str(i) + " " + Global.Terminals[i].name + "# | STATUS: " + trad_state(Global.Terminals[i].status) + "\n"
 			lines += 1
 			var vars = trad_vars(Global.Terminals[i].variable)
 			if vars != "":

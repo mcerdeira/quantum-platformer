@@ -1,5 +1,6 @@
 extends  Line2D
 var gravity = 1000.0
+@export var mark : Marker2D
 
 func update_trayectory(direction, delta):
 	var char_g = $GizmoFake

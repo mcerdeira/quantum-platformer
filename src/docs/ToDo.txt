@@ -22,7 +22,7 @@
   5 - The Seraph (secret)
 
 - Secretos:
-  . 3 finales: malo: los niveles y chau, bueno: hay que apagar las terminales y esta la zona y boss final y secreto:???? 
+  . 3 finales: malo: los niveles y chau, bueno: hay que prender las terminales y esta la zona y boss final y secreto:???? 
   . Ver Lifo y el QR 
   . Hay terminales en los niveles que no vamos a saber para que son. En cada una podemos apagar variables. 
     Luego, al desbloquear la fase final, vemos que hay un sector al que no podemos ir por lasers y otros (relacionados con la variable), 
@@ -45,10 +45,9 @@ Features:
 - Logica para que haya chances de tocarnos el item 3D 
 - Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR
 
-- Terminales: se puede desactivar cosas para el final bueno (necesita password)
+- Terminales: se puede activar cosas para el final bueno (necesita password)
 - Cada terminal tiene sus propias variables asociadas
 - Hay un item super raro, con muy bajo rate de aparición que no sirve para nada
-- Uso para las tumbas: Te sale un mensaje "Aqui yace tal" y una parte del password, hay que unirlos para tener el password completo  
 
 - PENSAR: Uso para las cascadas
 
