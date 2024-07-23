@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://drbtuueponqdc"]
 
 [ext_resource type="Script" path="res://scenes/levels/player_marker.gd" id="1_x6n6p"]
-[ext_resource type="Texture2D" uid="uid://cxgcmxydy1kml" path="res://sprites/graby_0.png" id="2_fltta"]
+[ext_resource type="Texture2D" uid="uid://c84wo31xdnsji" path="res://sprites/graby_0.png" id="2_fltta"]
 
 [node name="player_marker" type="Marker2D"]
 position = Vector2(-562, 205)

@@ -22,7 +22,7 @@ func _physics_process(delta):
 	else:
 		global_position.y += speed * delta
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	if falling:
 		falling = false 
 		$sprite.visible = false
@@ -33,7 +33,7 @@ func _on_body_entered(body):
 		$particles.emitting = false
 		$sprite.visible = true
 
-func _on_area_entered(area):
+func _on_area_entered(_area):
 	if falling:
 		falling = false 
 		$sprite.visible = false

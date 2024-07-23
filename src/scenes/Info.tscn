@@ -1,12 +1,12 @@
 [gd_scene load_steps=15 format=3 uid="uid://bxyls5gbo1c1i"]
 
-[ext_resource type="Texture2D" uid="uid://bfh88fce466yd" path="res://sprites/note_spr_0.png" id="1_0uocc"]
+[ext_resource type="Texture2D" uid="uid://qi2glke27eqg" path="res://sprites/note_spr_0.png" id="1_0uocc"]
 [ext_resource type="Script" path="res://scenes/Info.gd" id="1_bu07r"]
-[ext_resource type="Texture2D" uid="uid://dv2y3twuvyw0y" path="res://sprites/info.png" id="1_sl63s"]
+[ext_resource type="Texture2D" uid="uid://df3wc86jxuqv0" path="res://sprites/info.png" id="1_sl63s"]
 [ext_resource type="FontFile" uid="uid://df8tenaf40ylu" path="res://fonts/cour.ttf" id="2_xwgrf"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="5_ccuuj"]
-[ext_resource type="Texture2D" uid="uid://da14xud8tdoj" path="res://sprites/arrows1.png" id="6_eg2o3"]
-[ext_resource type="Texture2D" uid="uid://b74uo51q2y58i" path="res://sprites/arrows2.png" id="7_xjha2"]
+[ext_resource type="Texture2D" uid="uid://b3n7eech0mndx" path="res://sprites/arrows1.png" id="6_eg2o3"]
+[ext_resource type="Texture2D" uid="uid://dkompgmyj4pmk" path="res://sprites/arrows2.png" id="7_xjha2"]
 [ext_resource type="Texture2D" uid="uid://b62iyqavdj0re" path="res://sprites/qr/1.png" id="8_60hef"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xc2co"]

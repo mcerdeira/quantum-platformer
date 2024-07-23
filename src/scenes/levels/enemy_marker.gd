@@ -12,7 +12,7 @@ var done = false
 func _ready():
 	visible = false
 
-func _process(delta):
+func _process(_delta):
 	if !done:
 		var eobj
 		var rand = 0

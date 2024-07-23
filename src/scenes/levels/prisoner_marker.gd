@@ -9,7 +9,7 @@ func _ready():
 	visible = false
 	done = fixed
 
-func _process(delta):
+func _process(_delta):
 	if done:
 		var Main = get_node("/root/Main")
 		var post = post_o.instantiate()

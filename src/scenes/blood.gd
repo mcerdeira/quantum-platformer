@@ -19,7 +19,7 @@ var count  = 0
 func _ready():
 	set_as_top_level(true)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if(!is_colliding): # in the air
 		do_wobble = false
 		vspeed = lerp(vspeed, 5.0, 0.02)

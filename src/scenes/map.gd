@@ -5,7 +5,7 @@ func _ready():
 	Global.map_obj = self
 	enabled = Global.find_my_item("map")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Global.GAMEOVER:
 		visible = false
 	else:

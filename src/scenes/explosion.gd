@@ -9,7 +9,7 @@ func _ready():
 	parent = get_parent() 
 	radius = 295.2
 
-func _process(delta):
+func _process(_delta):
 	var overlapping_bodies = get_overlapping_bodies()
 	for body in overlapping_bodies:
 		if body != parent and (body.is_in_group("enemies") or body.is_in_group("players") or body.is_in_group("interactuable")):

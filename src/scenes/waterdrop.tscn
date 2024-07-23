@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dgdfvbn0wb37l"]
 
 [ext_resource type="Script" path="res://scenes/waterdrop.gd" id="1_w3xcw"]
-[ext_resource type="Texture2D" uid="uid://cpmk4py84ofc6" path="res://sprites/drop.png" id="2_nku20"]
+[ext_resource type="Texture2D" uid="uid://bu8ginxt5vly7" path="res://sprites/drop.png" id="2_nku20"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4s2i1"]
 size = Vector2(2, 2)

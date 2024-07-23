@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://crsjf57oxj823"]
 
-[ext_resource type="Texture2D" uid="uid://d0ipwtnplo5xm" path="res://sprites/fire1.png" id="1_2xn8n"]
+[ext_resource type="Texture2D" uid="uid://n7jrevv8b7ml" path="res://sprites/fire1.png" id="1_2xn8n"]
 [ext_resource type="Script" path="res://scenes/Fires.gd" id="1_3auow"]
-[ext_resource type="Texture2D" uid="uid://d23jlmq5dnuo2" path="res://sprites/fire2.png" id="2_jaqr8"]
-[ext_resource type="Texture2D" uid="uid://cr360umcmc7ui" path="res://sprites/fire3.png" id="3_lnk5x"]
+[ext_resource type="Texture2D" uid="uid://cduksopghklq5" path="res://sprites/fire2.png" id="2_jaqr8"]
+[ext_resource type="Texture2D" uid="uid://cl8xjxqxukvua" path="res://sprites/fire3.png" id="3_lnk5x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_noy4u"]
 size = Vector2(32, 32)

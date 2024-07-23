@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dsb6dbx10a67k"]
 
-[ext_resource type="Texture2D" uid="uid://c82hyvlu24f1i" path="res://sprites/glowing_circle.png" id="1_0ep4b"]
+[ext_resource type="Texture2D" uid="uid://bkregfwb7x2ps" path="res://sprites/glowing_circle.png" id="1_0ep4b"]
 
 [sub_resource type="Gradient" id="Gradient_1wgbc"]
 offsets = PackedFloat32Array(0.03125, 0.46875)

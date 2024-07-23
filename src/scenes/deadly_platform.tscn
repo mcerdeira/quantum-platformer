@@ -1,15 +1,15 @@
 [gd_scene load_steps=16 format=3 uid="uid://b2w80dxra5rut"]
 
 [ext_resource type="Script" path="res://scenes/deadly_platform.gd" id="1_fntm8"]
-[ext_resource type="Texture2D" uid="uid://bdtuhpobtbt5r" path="res://sprites/tetris_die_spr_0.png" id="1_h830m"]
-[ext_resource type="Texture2D" uid="uid://du6ivs62ryj2c" path="res://sprites/tetris_die_spr_1.png" id="3_rhuff"]
-[ext_resource type="Texture2D" uid="uid://b30xr5fn5s716" path="res://sprites/tetris_die_spr_2.png" id="4_m52mt"]
+[ext_resource type="Texture2D" uid="uid://cs6x7nssseykd" path="res://sprites/tetris_die_spr_0.png" id="1_h830m"]
+[ext_resource type="Texture2D" uid="uid://0hgbwe5sqxpy" path="res://sprites/tetris_die_spr_1.png" id="3_rhuff"]
+[ext_resource type="Texture2D" uid="uid://bgr42nspmsgnn" path="res://sprites/tetris_die_spr_2.png" id="4_m52mt"]
 [ext_resource type="Script" path="res://scenes/explosion.gd" id="5_fdiky"]
 [ext_resource type="Script" path="res://scenes/explosions.gd" id="6_7sbsu"]
-[ext_resource type="Texture2D" uid="uid://chfjhbn6k8nut" path="res://sprites/blast_spr_3.png" id="7_uejul"]
-[ext_resource type="Texture2D" uid="uid://c0f25qx0cfkgy" path="res://sprites/blast_spr_4.png" id="8_4ic2u"]
-[ext_resource type="Texture2D" uid="uid://d2a4xvm7xjpjf" path="res://sprites/blast_spr_9.png" id="9_pw1et"]
-[ext_resource type="Texture2D" uid="uid://b1laesttuhnqw" path="res://sprites/blast_spr_10.png" id="10_j5xgb"]
+[ext_resource type="Texture2D" uid="uid://by1o5rlsqwsfb" path="res://sprites/blast_spr_3.png" id="7_uejul"]
+[ext_resource type="Texture2D" uid="uid://dr1i3x4vvool6" path="res://sprites/blast_spr_4.png" id="8_4ic2u"]
+[ext_resource type="Texture2D" uid="uid://b6od4ayssamtr" path="res://sprites/blast_spr_9.png" id="9_pw1et"]
+[ext_resource type="Texture2D" uid="uid://bfv2xuufigb8t" path="res://sprites/blast_spr_10.png" id="10_j5xgb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4isx"]
 size = Vector2(32, 32)

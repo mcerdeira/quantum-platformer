@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/moving_plat.gd" id="1_cwmde"]
 [ext_resource type="Script" path="res://scenes/moving_platform.gd" id="1_y82u2"]
-[ext_resource type="Texture2D" uid="uid://b8p10c367ea0h" path="res://sprites/cloud_block_spr_0.png" id="3_xw1ld"]
+[ext_resource type="Texture2D" uid="uid://c286brcfcywi4" path="res://sprites/cloud_block_spr_0.png" id="3_xw1ld"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7rqct"]
 animations = [{

@@ -321,8 +321,8 @@ func get_item(current_item, qty = 1):
 			Global.gunz_equiped[Global.gunz_index] = current_item
 			slots_stock[Global.gunz_index] = 1
 			
-	var coin = (current_item.name == "coin")
-	Global.GizmoWatcher.setHUD(coin)
+	var coin_o = (current_item.name == "coin")
+	Global.GizmoWatcher.setHUD(coin_o)
 	
 func emit(_global_position, count):
 	for i in range(count):
@@ -337,7 +337,7 @@ func flyaway(direction, jump_speed):
 	return velocity
 	
 func erase_game():
-	var result = DirAccess.remove_absolute("user://savegame.save")
+	DirAccess.remove_absolute("user://savegame.save")
 	
 func save_game():
 	var saved_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)

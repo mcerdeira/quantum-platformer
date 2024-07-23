@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://drudyu8hb2tx6"]
 
-[ext_resource type="Texture2D" uid="uid://b35x0rbjwt8et" path="res://sprites/spikes_blood.png" id="1_a6h05"]
+[ext_resource type="Texture2D" uid="uid://y3n6vy24b1p5" path="res://sprites/spikes_blood.png" id="1_a6h05"]
 [ext_resource type="Script" path="res://scenes/levels/Spikes.gd" id="1_hyk3x"]
-[ext_resource type="Texture2D" uid="uid://carc0r01pxx8e" path="res://sprites/spikes.png" id="1_um738"]
+[ext_resource type="Texture2D" uid="uid://b4wblb70awkg8" path="res://sprites/spikes.png" id="1_um738"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vn6em"]
 size = Vector2(31, 24)

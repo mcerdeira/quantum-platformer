@@ -156,7 +156,7 @@ func _process(delta):
 		ttl -= 1 * delta
 		if ttl <= 0:
 			ttl = 0.05
-			CMD.set_focus_mode(2)
+			CMD.set_focus_mode(CMD.FOCUS_ALL)
 			CMD.grab_focus()
 			CMD.insert_text_at_caret(current_message.substr(0, 1))
 			current_message = current_message.substr(1, current_message.length() - 1)

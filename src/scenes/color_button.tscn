@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://cemy1qgtp317t"]
 
 [ext_resource type="Script" path="res://scenes/levels/ColorButton.gd" id="1_xt1r4"]
-[ext_resource type="Texture2D" uid="uid://dnaoh4fkrl057" path="res://sprites/button_red_spr_0.png" id="2_u3a0x"]
-[ext_resource type="Texture2D" uid="uid://cb3vcqxhg6qlg" path="res://sprites/button_red_spr_1.png" id="3_htq5q"]
-[ext_resource type="Texture2D" uid="uid://blqq7k6kxd5ky" path="res://sprites/button_spr_0.png" id="4_l3b2l"]
-[ext_resource type="Texture2D" uid="uid://baq2arh5eu3vx" path="res://sprites/button_spr_1.png" id="5_jj7wf"]
+[ext_resource type="Texture2D" uid="uid://d344n8i08fc8j" path="res://sprites/button_red_spr_0.png" id="2_u3a0x"]
+[ext_resource type="Texture2D" uid="uid://dolsaipwbeg5j" path="res://sprites/button_red_spr_1.png" id="3_htq5q"]
+[ext_resource type="Texture2D" uid="uid://df157dpdeww57" path="res://sprites/button_spr_0.png" id="4_l3b2l"]
+[ext_resource type="Texture2D" uid="uid://djshjc2uk3gt1" path="res://sprites/button_spr_1.png" id="5_jj7wf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_54rc3"]
 animations = [{

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://q767q018lep8"]
 
 [ext_resource type="Script" path="res://scenes/exit_door.gd" id="1_0vvlk"]
-[ext_resource type="Texture2D" uid="uid://diqcmmrm2bdeb" path="res://sprites/horu/images/exit_spr_0.png" id="4_186lq"]
-[ext_resource type="Texture2D" uid="uid://cr3uij3812lyq" path="res://sprites/horu/images/exit_spr_1.png" id="5_kdr3r"]
+[ext_resource type="Texture2D" uid="uid://fe2jknlm3i6n" path="res://sprites/horu/images/exit_spr_0.png" id="4_186lq"]
+[ext_resource type="Texture2D" uid="uid://c8cdp2o43edo7" path="res://sprites/horu/images/exit_spr_1.png" id="5_kdr3r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3viko"]
 animations = [{

@@ -5,7 +5,7 @@ var temp = 0.0
 var upper_limit = 0.09
 var upper_limit_temp = 1.0
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Global.player_obj != null:
 		var faked = Vector2(global_position.x, Global.player_obj.global_position.y)
 		var dist = global_position.distance_to(faked) 

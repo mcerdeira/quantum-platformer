@@ -12,7 +12,7 @@ var nope = false
 func _ready():
 	visible = false
 
-func _process(delta):
+func _process(_delta):
 	if !done:
 		if !nope:
 			if first_time_based:

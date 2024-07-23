@@ -91,8 +91,6 @@ func is_on_floor_custom():
 	
 func update_trayectory(delta):
 	LineTrayectory.visible = true 
-	
-	var pos = $gun_sprite/mark.global_position
 	LineTrayectory.update_trayectory(Vector2.from_angle($gun_sprite.rotation) * tspeed, delta)
 
 func destroy_trayectory():
@@ -237,7 +235,7 @@ func camera_limits():
 			$Camera2D.global_position.y = 2450
 
 func process_player(delta):
-	var moving = false
+	moving = false
 	if dead:
 		velocity.x = 0
 		$stars_stunned.visible = false
@@ -366,7 +364,7 @@ func process_player(delta):
 			moving = true
 			idle_time = 0
 			velocity.x = lerp(velocity.x, -speed, 0.7)
-			check_shake("left", input_time)
+			check_shake(input_time)
 			$sprite.flip_h = true
 			$sprite_eyes.flip_h = $sprite.flip_h
 			$gun_sprite.rotation = initial_rotation - 45
@@ -377,7 +375,7 @@ func process_player(delta):
 			moving = true
 			idle_time = 0
 			velocity.x = lerp(velocity.x, speed, 0.7)
-			check_shake("right", input_time)
+			check_shake(input_time)
 			$sprite.flip_h = false
 			$sprite_eyes.flip_h = $sprite.flip_h
 			$gun_sprite.rotation = initial_rotation
@@ -418,7 +416,7 @@ func process_player(delta):
 func teleported():
 	pass
 	
-func check_shake(direction, current_time):
+func check_shake(current_time):
 	if fire_obj != null and is_instance_valid(fire_obj):
 		if direction == "left" and Input.is_action_pressed("right") and (current_time - last_input_time) <= shake_timeout:
 			shake_count += 1
@@ -433,7 +431,7 @@ func check_shake(direction, current_time):
 			fire_obj.extinguish_fire()
 			fire_obj = null
 		
-func shoot(delta):
+func shoot(_delta):
 	if !dead:
 		if !Global.gunz_equiped[Global.gunz_index].pasive:
 			var pos = $gun_sprite/mark.global_position
@@ -445,7 +443,7 @@ func shoot(delta):
 			var current_item = Global.gunz_equiped[Global.gunz_index]
 			p.droped(self, $lbl_action, Vector2.from_angle($gun_sprite.rotation) * tspeed, current_item, false)
 	
-func jump(delta):
+func jump(_delta):
 	if !dead:
 		var on_floor = is_on_floor_custom()
 		if on_floor or (!on_floor and double_jump and !double_jumped):
@@ -464,7 +462,7 @@ func super_jump():
 		Global.emit(global_position, 2)
 		velocity.y = jump_speed * 2
 
-func do_action(delta):
+func do_action(_delta):
 	if !dead:
 		Global.GizmoWatcher.do_action(self, $lbl_action)
 

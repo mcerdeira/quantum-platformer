@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scenes/player_ghost.gd" id="1_tiru2"]
 [ext_resource type="PackedScene" uid="uid://dsb6dbx10a67k" path="res://scenes/ray_particles.tscn" id="2_5rga2"]
-[ext_resource type="Texture2D" uid="uid://bw4o87q8jovaw" path="res://sprites/horu/images/player_ghost1.png" id="3_b427d"]
-[ext_resource type="Texture2D" uid="uid://c0jeln2t7dbw8" path="res://sprites/horu/images/player_ghost2.png" id="4_a3tdd"]
-[ext_resource type="Texture2D" uid="uid://rt7h2roey0ri" path="res://sprites/horu/images/player_ghost3.png" id="5_7tjov"]
+[ext_resource type="Texture2D" uid="uid://1u2gaqc5sav" path="res://sprites/horu/images/player_ghost1.png" id="3_b427d"]
+[ext_resource type="Texture2D" uid="uid://c60ofvvxypqxb" path="res://sprites/horu/images/player_ghost2.png" id="4_a3tdd"]
+[ext_resource type="Texture2D" uid="uid://p1u83wvaxijc" path="res://sprites/horu/images/player_ghost3.png" id="5_7tjov"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="6_ipc5w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6yeio"]

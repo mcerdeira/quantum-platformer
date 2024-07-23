@@ -9,7 +9,7 @@ func _ready():
 		if randi() % 3 == 0:
 			killme = true
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if killme:
 		var p = waterdrop.instantiate()
 		var parent = get_parent()

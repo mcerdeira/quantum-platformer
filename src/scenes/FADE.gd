@@ -10,5 +10,5 @@ func fade_in():
 func fade_out():
 	$AnimationPlayer.play("new_animation")
 
-func _on_animation_player_animation_finished(anim_name):
+func _on_animation_player_animation_finished(_anim_name):
 	Global.fade_finished = true
