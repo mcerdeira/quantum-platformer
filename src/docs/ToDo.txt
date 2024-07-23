@@ -9,10 +9,11 @@
   . Escena Caer: Caemos y caemos mucho tiempo
   . Escena Main Hub: Llegamos al main hub, aca hay 5 plataformas con 5 puertas. Solo 1 puerta está abierta, al entrar a la puerta vamos al primer nivel
                      procedural, donde tenemos que rescatar a un numero de prisioneros fijo.
-                     Se destraban las demas puertas rescatando mas prisioneros. 
-- Tienen que ser distintos los mundos/puertas, e incrementalmente más grandes.
+                     Se destraban las demas puertas ganandole al boss.
+- Tienen que ser distintos los mundos/puertas.
+- Debemos evitar que se mueran los prisioneros porque sino nos siguen en forma de fantasmas y están en el momento boss, dificultando la pelea.
 
-- Escena Nivel Procedural: Liberar a todos los prisioneros, encontrar la puerta e irse (simil alien 3/sega)
+- Escena Nivel Procedural: Liberar a todos los prisioneros, encontrar la puerta, ganarle al boss e irse (simil alien 3/sega)
 - Niveles/Zonas:
   0 - The Eye (main hub)
   1 - The Leaf (selvatico, lots of vines)   
@@ -22,11 +23,13 @@
   5 - The Seraph (secret)
 
 - Secretos:
-  . 3 finales: malo: los niveles y chau, bueno: hay que prender las terminales y esta la zona y boss final y secreto:???? 
-  . Ver Lifo y el QR 
-  . Hay terminales en los niveles que no vamos a saber para que son. En cada una podemos apagar variables. 
-    Luego, al desbloquear la fase final, vemos que hay un sector al que no podemos ir por lasers y otros (relacionados con la variable), 
-    entonces hay que ir a cada nivel a apagar las variables.  
+  . 3 finales: Malo: pasar los niveles, llamar al bote pero no rescatamos a nuestra mascota
+	       Bueno: Hay que prender las terminales primero, llamar al bote y al tener prendidas las terminales vamos a la fase final y boss.
+                      El boss es nuestra mascota.
+                      Sin las variables prendidas, debería ser imposible llegar al final de la zona pero, prender las variables hace que la entrada 
+                      a la zona sea posible pero tenga prendido los peligros
+	    
+  . Hay terminales en los niveles que no vamos a saber para que son. En cada una podemos prender variables para el final verdadero o "bueno".
 
 ==================================================================================================================
 ==================================================================================================================
@@ -35,6 +38,7 @@
 IN_PROGRESS:
 - SFX
 - Musica
+- PENSAR: Uso para las cascadas
 
 
 BUGS/Ajustes:
@@ -42,14 +46,13 @@ BUGS/Ajustes:
 
 Features:
 - Armar items 3D que se puede girar en todas las direcciones con una porción del QR, algun titulo y forma de cerrarlo
-- Logica para que haya chances de tocarnos el item 3D 
-- Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR
+- Logica para que haya chances de tocarnos el item 3D, es 1 item por nivel (aparece random, pero una vez que tocó no aparece más para ese nivel)
+- Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
+  . Alinear los discos, llama al bote.
+  . Si giramos los discos, atrás se forma un QR, el QR tiene la password para las terminales.
 
-- Terminales: se puede activar cosas para el final bueno (necesita password)
-- Cada terminal tiene sus propias variables asociadas
-- Hay un item super raro, con muy bajo rate de aparición que no sirve para nada
-
-- PENSAR: Uso para las cascadas
+- Terminales: se pueden activar variables para el final bueno, pero ese comando necesita password
+- Item super raro, con muy bajo rate de aparición que no sirve para nada
 
 - Enemigo: Gusanitos qué se le meten a los prisioneros y los convierten en zombies que nos atacan 
 - Enemigo: volador
@@ -58,6 +61,12 @@ Features:
 - Menu de opciones
 - Armar textos de cada terminal 
 - Armar manuales de cada terminal, subirlos a drive y generar los QR (QRS: https://qr.io/dashboard/)
+
+- Jefe de The Leaf
+- Jefe de The Tomb
+- Jefe de The Mermaid
+- Jefe de The Dragon
+- Jefe Final (la mascota)
 
 - Decoraciones 
   . Lluvia
