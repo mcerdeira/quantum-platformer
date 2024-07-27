@@ -1,0 +1,16 @@
+extends CharacterBody2D
+
+
+func _ready():
+	add_to_group("interactuable")
+	Global.Fader.fade_out()
+
+func _physics_process(delta):
+	velocity = Input.get_last_mouse_velocity()
+	global_position = get_global_mouse_position()
+	if Input.is_action_just_pressed("start"):
+		$"../PStart/AnimationPlayer".speed_scale = 10
+		$"../Timer".start()
+
+func _on_timer_timeout():
+	Global.scene_next()

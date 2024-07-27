@@ -4,6 +4,7 @@ var player_placed = false
 var gameover_ttl_total = 3
 var gameover_ttl = gameover_ttl_total
 
+var room_title = preload("res://scenes/levels/room_title.tscn") 
 var room_home = preload("res://scenes/levels/room_house.tscn")
 var room_outside = preload("res://scenes/levels/room_outside.tscn")
 var room_falling = preload("res://scenes/levels/room_falling.tscn")
@@ -101,6 +102,9 @@ func _ready():
 	
 	if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
 		generate_level()
+	if Global.CurrentState == Global.GameStates.TITLE:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		generate_fixed_level(room_title, false)
 	if Global.CurrentState == Global.GameStates.HOME:
 		generate_fixed_level(room_home, false)
 	if Global.CurrentState == Global.GameStates.OUTSIDE:

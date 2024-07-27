@@ -19,9 +19,10 @@ func _on_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_inde
 			body.set_cell(0, coords, Global.BurnedID, Vector2(0, 0))
 			
 			var parent = get_parent().get_parent()
-			if free_fireball:
-				parent = get_parent().master_parent
-			var p = fires.instantiate()
-			p.position = global_coords
-			parent.add_child(p)
-			Global.emit(global_position, 5)
+			if parent:
+				if free_fireball:
+					parent = get_parent().master_parent
+				var p = fires.instantiate()
+				p.position = global_coords
+				parent.add_child(p)
+				Global.emit(global_position, 5)

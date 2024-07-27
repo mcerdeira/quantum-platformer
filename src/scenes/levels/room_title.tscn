@@ -1,0 +1,217 @@
+[gd_scene load_steps=23 format=3 uid="uid://b8h5mg4l80k31"]
+
+[ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="1_0qil7"]
+[ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_ytwuc"]
+[ext_resource type="Texture2D" uid="uid://bx06swrbyq4p3" path="res://sprites/floor_spr_blasted.png" id="3_mi0b2"]
+[ext_resource type="Texture2D" uid="uid://cvgek1xj28trv" path="res://sprites/fireball_box.png" id="4_xnauc"]
+[ext_resource type="Script" path="res://scenes/levels/room.gd" id="5_phe78"]
+[ext_resource type="Texture2D" uid="uid://dw02vd8s8wsrw" path="res://sprites/vines.png" id="6_escif"]
+[ext_resource type="Texture2D" uid="uid://dpcrtwqa2mio7" path="res://sprites/vines_burn.png" id="7_c5g7g"]
+[ext_resource type="Script" path="res://scenes/levels/pointer.gd" id="10_cvs85"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="11_a43u4"]
+[ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="12_j5g7b"]
+[ext_resource type="PackedScene" uid="uid://cv3n3jd3p3yty" path="res://scenes/Lamp.tscn" id="15_u4n48"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
+texture = ExtResource("1_0qil7")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:0/0 = 0
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:0/0 = 0
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+6:0/0 = 0
+6:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:0/0/physics_layer_0/angular_velocity = 0.0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+7:0/0 = 0
+7:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:0/0/physics_layer_0/angular_velocity = 0.0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+8:0/0 = 0
+8:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:0/0/physics_layer_0/angular_velocity = 0.0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+9:0/0 = 0
+9:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+9:0/0/physics_layer_0/angular_velocity = 0.0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+10:0/0 = 0
+10:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+10:0/0/physics_layer_0/angular_velocity = 0.0
+10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+11:0/0 = 0
+11:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+11:0/0/physics_layer_0/angular_velocity = 0.0
+11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+12:0/0 = 0
+12:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+12:0/0/physics_layer_0/angular_velocity = 0.0
+12:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+13:0/0 = 0
+13:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+13:0/0/physics_layer_0/angular_velocity = 0.0
+13:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+14:0/0 = 0
+14:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+14:0/0/physics_layer_0/angular_velocity = 0.0
+14:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qr43o"]
+texture = ExtResource("2_ytwuc")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uo14k"]
+texture = ExtResource("3_mi0b2")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_susn1"]
+texture = ExtResource("4_xnauc")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_4lr5i"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 524595
+physics_layer_0/collision_mask = 524595
+sources/0 = SubResource("TileSetAtlasSource_iwogt")
+sources/1 = SubResource("TileSetAtlasSource_qr43o")
+sources/2 = SubResource("TileSetAtlasSource_uo14k")
+sources/3 = SubResource("TileSetAtlasSource_susn1")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1nakb"]
+texture = ExtResource("6_escif")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g20sr"]
+texture = ExtResource("7_c5g7g")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_cmcrj"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 128
+physics_layer_0/collision_mask = 128
+sources/4 = SubResource("TileSetAtlasSource_1nakb")
+sources/5 = SubResource("TileSetAtlasSource_g20sr")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7a1ax"]
+
+[sub_resource type="Animation" id="Animation_6d83e"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b55p5"]
+_data = {
+"new_animation": SubResource("Animation_6d83e")
+}
+
+[node name="level" type="TileMap"]
+tile_set = SubResource("TileSet_4lr5i")
+format = 2
+layer_0/tile_data = PackedInt32Array(1245219, 589824, 0, 1245218, 720896, 0, 1245184, 655360, 0, 1245185, 720896, 0, 1245186, 720896, 0, 1245187, 720896, 0, 1245188, 720896, 0, 1245189, 720896, 0, 1245190, 720896, 0, 1245191, 720896, 0, 1245192, 720896, 0, 1245217, 720896, 0, 1245216, 720896, 0, 1245215, 720896, 0, 1245214, 720896, 0, 1245211, 720896, 0, 1245210, 720896, 0, 1245209, 720896, 0, 1245196, 720896, 0, 131072, 327680, 0, 2, 720896, 0, 65537, 393216, 0, 4, 720896, 0, 5, 720896, 0, 6, 720896, 0, 16, 720896, 0, 65551, 393216, 0, 65547, 524288, 0, 65543, 458752, 0, 17, 720896, 0, 18, 720896, 0, 19, 720896, 0, 20, 720896, 0, 21, 720896, 0, 23, 720896, 0, 24, 720896, 0, 25, 720896, 0, 26, 720896, 0, 27, 720896, 0, 28, 720896, 0, 29, 720896, 0, 30, 720896, 0, 31, 720896, 0, 32, 720896, 0, 65569, 327680, 0, 35, 589824, 0, 34, 720896, 0, 65550, 524288, 0, 65549, 524288, 0, 65548, 524288, 0, 65546, 524288, 0, 65545, 524288, 0, 65544, 524288, 0, 1245208, 720896, 0, 22, 720896, 0, 65536, 786432, 0, 0, 131072, 0, 1, 196608, 0, 3, 720896, 0, 7, 196608, 0, 8, 196608, 0, 9, 196608, 0, 10, 196608, 0, 11, 196608, 0, 12, 196608, 0, 13, 196608, 0, 14, 196608, 0, 15, 196608, 0, 33, 196608, 0, 1245207, 720896, 0, 1245206, 720896, 0, 1245213, 720896, 0, 1245212, 720896, 0, 1245197, 720896, 0, 1245198, 720896, 0, 1245195, 720896, 0, 1245194, 720896, 0, 1245193, 720896, 0, 196615, 589824, 0, 196614, 720896, 0, 196613, 720896, 0, 196612, 720896, 0, 196611, 131072, 0, 262147, 393216, 0, 262146, 131072, 0, 327682, 917504, 0, 393218, 917504, 0, 458754, 917504, 0, 524290, 917504, 0, 589826, 917504, 0, 655362, 458752, 0, 655363, 720896, 0, 655364, 720896, 0, 655365, 720896, 0, 655366, 720896, 0, 655367, 720896, 0, 655368, 393216, 0, 589832, 917504, 0, 524296, 65536, 0, 524295, 458752, 0, 458759, 917504, 0, 393223, 65536, 0, 393222, 65536, 0, 393221, 131072, 0, 458757, 327680, 0, 655372, 327680, 0, 589836, 917504, 0, 524300, 917504, 0, 458764, 786432, 0, 393228, 0, 0, 458765, 720896, 0, 458766, 589824, 0, 524306, 720896, 0, 524305, 131072, 0, 589841, 917504, 0, 655377, 458752, 0, 655378, 720896, 0, 655379, 393216, 0, 589843, 917504, 0, 524307, 65536, 0, 655383, 327680, 0, 589847, 917504, 0, 524311, 917504, 0, 458775, 917504, 0, 327703, 0, 0, 393238, 655360, 0, 393240, 589824, 0, 655387, 327680, 0, 589851, 917504, 0, 524315, 917504, 0, 458779, 917504, 0, 393243, 917504, 0, 262171, 0, 0, 327706, 655360, 0, 327708, 589824, 0, 524319, 720896, 0, 524318, 131072, 0, 589854, 917504, 0, 655390, 458752, 0, 655391, 720896, 0, 655392, 393216, 0, 524320, 65536, 0, 589856, 917504, 0, 1179669, 851968, 0, 1114133, 851968, 0, 1179663, 786432, 0, 1114127, 786432, 0, 1048592, 196608, 0, 1048593, 196608, 0, 1048594, 196608, 0, 1048595, 196608, 0, 1048596, 196608, 0, 1048591, 131072, 0, 1048597, 65536, 0)
+script = ExtResource("5_phe78")
+
+[node name="vines" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_cmcrj")
+format = 2
+layer_0/tile_data = PackedInt32Array(196608, 4, 0, 262144, 4, 0, 327680, 4, 0, 393216, 4, 0, 458752, 4, 0, 524288, 4, 0, 524289, 4, 0, 589825, 4, 0, 655361, 4, 0, 720897, 4, 0, 720898, 4, 0, 720899, 4, 0, 720900, 4, 0, 720901, 4, 0, 786437, 4, 0, 786438, 4, 0, 786439, 4, 0, 851975, 4, 0, 917511, 4, 0, 917512, 4, 0, 983048, 4, 0, 1048584, 4, 0, 1114120, 4, 0, 1179656, 4, 0, 1179655, 4, 0, 1179654, 4, 0, 1179653, 4, 0, 1179652, 4, 0, 1179651, 4, 0, 1179650, 4, 0, 1179649, 4, 0, 1179657, 4, 0, 1179658, 4, 0, 1179659, 4, 0, 1179660, 4, 0, 1179661, 4, 0, 1179662, 4, 0, 1179670, 4, 0, 1179671, 4, 0, 1179672, 4, 0, 1179673, 4, 0, 1179674, 4, 0, 1179675, 4, 0, 1179676, 4, 0, 1179677, 4, 0, 1179678, 4, 0, 1179679, 4, 0, 1179680, 4, 0, 1179681, 4, 0, 1179682, 4, 0, 1179683, 4, 0, 589835, 4, 0, 655371, 4, 0, 720907, 4, 0, 720908, 4, 0, 720909, 4, 0, 655373, 4, 0, 589837, 4, 0, 720910, 4, 0, 786446, 4, 0, 786447, 4, 0, 786448, 4, 0, 851984, 4, 0, 851985, 4, 0, 720913, 4, 0, 720914, 4, 0, 720915, 4, 0, 720916, 4, 0, 786452, 4, 0, 786453, 4, 0, 851989, 4, 0, 589846, 4, 0, 655382, 4, 0, 720918, 4, 0, 720919, 4, 0, 720920, 4, 0, 655384, 4, 0, 786456, 4, 0, 851992, 4, 0, 917528, 4, 0, 983064, 4, 0, 1048600, 4, 0, 1114136, 4, 0, 1114137, 4, 0, 655386, 4, 0, 720923, 4, 0, 720924, 4, 0, 655388, 4, 0, 786459, 4, 0, 851995, 4, 0, 851996, 4, 0, 917532, 4, 0, 917533, 4, 0, 983069, 4, 0, 983070, 4, 0, 1048606, 4, 0, 1114142, 4, 0, 720926, 4, 0, 720927, 4, 0, 720928, 4, 0, 720929, 4, 0, 786465, 4, 0, 852001, 4, 0, 917537, 4, 0, 983073, 4, 0, 983074, 4, 0, 1048610, 4, 0, 1114146, 4, 0, 1114126, 4, 0, 1048590, 4, 0, 983054, 4, 0, 983055, 4, 0, 983056, 4, 0, 983057, 4, 0, 983058, 4, 0, 983059, 4, 0, 983060, 4, 0, 983061, 4, 0, 983062, 4, 0, 1048598, 4, 0, 1114134, 4, 0, 917521, 4, 0, 917524, 4, 0)
+
+[node name="qdtector" parent="." instance=ExtResource("12_j5g7b")]
+visible = false
+collision_layer = 41
+collision_mask = 41
+
+[node name="Lamp" parent="." instance=ExtResource("15_u4n48")]
+position = Vector2(586, 38)
+fixed = true
+
+[node name="Lamp2" parent="." instance=ExtResource("15_u4n48")]
+position = Vector2(326, 70)
+fixed = true
+
+[node name="Lamp3" parent="." instance=ExtResource("15_u4n48")]
+position = Vector2(880, 358)
+fixed = true
+
+[node name="Lamp4" parent="." instance=ExtResource("15_u4n48")]
+position = Vector2(238, 358)
+fixed = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="char" type="CharacterBody2D" parent="."]
+position = Vector2(503, 509)
+script = ExtResource("10_cvs85")
+
+[node name="collider" type="CollisionShape2D" parent="char"]
+shape = SubResource("CircleShape2D_7a1ax")
+
+[node name="PStart" type="Node2D" parent="."]
+position = Vector2(590, 563)
+
+[node name="Label" type="Label" parent="PStart"]
+visible = false
+offset_left = -84.0
+offset_right = 92.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("11_a43u4")
+text = "PRESS START"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PStart"]
+libraries = {
+"": SubResource("AnimationLibrary_b55p5")
+}
+autoplay = "new_animation"
+speed_scale = 3.0
+
+[connection signal="timeout" from="Timer" to="char" method="_on_timer_timeout"]

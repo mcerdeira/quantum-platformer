@@ -208,13 +208,16 @@ enum GameStates {
 	FALLING,
 	OVERWORLD,
 	RANDOMLEVEL,
+	TITLE,
 }
 
-var CurrentState : GameStates = GameStates.HOME
+var CurrentState : GameStates = GameStates.TITLE
 
 func scene_next(terminal_number = -1):
 	Global.TerminalNumber = terminal_number
-	if Global.CurrentState == Global.GameStates.HOME:
+	if Global.CurrentState == Global.GameStates.TITLE:
+		Global.CurrentState = Global.GameStates.HOME
+	elif Global.CurrentState == Global.GameStates.HOME:
 		Global.CurrentState = Global.GameStates.OUTSIDE
 	elif Global.CurrentState == Global.GameStates.OUTSIDE:
 		Global.CurrentState = Global.GameStates.FALLING

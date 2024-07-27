@@ -18,6 +18,8 @@ var health = 15
 
 var lamp_faller = preload("res://scenes/lamp_faller.tscn")
 
+var super_parent = null
+
 func _ready()->void:
 	set_start_position(position, LampDown.position)
 
@@ -45,8 +47,9 @@ func process_velocity(delta:float)->void:
 func add_angular_velocity(force:float)->void:
 	angular_velocity += force
 
-func _physics_process(delta)->void:										#example of in game swing kick
+func _physics_process(delta)->void:		#example of in game swing kick
 	process_velocity(delta)
+	super_parent = get_parent().get_parent().get_parent()
 
 func _on_lamp_area_body_entered(body):
 	if health > 0:
@@ -60,5 +63,5 @@ func _on_lamp_area_body_entered(body):
 				p.velocity = body.velocity
 				p.position = LampDown.global_position
 				Global.emit(LampDown.global_position, 5)
-				get_parent().get_parent().get_parent().add_child(p)
+				super_parent.add_child(p)
 		

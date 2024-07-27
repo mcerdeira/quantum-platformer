@@ -45,7 +45,6 @@ BUGS/Ajustes:
 
 
 Features:
-- Hacer el bote que es llamado con el artefacto
 - Armar items 3D que se puede girar en todas las direcciones con una porción del QR, algun titulo y forma de cerrarlo
 - Logica para que haya chances de tocarnos el item 3D, es 1 item por nivel (aparece random, pero una vez que tocó no aparece más para ese nivel)
 - Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
@@ -53,12 +52,13 @@ Features:
   . Si giramos los discos, atrás se forma un QR, el QR tiene la password para las terminales.
 
 - Terminales: se pueden activar variables para el final bueno, pero ese comando necesita password
-- Item super raro, con muy bajo rate de aparición que no sirve para nada
+- Item super raro: es un cd o vhs
+  . Si lo obtenemos, nunca más aparece, hay que quitarlo de la pool
+  . Si se empieza un new-game habiendo tomado ese item en algun momento, en la casa, al ir a la tele se reproduce un video del dev hablando sobre el juego  
 
 - Enemigo: Gusanitos qué se le meten a los prisioneros y los convierten en zombies que nos atacan 
 - Enemigo: volador
 - Armar niveles que hagan uso de los peligros 
-- Title Screen
 - Menu de opciones
 - Armar textos de cada terminal 
 - Armar manuales de cada terminal, subirlos a drive y generar los QR (QRS: https://qr.io/dashboard/)
@@ -77,6 +77,8 @@ Features:
   . Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- Title Screen
+- Hacer el bote que es llamado con el artefacto
 - Armar el artefacto en el overworld
 - Prisioneros: si los liberas te agradecen y quedan ahi dando vueltas por el lugar: caminando de izquierda a derecha, parando cada 
   tanto, no se caen por los bordes. Si algun peligro los mata, se vuelven fantasmas.   
