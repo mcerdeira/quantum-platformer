@@ -36,6 +36,7 @@
 ==================================================================================================================
 
 IN_PROGRESS:
+- Hacer que siempre entre por el title screen, y despues vaya al room guardado
 - SFX
 - Musica
 - PENSAR: Uso para las cascadas

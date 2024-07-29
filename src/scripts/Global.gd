@@ -212,11 +212,12 @@ enum GameStates {
 }
 
 var CurrentState : GameStates = GameStates.TITLE
+var FirstState : GameStates = GameStates.HOME
 
 func scene_next(terminal_number = -1):
 	Global.TerminalNumber = terminal_number
 	if Global.CurrentState == Global.GameStates.TITLE:
-		Global.CurrentState = Global.GameStates.HOME
+		Global.CurrentState = FirstState
 	elif Global.CurrentState == Global.GameStates.HOME:
 		Global.CurrentState = Global.GameStates.OUTSIDE
 	elif Global.CurrentState == Global.GameStates.OUTSIDE:
@@ -224,7 +225,6 @@ func scene_next(terminal_number = -1):
 	elif Global.CurrentState == Global.GameStates.FALLING:
 		Global.CurrentState = Global.GameStates.OVERWORLD
 	elif Global.CurrentState == Global.GameStates.OVERWORLD:
-		#TODO: ver en funcion de terminal_number
 		Global.LevelCurrentTerminalNumber = terminal_number
 		Global.CurrentState = Global.GameStates.RANDOMLEVEL
 	elif Global.CurrentState == Global.GameStates.RANDOMLEVEL:
@@ -343,56 +343,59 @@ func erase_game():
 	DirAccess.remove_absolute("user://savegame.save")
 	
 func save_game():
-	var saved_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
-	saved_game.store_var(Global.CurrentState)
-	saved_game.store_var(Global.first_time)
-	saved_game.store_var(Global.LASERS) #LEAF
-	saved_game.store_var(Global.GHOSTS) #TOMB
-	saved_game.store_var(Global.WATERFALLS) #MERMAID
-	saved_game.store_var(Global.FIREBALLS) #DRAGON
-	saved_game.store_var(Global.retro_game_high_score)
-	saved_game.store_var(Global.Gold)
-	saved_game.store_var(Global.CurrentLevel)
-	saved_game.store_var(Global.GoldDonation)
-	saved_game.close()
+	if Global.CurrentState != Global.GameStates.TITLE:
+		var saved_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+		saved_game.store_var(Global.CurrentState)
+		saved_game.store_var(Global.first_time)
+		saved_game.store_var(Global.LASERS) #LEAF
+		saved_game.store_var(Global.GHOSTS) #TOMB
+		saved_game.store_var(Global.WATERFALLS) #MERMAID
+		saved_game.store_var(Global.FIREBALLS) #DRAGON
+		saved_game.store_var(Global.retro_game_high_score)
+		saved_game.store_var(Global.Gold)
+		saved_game.store_var(Global.CurrentLevel)
+		saved_game.store_var(Global.GoldDonation)
+		saved_game.close()
 	
 func load_game():
-	var saved_game = FileAccess.open("user://savegame.save", FileAccess.READ)
-	if saved_game:
-		var cur_state = saved_game.get_var()
-		var f_time = saved_game.get_var()
-		var lasers = saved_game.get_var()
-		var ghosts = saved_game.get_var()
-		var waterfalls = saved_game.get_var()
-		var fireballs = saved_game.get_var()
-		var high_score = saved_game.get_var()
-		var gold = saved_game.get_var()
-		var curr_level = saved_game.get_var()
-		var g_donation = saved_game.get_var()
-		
-		if cur_state != null:
-			Global.CurrentState = cur_state
-			if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
-				#No se puede guardar en un randomlevel
-				Global.CurrentState = Global.GameStates.OVERWORLD
+	var f_exists = FileAccess.file_exists("user://savegame.save")
+	if f_exists:
+		var saved_game = FileAccess.open("user://savegame.save", FileAccess.READ)
+		if saved_game:
+			var cur_state = saved_game.get_var()
+			var f_time = saved_game.get_var()
+			var lasers = saved_game.get_var()
+			var ghosts = saved_game.get_var()
+			var waterfalls = saved_game.get_var()
+			var fireballs = saved_game.get_var()
+			var high_score = saved_game.get_var()
+			var gold = saved_game.get_var()
+			var curr_level = saved_game.get_var()
+			var g_donation = saved_game.get_var()
 			
-			Global.first_time = f_time
-			if high_score:
-				Global.retro_game_high_score = high_score
-			if lasers != null:
-				Global.LASERS = lasers
-			if ghosts != null:
-				Global.GHOSTS = ghosts
-			if waterfalls != null:
-				Global.WATERFALLS = waterfalls
-			if fireballs != null:
-				Global.FIREBALLS = fireballs
-			if gold != null:
-				Global.Gold = gold
-			if curr_level != null:
-				Global.CurrentLevel = curr_level
-			if g_donation != null:
-				Global.GoldDonation = g_donation
+			if cur_state != null:
+				Global.FirstState = cur_state
+				if Global.FirstState == Global.GameStates.RANDOMLEVEL:
+					#No se puede guardar en un randomlevel
+					Global.FirstState = Global.GameStates.OVERWORLD
+				
+				Global.first_time = f_time
+				if high_score:
+					Global.retro_game_high_score = high_score
+				if lasers != null:
+					Global.LASERS = lasers
+				if ghosts != null:
+					Global.GHOSTS = ghosts
+				if waterfalls != null:
+					Global.WATERFALLS = waterfalls
+				if fireballs != null:
+					Global.FIREBALLS = fireballs
+				if gold != null:
+					Global.Gold = gold
+				if curr_level != null:
+					Global.CurrentLevel = curr_level
+				if g_donation != null:
+					Global.GoldDonation = g_donation
 
 func _ready():
 	load_sfx()
