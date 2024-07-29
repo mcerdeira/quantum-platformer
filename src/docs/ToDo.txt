@@ -36,18 +36,17 @@
 ==================================================================================================================
 
 IN_PROGRESS:
-- Hacer que siempre entre por el title screen, y despues vaya al room guardado
+- Armar items 3D que se puede girar en todas las direcciones con una porción del QR, algun titulo y forma de cerrarlo
+- Logica para que haya chances de tocarnos el item 3D, es 1 item por nivel (aparece random, pero una vez que tocó no aparece más para ese nivel)
 - SFX
 - Musica
-- PENSAR: Uso para las cascadas
 
 
 BUGS/Ajustes:
 
 
 Features:
-- Armar items 3D que se puede girar en todas las direcciones con una porción del QR, algun titulo y forma de cerrarlo
-- Logica para que haya chances de tocarnos el item 3D, es 1 item por nivel (aparece random, pero una vez que tocó no aparece más para ese nivel)
+- Cascadas: 
 - Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
   . Alinear los discos, llama al bote.
   . Si giramos los discos, atrás se forma un QR, el QR tiene la password para las terminales.
@@ -57,9 +56,9 @@ Features:
   . Si lo obtenemos, nunca más aparece, hay que quitarlo de la pool
   . Si se empieza un new-game habiendo tomado ese item en algun momento, en la casa, al ir a la tele se reproduce un video del dev hablando sobre el juego  
 
-- Enemigo: Gusanitos qué se le meten a los prisioneros y los convierten en zombies que nos atacan 
+- Enemigo: Slimes qué se le meten a los prisioneros y los convierten en zombies que nos atacan 
 - Enemigo: volador
-- Armar niveles que hagan uso de los peligros 
+- Armar niveles
 - Menu de opciones
 - Armar textos de cada terminal 
 - Armar manuales de cada terminal, subirlos a drive y generar los QR (QRS: https://qr.io/dashboard/)
@@ -74,10 +73,10 @@ Features:
   . Lluvia
   . Truenos
   . Splash al caer en la lava
-  . Cascaditas
   . Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- Hacer que siempre entre por el title screen, y despues vaya al room guardado
 - Title Screen
 - Hacer el bote que es llamado con el artefacto
 - Armar el artefacto en el overworld

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://8vw15uexwo2s"]
+[gd_scene load_steps=32 format=3 uid="uid://8vw15uexwo2s"]
 
 [ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="1_xx1vs"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_g7fag"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://lcdyg55itdyt" path="res://scenes/switch_platform.tscn" id="18_85j73"]
 [ext_resource type="PackedScene" uid="uid://cemy1qgtp317t" path="res://scenes/color_button.tscn" id="19_iy0nt"]
 [ext_resource type="PackedScene" uid="uid://b2w80dxra5rut" path="res://scenes/deadly_platform.tscn" id="20_h8vwc"]
+[ext_resource type="PackedScene" uid="uid://ccrniksfhd6lb" path="res://scenes/moving_plat.tscn" id="22_v85tv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
 texture = ExtResource("1_xx1vs")
@@ -188,6 +189,8 @@ position = Vector2(42, 304)
 position = Vector2(397, 640)
 
 [node name="Stair" parent="." instance=ExtResource("8_1tvy1")]
+z_index = 1000
+z_as_relative = false
 position = Vector2(240, 640)
 scale = Vector2(1, 7)
 
@@ -259,3 +262,6 @@ position = Vector2(80, 336)
 
 [node name="DeadlyPlatform3" parent="." instance=ExtResource("20_h8vwc")]
 position = Vector2(912, 560)
+
+[node name="moving_plat" parent="." instance=ExtResource("22_v85tv")]
+position = Vector2(240, 73)

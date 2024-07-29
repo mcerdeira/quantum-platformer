@@ -166,6 +166,7 @@ position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_kipbu")
 
 [node name="display" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, -87)
 
 [node name="back2" type="ColorRect" parent="display"]
