@@ -36,6 +36,12 @@
 ==================================================================================================================
 
 IN_PROGRESS:
+- Hacer que la consola se pueda manejar con las flechas y los botones
+  . La flecha te tiene que dejar ir loopeando por los comandos
+  . Si apretás "A" confirmas
+  . Si confirmas y el comando es un comando con parámetros, pasás al siguiente y te moves con las flechas
+  . Sin confirmás y ya no hay más parámetros, es como el "Enter"
+
 - Armar items 3D que se puede girar en todas las direcciones con una porción del QR, algun titulo y forma de cerrarlo
 - Logica para que haya chances de tocarnos el item 3D, es 1 item por nivel (aparece random, pero una vez que tocó no aparece más para ese nivel)
 - SFX
