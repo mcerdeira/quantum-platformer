@@ -5,6 +5,8 @@ var player = null
 var delay_camera = 0.2
 var current_message = "" 
 var ttl = 0
+var ttl_total_normal = 0.05
+var ttl_total = ttl_total_normal
 var CMD : TextEdit
 var command = ""
 var is_writing = false 
@@ -67,99 +69,60 @@ var terminal_commands_with_help = [
 	],
 ]
 
-var commands_idx = 0
-
-var terminal_commands_options = [
-	[
-		"BUY BOMB {Gold}",
-		"BUY SMOKE {Gold}",
-		"BUY CLONE {Gold}",
-		"BUY SPRING {Gold}",
-		"BUY PLANT {Gold}",
-		"BUY MUFFIN {Gold}",
-		
-		"DONATE",
-		"STATUS",
-		"GAME",
-		"HELP",
-		"LIST",
-		"PRINT",
-		"CLEAR",
-		"EXIT",
-	],
-	[
-		"BUY BOMB {Gold}",
-		"BUY SMOKE {Gold}",
-		"BUY CLONE {Gold}",
-		"BUY SPRING {Gold}",
-		"BUY PLANT {Gold}",
-		"BUY MUFFIN {Gold}",
-		
-		"HELP",
-		"SET",
-		"VARIABLES",
-		"PRINT",
-		"CLEAR",
-		"EXIT",
-	],
-	[
-		"BUY BOMB {Gold}",
-		"BUY SMOKE {Gold}",
-		"BUY CLONE {Gold}",
-		"BUY SPRING {Gold}",
-		"BUY PLANT {Gold}",
-		"BUY MUFFIN {Gold}",
-		
-		"HELP",
-		"SET",
-		"VARIABLES",
-		"PRINT",
-		"CLEAR",
-		"EXIT",
-	],
-	[
-		"BUY BOMB {Gold}",
-		"BUY SMOKE {Gold}",
-		"BUY CLONE {Gold}",
-		"BUY SPRING {Gold}",
-		"BUY PLANT {Gold}",
-		"BUY MUFFIN {Gold}",
-		
-		"HELP",
-		"SET",
-		"VARIABLES",
-		"PRINT",
-		"CLEAR",
-		"EXIT",
-	],
-	[
-		"BUY BOMB {Gold}",
-		"BUY SMOKE {Gold}",
-		"BUY CLONE {Gold}",
-		"BUY SPRING {Gold}",
-		"BUY PLANT {Gold}",
-		"BUY MUFFIN {Gold}",
-		
-		"HELP",
-		"SET",
-		"VARIABLES",
-		"PRINT",
-		"CLEAR",
-		"EXIT",
-	],
-]
+var commands_idx = -1
+var param1_idx = -1
+var param2_idx = -1
+var numeric_param = 0
+var mode_idx = 0
+var mode = ["cmd", "param1", "param2"]
 
 var terminal_commands = [
 	[
-		"BUY",
-		"DONATE",
-		"STATUS",
-		"GAME",
-		"HELP",
-		"LIST",
-		"PRINT",
-		"CLEAR",
-		"EXIT",
+		{
+			"name": "BUY",
+			"param1": BUY_ITEMS,
+			"param2": 1
+		},
+		{
+			"name": "DONATE",
+			"param1": 1,
+			"param2": null
+		},
+		{
+			"name": "STATUS",
+			"param1": null,
+			"param2": null
+		},
+		{
+			"name": "GAME",
+			"param1": null,
+			"param2": null
+		},
+		{
+			"name": "HELP",
+			"param1": ["BUY", "DONATE", "STATUS", "GAME", "LIST", "PRINT", "CLEAR", "EXIT"],
+			"param2": null
+		},
+		{
+			"name": "LIST",
+			"param1": null,
+			"param2": null
+		},
+		{
+			"name": "PRINT",
+			"param1": null,
+			"param2": null
+		},
+		{
+			"name": "CLEAR",
+			"param1": null,
+			"param2": null
+		},
+		{
+			"name": "EXIT",
+			"param1": null,
+			"param2": null
+		},
 	],
 	[
 		"BUY",
@@ -238,31 +201,85 @@ func _process(delta):
 		is_writing = true
 		ttl -= 1 * delta
 		if ttl <= 0:
-			ttl = 0.05
+			ttl = ttl_total
 			CMD.set_focus_mode(CMD.FOCUS_ALL)
 			CMD.grab_focus()
 			CMD.insert_text_at_caret(current_message.substr(0, 1))
 			current_message = current_message.substr(1, current_message.length() - 1)
 			if current_message == "":
+				ttl_total = ttl_total_normal
 				is_writing = false
 				
 func _input(event):
 	command_ok = false
 	if !is_writing and opened and current_message == "": 
 		if event is InputEventKey and event.is_pressed():
+			ttl_total = 0.01
 			var key_text  = OS.get_keycode_string(event.keycode)
+			if event.keycode == Key.KEY_RIGHT:
+				mode_idx += 1
+				if mode_idx > mode.size():
+					mode_idx = 0
+					
+			if event.keycode == Key.KEY_LEFT:
+				mode_idx -= 1
+				if mode_idx < 0:
+					mode_idx = mode.size()-1 
+			
 			if event.keycode == Key.KEY_UP:
+				ttl_total = 0.01
 				command_ok = true
-				command = terminal_commands_options[terminal_number][commands_idx]
-				command = command.replace("{Gold}", str(Global.Gold))
 				
-				current_message = command
-				CMD.text = ""
-				commands_idx += 1
-				if commands_idx > terminal_commands_options.size():
-					commands_idx = 0
+				if mode[mode_idx] == "cmd":
+					commands_idx += 1
+					if commands_idx > terminal_commands[terminal_number].size():
+						commands_idx = 0
+					
+					command = terminal_commands[terminal_number][commands_idx].name
+					
+					current_message = command
+					CMD.text = ""
+						
+				if mode[mode_idx] == "param1":
+					if terminal_commands[terminal_number][commands_idx].param1 == 1:
+						numeric_param += 1
+						if numeric_param > Global.Gold:
+							numeric_param = Global.Gold
+						
+						command = terminal_commands[terminal_number][commands_idx].name
+						command += " " + str(numeric_param)
+						
+						current_message = command
+						CMD.text = ""
+					else:
+						param1_idx += 1
+						if param1_idx > terminal_commands[terminal_number][commands_idx].param1.size():
+							param1_idx = 0
+						
+						command = terminal_commands[terminal_number][commands_idx].name
+						command += " " + terminal_commands[terminal_number][commands_idx].param1[param1_idx]
+						
+						current_message = command
+						CMD.text = ""
+					
+				if mode[mode_idx] == "param2":
+					numeric_param += 1
+					if numeric_param > Global.Gold:
+						numeric_param = Global.Gold
+						
+					command = terminal_commands[terminal_number][commands_idx].name
+					command += " " + terminal_commands[terminal_number][commands_idx].param1[param1_idx]
+					command += " " + str(numeric_param)
+					
+					current_message = command
+					CMD.text = ""
 			
 			elif event.keycode == Key.KEY_KP_ENTER or event.keycode == Key.KEY_ENTER:
+				commands_idx = -1
+				param1_idx = -1
+				param2_idx = -1
+				numeric_param = 0
+				mode_idx = 0
 				command_ok = true
 				parser(command)
 				command = ""
@@ -302,6 +319,14 @@ func calc_progress_percent():
 		var current = Global.GoldDonation
 		var percent = current * 100 / total
 		return "(" + str(round(percent)) + "%)"
+		
+func find_cmd(_cmd):
+	for c in terminal_commands[terminal_number]:
+		if c.name == _cmd:
+			return 1
+	
+	return -1
+	
 	
 func parser(_cmd):
 	_cmd = _cmd.strip_edges()
@@ -315,13 +340,13 @@ func parser(_cmd):
 		if  cmd_c.size() >= 3:
 			param2 = cmd_c[2]
 	
-	var found = terminal_commands[terminal_number].find(_cmd)
+	var found = find_cmd(_cmd)
 	if found != -1 and _cmd == "HELP":
 		if !param1:
 			var commands = "\n".join(terminal_commands_with_help[terminal_number])
 			current_message = "AVAILABLE COMMANDS:\n" + commands + "\n"
 		else:
-			var cmd_found = terminal_commands[terminal_number].find(param1)
+			var cmd_found = find_cmd(param1)
 			if cmd_found == -1:
 				current_message = "INVALID COMMAND: TYPE HELP <COMMAND> OR HELP FOR A LIST OF COMMANDS" + "\n"
 			else:
@@ -369,7 +394,7 @@ func parser(_cmd):
 				if !param2:
 					param2 = 1
 				else:
-					if !param2.is_valid_integer():
+					if !param2.is_valid_int():
 						param2 = 1
 					else:
 						param2 = int(param2)

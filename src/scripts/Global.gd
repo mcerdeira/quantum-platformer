@@ -19,6 +19,7 @@ var BurnedID = 5
 var CameFromConsole = false
 var fade_finished = false
 
+#CHEST ITEMS 
 var smoke_bomb = {
 	"name": "smoke",
 	"description": "Smoke bomb!",
@@ -61,6 +62,22 @@ var bomb = {
 	"pasive": false,
 	"full_scale": true,
 }
+var coin = {
+	"name": "coin",
+	"description": "Grotto coins!",
+	"has_action": false,
+	"pasive": true,
+	"full_scale": false,
+}
+var spring = {
+	"name": "spring",
+	"description": "Boing! Boing!",
+	"has_action": false,
+	"pasive": false,
+	"full_scale": true,
+}
+
+#PASIVE ITEMS 
 var radar = {
 	"name": "radar",
 	"description": "Points to the exit door. Press 'R' to access it.",
@@ -88,21 +105,6 @@ var resurrect = {
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
-}
-
-var coin = {
-	"name": "coin",
-	"description": "Grotto coins!",
-	"has_action": false,
-	"pasive": true,
-	"full_scale": false,
-}
-var spring = {
-	"name": "spring",
-	"description": "Boing! Boing!",
-	"has_action": false,
-	"pasive": false,
-	"full_scale": true,
 }
 var invisibility = {
 	"name": "invisibility",
@@ -425,11 +427,14 @@ func init():
 	gunz_objs.append(bomb)
 	gunz_objs.append(spring)
 	gunz_objs.append(plant)
+	gunz_objs.append(smoke_bomb)
 	
 	gunz_objs_prob = [] + gunz_objs
 	for i in range(5):
 		gunz_objs_prob.append(muffin)
 		gunz_objs_prob.append(bomb)
+		gunz_objs_prob.append(smoke_bomb)
+		gunz_objs_prob.append(coin)
 		gunz_objs_prob.append(coin)
 		gunz_objs_prob.append(coin)
 	
