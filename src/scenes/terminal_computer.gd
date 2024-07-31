@@ -218,13 +218,13 @@ func _input(event):
 			var key_text  = OS.get_keycode_string(event.keycode)
 			if event.keycode == Key.KEY_RIGHT:
 				mode_idx += 1
-				if mode_idx > mode.size():
+				if mode_idx > mode.size() - 1:
 					mode_idx = 0
 					
 			if event.keycode == Key.KEY_LEFT:
 				mode_idx -= 1
 				if mode_idx < 0:
-					mode_idx = mode.size()-1 
+					mode_idx = mode.size() - 1 
 			
 			if event.keycode == Key.KEY_UP:
 				ttl_total = 0.01
@@ -232,7 +232,7 @@ func _input(event):
 				
 				if mode[mode_idx] == "cmd":
 					commands_idx += 1
-					if commands_idx > terminal_commands[terminal_number].size():
+					if commands_idx > terminal_commands[terminal_number].size() -1:
 						commands_idx = 0
 					
 					command = terminal_commands[terminal_number][commands_idx].name
@@ -241,38 +241,40 @@ func _input(event):
 					CMD.text = ""
 						
 				if mode[mode_idx] == "param1":
-					if terminal_commands[terminal_number][commands_idx].param1 == 1:
+					if terminal_commands[terminal_number][commands_idx].param1 != null:
+						if typeof(terminal_commands[terminal_number][commands_idx].param1) == TYPE_ARRAY:
+							param1_idx += 1
+							if param1_idx > terminal_commands[terminal_number][commands_idx].param1.size() -1:
+								param1_idx = 0
+							
+							command = terminal_commands[terminal_number][commands_idx].name
+							command += " " + terminal_commands[terminal_number][commands_idx].param1[param1_idx]
+							
+							current_message = command
+							CMD.text = ""
+						else:
+							numeric_param += 1
+							if numeric_param > Global.Gold:
+								numeric_param = Global.Gold
+							
+							command = terminal_commands[terminal_number][commands_idx].name
+							command += " " + str(numeric_param)
+							
+							current_message = command
+							CMD.text = ""
+					
+				if mode[mode_idx] == "param2":
+					if terminal_commands[terminal_number][commands_idx].param2 != null:
 						numeric_param += 1
 						if numeric_param > Global.Gold:
 							numeric_param = Global.Gold
-						
+							
 						command = terminal_commands[terminal_number][commands_idx].name
+						command += " " + terminal_commands[terminal_number][commands_idx].param1[param1_idx]
 						command += " " + str(numeric_param)
 						
 						current_message = command
 						CMD.text = ""
-					else:
-						param1_idx += 1
-						if param1_idx > terminal_commands[terminal_number][commands_idx].param1.size():
-							param1_idx = 0
-						
-						command = terminal_commands[terminal_number][commands_idx].name
-						command += " " + terminal_commands[terminal_number][commands_idx].param1[param1_idx]
-						
-						current_message = command
-						CMD.text = ""
-					
-				if mode[mode_idx] == "param2":
-					numeric_param += 1
-					if numeric_param > Global.Gold:
-						numeric_param = Global.Gold
-						
-					command = terminal_commands[terminal_number][commands_idx].name
-					command += " " + terminal_commands[terminal_number][commands_idx].param1[param1_idx]
-					command += " " + str(numeric_param)
-					
-					current_message = command
-					CMD.text = ""
 			
 			elif event.keycode == Key.KEY_KP_ENTER or event.keycode == Key.KEY_ENTER:
 				commands_idx = -1
