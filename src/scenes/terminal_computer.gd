@@ -77,89 +77,118 @@ var numeric_param = 0
 var mode_idx = 0
 var mode = ["cmd", "param1", "param2"]
 
+
+var BUY = {
+	"name": "BUY",
+	"param1": BUY_ITEMS,
+	"param2": 1
+}
+var DONATE = {
+	"name": "DONATE",
+	"param1": 1,
+	"param2": null
+}
+var STATUS = {
+	"name": "STATUS",
+	"param1": null,
+	"param2": null
+}
+var GAME = {
+	"name": "GAME",
+	"param1": null,
+	"param2": null
+} 
+var HELP = {
+	"name": "HELP",
+	"param1": ["BUY", "DONATE", "STATUS", "GAME", "LIST", "PRINT", "CLEAR", "EXIT"],
+	"param2": null
+}
+
+var HELP2 = {
+	"name": "HELP",
+	"param1": ["BUY", "SET", "VARIABLES", "PRINT", "CLEAR", "EXIT"],
+	"param2": null
+}
+
+var SET = {
+	"name": "SET",
+	"param1": [trad_vars(Global.Terminals[terminal_number].variable)],
+	"param2": ["ON", "OFF"]
+}
+var VARIABLES = {
+	"name": "VARIABLES",
+	"param1": null,
+	"param2": null
+}
+
+var LIST = {
+	"name": "LIST",
+	"param1": null,
+	"param2": null
+}
+var PRINT = {
+	"name": "PRINT",
+	"param1": null,
+	"param2": null
+}
+var CLEAR = {
+	"name": "CLEAR",
+	"param1": null,
+	"param2": null
+}
+var EXIT = {
+	"name": "EXIT",
+	"param1": null,
+	"param2": null
+}
+
 var terminal_commands = [
 	[
-		{
-			"name": "BUY",
-			"param1": BUY_ITEMS,
-			"param2": 1
-		},
-		{
-			"name": "DONATE",
-			"param1": 1,
-			"param2": null
-		},
-		{
-			"name": "STATUS",
-			"param1": null,
-			"param2": null
-		},
-		{
-			"name": "GAME",
-			"param1": null,
-			"param2": null
-		},
-		{
-			"name": "HELP",
-			"param1": ["BUY", "DONATE", "STATUS", "GAME", "LIST", "PRINT", "CLEAR", "EXIT"],
-			"param2": null
-		},
-		{
-			"name": "LIST",
-			"param1": null,
-			"param2": null
-		},
-		{
-			"name": "PRINT",
-			"param1": null,
-			"param2": null
-		},
-		{
-			"name": "CLEAR",
-			"param1": null,
-			"param2": null
-		},
-		{
-			"name": "EXIT",
-			"param1": null,
-			"param2": null
-		},
+		BUY,
+		DONATE,
+		STATUS,
+		GAME,
+		HELP,
+		LIST,
+		PRINT,
+		CLEAR,
+		EXIT,
 	],
 	[
-		"BUY",
-		"HELP",
-		"SET",
-		"VARIABLES",
-		"PRINT",
-		"CLEAR",
-		"EXIT",
+		BUY,
+		HELP2,
+		SET,
+		VARIABLES,
+		PRINT,
+		CLEAR,
+		EXIT,
 	],
 	[
-		"BUY",
-		"HELP",
-		"SET",
-		"VARIABLES",
-		"PRINT",
-		"CLEAR",
-		"EXIT",
+		BUY,
+		HELP2,
+		SET,
+		VARIABLES,
+		PRINT,
+		CLEAR,
+		EXIT,
 	],
 	[
-		"BUY",
-		"HELP",
-		"SET",
-		"VARIABLES",
-		"PRINT",
-		"CLEAR",
-		"EXIT",
+		BUY,
+		HELP2,
+		SET,
+		VARIABLES,
+		PRINT,
+		CLEAR,
+		EXIT,
 	],
 	[
-		"BUY",
-		"HELP",
-		"SET",
-		"VARIABLES",
-		"PRINT",
-		"CLEAR",
-		"EXIT",
+		BUY,
+		HELP2,
+		SET,
+		VARIABLES,
+		PRINT,
+		CLEAR,
+		EXIT,
 	],
 ]
 
