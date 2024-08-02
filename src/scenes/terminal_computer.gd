@@ -8,6 +8,7 @@ var ttl = 0
 var ttl_total_normal = 0.05
 var ttl_total = ttl_total_normal
 var CMD : TextEdit
+var cursor = "▶"
 var command = ""
 var is_writing = false 
 var command_ok = false
@@ -214,64 +215,83 @@ func _input(event):
 	command_ok = false
 	if !is_writing and opened and current_message == "": 
 		if event is InputEventKey and event.is_pressed():
-			ttl_total = 0.01
 			var key_text  = OS.get_keycode_string(event.keycode)
 			if event.keycode == Key.KEY_RIGHT:
+				if mode_idx == 0 and terminal_commands[terminal_number][commands_idx].param1 == null:
+					return
+				if mode_idx == 1 and terminal_commands[terminal_number][commands_idx].param2 == null:
+					return
+				
+				ttl_total = 0.01
+				command_ok = true
+				CMD.text = ""
+				if mode_idx == 0:
+					current_message = command.replace(cursor, "") + cursor
+				else:
+					current_message = command.replace(cursor, " ") + cursor
+
 				mode_idx += 1
 				if mode_idx > mode.size() - 1:
 					mode_idx = 0
-					
-			if event.keycode == Key.KEY_LEFT:
-				mode_idx -= 1
-				if mode_idx < 0:
-					mode_idx = mode.size() - 1 
 			
-			if event.keycode == Key.KEY_UP:
+			if event.keycode == Key.KEY_UP or event.keycode == Key.KEY_DOWN:
+				var dir = 1
+				if event.keycode == Key.KEY_DOWN:
+					dir = -1
+				
 				ttl_total = 0.01
 				command_ok = true
 				
 				if mode[mode_idx] == "cmd":
-					commands_idx += 1
+					commands_idx += dir
 					if commands_idx > terminal_commands[terminal_number].size() -1:
 						commands_idx = 0
+					if commands_idx < 0:
+						commands_idx = terminal_commands[terminal_number].size() -1
 					
-					command = terminal_commands[terminal_number][commands_idx].name
-					
+					command = cursor + terminal_commands[terminal_number][commands_idx].name
+					 
 					current_message = command
 					CMD.text = ""
 						
 				if mode[mode_idx] == "param1":
 					if terminal_commands[terminal_number][commands_idx].param1 != null:
 						if typeof(terminal_commands[terminal_number][commands_idx].param1) == TYPE_ARRAY:
-							param1_idx += 1
+							param1_idx += dir
 							if param1_idx > terminal_commands[terminal_number][commands_idx].param1.size() -1:
 								param1_idx = 0
+							if param1_idx < 0:
+								param1_idx = terminal_commands[terminal_number][commands_idx].param1.size() -1
 							
 							command = terminal_commands[terminal_number][commands_idx].name
-							command += " " + terminal_commands[terminal_number][commands_idx].param1[param1_idx]
+							command += cursor +  terminal_commands[terminal_number][commands_idx].param1[param1_idx]
 							
 							current_message = command
 							CMD.text = ""
 						else:
-							numeric_param += 1
+							numeric_param += dir
 							if numeric_param > Global.Gold:
 								numeric_param = Global.Gold
+							if numeric_param < 0:
+								numeric_param = 0	
 							
 							command = terminal_commands[terminal_number][commands_idx].name
-							command += " " + str(numeric_param)
+							command += cursor + str(numeric_param)
 							
 							current_message = command
 							CMD.text = ""
 					
 				if mode[mode_idx] == "param2":
 					if terminal_commands[terminal_number][commands_idx].param2 != null:
-						numeric_param += 1
+						numeric_param += dir
 						if numeric_param > Global.Gold:
 							numeric_param = Global.Gold
+						if numeric_param < 0:
+							numeric_param = 0
 							
 						command = terminal_commands[terminal_number][commands_idx].name
 						command += " " + terminal_commands[terminal_number][commands_idx].param1[param1_idx]
-						command += " " + str(numeric_param)
+						command += cursor + str(numeric_param)
 						
 						current_message = command
 						CMD.text = ""
@@ -283,6 +303,8 @@ func _input(event):
 				numeric_param = 0
 				mode_idx = 0
 				command_ok = true
+				command = command.replace(cursor, " ")
+				
 				parser(command)
 				command = ""
 			else:

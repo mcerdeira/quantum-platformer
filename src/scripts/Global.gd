@@ -247,7 +247,7 @@ func find_my_item(itm):
 	return false
 
 func donate(qty):
-	if Global.Gold < qty:
+	if Global.Gold < qty or qty == 0:
 		return null
 	else:
 		Global.GoldDonation += qty
@@ -279,7 +279,7 @@ func set_current_perks():
 		Global.perks_equiped[i] = Global.UNLOCKS_PER_LEVEL[i]
 
 func buy_item(item, qty):
-	if Global.Gold < qty:
+	if Global.Gold < qty or qty == 0:
 		return false
 	else:
 		var itm = null
