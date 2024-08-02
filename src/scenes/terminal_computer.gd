@@ -246,84 +246,11 @@ func _input(event):
 		if event is InputEventKey and event.is_pressed():
 			var key_text  = OS.get_keycode_string(event.keycode)
 			if event.keycode == Key.KEY_RIGHT:
-				if mode_idx == 0 and terminal_commands[terminal_number][commands_idx].param1 == null:
-					return
-				if mode_idx == 1 and terminal_commands[terminal_number][commands_idx].param2 == null:
-					return
-				
-				ttl_total = 0.01
-				command_ok = true
-				CMD.text = ""
-				if mode_idx == 0:
-					current_message = command.replace(cursor, "") + cursor
-				else:
-					current_message = command.replace(cursor, " ") + cursor
-
-				mode_idx += 1
-				if mode_idx > mode.size() - 1:
-					mode_idx = 0
-			
+				if KeyRight():
+					KeyUpDown(Key.KEY_UP)
+	
 			if event.keycode == Key.KEY_UP or event.keycode == Key.KEY_DOWN:
-				var dir = 1
-				if event.keycode == Key.KEY_DOWN:
-					dir = -1
-				
-				ttl_total = 0.01
-				command_ok = true
-				
-				if mode[mode_idx] == "cmd":
-					commands_idx += dir
-					if commands_idx > terminal_commands[terminal_number].size() -1:
-						commands_idx = 0
-					if commands_idx < 0:
-						commands_idx = terminal_commands[terminal_number].size() -1
-					
-					command = cursor + terminal_commands[terminal_number][commands_idx].name
-					 
-					current_message = command
-					CMD.text = ""
-						
-				if mode[mode_idx] == "param1":
-					if terminal_commands[terminal_number][commands_idx].param1 != null:
-						if typeof(terminal_commands[terminal_number][commands_idx].param1) == TYPE_ARRAY:
-							param1_idx += dir
-							if param1_idx > terminal_commands[terminal_number][commands_idx].param1.size() -1:
-								param1_idx = 0
-							if param1_idx < 0:
-								param1_idx = terminal_commands[terminal_number][commands_idx].param1.size() -1
-							
-							command = terminal_commands[terminal_number][commands_idx].name
-							command += cursor +  terminal_commands[terminal_number][commands_idx].param1[param1_idx]
-							
-							current_message = command
-							CMD.text = ""
-						else:
-							numeric_param += dir
-							if numeric_param > Global.Gold:
-								numeric_param = Global.Gold
-							if numeric_param < 0:
-								numeric_param = 0	
-							
-							command = terminal_commands[terminal_number][commands_idx].name
-							command += cursor + str(numeric_param)
-							
-							current_message = command
-							CMD.text = ""
-					
-				if mode[mode_idx] == "param2":
-					if terminal_commands[terminal_number][commands_idx].param2 != null:
-						numeric_param += dir
-						if numeric_param > Global.Gold:
-							numeric_param = Global.Gold
-						if numeric_param < 0:
-							numeric_param = 0
-							
-						command = terminal_commands[terminal_number][commands_idx].name
-						command += " " + terminal_commands[terminal_number][commands_idx].param1[param1_idx]
-						command += cursor + str(numeric_param)
-						
-						current_message = command
-						CMD.text = ""
+				KeyUpDown(event.keycode)
 			
 			elif event.keycode == Key.KEY_KP_ENTER or event.keycode == Key.KEY_ENTER:
 				commands_idx = -1
@@ -352,6 +279,88 @@ func _input(event):
 				elif event.keycode == 32:
 					command_ok = true
 					command += " "
+					
+func KeyUpDown(event_keycode):
+	var dir = 1
+	if event_keycode == Key.KEY_DOWN:
+		dir = -1
+	
+	ttl_total = 0.01
+	command_ok = true
+	
+	if mode[mode_idx] == "cmd":
+		commands_idx += dir
+		if commands_idx > terminal_commands[terminal_number].size() -1:
+			commands_idx = 0
+		if commands_idx < 0:
+			commands_idx = terminal_commands[terminal_number].size() -1
+		
+		command = cursor + terminal_commands[terminal_number][commands_idx].name
+		 
+		current_message = command
+		CMD.text = ""
+			
+	if mode[mode_idx] == "param1":
+		if terminal_commands[terminal_number][commands_idx].param1 != null:
+			if typeof(terminal_commands[terminal_number][commands_idx].param1) == TYPE_ARRAY:
+				param1_idx += dir
+				if param1_idx > terminal_commands[terminal_number][commands_idx].param1.size() -1:
+					param1_idx = 0
+				if param1_idx < 0:
+					param1_idx = terminal_commands[terminal_number][commands_idx].param1.size() -1
+				
+				command = terminal_commands[terminal_number][commands_idx].name
+				command += cursor +  terminal_commands[terminal_number][commands_idx].param1[param1_idx]
+				
+				current_message = command
+				CMD.text = ""
+			else:
+				numeric_param += dir
+				if numeric_param > Global.Gold:
+					numeric_param = Global.Gold
+				if numeric_param < 0:
+					numeric_param = 0	
+				
+				command = terminal_commands[terminal_number][commands_idx].name
+				command += cursor + str(numeric_param)
+				
+				current_message = command
+				CMD.text = ""
+		
+	if mode[mode_idx] == "param2":
+		if terminal_commands[terminal_number][commands_idx].param2 != null:
+			numeric_param += dir
+			if numeric_param > Global.Gold:
+				numeric_param = Global.Gold
+			if numeric_param < 0:
+				numeric_param = 0
+				
+			command = terminal_commands[terminal_number][commands_idx].name
+			command += " " + terminal_commands[terminal_number][commands_idx].param1[param1_idx]
+			command += cursor + str(numeric_param)
+			
+			current_message = command
+			CMD.text = ""
+	
+func KeyRight():
+	if mode_idx == 0 and terminal_commands[terminal_number][commands_idx].param1 == null:
+		return false
+	if mode_idx == 1 and terminal_commands[terminal_number][commands_idx].param2 == null:
+		return false
+		
+	#Actual Logic inits
+	ttl_total = 0.01
+	command_ok = true
+	CMD.text = ""
+	if mode_idx == 0:
+		current_message = command.replace(cursor, "") + cursor
+	else:
+		current_message = command.replace(cursor, " ") + cursor
+	mode_idx += 1
+	if mode_idx > mode.size() - 1:
+		mode_idx = 0
+		
+	return true
 					
 func calc_progress():
 	if Global.CurrentLevel == Global.GOLD_PER_LEVEL.size() - 1:

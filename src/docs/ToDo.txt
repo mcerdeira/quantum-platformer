@@ -48,7 +48,7 @@ BUGS/Ajustes:
 
 
 Features:
-- Cascadas: 
+- Cascadas: ??
 - Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
   . Alinear los discos, llama al bote.
   . Si giramos los discos, atrás se forma un QR, el QR tiene la password para las terminales.
