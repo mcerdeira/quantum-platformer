@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://dsl8ifjv0hjav"]
+
+[ext_resource type="Script" path="res://scenes/Artifact3D.gd" id="1_6pjhq"]
+[ext_resource type="Texture2D" uid="uid://bprwu2xhbkspj" path="res://sprites/qr/example.png" id="2_j8fid"]
+[ext_resource type="Script" path="res://scenes/art3d_part.gd" id="3_1u3n8"]
+[ext_resource type="Texture2D" uid="uid://feyxgrn8ox3b" path="res://sprites/black_background.png" id="4_7yv51"]
+
+[sub_resource type="Environment" id="Environment_r74ps"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hqefb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76bpf"]
+albedo_texture = ExtResource("2_j8fid")
+normal_scale = 13.29
+texture_filter = 0
+
+[node name="Artifact3D" type="Node3D"]
+process_mode = 3
+script = ExtResource("1_6pjhq")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_r74ps")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, -2.38419e-07, 0, 1, 0, 2.38419e-07, 0, 1, 0, 1, 11)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="art3d_part1" type="MeshInstance3D" parent="."]
+transform = Transform3D(-5.60638, 0, 8.28061, 0, 1, 0, -8.28061, 0, -5.60638, 0, 0, 0)
+mesh = SubResource("BoxMesh_hqefb")
+surface_material_override/0 = SubResource("StandardMaterial3D_76bpf")
+script = ExtResource("3_1u3n8")
+part_n = 1
+
+[node name="art3d_part2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-5.60638, 0, 8.28061, 0, 1, 0, -8.28061, 0, -5.60638, 0, 0, 0)
+mesh = SubResource("BoxMesh_hqefb")
+surface_material_override/0 = SubResource("StandardMaterial3D_76bpf")
+script = ExtResource("3_1u3n8")
+part_n = 2
+
+[node name="art3d_part3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-5.60638, 0, 8.28061, 0, 1, 0, -8.28061, 0, -5.60638, 0, 0, 0)
+mesh = SubResource("BoxMesh_hqefb")
+surface_material_override/0 = SubResource("StandardMaterial3D_76bpf")
+script = ExtResource("3_1u3n8")
+part_n = 3
+
+[node name="art3d_part4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-5.60638, 0, 8.28061, 0, 1, 0, -8.28061, 0, -5.60638, 0, 0, 0)
+mesh = SubResource("BoxMesh_hqefb")
+surface_material_override/0 = SubResource("StandardMaterial3D_76bpf")
+script = ExtResource("3_1u3n8")
+part_n = 4
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-200, 0, -1.74846e-05, 0, 150, 0, 1.74846e-05, 0, -200, 2.03606, -2.07829, -27.2379)
+texture = ExtResource("4_7yv51")

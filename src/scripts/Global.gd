@@ -149,6 +149,7 @@ var TerminalNumber = -1
 var Gold = 0
 var CurrentLevel = 0
 var GoldDonation = 0
+var ARTIFACT_PER_LEVEL = [false, false, false, false, false]
 var UNLOCKS_PER_LEVEL = [null, map, double_jump, radar, invisibility, binocular, resurrect]
 var GOLD_PER_LEVEL = [0, 10, 25, 50, 125, 200, 220]
 var perks_equiped = [null, null, null, null, null, null, null]
@@ -357,6 +358,7 @@ func save_game():
 		saved_game.store_var(Global.Gold)
 		saved_game.store_var(Global.CurrentLevel)
 		saved_game.store_var(Global.GoldDonation)
+		saved_game.store_var(Global.ARTIFACT_PER_LEVEL)
 		saved_game.close()
 	
 func load_game():
@@ -374,6 +376,7 @@ func load_game():
 			var gold = saved_game.get_var()
 			var curr_level = saved_game.get_var()
 			var g_donation = saved_game.get_var()
+			var a_per_level = saved_game.get_var()
 			
 			if cur_state != null:
 				Global.FirstState = cur_state
@@ -398,6 +401,8 @@ func load_game():
 					Global.CurrentLevel = curr_level
 				if g_donation != null:
 					Global.GoldDonation = g_donation
+				if a_per_level != null:
+					Global.ARTIFACT_PER_LEVEL = a_per_level
 
 func _ready():
 	load_sfx()

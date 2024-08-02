@@ -7,6 +7,12 @@ var has_artifact = false
 var itemfound = load("res://scenes/Item3D.tscn")
 
 func _ready():
+	if !Global.ARTIFACT_PER_LEVEL[Global.TerminalNumber]:
+		if randi() % 7 == 0:
+			has_artifact = true
+		
+	has_artifact = true
+		
 	$display.visible = false
 	$sprite.frame = randi() % 4
 
@@ -27,6 +33,7 @@ func _physics_process(delta):
 			
 func get_item():
 	if has_artifact:
+		Global.ARTIFACT_PER_LEVEL[Global.TerminalNumber] = true
 		var p = itemfound.instantiate()
 		var parent = get_parent()
 		parent.add_child(p)
