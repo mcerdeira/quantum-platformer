@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://b4lwufhu6l7tk"]
 
 [ext_resource type="Script" path="res://scenes/fire_emiter.gd" id="1_vrjv0"]
-[ext_resource type="Texture2D" uid="uid://dso5b8bktdlrv" path="res://sprites/fire_emiter.png" id="2_qtyv2"]
+[ext_resource type="Texture2D" uid="uid://dgq74s0schu64" path="res://sprites/fire_emiter.png" id="2_qtyv2"]
 [ext_resource type="Shader" path="res://scenes/Ray.gdshader" id="2_t8qgr"]
 [ext_resource type="Script" path="res://scenes/RayCast2D2.gd" id="3_8uero"]
 [ext_resource type="PackedScene" uid="uid://cfb077sbe44pc" path="res://scenes/fire_part.tscn" id="4_6lx06"]
-[ext_resource type="Texture2D" uid="uid://dxyjw5ek2cuol" path="res://sprites/fake_ray.png" id="4_vtmue"]
+[ext_resource type="Texture2D" uid="uid://d37tfl8om1jnr" path="res://sprites/fake_ray.png" id="4_vtmue"]
 [ext_resource type="PackedScene" uid="uid://dsb6dbx10a67k" path="res://scenes/ray_particles.tscn" id="6_eexq6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2xxe"]

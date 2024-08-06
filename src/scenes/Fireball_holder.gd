@@ -1,5 +1,6 @@
 extends Node2D
 @export var fixed = false
+@export var speed = 1.0
 
 func _ready():
 	if !fixed:
@@ -7,4 +8,4 @@ func _ready():
 			queue_free()
 
 func _physics_process(delta):
-	rotation += 1 * delta
+	rotation += speed * delta

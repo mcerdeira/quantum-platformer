@@ -10,9 +10,19 @@ var room_outside = preload("res://scenes/levels/room_outside.tscn")
 var room_falling = preload("res://scenes/levels/room_falling.tscn")
 var room_overworld = preload("res://scenes/levels/room_overworld.tscn")
 
+var rooms_bottom_dragon = [
+	preload("res://scenes/levels/room_bottom_dragon.tscn")
+]
+var rooms_middle_dragon = [
+	preload("res://scenes/levels/room_middle_dragon.tscn")
+]
+var rooms_top_dragon = [
+	preload("res://scenes/levels/room_top_dragon.tscn")
+]
+
 var rooms_top = [
 	preload("res://scenes/levels/room_top1.tscn"),
-	preload("res://scenes/levels/room_top2.tscn")  
+	preload("res://scenes/levels/room_top2.tscn")
 ]
 var rooms_middle1 = [
 	preload("res://scenes/levels/room_middle1.tscn")
@@ -26,6 +36,35 @@ var rooms_bottom = [
 	load("res://scenes/levels/room_bottom1.tscn")
 ]
 
+var list_rooms_top = [
+	null,
+	rooms_top,
+	null,
+	null,
+	rooms_top_dragon
+]
+var list_rooms_middle1 = [
+	null,
+	rooms_middle1,
+	null,
+	null,
+	rooms_middle_dragon
+]
+var list_rooms_middle2  = [
+	null,
+	rooms_middle2,
+	null,
+	null,
+	rooms_middle_dragon
+]
+var list_rooms_bottom  = [
+	null,
+	rooms_bottom,
+	null,
+	null,
+	rooms_bottom_dragon
+]
+
 func generate_fixed_level(room, visible_hud):
 	var q = 1
 	$frame.queue_free()
@@ -36,6 +75,7 @@ func generate_fixed_level(room, visible_hud):
 	$CanvasLayer/Control.visible = visible_hud
 		
 func generate_level():
+	Global.TerminalNumber = 4
 	var player_room = Vector2(randi() % 4, 0)
 	var door_room = Vector2(randi() % 4, randi() % 4)
 	var size = Vector2(1152, 640) #TODO: Cambiar
@@ -43,20 +83,24 @@ func generate_level():
 	var room = null
 	var q = 1
 	var prisonercount = Global.Terminals[Global.TerminalNumber].prisoners
+	var _rooms_top = list_rooms_top[Global.TerminalNumber]
+	var _rooms_middle1 = list_rooms_middle1[Global.TerminalNumber]
+	var _rooms_middle2 = list_rooms_middle2[Global.TerminalNumber]
+	var _rooms_bottom = list_rooms_bottom [Global.TerminalNumber]
 	
 	for h in range(4):
 		for w in range(4):
 			if h == 0:
-				room = Global.pick_random(rooms_top)
+				room = Global.pick_random(_rooms_top)
 
 			if h == 1:
-				room = Global.pick_random(rooms_middle1)
+				room = Global.pick_random(_rooms_middle1)
 				
 			if h == 2:
-				room = Global.pick_random(rooms_middle2)
+				room = Global.pick_random(_rooms_middle2)
 			
 			if h == 3:
-				room = Global.pick_random(rooms_bottom)
+				room = Global.pick_random(_rooms_bottom)
 				
 			var r = room.instantiate()
 			r.global_position = room_pos
@@ -79,7 +123,7 @@ func generate_level():
 	while terminals.size() > 1:
 		terminals.shuffle()
 		var t = terminals.pop_front()
-		t.queue_free()	
+		t.queue_free()
 		
 	var color_buttons = get_tree().get_nodes_in_group("color_button")
 	while color_buttons.size() > 1:
