@@ -48,6 +48,7 @@ BUGS/Ajustes:
 
 
 Features:
+- Revisar el tema de la camara lenta al estar apuntando con el item que sea (ver si podemos pausar y des-pausar intermitente) 
 - Cascadas: ??
 - Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
   . Alinear los discos, llama al bote.

@@ -13,14 +13,14 @@ func set_ttl():
 	
 func _physics_process(delta):
 	if !falling:
-		ttl -= 1 * delta
+		ttl -= (1 * Global.time_speed) * delta
 		$sprite.scale.y = lerp($sprite.scale.y, 1.0, 0.009)
 		if ttl <= 0:
 			$sprite.scale.y = 1
 			ttl = total_ttl
 			falling = true
 	else:
-		global_position.y += speed * delta
+		global_position.y += (speed * Global.time_speed) * delta
 
 func _on_body_entered(_body):
 	if falling:

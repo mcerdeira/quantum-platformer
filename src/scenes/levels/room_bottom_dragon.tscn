@@ -290,6 +290,7 @@ position = Vector2(560, 512)
 scale = Vector2(1, 15)
 
 [node name="moving_plat" parent="." instance=ExtResource("20_hxa3u")]
+visible = false
 z_index = 1000
 z_as_relative = false
 position = Vector2(210, 191)

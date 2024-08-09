@@ -12,13 +12,13 @@ func create():
 func destroy():
 	created = false
 		
-func _physics_process(delta):
+func _physics_process(_delta):
 	if inside_me.size() > 0 and created:
 		$Line2D.points[1].y = 0
 		$RaySprite.visible = false
 	else:
 		$RaySprite.visible = true
-		$Line2D.points[1].y = lerp($Line2D.points[1].y, ($RayCast2D.cast_point.y - 16), 1)
+		$Line2D.points[1].y = lerp($Line2D.points[1].y, ($RayCast2D.cast_point.y - 16), (1 * Global.time_speed))
 	
 	
 	var coso = abs($Line2D.points[1].y)

@@ -229,7 +229,7 @@ func process_player(delta):
 
 func jump(delta):
 	if !Global.GAMEOVER:
-		if is_on_floor_custom() and Global.time_speed == 1.0: 
+		if is_on_floor_custom():
 			buff = 0
 			Global.play_sound(Global.JUMP_SFX)
 			Global.emit(global_position, 2)

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 var gravity = 10.0
-var speed = 25.0
+var total_speed = 25.0
+var speed = total_speed
 var jump_speed = -300.0
 @export var direction = "right"
 var direction_change_ttl_total = 1
@@ -51,6 +52,7 @@ func is_on_floor_custom():
 	return is_on_floor() or buff > 0
 
 func _physics_process(delta):
+	speed = total_speed 
 	if trapped:
 		if liberating > 0:
 			$lbl_action.text = thanks_message

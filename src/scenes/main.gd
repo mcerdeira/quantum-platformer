@@ -75,7 +75,6 @@ func generate_fixed_level(room, visible_hud):
 	$CanvasLayer/Control.visible = visible_hud
 		
 func generate_level():
-	Global.TerminalNumber = 4
 	var player_room = Vector2(randi() % 4, 0)
 	var door_room = Vector2(randi() % 4, randi() % 4)
 	var size = Vector2(1152, 640) #TODO: Cambiar

@@ -279,7 +279,7 @@ position = Vector2(569, 576)
 position = Vector2(537, 576)
 
 [node name="LaserHolder" parent="." instance=ExtResource("19_hq5os")]
-position = Vector2(687, 273)
+position = Vector2(688, 272)
 fixed = true
 speed = 0.3
 

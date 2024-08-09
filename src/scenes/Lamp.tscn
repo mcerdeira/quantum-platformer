@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cv3n3jd3p3yty"]
+[gd_scene load_steps=17 format=3 uid="uid://cv3n3jd3p3yty"]
 
 [ext_resource type="Texture2D" uid="uid://jmdwjxiq0ful" path="res://sprites/lamp_1.png" id="1_js1s3"]
 [ext_resource type="Script" path="res://scenes/Lamp.gd" id="1_tg0cb"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dbul1fydmllw8" path="res://sprites/fire_lamp4.png" id="6_twntd"]
 [ext_resource type="Texture2D" uid="uid://c7obt61badgu4" path="res://sprites/fire_lamp5.png" id="7_3wmjq"]
 [ext_resource type="Texture2D" uid="uid://b7qlmhoqal3pq" path="res://sprites/fire_lamp6.png" id="8_nfnia"]
+[ext_resource type="Script" path="res://scenes/sprite_control.gd" id="14_jueho"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yyehc"]
 radius = 18.0278
@@ -95,5 +96,6 @@ sprite_frames = SubResource("SpriteFrames_hj37l")
 autoplay = "default"
 frame_progress = 0.95626
 speed_scale = 2.0
+script = ExtResource("14_jueho")
 
 [connection signal="body_entered" from="LampDown/LampArea" to="LampPivot" method="_on_lamp_area_body_entered"]

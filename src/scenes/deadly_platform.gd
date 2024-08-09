@@ -9,7 +9,7 @@ func _ready():
 		
 func _physics_process(delta):
 	if active and !exploded:
-		$sprite.speed_scale += 1 * delta
+		$sprite.speed_scale += (1 * Global.time_speed) * delta
 		if $sprite.speed_scale >= 3:
 			exploded = true
 			$sprite.stop()
@@ -17,7 +17,7 @@ func _physics_process(delta):
 			explode()
 	elif active and exploded:
 		if explosion_delay > 0:
-			explosion_delay -= 1 * delta
+			explosion_delay -= (1 * Global.time_speed) * delta
 			if explosion_delay <= 0:
 				$explosion.queue_free()
 				$explosions.queue_free()

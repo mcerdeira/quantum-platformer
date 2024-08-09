@@ -134,7 +134,6 @@ var slots_stock = [0, 0]
 var gunz_index = 0
 var main_camera = null
 var targets : Array = []
-var time_speed = 1.0
 var GAMEOVER = false
 var shaker_obj = null
 var GizmoWatcher = null
@@ -418,7 +417,6 @@ func init():
 	gunz_index = 0
 	main_camera = null
 	targets = []
-	time_speed = 1.0
 	GAMEOVER = false
 	prisoner_counter = 0
 	prisoner_total = 0

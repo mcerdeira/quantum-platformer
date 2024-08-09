@@ -277,7 +277,7 @@ func process_player(delta):
 		if !Global.gunz_equiped[Global.gunz_index].pasive:
 			if Global.slots_stock[Global.gunz_index] > 0:
 				idle_play = idle_play_total
-				Global.time_speed = 0.1
+				Engine.time_scale = 0.1
 				update_trayectory(delta)
 				shoot_mode = true
 		
@@ -285,8 +285,7 @@ func process_player(delta):
 		if !Global.gunz_equiped[Global.gunz_index].pasive:
 			if Global.slots_stock[Global.gunz_index] > 0:
 				idle_play = idle_play_total
-				Global.time_speed = 1.0
-				#destroy_gizmo_simul()
+				Engine.time_scale = 1.0
 				destroy_trayectory()
 				shoot_mode = false
 				shoot(delta)
@@ -296,11 +295,11 @@ func process_player(delta):
 		
 	if !dead and shoot_mode:
 		if Input.is_action_pressed("left"):
-			$gun_sprite.rotation -= 1 * delta
+			$gun_sprite.rotation -= 10 * delta
 			idle_play = idle_play_total
 			update_trayectory(delta)
 		elif Input.is_action_pressed("right"):
-			$gun_sprite.rotation += 1 * delta
+			$gun_sprite.rotation += 10 * delta
 			idle_play = idle_play_total
 			update_trayectory(delta)
 	
