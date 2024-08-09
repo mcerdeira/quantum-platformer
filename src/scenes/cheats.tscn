@@ -100,6 +100,19 @@ offset_right = 346.0
 offset_bottom = 286.0
 text = "Reset"
 
+[node name="txt_terminal" type="TextEdit" parent="."]
+offset_left = 347.0
+offset_top = 118.0
+offset_right = 466.0
+offset_bottom = 149.0
+text = "1"
+
+[node name="lbl_terminal" type="Label" parent="."]
+offset_left = 477.0
+offset_top = 118.0
+offset_right = 562.0
+offset_bottom = 146.0
+
 [connection signal="pressed" from="bnt_coin" to="." method="_on_bnt_coin_pressed"]
 [connection signal="pressed" from="bnt_plant" to="." method="_on_bnt_plant_pressed"]
 [connection signal="pressed" from="bnt_spring" to="." method="_on_bnt_spring_pressed"]
@@ -111,3 +124,4 @@ text = "Reset"
 [connection signal="pressed" from="bnt_smoke" to="." method="_on_bnt_smoke_pressed"]
 [connection signal="pressed" from="btn_nextscene" to="." method="_on_btn_nextscene_pressed"]
 [connection signal="pressed" from="btn_reset" to="." method="_on_btn_reset_pressed"]
+[connection signal="text_changed" from="txt_terminal" to="." method="_on_txt_terminal_text_changed"]

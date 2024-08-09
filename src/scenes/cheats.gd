@@ -1,5 +1,8 @@
 extends Node2D
 
+func _ready():
+	terminal_trad()
+
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("cheat"):
 		visible = !visible
@@ -44,7 +47,10 @@ func _on_bnt_level_pressed():
 	Global.donate(10)
 
 func _on_btn_nextscene_pressed():
-	Global.scene_next()
+	if $txt_terminal.text == "":
+		Global.scene_next()
+	else:
+		Global.scene_next(int($txt_terminal.text))
 
 func _on_btn_reset_pressed():
 	Global.CurrentLevel = 0
@@ -55,3 +61,12 @@ func _on_btn_reset_pressed():
 	Global.CurrentState = Global.GameStates.HOME
 	Global.Fader.fade_in()
 	get_tree().reload_current_scene()
+
+func terminal_trad():
+	if $txt_terminal.text != "":
+		$lbl_terminal.text = Global.Terminals[int($txt_terminal.text)].name
+	else:
+		$lbl_terminal.text = ""
+
+func _on_txt_terminal_text_changed():
+	terminal_trad()

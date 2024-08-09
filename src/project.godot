@@ -31,6 +31,15 @@ window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[file_customization]
+
+folder_colors={
+"res://scenes/levels/dragon/": "red",
+"res://scenes/levels/leaf/": "green",
+"res://scenes/levels/mermaid/": "purple",
+"res://scenes/levels/tomb/": "gray"
+}
+
 [input]
 
 toggle_fullscreen={

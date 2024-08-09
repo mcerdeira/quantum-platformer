@@ -11,57 +11,76 @@ var room_falling = preload("res://scenes/levels/room_falling.tscn")
 var room_overworld = preload("res://scenes/levels/room_overworld.tscn")
 
 var rooms_bottom_dragon = [
-	preload("res://scenes/levels/room_bottom_dragon.tscn")
+	preload("res://scenes/levels/dragon/room_bottom_dragon.tscn")
 ]
 var rooms_middle_dragon = [
-	preload("res://scenes/levels/room_middle_dragon.tscn")
+	preload("res://scenes/levels/dragon/room_middle_dragon.tscn")
 ]
 var rooms_top_dragon = [
-	preload("res://scenes/levels/room_top_dragon.tscn")
+	preload("res://scenes/levels/dragon/room_top_dragon.tscn")
+]
+
+var rooms_bottom_mermaid = [
+	preload("res://scenes/levels/mermaid/room_bottom_mermaid.tscn")
+]
+var rooms_middle_mermaid = [
+	preload("res://scenes/levels/mermaid/room_middle_mermaid.tscn")
+]
+var rooms_top_mermaid = [
+	preload("res://scenes/levels/mermaid/room_top_mermaid.tscn")
+]
+
+var rooms_bottom_tomb = [
+	preload("res://scenes/levels/tomb/room_bottom_tomb.tscn")
+]
+var rooms_middle_tomb = [
+	preload("res://scenes/levels/tomb/room_middle_tomb.tscn")
+]
+var rooms_top_tomb = [
+	preload("res://scenes/levels/tomb/room_top_tomb.tscn")
 ]
 
 var rooms_top = [
-	preload("res://scenes/levels/room_top1.tscn"),
-	preload("res://scenes/levels/room_top2.tscn")
+	preload("res://scenes/levels/leaf/room_top1.tscn"),
+	preload("res://scenes/levels/leaf/room_top2.tscn")
 ]
 var rooms_middle1 = [
-	preload("res://scenes/levels/room_middle1.tscn")
+	preload("res://scenes/levels/leaf/room_middle1.tscn")
 ]
 var rooms_middle2 = [
-	preload("res://scenes/levels/room_middle2.tscn")
+	preload("res://scenes/levels/leaf/room_middle2.tscn")
 ]
-
 var rooms_bottom = [
-	load("res://scenes/levels/room_bottom0.tscn"),
-	load("res://scenes/levels/room_bottom1.tscn")
+	preload("res://scenes/levels/leaf/room_bottom0.tscn"),
+	preload("res://scenes/levels/leaf/room_bottom1.tscn")
 ]
 
 var list_rooms_top = [
 	null,
 	rooms_top,
-	null,
-	null,
+	rooms_top_tomb,
+	rooms_top_mermaid,
 	rooms_top_dragon
 ]
 var list_rooms_middle1 = [
 	null,
 	rooms_middle1,
-	null,
-	null,
+	rooms_middle_tomb,
+	rooms_middle_mermaid,
 	rooms_middle_dragon
 ]
 var list_rooms_middle2  = [
 	null,
 	rooms_middle2,
-	null,
-	null,
-	rooms_middle_dragon
+	rooms_middle_tomb, #2 #TODO
+	rooms_middle_mermaid,#2
+	rooms_middle_dragon#2
 ]
 var list_rooms_bottom  = [
 	null,
 	rooms_bottom,
-	null,
-	null,
+	rooms_bottom_tomb,
+	rooms_bottom_mermaid,
 	rooms_bottom_dragon
 ]
 
