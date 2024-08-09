@@ -3,6 +3,7 @@ var enemy = load("res://scenes/enemy.tscn")
 var enemy_walker = load("res://scenes/enemy_walker.tscn")
 var enemy_walker_walls = load("res://scenes/enemy_walker_walls.tscn")
 var enemy_bullet = load("res://scenes/enemy_bullet.tscn")
+var enemy_slime = load("res://scenes/enemy_slime.tscn")
 
 @export var selected_enemy: String 
 @export var by_chance : bool = true
@@ -26,6 +27,10 @@ func _process(_delta):
 			else:
 				if selected_enemy == "enemy_walker_walls":
 					eobj = enemy_walker_walls
+				elif selected_enemy == "enemy_walker":
+					eobj = enemy_walker
+				elif selected_enemy == "enemy_slime":
+					eobj = enemy_slime
 				elif selected_enemy == "enemy_bullet":
 					eobj = enemy_bullet
 				elif selected_enemy == "enemy":

@@ -1,5 +1,6 @@
 extends CharacterBody2D
-var total_speed = 50.0
+var gravity = 10.0
+var total_speed = 60.0
 var speed = total_speed
 var jump_speed = -300.0
 @export var direction = "right"
@@ -21,7 +22,6 @@ var fire_obj = null
 var level_parent = null
 var fires = preload("res://scenes/Fires.tscn")
 var dead = false
-var delay = 4
 
 func _ready():
 	add_to_group("enemies")
@@ -31,47 +31,42 @@ func is_on_floor_custom():
 	return is_on_floor() or buff > 0
 	
 func _physics_process(delta):
-	delay -= 1 * delta 
-	if delay <= 0:
-		speed = total_speed
-		if is_on_floor():
-			if in_air:
-				in_air = false
-				Global.emit(global_position, 1)
-			buff = 0.2
-		else:
-			in_air = true
-			buff -= 1 * delta
-			
-		if fire_obj and is_instance_valid(fire_obj):
-			fire_obj.reparent(level_parent)
-			fire_obj.global_position = global_position
-			fire_obj.z_index = z_index + 1
-		
-		if blowed > 0:
-			blowed -= 1 * delta
-			if is_on_wall():
-				velocity.x = (previus_velocity.x / 2) * -1
-			else:
-				previus_velocity = velocity
-		else:
-			$stars_stunned.visible = false
-			if !is_on_floor_custom():
-				velocity.x = lerp(velocity.x, 0.0, friction / 10)
-			else:
-				velocity.x = lerp(velocity.x, 0.0, friction)
-
-		process_player(delta)
-		move_and_slide()
+	speed = total_speed
+	if is_on_floor():
+		if in_air:
+			in_air = false
+			Global.emit(global_position, 1)
+		buff = 0.2
 	else:
-		velocity.y = -25
-		move_and_slide()
+		in_air = true
+		buff -= 1 * delta
+		
+	if fire_obj and is_instance_valid(fire_obj):
+		fire_obj.reparent(level_parent)
+		fire_obj.global_position = global_position
+		fire_obj.z_index = z_index + 1
+	
+	if !is_on_floor_custom():
+		velocity.y += gravity
+	
+	if blowed > 0:
+		blowed -= 1 * delta
+		if is_on_wall():
+			velocity.x = (previus_velocity.x / 2) * -1
+		else:
+			previus_velocity = velocity
+	else:
+		$stars_stunned.visible = false
+		if !is_on_floor_custom():
+			velocity.x = lerp(velocity.x, 0.0, friction / 10)
+		else:
+			velocity.x = lerp(velocity.x, 0.0, friction)
+
+	process_player(delta)
+	move_and_slide()	
 	
 func process_player(delta):
-	var moving = true
-	if $sprite.animation != "killing":
-		$AnimationPlayer.play("killing")
-	
+	var moving = false
 	if blowed > 0:
 		$stars_stunned.visible = true
 		$sprite.animation = "stunned"
@@ -81,19 +76,15 @@ func process_player(delta):
 		pass
 		
 	if dead:
-		$sprite/eyes.animation = $sprite.animation
-		$sprite/eyes.flip_h = $sprite.flip_h 
 		$AnimationPlayer.stop()
 		$stars_stunned.visible = false
 		return
 		
-				
 	if killing > 0:
 		killing -= 1 * delta 
 		if $sprite.animation != "killing":
 			$AnimationPlayer.play("killing")
 			$sprite.animation = "killing"
-			$sprite/eyes.animation = "killing"
 			$sprite.play()
 		
 		if killing <= 0:
@@ -101,15 +92,32 @@ func process_player(delta):
 			$sprite.animation = "idle"
 			killing = 0
 	else:
-		var direction = global_position.direction_to(Global.player_obj.global_position)
-		velocity = direction * speed
-		
-		if global_position.x > Global.player_obj.global_position.x:
-			direction = "left"
-			$sprite.flip_h = true
-		else:
-			direction = "right"
+	
+		if direction == "right":
+			moving = true
+			idle_time = 0
+			velocity.x = speed
 			$sprite.flip_h = false
+		else:
+			moving = true
+			idle_time = 0
+			velocity.x = -speed
+			$sprite.flip_h = true
+		
+		if direction_change_ttl > 0: 
+			direction_change_ttl -= 1 * delta
+		
+		if is_on_wall():
+			if direction_change_ttl <= 0:
+				direction_change_ttl = direction_change_ttl_total
+				if randi() % 3 == 0:
+					jump(delta)
+				if direction == "right":
+					direction = "left"
+					$sprite.flip_h = true
+				else:
+					direction = "right"
+					$sprite.flip_h = false
 	
 	if killing <= 0:
 		if moving:
@@ -121,12 +129,14 @@ func process_player(delta):
 			idle_time += 1 * delta
 			if idle_time >= 0.3:  
 				$sprite.animation = "idle"
-		
-		$sprite/eyes.animation = $sprite.animation
-		$sprite/eyes.flip_h = $sprite.flip_h 
 
 func jump(delta):
-	pass
+	if !Global.GAMEOVER:
+		if is_on_floor_custom():
+			buff = 0
+			Global.play_sound(Global.JUMP_SFX)
+			Global.emit(global_position, 2)
+			velocity.y = jump_speed
 
 func _on_area_body_entered(body):
 	if !dead:
@@ -149,7 +159,13 @@ func kill_fire():
 		fire_obj = p
 
 func dead_fire():
-	pass
+	dead = true
+	$sprite.animation = "dead_fire"
+	$sprite.play()
+	set_collision_layer_value(5, true)
+	set_collision_mask_value(5, true)
+	set_collision_layer_value(1, false)
+	set_collision_mask_value(1, false)
 	
 func hearing_alerted(body):
 	pass
@@ -169,4 +185,6 @@ func flyaway(direction):
 		previus_velocity = velocity
 
 func super_jump():
-	pass
+	Global.play_sound(Global.JUMP_SFX)
+	Global.emit(global_position, 2)
+	velocity.y = jump_speed * 2

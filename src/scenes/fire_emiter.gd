@@ -18,7 +18,7 @@ func _physics_process(_delta):
 		$RaySprite.visible = false
 	else:
 		$RaySprite.visible = true
-		$Line2D.points[1].y = lerp($Line2D.points[1].y, ($RayCast2D.cast_point.y - 16), (1 * Global.time_speed))
+		$Line2D.points[1].y = lerp($Line2D.points[1].y, ($RayCast2D.cast_point.y - 16), 1)
 	
 	
 	var coso = abs($Line2D.points[1].y)

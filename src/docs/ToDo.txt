@@ -36,32 +36,32 @@
 ==================================================================================================================
 
 IN_PROGRESS:
-
-
+- Enemigo: Slimes qué se le meten a los prisioneros y los convierten en zombies que nos atacan 
 - Armar items 3D que se puede girar en todas las direcciones con una porción del QR, algun titulo y forma de cerrarlo
-- Logica para que haya chances de tocarnos el item 3D, es 1 item por nivel (aparece random, pero una vez que tocó no aparece más para ese nivel)
-- SFX
-- Musica
 
 
 BUGS/Ajustes:
 
 
 Features:
-- Revisar el tema de la camara lenta al estar apuntando con el item que sea (ver si podemos pausar y des-pausar intermitente) 
+- Lasers: definir que efecto tienen en el personaje
+- SFX
+- Musica
 - Cascadas: ??
 - Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
-  . Alinear los discos, llama al bote.
-  . Si giramos los discos, atrás se forma un QR, el QR tiene la password para las terminales.
+- Alinear los discos, llama al bote.
+- Si giramos los discos, atrás se forma un QR, el QR tiene la password para las terminales.
 
 - Terminales: se pueden activar variables para el final bueno, pero ese comando necesita password
 - Item super raro: es un cd o vhs
   . Si lo obtenemos, nunca más aparece, hay que quitarlo de la pool
   . Si se empieza un new-game habiendo tomado ese item en algun momento, en la casa, al ir a la tele se reproduce un video del dev hablando sobre el juego  
 
-- Enemigo: Slimes qué se le meten a los prisioneros y los convierten en zombies que nos atacan 
 - Enemigo: volador
-- Armar niveles
+
+- Armar base zona Mermaid
+- Armar base zona Tomb
+
 - Menu de opciones
 - Armar textos de cada terminal 
 - Armar manuales de cada terminal, subirlos a drive y generar los QR (QRS: https://qr.io/dashboard/)
@@ -79,6 +79,10 @@ Features:
   . Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- Armar base zona Dragon
+- Armar base zona Leaf
+- Logica para que haya chances de tocarnos el item 3D, es 1 item por nivel (aparece random, pero una vez que tocó no aparece más para ese nivel)
+- Revisar el tema de la camara lenta al estar apuntando con el item que sea (ver si podemos pausar y des-pausar intermitente) 
 - Hacer que siempre entre por el title screen, y despues vaya al room guardado
 - Title Screen
 - Hacer el bote que es llamado con el artefacto

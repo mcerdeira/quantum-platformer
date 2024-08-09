@@ -11,8 +11,6 @@ func _ready():
 		if randi() % 7 == 0:
 			has_artifact = true
 		
-	has_artifact = true
-		
 	$display.visible = false
 	$sprite.frame = randi() % 4
 

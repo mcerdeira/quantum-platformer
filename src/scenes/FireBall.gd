@@ -8,9 +8,7 @@ func _on_body_entered(body):
 		body.kill_fire()
 
 func _physics_process(delta):
-	$sprite.speed_scale = Global.time_speed
-	
-	$sprite.rotation += (10 * Global.time_speed) * delta
+	$sprite.rotation += 10 * delta
 
 func _on_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_index):
 	if body is TileMap:

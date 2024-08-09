@@ -222,7 +222,7 @@ position = Vector2(433, 593)
 
 [node name="enemy_marker3" parent="." instance=ExtResource("4_7x54m")]
 position = Vector2(983, 240)
-selected_enemy = "enemy_walker_walls"
+selected_enemy = "enemy_slime"
 by_chance = false
 
 [node name="TerminalComputer" parent="." node_paths=PackedStringArray("InfoPosition") instance=ExtResource("17_lafpo")]

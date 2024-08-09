@@ -32,7 +32,7 @@ func set_start_position(start_pos:Vector2, end_pos:Vector2):
 	angular_acceleration = 0.0
 
 func process_velocity(delta:float)->void:
-	angular_acceleration = (((-gravity*delta) / arm_length) *sin(angle)) * Global.time_speed	#Calculate acceleration (see: http://www.myphysicslab.com/pendulum1.html)
+	angular_acceleration = (((-gravity*delta) / arm_length) *sin(angle))	#Calculate acceleration (see: http://www.myphysicslab.com/pendulum1.html)
 	angular_velocity += angular_acceleration				#Increment velocity
 	angular_velocity *= damping								#Arbitrary damping
 	angle += angular_velocity								#Increment angle

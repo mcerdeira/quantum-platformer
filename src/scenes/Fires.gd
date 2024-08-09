@@ -5,9 +5,8 @@ var fires = preload("res://scenes/Fires.tscn")
 var kill_me = null
 
 func _physics_process(delta):
-	$sprite.speed_scale = Global.time_speed
 	if ttl > 0:
-		ttl -= (1 * Global.time_speed) * delta
+		ttl -= 1 * delta
 		if ttl <= 0:
 			$collider.set_deferred("disabled", false)
 			$collider4.set_deferred("disabled", false)
@@ -17,7 +16,7 @@ func _physics_process(delta):
 			if visible:
 				Global.emit(global_position, 5)
 	
-	tt_total -= (1 * Global.time_speed) * delta
+	tt_total -= 1 * delta
 	if tt_total <= 0:
 		if visible:
 			Global.emit(global_position, 5)

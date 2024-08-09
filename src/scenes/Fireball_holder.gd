@@ -8,4 +8,4 @@ func _ready():
 			queue_free()
 
 func _physics_process(delta):
-	rotation += (speed * Global.time_speed) * delta
+	rotation += speed * delta
