@@ -8,6 +8,9 @@ var upper_limit_temp = 1.0
 func _physics_process(_delta):
 	if Global.TerminalNumber == 4:
 		Global.lava_FX.set_intensity(0.089, 0.9)
+	elif Global.TerminalNumber == 3:
+		Global.lava_FX.set_intensity(0.0, 0.0)
+		queue_free()
 	else:
 		if Global.player_obj != null:
 			var faked = Vector2(global_position.x, Global.player_obj.global_position.y)

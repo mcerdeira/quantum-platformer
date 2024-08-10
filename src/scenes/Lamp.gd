@@ -4,12 +4,15 @@ var waterdrop = load("res://scenes/water_drop_spawn.tscn")
 @export var fixed = false 
 
 func _ready():
-	if !fixed:
-		if randi() % 3 == 0:
-			queue_free()
-		else:
+	if Global.TerminalNumber == 3:
+		killme = true
+	else:
+		if !fixed:
 			if randi() % 3 == 0:
-				killme = true
+				queue_free()
+			else:
+				if randi() % 3 == 0:
+					killme = true
 
 func _physics_process(_delta):
 	if killme:
