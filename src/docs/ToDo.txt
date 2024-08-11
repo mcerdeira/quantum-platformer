@@ -45,6 +45,9 @@ BUGS/Ajustes:
 
 
 Features:
+- Truenos
+- Lluvia
+- Canillas
 - Lasers: definir que efecto tienen en el personaje
 - SFX
 - Musica
@@ -59,8 +62,9 @@ Features:
   . Si se empieza un new-game habiendo tomado ese item en algun momento, en la casa, al ir a la tele se reproduce un video del dev hablando sobre el juego  
 
 - Enemigo: volador
-- Armar base zona Mermaid
-- Armar base zona Tomb
+- Armar base zona Mermaid (fondo más claro, piso negro, lluvia y truenos), la mecánica principal son unas canillas que abrimos para inundar o no lugares 
+
+- Armar base zona Tomb. Muy blanco y negro, con bruma. Hay unas lápidas especiales que tenemos que hacer algo, pero pueden disparar q aparezca un fantasma
 
 - Menu de opciones
 - Armar textos de cada terminal 
@@ -73,8 +77,6 @@ Features:
 - Jefe Final (la mascota)
 
 - Decoraciones 
-  . Lluvia
-  . Truenos
   . Splash al caer en la lava
   . Backgrounds con parallax
 
