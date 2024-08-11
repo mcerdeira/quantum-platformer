@@ -49,6 +49,8 @@ Features:
 - Lluvia
 - Canillas
 - Lasers: definir que efecto tienen en el personaje
+- Hacer que el ítem 3D salga en los cofres. 
+- Las tumbas solo aparecen en el nivel de las tumbas
 - SFX
 - Musica
 - Cascadas: ??
