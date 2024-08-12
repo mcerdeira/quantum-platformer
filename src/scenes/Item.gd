@@ -7,10 +7,21 @@ var delay_camera = 0.2
 var tomb = load("res://scenes/Tomb.tscn")
 var killme = false
 var QTY = 1
+var has_artifact = false
+var itemfound = load("res://scenes/Item3D.tscn")
 
 func _ready():
 	$display.visible = false
-	if randi() % 3 == 0:
+	if !Global.artifactPicked:
+		if !Global.ARTIFACT_PER_LEVEL[Global.TerminalNumber]:
+			if randi() % 15 == 0:
+				Global.artifactPicked = true
+				has_artifact = true
+				
+	if has_artifact:
+		$display/back/lbl_item.text = "== UNKNOWN ITEM =="
+		$display/back/sprite.animation = "unknown"
+	elif randi() % 3 == 0:
 		current_item = Global.pick_random(Global.gunz_objs_prob)
 		if current_item.name == "bomb":
 			QTY = Global.pick_random([2, 3, 5])
@@ -28,7 +39,8 @@ func _ready():
 		
 		$display/back/lbl_item.text = "== " + current_item.name.to_upper() + qty_str + " ==" + "\n" + current_item.description
 	else:
-		if randi() % 3 == 0:
+		if Global.TerminalNumber == 2 and randi() % 3 == 0:
+			has_artifact = false
 			killme = true
 		else:
 			queue_free()
@@ -59,7 +71,14 @@ func _physics_process(delta):
 			$display.visible = false
 		
 func get_item():
-	Global.get_item(current_item, QTY)
+	if has_artifact:
+		Global.ARTIFACT_PER_LEVEL[Global.TerminalNumber] = true
+		var p = itemfound.instantiate()
+		var parent = get_parent()
+		parent.add_child(p)
+		$display.visible = false
+	else:
+		Global.get_item(current_item, QTY)
 
 func _on_body_entered(body):
 	if !opened and body.is_in_group("players") and !body.is_in_group("prisoners"):

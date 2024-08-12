@@ -106,6 +106,8 @@ func generate_level():
 	var _rooms_middle2 = list_rooms_middle2[Global.TerminalNumber]
 	var _rooms_bottom = list_rooms_bottom [Global.TerminalNumber]
 	
+	Global.artifactPicked = false
+	
 	for h in range(4):
 		for w in range(4):
 			if h == 0:

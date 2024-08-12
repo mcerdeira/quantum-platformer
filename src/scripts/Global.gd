@@ -158,6 +158,7 @@ var GHOSTS = true
 var WATERFALLS = true
 var FIREBALLS = true
 var global_camera = null
+var artifactPicked = false
 
 var Terminals = [
 	{
