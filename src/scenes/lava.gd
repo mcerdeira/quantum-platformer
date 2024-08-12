@@ -4,9 +4,13 @@ var val = 0.0
 var temp = 0.0
 var upper_limit = 0.09
 var upper_limit_temp = 1.0
+var first_time 
 
 func _physics_process(_delta):
-	if Global.TerminalNumber == 4:
+	if Global.TerminalNumber <= 0:
+		Global.lava_FX.set_intensity(0.0, 0.0)
+		queue_free()
+	elif Global.TerminalNumber == 4: 
 		Global.lava_FX.set_intensity(0.089, 0.9)
 	elif Global.TerminalNumber == 3:
 		Global.lava_FX.set_intensity(0.0, 0.0)
