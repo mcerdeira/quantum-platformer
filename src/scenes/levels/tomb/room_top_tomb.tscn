@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://rlowh37aweb2"]
+[gd_scene load_steps=36 format=3 uid="uid://rlowh37aweb2"]
 
 [ext_resource type="Texture2D" uid="uid://cfr4242x4qruc" path="res://sprites/spritesheets/floor_dragon1-sheet.png" id="1_xpyg0"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_hhmxl"]
@@ -18,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="15_po745"]
 [ext_resource type="PackedScene" uid="uid://c1hauk6vcsonh" path="res://scenes/Item.tscn" id="16_6ncn4"]
 [ext_resource type="PackedScene" uid="uid://drudyu8hb2tx6" path="res://scenes/levels/Spikes.tscn" id="17_fckmt"]
-[ext_resource type="PackedScene" uid="uid://bqfg2ax5fm0fv" path="res://scenes/laser_holder.tscn" id="18_dgys1"]
 [ext_resource type="PackedScene" uid="uid://c2hr571lqpqmf" path="res://scenes/Fireball_holder.tscn" id="19_8ycd7"]
 [ext_resource type="PackedScene" uid="uid://1bt2t2jgbtos" path="res://scenes/terminal_computer.tscn" id="20_0pnx1"]
 [ext_resource type="PackedScene" uid="uid://cv3n3jd3p3yty" path="res://scenes/Lamp.tscn" id="21_eit45"]
@@ -344,13 +343,11 @@ position = Vector2(569, 576)
 [node name="Spikes2" parent="." instance=ExtResource("17_fckmt")]
 position = Vector2(537, 576)
 
-[node name="LaserHolder" parent="." instance=ExtResource("18_dgys1")]
-position = Vector2(688, 272)
-fixed = true
-speed = 0.3
-
 [node name="FireballHolder3" parent="." instance=ExtResource("19_8ycd7")]
 position = Vector2(688, 113)
+
+[node name="FireballHolder4" parent="." instance=ExtResource("19_8ycd7")]
+position = Vector2(689, 273)
 
 [node name="FireballHolder2" parent="." instance=ExtResource("19_8ycd7")]
 position = Vector2(433, 593)

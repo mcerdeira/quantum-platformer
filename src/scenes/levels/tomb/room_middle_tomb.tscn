@@ -351,7 +351,7 @@ position = Vector2(274, 102)
 [node name="moving_plat" parent="." instance=ExtResource("18_lbefu")]
 z_index = 1000
 z_as_relative = false
-position = Vector2(272, 176)
+position = Vector2(184, 176)
 
 [node name="DeadlyPlatform" parent="." instance=ExtResource("19_bj8xp")]
 position = Vector2(240, 592)
