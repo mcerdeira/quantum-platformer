@@ -63,7 +63,7 @@ func _on_btn_reset_pressed():
 	get_tree().reload_current_scene()
 
 func terminal_trad():
-	if $txt_terminal.text != "":
+	if $txt_terminal.text != "" and int($txt_terminal.text) < Global.Terminals.size():
 		$lbl_terminal.text = Global.Terminals[int($txt_terminal.text)].name
 	else:
 		$lbl_terminal.text = ""
