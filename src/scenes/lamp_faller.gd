@@ -11,8 +11,8 @@ var broken = false
 var master_parent = null
 
 func _ready():
-	add_to_group("interactuable")
 	add_to_group("fireballholder")
+	add_to_group("interactuable")
 	
 func is_on_floor_custom(normal):
 	return (normal == Vector2.UP)

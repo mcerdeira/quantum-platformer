@@ -480,6 +480,7 @@ mouse_filter = 2
 script = ExtResource("10_agwh5")
 
 [node name="LavaFX" type="ColorRect" parent="."]
+visible = false
 z_index = 4096
 material = SubResource("ShaderMaterial_hb6nw")
 offset_left = -475.0

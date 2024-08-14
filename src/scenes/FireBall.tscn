@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgf6ly14u3fi1"]
+[gd_scene load_steps=10 format=3 uid="uid://bgf6ly14u3fi1"]
 
 [ext_resource type="Script" path="res://scenes/FireBall.gd" id="1_woemw"]
 [ext_resource type="Texture2D" uid="uid://40kemu0h4hvh" path="res://sprites/flame_spr_0.png" id="2_hfhlb"]
@@ -29,6 +29,15 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_24l77"]
 radius = 6.0
 
+[sub_resource type="Gradient" id="Gradient_rqlig"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mgn8k"]
+gradient = SubResource("Gradient_rqlig")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.197)
+
 [node name="FireBall" type="Area2D"]
 z_index = 4094
 z_as_relative = false
@@ -44,5 +53,13 @@ frame_progress = 0.646874
 [node name="collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_24l77")
 
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-2.86102e-06, 0)
+scale = Vector2(0.775391, 0.730469)
+color = Color(0.968627, 0.14902, 0.2, 1)
+energy = 5.0
+texture = SubResource("GradientTexture2D_mgn8k")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

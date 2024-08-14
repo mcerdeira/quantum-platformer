@@ -1,24 +1,24 @@
 [gd_scene load_steps=26 format=3 uid="uid://irdn6sjvaj0e"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_8vrwn"]
-[ext_resource type="Texture2D" uid="uid://b3d305p22pnls" path="res://sprites/chest_idle.png" id="2_ckle5"]
-[ext_resource type="Texture2D" uid="uid://dr2lobddxj7lc" path="res://sprites/chest_mimic1.png" id="2_olm78"]
-[ext_resource type="Texture2D" uid="uid://c1xssh4duhhqx" path="res://sprites/chest_mimic12png.png" id="3_65gl7"]
-[ext_resource type="Texture2D" uid="uid://cbm2ov3p75byk" path="res://sprites/dead_fire_spr_0.png" id="3_ogy5d"]
-[ext_resource type="Texture2D" uid="uid://cpq2gxdbvq4i6" path="res://sprites/dead_fire_spr_1.png" id="4_er13g"]
+[ext_resource type="Texture2D" uid="uid://ceilou14j5ris" path="res://sprites/chest_idle.png" id="2_ckle5"]
+[ext_resource type="Texture2D" uid="uid://chvyoojcls0sy" path="res://sprites/chest_mimic1.png" id="2_olm78"]
+[ext_resource type="Texture2D" uid="uid://jmm71bvl8sgw" path="res://sprites/chest_mimic12png.png" id="3_65gl7"]
+[ext_resource type="Texture2D" uid="uid://bfmd1soivmlg7" path="res://sprites/dead_fire_spr_0.png" id="3_ogy5d"]
+[ext_resource type="Texture2D" uid="uid://cxc5th2r8hfpc" path="res://sprites/dead_fire_spr_1.png" id="4_er13g"]
 [ext_resource type="Script" path="res://scenes/RayCast2D.gd" id="5_ermrk"]
-[ext_resource type="Texture2D" uid="uid://bn3j5ne0mc650" path="res://sprites/dead_fire_spr_2.png" id="5_xdald"]
-[ext_resource type="Texture2D" uid="uid://wpjotc6uharg" path="res://sprites/chest_stunned.png" id="6_7gypa"]
+[ext_resource type="Texture2D" uid="uid://deqbcbnajy7k5" path="res://sprites/dead_fire_spr_2.png" id="5_xdald"]
+[ext_resource type="Texture2D" uid="uid://bln0kj76wwggk" path="res://sprites/chest_stunned.png" id="6_7gypa"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="6_mlrcm"]
-[ext_resource type="Texture2D" uid="uid://c52d6ydpddgln" path="res://sprites/vision.png" id="7_2aecm"]
-[ext_resource type="Texture2D" uid="uid://hpuda2eg601m" path="res://sprites/horu/images/stars1.png" id="7_7jtwr"]
-[ext_resource type="Texture2D" uid="uid://b7ra00yssdsct" path="res://sprites/horu/images/stars2.png" id="8_wvmb0"]
-[ext_resource type="Texture2D" uid="uid://dv4833kftjwfh" path="res://sprites/horu/images/stars3.png" id="9_2r3ry"]
-[ext_resource type="Texture2D" uid="uid://bkj5uojixgwkn" path="res://sprites/chest_sleep1.png" id="9_mywad"]
-[ext_resource type="Texture2D" uid="uid://b1wccooa0b2i1" path="res://sprites/chest_sleep2.png" id="10_hiu7x"]
-[ext_resource type="Texture2D" uid="uid://hwgo1b1mg7sg" path="res://sprites/horu/images/sleep1.png" id="15_4vsls"]
-[ext_resource type="Texture2D" uid="uid://dkqyy0d27ly5x" path="res://sprites/horu/images/sleep2.png" id="16_udmmr"]
-[ext_resource type="Texture2D" uid="uid://g4v527wlxgws" path="res://sprites/horu/images/sleep3.png" id="17_jmgi5"]
+[ext_resource type="Texture2D" uid="uid://dy645r5g2mgdj" path="res://sprites/vision.png" id="7_2aecm"]
+[ext_resource type="Texture2D" uid="uid://capc1hdlw0gpl" path="res://sprites/horu/images/stars1.png" id="7_7jtwr"]
+[ext_resource type="Texture2D" uid="uid://caxf4k5okg3cr" path="res://sprites/horu/images/stars2.png" id="8_wvmb0"]
+[ext_resource type="Texture2D" uid="uid://bpaljgkr5iu14" path="res://sprites/horu/images/stars3.png" id="9_2r3ry"]
+[ext_resource type="Texture2D" uid="uid://yh0xed48fxdo" path="res://sprites/chest_sleep1.png" id="9_mywad"]
+[ext_resource type="Texture2D" uid="uid://cftukqptaxt3p" path="res://sprites/chest_sleep2.png" id="10_hiu7x"]
+[ext_resource type="Texture2D" uid="uid://ie8qco0scwdc" path="res://sprites/horu/images/sleep1.png" id="15_4vsls"]
+[ext_resource type="Texture2D" uid="uid://dtysodoxvl0pg" path="res://sprites/horu/images/sleep2.png" id="16_udmmr"]
+[ext_resource type="Texture2D" uid="uid://d2tggb22a780p" path="res://sprites/horu/images/sleep3.png" id="17_jmgi5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eqtew"]
 animations = [{
@@ -213,6 +213,12 @@ modulate = Color(1, 1, 1, 0.129412)
 position = Vector2(9, -13)
 texture = ExtResource("7_2aecm")
 offset = Vector2(250, 0)
+
+[node name="PointLight2D" type="PointLight2D" parent="Agro/Vision"]
+position = Vector2(261, 1)
+energy = 25.0
+shadow_enabled = true
+texture = ExtResource("7_2aecm")
 
 [node name="RayCast2D" type="RayCast2D" parent="Agro"]
 position = Vector2(25, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://crsjf57oxj823"]
+[gd_scene load_steps=9 format=3 uid="uid://crsjf57oxj823"]
 
 [ext_resource type="Texture2D" uid="uid://n7jrevv8b7ml" path="res://sprites/fire1.png" id="1_2xn8n"]
 [ext_resource type="Script" path="res://scenes/Fires.gd" id="1_3auow"]
@@ -24,6 +24,15 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="Gradient" id="Gradient_ctpku"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_giyr5"]
+gradient = SubResource("Gradient_ctpku")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.197)
 
 [node name="Fires" type="Area2D"]
 collision_layer = 161
@@ -58,6 +67,13 @@ disabled = true
 sprite_frames = SubResource("SpriteFrames_w32nh")
 autoplay = "default"
 frame_progress = 0.893057
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1.99999, 0.999996)
+scale = Vector2(0.914065, 0.859375)
+color = Color(1, 0.419608, 0.34902, 1)
+energy = 3.0
+texture = SubResource("GradientTexture2D_giyr5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

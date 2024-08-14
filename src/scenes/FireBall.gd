@@ -22,7 +22,18 @@ func _on_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_inde
 			if parent:
 				if free_fireball:
 					parent = get_parent().master_parent
-				var p = fires.instantiate()
-				p.position = global_coords
-				parent.add_child(p)
-				Global.emit(global_position, 5)
+					if !parent:
+						#TODO: Ver que pasa con esto!!!
+						parent = get_parent().get_parent()
+					
+				if parent:
+					var p = fires.instantiate()
+					p.position = global_coords
+					parent.add_child(p)
+					Global.emit(global_position, 5)
+
+func _on_area_entered(area):
+	if free_fireball:
+		if area.is_in_group("qdetector"):
+			if get_parent().master_parent == null:
+				get_parent().master_parent = area.get_parent() 

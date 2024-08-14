@@ -42,6 +42,8 @@ IN_PROGRESS:
 
 
 BUGS/Ajustes:
+- Las paredes que se ven al lado de otra pared
+- El bichito de la derecha que pega un salto cuando gira
 
 
 Features:
