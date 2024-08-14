@@ -43,7 +43,6 @@ IN_PROGRESS:
 
 BUGS/Ajustes:
 - Las paredes que se ven al lado de otra pared
-- El bichito de la derecha que pega un salto cuando gira
 
 
 Features:
@@ -83,6 +82,7 @@ Features:
   . Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- El bichito de la derecha que pega un salto cuando gira
 - Hacer que el ítem 3D salga en los cofres 
 - Las tumbas solo aparecen en el nivel de las tumbas
 - Selector de escenas en el modo "cheats"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b8w8gjucf6srp"]
+[gd_scene load_steps=17 format=3 uid="uid://b8w8gjucf6srp"]
 
 [ext_resource type="Script" path="res://scenes/television.gd" id="1_t1jwo"]
 [ext_resource type="Texture2D" uid="uid://bbi1nin1by0xr" path="res://sprites/tv_spr_0.png" id="2_ol8jn"]
@@ -45,6 +45,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_0n1d0"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3mi3w"]
+gradient = SubResource("Gradient_0n1d0")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.197)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_nw0se"]
 animations = [{
 "frames": [{
@@ -83,6 +92,12 @@ position = Vector2(1, 4)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_t7d8p")
 offset = Vector2(1, -18)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(3.00002, -37)
+scale = Vector2(2.88477, 1.78906)
+texture = SubResource("GradientTexture2D_3mi3w")
 
 [node name="back2" type="ColorRect" parent="."]
 visible = false

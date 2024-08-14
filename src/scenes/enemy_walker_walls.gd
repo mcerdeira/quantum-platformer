@@ -21,9 +21,13 @@ var previus_velocity = Vector2.ZERO
 var fire_obj = null
 var level_parent = null
 var dead_frames = 5
-var delay_change_total = 0.05
+var delay_change_total = 0.5
 var delay_change = 0
 var dead = false
+
+var destination_rotation = 0
+var destination_position = Vector2.ZERO
+var tween = null
 
 var fires = preload("res://scenes/Fires.tscn")
 enum States {
@@ -91,6 +95,10 @@ func _physics_process(delta):
 func detection_ok(col):
 	return (col and col is TileMap)
 	
+func reset_delay():
+	tween = null
+	delay_change = 0
+	
 func process_player(delta):
 	var moving = false
 	if blowed > 0:
@@ -130,22 +138,30 @@ func process_player(delta):
 			var col_wall = ray_wall.get_collider()
 			
 			if delay_change > 0:
-				delay_change -= 1 * delta 
+				if !tween:
+					tween = get_tree().create_tween()
+					tween.tween_property(self, "rotation_degrees", destination_rotation, delay_change_total)
+					tween.tween_property(self, "position", destination_position, delay_change_total)
+					
+					tween.tween_callback(reset_delay)
+				
 			else:	
 				if state == States.RIGHT:
 					if is_on_floor() and is_on_wall() and detection_ok(col_floor) and detection_ok(col_wall):
 						moving = false
 						delay_change = delay_change_total
 						velocity = Vector2.ZERO
-						rotation_degrees -= 90
-						position.x += 32
+						destination_rotation = rotation_degrees - 90
+						destination_position = Vector2(position.x + 32, position.y)
+
 						state = States.UP
 						
 					elif !is_on_floor() and !is_on_wall() and !detection_ok(col_floor) and !detection_ok(col_wall):
 						moving = false
 						delay_change = delay_change_total
 						velocity = Vector2.ZERO
-						rotation_degrees += 90
+						destination_rotation = rotation_degrees + 90
+						destination_position = null
 						state = States.DOWN
 						
 					else:	
@@ -157,15 +173,18 @@ func process_player(delta):
 						moving = false
 						delay_change = delay_change_total
 						velocity = Vector2.ZERO
-						position.y -= 32
-						rotation_degrees -= 90
+						
+						destination_rotation = rotation_degrees - 90
+						destination_position = Vector2(position.x, position.y - 32)
+						
 						state = States.LEFT
 						
 					elif !is_on_wall() and !is_on_ceiling() and !detection_ok(col_wall) and !detection_ok(col_floor):
 						moving = false
 						delay_change = delay_change_total
 						velocity = Vector2.ZERO
-						rotation_degrees += 90
+						destination_rotation = rotation_degrees + 90
+						destination_position = null
 						state = States.RIGHT
 					else:	
 						velocity.y = -speed
@@ -176,15 +195,18 @@ func process_player(delta):
 						moving = false
 						delay_change = delay_change_total
 						velocity = Vector2.ZERO
-						rotation_degrees -= 90
-						position.y += 32
+						destination_rotation = rotation_degrees - 90
+						destination_position = Vector2(position.x, position.y + 32)
 						state = States.RIGHT
 						
 					elif !is_on_floor() and !is_on_wall() and !detection_ok(col_wall) and !detection_ok(col_floor):
 						moving = false
 						delay_change = delay_change_total
 						velocity = Vector2.ZERO
-						rotation_degrees += 90
+						
+						destination_rotation = rotation_degrees + 90
+						destination_position = null
+						
 						state = States.LEFT
 					else:	
 						velocity.y = speed
@@ -195,15 +217,19 @@ func process_player(delta):
 						moving = false
 						delay_change = delay_change_total
 						velocity = Vector2.ZERO
-						rotation_degrees -= 90
-						position.x -= 32
+						
+						destination_rotation = rotation_degrees - 90
+						destination_position = Vector2(position.x - 32, position.y)
 						state = States.DOWN
 						
 					elif !is_on_ceiling() and !is_on_wall() and !detection_ok(col_floor) and !detection_ok(col_wall):
 						moving = false
 						delay_change = delay_change_total
 						velocity = Vector2.ZERO
-						rotation_degrees += 90
+						
+						destination_rotation = rotation_degrees + 90
+						destination_position = null
+						
 						state = States.UP
 					else:	
 						velocity.x = -speed

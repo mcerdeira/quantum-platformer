@@ -21,6 +21,7 @@ func _physics_process(delta):
 			$back.visible = false
 			$back/arrows.visible = false
 			$Computer.animation = "on"
+			$PointLight2D.visible = true
 			$Computer.play()
 
 func _on_body_entered(body):
