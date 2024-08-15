@@ -1,6 +1,7 @@
 extends ColorRect
 
 func _ready():
+	visible = true
 	Global.fade_finished = false
 	Global.Fader = self
 

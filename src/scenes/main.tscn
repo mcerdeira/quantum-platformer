@@ -490,6 +490,7 @@ offset_bottom = 3310.0
 script = ExtResource("12_wh2nv")
 
 [node name="FADE" type="ColorRect" parent="."]
+visible = false
 z_index = 4096
 offset_left = -1803.0
 offset_top = -1168.0
