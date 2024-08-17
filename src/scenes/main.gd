@@ -162,6 +162,8 @@ func generate_level():
 		_pm.done = true
 		
 func _ready():
+	Global.prisoner_counter = 0
+	Global.prisoner_total = 0
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 	if Global.CurrentState == Global.GameStates.RANDOMLEVEL:

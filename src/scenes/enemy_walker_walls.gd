@@ -24,6 +24,7 @@ var dead_frames = 5
 var delay_change_total = 0.5
 var delay_change = 0
 var dead = false
+var replace_me = preload("res://scenes/enemy_walker.tscn")
 
 var destination_rotation = 0
 var destination_position = Vector2.ZERO
@@ -302,10 +303,14 @@ func eat_gizmo(current_item):
 
 func flyaway(direction):
 	if blowed <= 0:
-		blowed = 6.2
-		Global.emit(global_position, 2)
-		velocity = Global.flyaway(direction, jump_speed)
-		previus_velocity = velocity
+		queue_free()
+		visible = false
+		var parent = get_parent()
+		var p = replace_me.instantiate()
+		p.spr_sufix = "_wall"
+		p.global_position = global_position
+		parent.add_child(p)
+		p.flyaway(direction)
 
 func super_jump():
 	Global.play_sound(Global.JUMP_SFX)

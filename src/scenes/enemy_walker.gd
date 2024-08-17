@@ -22,10 +22,11 @@ var fire_obj = null
 var level_parent = null
 var fires = preload("res://scenes/Fires.tscn")
 var dead = false
+var spr_sufix = ""
 
 func _ready():
 	add_to_group("enemies")
-	$sprite.animation = "idle"
+	$sprite.animation = "idle" + spr_sufix
 	
 func is_on_floor_custom():
 	return is_on_floor() or buff > 0
@@ -69,14 +70,14 @@ func process_player(delta):
 	var moving = false
 	if blowed > 0:
 		$stars_stunned.visible = true
-		$sprite.animation = "stunned"
+		$sprite.animation = "stunned" + spr_sufix
 		return
 		
 	if Global.GAMEOVER:
 		pass
 		
 	if dead:
-		$sprite/eyes.animation = $sprite.animation
+		$sprite/eyes.animation = $sprite.animation.replace(spr_sufix, "")
 		$sprite/eyes.flip_h = $sprite.flip_h 
 		$AnimationPlayer.stop()
 		$stars_stunned.visible = false
@@ -85,15 +86,15 @@ func process_player(delta):
 				
 	if killing > 0:
 		killing -= 1 * delta 
-		if $sprite.animation != "killing":
-			$AnimationPlayer.play("killing")
-			$sprite.animation = "killing"
-			$sprite/eyes.animation = "killing"
+		if $sprite.animation != "killing" + spr_sufix:
+			$AnimationPlayer.play("killing" + spr_sufix)
+			$sprite.animation = "killing" + spr_sufix
+			$sprite/eyes.animation = "killing" + spr_sufix
 			$sprite.play()
 		
 		if killing <= 0:
 			$AnimationPlayer.stop()
-			$sprite.animation = "idle"
+			$sprite.animation = "idle" + spr_sufix
 			killing = 0
 	else:
 	
@@ -123,16 +124,16 @@ func process_player(delta):
 	
 	if killing <= 0:
 		if moving:
-			if $sprite.animation == "idle":
-				$sprite.animation = "walking"
+			if $sprite.animation == "idle" + spr_sufix:
+				$sprite.animation = "walking" + spr_sufix
 			$sprite.play()
 		else:
 			$sprite.stop()
 			idle_time += 1 * delta
 			if idle_time >= 0.3:  
-				$sprite.animation = "idle"
+				$sprite.animation = "idle" + spr_sufix
 		
-		$sprite/eyes.animation = $sprite.animation
+		$sprite/eyes.animation = $sprite.animation.replace(spr_sufix, "")
 		$sprite/eyes.flip_h = $sprite.flip_h 
 
 func jump(delta):
@@ -165,7 +166,7 @@ func kill_fire():
 
 func dead_fire():
 	dead = true
-	$sprite.animation = "dead_fire"
+	$sprite.animation = "dead_fire" + spr_sufix
 	$sprite.play()
 	set_collision_layer_value(5, true)
 	set_collision_mask_value(5, true)

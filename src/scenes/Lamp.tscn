@@ -110,7 +110,7 @@ script = ExtResource("4_mtbgv")
 
 [node name="PointLight2D" type="PointLight2D" parent="LampDown"]
 position = Vector2(0, 3)
-scale = Vector2(3, 2.033)
+scale = Vector2(2.85938, 1.9375)
 energy = 5.0
 texture = SubResource("GradientTexture2D_dp1m7")
 
@@ -130,8 +130,6 @@ z_as_relative = false
 position = Vector2(-0.25, 4.5)
 sprite_frames = SubResource("SpriteFrames_hj37l")
 autoplay = "default"
-frame = 2
-frame_progress = 0.453452
 speed_scale = 2.0
 script = ExtResource("14_jueho")
 

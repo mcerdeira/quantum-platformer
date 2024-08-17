@@ -337,7 +337,7 @@ position = Vector2(432.308, 240.769)
 scale = Vector2(5, 5)
 
 [node name="PrisonerHead" type="Sprite2D" parent="CanvasLayer/Control"]
-position = Vector2(789.232, 19.2308)
+position = Vector2(741.54, 19.2308)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("6_rjva8")
 
@@ -345,13 +345,14 @@ texture = ExtResource("6_rjva8")
 anchors_preset = -1
 anchor_left = -0.0157807
 anchor_top = -0.459829
-anchor_right = 0.291911
+anchor_right = 1.4073
 anchor_bottom = -0.459827
 offset_left = 16.4103
 offset_top = -4.10256
 offset_right = 56.4103
 offset_bottom = 18.8974
 theme_override_fonts/font = ExtResource("7_2v1dk")
+horizontal_alignment = 2
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 

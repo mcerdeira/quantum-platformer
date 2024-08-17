@@ -92,6 +92,8 @@ func process_player(delta):
 		$stars_stunned.animation = "sleep"
 		$stars_stunned.visible = true
 		$lbl_status.text = ""
+		$Agro/Vision.visible = false
+		
 		alerted = false
 		hostile = false
 		return
