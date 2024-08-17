@@ -48,6 +48,7 @@ BUGS/Ajustes:
 - Las lámparas brillab al mismo tiempo todas 
 
 Features:
+- Geisers
 - Truenos
 - Lluvia
 - Canillas
