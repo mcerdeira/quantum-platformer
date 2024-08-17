@@ -43,7 +43,7 @@ IN_PROGRESS:
 
 BUGS/Ajustes:
 - Las paredes que se ven al lado de otra pared
-- Muchas escaleras, ver tema de cascadas como dijo Fede (ala Minecraft) 
+- Muchas escaleras, ver tema de cascadas como dijo Fede (ala Minecraft) que interactuen con bombas y enemigos 
 - La nube brilla mucho? 
 - Las lámparas brillab al mismo tiempo todas 
 
