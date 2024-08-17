@@ -13,14 +13,14 @@
 - Tienen que ser distintos los mundos/puertas.
 - Debemos evitar que se mueran los prisioneros porque sino nos siguen en forma de fantasmas y están en el momento boss, dificultando la pelea.
 
-- Escena Nivel Procedural: Liberar a todos los prisioneros, encontrar la puerta, ganarle al boss e irse (simil alien 3/sega)
+- Escena Nivel Procedural: Liberar a todos los <OBJETOS>, encontrar la puerta, ganarle al boss e irse (simil alien 3/sega)
 - Niveles/Zonas:
   0 - The Eye (main hub)
-  1 - The Leaf (selvatico, lots of vines)   
+  1 - The Leaf (selvatico, lots of vines, prisioneros)   
   2 - The Tomb (tumbas, enemigos fantasma, trampas en el piso)
   3 - The Mermaid (algo de selva, waterfalls, lluvia y truenos, slimes)
   4 - The Dragon (fire and lava, todo el tiempo el distort de calor, lasers)
-  5 - The Seraph (secret)
+  5 - The Seraph (secret), todo glitcheado
 
 - Secretos:
   . 3 finales: Malo: pasar los niveles, llamar al bote pero no rescatamos a nuestra mascota
@@ -36,36 +36,39 @@
 ==================================================================================================================
 
 IN_PROGRESS:
-- Armar ejemplo de pileta de lava para The Dragon
+- Definir chances de objetos por zona!! (armar planilla)
 - Enemigo: Slimes qué se le meten a los prisioneros y los convierten en zombies que nos atacan 
+- Enemigo: Planea cuando cae, en vez de caer directo, es similar al walker, pero con logica cuando está en el aire y otro arte 
 - Armar items 3D que se puede girar en todas las direcciones con una porción del QR, algun titulo y forma de cerrarlo
 
 
 BUGS/Ajustes:
-- Las paredes que se ven al lado de otra pared
 
 
 Features:
-- Truenos
-- Lluvia
-- Canillas
 - Lasers: definir que efecto tienen en el personaje
 - SFX
 - Musica
-- Cascadas: ??
+
 - Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
-- Alinear los discos, llama al bote.
-- Si giramos los discos, atrás se forma un QR, el QR tiene la password para las terminales.
+  - Alinear los discos, llama al bote.
+  - Si giramos los discos, atrás se forma un QR, el QR tiene la password para las terminales.
 
 - Terminales: se pueden activar variables para el final bueno, pero ese comando necesita password
+
 - Item super raro: es un cd o vhs
   . Si lo obtenemos, nunca más aparece, hay que quitarlo de la pool
   . Si se empieza un new-game habiendo tomado ese item en algun momento, en la casa, al ir a la tele se reproduce un video del dev hablando sobre el juego  
 
-- Enemigo: volador
-- Armar base zona Mermaid (fondo más claro, piso negro, lluvia y truenos), la mecánica principal son unas canillas que abrimos para inundar o no lugares 
+- Armar zona Dragon. Estilo volcanico, lava por todos lados, lasers. La mecánica principal es... ?????
+- Armar zona Mermaid. Fondo más claro, piso negro, lluvia y truenos. La mecánica principal son unas canillas que abrimos para inundar o no lugares 
+  - Truenos
+  - Lluvia
+  - Cascadas
+  - Canillas
 
-- Armar base zona Tomb. Muy blanco y negro, con bruma. Hay unas lápidas especiales que tenemos que hacer algo, pero pueden disparar q aparezca un fantasma
+- Armar zona Tomb. Muy blanco y negro, con bruma. Hay unas lápidas especiales que tenemos que hacer algo, pero pueden disparar q aparezca un fantasma
+  - Lapidas que pueden disparar un enemigo
 
 - Menu de opciones
 - Armar textos de cada terminal 
@@ -77,11 +80,15 @@ Features:
 - Jefe de The Dragon
 - Jefe Final (la mascota)
 
-- Decoraciones 
-  . Splash al caer en la lava
-  . Backgrounds con parallax
+- Decoraciones: Splash al caer en la lava
+- Decoraciones: Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- Decoraciones: Luces
+- Armar base zona Tomb
+- Armar base zona Mermaid
+- Armar ejemplo de pileta de lava para The Dragon
+- Las paredes que se ven al lado de otra pared
 - El bichito de la derecha que pega un salto cuando gira
 - Hacer que el ítem 3D salga en los cofres 
 - Las tumbas solo aparecen en el nivel de las tumbas

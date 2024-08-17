@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cv3n3jd3p3yty"]
+[gd_scene load_steps=21 format=3 uid="uid://cv3n3jd3p3yty"]
 
 [ext_resource type="Texture2D" uid="uid://jmdwjxiq0ful" path="res://sprites/lamp_1.png" id="1_js1s3"]
 [ext_resource type="Script" path="res://scenes/Lamp.gd" id="1_tg0cb"]
@@ -62,6 +62,27 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_ams2q"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LampDown/PointLight2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.85938, 1.9375), Vector2(3, 2.033)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mcocy"]
+_data = {
+"new_animation": SubResource("Animation_ams2q")
+}
+
 [node name="Lamp" type="Node2D"]
 z_index = 4094
 z_as_relative = false
@@ -89,7 +110,7 @@ script = ExtResource("4_mtbgv")
 
 [node name="PointLight2D" type="PointLight2D" parent="LampDown"]
 position = Vector2(0, 3)
-scale = Vector2(2.85938, 1.9375)
+scale = Vector2(3, 2.033)
 energy = 5.0
 texture = SubResource("GradientTexture2D_dp1m7")
 
@@ -109,8 +130,16 @@ z_as_relative = false
 position = Vector2(-0.25, 4.5)
 sprite_frames = SubResource("SpriteFrames_hj37l")
 autoplay = "default"
-frame_progress = 0.95626
+frame = 2
+frame_progress = 0.453452
 speed_scale = 2.0
 script = ExtResource("14_jueho")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mcocy")
+}
+autoplay = "new_animation"
+speed_scale = 3.0
 
 [connection signal="body_entered" from="LampDown/LampArea" to="LampPivot" method="_on_lamp_area_body_entered"]
