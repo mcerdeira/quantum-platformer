@@ -48,6 +48,8 @@ BUGS/Ajustes:
 - La nube brilla mucho? 
 
 Features:
+- Momento el nivel empieza a explotar/irse para arriba, se puede hacer con objetos que simulen ser tiles pero no lo son
+- Boss Idea: Es como estar jugando al basquet, tiramos una pelota con la habilidad y hay que embocar en algun lado
 - Geisers
 - Truenos
 - Lluvia
@@ -90,6 +92,8 @@ Features:
 - Decoraciones: Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- Todo brilla un poco mas cerca de la lava
+- Los rayos de luz no son 100% alpha en el borde
 - Los walker walls son inmunes a las explosiones
 - Las lámparas brillan al mismo tiempo todas 
 - Cuando el enemigo se duerme, se sigue viendo la luz
