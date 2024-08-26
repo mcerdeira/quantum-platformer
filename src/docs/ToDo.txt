@@ -43,7 +43,8 @@ IN_PROGRESS:
 
 
 BUGS/Ajustes:
-- Muchas escaleras, ver tema de cascadas como dijo Fede (ala Minecraft) que interactuen con bombas y enemigos 
+- Muchas escaleras, ver tema de cascadas como dijo Fede (ala Minecraft) que interactuen con bombas y enemigos, ademas las escaleras
+  como tal, pueden tener versiones: soga, liana
 - La nube brilla mucho? 
 
 Features:
