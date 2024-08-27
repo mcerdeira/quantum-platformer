@@ -4,6 +4,7 @@ var enemy_walker = load("res://scenes/enemy_walker.tscn")
 var enemy_walker_walls = load("res://scenes/enemy_walker_walls.tscn")
 var enemy_bullet = load("res://scenes/enemy_bullet.tscn")
 var enemy_slime = load("res://scenes/enemy_slime.tscn")
+var enemy_flyer = load("res://scenes/enemy_flyer.tscn")
 
 @export var selected_enemy: String 
 @export var by_chance : bool = true
@@ -35,6 +36,8 @@ func _process(_delta):
 					eobj = enemy_bullet
 				elif selected_enemy == "enemy":
 					eobj = enemy
+				elif selected_enemy == "enemy_flyer":
+					eobj = enemy_flyer
 			
 			var pclone = eobj.instantiate()
 			pclone.global_position = global_position
