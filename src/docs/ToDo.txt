@@ -36,7 +36,6 @@
 ==================================================================================================================
 
 IN_PROGRESS:
-- Enemigo: Planea cuando cae, en vez de caer directo, es similar al walker, pero con logica cuando está en el aire y otro arte
 - Definir chances de objetos por zona!! (armar planilla)
 - Armar items 3D que se puede girar en todas las direcciones con una porción del QR, algun titulo y forma de cerrarlo
 
@@ -90,6 +89,7 @@ Features:
 - Decoraciones: Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- Enemigo: Planea cuando cae, en vez de caer directo, es similar al walker, pero con logica cuando está en el aire y otro arte
 - Enemigo: Slimes qué se te meten y no te dejan saltar
 - La nube brilla mucho
 - Todo brilla un poco mas cerca de la lava
