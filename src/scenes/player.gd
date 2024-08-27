@@ -1,7 +1,10 @@
 extends CharacterBody2D
 var gravity = 10.0
-var speed = 215.0
-var jump_speed = -300.0
+var speed_original = 215.0
+var speed = speed_original
+var jump_speed_original = -300.0
+var jump_speed = jump_speed_original
+
 @export var direction = "right"
 var total_friction = 0.6
 var friction = total_friction
@@ -54,6 +57,7 @@ var required_shakes = 3
 var pending_reactivate = 0
 
 var last_safe_position = null
+var enemy_attached = null
 
 func _ready():
 	double_jump = Global.find_my_item("wings")
@@ -101,6 +105,13 @@ func center_camera():
 	$Camera2D.position = Vector2.ZERO
 
 func _physics_process(delta):
+	if enemy_attached != null:
+		jump_speed = jump_speed_original / 2
+		speed = speed_original / 2
+	else:
+		jump_speed = jump_speed_original
+		speed = speed_original
+	
 	if terminal_mode:
 		return
 	
@@ -214,6 +225,9 @@ func _physics_process(delta):
 	
 func enable_camera(val):
 	$Camera2D.enabled = val 
+	
+func attached(_enemy_attached):
+	enemy_attached = _enemy_attached
 	
 func camera_limits():
 	if cameralimits_on:
@@ -384,6 +398,11 @@ func process_player(delta):
 	
 	if !gravityon:
 		moving = false
+		
+	if enemy_attached != null and is_instance_valid(enemy_attached):
+		enemy_attached.z_index = z_index + 1
+		enemy_attached.set_flip($sprite.flip_h)
+		enemy_attached.position = Vector2(position.x, position.y - 28)
 	
 	if !dead:
 		if moving:
@@ -416,7 +435,7 @@ func teleported():
 	pass
 	
 func check_shake(current_time):
-	if fire_obj != null and is_instance_valid(fire_obj):
+	if (fire_obj != null and is_instance_valid(fire_obj)) or (enemy_attached != null and is_instance_valid(enemy_attached)):
 		if direction == "left" and Input.is_action_pressed("right") and (current_time - last_input_time) <= shake_timeout:
 			shake_count += 1
 		elif direction == "right" and Input.is_action_pressed("left") and (current_time - last_input_time) <= shake_timeout:
@@ -427,8 +446,13 @@ func check_shake(current_time):
 		last_input_time = current_time
 		
 		if shake_count >= required_shakes:
-			fire_obj.extinguish_fire()
-			fire_obj = null
+			if enemy_attached:
+				enemy_attached.super_jump()
+				enemy_attached = null
+				
+			if fire_obj:
+				fire_obj.extinguish_fire()
+				fire_obj = null
 		
 func shoot(_delta):
 	if !dead:

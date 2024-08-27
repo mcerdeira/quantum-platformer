@@ -36,16 +36,14 @@
 ==================================================================================================================
 
 IN_PROGRESS:
+- Enemigo: Planea cuando cae, en vez de caer directo, es similar al walker, pero con logica cuando está en el aire y otro arte
 - Definir chances de objetos por zona!! (armar planilla)
-- Enemigo: Slimes qué se le meten a los prisioneros y los convierten en zombies que nos atacan 
-- Enemigo: Planea cuando cae, en vez de caer directo, es similar al walker, pero con logica cuando está en el aire y otro arte 
 - Armar items 3D que se puede girar en todas las direcciones con una porción del QR, algun titulo y forma de cerrarlo
 
 
 BUGS/Ajustes:
 - Muchas escaleras, ver tema de cascadas como dijo Fede (ala Minecraft) que interactuen con bombas y enemigos, ademas las escaleras
   como tal, pueden tener versiones: soga, liana
-- La nube brilla mucho? 
 
 Features:
 - Momento el nivel empieza a explotar/irse para arriba, se puede hacer con objetos que simulen ser tiles pero no lo son
@@ -92,6 +90,8 @@ Features:
 - Decoraciones: Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- Enemigo: Slimes qué se te meten y no te dejan saltar
+- La nube brilla mucho
 - Todo brilla un poco mas cerca de la lava
 - Los rayos de luz no son 100% alpha en el borde
 - Los walker walls son inmunes a las explosiones

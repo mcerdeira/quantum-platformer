@@ -4,6 +4,7 @@ var total_speed = 60.0
 var speed = total_speed
 var jump_speed = -300.0
 @export var direction = "right"
+var jumping = false
 var total_friction = 0.6
 var friction = total_friction
 var moving = false
@@ -22,6 +23,7 @@ var fire_obj = null
 var level_parent = null
 var fires = preload("res://scenes/Fires.tscn")
 var dead = false
+var attached = false
 
 func _ready():
 	add_to_group("enemies")
@@ -67,6 +69,7 @@ func _physics_process(delta):
 	
 func process_player(delta):
 	var moving = false
+	
 	if blowed > 0:
 		$stars_stunned.visible = true
 		$sprite.animation = "stunned"
@@ -76,61 +79,58 @@ func process_player(delta):
 		pass
 		
 	if dead:
-		$AnimationPlayer.stop()
 		$stars_stunned.visible = false
 		return
-		
-	if killing > 0:
-		killing -= 1 * delta 
-		if $sprite.animation != "killing":
-			$AnimationPlayer.play("killing")
-			$sprite.animation = "killing"
-			$sprite.play()
-		
-		if killing <= 0:
-			$AnimationPlayer.stop()
-			$sprite.animation = "idle"
-			killing = 0
-	else:
-	
-		if direction == "right":
-			moving = true
-			idle_time = 0
-			velocity.x = speed
-			$sprite.flip_h = false
-		else:
-			moving = true
-			idle_time = 0
-			velocity.x = -speed
-			$sprite.flip_h = true
-		
-		if direction_change_ttl > 0: 
-			direction_change_ttl -= 1 * delta
-		
-		if is_on_wall():
-			if direction_change_ttl <= 0:
-				direction_change_ttl = direction_change_ttl_total
-				if randi() % 3 == 0:
-					jump(delta)
-				if direction == "right":
-					direction = "left"
-					$sprite.flip_h = true
-				else:
-					direction = "right"
-					$sprite.flip_h = false
-	
-	if killing <= 0:
-		if moving:
-			if $sprite.animation == "idle":
-				$sprite.animation = "walking"
-			$sprite.play()
-		else:
-			$sprite.stop()
-			idle_time += 1 * delta
-			if idle_time >= 0.3:  
-				$sprite.animation = "idle"
 
-func jump(delta):
+	else:
+		if attached:
+			velocity = Vector2.ZERO
+		else:
+			if direction == "right":
+				moving = true
+				idle_time = 0
+				velocity.x = speed
+				$sprite.flip_h = false
+			else:
+				moving = true
+				idle_time = 0
+				velocity.x = -speed
+				$sprite.flip_h = true
+			
+			if direction_change_ttl > 0: 
+				direction_change_ttl -= 1 * delta
+				
+			if jumping:
+				if randi() % 5 == 0:
+					jump()
+			
+			if is_on_wall():
+				if direction_change_ttl <= 0:
+					direction_change_ttl = direction_change_ttl_total
+					if direction == "right":
+						direction = "left"
+						$sprite.flip_h = true
+						$AreaDetect.scale.x = -1
+					else:
+						direction = "right"
+						$sprite.flip_h = false
+						$AreaDetect.scale.x = 1
+		
+			if killing <= 0:
+				if moving:
+					if $sprite.animation == "idle":
+						$sprite.animation = "walking"
+					$sprite.play()
+				else:
+					$sprite.stop()
+					idle_time += 1 * delta
+					if idle_time >= 0.3:  
+						$sprite.animation = "idle"
+						
+func set_flip(flip):
+	$sprite.flip_h = flip
+
+func jump():
 	if !Global.GAMEOVER:
 		if is_on_floor_custom():
 			buff = 0
@@ -139,14 +139,16 @@ func jump(delta):
 			velocity.y = jump_speed
 
 func _on_area_body_entered(body):
-	if !dead:
+	if !dead and !attached:
 		if body and body.is_in_group("players"):
-			body.kill()
-			killing = total_killing
-			if global_position.x > body.global_position.x:
-				$sprite.flip_h = true
-			else:
-				$sprite.flip_h = false
+			z_index = 0
+			$sprite.animation = "killing"
+			$sprite.play()
+			attached = true
+			body.attached(self)
+			$AreaDetect.set_deferred("disabled", true)
+			$collider.set_deferred("disabled", true)
+			$Area/collider.set_deferred("disabled", true)
 
 func kill_fire():
 	if fire_obj == null or !is_instance_valid(fire_obj):
@@ -185,6 +187,22 @@ func flyaway(direction):
 		previus_velocity = velocity
 
 func super_jump():
+	if attached:
+		$sprite.animation = "idle"
+		$AreaDetect.set_deferred("disabled", false)
+		$collider.set_deferred("disabled", false)
+		$Area/collider.set_deferred("disabled", false)
+		attached = false
 	Global.play_sound(Global.JUMP_SFX)
 	Global.emit(global_position, 2)
 	velocity.y = jump_speed * 2
+
+func _on_area_detect_body_entered(body):
+	if !dead and !attached:
+		if body and body.is_in_group("players"):
+			jumping = true
+
+func _on_area_detect_body_exited(body):
+	if !dead and !attached:
+		if body and body.is_in_group("players"):
+			jumping = false

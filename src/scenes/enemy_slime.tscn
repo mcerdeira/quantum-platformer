@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ctbg3r2yuyiqv"]
+[gd_scene load_steps=18 format=3 uid="uid://ctbg3r2yuyiqv"]
 
 [ext_resource type="Script" path="res://scenes/enemy_slime.gd" id="1_jegw2"]
 [ext_resource type="Texture2D" uid="uid://bfmd1soivmlg7" path="res://sprites/dead_fire_spr_0.png" id="2_a2moj"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://deqbcbnajy7k5" path="res://sprites/dead_fire_spr_2.png" id="4_4di4s"]
 [ext_resource type="Texture2D" uid="uid://dowyrgu761nwa" path="res://sprites/horu/images/enemy_slime1.png" id="5_waerx"]
 [ext_resource type="Texture2D" uid="uid://djndvirgckwu6" path="res://sprites/horu/images/enemy_slime2.png" id="6_80xah"]
+[ext_resource type="Texture2D" uid="uid://bk6bwpduv7w18" path="res://sprites/horu/images/enemy_slime_eating1.png" id="6_t2dhg"]
+[ext_resource type="Texture2D" uid="uid://dwiofkctfb0b6" path="res://sprites/horu/images/enemy_slime_eating2.png" id="7_0bs3m"]
 [ext_resource type="Texture2D" uid="uid://cwhacwkjf4t5a" path="res://sprites/horu/images/enemy_slime3.png" id="7_e4dtg"]
 [ext_resource type="Texture2D" uid="uid://capc1hdlw0gpl" path="res://sprites/horu/images/stars1.png" id="20_mk7iv"]
 [ext_resource type="Texture2D" uid="uid://caxf4k5okg3cr" path="res://sprites/horu/images/stars2.png" id="21_rbouk"]
@@ -37,13 +39,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_waerx")
+"texture": ExtResource("6_t2dhg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_80xah")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_e4dtg")
+"texture": ExtResource("7_0bs3m")
 }],
 "loop": true,
 "name": &"killing",
@@ -74,29 +73,11 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44h00"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xk4x"]
+size = Vector2(382, 144.5)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6yeio"]
-radius = 15.7003
-
-[sub_resource type="Animation" id="Animation_k8fva"]
-resource_name = "killing"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1.5), Vector2(1.5, 0.8), Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_b5rsm"]
-_data = {
-"killing": SubResource("Animation_k8fva")
-}
+radius = 30.0167
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4xq1w"]
 animations = [{
@@ -120,25 +101,27 @@ script = ExtResource("1_jegw2")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0vk2b")
-animation = &"dead_fire"
+animation = &"killing"
 autoplay = "dead_fire"
+frame_progress = 0.0130304
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_44h00")
+
+[node name="AreaDetect" type="Area2D" parent="."]
+
+[node name="collider" type="CollisionShape2D" parent="AreaDetect"]
+position = Vector2(166, -55.75)
+shape = SubResource("RectangleShape2D_5xk4x")
 
 [node name="Area" type="Area2D" parent="."]
 collision_layer = 33
 collision_mask = 33
 
 [node name="collider" type="CollisionShape2D" parent="Area"]
+position = Vector2(1, -4)
 shape = SubResource("CircleShape2D_6yeio")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_b5rsm")
-}
-speed_scale = 2.0
 
 [node name="stars_stunned" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -147,4 +130,6 @@ sprite_frames = SubResource("SpriteFrames_4xq1w")
 autoplay = "default"
 frame_progress = 0.742572
 
+[connection signal="body_entered" from="AreaDetect" to="." method="_on_area_detect_body_entered"]
+[connection signal="body_exited" from="AreaDetect" to="." method="_on_area_detect_body_exited"]
 [connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
