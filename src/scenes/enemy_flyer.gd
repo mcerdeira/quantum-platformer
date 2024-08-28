@@ -82,6 +82,7 @@ func process_player(delta):
 	if dead:
 		$sprite/eyes.animation = $sprite.animation.replace(spr_sufix, "")
 		$sprite/eyes.flip_h = $sprite.flip_h 
+		$sprite/Nose.flip_h = $sprite.flip_h 
 		$AnimationPlayer.stop()
 		$stars_stunned.visible = false
 		return
@@ -94,6 +95,8 @@ func process_player(delta):
 			$sprite.animation = "killing" + spr_sufix
 			$sprite/eyes.animation = "killing" + spr_sufix
 			$sprite.play()
+			$sprite/Nose.play()
+			$sprite/eyes.play()
 		
 		if killing <= 0:
 			$AnimationPlayer.stop()
@@ -134,14 +137,19 @@ func process_player(delta):
 			if $sprite.animation == "idle" + spr_sufix:
 				$sprite.animation = "walking" + spr_sufix
 			$sprite.play()
+			$sprite/Nose.play()
+			$sprite/eyes.play()
 		else:
 			$sprite.stop()
+			$sprite/eyes.stop()
+			$sprite/Nose.stop()
 			idle_time += 1 * delta
 			if idle_time >= 0.3:  
 				$sprite.animation = "idle" + spr_sufix
 		
 		$sprite/eyes.animation = $sprite.animation.replace(spr_sufix, "")
 		$sprite/eyes.flip_h = $sprite.flip_h 
+		$sprite/Nose.flip_h = $sprite.flip_h 
 
 func jump(delta):
 	if !Global.GAMEOVER:

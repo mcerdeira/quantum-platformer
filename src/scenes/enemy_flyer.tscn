@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ctfvfhtlw28a7"]
+[gd_scene load_steps=35 format=3 uid="uid://ctfvfhtlw28a7"]
 
 [ext_resource type="Script" path="res://scenes/enemy_flyer.gd" id="1_s28ew"]
 [ext_resource type="Texture2D" uid="uid://bfmd1soivmlg7" path="res://sprites/dead_fire_spr_0.png" id="2_7248k"]
@@ -13,9 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://cktra0qm32ecj" path="res://sprites/horu/images/enemy_wings_anger_0.png" id="11_kogms"]
 [ext_resource type="Texture2D" uid="uid://cx1lbwd18v3lp" path="res://sprites/horu/images/enemy_wings_anger_1.png" id="12_bgo2v"]
 [ext_resource type="Texture2D" uid="uid://c7cxf6jrkknts" path="res://sprites/horu/images/enemy_wings_anger_2.png" id="13_3pk1t"]
-[ext_resource type="Texture2D" uid="uid://cnh54rkrceo" path="res://sprites/horu/images/enemy_anger_spr_0.png" id="20_y7p5k"]
-[ext_resource type="Texture2D" uid="uid://b77wwtbc2frr" path="res://sprites/horu/images/enemy_anger_spr_1.png" id="21_x61sv"]
-[ext_resource type="Texture2D" uid="uid://bt28oxgjtkk14" path="res://sprites/horu/images/enemy_anger_spr_2.png" id="22_of3lx"]
+[ext_resource type="Texture2D" uid="uid://dko2fkqg1ojji" path="res://sprites/horu/images/nose1.png" id="18_acbc3"]
+[ext_resource type="Texture2D" uid="uid://4oo3wlj34det" path="res://sprites/horu/images/nose2.png" id="19_1jw57"]
+[ext_resource type="Texture2D" uid="uid://cwgrq0uuoaf5g" path="res://sprites/horu/images/nose3.png" id="20_ke2du"]
 [ext_resource type="Texture2D" uid="uid://c1fa6mp1vngqq" path="res://sprites/horu/images/enemy_danger_spr_0.png" id="23_nd5yc"]
 [ext_resource type="Texture2D" uid="uid://q0bln7b1u2oh" path="res://sprites/horu/images/enemy_danger_spr_1.png" id="24_ppn4t"]
 [ext_resource type="Texture2D" uid="uid://1ybi7osvso8b" path="res://sprites/horu/images/enemy_danger_spr_2.png" id="25_dkssi"]
@@ -113,13 +113,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("20_y7p5k")
+"texture": ExtResource("11_kogms")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_x61sv")
+"texture": ExtResource("12_bgo2v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_of3lx")
+"texture": ExtResource("13_3pk1t")
 }],
 "loop": true,
 "name": &"killing",
@@ -151,6 +151,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wf5jr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_acbc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_1jw57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ke2du")
+}],
+"loop": true,
+"name": &"default",
 "speed": 5.0
 }]
 
@@ -230,7 +247,7 @@ _data = {
 "new_animation": SubResource("Animation_8dsu1")
 }
 
-[node name="EnemyWalker" type="CharacterBody2D"]
+[node name="EnemyFlyer" type="CharacterBody2D"]
 script = ExtResource("1_s28ew")
 
 [node name="wing2" type="AnimatedSprite2D" parent="."]
@@ -247,6 +264,11 @@ autoplay = "dead_fire"
 [node name="eyes" type="AnimatedSprite2D" parent="sprite"]
 sprite_frames = SubResource("SpriteFrames_efk2u")
 animation = &"walking"
+frame_progress = 0.316777
+
+[node name="Nose" type="AnimatedSprite2D" parent="sprite"]
+sprite_frames = SubResource("SpriteFrames_wf5jr")
+frame_progress = 0.711453
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)

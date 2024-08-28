@@ -125,6 +125,7 @@ func process_player(delta):
 			$sprite.animation = "killing"
 			$sprite/eyes.animation = "killing"
 			$sprite.play()
+			$sprite/eyes.play()
 		
 		if killing <= 0:
 			$AnimationPlayer.stop()
@@ -245,8 +246,10 @@ func process_player(delta):
 			if $sprite.animation == "idle":
 				$sprite.animation = "walking"
 			$sprite.play()
+			$sprite/eyes.play()
 		else:
 			$sprite.stop()
+			$sprite/eyes.stop()
 			idle_time += 1 * delta
 			if idle_time >= 0.3:  
 				$sprite.animation = "idle"
