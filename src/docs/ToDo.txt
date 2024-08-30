@@ -36,12 +36,15 @@
 ==================================================================================================================
 
 IN_PROGRESS:
+- Hacer sistema para elegir random soga, liana o escalera, teniendo en cuenta que pueden ser todos tiles iguales 
+  o necesitar un tile especial para iniciar y terminar
+- Ignorar la logica en rooms diseñadas
 
 BUGS/Ajustes:
 
 Features:
 - Cascadas (ala Minecraft) que interactuen con bombas y enemigos
-- Hacer "skins" para las escaleras como: soga, liana
+
 - Momento el nivel empieza a explotar/irse para arriba, se puede hacer con objetos que simulen ser tiles pero no lo son
 - Armar items 3D que se puede girar en todas las direcciones con una porción del QR, algun titulo y forma de cerrarlo
 - Geisers
@@ -87,6 +90,7 @@ Features:
 - Decoraciones: Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- Hacer "skins" para las escaleras como: soga, liana
 - Definir chances de objetos por zona!! (armar planilla)
 - Enemigo: Planea cuando cae, en vez de caer directo, es similar al walker, pero con logica cuando está en el aire y otro arte
 - Enemigo: Slimes qué se te meten y no te dejan saltar

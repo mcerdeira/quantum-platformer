@@ -142,6 +142,7 @@ start={
 2d_physics/layer_6="Switch para prisioneros al liberarse"
 2d_physics/layer_8="Vines y cosas incendiables"
 2d_physics/layer_9="Enemigos Walkers_Walls"
+2d_physics/layer_12="Escaleras (visual)"
 2d_physics/layer_20="RayCast del enemigo"
 
 [rendering]
