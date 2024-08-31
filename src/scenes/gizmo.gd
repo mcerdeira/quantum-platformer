@@ -186,6 +186,10 @@ func explode():
 		$explosion_mini/collider2.set_deferred("disabled", false)
 		$explosion_mini/collider3.set_deferred("disabled", false)
 		explosion_delay = 1.2
+		$explosion_light.enabled = true
+		$explosion_light.enabled = true
+		$explosion_light.enabled = true
+		$anim_explosion.play("new_animation")
 		$explosions.explode()
 
 func _on_area_body_entered(body):

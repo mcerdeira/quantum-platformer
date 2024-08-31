@@ -148,7 +148,7 @@ func jump(delta):
 			velocity.y = jump_speed
 
 func _on_area_body_entered(body):
-	if !dead:
+	if !dead and blowed <= 0: 
 		if body and body.is_in_group("players"):
 			body.kill()
 			killing = total_killing

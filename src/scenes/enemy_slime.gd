@@ -139,7 +139,7 @@ func jump():
 			velocity.y = jump_speed
 
 func _on_area_body_entered(body):
-	if !dead and !attached:
+	if !dead and !attached and blowed <= 0:
 		if body and body.is_in_group("players"):
 			z_index = 0
 			$sprite.animation = "killing"

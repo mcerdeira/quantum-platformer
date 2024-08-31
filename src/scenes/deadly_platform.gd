@@ -21,11 +21,21 @@ func _physics_process(delta):
 			if explosion_delay <= 0:
 				$explosion.queue_free()
 				$explosions.queue_free()
+				$explosion_light.queue_free()
+				$explosion_light2.queue_free()
+				$explosion_light3.queue_free()
+				$anim_explosion.queue_free()
+				
 		
 func explode():
 	$explosion/collider.set_deferred("disabled", false)
 	explosion_delay = 1.2
+	$explosion_light.enabled = true
+	$explosion_light.enabled = true
+	$explosion_light.enabled = true
+	$anim_explosion.play("new_animation")
 	$explosions.explode()
+	
 
 func _on_area_body_entered(body):
 	if !active:

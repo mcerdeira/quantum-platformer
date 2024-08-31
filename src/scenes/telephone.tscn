@@ -135,8 +135,8 @@ offset_top = 2.0
 offset_right = 488.0
 offset_bottom = 64.0
 theme_override_fonts/font = ExtResource("13_kvgbd")
-text = "== TELEPHONE ==
-A device for communication"
+text = "== TELEFONO ==
+Aparato para comunicarse"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

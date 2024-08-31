@@ -22,56 +22,64 @@ var fade_finished = false
 #CHEST ITEMS 
 var smoke_bomb = {
 	"name": "smoke",
-	"description": "Smoke bomb!",
+	"friendly_name": "Bomba de Humo",
+	"description": "Los enemigos no te veran.",
 	"has_action": true,
 	"pasive": false,
 	"full_scale": true,
 }
 var plant = {
 	"name": "plant",
-	"description": "It grows!",
+	"friendly_name": "Plantita",
+	"description": "¡Crece y crece!",
 	"has_action": true,
 	"pasive": false,
 	"full_scale": true,
 }
 var clone = {
 	"name": "clone",
-	"description": "Generates a copy of you.",
+	"friendly_name": "Clonador",
+	"description": "Genera una copia tuya.",
 	"has_action": true,
 	"pasive": false,
 	"full_scale": false,
 }
 var teleport = {
 	"name": "teleport",
-	"description": "Instant travel through space.",
+	"friendly_name": "Teletransportador",
+	"description": "Viaje instantaneo en el espacio.",
 	"has_action": true,
 	"pasive": false,
 	"full_scale": false,
 }
 var muffin = {
 	"name": "muffin",
-	"description": "Yuummy!",
+	"friendly_name": "Golosina",
+	"description": "¡Que rico!",
 	"has_action": false,
 	"pasive": false,
 	"full_scale": false,
 }
 var bomb = {
 	"name": "bomb",
-	"description": "Kaboom!",
+	"friendly_name": "Bomba",
+	"description": "¡Bum!",
 	"has_action": true,
 	"pasive": false,
 	"full_scale": true,
 }
 var coin = {
 	"name": "coin",
-	"description": "Grotto coins!",
+	"friendly_name": "Moneda",
+	"description": "Gruta-Monedas",
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
 }
 var spring = {
 	"name": "spring",
-	"description": "Boing! Boing!",
+	"friendly_name": "Resorte",
+	"description": "¡Toing! ¡Toing!",
 	"has_action": false,
 	"pasive": false,
 	"full_scale": true,
@@ -80,48 +88,54 @@ var spring = {
 #PASIVE ITEMS 
 var radar = {
 	"name": "radar",
-	"description": "Points to the exit door. Press 'R' to access it.",
+	"friendly_name": "Radar",
+	"description": "Apunta a la salida. Presiona 'R' para acceder.",
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
 }
 var map = {
 	"name": "map",
-	"description": "Press 'M' to access it.",
+	"friendly_name": "Mapa",
+	"description": "Presiona 'M' para acceder.",
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
 }
 var double_jump = {
 	"name": "wings",
-	"description": "Fly! Kinda.",
+	"description": "¡Volar!",
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
 }
 var resurrect = {
 	"name": "resurrect",
-	"description": "One more try.",
+	"friendly_name": "Resureccion",
+	"description": "Un intento más.",
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
 }
 var invisibility = {
 	"name": "invisibility",
-	"description": "Now you see me, now you don't.",
+	"friendly_name": "Invisibilidad",
+	"description": "Ahora me ves, ahora no.",
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
 }
 var binocular = {
 	"name": "binocular",
-	"description": "Perspective. Press 'H' to access it.",
+	"friendly_name": "Binoculares",
+	"description": "Perspectiva. Presiona 'H' para acceder.",
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
 }
 var none = {
 	"name": "none",
+	"friendly_name": "Nada",
 	"description": "...",
 	"has_action": false,
 	"pasive": true,
@@ -162,43 +176,43 @@ var artifactPicked = false
 
 var Terminals = [
 	{
-		"name": "The Eye    ",
-		"description" : "The Eye    ",
+		"name": "El Ojo       ",
+		"description" : "El Ojo     ",
 		"status": true,
 		"prisoners": 0,
 		"variable" : {}
 	},
 	{
-		"name": "The Leaf   ",
-		"description" : "The Leaf   ",
+		"name": "La Hoja      ",
+		"description" : "La Hoja    ",
 		"status": true,
 		"prisoners": 5,
 		"variable" : {"LASERS": false}
 	},
 	{
-		"name": "The Tomb   ",
-		"description" : "The Tomb   ",
+		"name": "La Tumba     ",
+		"description" : "La Tumba   ",
 		"status": false,
 		"prisoners": 5,
 		"variable" : {"GHOSTS": false}
 	},
 	{
-		"name": "The Mermaid",
-		"description" : "The Mermaid   ",
+		"name": "La Sirena    ",
+		"description" : "La Sirena     ",
 		"status": false,
 		"prisoners": 7,
 		"variable" : {"WATERFALLS": false}
 	},
 	{
-		"name": "The Dragon ",
-		"description" : "The Dragon   ",
+		"name": "La Salamandra",
+		"description" : "La Salamandra",
 		"status": false,
 		"prisoners": 7,
 		"variable" : {"FIREBALLS": false}
 	},
 	{
-		"name": "The S3r4ph ",
-		"description" : "The S3r4ph   ",
+		"name": "El Serafin   ",
+		"description" : "El Serafin   ",
 		"status": null,
 		"prisoners": 10,
 		"variable" :{"$5&/#/()":null}

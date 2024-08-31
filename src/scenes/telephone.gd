@@ -43,7 +43,7 @@ func _physics_process(delta):
 			$back/sprite.animation = "prisoner"
 			$back/sprite.play()
 			$back/lbl_item.text = ""
-			current_message = "WOOF!! WOOF!! WOOF!!!\nHELP!! HELP!! HELP!!!"
+			current_message = "GUAU!! GUAU!! GUAU!!!\nAYUDA!! AYUDA!! AYUDA!!"
 			$back/arrows.visible = false
 			ringing = false
 			$AnimationPlayer.stop()

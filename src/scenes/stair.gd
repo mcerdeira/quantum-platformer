@@ -1,9 +1,9 @@
 extends Area2D
 @export var plant_stair = false
 @export var tilemap : TileMap
-var stair = 0
-var rope = 1
-var vine = 3
+var stair = 1
+var rope = 5
+var vine = 8
 
 func _ready():
 	if tilemap:

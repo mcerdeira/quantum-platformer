@@ -5,7 +5,7 @@ var player = null
 var delay_camera = 0.2
 var itemfound = load("res://scenes/Item3D.tscn")
 var has_artifact = false
-var initial_message = "== MONOLITH ==\nEXAMINE?"
+var initial_message = "== MONOLITO ==\n¿EXAMINAR?"
 
 func _ready():
 	$display/back/lbl_item.text = initial_message
@@ -34,7 +34,7 @@ func get_item():
 		parent.add_child(p)
 		$display.visible = false
 	else:
-		$display/back/lbl_item.text = "THERE ARE 4 SLOTS... WHAT FOR?"
+		$display/back/lbl_item.text = "HAY 4 RANURAS... ¿PARA QUE SON?"
 		$display/back/sprite.animation = "monolith"
 		
 

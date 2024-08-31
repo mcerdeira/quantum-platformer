@@ -19,7 +19,7 @@ func _ready():
 				has_artifact = true
 				
 	if has_artifact:
-		$display/back/lbl_item.text = "== UNKNOWN ITEM =="
+		$display/back/lbl_item.text = "== ITEM DESCONOCIDO =="
 		$display/back/sprite.animation = "unknown"
 	elif randi() % 3 == 0:
 		current_item = Global.pick_random(Global.gunz_objs_prob)
@@ -37,7 +37,7 @@ func _ready():
 		if QTY != 1:
 			qty_str = " (x" + str(QTY) + ")"
 		
-		$display/back/lbl_item.text = "== " + current_item.name.to_upper() + qty_str + " ==" + "\n" + current_item.description
+		$display/back/lbl_item.text = "== " + current_item.friendly_name.to_upper() + qty_str + " ==" + "\n" + current_item.description
 	else:
 		if Global.TerminalNumber == 2 and randi() % 3 == 0:
 			has_artifact = false

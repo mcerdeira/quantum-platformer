@@ -29,7 +29,7 @@ func _physics_process(delta):
 			Global.emit(global_position, 5)
 			$back/sprite.animation = "prisoner"
 			$back/sprite.play()
-			current_message = "They kidnapped my friends!! (and your 'dog')"
+			current_message = "Se llevó a la Gruta a mis amigos y a tu perro!"
 			$back/lbl_item.text = ""
 			$back/arrows.visible = false
 
