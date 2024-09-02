@@ -220,7 +220,7 @@ position = Vector2(79, 560)
 position = Vector2(819, 512)
 
 [node name="Stair" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("8_gfvgv")]
-position = Vector2(752, 672)
+position = Vector2(752, 640)
 scale = Vector2(1, 11)
 tilemap = NodePath("..")
 
@@ -230,13 +230,13 @@ scale = Vector2(1, 5)
 tilemap = NodePath("..")
 
 [node name="Stair3" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("8_gfvgv")]
-position = Vector2(336, 672)
-scale = Vector2(1, 21)
+position = Vector2(336, 640)
+scale = Vector2(1, 20)
 tilemap = NodePath("..")
 
 [node name="Stair2" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("8_gfvgv")]
-position = Vector2(944, 672)
-scale = Vector2(1, 21)
+position = Vector2(944, 640)
+scale = Vector2(1, 20)
 tilemap = NodePath("..")
 
 [node name="qdtector" parent="." instance=ExtResource("10_vespp")]

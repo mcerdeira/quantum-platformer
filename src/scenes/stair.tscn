@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://d254jydue6c5l"]
+[gd_scene load_steps=4 format=3 uid="uid://d254jydue6c5l"]
 
 [ext_resource type="Script" path="res://scenes/stair.gd" id="1_uadkp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fyajm"]
 size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34hps"]
+size = Vector2(20, 4)
 
 [node name="Stair" type="Area2D"]
 collision_layer = 2056
@@ -14,4 +17,13 @@ script = ExtResource("1_uadkp")
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_fyajm")
 
+[node name="changer" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="collider" type="CollisionShape2D" parent="changer"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_34hps")
+
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="area_entered" from="changer" to="." method="_on_changer_area_entered"]
