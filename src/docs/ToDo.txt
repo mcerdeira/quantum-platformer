@@ -38,9 +38,6 @@
 ==================================================================================================================
 
 IN_PROGRESS:
-- Hacer sistema para elegir random soga, liana o escalera, teniendo en cuenta que pueden ser todos tiles iguales 
-  o necesitar un tile especial para iniciar y terminar
-
 
 BUGS/Ajustes:
 
@@ -92,6 +89,8 @@ Features:
 - Decoraciones: Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- Hacer sistema para elegir random soga, liana o escalera, teniendo en cuenta que pueden ser todos tiles iguales 
+  o necesitar un tile especial para iniciar y terminar
 - Sumar luz a la explosión 
 - Escaleras dinamicas: Ignorar la logica en rooms diseñadas
 - Hacer "skins" para las escaleras como: soga, liana
