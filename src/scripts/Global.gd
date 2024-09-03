@@ -174,6 +174,15 @@ var FIREBALLS = true
 var global_camera = null
 var artifactPicked = false
 
+enum TerminalsEnum {
+	EYE = 0,
+	LEAF = 1,
+	TOMB = 2,
+	MERMAID = 3,
+	SALAMANDER = 4,
+	SERAPH = 5,
+}
+
 var Terminals = [
 	{
 		"name": "El Ojo       ",

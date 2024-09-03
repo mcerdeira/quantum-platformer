@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://q5jba1wlplcx"]
+[gd_scene load_steps=29 format=3 uid="uid://q5jba1wlplcx"]
 
 [ext_resource type="Texture2D" uid="uid://cwiafy02tr7dy" path="res://sprites/gravestone_spr_0.png" id="1_16odb"]
 [ext_resource type="Script" path="res://scenes/Tomb.gd" id="1_onnxa"]
@@ -21,6 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://cjg71ls267rbj" path="res://sprites/question_mark.png" id="18_ne0n8"]
 [ext_resource type="Texture2D" uid="uid://b3n7eech0mndx" path="res://sprites/arrows1.png" id="19_xl1wy"]
 [ext_resource type="Texture2D" uid="uid://dkompgmyj4pmk" path="res://sprites/arrows2.png" id="20_vjs6a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r1yae"]
+radius = 7.81025
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evds0"]
 size = Vector2(31, 10)
@@ -166,8 +169,22 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo6p8"]
+size = Vector2(17, 3)
+
 [node name="Tomb" type="Area2D"]
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_onnxa")
+
+[node name="relased" type="CharacterBody2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="collider" type="CollisionShape2D" parent="relased"]
+position = Vector2(2, -53)
+shape = SubResource("CircleShape2D_r1yae")
+disabled = true
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, -5)
@@ -223,6 +240,15 @@ autowrap_mode = 2
 position = Vector2(520, 39)
 sprite_frames = SubResource("SpriteFrames_fbffi")
 autoplay = "default"
+
+[node name="trapped_area" type="Area2D" parent="."]
+position = Vector2(0, -26)
+collision_layer = 9
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trapped_area"]
+position = Vector2(0.5, 14.5)
+shape = SubResource("RectangleShape2D_bo6p8")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

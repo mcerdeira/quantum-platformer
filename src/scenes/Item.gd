@@ -4,8 +4,6 @@ var active = false
 var opened = false
 var player = null
 var delay_camera = 0.2
-var tomb = load("res://scenes/Tomb.tscn")
-var killme = false
 var QTY = 1
 var has_artifact = false
 var itemfound = load("res://scenes/Item3D.tscn")
@@ -39,21 +37,9 @@ func _ready():
 		
 		$display/back/lbl_item.text = "== " + current_item.friendly_name.to_upper() + qty_str + " ==" + "\n" + current_item.description
 	else:
-		if Global.TerminalNumber == 2 and randi() % 3 == 0:
-			has_artifact = false
-			killme = true
-		else:
-			queue_free()
+		queue_free()
 
 func _physics_process(delta):
-	if killme:
-		var p = tomb.instantiate()
-		var parent = get_parent()
-		parent.add_child(p)
-		p.global_position = global_position
-		queue_free()
-		return
-	
 	if !active and opened:
 		if player:
 			if delay_camera > 0:
