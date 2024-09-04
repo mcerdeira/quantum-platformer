@@ -7,12 +7,12 @@ var upper_limit_temp = 1.0
 var first_time 
 
 func _physics_process(_delta):
-	if Global.TerminalNumber <= 0:
+	if Global.TerminalNumber <= Global.TerminalsEnum.EYE:
 		Global.lava_FX.set_intensity(0.0, 0.0)
 		queue_free()
-	elif Global.TerminalNumber == 4: 
+	elif Global.TerminalNumber == Global.TerminalsEnum.SALAMANDER:
 		Global.lava_FX.set_intensity(0.089, 0.9)
-	elif Global.TerminalNumber == 3:
+	elif Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
 		Global.lava_FX.set_intensity(0.0, 0.0)
 		queue_free()
 	else:

@@ -7,3 +7,7 @@ func _physics_process(delta):
 		cast_point = to_local(get_collision_point())
 	else:
 		cast_point = target_position
+		
+	var c = get_collider()
+	if c and c.is_in_group("players"):
+		c.kill_fire(0.3)

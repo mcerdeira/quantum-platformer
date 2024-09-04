@@ -38,13 +38,11 @@
 ==================================================================================================================
 
 IN_PROGRESS:
-- Buscar donde se usa Global.TerminalNumber comparado con un numero y reemplazarlo por TerminalsEnum
-- Canillas
-- Lasers: Insta burning
 
 BUGS/Ajustes:
 
 Features:
+- Ajustar prisioneros para que al liberarlos, al ratito se vayan de algun forma (pueden morir, pero hay una ventana mas chica de tiempo)  
 - Cascadas (ala Minecraft) que interactuen con bombas y enemigos
 - Momento: el nivel empieza a explotar/irse para arriba, se puede hacer con objetos que simulen ser tiles pero no lo son
 - Armar items 3D que se puede girar en todas las direcciones con una porción del QR, algun titulo y forma de cerrarlo
@@ -53,7 +51,6 @@ Features:
 - Lluvia
 - SFX
 - Musica
-- Ajustar prisioneros para que al liberarlos, al ratito se vayan de algun forma (pueden seguir muriendo, pero es mas raro)  
 
 - Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
   - Alinear los discos, llama al bote.
@@ -70,7 +67,7 @@ Features:
   - Truenos
   - Lluvia
   - Cascadas
-  - Canillas
+  - Canillas: que hacen desaparecer las cascadas y la lluvia
 
 - Armar zona Tomb. Muy blanco y negro, con bruma. Hay unas lápidas especiales que tenemos que hacer algo, pero pueden disparar q aparezca un fantasma
 - Lapidas que pueden disparar un enemigo
@@ -87,8 +84,12 @@ Features:
 
 - Decoraciones: Splash al caer en la lava
 - Decoraciones: Backgrounds con parallax
+- Decoraciones: La sangre debería desaparecer al tocar la lava
 
 --------------------------------- DONE ---------------------------------
+- Lasers: Insta burning
+- Canillas: Asset
+- Buscar donde se usa Global.TerminalNumber comparado con un numero y reemplazarlo por TerminalsEnum
 - Cambiar asset del muffin
 - Hacer sistema para elegir random soga, liana o escalera, teniendo en cuenta que pueden ser todos tiles iguales 
   o necesitar un tile especial para iniciar y terminar

@@ -7,7 +7,7 @@ func _ready():
 	var val = randf_range(0.75, 1.5) 
 	$LampDown/LampArea/Lamp/sprite.speed_scale *= val
 	$AnimationPlayer.speed_scale *= val
-	if Global.TerminalNumber == 3:
+	if Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
 		killme = true
 	else:
 		if !fixed:

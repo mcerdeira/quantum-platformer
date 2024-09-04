@@ -537,11 +537,14 @@ func reset_to_last():
 	global_position = last_safe_position
 	$AnimationPlayer.play("reset_position")
 
-func kill_fire():
+func kill_fire(tt_total = null):
 	if fire_obj == null or !is_instance_valid(fire_obj):
 		Global.emit(global_position, 10)
 		var parent = level_parent
 		var p = fires.instantiate()
+		if tt_total != null:
+			p.tt_total = tt_total
+			
 		p.global_position = global_position
 		p.kill_me = self
 		parent.add_child(p)
