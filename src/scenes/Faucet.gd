@@ -3,7 +3,6 @@ var active = false
 var opened = false
 var player = null
 var delay_camera = 0.2
-var has_artifact = false
 var trapped = true
 var level_parent = null
 var ghost = preload("res://scenes/enemy_ghost.tscn")
@@ -11,23 +10,9 @@ var q = -1
 
 func _ready():
 	add_to_group("prisoners")
-	if randi() % 2 == 0:
-		has_artifact = true
-		
+	$sprite.play()
 	$display.visible = false
-	var frame = randi() % 4
-	$sprite.frame = frame
-	var descrip = ""
-	if frame == 0:
-		descrip = "== TUMBA ==\n¿EXAMINAR?"
-	elif frame == 1:
-		descrip = "== TUMBA DERRUMBADA ==\n¿EXAMINAR?"
-	elif frame == 2:
-		descrip = "== TUMBA MOHOSA ==\n¿EXAMINAR?"
-	elif frame == 3:
-		descrip = "== TUMBA RELIGIOSA ==\n¿EXAMINAR?"
-	$display/back/lbl_item.text = descrip
-	
+
 func _physics_process(delta):
 	if !active and opened:
 		if player:
@@ -47,17 +32,8 @@ func _physics_process(delta):
 func get_item():
 	Global.prisoner_counter -= 1
 	Global.map_obj.notify_prisoner_done(q)
-	if has_artifact:
-		$display/back/lbl_item.text = "¡¡MALDICION!!"
-		Global.emit(global_position, 10)
-		var parent = level_parent
-		var p = ghost.instantiate()
-		parent.add_child(p)
-		p.global_position = global_position
-	else:
-		$display/back/lbl_item.text = "NO HAY NADA..."
-		
 	$display/back/sprite.visible = false
+	$sprite.animation = "default"
 
 func _on_body_entered(body):
 	if !opened and body.is_in_group("players") and !body.is_in_group("prisoners"):

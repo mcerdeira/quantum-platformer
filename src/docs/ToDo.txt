@@ -38,6 +38,9 @@
 ==================================================================================================================
 
 IN_PROGRESS:
+- Buscar donde se usa Global.TerminalNumber comparado con un numero y reemplazarlo por TerminalsEnum
+- Canillas
+- Lasers: Insta burning
 
 BUGS/Ajustes:
 
@@ -48,8 +51,6 @@ Features:
 - Geisers
 - Truenos
 - Lluvia
-- Canillas
-- Lasers: Insta burning
 - SFX
 - Musica
 - Ajustar prisioneros para que al liberarlos, al ratito se vayan de algun forma (pueden seguir muriendo, pero es mas raro)  
@@ -88,6 +89,7 @@ Features:
 - Decoraciones: Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- Cambiar asset del muffin
 - Hacer sistema para elegir random soga, liana o escalera, teniendo en cuenta que pueden ser todos tiles iguales 
   o necesitar un tile especial para iniciar y terminar
 - Sumar luz a la explosión 

@@ -3,6 +3,7 @@ var post_o = load("res://scenes/post.tscn")
 var player_clone = load("res://scenes/prisoner.tscn")
 var done = false
 var tomb = load("res://scenes/Tomb.tscn")
+var faucet = load("res://scenes/Faucet.tscn")
 @export var fixed = false
 
 func _ready():
@@ -23,7 +24,9 @@ func _process(_delta):
 			post.global_position = Vector2(global_position.x, global_position.y - 16)
 			Main.add_child(post)
 		elif Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
-			pass
+			post = faucet.instantiate()
+			post.global_position = Vector2(global_position.x, global_position.y + 16)
+			Main.add_child(post)
 		elif Global.TerminalNumber == Global.TerminalsEnum.SALAMANDER:
 		
 			var pclone = player_clone.instantiate()
