@@ -50,7 +50,7 @@ func _on_btn_nextscene_pressed():
 	if $txt_terminal.text == "":
 		Global.scene_next()
 	else:
-		Global.scene_next(int($txt_terminal.text))
+		Global.scene_next(int($txt_terminal.text), $chk_boss.button_pressed)
 
 func _on_btn_reset_pressed():
 	Global.CurrentLevel = 0

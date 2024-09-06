@@ -18,6 +18,7 @@ var BurnableID = 4
 var BurnedID = 5
 var CameFromConsole = false
 var fade_finished = false
+var BOSS_ROOM = false
 
 #CHEST ITEMS 
 var smoke_bomb = {
@@ -240,7 +241,8 @@ enum GameStates {
 var CurrentState : GameStates = GameStates.TITLE
 var FirstState : GameStates = GameStates.HOME
 
-func scene_next(terminal_number = -1):
+func scene_next(terminal_number = -1, boss = false):
+	BOSS_ROOM = boss
 	Global.TerminalNumber = terminal_number
 	if Global.CurrentState == Global.GameStates.TITLE:
 		Global.CurrentState = FirstState

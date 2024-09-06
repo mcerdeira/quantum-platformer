@@ -87,17 +87,17 @@ offset_bottom = 65.0
 text = "Smoke"
 
 [node name="btn_nextscene" type="Button" parent="."]
-offset_left = 40.0
-offset_top = 231.0
-offset_right = 178.0
-offset_bottom = 286.0
+offset_left = 183.0
+offset_top = 232.0
+offset_right = 321.0
+offset_bottom = 287.0
 text = "Next Scene"
 
 [node name="btn_reset" type="Button" parent="."]
-offset_left = 208.0
-offset_top = 231.0
-offset_right = 346.0
-offset_bottom = 286.0
+offset_left = 17.0
+offset_top = 233.0
+offset_right = 155.0
+offset_bottom = 288.0
 text = "Reset"
 
 [node name="txt_terminal" type="TextEdit" parent="."]
@@ -112,6 +112,13 @@ offset_left = 477.0
 offset_top = 118.0
 offset_right = 562.0
 offset_bottom = 146.0
+
+[node name="chk_boss" type="CheckBox" parent="."]
+offset_left = 344.0
+offset_top = 155.0
+offset_right = 368.0
+offset_bottom = 179.0
+text = "BOSS!"
 
 [connection signal="pressed" from="bnt_coin" to="." method="_on_bnt_coin_pressed"]
 [connection signal="pressed" from="bnt_plant" to="." method="_on_bnt_plant_pressed"]

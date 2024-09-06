@@ -55,6 +55,11 @@ var rooms_bottom = [
 	preload("res://scenes/levels/leaf/room_bottom1.tscn")
 ]
 
+var rooms_bosses = [
+	null,
+	[preload("res://scenes/levels/leaf/room_boss.tscn")],
+]
+
 var list_rooms_top = [
 	null,
 	rooms_top,
@@ -98,68 +103,95 @@ func generate_level():
 	var door_room = Vector2(randi() % 4, randi() % 4)
 	var size = Vector2(1152, 640) #TODO: Cambiar
 	var room_pos = Vector2.ZERO
+	var total_h = 4
+	var total_w = 4
 	var room = null
 	var q = 1
-	var prisonercount = Global.Terminals[Global.TerminalNumber].prisoners
-	var _rooms_top = list_rooms_top[Global.TerminalNumber]
-	var _rooms_middle1 = list_rooms_middle1[Global.TerminalNumber]
-	var _rooms_middle2 = list_rooms_middle2[Global.TerminalNumber]
-	var _rooms_bottom = list_rooms_bottom [Global.TerminalNumber]
+	var prisonercount = 0
+	var _rooms_top = null
+	var _rooms_middle1 = null
+	var _rooms_middle2 = null
+	var _rooms_bottom = null
+	if Global.BOSS_ROOM:
+		$frame.queue_free()
+		prisonercount = 0
+		_rooms_top = rooms_bosses[Global.TerminalNumber]
+		_rooms_middle1 = null
+		_rooms_middle2 = null
+		_rooms_bottom = null
+		player_room = Vector2(0, 0)
+		total_h = 1
+		total_w = 1
+	else:
+		prisonercount = Global.Terminals[Global.TerminalNumber].prisoners
+		_rooms_top = list_rooms_top[Global.TerminalNumber]
+		_rooms_middle1 = list_rooms_middle1[Global.TerminalNumber]
+		_rooms_middle2 = list_rooms_middle2[Global.TerminalNumber]
+		_rooms_bottom = list_rooms_bottom [Global.TerminalNumber]
 	
 	Global.artifactPicked = false
-	
-	for h in range(4):
-		for w in range(4):
-			if h == 0:
-				room = Global.pick_random(_rooms_top)
 
+	for h in range(total_h):
+		for w in range(total_w):
+			room = null
+			
+			if h == 0:
+				if _rooms_top:
+					room = Global.pick_random(_rooms_top)
+					
 			if h == 1:
-				room = Global.pick_random(_rooms_middle1)
+				if _rooms_middle1:
+					room = Global.pick_random(_rooms_middle1)
 				
 			if h == 2:
-				room = Global.pick_random(_rooms_middle2)
+				if _rooms_middle2:
+					room = Global.pick_random(_rooms_middle2)
 			
 			if h == 3:
-				room = Global.pick_random(_rooms_bottom)
+				if _rooms_bottom:
+					room = Global.pick_random(_rooms_bottom)
 				
-			var r = room.instantiate()
-			r.global_position = room_pos
-			r.q = q
-			q += 1
-			
-			room_pos.x += size.x
-			if player_room != Vector2(w, h):
-				r.delete_player()
+			if room:
+				var r = room.instantiate()
+				r.global_position = room_pos
+				r.q = q
+				q += 1
 				
-			if door_room != Vector2(w, h):
-				r.delete_door()
-			
-			add_child(r)
+				room_pos.x += size.x
+				if player_room != Vector2(w, h):
+					r.delete_player()
+					
+				if door_room != Vector2(w, h):
+					if !Global.BOSS_ROOM:
+						r.delete_door()
+				
+				add_child(r)
 		
 		room_pos.y += size.y
 		room_pos.x = 0
 		
-	var terminals = get_tree().get_nodes_in_group("terminals")
-	while terminals.size() > 1:
-		terminals.shuffle()
-		var t = terminals.pop_front()
-		t.queue_free()
-		
-	var color_buttons = get_tree().get_nodes_in_group("color_button")
-	while color_buttons.size() > 1:
-		color_buttons.shuffle()
-		var t = color_buttons.pop_front()
-		t.queue_free()
+	if !Global.BOSS_ROOM:
+		var terminals = get_tree().get_nodes_in_group("terminals")
+		while terminals.size() > 1:
+			terminals.shuffle()
+			var t = terminals.pop_front()
+			t.queue_free()
+			
+		var color_buttons = get_tree().get_nodes_in_group("color_button")
+		while color_buttons.size() > 1:
+			color_buttons.shuffle()
+			var t = color_buttons.pop_front()
+			t.queue_free()
 
-	var prisoner_markers = get_tree().get_nodes_in_group("prisoner_markers")
-	while prisoner_markers.size() > prisonercount:
-		prisoner_markers.shuffle()
-		var pm = prisoner_markers.pop_front()
-		pm.queue_free()
-	
-	prisoner_markers = get_tree().get_nodes_in_group("prisoner_markers")
-	for _pm in prisoner_markers:
-		_pm.done = true
+		var prisoner_markers = get_tree().get_nodes_in_group("prisoner_markers")
+		while prisoner_markers.size() > prisonercount:
+			prisoner_markers.shuffle()
+			var pm = prisoner_markers.pop_front()
+			pm.queue_free()
+		
+		prisoner_markers = get_tree().get_nodes_in_group("prisoner_markers")
+		for _pm in prisoner_markers:
+			_pm.done = true
 		
 func _ready():
 	Global.prisoner_counter = 0

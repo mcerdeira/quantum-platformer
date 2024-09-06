@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://beddkg66dul67"]
+
+[ext_resource type="Script" path="res://scenes/levels/leaf/CameraZoomer.gd" id="1_woncj"]
+
+[node name="CameraZoomer" type="Camera2D"]
+position = Vector2(-1, 1)
+anchor_mode = 0
+zoom = Vector2(0.7, 0.7)
+script = ExtResource("1_woncj")
