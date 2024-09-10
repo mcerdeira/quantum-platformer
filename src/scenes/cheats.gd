@@ -57,6 +57,7 @@ func _on_btn_reset_pressed():
 	Global.Gold = 0
 	Global.GoldDonation = 0
 	Global.first_time = true
+	Global.FirstDeath = true
 	Global.erase_game()
 	Global.CurrentState = Global.GameStates.HOME
 	Global.Fader.fade_in()

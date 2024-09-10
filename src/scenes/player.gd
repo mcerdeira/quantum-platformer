@@ -58,6 +58,7 @@ var pending_reactivate = 0
 
 var last_safe_position = null
 var enemy_attached = null
+var message_timeout = 4.5
 
 func _ready():
 	double_jump = Global.find_my_item("wings")
@@ -85,9 +86,27 @@ func _ready():
 	Global.Fader.fade_out()
 	if invisible:
 		set_invisible(true)
+		
 	
 func hide_eyes():
 	$sprite_eyes.visible = false
+	
+func show_message_death():
+	if Global.OverWorldFromGameOver:
+		$display.visible = true
+		Global.OverWorldFromGameOver = false
+		if Global.FirstDeath:
+			$display/back/lbl_item.text = "¿Que fue eso?\n\n¿Acaso morí?"
+			await get_tree().create_timer(message_timeout).timeout
+			Global.FirstDeath = false
+		
+		if randi() % 2 == 0:
+			$display/back/lbl_item.text = "¡Que sueño mas loco!"
+		else:
+			$display/back/lbl_item.text = "¡Una P E S A D I L L A!"
+			
+		await get_tree().create_timer(message_timeout).timeout
+		$display.visible = false
 	
 func is_on_floor_custom():
 	var real_of = is_on_floor()
@@ -128,6 +147,8 @@ func _physics_process(delta):
 				resurrecting = 5
 		
 		Global.GAMEOVER = dead
+		if Global.GAMEOVER:
+			Global.OverWorldFromGameOver = true
 		
 	if resurrecting > 0:
 		if fire_obj != null and is_instance_valid(fire_obj):

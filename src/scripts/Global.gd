@@ -19,6 +19,8 @@ var BurnedID = 5
 var CameFromConsole = false
 var fade_finished = false
 var BOSS_ROOM = false
+var FirstDeath = true
+var OverWorldFromGameOver = false
 
 #CHEST ITEMS 
 var smoke_bomb = {
@@ -384,6 +386,7 @@ func save_game():
 		saved_game.store_var(Global.CurrentLevel)
 		saved_game.store_var(Global.GoldDonation)
 		saved_game.store_var(Global.ARTIFACT_PER_LEVEL)
+		saved_game.store_var(Global.FirstDeath)
 		saved_game.close()
 	
 func load_game():
@@ -402,6 +405,7 @@ func load_game():
 			var curr_level = saved_game.get_var()
 			var g_donation = saved_game.get_var()
 			var a_per_level = saved_game.get_var()
+			var first_death = saved_game.get_var()
 			
 			if cur_state != null:
 				Global.FirstState = cur_state
@@ -428,6 +432,8 @@ func load_game():
 					Global.GoldDonation = g_donation
 				if a_per_level != null:
 					Global.ARTIFACT_PER_LEVEL = a_per_level
+				if first_death != null:
+					Global.FirstDeath = first_death
 
 func _ready():
 	load_sfx()

@@ -38,15 +38,15 @@
 ==================================================================================================================
 
 IN_PROGRESS:
+- Después de quedar stunned, si teniamos apretado la flecha, no cambia el sprite de stunned
+- Cada tanto aparece como un agujero o pozo visto de arriba medio esotérico con una voz que nos llama, símil coraline 
 - Ajustar prisioneros para que al liberarlos, al ratito se vayan de algun forma (pueden morir, pero hay una ventana mas chica de tiempo)
-- Jefe de The Leaf: Es como estar jugando al basquet, tiramos una pelota con la habilidad y hay que embocar en algun lado
+- Jefe de The Leaf: Es como estar jugando al basquet, tiramos una pelota con la habilidad y hay que pegarle
+  Si nos golpea de costado nos stunea, si nos cae encima nos aplasta
 
 BUGS/Ajustes:
--
 
 Features:
-- Cada tanto aparece como un agujero o pozo visto de arriba medio esotérico con una voz que nos llama, símil coraline 
-- Después de morir, despertamos en el overworld y el personaje dice que fue una pesadilla, eso explica xq no morimos.
 - Cascadas (ala Minecraft) que interactuen con bombas y enemigos
 - Momento: el nivel empieza a explotar/irse para arriba, se puede hacer con objetos que simulen ser tiles pero no lo son
 - Armar items 3D que se puede girar en todas las direcciones con una porción del QR, algun titulo y forma de cerrarlo
@@ -90,6 +90,7 @@ Features:
 - Decoraciones: La sangre debería desaparecer al tocar la lava
 
 --------------------------------- DONE ---------------------------------
+- Después de morir, despertamos en el overworld y el personaje dice que fue una pesadilla, eso explica xq no morimos.
 - Lasers: Insta burning
 - Canillas: Asset
 - Buscar donde se usa Global.TerminalNumber comparado con un numero y reemplazarlo por TerminalsEnum

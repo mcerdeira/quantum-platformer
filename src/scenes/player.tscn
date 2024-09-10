@@ -376,3 +376,35 @@ libraries = {
 "": SubResource("AnimationLibrary_ll00x")
 }
 speed_scale = 5.0
+
+[node name="display" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, -87)
+
+[node name="back2" type="ColorRect" parent="display"]
+z_index = 4096
+offset_left = -303.0
+offset_top = -32.0
+offset_right = 247.0
+offset_bottom = 47.0
+metadata/_edit_use_anchors_ = true
+
+[node name="back" type="ColorRect" parent="display"]
+z_index = 4096
+offset_left = -302.0
+offset_top = -31.0
+offset_right = 246.0
+offset_bottom = 46.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="lbl_item" type="Label" parent="display/back"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 1.0
+offset_right = 546.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("7_1mbn0")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
