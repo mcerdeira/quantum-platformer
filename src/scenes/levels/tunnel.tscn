@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://coxml0vg3mbcl"]
+
+[ext_resource type="Texture2D" uid="uid://d1xkf80yub0t5" path="res://sprites/tunnel.png" id="1_ap7jh"]
+[ext_resource type="Script" path="res://scenes/levels/Tunnel.gd" id="2_nav3d"]
+
+[node name="Tunnel" type="Sprite2D"]
+position = Vector2(536, 299)
+texture = ExtResource("1_ap7jh")
+script = ExtResource("2_nav3d")
