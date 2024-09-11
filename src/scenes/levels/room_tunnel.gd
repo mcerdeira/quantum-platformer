@@ -1,7 +1,23 @@
 extends TileMap
 var tunnel_obj = load("res://scenes/levels/tunnel.tscn")
+var q = 0
+var ttl = 10
+
+func delete_player():
+	pass
+	
+func delete_door():
+	pass
+	
+func _physics_process(delta):
+	ttl -= 1 * delta
+	if ttl <= 0:
+		ttl = 100 
+		Global.CurrentState = Global.GameStates.OVERWORLD
+		Global.scene_next(Global.LevelCurrentTerminalNumber)
 
 func _ready():
+	Global.Fader.fade_out()
 	Global.save_game()
 	var calc_depth = 1.0
 	var color = 1.0 
@@ -21,4 +37,5 @@ func _ready():
 		tunnel_i.z_index = index
 		
 		tunnel_i.modulate = Color(color, color, color, 1)
+		
 		add_child(tunnel_i)

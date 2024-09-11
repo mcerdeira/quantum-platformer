@@ -13,5 +13,6 @@ func fade_out():
 
 func _on_animation_player_animation_finished(_anim_name):
 	Global.fade_finished = true
-	if Global.OverWorldFromGameOver:
-		Global.player_obj.show_message_death()
+	if !Global.TunnelTerminalNumber:
+		if Global.OverWorldFromGameOver:
+			Global.player_obj.show_message_death()

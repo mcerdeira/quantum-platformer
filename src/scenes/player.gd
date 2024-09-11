@@ -92,21 +92,22 @@ func hide_eyes():
 	$sprite_eyes.visible = false
 	
 func show_message_death():
-	if Global.OverWorldFromGameOver:
-		$display.visible = true
-		Global.OverWorldFromGameOver = false
-		if Global.FirstDeath:
-			$display/back/lbl_item.text = "¿Que fue eso?\n\n¿Acaso morí?"
-			await get_tree().create_timer(message_timeout).timeout
-			Global.FirstDeath = false
-		
-		if randi() % 2 == 0:
-			$display/back/lbl_item.text = "¡Que sueño mas loco!"
-		else:
-			$display/back/lbl_item.text = "¡Una P E S A D I L L A!"
+	if Global.CurrentState == Global.GameStates.OVERWORLD:
+		if Global.OverWorldFromGameOver:
+			$display.visible = true
+			Global.OverWorldFromGameOver = false
+			if Global.FirstDeath:
+				$display/back/lbl_item.text = "¿Que fue eso?\n\n¿Acaso morí?"
+				await get_tree().create_timer(message_timeout).timeout
+				Global.FirstDeath = false
 			
-		await get_tree().create_timer(message_timeout).timeout
-		$display.visible = false
+			if randi() % 2 == 0:
+				$display/back/lbl_item.text = "¡Que sueño mas loco!"
+			else:
+				$display/back/lbl_item.text = "¡Una P E S A D I L L A!"
+				
+			await get_tree().create_timer(message_timeout).timeout
+			$display.visible = false
 	
 func is_on_floor_custom():
 	var real_of = is_on_floor()

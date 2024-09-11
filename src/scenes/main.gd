@@ -9,6 +9,7 @@ var room_home = preload("res://scenes/levels/room_house.tscn")
 var room_outside = preload("res://scenes/levels/room_outside.tscn")
 var room_falling = preload("res://scenes/levels/room_falling.tscn")
 var room_overworld = preload("res://scenes/levels/room_overworld.tscn")
+var room_tunnel = preload("res://scenes/levels/room_tunnel.tscn")
 
 var rooms_bottom_dragon = [
 	preload("res://scenes/levels/dragon/room_bottom_dragon.tscn")
@@ -199,7 +200,13 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 	if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
-		generate_level()
+		if !Global.TunnelTerminalNumber and randi() % 3 == 0:
+			Global.OverWorldFromGameOver = false
+			Global.TunnelTerminalNumber = true
+			generate_fixed_level(room_tunnel, false)
+		else:
+			Global.TunnelTerminalNumber = false
+			generate_level()
 	if Global.CurrentState == Global.GameStates.TITLE:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		generate_fixed_level(room_title, false)

@@ -172,6 +172,9 @@ tile_set = SubResource("TileSet_4lr5i")
 format = 2
 script = ExtResource("12_iupwu")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
 [node name="Tunnel" parent="." instance=ExtResource("14_jklm0")]
 position = Vector2(580, 299)
 
@@ -179,7 +182,6 @@ position = Vector2(580, 299)
 position = Vector2(582, 305)
 
 [node name="back2" type="ColorRect" parent="display"]
-z_index = 4096
 offset_left = -303.0
 offset_top = -32.0
 offset_right = 247.0
@@ -187,7 +189,6 @@ offset_bottom = 47.0
 metadata/_edit_use_anchors_ = true
 
 [node name="back" type="ColorRect" parent="display"]
-z_index = 4096
 offset_left = -302.0
 offset_top = -31.0
 offset_right = 246.0
