@@ -200,7 +200,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 	if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
-		if !Global.TunnelTerminalNumber and randi() % 3 == 0:
+		if !Global.TunnelTerminalNumber and !Global.BOSS_ROOM and randi() % 3 == 0:
 			Global.OverWorldFromGameOver = false
 			Global.TunnelTerminalNumber = true
 			generate_fixed_level(room_tunnel, false)

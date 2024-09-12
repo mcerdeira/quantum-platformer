@@ -1,19 +1,19 @@
-[gd_scene load_steps=21 format=3 uid="uid://cv3n3jd3p3yty"]
+[gd_scene load_steps=21 format=3 uid="uid://dsuwqj0ce3lci"]
 
-[ext_resource type="Texture2D" uid="uid://jmdwjxiq0ful" path="res://sprites/lamp_1.png" id="1_js1s3"]
-[ext_resource type="Script" path="res://scenes/Lamp.gd" id="1_tg0cb"]
-[ext_resource type="Script" path="res://scenes/LampDown.gd" id="2_808wp"]
-[ext_resource type="Texture2D" uid="uid://cdulndte6xg7j" path="res://sprites/lamp.png" id="2_g5v2b"]
-[ext_resource type="Texture2D" uid="uid://du57g6isn7hmc" path="res://sprites/chain.png" id="3_clms0"]
-[ext_resource type="Texture2D" uid="uid://eeq0ewn5gmt0" path="res://sprites/fire_lamp1.png" id="3_yta5e"]
-[ext_resource type="Script" path="res://scenes/LampDown2.gd" id="4_mtbgv"]
-[ext_resource type="Texture2D" uid="uid://ukbilpjti2eh" path="res://sprites/fire_lamp2.png" id="4_xr7j6"]
-[ext_resource type="Texture2D" uid="uid://b7q6sy88ueyct" path="res://sprites/fire_lamp3.png" id="5_gxw37"]
-[ext_resource type="Texture2D" uid="uid://cs864d7b56jri" path="res://sprites/lamp_bright.png" id="6_jkpmi"]
-[ext_resource type="Texture2D" uid="uid://dbul1fydmllw8" path="res://sprites/fire_lamp4.png" id="6_twntd"]
-[ext_resource type="Texture2D" uid="uid://c7obt61badgu4" path="res://sprites/fire_lamp5.png" id="7_3wmjq"]
-[ext_resource type="Texture2D" uid="uid://b7qlmhoqal3pq" path="res://sprites/fire_lamp6.png" id="8_nfnia"]
-[ext_resource type="Script" path="res://scenes/sprite_control.gd" id="14_jueho"]
+[ext_resource type="Script" path="res://scenes/Lamp.gd" id="1_hxv32"]
+[ext_resource type="Texture2D" uid="uid://jmdwjxiq0ful" path="res://sprites/lamp_1.png" id="2_gesqj"]
+[ext_resource type="Texture2D" uid="uid://du57g6isn7hmc" path="res://sprites/chain.png" id="3_704si"]
+[ext_resource type="Script" path="res://scenes/LampDown.gd" id="4_skp2m"]
+[ext_resource type="Script" path="res://scenes/LampDown2.gd" id="5_k7me7"]
+[ext_resource type="Texture2D" uid="uid://cdulndte6xg7j" path="res://sprites/lamp.png" id="6_ges35"]
+[ext_resource type="Texture2D" uid="uid://eeq0ewn5gmt0" path="res://sprites/fire_lamp1.png" id="7_2fke7"]
+[ext_resource type="Texture2D" uid="uid://ukbilpjti2eh" path="res://sprites/fire_lamp2.png" id="8_tfxig"]
+[ext_resource type="Texture2D" uid="uid://cs864d7b56jri" path="res://sprites/lamp_bright.png" id="9_68th7"]
+[ext_resource type="Texture2D" uid="uid://b7q6sy88ueyct" path="res://sprites/fire_lamp3.png" id="10_kfxb8"]
+[ext_resource type="Texture2D" uid="uid://dbul1fydmllw8" path="res://sprites/fire_lamp4.png" id="11_1m41d"]
+[ext_resource type="Texture2D" uid="uid://c7obt61badgu4" path="res://sprites/fire_lamp5.png" id="12_l3t1v"]
+[ext_resource type="Texture2D" uid="uid://b7qlmhoqal3pq" path="res://sprites/fire_lamp6.png" id="13_6kcjj"]
+[ext_resource type="Script" path="res://scenes/sprite_control.gd" id="14_yrr7y"]
 
 [sub_resource type="Gradient" id="Gradient_0n1d0"]
 offsets = PackedFloat32Array(0, 0.875433)
@@ -32,31 +32,31 @@ radius = 18.0278
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_yta5e")
+"texture": ExtResource("7_2fke7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_xr7j6")
+"texture": ExtResource("8_tfxig")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_jkpmi")
+"texture": ExtResource("9_68th7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_gxw37")
+"texture": ExtResource("10_kfxb8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_twntd")
+"texture": ExtResource("11_1m41d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_jkpmi")
+"texture": ExtResource("9_68th7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_3wmjq")
+"texture": ExtResource("12_l3t1v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_nfnia")
+"texture": ExtResource("13_6kcjj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_jkpmi")
+"texture": ExtResource("9_68th7")
 }],
 "loop": true,
 "name": &"default",
@@ -84,30 +84,30 @@ _data = {
 "new_animation": SubResource("Animation_ams2q")
 }
 
-[node name="Lamp" type="Node2D"]
+[node name="LampLong" type="Node2D"]
 z_index = 4094
 z_as_relative = false
-script = ExtResource("1_tg0cb")
+script = ExtResource("1_hxv32")
 
 [node name="LampUp" type="Sprite2D" parent="."]
-texture = ExtResource("1_js1s3")
+texture = ExtResource("2_gesqj")
 
 [node name="Line2D" type="Line2D" parent="."]
 texture_repeat = 2
 points = PackedVector2Array(0, 0, 0, 0)
 width = 5.0
-texture = ExtResource("3_clms0")
+texture = ExtResource("3_704si")
 texture_mode = 1
 
 [node name="LampPivot" type="Node2D" parent="." node_paths=PackedStringArray("LampDown", "Chain")]
 position = Vector2(0, 6)
-script = ExtResource("2_808wp")
+script = ExtResource("4_skp2m")
 LampDown = NodePath("../LampDown")
 Chain = NodePath("../Line2D")
 
 [node name="LampDown" type="Node2D" parent="."]
-position = Vector2(0, 143)
-script = ExtResource("4_mtbgv")
+position = Vector2(0, 562)
+script = ExtResource("5_k7me7")
 
 [node name="PointLight2D" type="PointLight2D" parent="LampDown"]
 position = Vector2(0, 3)
@@ -123,7 +123,7 @@ collision_mask = 33
 shape = SubResource("CircleShape2D_yyehc")
 
 [node name="Lamp" type="Sprite2D" parent="LampDown/LampArea"]
-texture = ExtResource("2_g5v2b")
+texture = ExtResource("6_ges35")
 
 [node name="sprite" type="AnimatedSprite2D" parent="LampDown/LampArea/Lamp"]
 z_index = -1
@@ -132,7 +132,7 @@ position = Vector2(-0.25, 4.5)
 sprite_frames = SubResource("SpriteFrames_hj37l")
 autoplay = "default"
 speed_scale = 2.0
-script = ExtResource("14_jueho")
+script = ExtResource("14_yrr7y")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

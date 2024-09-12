@@ -4,6 +4,10 @@ var tt_total = 7
 var fires = preload("res://scenes/Fires.tscn")
 var kill_me = null
 
+func _ready():
+	if Global.BOSS_ROOM:
+		$PointLight2D.visible = false
+
 func _physics_process(delta):
 	if ttl > 0:
 		ttl -= 1 * delta

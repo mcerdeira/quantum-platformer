@@ -288,6 +288,8 @@ func process_player(delta):
 		$lbl_action.visible = false
 		idle_play = idle_play_total
 		return
+	elif blowed <= 0 and $sprite.animation == "stunned":
+		$sprite.animation = idle_animation
 
 	if fire_obj and is_instance_valid(fire_obj):
 		fire_obj.reparent(level_parent)

@@ -1,0 +1,117 @@
+[gd_scene load_steps=15 format=3 uid="uid://cp3ax6e8ms25q"]
+
+[ext_resource type="Script" path="res://scenes/boss_enemy_1.gd" id="1_brynu"]
+[ext_resource type="Texture2D" uid="uid://dp7ucg8qc3iu8" path="res://sprites/horu/images/boss_leaf1.png" id="2_ul2u8"]
+[ext_resource type="Texture2D" uid="uid://dv1q1s22geh1a" path="res://sprites/horu/images/boss_leaf2.png" id="3_qb1vl"]
+[ext_resource type="Texture2D" uid="uid://c267uipgbl5i1" path="res://sprites/horu/images/boss_leaf3.png" id="4_3i60c"]
+[ext_resource type="Script" path="res://scenes/explosion.gd" id="5_n8lrw"]
+[ext_resource type="Texture2D" uid="uid://capc1hdlw0gpl" path="res://sprites/horu/images/stars1.png" id="10_iwu1p"]
+[ext_resource type="Texture2D" uid="uid://caxf4k5okg3cr" path="res://sprites/horu/images/stars2.png" id="11_muud4"]
+[ext_resource type="Texture2D" uid="uid://bpaljgkr5iu14" path="res://sprites/horu/images/stars3.png" id="12_p63ih"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0vk2b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ul2u8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qb1vl")
+}],
+"loop": true,
+"name": &"killing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_3i60c")
+}],
+"loop": true,
+"name": &"stunned",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("2_ul2u8")
+}, {
+"duration": 5.0,
+"texture": ExtResource("3_qb1vl")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plj2x"]
+radius = 192.003
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8cr4"]
+size = Vector2(198, 12.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xljdb"]
+size = Vector2(162, 348)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xun4k"]
+size = Vector2(153, 319)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4xq1w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_iwu1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_muud4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_p63ih")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BossEnemy1" type="CharacterBody2D"]
+script = ExtResource("1_brynu")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 190)
+sprite_frames = SubResource("SpriteFrames_0vk2b")
+animation = &"walking"
+offset = Vector2(1, -190)
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_plj2x")
+
+[node name="Area" type="Area2D" parent="."]
+position = Vector2(-4, 19)
+
+[node name="collider" type="CollisionShape2D" parent="Area"]
+position = Vector2(6, 167.75)
+shape = SubResource("RectangleShape2D_i8cr4")
+
+[node name="explosion" type="Area2D" parent="."]
+script = ExtResource("5_n8lrw")
+
+[node name="collider" type="CollisionShape2D" parent="explosion"]
+position = Vector2(-121, 4)
+shape = SubResource("RectangleShape2D_xljdb")
+
+[node name="collider2" type="CollisionShape2D" parent="explosion"]
+position = Vector2(124, 19)
+shape = SubResource("RectangleShape2D_xun4k")
+
+[node name="stars_stunned" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_4xq1w")
+autoplay = "default"
+frame_progress = 0.742572
+
+[connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
