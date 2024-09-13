@@ -22,6 +22,7 @@ var BOSS_ROOM = false
 var FirstDeath = true
 var OverWorldFromGameOver = false
 var TunnelTerminalNumber = false
+var boss_bar = null
 
 #CHEST ITEMS 
 var smoke_bomb = {

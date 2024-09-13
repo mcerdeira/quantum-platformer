@@ -19,6 +19,8 @@ var blowed = 0
 var previus_velocity = Vector2.ZERO
 var level_parent = null
 var dead = false
+var TOTAL_LIFE = 5
+var LIFE = TOTAL_LIFE
 
 func _ready():
 	add_to_group("enemies")
@@ -34,6 +36,7 @@ func activate():
 	active = true
 	$"../BossSpawn".visible = false
 	$"../BossSpawn".queue_free()
+	Global.boss_bar.showme()
 	
 func _physics_process(delta):
 	if !active:
@@ -60,10 +63,16 @@ func _physics_process(delta):
 	
 	if blowed > 0:
 		blowed -= 1 * delta
+		velocity.x = lerp(velocity.x, 0.0, 1)
+		$sprite.scale.y = 1
 		if is_on_wall():
 			velocity.x = (previus_velocity.x / 2) * -1
 		else:
 			previus_velocity = velocity
+		
+		if blowed <= 0:
+			$sprite.animation = "idle"
+			jump()
 	else:
 		$stars_stunned.visible = false
 		if !is_on_floor_custom():
@@ -128,7 +137,7 @@ func set_flip(flip):
 	$sprite.flip_h = flip
 
 func jump():
-	if is_on_floor_custom():
+	if is_on_floor_custom() and blowed <= 0:
 		buff = 0
 		Global.play_sound(Global.JUMP_SFX)
 		Global.emit(global_position, 2)
@@ -156,8 +165,12 @@ func kill_fall():
 	visible = false
 	queue_free()
 
-func flyaway(direction):
-	pass
+func flyaway():
+	if blowed <= 0:
+		LIFE -= 1
+		Global.shaker_obj.shake(3, 0.5)
+		Global.boss_bar.calc_life_bar(TOTAL_LIFE, LIFE)
+		blowed = 6.2
 
 func super_jump():
 	pass

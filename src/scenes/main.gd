@@ -115,6 +115,7 @@ func generate_level():
 	var _rooms_bottom = null
 	if Global.BOSS_ROOM:
 		$frame.queue_free()
+		$CanvasLayer/Control.visible = false
 		prisonercount = 0
 		_rooms_top = rooms_bosses[Global.TerminalNumber]
 		_rooms_middle1 = null

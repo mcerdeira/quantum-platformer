@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://owqspaw5kj07"]
+[gd_scene load_steps=34 format=3 uid="uid://owqspaw5kj07"]
 
 [ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="1_aus13"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_omadn"]
@@ -20,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://xqd6pmw2bxyy" path="res://sprites/horu/images/light.png" id="15_tbb2n"]
 [ext_resource type="PackedScene" uid="uid://vhwoh2cbshha" path="res://scenes/water.tscn" id="16_llciw"]
 [ext_resource type="PackedScene" uid="uid://c30c81wrrb650" path="res://scenes/Artifact.tscn" id="17_hfakf"]
-[ext_resource type="PackedScene" uid="uid://bfsvpcnfgl76j" path="res://scenes/lamp_fallerspikes.tscn" id="21_ty68f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
 texture = ExtResource("1_aus13")
@@ -418,6 +417,3 @@ position = Vector2(1930, 657)
 
 [node name="Artifact" parent="." instance=ExtResource("17_hfakf")]
 position = Vector2(1872, 576)
-
-[node name="LampFallerSpikes" parent="." instance=ExtResource("21_ty68f")]
-position = Vector2(734, 505)

@@ -216,9 +216,9 @@ func _on_area_body_entered(body):
 			elif current_item.name == "smoke":
 				visible = false
 			elif current_item.name == "spikeball":
-				queue_free()
+				pass
 			
-		if body and body.is_in_group("players") and !body.is_in_group("prisoners"):
+		elif body and body.is_in_group("players") and !body.is_in_group("prisoners"):
 			Global.emit(global_position, 1)
 			Global.get_item(current_item)
 			queue_free()
