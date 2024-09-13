@@ -16,7 +16,7 @@ var health = 15
 @export var LampDown : Node2D
 @export var Chain : Line2D
 
-var lamp_faller = preload("res://scenes/lamp_faller.tscn")
+var lamp_faller = preload("res://scenes/lamp_fallerspikes.tscn")
 
 var super_parent = null
 

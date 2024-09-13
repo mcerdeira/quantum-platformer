@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfsvpcnfgl76j"]
+
+[ext_resource type="Script" path="res://scenes/lamp_fallerspikes.gd" id="1_v5c1h"]
+[ext_resource type="Texture2D" uid="uid://ckfvyg1tc54kk" path="res://sprites/spike_ball.png" id="2_82jmr"]
+[ext_resource type="Script" path="res://scenes/spikeballarea.gd" id="3_qniwy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qpfni"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_82jmr")
+}],
+"loop": true,
+"name": &"broken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_82jmr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btnhx"]
+size = Vector2(24, 24)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7rsfo"]
+radius = 36.8782
+
+[node name="LampFallerSpikes" type="CharacterBody2D"]
+position = Vector2(0, 6)
+collision_layer = 10
+collision_mask = 2
+script = ExtResource("1_v5c1h")
+
+[node name="Lamp" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_qpfni")
+animation = &"broken"
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_btnhx")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_qniwy")
+
+[node name="collider" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_7rsfo")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

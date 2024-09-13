@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://ypq32fpaty8e"]
+[gd_scene load_steps=42 format=3 uid="uid://ypq32fpaty8e"]
 
 [ext_resource type="Script" path="res://scenes/gizmo.gd" id="1_x7ufw"]
 [ext_resource type="Script" path="res://scenes/explosions.gd" id="2_84bkr"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://scenes/Line2D.gd" id="14_cbp3x"]
 [ext_resource type="Texture2D" uid="uid://trxeowv3jmbb" path="res://sprites/smoke_bomb.png" id="14_wv34c"]
 [ext_resource type="Script" path="res://scenes/explosion_mini.gd" id="15_iwgc1"]
+[ext_resource type="Texture2D" uid="uid://ckfvyg1tc54kk" path="res://sprites/spike_ball.png" id="15_ufmve"]
 [ext_resource type="Texture2D" uid="uid://d2m4gpqa0pd84" path="res://sprites/noise.png" id="20_736su"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7uhnq"]
@@ -104,6 +105,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"smoke",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_ufmve")
+}],
+"loop": true,
+"name": &"spikeball",
 "speed": 5.0
 }, {
 "frames": [{
@@ -418,7 +427,7 @@ material = SubResource("ShaderMaterial_nlsrr")
 position = Vector2(0, 3)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_3r5gg")
-animation = &"clone"
+animation = &"spikeball"
 offset = Vector2(0, -16)
 
 [node name="lbl_count" type="Label" parent="."]

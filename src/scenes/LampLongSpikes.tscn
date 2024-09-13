@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6ji8x3ssrxwe"]
+
+[ext_resource type="Texture2D" uid="uid://jmdwjxiq0ful" path="res://sprites/lamp_1.png" id="2_symu1"]
+[ext_resource type="Script" path="res://scenes/LampPivotSpikes.gd" id="3_4am5x"]
+[ext_resource type="Texture2D" uid="uid://du57g6isn7hmc" path="res://sprites/chain.png" id="3_7gtan"]
+[ext_resource type="Script" path="res://scenes/LampDownSpikes.gd" id="5_h365y"]
+[ext_resource type="Texture2D" uid="uid://ckfvyg1tc54kk" path="res://sprites/spike_ball.png" id="6_sg750"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yyehc"]
+radius = 18.0278
+
+[node name="LampLongSpikes" type="Node2D"]
+z_index = 4094
+z_as_relative = false
+
+[node name="LampUp" type="Sprite2D" parent="."]
+texture = ExtResource("2_symu1")
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 5.0
+texture = ExtResource("3_7gtan")
+texture_mode = 1
+
+[node name="LampPivot" type="Node2D" parent="." node_paths=PackedStringArray("LampDown", "Chain")]
+position = Vector2(0, 6)
+script = ExtResource("3_4am5x")
+LampDown = NodePath("../LampDown")
+Chain = NodePath("../Line2D")
+
+[node name="LampDown" type="Node2D" parent="."]
+position = Vector2(0, 562)
+script = ExtResource("5_h365y")
+
+[node name="LampArea" type="Area2D" parent="LampDown"]
+collision_layer = 33
+collision_mask = 33
+
+[node name="collider" type="CollisionShape2D" parent="LampDown/LampArea"]
+shape = SubResource("CircleShape2D_yyehc")
+
+[node name="Lamp" type="Sprite2D" parent="LampDown/LampArea"]
+scale = Vector2(2, 2)
+texture = ExtResource("6_sg750")
+
+[connection signal="body_entered" from="LampDown/LampArea" to="LampPivot" method="_on_lamp_area_body_entered"]

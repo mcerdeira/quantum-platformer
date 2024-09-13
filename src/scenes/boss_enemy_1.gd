@@ -1,4 +1,5 @@
 extends CharacterBody2D
+var active = false
 var gravity = 6.0
 var total_speed = 60.0
 var speed = total_speed
@@ -28,7 +29,16 @@ func _ready():
 func is_on_floor_custom():
 	return is_on_floor() or buff > 0
 	
+func activate():
+	visible = true
+	active = true
+	$"../BossSpawn".visible = false
+	$"../BossSpawn".queue_free()
+	
 func _physics_process(delta):
+	if !active:
+		return
+	
 	speed = total_speed
 	if is_on_floor():
 		if in_air:
@@ -65,6 +75,9 @@ func _physics_process(delta):
 	move_and_slide()	
 	
 func process_player(delta):
+	if !active:
+		return
+	
 	var moving = false
 	
 	if blowed > 0:
@@ -127,7 +140,6 @@ func _on_area_body_entered(body):
 			body.kill()
 			$Area/collider.set_deferred("disabled", true)
 			
-
 func kill_fire():
 	pass
 

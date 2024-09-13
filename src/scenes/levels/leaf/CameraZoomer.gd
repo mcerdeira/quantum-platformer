@@ -7,4 +7,12 @@ func _ready():
 
 func _process(delta):
 	Global.shaker_obj.camera = self
-	zoom = lerp(zoom, zoom_final, zoom_speed)
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "phase1":
+		$"../AnimationPlayer".play("phase2")
+	elif anim_name == "phase2":
+		$"../AnimationPlayer".play("phase3")
+
+func shake():
+	Global.shaker_obj.shake(15, 3)

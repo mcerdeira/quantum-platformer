@@ -56,6 +56,16 @@ var teleport = {
 	"pasive": false,
 	"full_scale": false,
 }
+
+var spikeball = {
+	"name": "spikeball",
+	"friendly_name": "Bola Pinchuda",
+	"description": "¡Ouch!",
+	"has_action": false,
+	"pasive": false,
+	"full_scale": true,
+}
+
 var muffin = {
 	"name": "muffin",
 	"friendly_name": "Golosina",

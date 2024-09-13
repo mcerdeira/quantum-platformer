@@ -95,8 +95,12 @@ func droped(_parent, _parent_lbl, direction, _current_item, _simulation = false)
 	simulation = _simulation
 	current_item = _current_item
 	if current_item.full_scale:
-		$sprite.scale.x = 1
-		$sprite.scale.y = 1
+		if current_item.name == "spikeball":
+			$sprite.scale.x = 2
+			$sprite.scale.y = 2
+		else:
+			$sprite.scale.x = 1
+			$sprite.scale.y = 1
 
 	if simulation:
 		$sprite.visible = false
@@ -211,6 +215,8 @@ func _on_area_body_entered(body):
 				queue_free()
 			elif current_item.name == "smoke":
 				visible = false
+			elif current_item.name == "spikeball":
+				queue_free()
 			
 		if body and body.is_in_group("players") and !body.is_in_group("prisoners"):
 			Global.emit(global_position, 1)
