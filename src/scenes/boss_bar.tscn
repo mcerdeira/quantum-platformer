@@ -8,8 +8,9 @@
 script = ExtResource("1_1doyj")
 
 [node name="ProgressBarFillSpr0" type="Sprite2D" parent="."]
-position = Vector2(258, 44)
+position = Vector2(18, 44)
 texture = ExtResource("1_rr0mg")
+offset = Vector2(240, 0)
 
 [node name="ProgressBarSpr0" type="Sprite2D" parent="."]
 position = Vector2(258, 44)

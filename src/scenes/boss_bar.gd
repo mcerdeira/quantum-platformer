@@ -9,4 +9,5 @@ func showme():
 	control.visible = true
 
 func calc_life_bar(total, current):
-	$ProgressBarFillSpr0.scale.x = current / total
+	var scale = current / total
+	$ProgressBarFillSpr0.scale.x = scale

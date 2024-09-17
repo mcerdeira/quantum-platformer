@@ -4,7 +4,7 @@ var gravity = 6.0
 var total_speed = 60.0
 var speed = total_speed
 var jump_speed = -550.0
-@export var direction = "right"
+@export var direction = ""
 var total_friction = 0.6
 var friction = total_friction
 var moving = false
@@ -19,7 +19,7 @@ var blowed = 0
 var previus_velocity = Vector2.ZERO
 var level_parent = null
 var dead = false
-var TOTAL_LIFE = 5
+var TOTAL_LIFE = 5.0
 var LIFE = TOTAL_LIFE
 
 func _ready():
@@ -32,6 +32,7 @@ func is_on_floor_custom():
 	return is_on_floor() or buff > 0
 	
 func activate():
+	direction = Global.pick_random(["right", "left"])
 	visible = true
 	active = true
 	$"../BossSpawn".visible = false
@@ -41,9 +42,9 @@ func activate():
 func _physics_process(delta):
 	if !active:
 		return
-	
+		
 	speed = total_speed
-	if is_on_floor():
+	if is_on_floor() and !dead:
 		if in_air:
 			in_air = false
 			$sprite.scale.y = 0.5
@@ -89,13 +90,16 @@ func process_player(delta):
 	
 	var moving = false
 	
-	if blowed > 0:
+	if blowed > 0 and !dead:
 		$stars_stunned.visible = true
 		$sprite.animation = "stunned"
 		return
 		
 	if dead:
+		$sprite.scale.y = 1
 		$stars_stunned.visible = false
+		$sprite.animation = "stunned"
+		Global.shaker_obj.shake(12, 0.5)
 		return
 
 	else:
@@ -137,7 +141,7 @@ func set_flip(flip):
 	$sprite.flip_h = flip
 
 func jump():
-	if is_on_floor_custom() and blowed <= 0:
+	if !dead and is_on_floor_custom() and blowed <= 0:
 		buff = 0
 		Global.play_sound(Global.JUMP_SFX)
 		Global.emit(global_position, 2)
@@ -167,10 +171,17 @@ func kill_fall():
 
 func flyaway():
 	if blowed <= 0:
-		LIFE -= 1
+		LIFE -= 1.0
+		if LIFE <= 0.0:
+			$explosions.start()
+			dead = true
+			LIFE = 0.0
+			
+		total_speed *= 1.8
+		speed = total_speed
 		Global.shaker_obj.shake(3, 0.5)
 		Global.boss_bar.calc_life_bar(TOTAL_LIFE, LIFE)
 		blowed = 6.2
-
+			
 func super_jump():
 	pass

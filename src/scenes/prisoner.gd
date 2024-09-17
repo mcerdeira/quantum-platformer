@@ -20,8 +20,8 @@ var previus_velocity = Vector2.ZERO
 var trapped = true
 var dir = 1
 var liberating = 0
-var help_messages = ["HELP!", "SAVE ME!", "S.O.S"]
-var thanks_messages = ["THANKS!", "MY HERO!"]
+var help_messages = ["¡AYUDA!", "¡SALVAME!", "S.O.S"]
+var thanks_messages = ["¡GRACIAS!", "¡MI HEROE!"]
 var thanks_message = Global.pick_random(thanks_messages)
 var is_on_stairs = false
 var is_on_plant_stair = false
@@ -40,6 +40,9 @@ var ttl_stop_total2 = 10
 var ttl_stop = Global.pick_random([ttl_stop_total, ttl_stop_total2])
 var stoped = false
 var stairdetect_ttl = 1
+var libetared_ttl = 3
+var scaping = false
+var scaping_ttl = 3
 
 func _ready():
 	add_to_group("players")
@@ -98,7 +101,7 @@ func _physics_process(delta):
 			in_air = true
 			buff -= 1 * delta
 		
-		if !is_on_floor_custom() and !grabbed:
+		if !is_on_floor_custom() and !grabbed and !scaping:
 			velocity.y += gravity
 
 		if blowed > 0:
@@ -146,62 +149,75 @@ func process_player(delta):
 		fire_obj.z_index = z_index + 1
 		
 	if !dead:
-		ttl_stop -= 1 * delta
-		if ttl_stop <= 0:
-			if stoped:
-				if randi() % 4 == 0:
-					direction = Global.pick_random(["right", "left"])
-			ttl_stop =  Global.pick_random([ttl_stop_total, ttl_stop_total2])
-			stoped = !stoped
-			if is_on_stairs and is_on_plant_stair and stoped:
-				stoped = true 
-		
-		if !stoped:
-			if is_on_stairs and is_on_plant_stair:
-				if stairdetect_ttl > 0:
-					stairdetect_ttl -= 1 * delta 
-			
-			if is_on_stairs and is_on_plant_stair and stairdetect_ttl <= 0:
-				if !grabbed:
-					ttl_stop = Global.pick_random([4.5, 3])
-				moving = true
-				grabbed = true 
-				idle_time = 0
-				velocity.y = -speed
-			else:
-				if direction == "right":
-					moving = true
-					idle_time = 0
-					velocity.x = speed
-					$sprite.flip_h = false
-				else:
-					moving = true
-					idle_time = 0
-					velocity.x = -speed
-					$sprite.flip_h = true
-			
-			if direction_change_ttl > 0:
-				direction_change_ttl -= 1 * delta
-		
-			if is_on_wall():
-				if direction_change_ttl <= 0:
-					direction_change_ttl = direction_change_ttl_total
-					if direction == "right":
-						direction = "left"
-						$sprite.flip_h = true
-					else:
-						direction = "right"
-						$sprite.flip_h = false
-			
-		if moving:
-			if $sprite.animation == "idle":
-				$sprite.animation = "walking"
-			$sprite.play()
+		if scaping:
+			velocity = Vector2(0, jump_speed)
+			Global.emit(global_position, 2)
+			scaping_ttl -= 1 * delta
+			if scaping_ttl <= 0:
+				queue_free()
 		else:
-			$sprite.stop()
-			idle_time += 1 * delta
-			if idle_time >= 0.3:  
-				$sprite.animation = "idle"
+			libetared_ttl -= 1 * delta
+			
+			if libetared_ttl <= 0:
+				$collider.set_deferred("disabled", true)
+				scaping = true
+			
+			ttl_stop -= 1 * delta
+			if ttl_stop <= 0:
+				if stoped:
+					if randi() % 4 == 0:
+						direction = Global.pick_random(["right", "left"])
+				ttl_stop =  Global.pick_random([ttl_stop_total, ttl_stop_total2])
+				stoped = !stoped
+				if is_on_stairs and is_on_plant_stair and stoped:
+					stoped = true 
+			
+			if !stoped:
+				if is_on_stairs and is_on_plant_stair:
+					if stairdetect_ttl > 0:
+						stairdetect_ttl -= 1 * delta 
+				
+				if is_on_stairs and is_on_plant_stair and stairdetect_ttl <= 0:
+					if !grabbed:
+						ttl_stop = Global.pick_random([4.5, 3])
+					moving = true
+					grabbed = true 
+					idle_time = 0
+					velocity.y = -speed
+				else:
+					if direction == "right":
+						moving = true
+						idle_time = 0
+						velocity.x = speed
+						$sprite.flip_h = false
+					else:
+						moving = true
+						idle_time = 0
+						velocity.x = -speed
+						$sprite.flip_h = true
+				
+				if direction_change_ttl > 0:
+					direction_change_ttl -= 1 * delta
+			
+				if is_on_wall():
+					if direction_change_ttl <= 0:
+						direction_change_ttl = direction_change_ttl_total
+						if direction == "right":
+							direction = "left"
+							$sprite.flip_h = true
+						else:
+							direction = "right"
+							$sprite.flip_h = false
+				
+			if moving:
+				if $sprite.animation == "idle":
+					$sprite.animation = "walking"
+				$sprite.play()
+			else:
+				$sprite.stop()
+				idle_time += 1 * delta
+				if idle_time >= 0.3:  
+					$sprite.animation = "idle"
 	else:
 		$sprite.animation = dead_animation
 		$sprite.play()

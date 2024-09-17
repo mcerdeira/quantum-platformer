@@ -241,6 +241,8 @@ func _physics_process(delta):
 				velocity.x = lerp(velocity.x, 0.0, friction / 2)
 			else:
 				velocity.x = lerp(velocity.x, 0.0, friction)
+		elif shoot_mode:
+			velocity.x = lerp(velocity.x, 0.0, friction / 2)
 		
 	process_player(delta)
 	move_and_slide()
@@ -341,7 +343,7 @@ func process_player(delta):
 			idle_play = idle_play_total
 			update_trayectory(delta)
 	
-	if !dead and Input.is_action_just_pressed("jump"):
+	if !dead and !shoot_mode and Input.is_action_just_pressed("jump"):
 		idle_play = idle_play_total
 		if is_on_stairs and grabbed:
 			velocity.y = -speed * 1.1
@@ -532,6 +534,13 @@ func set_invisible(val):
 func flyaway(_direction):
 	if blowed <= 0:
 		blowed = 6.2
+		Global.emit(global_position, 2)
+		velocity = Global.flyaway(_direction, jump_speed)
+		previus_velocity = velocity
+		
+func miniflyaway(_direction):
+	if blowed <= 0:
+		blowed = 2.0
 		Global.emit(global_position, 2)
 		velocity = Global.flyaway(_direction, jump_speed)
 		previus_velocity = velocity

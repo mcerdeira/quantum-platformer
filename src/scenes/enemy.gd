@@ -91,6 +91,7 @@ func process_player(delta):
 		$sprite.animation = "sleep"
 		$stars_stunned.animation = "sleep"
 		$stars_stunned.visible = true
+		$stars_stunned.play()
 		$lbl_status.text = ""
 		$Agro/Vision.visible = false
 		
@@ -102,6 +103,7 @@ func process_player(delta):
 		$sprite.animation = "stunned"
 		$stars_stunned.animation = "stunned"
 		$stars_stunned.visible = true
+		$stars_stunned.play()
 		$lbl_status.text = ""
 		alerted = false
 		hostile = false

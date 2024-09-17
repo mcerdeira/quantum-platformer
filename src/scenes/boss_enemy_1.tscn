@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://cp3ax6e8ms25q"]
+[gd_scene load_steps=17 format=3 uid="uid://cp3ax6e8ms25q"]
 
 [ext_resource type="Script" path="res://scenes/boss_enemy_1.gd" id="1_brynu"]
+[ext_resource type="Script" path="res://scenes/boss1_explosions.gd" id="2_pg7cj"]
 [ext_resource type="Texture2D" uid="uid://dp7ucg8qc3iu8" path="res://sprites/horu/images/boss_leaf1.png" id="2_ul2u8"]
 [ext_resource type="Texture2D" uid="uid://dv1q1s22geh1a" path="res://sprites/horu/images/boss_leaf2.png" id="3_qb1vl"]
 [ext_resource type="Texture2D" uid="uid://c267uipgbl5i1" path="res://sprites/horu/images/boss_leaf3.png" id="4_3i60c"]
@@ -82,6 +83,41 @@ animations = [{
 [node name="BossEnemy1" type="CharacterBody2D"]
 script = ExtResource("1_brynu")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="explosions" type="Node2D" parent="."]
+script = ExtResource("2_pg7cj")
+
+[node name="Marker2D" type="Marker2D" parent="explosions"]
+
+[node name="Marker2D2" type="Marker2D" parent="explosions"]
+position = Vector2(48, -139)
+
+[node name="Marker2D3" type="Marker2D" parent="explosions"]
+position = Vector2(-95, -74)
+
+[node name="Marker2D4" type="Marker2D" parent="explosions"]
+position = Vector2(-170, 16)
+
+[node name="Marker2D5" type="Marker2D" parent="explosions"]
+position = Vector2(-61, 98)
+
+[node name="Marker2D6" type="Marker2D" parent="explosions"]
+position = Vector2(145, 17)
+
+[node name="Marker2D7" type="Marker2D" parent="explosions"]
+position = Vector2(-2, 144)
+
+[node name="Marker2D8" type="Marker2D" parent="explosions"]
+position = Vector2(69, 79)
+
+[node name="Marker2D10" type="Marker2D" parent="explosions"]
+position = Vector2(-56, -153)
+
+[node name="Marker2D9" type="Marker2D" parent="explosions"]
+position = Vector2(-125, 138)
+
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, 190)
 sprite_frames = SubResource("SpriteFrames_0vk2b")
@@ -122,4 +158,5 @@ sprite_frames = SubResource("SpriteFrames_4xq1w")
 autoplay = "default"
 frame_progress = 0.211857
 
+[connection signal="timeout" from="Timer" to="explosions" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]

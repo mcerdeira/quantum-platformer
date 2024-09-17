@@ -189,11 +189,12 @@ func generate_level():
 		while prisoner_markers.size() > prisonercount:
 			prisoner_markers.shuffle()
 			var pm = prisoner_markers.pop_front()
-			pm.queue_free()
+			pm.kill()
 		
 		prisoner_markers = get_tree().get_nodes_in_group("prisoner_markers")
 		for _pm in prisoner_markers:
-			_pm.done = true
+			if !_pm.dead:
+				_pm.done = true
 		
 func _ready():
 	Global.prisoner_counter = 0

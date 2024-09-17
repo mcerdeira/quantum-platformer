@@ -38,7 +38,6 @@
 ==================================================================================================================
 
 IN_PROGRESS:
-- Ajustar prisioneros para que al liberarlos, al ratito se vayan de algun forma (pueden morir, pero hay una ventana mas chica de tiempo)
 - Jefe de The Leaf: Es como estar jugando al basquet, tiramos una pelota con la habilidad y hay que pegarle
   Si nos golpea de costado nos stunea, si nos cae encima nos aplasta
 
@@ -88,6 +87,7 @@ Features:
 - Decoraciones: La sangre debería desaparecer al tocar la lava
 
 --------------------------------- DONE ---------------------------------
+- Ajustar prisioneros para que al liberarlos, al ratito se vayan de algun forma (pueden morir, pero hay una ventana mas chica de tiempo)
 - Después de quedar stunned, si teniamos apretado la flecha, no cambia el sprite de stunned
 - Hacer sistema para que random aparezca el pozo esoterico antes de cargar un nivel 
 - Hacer el pozo esoterico que aparece cada tanto antes de cargar un nivel
