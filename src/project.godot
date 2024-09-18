@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 
 Global="*res://scripts/Global.gd"
 Music="*res://scripts/Music.gd"
+Ambience="*res://scripts/Music.gd"
 
 [display]
 

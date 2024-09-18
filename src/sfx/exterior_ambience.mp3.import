@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/exterior_ambience.mp3-c42d3ecff0a8f9443f22d75
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

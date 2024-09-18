@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/cave_ambience.mp3-54e5d5d270f33affdf862e470c5
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

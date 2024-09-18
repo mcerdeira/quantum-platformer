@@ -24,11 +24,44 @@ var TunnelTerminalNumber = false
 var boss_bar = null
 
 var MainTheme = null
+var MainThemeShort = null
 var BossTheme = null
 var CaveAmbienceSFX = null 
 var HouseAmbienceSFX = null
 var ExteriorAmbienceSFX = null
 var FallingAmbienceSFX = null
+
+var TelephoneRingSFX = null
+var TelephoneUpSFX = null
+var CryingSFX = null
+var DialogSFX = null
+var JumpSFX = null
+var WalkSFX = null
+var ClimbSFX = null
+var FallSFX = null
+var BOSS1RoarSFX = null
+var EnemyEatingSFX = null
+var EnemyKillingSFX = null
+var EnemyEaterAlertedSFX = null
+var SpringSFX = null
+var TerminalONSFX = null
+var TerminalPrintSFX = null
+var TerminalLevelUPSFX = null
+var ChestOpenSFX = null
+var PlantSFX = null
+var ChainsSFX = null
+var BombSFX = null
+var BombTicSFX = null
+var SmokeBombSFX = null
+var PlantGrowSFX = null
+var CloneSFX = null
+var TeleportSFX = null
+var MuffinSFX = null
+var CoinSFX = null
+var MapSFX = null
+var RadarSFX = null
+var ResurrectSFX = null
+var BinocularSFX = null
 
 #CHEST ITEMS 
 var smoke_bomb = {
@@ -461,11 +494,44 @@ func _ready():
 	
 func load_sfx():
 	MainTheme = load("res://music/main_theme.mp3")
+	MainThemeShort = load("res://music/main_theme_short.mp3")
 	BossTheme = load("res://music/boss_theme.mp3")
 	CaveAmbienceSFX = load("res://sfx/cave_ambience.mp3")
 	HouseAmbienceSFX = load("res://sfx/house_ambience.mp3")
 	ExteriorAmbienceSFX = load("res://sfx/exterior_ambience.mp3")
 	FallingAmbienceSFX = load("res://sfx/exterior_ambience.mp3") #TODO: reemplazar
+	
+	TelephoneRingSFX = null
+	TelephoneUpSFX = null
+	CryingSFX = null
+	DialogSFX = null
+	JumpSFX = null
+	WalkSFX = null
+	ClimbSFX = null
+	FallSFX = null
+	BOSS1RoarSFX = null
+	EnemyEatingSFX = null
+	EnemyKillingSFX = null
+	EnemyEaterAlertedSFX = null
+	SpringSFX = null
+	TerminalONSFX = null
+	TerminalPrintSFX = null
+	TerminalLevelUPSFX = null
+	ChestOpenSFX = null
+	PlantSFX = null
+	ChainsSFX = null
+	BombSFX = null
+	BombTicSFX = null
+	SmokeBombSFX = null
+	PlantGrowSFX = null
+	CloneSFX = null
+	TeleportSFX = null
+	MuffinSFX = null
+	CoinSFX = null
+	MapSFX = null
+	RadarSFX = null
+	ResurrectSFX = null
+	BinocularSFX = null
 	
 func init():
 	gunz_equiped = []
