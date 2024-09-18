@@ -206,16 +206,22 @@ first_time_based = true
 [node name="ExitDoor1" parent="." instance=ExtResource("9_hgtxn")]
 position = Vector2(912, 640)
 terminal_number = 1
+gotoBOSS = false
 
 [node name="ExitDoor2" parent="." instance=ExtResource("9_hgtxn")]
 position = Vector2(1041, 288)
 terminal_number = 2
+gotoBOSS = false
 
 [node name="ExitDoor3" parent="." instance=ExtResource("9_hgtxn")]
 position = Vector2(112, 321)
+terminal_number = 3
+gotoBOSS = false
 
 [node name="ExitDoor4" parent="." instance=ExtResource("9_hgtxn")]
 position = Vector2(559, 384)
+terminal_number = 4
+gotoBOSS = false
 
 [node name="Stair" parent="." instance=ExtResource("10_y3x5j")]
 position = Vector2(1168, 640)

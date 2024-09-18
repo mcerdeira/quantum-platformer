@@ -283,6 +283,10 @@ func super_jump():
 
 func _on_trapped_area_body_entered(body):
 	if body.is_in_group("players"):
-		direction = Global.pick_random(["right", "left"])
-		liberating = 2.0
+		liberate(body)
+		
+func liberate(body = null):
+	direction = Global.pick_random(["right", "left"])
+	liberating = 2.0
+	if body:
 		initial_pos = body.global_position

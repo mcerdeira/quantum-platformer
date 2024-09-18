@@ -22,6 +22,7 @@ var dead = false
 var TOTAL_LIFE = 5.0
 var LIFE = TOTAL_LIFE
 var explode_ttl = 3
+var end_ttl = 10
 
 func _ready():
 	add_to_group("enemies")
@@ -97,10 +98,16 @@ func process_player(delta):
 		return
 		
 	if dead:
+		Global.player_obj.show_message_demo()
+		
 		$sprite.scale.y = 1
 		$stars_stunned.visible = false
 		$sprite.animation = "stunned"
 		explode_ttl -= 1 * delta
+		end_ttl -= 1 * delta
+		if end_ttl <= 0:
+			Global.scene_next(Global.TerminalNumber, false)
+		
 		if explode_ttl <= 0 and $sprite.visible:
 			Global.shaker_obj.shake(12, 1.2)
 			$BossExplosionShader.start()

@@ -166,6 +166,9 @@ func generate_level():
 				if door_room != Vector2(w, h):
 					if !Global.BOSS_ROOM:
 						r.delete_door()
+				else:
+					if !Global.BOSS_ROOM:
+						r.assign_door(Global.TerminalNumber)
 				
 				add_child(r)
 		

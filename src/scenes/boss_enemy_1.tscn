@@ -116,6 +116,51 @@ position = Vector2(69, 79)
 [node name="Marker2D10" type="Marker2D" parent="explosions"]
 position = Vector2(-56, -153)
 
+[node name="Marker2D11" type="Marker2D" parent="explosions"]
+position = Vector2(54, -173)
+
+[node name="Marker2D12" type="Marker2D" parent="explosions"]
+position = Vector2(-200, -72)
+
+[node name="Marker2D13" type="Marker2D" parent="explosions"]
+position = Vector2(-163, 104)
+
+[node name="Marker2D14" type="Marker2D" parent="explosions"]
+position = Vector2(-53, 159)
+
+[node name="Marker2D15" type="Marker2D" parent="explosions"]
+position = Vector2(124, 129)
+
+[node name="Marker2D16" type="Marker2D" parent="explosions"]
+position = Vector2(137, 63)
+
+[node name="Marker2D17" type="Marker2D" parent="explosions"]
+position = Vector2(168, 153)
+
+[node name="Marker2D18" type="Marker2D" parent="explosions"]
+position = Vector2(-149, -145)
+
+[node name="Marker2D19" type="Marker2D" parent="explosions"]
+position = Vector2(-82, -189)
+
+[node name="Marker2D20" type="Marker2D" parent="explosions"]
+position = Vector2(5, -209)
+
+[node name="Marker2D21" type="Marker2D" parent="explosions"]
+position = Vector2(104, -154)
+
+[node name="Marker2D22" type="Marker2D" parent="explosions"]
+position = Vector2(-123, 63)
+
+[node name="Marker2D23" type="Marker2D" parent="explosions"]
+position = Vector2(75, 129)
+
+[node name="Marker2D24" type="Marker2D" parent="explosions"]
+position = Vector2(142, -38)
+
+[node name="Marker2D25" type="Marker2D" parent="explosions"]
+position = Vector2(179, -88)
+
 [node name="Marker2D9" type="Marker2D" parent="explosions"]
 position = Vector2(-125, 138)
 

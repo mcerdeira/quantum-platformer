@@ -89,7 +89,12 @@ func _ready():
 		
 	
 func hide_eyes():
+	#Ocultar los ojos cuando estamos entrando a una puerta
 	$sprite_eyes.visible = false
+	
+func show_message_demo():
+	$display.visible = true
+	$display/back/lbl_item.text = "Hasta aqui la demo.\n¡Gracias por jugar!!"
 	
 func show_message_death():
 	if Global.CurrentState == Global.GameStates.OVERWORLD:
@@ -493,7 +498,7 @@ func shoot(_delta):
 			p.droped(self, $lbl_action, Vector2.from_angle($gun_sprite.rotation) * tspeed, current_item, false)
 	
 func jump(_delta):
-	if !dead:
+	if !dead and $sprite_eyes.visible:
 		var on_floor = is_on_floor_custom()
 		if on_floor or (!on_floor and double_jump and !double_jumped):
 			if !on_floor:

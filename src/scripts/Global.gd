@@ -266,7 +266,7 @@ func scene_next(terminal_number = -1, boss = false):
 		Global.CurrentState = Global.GameStates.FALLING
 	elif Global.CurrentState == Global.GameStates.FALLING:
 		Global.CurrentState = Global.GameStates.OVERWORLD
-	elif Global.CurrentState == Global.GameStates.OVERWORLD:
+	elif Global.CurrentState == Global.GameStates.OVERWORLD or BOSS_ROOM:
 		Global.LevelCurrentTerminalNumber = terminal_number
 		Global.CurrentState = Global.GameStates.RANDOMLEVEL
 	elif Global.CurrentState == Global.GameStates.RANDOMLEVEL:
