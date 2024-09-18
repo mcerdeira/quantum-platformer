@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cp3ax6e8ms25q"]
+[gd_scene load_steps=18 format=3 uid="uid://cp3ax6e8ms25q"]
 
 [ext_resource type="Script" path="res://scenes/boss_enemy_1.gd" id="1_brynu"]
 [ext_resource type="Script" path="res://scenes/boss1_explosions.gd" id="2_pg7cj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c267uipgbl5i1" path="res://sprites/horu/images/boss_leaf3.png" id="4_3i60c"]
 [ext_resource type="Script" path="res://scenes/explosion_boss1.gd" id="5_2e7le"]
 [ext_resource type="Texture2D" uid="uid://capc1hdlw0gpl" path="res://sprites/horu/images/stars1.png" id="10_iwu1p"]
+[ext_resource type="PackedScene" uid="uid://2t17q8uh38pg" path="res://sprites/BossExplosionShader.tscn" id="10_kkfjs"]
 [ext_resource type="Texture2D" uid="uid://caxf4k5okg3cr" path="res://sprites/horu/images/stars2.png" id="11_muud4"]
 [ext_resource type="Texture2D" uid="uid://bpaljgkr5iu14" path="res://sprites/horu/images/stars3.png" id="12_p63ih"]
 
@@ -157,6 +158,9 @@ scale = Vector2(9.24375, 6.49375)
 sprite_frames = SubResource("SpriteFrames_4xq1w")
 autoplay = "default"
 frame_progress = 0.211857
+
+[node name="BossExplosionShader" parent="." instance=ExtResource("10_kkfjs")]
+visible = false
 
 [connection signal="timeout" from="Timer" to="explosions" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]

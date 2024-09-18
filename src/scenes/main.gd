@@ -289,7 +289,7 @@ func _physics_process(delta):
 		#$FX.visible = !$FX.visible
 		##
 	
-	if Input.is_action_pressed("toggle_fullscreen"):
+	if Input.is_action_just_pressed("toggle_fullscreen"):
 		Global.FULLSCREEN = !Global.FULLSCREEN
 		if Global.FULLSCREEN:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)

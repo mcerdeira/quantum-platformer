@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://2t17q8uh38pg"]
+
+[ext_resource type="Script" path="res://sprites/BossExplosionShader.gd" id="1_51u5l"]
+[ext_resource type="Shader" path="res://scenes/boss_explosion_sprite.gdshader" id="1_vgcf1"]
+[ext_resource type="Texture2D" uid="uid://d1ntc3x374hru" path="res://sprites/horu/images/boss_leaf_shader.png" id="2_cddep"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_byki3"]
+noise_type = 5
+seed = 4545
+frequency = 0.1
+fractal_lacunarity = 10.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qt8um"]
+width = 800
+height = 800
+generate_mipmaps = false
+normalize = false
+noise = SubResource("FastNoiseLite_byki3")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5wtc0"]
+seed = 885
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p1i0l"]
+width = 800
+height = 800
+generate_mipmaps = false
+as_normal_map = true
+noise = SubResource("FastNoiseLite_5wtc0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hkrjh"]
+shader = ExtResource("1_vgcf1")
+shader_parameter/progress = 0.0
+shader_parameter/strength = 1.0
+shader_parameter/noise_tex_normal = SubResource("NoiseTexture2D_p1i0l")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_qt8um")
+
+[sub_resource type="Animation" id="Animation_144ah"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BossExplosionShader:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_gyec7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BossExplosionShader:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ylbti"]
+_data = {
+"RESET": SubResource("Animation_gyec7"),
+"new_animation": SubResource("Animation_144ah")
+}
+
+[node name="BossExplosionShader" type="Node2D"]
+script = ExtResource("1_51u5l")
+
+[node name="BossExplosionShader" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_hkrjh")
+texture = ExtResource("2_cddep")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ylbti")
+}

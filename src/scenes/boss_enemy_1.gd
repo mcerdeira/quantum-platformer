@@ -21,6 +21,7 @@ var level_parent = null
 var dead = false
 var TOTAL_LIFE = 5.0
 var LIFE = TOTAL_LIFE
+var explode_ttl = 3
 
 func _ready():
 	add_to_group("enemies")
@@ -99,7 +100,12 @@ func process_player(delta):
 		$sprite.scale.y = 1
 		$stars_stunned.visible = false
 		$sprite.animation = "stunned"
-		Global.shaker_obj.shake(12, 0.5)
+		explode_ttl -= 1 * delta
+		if explode_ttl <= 0 and $sprite.visible:
+			Global.shaker_obj.shake(12, 1.2)
+			$BossExplosionShader.start()
+			$sprite.visible = false
+			$explosions.stop()
 		return
 
 	else:
@@ -176,6 +182,8 @@ func flyaway():
 			$explosions.start()
 			dead = true
 			LIFE = 0.0
+			explode_ttl = 3
+			Global.shaker_obj.shake(3, 0.5)
 			
 		total_speed *= 1.8
 		speed = total_speed

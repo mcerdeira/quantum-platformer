@@ -2,6 +2,9 @@ extends Node2D
 
 func start():
 	$"../Timer".start()
+	
+func stop():
+	$"../Timer".stop()
 
 func explode():
 	var childs = get_children()
