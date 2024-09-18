@@ -216,12 +216,16 @@ func _ready():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		generate_fixed_level(room_title, false)
 	if Global.CurrentState == Global.GameStates.HOME:
+		Global.play_sound(Global.HouseAmbienceSFX)
 		generate_fixed_level(room_home, false)
 	if Global.CurrentState == Global.GameStates.OUTSIDE:
+		Global.play_sound(Global.ExteriorAmbienceSFX)
 		generate_fixed_level(room_outside, false)
 	if Global.CurrentState == Global.GameStates.FALLING:
+		Global.play_sound(Global.FallingAmbienceSFX)
 		generate_fixed_level(room_falling, false)
 	if Global.CurrentState == Global.GameStates.OVERWORLD:
+		Global.play_sound(Global.CaveAmbienceSFX)
 		generate_fixed_level(room_overworld, true)
 		
 	Global.GizmoWatcher = self

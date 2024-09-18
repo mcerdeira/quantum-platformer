@@ -3,6 +3,8 @@ var q = 0
 
 func _ready():
 	Global.save_game()
+	if !Global.BOSS_ROOM:
+		Music.play(Global.MainTheme)
 
 func delete_player():
 	$player_marker.nope = true

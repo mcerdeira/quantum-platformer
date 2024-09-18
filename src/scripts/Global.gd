@@ -4,7 +4,6 @@ var SAVED_GAME = false
 var particle = preload("res://scenes/particle2.tscn")
 var MUSIC_ENABLED = true
 var MUSIC_PLAYING = false
-var MainTheme = "res://music/Bone Yard Waltz - Loopable.ogg"
 var JUMP_SFX = null
 var CHROM_FX = null
 var lava_FX = null
@@ -23,6 +22,13 @@ var FirstDeath = true
 var OverWorldFromGameOver = false
 var TunnelTerminalNumber = false
 var boss_bar = null
+
+var MainTheme = null
+var BossTheme = null
+var CaveAmbienceSFX = null 
+var HouseAmbienceSFX = null
+var ExteriorAmbienceSFX = null
+var FallingAmbienceSFX = null
 
 #CHEST ITEMS 
 var smoke_bomb = {
@@ -454,7 +460,12 @@ func _ready():
 	init()
 	
 func load_sfx():
-	pass
+	MainTheme = load("res://music/main_theme.mp3")
+	BossTheme = load("res://music/boss_theme.mp3")
+	CaveAmbienceSFX = load("res://sfx/cave_ambience.mp3")
+	HouseAmbienceSFX = load("res://sfx/house_ambience.mp3")
+	ExteriorAmbienceSFX = load("res://sfx/exterior_ambience.mp3")
+	FallingAmbienceSFX = load("res://sfx/exterior_ambience.mp3") #TODO: reemplazar
 	
 func init():
 	gunz_equiped = []

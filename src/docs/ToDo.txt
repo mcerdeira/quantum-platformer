@@ -38,8 +38,8 @@
 ==================================================================================================================
 
 IN_PROGRESS:
-- Jefe de The Leaf: Es como estar jugando al basquet, tiramos una pelota con la habilidad y hay que pegarle
-  Si nos golpea de costado nos stunea, si nos cae encima nos aplasta
+- SFX
+- Musica
 
 BUGS/Ajustes:
 
@@ -50,8 +50,6 @@ Features:
 - Geisers
 - Truenos
 - Lluvia
-- SFX
-- Musica
 
 - Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
   - Alinear los discos, llama al bote.
@@ -87,6 +85,8 @@ Features:
 - Decoraciones: La sangre debería desaparecer al tocar la lava
 
 --------------------------------- DONE ---------------------------------
+- Jefe de The Leaf: Es como estar jugando al basquet, tiramos una pelota con la habilidad y hay que pegarle
+  Si nos golpea de costado nos stunea, si nos cae encima nos aplasta
 - Ajustar prisioneros para que al liberarlos, al ratito se vayan de algun forma (pueden morir, pero hay una ventana mas chica de tiempo)
 - Después de quedar stunned, si teniamos apretado la flecha, no cambia el sprite de stunned
 - Hacer sistema para que random aparezca el pozo esoterico antes de cargar un nivel 

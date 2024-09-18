@@ -34,6 +34,7 @@ func is_on_floor_custom():
 	return is_on_floor() or buff > 0
 	
 func activate():
+	Music.play(Global.BossTheme)
 	direction = Global.pick_random(["right", "left"])
 	visible = true
 	active = true
