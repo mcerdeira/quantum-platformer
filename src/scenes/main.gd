@@ -221,9 +221,11 @@ func _ready():
 		Ambience.play(Global.HouseAmbienceSFX)
 		generate_fixed_level(room_home, false)
 	if Global.CurrentState == Global.GameStates.OUTSIDE:
+		Music.stop()
 		Ambience.play(Global.ExteriorAmbienceSFX)
 		generate_fixed_level(room_outside, false)
 	if Global.CurrentState == Global.GameStates.FALLING:
+		Music.stop()
 		Ambience.play(Global.FallingAmbienceSFX)
 		generate_fixed_level(room_falling, false)
 	if Global.CurrentState == Global.GameStates.OVERWORLD:

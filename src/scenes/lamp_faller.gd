@@ -62,6 +62,5 @@ func kill_fall():
 	queue_free()
 
 func super_jump():
-	Global.play_sound(Global.JUMP_SFX)
 	Global.emit(global_position, 2)
 	velocity.y = jump_speed * 2

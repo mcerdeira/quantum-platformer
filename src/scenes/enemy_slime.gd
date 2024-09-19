@@ -134,7 +134,7 @@ func jump():
 	if !Global.GAMEOVER:
 		if is_on_floor_custom():
 			buff = 0
-			Global.play_sound(Global.JUMP_SFX)
+			Global.play_sound(Global.EnemyJumpSFX)
 			Global.emit(global_position, 2)
 			velocity.y = jump_speed
 
@@ -193,7 +193,6 @@ func super_jump():
 		$collider.set_deferred("disabled", false)
 		$Area/collider.set_deferred("disabled", false)
 		attached = false
-	Global.play_sound(Global.JUMP_SFX)
 	Global.emit(global_position, 2)
 	velocity.y = jump_speed * 2
 

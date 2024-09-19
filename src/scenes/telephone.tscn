@@ -103,12 +103,13 @@ libraries = {
 speed_scale = 10.0
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.5
 autostart = true
 
 [node name="Computer" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_t7d8p")
+frame_progress = 0.718125
 offset = Vector2(1, -18)
 
 [node name="back2" type="ColorRect" parent="."]

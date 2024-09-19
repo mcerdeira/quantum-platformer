@@ -6,6 +6,7 @@ var jump_speed_original = -300.0
 var jump_speed = jump_speed_original
 
 @export var direction = "right"
+var first_fall = true
 var total_friction = 0.6
 var friction = total_friction
 var moving = false
@@ -205,11 +206,17 @@ func _physics_process(delta):
 			double_jumped = false
 			if !cameralimits_on:
 				velocity.x = 0
+				Global.play_sound(Global.BigFallSFX)
 				Global.shaker_obj.shake(10, 2.1)
 				Global.emit(global_position, 3)
 				blowed = 5
+				first_fall = false
 			else:
-				Global.emit(global_position, 1)
+				if !first_fall:
+					Global.emit(global_position, 1)
+					Global.play_sound(Global.FallSFX)
+				else:
+					first_fall = false
 			
 		buff = 0.2
 	else:
@@ -402,6 +409,16 @@ func process_player(delta):
 				
 		var input_time = Time.get_ticks_msec() / 1000.0
 		
+		if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
+			if !in_air and $WalkSoundTimer.is_stopped():
+				$WalkSoundTimer.start()
+			
+		if (!Input.is_action_pressed("left") and !Input.is_action_pressed("right")) or in_air:
+			if !$WalkSoundTimer.is_stopped():
+				if in_air:
+					await get_tree().create_timer(0.3).timeout
+				$WalkSoundTimer.stop()
+		
 		if !shoot_mode and Input.is_action_pressed("left"):
 			idle_play = idle_play_total
 			direction = "left"
@@ -503,16 +520,14 @@ func jump(_delta):
 		if on_floor or (!on_floor and double_jump and !double_jumped):
 			if !on_floor:
 				double_jumped = true
-				
 			buff = 0
-			Global.play_sound(Global.JUMP_SFX)
 			Global.emit(global_position, 2)
+			Global.play_sound(Global.JumpSFX)
 			velocity.y = jump_speed
 			
 func super_jump():
 	if !dead:
 		buff = 0
-		Global.play_sound(Global.JUMP_SFX)
 		Global.emit(global_position, 2)
 		velocity.y = jump_speed * 2
 
@@ -587,3 +602,7 @@ func kill_fire(tt_total = null):
 		p.kill_me = self
 		parent.add_child(p)
 		fire_obj = p
+
+func _on_walk_sound_timer_timeout():
+	var options = {"pitch_scale": Global.pick_random([0.5, 0.7])}
+	Global.play_sound(Global.WalkSFX, options)

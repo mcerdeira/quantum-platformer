@@ -7,11 +7,13 @@ var delay_camera = 0.2
 var current_message = ""
 var ttl = 0
 @export var Door : Area2D
+var dialog_sfx = null
 
 func _on_timer_timeout():
 	if !opened:
 		if !ringing:
 			ringing = true
+			Global.play_sound(Global.TelephoneRingSFX)
 			$AnimationPlayer.play("new_animation")
 			$Computer.play()
 		else:
@@ -34,9 +36,12 @@ func _physics_process(delta):
 			ttl = 0.05
 			$back/lbl_item.text += current_message.substr(0, 1)
 			current_message = current_message.substr(1, current_message.length() - 1)
+			if !current_message:
+				Global.kill(dialog_sfx)
 	
 	if active and !opened:
 		if Input.is_action_just_pressed("up"):
+			Global.play_sound(Global.TelephoneUpSFX)
 			opened = true
 			active = false
 			Global.emit(global_position, 5)
@@ -44,6 +49,7 @@ func _physics_process(delta):
 			$back/sprite.play()
 			$back/lbl_item.text = ""
 			current_message = "GUAU!! GUAU!! GUAU!!!\nAYUDA!! AYUDA!! AYUDA!!"
+			dialog_sfx = Global.play_sound(Global.DialogSFX)
 			$back/arrows.visible = false
 			ringing = false
 			$AnimationPlayer.stop()
@@ -63,3 +69,6 @@ func _on_body_exited(body):
 		$back.visible = false
 		active = false
 		body.dont_camera = false
+		if opened:
+			current_message = ""
+			Global.kill(dialog_sfx)

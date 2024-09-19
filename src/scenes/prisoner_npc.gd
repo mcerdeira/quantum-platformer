@@ -5,6 +5,7 @@ var player = null
 var delay_camera = 0.2
 var current_message = ""
 var ttl = 0
+var dialog_sfx = null
 
 func _physics_process(delta):
 	$back2.visible = $back.visible 
@@ -21,6 +22,8 @@ func _physics_process(delta):
 			ttl = 0.05
 			$back/lbl_item.text += current_message.substr(0, 1)
 			current_message = current_message.substr(1, current_message.length() - 1)
+			if !current_message:
+				Global.kill(dialog_sfx)
 	
 	if active and !opened:
 		if Input.is_action_just_pressed("up"):
@@ -29,7 +32,8 @@ func _physics_process(delta):
 			Global.emit(global_position, 5)
 			$back/sprite.animation = "prisoner"
 			$back/sprite.play()
-			current_message = "Se llevó a la Gruta a mis amigos y a tu perro!"
+			dialog_sfx = Global.play_sound(Global.DialogSFX)
+			current_message = "¡La  G R U T A  se llevo a mis amigos y a tu perro!"
 			$back/lbl_item.text = ""
 			$back/arrows.visible = false
 
@@ -46,4 +50,7 @@ func _on_body_exited(body):
 		$back.visible = false
 		active = false
 		body.dont_camera = false
+		if opened:
+			current_message = ""
+			Global.kill(dialog_sfx)
 

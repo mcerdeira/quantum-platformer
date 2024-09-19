@@ -5,6 +5,7 @@ func _on_body_entered(body):
 	if body and (body.is_in_group("players") or body.is_in_group("enemies")):
 		$AnimationPlayer.play("new_animation")
 		$Timer.start() 
+		Global.play_sound(Global.pick_random([Global.PlantSFX, Global.Plant2SFX]))
 
 func _ready():
 	if !fixed:

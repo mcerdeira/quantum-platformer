@@ -226,7 +226,7 @@ func jump(delta):
 	if !dead:
 		if is_on_floor_custom():
 			buff = 0
-			Global.play_sound(Global.JUMP_SFX)
+			Global.play_sound(Global.JumpSFX)
 			Global.emit(global_position, 2)
 			velocity.y = jump_speed
 
@@ -277,7 +277,6 @@ func dead_fire():
 func super_jump():
 	if !dead:
 		buff = 0
-		Global.play_sound(Global.JUMP_SFX)
 		Global.emit(global_position, 2)
 		velocity.y = jump_speed * 2
 

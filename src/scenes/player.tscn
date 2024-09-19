@@ -287,6 +287,9 @@ collision_layer = 524297
 collision_mask = 524297
 script = ExtResource("1_u3t4v")
 
+[node name="WalkSoundTimer" type="Timer" parent="."]
+wait_time = 0.3
+
 [node name="Cosito" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -28)
 scale = Vector2(0.3, 0.3)
@@ -408,3 +411,5 @@ theme_override_fonts/font = ExtResource("7_1mbn0")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[connection signal="timeout" from="WalkSoundTimer" to="." method="_on_walk_sound_timer_timeout"]

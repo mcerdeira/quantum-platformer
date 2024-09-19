@@ -157,7 +157,7 @@ func set_flip(flip):
 func jump():
 	if !dead and is_on_floor_custom() and blowed <= 0:
 		buff = 0
-		Global.play_sound(Global.JUMP_SFX)
+		Global.play_sound(Global.Boss1JumpSFX)
 		Global.emit(global_position, 2)
 		velocity.y = jump_speed
 

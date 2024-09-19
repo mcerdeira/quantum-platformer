@@ -4,7 +4,6 @@ var SAVED_GAME = false
 var particle = preload("res://scenes/particle2.tscn")
 var MUSIC_ENABLED = true
 var MUSIC_PLAYING = false
-var JUMP_SFX = null
 var CHROM_FX = null
 var lava_FX = null
 var player_obj = null
@@ -31,14 +30,20 @@ var HouseAmbienceSFX = null
 var ExteriorAmbienceSFX = null
 var FallingAmbienceSFX = null
 
+var PressStartSFX = null
+var InteractSFX = null
 var TelephoneRingSFX = null
 var TelephoneUpSFX = null
+var TelevisionOnSFX = null
 var CryingSFX = null
 var DialogSFX = null
 var JumpSFX = null
 var WalkSFX = null
 var ClimbSFX = null
 var FallSFX = null
+var BigFallSFX = null
+var EnemyJumpSFX = null
+var Boss1JumpSFX = null
 var BOSS1RoarSFX = null
 var EnemyEatingSFX = null
 var EnemyKillingSFX = null
@@ -49,7 +54,9 @@ var TerminalPrintSFX = null
 var TerminalLevelUPSFX = null
 var ChestOpenSFX = null
 var PlantSFX = null
+var Plant2SFX = null
 var ChainsSFX = null
+var FallInWellSFX = null
 var BombSFX = null
 var BombTicSFX = null
 var SmokeBombSFX = null
@@ -499,16 +506,22 @@ func load_sfx():
 	CaveAmbienceSFX = load("res://sfx/cave_ambience.mp3")
 	HouseAmbienceSFX = load("res://sfx/house_ambience.mp3")
 	ExteriorAmbienceSFX = load("res://sfx/exterior_ambience.mp3")
-	FallingAmbienceSFX = load("res://sfx/exterior_ambience.mp3") #TODO: reemplazar
+	FallingAmbienceSFX = load("res://sfx/falling_ambience.wav") #TODO: reemplazar
 	
-	TelephoneRingSFX = null
-	TelephoneUpSFX = null
+	PressStartSFX = load("res://sfx/press_start.wav")
+	InteractSFX = null
+	TelephoneRingSFX = load("res://sfx/telephone_ring.wav")
+	TelephoneUpSFX = load("res://sfx/telephone_hang.wav")
+	TelevisionOnSFX = load("res://sfx/television.wav")
 	CryingSFX = null
-	DialogSFX = null
-	JumpSFX = null
-	WalkSFX = null
+	DialogSFX = load("res://sfx/dialog_snd.wav")
+	JumpSFX = load("res://sfx/jump_snd.wav")
+	WalkSFX = load("res://sfx/walk_snd.wav")
+	FallSFX = load("res://sfx/player_fall_sound.wav")
+	BigFallSFX = load("res://sfx/player_big_fall.wav")
+	Boss1JumpSFX = null
+	EnemyJumpSFX = null
 	ClimbSFX = null
-	FallSFX = null
 	BOSS1RoarSFX = null
 	EnemyEatingSFX = null
 	EnemyKillingSFX = null
@@ -518,7 +531,9 @@ func load_sfx():
 	TerminalPrintSFX = null
 	TerminalLevelUPSFX = null
 	ChestOpenSFX = null
-	PlantSFX = null
+	PlantSFX = load("res://sfx/plants1.wav")
+	Plant2SFX = load("res://sfx/plants2.wav")
+	FallInWellSFX = load("res://sfx/fall_in_well.wav")
 	ChainsSFX = null
 	BombSFX = null
 	BombTicSFX = null
@@ -599,4 +614,5 @@ func play_sound(stream: AudioStream, options:= {}) -> AudioStreamPlayer:
 	return audio_stream_player
 	
 func kill(_audio_stream_player):
-	_audio_stream_player.queue_free()
+	if _audio_stream_player and is_instance_valid(_audio_stream_player):
+		_audio_stream_player.queue_free()
