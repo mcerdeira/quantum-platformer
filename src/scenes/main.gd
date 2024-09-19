@@ -231,6 +231,9 @@ func _ready():
 	if Global.CurrentState == Global.GameStates.OVERWORLD:
 		if !Global.BOSS_ROOM:
 			Music.play(Global.MainThemeShort)
+		else:
+			Music.stop()
+			
 		Ambience.play(Global.CaveAmbienceSFX)
 		generate_fixed_level(room_overworld, true)
 		

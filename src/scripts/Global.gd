@@ -521,18 +521,21 @@ func load_sfx():
 	TerminalClickSFX = load("res://sfx/click9.mp3")
 	Boss1JumpSFX = load("res://sfx/jump.wav")
 	EnemyJumpSFX = load("res://sfx/jump.wav")
+	TerminalONSFX = load("res://sfx/boot.mp3") 
+	PlantSFX = load("res://sfx/plants1.wav")
+	Plant2SFX = load("res://sfx/plants2.wav")
+	
+	BOSS1RoarSFX = load("res://sfx/boss1_roar.wav")
+	ChestOpenSFX = load("res://sfx/chest_open.mp3")
+	TerminalPrintSFX = load("res://sfx/Dot Matrix Printer.wav")
+	FallingAmbienceSFX = load("res://sfx/falling_ambience.wav")
 	
 	CryingSFX = null
 	ClimbSFX = null
-	BOSS1RoarSFX = null
 	EnemyKillingSFX = null
 	EnemyEaterAlertedSFX = null
-	TerminalPrintSFX = null
 	TerminalLevelUPSFX = null
-	ChestOpenSFX = null
-	PlantSFX = load("res://sfx/plants1.wav")
-	Plant2SFX = load("res://sfx/plants2.wav")
-	FallInWellSFX = load("res://sfx/fall_in_well.wav")
+
 	ChainsSFX = null
 	BombTicSFX = null
 	PlayerSpikedSFX = null
@@ -541,18 +544,19 @@ func load_sfx():
 	TeleportSFX = null
 	MuffinSFX = null
 	CoinSFX = null
-	MapSFX = null
+	
 	RadarSFX = null
 	ResurrectSFX = null
 	BinocularSFX = null
 	
 	#A Implementar
-	FallingAmbienceSFX = load("res://sfx/falling_ambience.wav") #TODO: reemplazar
-	TerminalONSFX = load("res://sfx/boot.mp3") #TODO: Reemplazar
+	
 	SpringSFX = load("res://sfx/spring.mp3")
 	SmokeBombSFX = load("res://sfx/BombExplosionSfx.wav")
 	BombSFX = load("res://sfx/BombExplosionSfx.wav")
 	EnemyEatingSFX = load("res://sfx/Deep Gulp Sound Effect.mp3")
+	MapSFX = load("res://sfx/map.wav")
+	FallInWellSFX = load("res://sfx/fall_in_well.wav") #TODO: Reemplazar
 	
 func init():
 	gunz_equiped = []

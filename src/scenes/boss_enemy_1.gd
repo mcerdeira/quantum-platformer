@@ -157,7 +157,7 @@ func set_flip(flip):
 func jump():
 	if !dead and is_on_floor_custom() and blowed <= 0:
 		buff = 0
-		var options = {"pitch_scale": 0.5 }
+		var options = {"pitch_scale": 0.2 }
 		Global.play_sound(Global.Boss1JumpSFX, options)
 		Global.emit(global_position, 2)
 		velocity.y = jump_speed
@@ -187,6 +187,7 @@ func kill_fall():
 func flyaway():
 	if blowed <= 0:
 		LIFE -= 1.0
+		Global.play_sound(Global.BOSS1RoarSFX)
 		if LIFE <= 0.0:
 			$explosions.start()
 			dead = true

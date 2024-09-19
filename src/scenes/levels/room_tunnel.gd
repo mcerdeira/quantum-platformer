@@ -13,6 +13,7 @@ func _physics_process(delta):
 	ttl -= 1 * delta
 	if ttl <= 0:
 		ttl = 100 
+		Ambience.stop()
 		Global.CurrentState = Global.GameStates.OVERWORLD
 		Global.scene_next(Global.LevelCurrentTerminalNumber)
 

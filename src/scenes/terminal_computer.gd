@@ -513,6 +513,7 @@ func parser(_cmd):
 		await get_tree().create_timer(1.5).timeout
 		get_tree().change_scene_to_file("res://scenes/levels/room_retro_game.tscn")
 	elif found != -1 and _cmd == "PRINT":
+		Global.play_sound(Global.TerminalPrintSFX)
 		current_message = "PRINTING...\nREADY" + "\n"
 		$Info.visible = true
 		$Info.terminal_number = terminal_number
