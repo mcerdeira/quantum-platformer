@@ -525,7 +525,6 @@ func load_sfx():
 	CryingSFX = null
 	ClimbSFX = null
 	BOSS1RoarSFX = null
-	EnemyEatingSFX = null
 	EnemyKillingSFX = null
 	EnemyEaterAlertedSFX = null
 	TerminalPrintSFX = null
@@ -553,6 +552,7 @@ func load_sfx():
 	SpringSFX = load("res://sfx/spring.mp3")
 	SmokeBombSFX = load("res://sfx/BombExplosionSfx.wav")
 	BombSFX = load("res://sfx/BombExplosionSfx.wav")
+	EnemyEatingSFX = load("res://sfx/Deep Gulp Sound Effect.mp3")
 	
 func init():
 	gunz_equiped = []
