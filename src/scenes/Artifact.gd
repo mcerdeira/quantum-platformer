@@ -22,12 +22,14 @@ func _physics_process(delta):
 	
 	if active and !opened:
 		if Input.is_action_just_pressed("up"):
+			Global.play_sound(Global.InteractSFX)
 			opened = true
 			active = false
 			Global.emit(global_position, 5)
 			get_item()
 			
 func get_item():
+	Global.play_sound(Global.InteractSFX)
 	if has_artifact:
 		var p = itemfound.instantiate()
 		var parent = get_parent()

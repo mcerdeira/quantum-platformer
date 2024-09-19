@@ -38,6 +38,7 @@ func _physics_process(delta):
 	
 	if active and !opened:
 		if Input.is_action_just_pressed("up"):
+			Global.play_sound(Global.InteractSFX)
 			trapped = false
 			opened = true
 			active = false

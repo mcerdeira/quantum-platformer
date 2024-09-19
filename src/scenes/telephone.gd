@@ -11,6 +11,11 @@ var dialog_sfx = null
 
 func _on_timer_timeout():
 	if !opened:
+		if $Timer.wait_time != 2.5:
+			$Timer.stop()
+			$Timer.wait_time = 2.5
+			$Timer.start()
+			
 		if !ringing:
 			ringing = true
 			Global.play_sound(Global.TelephoneRingSFX)
@@ -41,6 +46,7 @@ func _physics_process(delta):
 	
 	if active and !opened:
 		if Input.is_action_just_pressed("up"):
+			Global.play_sound(Global.InteractSFX)
 			Global.play_sound(Global.TelephoneUpSFX)
 			opened = true
 			active = false

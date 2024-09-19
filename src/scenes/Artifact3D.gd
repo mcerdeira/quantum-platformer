@@ -11,13 +11,16 @@ func _ready():
 	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("quit"):
+		Global.play_sound(Global.InteractSFX)
 		get_tree().paused = false
 		queue_free()
 	elif Input.is_action_just_pressed("down"):
+		Global.play_sound(Global.InteractSFX)
 		active_number += 1
 		if active_number > 4:
 			active_number = 1
 	elif Input.is_action_just_pressed("up"):
+		Global.play_sound(Global.InteractSFX)
 		active_number -= 1
 		if active_number < 1:
 			active_number = 3

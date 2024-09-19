@@ -216,6 +216,8 @@ func _physics_process(delta):
 	if active and !opened:
 		if Input.is_action_just_pressed("up"):
 			if Global.player_obj.is_on_floor_custom():
+				Global.play_sound(Global.TerminalONSFX)
+				Global.play_sound(Global.InteractSFX)
 				opened = true
 				active = false
 				Global.emit(global_position, 5)
@@ -246,13 +248,16 @@ func _input(event):
 		if event is InputEventKey and event.is_pressed():
 			var key_text  = OS.get_keycode_string(event.keycode)
 			if event.keycode == Key.KEY_RIGHT:
+				Global.play_sound(Global.TerminalClickSFX)
 				if KeyRight():
 					KeyUpDown(Key.KEY_UP)
 	
 			if event.keycode == Key.KEY_UP or event.keycode == Key.KEY_DOWN:
+				Global.play_sound(Global.TerminalClickSFX)
 				KeyUpDown(event.keycode)
 			
 			elif event.keycode == Key.KEY_KP_ENTER or event.keycode == Key.KEY_ENTER:
+				Global.play_sound(Global.TerminalClickSFX)
 				commands_idx = -1
 				param1_idx = -1
 				param2_idx = -1

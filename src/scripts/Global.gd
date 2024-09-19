@@ -41,6 +41,7 @@ var JumpSFX = null
 var WalkSFX = null
 var ClimbSFX = null
 var FallSFX = null
+var PlayerSpikedSFX = null
 var BigFallSFX = null
 var EnemyJumpSFX = null
 var Boss1JumpSFX = null
@@ -52,6 +53,7 @@ var SpringSFX = null
 var TerminalONSFX = null
 var TerminalPrintSFX = null
 var TerminalLevelUPSFX = null
+var TerminalClickSFX = null
 var ChestOpenSFX = null
 var PlantSFX = null
 var Plant2SFX = null
@@ -506,28 +508,26 @@ func load_sfx():
 	CaveAmbienceSFX = load("res://sfx/cave_ambience.mp3")
 	HouseAmbienceSFX = load("res://sfx/house_ambience.mp3")
 	ExteriorAmbienceSFX = load("res://sfx/exterior_ambience.mp3")
-	FallingAmbienceSFX = load("res://sfx/falling_ambience.wav") #TODO: reemplazar
-	
 	PressStartSFX = load("res://sfx/press_start.wav")
-	InteractSFX = null
+	InteractSFX = load("res://sfx/interact_snd.wav")
 	TelephoneRingSFX = load("res://sfx/telephone_ring.wav")
 	TelephoneUpSFX = load("res://sfx/telephone_hang.wav")
 	TelevisionOnSFX = load("res://sfx/television.wav")
-	CryingSFX = null
 	DialogSFX = load("res://sfx/dialog_snd.wav")
 	JumpSFX = load("res://sfx/jump_snd.wav")
 	WalkSFX = load("res://sfx/walk_snd.wav")
 	FallSFX = load("res://sfx/player_fall_sound.wav")
 	BigFallSFX = load("res://sfx/player_big_fall.wav")
-	Boss1JumpSFX = null
-	EnemyJumpSFX = null
+	TerminalClickSFX = load("res://sfx/click9.mp3")
+	Boss1JumpSFX = load("res://sfx/jump.wav")
+	EnemyJumpSFX = load("res://sfx/jump.wav")
+	
+	CryingSFX = null
 	ClimbSFX = null
 	BOSS1RoarSFX = null
 	EnemyEatingSFX = null
 	EnemyKillingSFX = null
 	EnemyEaterAlertedSFX = null
-	SpringSFX = null
-	TerminalONSFX = null
 	TerminalPrintSFX = null
 	TerminalLevelUPSFX = null
 	ChestOpenSFX = null
@@ -535,9 +535,8 @@ func load_sfx():
 	Plant2SFX = load("res://sfx/plants2.wav")
 	FallInWellSFX = load("res://sfx/fall_in_well.wav")
 	ChainsSFX = null
-	BombSFX = null
 	BombTicSFX = null
-	SmokeBombSFX = null
+	PlayerSpikedSFX = null
 	PlantGrowSFX = null
 	CloneSFX = null
 	TeleportSFX = null
@@ -547,6 +546,13 @@ func load_sfx():
 	RadarSFX = null
 	ResurrectSFX = null
 	BinocularSFX = null
+	
+	#A Implementar
+	FallingAmbienceSFX = load("res://sfx/falling_ambience.wav") #TODO: reemplazar
+	TerminalONSFX = load("res://sfx/boot.mp3") #TODO: Reemplazar
+	SpringSFX = load("res://sfx/spring.mp3")
+	SmokeBombSFX = load("res://sfx/BombExplosionSfx.wav")
+	BombSFX = load("res://sfx/BombExplosionSfx.wav")
 	
 func init():
 	gunz_equiped = []
