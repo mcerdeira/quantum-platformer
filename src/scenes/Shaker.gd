@@ -10,7 +10,10 @@ var camera_shake_type = Type.Random
 func _ready():
 	Global.shaker_obj = self
 	
-func shake(intensity, duration, type = Type.Random):
+func shake(intensity, duration, type = Type.Random, _global_position = null):
+	if !Global.is_ok_FX(_global_position):
+		return
+	
 	if intensity > camera_shake_intensity and duration > camera_shake_duration:
 		camera_shake_intensity = intensity
 		camera_shake_duration = duration

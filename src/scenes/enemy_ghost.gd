@@ -131,6 +131,7 @@ func jump(delta):
 func _on_area_body_entered(body):
 	if !dead and blowed <= 0 and delay <= 0:
 		if body and body.is_in_group("players"):
+			Global.play_sound(Global.EnemyChewingSFX, {}, global_position)
 			body.kill()
 			killing = total_killing
 			if global_position.x > body.global_position.x:

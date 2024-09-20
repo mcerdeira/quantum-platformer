@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://bdn35mi4b7cba"]
 
-[ext_resource type="Texture2D" uid="uid://bpnemo35muuju" path="res://sprites/spring_animation1.png" id="1_7se8p"]
+[ext_resource type="Texture2D" uid="uid://cbgqcdsxjgm2k" path="res://sprites/spring_animation1.png" id="1_7se8p"]
 [ext_resource type="Script" path="res://scenes/spring.gd" id="1_cl2rg"]
-[ext_resource type="Texture2D" uid="uid://bxh8h5jw0h2cv" path="res://sprites/spring_animation2.png" id="2_4qun5"]
-[ext_resource type="Texture2D" uid="uid://ommv5ndo3eic" path="res://sprites/spring_animation3.png" id="3_pxbjj"]
+[ext_resource type="Texture2D" uid="uid://dvr5vhfsx2ou0" path="res://sprites/spring_animation2.png" id="2_4qun5"]
+[ext_resource type="Texture2D" uid="uid://bvq2hjno3snv8" path="res://sprites/spring_animation3.png" id="3_pxbjj"]
 [ext_resource type="Script" path="res://scenes/SpringZone.gd" id="5_bw1sp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fsyx6"]

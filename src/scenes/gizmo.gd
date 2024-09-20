@@ -47,6 +47,7 @@ func _physics_process(delta):
 					Global.emit(global_position, 1)
 					$noise/collider.set_deferred("disabled", false)
 					
+					Global.play_sound(Global.GizmoDropSFX)
 				landed = true 
 				
 			if !landed:
@@ -88,6 +89,7 @@ func _physics_process(delta):
 			queue_free()
 		
 func droped(_parent, _parent_lbl, direction, _current_item, _simulation = false):
+	Global.play_sound(Global.GizmoLaunchSFX)
 	parent_lbl = _parent_lbl
 	parent = _parent
 	velocity = direction
@@ -128,6 +130,7 @@ func do_action(_player, lbl):
 				lbl.text =  current_item.name.to_upper() + "!"
 				
 			if current_item.name == "teleport":
+				Global.play_sound(Global.TeleportSFX)
 				Global.emit(_player.global_position, 10)
 				action_executed = true
 				_player.visible = false
@@ -135,6 +138,7 @@ func do_action(_player, lbl):
 				_player.teleported()
 				Global.emit(_player.global_position, 10)
 			elif current_item.name == "clone":
+				Global.play_sound(Global.CloneSFX)
 				action_executed = true
 				var pclone = player_clone.instantiate()
 				pclone.global_position = $mark.global_position
@@ -144,16 +148,19 @@ func do_action(_player, lbl):
 				queue_free()
 			elif current_item.name == "bomb":
 				action_executed = true
+				Global.play_sound(Global.BombSFX)
 				explode()
 			elif current_item.name == "spring":
 				action_executed = true
 				create_spring_object()
 				queue_free()
 			elif current_item.name == "plant":
+				Global.play_sound(Global.PlantGrowSFX)
 				action_executed = true
 				create_plant_object()
 				queue_free()
 			elif current_item.name == "smoke":
+				Global.play_sound(Global.SmokeBombSFX)
 				action_executed = true
 				create_smoke_object()
 				queue_free()	
@@ -219,6 +226,7 @@ func _on_area_body_entered(body):
 				pass
 			
 		elif body and body.is_in_group("players") and !body.is_in_group("prisoners"):
+			Global.play_sound(Global.InteractSFX)
 			Global.emit(global_position, 1)
 			Global.get_item(current_item)
 			queue_free()

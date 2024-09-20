@@ -144,10 +144,12 @@ func process_player(delta):
 			killing = 0
 			if do_when_finish_killing != "":
 				if do_when_finish_killing == "teleport":
+					Global.play_sound(Global.TeleportSFX)
 					var where = Vector2(Global.player_obj.global_position.x - 32, Global.player_obj.global_position.y - 32)
 					Global.emit(global_position, 10)
 					global_position = where
 				elif do_when_finish_killing == "clone":
+					Global.play_sound(Global.CloneSFX)
 					var where = Vector2(global_position.x - 32, global_position.y - 32)
 					Global.emit(where, 10)
 					var Main = get_node("/root/Main")
@@ -159,12 +161,15 @@ func process_player(delta):
 				elif do_when_finish_killing == "smoke":
 					pass
 				elif do_when_finish_killing == "muffin":
+					Global.play_sound(Global.EnemySnoreSFX)
 					sleep = true
 					$sprite.animation = "sleep"
 					$sprite.play()
 				elif do_when_finish_killing == "spring":
+					Global.play_sound(Global.SpringSFX)
 					jumper = true
 				elif do_when_finish_killing == "plant":
+					Global.play_sound(Global.EnemySnoreSFX)
 					sleep = true
 					$sprite.animation = "sleep"
 					$sprite.play()
@@ -284,13 +289,14 @@ func jump(delta):
 	if !Global.GAMEOVER:
 		if is_on_floor_custom():
 			buff = 0
-			Global.play_sound(Global.EnemyJumpSFX)
+			Global.play_sound(Global.EnemyJumpSFX, {}, global_position)
 			Global.emit(global_position, 2)
 			velocity.y = jump_speed
 
 func _on_area_body_entered(body):
 	if !dead and !sleep and blowed <= 0:
 		if body and body.is_in_group("players"):
+			Global.play_sound(Global.EnemyChewingSFX, {}, global_position)
 			body.kill()
 			killing = total_killing
 			if global_position.x > body.global_position.x:
@@ -328,6 +334,11 @@ func eat_gizmo(current_item):
 		do_when_finish_killing = "muffin"
 	elif current_item.name == "plant":
 		do_when_finish_killing = "plant"
+		
+	await get_tree().create_timer(0.6).timeout
+	Global.play_sound(Global.EnemyEatingSFX, {}, global_position)
+	await get_tree().create_timer(0.2).timeout
+	Global.play_sound(Global.EnemyChewingSFX, {}, global_position)
 	
 func kill_fall():
 	visible = false

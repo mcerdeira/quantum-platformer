@@ -10,7 +10,7 @@ func explode():
 	$blast2.play()
 	$blast3.play()
 	
-	Global.shaker_obj.shake(20, 2.1)
+	Global.shaker_obj.shake(20, 2.1, null, global_position)
 	
 	var childs = get_children()
 	for c in childs:

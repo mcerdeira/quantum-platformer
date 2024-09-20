@@ -134,7 +134,7 @@ func jump():
 	if !Global.GAMEOVER:
 		if is_on_floor_custom():
 			buff = 0
-			Global.play_sound(Global.EnemyJumpSFX)
+			Global.play_sound(Global.EnemyJumpSFX, {}, global_position)
 			Global.emit(global_position, 2)
 			velocity.y = jump_speed
 

@@ -54,6 +54,9 @@ func _physics_process(delta)->void:		#example of in game swing kick
 func _on_lamp_area_body_entered(body):
 	if health > 0:
 		if body and (body.is_in_group("players") or body.is_in_group("enemies") or body.is_in_group("prisoners") or body.is_in_group("interactuable")):
+			var sound = Global.pick_random([Global.Chains1SFX, Global.Chains2SFX])
+			Global.play_sound(sound, {}, global_position)
+			
 			var dir = sign(body.velocity.x)
 			add_angular_velocity(dir * 0.02) 	
 			health -= 5

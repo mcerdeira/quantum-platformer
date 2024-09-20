@@ -210,6 +210,7 @@ func _ready():
 			Global.TunnelTerminalNumber = true
 			generate_fixed_level(room_tunnel, false)
 		else:
+			Ambience.play(Global.CaveAmbienceSFX)
 			Global.TunnelTerminalNumber = false
 			generate_level()
 	if Global.CurrentState == Global.GameStates.TITLE:

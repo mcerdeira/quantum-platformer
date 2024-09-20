@@ -28,6 +28,7 @@ func _physics_process(delta):
 				
 		
 func explode():
+	Global.play_sound(Global.BombSFX, {}, global_position)
 	$explosion/collider.set_deferred("disabled", false)
 	explosion_delay = 1.2
 	$explosion_light.enabled = true

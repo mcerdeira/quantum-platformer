@@ -83,8 +83,9 @@ func _ready():
 	$Cosito.visible = false
 	LineTrayectory = $Line2D
 	Global.shaker_obj.camera = $Camera2D
-	Global.player_obj = self
-	Global.Fader.fade_out()
+	if !iam_clone:
+		Global.player_obj = self
+		Global.Fader.fade_out()
 	if invisible:
 		set_invisible(true)
 		
@@ -566,6 +567,7 @@ func miniflyaway(_direction):
 		previus_velocity = velocity
 
 func bleed(count):
+	Global.play_sound(Global.PlayerBleedSFX)
 	for i in range(count):
 		var blood_instance : Area2D = blood.instantiate()
 		blood_instance.global_position = global_position
@@ -583,6 +585,7 @@ func kill():
 	bleed(25)
 	
 func dead_fire():
+	Global.play_sound(Global.LavaFallSFX)
 	dead = true
 	dead_animation = "dead_fire"
 	
@@ -592,6 +595,7 @@ func reset_to_last():
 
 func kill_fire(tt_total = null):
 	if fire_obj == null or !is_instance_valid(fire_obj):
+		Global.play_sound(Global.LavaFallSFX)
 		Global.emit(global_position, 10)
 		var parent = level_parent
 		var p = fires.instantiate()
@@ -604,5 +608,6 @@ func kill_fire(tt_total = null):
 		fire_obj = p
 
 func _on_walk_sound_timer_timeout():
-	var options = {"pitch_scale": Global.pick_random([0.5, 0.7])}
-	Global.play_sound(Global.WalkSFX, options)
+	if !dead and blowed <= 0:
+		var options = {"pitch_scale": Global.pick_random([0.5, 0.7])}
+		Global.play_sound(Global.WalkSFX, options)

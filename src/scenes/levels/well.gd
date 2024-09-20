@@ -8,7 +8,7 @@ func _physics_process(delta):
 	if ttl <= 0:
 		if !played:
 			played = true
-			await get_tree().create_timer(1.5).timeout
+			await get_tree().create_timer(2.1).timeout
 			Global.play_sound(Global.FallInWellSFX)
 			
 		Global.player_obj.position.y += speed * delta

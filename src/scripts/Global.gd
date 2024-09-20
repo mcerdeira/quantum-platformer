@@ -29,13 +29,14 @@ var CaveAmbienceSFX = null
 var HouseAmbienceSFX = null
 var ExteriorAmbienceSFX = null
 var FallingAmbienceSFX = null
-
 var PressStartSFX = null
 var InteractSFX = null
 var TelephoneRingSFX = null
 var TelephoneUpSFX = null
 var TelevisionOnSFX = null
 var CryingSFX = null
+var BrokenLampSFX = null
+var LavaFallSFX = null
 var DialogSFX = null
 var JumpSFX = null
 var WalkSFX = null
@@ -47,6 +48,7 @@ var EnemyJumpSFX = null
 var Boss1JumpSFX = null
 var BOSS1RoarSFX = null
 var EnemyEatingSFX = null
+var EnemyChewingSFX = null
 var EnemyKillingSFX = null
 var EnemyEaterAlertedSFX = null
 var SpringSFX = null
@@ -57,20 +59,25 @@ var TerminalClickSFX = null
 var ChestOpenSFX = null
 var PlantSFX = null
 var Plant2SFX = null
-var ChainsSFX = null
+var Chains1SFX = null
+var Chains2SFX = null
 var FallInWellSFX = null
 var BombSFX = null
 var BombTicSFX = null
 var SmokeBombSFX = null
 var PlantGrowSFX = null
 var CloneSFX = null
+var EnemySnoreSFX = null
 var TeleportSFX = null
-var MuffinSFX = null
+var PlayerBleedSFX = null
+var GizmoDropSFX = null
+var GizmoLaunchSFX = null
 var CoinSFX = null
 var MapSFX = null
 var RadarSFX = null
 var ResurrectSFX = null
 var BinocularSFX = null
+var WaterDropSFX = null
 
 #CHEST ITEMS 
 var smoke_bomb = {
@@ -524,39 +531,43 @@ func load_sfx():
 	TerminalONSFX = load("res://sfx/boot.mp3") 
 	PlantSFX = load("res://sfx/plants1.wav")
 	Plant2SFX = load("res://sfx/plants2.wav")
-	
 	BOSS1RoarSFX = load("res://sfx/boss1_roar.wav")
 	ChestOpenSFX = load("res://sfx/chest_open.mp3")
 	TerminalPrintSFX = load("res://sfx/Dot Matrix Printer.wav")
 	FallingAmbienceSFX = load("res://sfx/falling_ambience.wav")
+	SpringSFX = load("res://sfx/spring.mp3")
+	SmokeBombSFX = load("res://sfx/BombExplosionSfx.wav")
+	BombSFX = load("res://sfx/BombExplosionSfx.wav")
+	EnemySnoreSFX = load("res://sfx/snore.wav")
+	EnemyEatingSFX = load("res://sfx/Deep Gulp Sound Effect.mp3")
+	EnemyChewingSFX = load("res://sfx/chewing.wav")
+	PlayerBleedSFX = load("res://sfx/bleed.wav")
+	TeleportSFX = load("res://sfx/teleport_snd.wav")
+	CloneSFX = load("res://sfx/teleport_snd.wav")
+	Chains1SFX = load("res://sfx/chain1.wav")
+	Chains2SFX = load("res://sfx/chain2.wav")
+	MapSFX = load("res://sfx/map.wav")
+	GizmoLaunchSFX = load("res://sfx/gizmo_launch.wav")
+	GizmoDropSFX = load("res://sfx/gizmo_drop.wav")
+	LavaFallSFX = load("res://sfx/lava_snd.wav")
+	PlayerSpikedSFX = load("res://sfx/spiked.wav")
+	FallInWellSFX = load("res://sfx/fall_in_well.wav")
 	
 	CryingSFX = null
 	ClimbSFX = null
 	EnemyKillingSFX = null
-	EnemyEaterAlertedSFX = null
 	TerminalLevelUPSFX = null
-
-	ChainsSFX = null
+	BrokenLampSFX = null
 	BombTicSFX = null
-	PlayerSpikedSFX = null
-	PlantGrowSFX = null
-	CloneSFX = null
-	TeleportSFX = null
-	MuffinSFX = null
-	CoinSFX = null
 	
+	PlantGrowSFX = null
+	CoinSFX = null
 	RadarSFX = null
-	ResurrectSFX = null
 	BinocularSFX = null
 	
 	#A Implementar
-	
-	SpringSFX = load("res://sfx/spring.mp3")
-	SmokeBombSFX = load("res://sfx/BombExplosionSfx.wav")
-	BombSFX = load("res://sfx/BombExplosionSfx.wav")
-	EnemyEatingSFX = load("res://sfx/Deep Gulp Sound Effect.mp3")
-	MapSFX = load("res://sfx/map.wav")
-	FallInWellSFX = load("res://sfx/fall_in_well.wav") #TODO: Reemplazar
+	EnemyEaterAlertedSFX = load("res://sfx/enemy_alerted.wav")
+	ResurrectSFX = load("res://sfx/resurrect_snd.wav")
 	
 func init():
 	gunz_equiped = []
@@ -607,8 +618,25 @@ func pick_random(container):
 			TYPE_PACKED_VECTOR2_ARRAY, TYPE_PACKED_VECTOR3_ARRAY
 			], "ERROR: pick_random" )
 	return container[randi() % container.size()]
+	
+func is_ok_FX(global_position):
+	if global_position and Global.player_obj:
+		var width = Vector2(global_position.x, 0)
+		var height = Vector2(0, global_position.y)
+		var player_width = Vector2(Global.player_obj.global_position.x, 0)
+		var player_height = Vector2(0, Global.player_obj.global_position.y)
+		
+		if player_width.distance_to(width) > 1152:
+			return false
+		if player_height.distance_to(height) > 640:
+			return false
+	
+	return true
 
-func play_sound(stream: AudioStream, options:= {}) -> AudioStreamPlayer:
+func play_sound(stream: AudioStream, options:= {}, _global_position = null) -> AudioStreamPlayer:
+	if !is_ok_FX(_global_position):
+		return
+	
 	var audio_stream_player = AudioStreamPlayer.new()
 
 	add_child(audio_stream_player)

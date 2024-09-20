@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cs1fsb80wr1mp"
-path="res://.godot/imported/fall_in_well.wav-962071e13e43ed8cb04c7654bcee4ca1.sample"
+uid="uid://d1qdswsjta8iu"
+path="res://.godot/imported/resurrect_snd.wav-a5f251c606fde9c19f880f9adc024985.sample"
 
 [deps]
 
-source_file="res://sfx/fall_in_well.wav"
-dest_files=["res://.godot/imported/fall_in_well.wav-962071e13e43ed8cb04c7654bcee4ca1.sample"]
+source_file="res://sfx/resurrect_snd.wav"
+dest_files=["res://.godot/imported/resurrect_snd.wav-a5f251c606fde9c19f880f9adc024985.sample"]
 
 [params]
 

@@ -11,6 +11,7 @@ func _physics_process(_delta):
 	else:
 		if Global.fade_finished and enabled: 
 			if Input.is_action_just_pressed("map"):
+				Global.play_sound(Global.MapSFX)
 				visible = !visible
 
 func notify_map(q):
