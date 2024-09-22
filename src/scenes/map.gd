@@ -2,8 +2,9 @@ extends Node2D
 var enabled = false
 
 func _ready():
-	Global.map_obj = self
-	enabled = Global.find_my_item("map")
+	if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
+		Global.map_obj = self
+		enabled = Global.find_my_item("map")
 
 func _physics_process(_delta):
 	if Global.GAMEOVER:

@@ -8,9 +8,10 @@ func _ready():
 	parent = get_parent()
 	
 func activate(val):
-	visible = val
-	activation_ttl = 1.3
-	Global.emit(global_position, 50)
+	if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
+		visible = val
+		activation_ttl = 1.3
+		Global.emit(global_position, 50)
 
 func _process(delta):
 	if visible:

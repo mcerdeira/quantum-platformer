@@ -311,6 +311,7 @@ var CurrentState : GameStates = GameStates.TITLE
 var FirstState : GameStates = GameStates.HOME
 
 func scene_next(terminal_number = -1, boss = false):
+	Global.gunz_index = 0
 	BOSS_ROOM = boss
 	Global.TerminalNumber = terminal_number
 	if Global.CurrentState == Global.GameStates.TITLE:

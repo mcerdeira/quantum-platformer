@@ -244,19 +244,23 @@ func _process(delta):
 				
 func _input(event):
 	command_ok = false
-	if !is_writing and opened and current_message == "": 
-		if event is InputEventKey and event.is_pressed():
-			var key_text  = OS.get_keycode_string(event.keycode)
-			if event.keycode == Key.KEY_RIGHT:
+	if !is_writing and opened and current_message == "":
+		var gamepad = event is InputEventJoypadButton
+		
+		if gamepad:
+			if event.is_action_pressed("right"):
 				Global.play_sound(Global.TerminalClickSFX)
 				if KeyRight():
 					KeyUpDown(Key.KEY_UP)
 	
-			if event.keycode == Key.KEY_UP or event.keycode == Key.KEY_DOWN:
+			if event.is_action_pressed("up"):
 				Global.play_sound(Global.TerminalClickSFX)
-				KeyUpDown(event.keycode)
+				KeyUpDown(Key.KEY_UP)
+			if event.is_action_pressed("down"):
+				Global.play_sound(Global.TerminalClickSFX)
+				KeyUpDown(Key.KEY_DOWN)
 			
-			elif event.keycode == Key.KEY_KP_ENTER or event.keycode == Key.KEY_ENTER:
+			elif event.is_action_pressed("jump") or event.is_action_pressed("shoot"):
 				Global.play_sound(Global.TerminalClickSFX)
 				commands_idx = -1
 				param1_idx = -1
@@ -266,24 +270,48 @@ func _input(event):
 				command_ok = true
 				command = command.replace(cursor, " ")
 				
-				parser(command)
+				parser(command, gamepad)
 				command = ""
-			else:
-				if event.keycode == Key.KEY_BACKSPACE:
-					if !command: 
-						command_ok = false
-					else:
-						command = command.left(command.length() - 1)
+		else:
+			if event is InputEventKey and event.is_pressed():
+				var key_text  = OS.get_keycode_string(event.keycode)
+				if event.keycode == Key.KEY_RIGHT:
+					Global.play_sound(Global.TerminalClickSFX)
+					if KeyRight():
+						KeyUpDown(Key.KEY_UP)
+		
+				if event.keycode == Key.KEY_UP or event.keycode == Key.KEY_DOWN:
+					Global.play_sound(Global.TerminalClickSFX)
+					KeyUpDown(event.keycode)
+				
+				elif event.keycode == Key.KEY_KP_ENTER or event.keycode == Key.KEY_ENTER:
+					Global.play_sound(Global.TerminalClickSFX)
+					commands_idx = -1
+					param1_idx = -1
+					param2_idx = -1
+					numeric_param = 0
+					mode_idx = 0
+					command_ok = true
+					command = command.replace(cursor, " ")
+					
+					parser(command, gamepad)
+					command = ""
+				else:
+					if event.keycode == Key.KEY_BACKSPACE:
+						if !command: 
+							command_ok = false
+						else:
+							command = command.left(command.length() - 1)
+							command_ok = true
+					elif (event.keycode >= 65 and event.keycode <= 90):
 						command_ok = true
-				elif (event.keycode >= 65 and event.keycode <= 90):
-					command_ok = true
-					command += key_text
-				elif (event.keycode >= 48 and event.keycode <= 57):
-					command_ok = true
-					command += key_text
-				elif event.keycode == 32:
-					command_ok = true
-					command += " "
+						command += key_text
+					elif (event.keycode >= 48 and event.keycode <= 57):
+						command_ok = true
+						command += key_text
+					elif event.keycode == 32:
+						command_ok = true
+						command += " "
 					
 func KeyUpDown(event_keycode):
 	var dir = 1
@@ -395,7 +423,7 @@ func find_cmd(_cmd):
 	return -1
 	
 	
-func parser(_cmd):
+func parser(_cmd, gamepad):
 	_cmd = _cmd.strip_edges()
 	var cmd_c = _cmd.split(" ")
 	var param1 = null
@@ -538,6 +566,11 @@ func parser(_cmd):
 		Global.player_obj.visible = true
 	else:
 		current_message = "ERROR: TYPE HELP <COMMAND> OR HELP FOR A LIST OF COMMANDS" + "\n"
+		
+	if gamepad:
+		if current_message:
+			current_message = "\n" + current_message
+		
 		
 func trad_vars(val):
 	if val != {}:

@@ -236,6 +236,8 @@ func _physics_process(delta):
 			$lbl_action.visible = false
 			velocity.x = lerp(velocity.x, 0.0, 0.1)
 			if !cameralimits_on:
+				$sprite_eyes.position.y = 3
+				$Camera2D.enabled = true
 				$sprite.animation = idle_animation
 				cameralimits_on = true
 			
@@ -347,11 +349,11 @@ func process_player(delta):
 				#$gun_sprite.visible = true
 		
 	if !dead and shoot_mode:
-		if Input.is_action_pressed("left"):
+		if Input.is_action_pressed("left") or Input.is_action_pressed("down"):
 			$gun_sprite.rotation -= 10 * delta
 			idle_play = idle_play_total
 			update_trayectory(delta)
-		elif Input.is_action_pressed("right"):
+		elif Input.is_action_pressed("right") or Input.is_action_pressed("up"):
 			$gun_sprite.rotation += 10 * delta
 			idle_play = idle_play_total
 			update_trayectory(delta)
