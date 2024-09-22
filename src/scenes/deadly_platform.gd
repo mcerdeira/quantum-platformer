@@ -10,8 +10,10 @@ func _ready():
 func _physics_process(delta):
 	if active and !exploded:
 		$sprite.speed_scale += 1 * delta
+		$Timer.wait_time -= 0.2 * delta
 		if $sprite.speed_scale >= 3:
 			exploded = true
+			$Timer.stop()
 			$sprite.stop()
 			$sprite.animation = "exploded"
 			explode()
@@ -42,7 +44,11 @@ func _on_area_body_entered(body):
 	if !active:
 		if (body.is_in_group("enemies") or body.is_in_group("players") or body.is_in_group("interactuable")):
 			active = true
+			$Timer.start()
 			$sprite.play()
 
 func _on_visible_on_screen_enabler_2d_screen_entered():
 	$VisibleOnScreenEnabler2D.queue_free()
+
+func _on_timer_timeout():
+	Global.play_sound(Global.BombTicSFX, {}, global_position) 

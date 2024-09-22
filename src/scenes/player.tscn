@@ -334,12 +334,20 @@ offset_left = -92.0
 offset_top = -45.0
 offset_right = 100.0
 offset_bottom = -21.0
-theme_override_colors/font_color = Color(0.556863, 0.937255, 0.592157, 1)
+theme_override_colors/font_color = Color(100, 100, 100, 1)
 theme_override_fonts/font = ExtResource("7_1mbn0")
 theme_override_font_sizes/font_size = 24
 text = "TELEPORT"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="lbl_action"]
+z_as_relative = false
+layout_mode = 0
+offset_left = 2.0
+offset_right = 189.0
+offset_bottom = 22.0
+color = Color(0, 0, 0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(200, -100)

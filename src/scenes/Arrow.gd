@@ -9,9 +9,13 @@ func _ready():
 	
 func activate(val):
 	if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
+		if val:
+			Global.play_sound(Global.RadarSFX)
 		visible = val
 		activation_ttl = 1.3
 		Global.emit(global_position, 50)
+	else:
+		Global.player_obj.show_message_custom("No puedo usar eso aqui.")
 
 func _process(delta):
 	if visible:

@@ -61,17 +61,18 @@ var last_safe_position = null
 var enemy_attached = null
 var message_timeout = 4.5
 
-func _ready():
+func calc_perks():
 	double_jump = Global.find_my_item("wings")
 	invisible = Global.find_my_item("invisibility") 
 	resurrect = Global.find_my_item("resurrect")
 	radar = Global.find_my_item("radar")
 	binocular = Global.find_my_item("binocular")
-	
-	last_safe_position = global_position
-	
 	if resurrect:
 		lifes = 2
+
+func _ready():
+	calc_perks()
+	last_safe_position = global_position
 	
 	add_to_group("players")
 	$sprite.animation = "idle"
@@ -97,6 +98,12 @@ func hide_eyes():
 func show_message_demo():
 	$display.visible = true
 	$display/back/lbl_item.text = "Hasta aqui la demo.\n¡Gracias por jugar!!"
+	
+func show_message_custom(_msg):
+	$display.visible = true
+	$display/back/lbl_item.text = _msg
+	await get_tree().create_timer(message_timeout).timeout
+	$display.visible = false 
 	
 func show_message_death():
 	if Global.CurrentState == Global.GameStates.OVERWORLD:
@@ -168,6 +175,7 @@ func _physics_process(delta):
 		resurrecting -= 1 * delta
 		ghost_inst.resurrecting = resurrecting
 		if resurrecting <= 0:
+			Global.play_sound(Global.ResurrectSFX)
 			Global.shaker_obj.shake(3, 2.1)
 			visible = true
 			$sprite.animation = idle_animation

@@ -127,7 +127,7 @@ func do_action(_player, lbl):
 			if current_item.has_action:
 				action_executed = true
 				lbl.visible = true
-				lbl.text =  current_item.name.to_upper() + "!"
+				lbl.text = current_item.dialog.to_upper() + "!"
 				
 			if current_item.name == "teleport":
 				Global.play_sound(Global.TeleportSFX)

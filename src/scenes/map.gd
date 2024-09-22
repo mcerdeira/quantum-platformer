@@ -2,9 +2,8 @@ extends Node2D
 var enabled = false
 
 func _ready():
-	if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
-		Global.map_obj = self
-		enabled = Global.find_my_item("map")
+	Global.map_obj = self
+	enabled = Global.find_my_item("map")
 
 func _physics_process(_delta):
 	if Global.GAMEOVER:
@@ -12,8 +11,11 @@ func _physics_process(_delta):
 	else:
 		if Global.fade_finished and enabled: 
 			if Input.is_action_just_pressed("map"):
-				Global.play_sound(Global.MapSFX)
-				visible = !visible
+				if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
+					Global.play_sound(Global.MapSFX)
+					visible = !visible
+				else:
+					Global.player_obj.show_message_custom("No puedo usar el mapa aqui.")
 
 func notify_map(q):
 	var qq = get_node("q" + str(q))

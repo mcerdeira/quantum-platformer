@@ -305,9 +305,12 @@ func _on_area_body_entered(body):
 				$sprite.flip_h = false
 
 func _on_agro_body_entered(body):
-	if !hostile:
-		current_target = body
-		hostile = true
+	if !Global.GAMEOVER:
+		if !hostile:
+			if !dead and blowed <= 0:
+				Global.play_sound(Global.EnemyEaterAlertedSFX)
+				current_target = body
+				hostile = true
 
 func hearing_alerted(body):
 	if !hostile and !alerted:

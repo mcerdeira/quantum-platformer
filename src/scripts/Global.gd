@@ -78,10 +78,12 @@ var RadarSFX = null
 var ResurrectSFX = null
 var BinocularSFX = null
 var WaterDropSFX = null
+var PrisonerReleasedSFX = null
 
 #CHEST ITEMS 
 var smoke_bomb = {
 	"name": "smoke",
+	"dialog": "PUFF!!",
 	"friendly_name": "Bomba de Humo",
 	"description": "Los enemigos no te veran.",
 	"has_action": true,
@@ -90,6 +92,7 @@ var smoke_bomb = {
 }
 var plant = {
 	"name": "plant",
+	"dialog": "VAMOS!",
 	"friendly_name": "Plantita",
 	"description": "¡Crece y crece!",
 	"has_action": true,
@@ -98,6 +101,7 @@ var plant = {
 }
 var clone = {
 	"name": "clone",
+	"dialog": "EPA!",
 	"friendly_name": "Clonador",
 	"description": "Genera una copia tuya.",
 	"has_action": true,
@@ -106,6 +110,7 @@ var clone = {
 }
 var teleport = {
 	"name": "teleport",
+	"dialog": "EPA!",
 	"friendly_name": "Teletransportador",
 	"description": "Viaje instantaneo en el espacio.",
 	"has_action": true,
@@ -115,6 +120,7 @@ var teleport = {
 
 var spikeball = {
 	"name": "spikeball",
+	"dialog": "EPA!",
 	"friendly_name": "Bola Pinchuda",
 	"description": "¡Ouch!",
 	"has_action": false,
@@ -124,6 +130,7 @@ var spikeball = {
 
 var muffin = {
 	"name": "muffin",
+	"dialog": "RICO!!",
 	"friendly_name": "Golosina",
 	"description": "¡Que rico!",
 	"has_action": false,
@@ -132,6 +139,7 @@ var muffin = {
 }
 var bomb = {
 	"name": "bomb",
+	"dialog": "PUMMM!!",
 	"friendly_name": "Bomba",
 	"description": "¡Bum!",
 	"has_action": true,
@@ -140,6 +148,7 @@ var bomb = {
 }
 var coin = {
 	"name": "coin",
+	"dialog": "EPA!",
 	"friendly_name": "Moneda",
 	"description": "Gruta-Monedas",
 	"has_action": false,
@@ -148,6 +157,7 @@ var coin = {
 }
 var spring = {
 	"name": "spring",
+	"dialog": "EPA!",
 	"friendly_name": "Resorte",
 	"description": "¡Toing! ¡Toing!",
 	"has_action": false,
@@ -158,6 +168,7 @@ var spring = {
 #PASIVE ITEMS 
 var radar = {
 	"name": "radar",
+	"dialog": "EPA!",
 	"friendly_name": "Radar",
 	"description": "Apunta a la salida. Presiona 'R' para acceder.",
 	"has_action": false,
@@ -166,6 +177,7 @@ var radar = {
 }
 var map = {
 	"name": "map",
+	"dialog": "EPA!",
 	"friendly_name": "Mapa",
 	"description": "Presiona 'M' para acceder.",
 	"has_action": false,
@@ -174,6 +186,7 @@ var map = {
 }
 var double_jump = {
 	"name": "wings",
+	"dialog": "EPA!",
 	"description": "¡Volar!",
 	"has_action": false,
 	"pasive": true,
@@ -181,6 +194,7 @@ var double_jump = {
 }
 var resurrect = {
 	"name": "resurrect",
+	"dialog": "EPA!",
 	"friendly_name": "Resureccion",
 	"description": "Un intento más.",
 	"has_action": false,
@@ -189,6 +203,7 @@ var resurrect = {
 }
 var invisibility = {
 	"name": "invisibility",
+	"dialog": "EPA!",
 	"friendly_name": "Invisibilidad",
 	"description": "Ahora me ves, ahora no.",
 	"has_action": false,
@@ -197,6 +212,7 @@ var invisibility = {
 }
 var binocular = {
 	"name": "binocular",
+	"dialog": "EPA!",
 	"friendly_name": "Binoculares",
 	"description": "Perspectiva. Presiona 'H' para acceder.",
 	"has_action": false,
@@ -205,6 +221,7 @@ var binocular = {
 }
 var none = {
 	"name": "none",
+	"dialog": "EPA!",
 	"friendly_name": "Nada",
 	"description": "...",
 	"has_action": false,
@@ -362,10 +379,11 @@ func levelup():
 			else:
 				break
 			
-	if new_level >= Global.CurrentLevel:
+	if new_level > 0:
 		var perks_equiped_prev = [] + Global.perks_equiped
-		Global.CurrentLevel = new_level
+		Global.CurrentLevel += new_level
 		set_current_perks()
+		Global.player_obj.calc_perks()
 		return perks_equiped_prev
 	else:
 		return Global.perks_equiped
@@ -553,22 +571,23 @@ func load_sfx():
 	LavaFallSFX = load("res://sfx/lava_snd.wav")
 	PlayerSpikedSFX = load("res://sfx/spiked.wav")
 	FallInWellSFX = load("res://sfx/fall_in_well.wav")
+	EnemyEaterAlertedSFX = load("res://sfx/enemy_alerted.wav")
+	ResurrectSFX = load("res://sfx/resurrect_snd.wav")
+	RadarSFX = load("res://sfx/radar.wav")
+	BombTicSFX = load("res://sfx/bombtick.wav")
 	
 	CryingSFX = null
 	ClimbSFX = null
 	EnemyKillingSFX = null
 	TerminalLevelUPSFX = null
 	BrokenLampSFX = null
-	BombTicSFX = null
-	
+	WaterDropSFX = null
+	PrisonerReleasedSFX = null
 	PlantGrowSFX = null
 	CoinSFX = null
-	RadarSFX = null
 	BinocularSFX = null
-	
 	#A Implementar
-	EnemyEaterAlertedSFX = load("res://sfx/enemy_alerted.wav")
-	ResurrectSFX = load("res://sfx/resurrect_snd.wav")
+	
 	
 func init():
 	gunz_equiped = []

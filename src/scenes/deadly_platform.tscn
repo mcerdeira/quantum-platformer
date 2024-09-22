@@ -121,6 +121,9 @@ collision_layer = 307
 collision_mask = 307
 script = ExtResource("1_fntm8")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(1.90735e-06, 2.5)
 scale = Vector2(6.4, 5.35)
@@ -309,5 +312,6 @@ libraries = {
 }
 speed_scale = 5.0
 
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_entered"]
 [connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
