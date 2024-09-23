@@ -159,6 +159,7 @@ func process_player(delta):
 			libetared_ttl -= 1 * delta
 			
 			if libetared_ttl <= 0:
+				Global.play_sound(Global.PrisonerReleasedSFX)
 				$collider.set_deferred("disabled", true)
 				scaping = true
 			
@@ -289,3 +290,6 @@ func liberate(body = null):
 	liberating = 2.0
 	if body:
 		initial_pos = body.global_position
+	
+	await get_tree().create_timer(1.2).timeout
+	Global.play_sound(Global.PrisonerReleasedSFX)

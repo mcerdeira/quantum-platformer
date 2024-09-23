@@ -5,6 +5,7 @@ func _ready():
 	global_position.y += 16
 
 func _on_growing_plant_animation_finished():
+	Global.play_sound(Global.PlantGrowSFX)
 	done = true
 	Global.emit($flower.global_position, 1)
 	$flower.visible = true

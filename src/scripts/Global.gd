@@ -49,7 +49,6 @@ var Boss1JumpSFX = null
 var BOSS1RoarSFX = null
 var EnemyEatingSFX = null
 var EnemyChewingSFX = null
-var EnemyKillingSFX = null
 var EnemyEaterAlertedSFX = null
 var SpringSFX = null
 var TerminalONSFX = null
@@ -84,7 +83,7 @@ var PrisonerReleasedSFX = null
 var smoke_bomb = {
 	"name": "smoke",
 	"dialog": "PUFF!!",
-	"friendly_name": "Bomba de Humo",
+	"friendly_name": "Humo",
 	"description": "Los enemigos no te veran.",
 	"has_action": true,
 	"pasive": false,
@@ -229,6 +228,7 @@ var none = {
 	"full_scale": false,
 }
 
+var gunz_objs = []
 var gunz_objs_prob = []
 var gunz_equiped = []
 var slots_stock = [0, 0]
@@ -290,21 +290,21 @@ var Terminals = [
 		"description" : "La Tumba   ",
 		"status": false,
 		"prisoners": 5,
-		"variable" : {"GHOSTS": false}
+		"variable" : {"FANTASMAS": false}
 	},
 	{
 		"name": "La Sirena    ",
 		"description" : "La Sirena     ",
 		"status": false,
 		"prisoners": 7,
-		"variable" : {"WATERFALLS": false}
+		"variable" : {"CASCADAS": false}
 	},
 	{
 		"name": "La Salamandra",
 		"description" : "La Salamandra",
 		"status": false,
 		"prisoners": 7,
-		"variable" : {"FIREBALLS": false}
+		"variable" : {"BOLAS_FUEGO": false}
 	},
 	{
 		"name": "El Serafin   ",
@@ -575,19 +575,15 @@ func load_sfx():
 	ResurrectSFX = load("res://sfx/resurrect_snd.wav")
 	RadarSFX = load("res://sfx/radar.wav")
 	BombTicSFX = load("res://sfx/bombtick.wav")
-	
-	CryingSFX = null
-	ClimbSFX = null
-	EnemyKillingSFX = null
-	TerminalLevelUPSFX = null
-	BrokenLampSFX = null
-	WaterDropSFX = null
-	PrisonerReleasedSFX = null
-	PlantGrowSFX = null
-	CoinSFX = null
-	BinocularSFX = null
-	#A Implementar
-	
+	ClimbSFX = load("res://sfx/climb_snd.mp3")
+	BrokenLampSFX = load("res://sfx/broken_glass.wav")
+	WaterDropSFX = load("res://sfx/water_drop.wav")
+	CryingSFX = load("res://sfx/crying.wav")
+	PlantGrowSFX = load("res://sfx/plant_gros.wav")
+	CoinSFX = load("res://sfx/coins.wav")
+	TerminalLevelUPSFX = load("res://sfx/level_up.wav")
+	PrisonerReleasedSFX = load("res://sfx/prisoner_liberate.wav")
+	BinocularSFX = load("res://sfx/binocular.wav")
 	
 func init():
 	gunz_equiped = []
@@ -598,7 +594,8 @@ func init():
 	prisoner_counter = 0
 	prisoner_total = 0
 	map_obj = null
-	var gunz_objs = []
+	
+	gunz_objs = []
 	
 	gunz_objs.append(clone)
 	gunz_objs.append(teleport)

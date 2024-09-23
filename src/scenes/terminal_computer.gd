@@ -14,7 +14,7 @@ var is_writing = false
 var command_ok = false
 @export var terminal_number = -1
 @export var InfoPosition : Marker2D
-var BUY_ITEMS = ["BOMB", "SMOKE", "CLONE", "SPRING", "PLANT", "MUFFIN"]
+var BUY_ITEMS = ["BOMBA", "HUMO", "CLONADOR", "RESORTE", "PLANTITA", "GOLOSINA", "TELETRANSPORTADOR"]
 
 var PB_YES = ">"
 var PB_NO = "-" 
@@ -22,51 +22,51 @@ var PB_LEN = 40
 
 var terminal_commands_with_help = [
 	[
-		"BUY <ITEM> <QUANTITY>",
-		"DONATE <QUANTITY>",
-		"STATUS",
-		"GAME",
-		"HELP",
-		"LIST",
-		"PRINT",
-		"CLEAR",
-		"EXIT",
+		"COMPRAR <ITEM> <CANTIDAD>",
+		"DONAR <CANTIDAD>",
+		"ESTADO",
+		"JUEGO",
+		"AYUDA",
+		"LISTAR",
+		"IMPRIMIR",
+		"LIMPIAR",
+		"SALIR",
 	],
 	[
-		"BUY <ITEM> <QUANTITY>",
-		"HELP",
-		"SET <VARIABLE> <VALUE>",
+		"COMPRAR <ITEM> <CANTIDAD>",
+		"AYUDA",
+		"ESTABLECER <VARIABLE> <VALOR>",
 		"VARIABLES",
-		"PRINT",
-		"CLEAR",
-		"EXIT",
+		"IMPRIMIR",
+		"LIMPIAR",
+		"SALIR",
 	],
 	[
-		"BUY <ITEM> <QUANTITY>",
-		"HELP",
-		"SET <VARIABLE> <VALUE>",
+		"COMPRAR <ITEM> <CANTIDAD>",
+		"AYUDA",
+		"ESTABLECER <VARIABLE> <VALOR>",
 		"VARIABLES",
-		"PRINT",
-		"CLEAR",
-		"EXIT",
+		"IMPRIMIR",
+		"LIMPIAR",
+		"SALIR",
 	],
 	[
-		"BUY <ITEM> <QUANTITY>",
-		"HELP",
-		"SET <VARIABLE> <VALUE>",
+		"COMPRAR <ITEM> <CANTIDAD>",
+		"AYUDA",
+		"ESTABLECER <VARIABLE> <VALOR>",
 		"VARIABLES",
-		"PRINT",
-		"CLEAR",
-		"EXIT",
+		"IMPRIMIR",
+		"LIMPIAR",
+		"SALIR",
 	],
 	[
-		"BUY <ITEM> <QUANTITY>",
-		"HELP",
-		"SET <VARIABLE> <VALUE>",
+		"COMPRAR <ITEM> <QUANTITY>",
+		"AYUDA",
+		"ESTABLECER <VARIABLE> <VALOR>",
 		"VARIABLES",
-		"PRINT",
-		"CLEAR",
-		"EXIT",
+		"IMPRIMIR",
+		"LIMPIAR",
+		"SALIR",
 	],
 ]
 
@@ -79,41 +79,41 @@ var mode = ["cmd", "param1", "param2"]
 
 
 var BUY = {
-	"name": "BUY",
+	"name": "COMPRAR",
 	"param1": BUY_ITEMS,
 	"param2": 1
 }
 var DONATE = {
-	"name": "DONATE",
+	"name": "DONAR",
 	"param1": 1,
 	"param2": null
 }
 var STATUS = {
-	"name": "STATUS",
+	"name": "ESTADO",
 	"param1": null,
 	"param2": null
 }
 var GAME = {
-	"name": "GAME",
+	"name": "JUEGO",
 	"param1": null,
 	"param2": null
 } 
 var HELP = {
-	"name": "HELP",
-	"param1": ["BUY", "DONATE", "STATUS", "GAME", "LIST", "PRINT", "CLEAR", "EXIT"],
+	"name": "AYUDA",
+	"param1": ["COMPRAR", "DONAR", "ESTADO", "JUEGO", "LISTAR", "IMPRIMIR", "LIMPIAR", "SALIR"],
 	"param2": null
 }
 
 var HELP2 = {
-	"name": "HELP",
-	"param1": ["BUY", "SET", "VARIABLES", "PRINT", "CLEAR", "EXIT"],
+	"name": "AYUDA",
+	"param1": ["COMPRAR", "ESTABLECER", "VARIABLES", "IMPRIMIR", "LIMPIAR", "SALIR"],
 	"param2": null
 }
 
 var SET = {
-	"name": "SET",
+	"name": "ESTABLECER",
 	"param1": [trad_vars(Global.Terminals[terminal_number].variable)],
-	"param2": ["ON", "OFF"]
+	"param2": ["SI", "NO"]
 }
 var VARIABLES = {
 	"name": "VARIABLES",
@@ -122,22 +122,22 @@ var VARIABLES = {
 }
 
 var LIST = {
-	"name": "LIST",
+	"name": "LISTAR",
 	"param1": null,
 	"param2": null
 }
 var PRINT = {
-	"name": "PRINT",
+	"name": "IMPRIMIR",
 	"param1": null,
 	"param2": null
 }
 var CLEAR = {
-	"name": "CLEAR",
+	"name": "LIMPIAR",
 	"param1": null,
 	"param2": null
 }
 var EXIT = {
-	"name": "EXIT",
+	"name": "SALIR",
 	"param1": null,
 	"param2": null
 }
@@ -224,7 +224,7 @@ func _physics_process(delta):
 				$display/back.visible = false
 				$display/back/arrows.visible = false
 				$display/Terminal.visible = true
-				current_message = "WELCOME TO GROTTO TERMINAL #" + str(terminal_number) + " " + Global.Terminals[terminal_number].name.strip_edges() + "# \nREADY\n"
+				current_message = "BIENVENIDO A LA GRUTA TERMINAL #" + str(terminal_number) + " " + Global.Terminals[terminal_number].name.strip_edges() + "# \nLISTO\n"
 				Global.player_obj.terminal_mode = true
 				Global.player_obj.visible = false
 			
@@ -404,7 +404,7 @@ func calc_progress():
 		var percent = current * 100 / total
 		var count = percent * PB_LEN / 100
 		var rest =  PB_NO.repeat(PB_LEN - count)
-		return "[" + PB_YES.repeat(count) + rest + "]"
+		return "NIVEL: " + str(Global.CurrentLevel + 1) + " [" + PB_YES.repeat(count) + rest + "]"
 		
 func calc_progress_percent():
 	if Global.CurrentLevel == Global.GOLD_PER_LEVEL.size() - 1:
@@ -422,6 +422,10 @@ func find_cmd(_cmd):
 	
 	return -1
 	
+func trad_item(it):
+	for e in Global.gunz_objs:
+		if e.friendly_name.to_upper() == it:
+			return e.name.to_upper()
 	
 func parser(_cmd, gamepad):
 	_cmd = _cmd.strip_edges()
@@ -436,53 +440,53 @@ func parser(_cmd, gamepad):
 			param2 = cmd_c[2]
 	
 	var found = find_cmd(_cmd)
-	if found != -1 and _cmd == "HELP":
+	if found != -1 and _cmd == "AYUDA":
 		if !param1:
 			var commands = "\n".join(terminal_commands_with_help[terminal_number])
-			current_message = "AVAILABLE COMMANDS:\n" + commands + "\n"
+			current_message = "COMANDOS DISPONIBLES:\n" + commands + "\n"
 		else:
 			var cmd_found = find_cmd(param1)
 			if cmd_found == -1:
-				current_message = "INVALID COMMAND: TYPE HELP <COMMAND> OR HELP FOR A LIST OF COMMANDS" + "\n"
+				current_message = "COMANDO INVALIDO: ESCRIBE AYUDA <COMANDO> O AYUDA PARA VER COMANDOS" + "\n"
 			else:
-				if param1 == "BUY":
-					current_message = "BUYS AN ITEM USING G-COINS\n"
-					current_message += "USAGE BUY <ITEM> or BUY <ITEM> <QUANTITY>\n"
-					current_message += "AVAILABLE ITEMS:\n"
+				if param1 == "COMPRAR":
+					current_message = "COMPRAR UN ITEM USANDO G-COINS\n"
+					current_message += "USO COMPRAR <ITEM> O COMPRAR <ITEM> <CANTIDAD>\n"
+					current_message += "ITEMS:\n"
 					for i in BUY_ITEMS:
-						current_message += i + "\n"
-				elif param1 == "DONATE":
-					current_message = "MAKES A G-COIN DONATION FOR THE CAUSE\n"
-					current_message += "USAGE DONATE <QUANTITY>\n"
-				elif param1 == "STATUS":
-					current_message = "SHOWS CURRENT DONATIONS STATUS\n"
-				elif param1 == "GAME":
-					current_message = "LAUNCHS A GAME TO PASS TIME\n"
-				elif param1 == "HELP":
-					current_message = "THIS COMMAND\n"
-				elif param1 == "LIST":
-					current_message = "LISTS AVAILABLE TERMINALS AND STATUS\n"
-				elif param1 == "PRINT":
-					current_message = "PRINTS CURRENT TERMINAL MANUAL\n"
-				elif param1 == "CLEAR":
-					current_message = "CLEARS CONSOLE SCREEN\n"
-				elif param1 == "EXIT":
-					current_message = "EXITS CONSOLE SCREEN\n"
-				elif param1 == "SET":
-					current_message = "SETS A VARIABLE VALUE (TRUE OR FALSE)\n"
-					current_message += "USAGE SET <VARIABLE> <T OR F>\n"
+						current_message += trad_item(i) + "\n"
+				elif param1 == "DONAR":
+					current_message = "HACE UNA DONACION DE G-COINs\n"
+					current_message += "USO DONAR <CANTIDAD>\n"
+				elif param1 == "ESTADO":
+					current_message = "MUESTRA EL ESTADO DE DONACIONES\n"
+				elif param1 == "JUEGO":
+					current_message = "CORRE UN JUEGO PARA PASAR EL TIEMPO\n"
+				elif param1 == "AYUDA":
+					current_message = "ESTE COMANDO\n"
+				elif param1 == "LISTAR":
+					current_message = "LISTA TERMINALES Y ESTADOS\n"
+				elif param1 == "IMPRIMIR":
+					current_message = "IMPRIME EL MANUAL DE LA TERMINAL\n"
+				elif param1 == "LIMPIAR":
+					current_message = "LIMPIA LA VENTANA DE LA TERMINAL\n"
+				elif param1 == "SALIR":
+					current_message = "SALE DEL MODO CONSOLA\n"
+				elif param1 == "ESTABLECER":
+					current_message = "ESTABLECE EL VALOR DE UNA VARIABLE (VERDADERO O FALSO)\n"
+					current_message += "USO ESTABLECER <VARIABLE> <V OR F>\n"
 		
-	elif found != -1 and _cmd == "BUY":
+	elif found != -1 and _cmd == "COMPRAR":
 		if !param1:
-			current_message = "ERROR: USE BUY <ITEM> or BUY <ITEM> <QUANTITY>\n"
-			current_message += "AVAILABLE ITEMS:\n"
+			current_message = "ERROR: USE COMPRAR <ITEM> or COMPRAR <ITEM> <CANTIDAD>\n"
+			current_message += "ITEMS:\n"
 			for i in BUY_ITEMS:
 				current_message += i + "\n"
 		elif param1:
 			var itm_found =  BUY_ITEMS.find(param1)
 			if itm_found == -1:
-				current_message = "ERROR: INVALID ITEM\n"
-				current_message += "AVAILABLE ITEMS:\n"
+				current_message = "ERROR: ITEM INVALIDO\n"
+				current_message += "ITEMS:\n"
 				for i in BUY_ITEMS:
 					current_message += i + "\n"
 			else:	
@@ -494,17 +498,17 @@ func parser(_cmd, gamepad):
 					else:
 						param2 = int(param2)
 					
-				if Global.buy_item(param1, param2):
-					current_message = "TRANSACTION DONE\nREADY" + "\n"
+				if Global.buy_item(trad_item(param1), param2):
+					current_message = "TRANSACTION TERMINADA\nLISTO" + "\n"
 				else:
-					current_message = "ERROR: NOT ENOUGH G-COINS\nREADY" + "\n"
+					current_message = "ERROR: NO SUFICIENTES G-COINS\nLISTO" + "\n"
 		
-	elif found != -1 and _cmd == "DONATE":
+	elif found != -1 and _cmd == "DONAR":
 		if Global.CurrentLevel == Global.GOLD_PER_LEVEL.size() - 1:
-			current_message = "ERROR: NO MORE DONATIONS ALLOWED\nREADY" + "\n"
+			current_message = "ERROR: NO MAS DONACIONES DISPONIBLES\nLISTO" + "\n"
 		else:
 			if !param1:
-				current_message = "ERROR: USE DONATE <QUANTITY>\n"
+				current_message = "ERROR: USE DONAR <CANTIDAD>\n"
 			else:
 				if !param1.is_valid_int():
 					param1 = 1
@@ -513,50 +517,55 @@ func parser(_cmd, gamepad):
 				
 				var result = Global.donate(param1)
 				if result != null:
-					current_message = "TRANSACTION DONE\n"
+					Global.play_sound(Global.CoinSFX)
+					current_message = "¡GRACIAS!\n"
+					current_message += "TRANSACTION TERMINADA\n"
 					current_message += calc_progress() + "\n"
 					current_message += calc_progress_percent() + "\n"
 					if result != Global.perks_equiped:
-						current_message +=  "\nNEW ITEMS AVAILABLE:\n"
+						current_message +=  "\nNUEVOS ITEMS DISPONIBLES:\n"
 						for i in range(Global.perks_equiped.size()):
 							if i > 0:
 								if result[i] == null and Global.perks_equiped[i] != null:
 									current_message += "\t. " + Global.perks_equiped[i].name.to_upper() + "\n"
 									current_message += "\t\t" + Global.perks_equiped[i].description + "\n"
 					
-					current_message +=  "\nREADY\n"
+					await get_tree().create_timer(3.2).timeout
+					Global.play_sound(Global.TerminalLevelUPSFX)
+					
+					current_message +=  "\nLISTO\n"
 				else:
-					current_message = "ERROR: NOT ENOUGH G-COINS\nREADY" + "\n"
+					current_message = "ERROR: NO SUFICIENTES G-COINS\nLISTO" + "\n"
 
-	elif found != -1 and _cmd == "CLEAR":
+	elif found != -1 and _cmd == "LIMPIAR":
 		CMD.text = ""
-	elif found != -1 and _cmd == "STATUS":
-		current_message = "DONATIONS STATUS: "+ "\n"
+	elif found != -1 and _cmd == "ESTADO":
+		current_message = "ESTADO DE DONACIONES: "+ "\n"
 		current_message += calc_progress() + "\n"
 		current_message += calc_progress_percent() + "\n"
-		current_message +=  "READY\n"
-	elif found != -1 and _cmd == "GAME":
-		current_message = "STARTING..."
+		current_message +=  "LISTO\n"
+	elif found != -1 and _cmd == "JUEGO":
+		current_message = "INICIANDO..."
 		Global.CameFromConsole = true
 		await get_tree().create_timer(1.5).timeout
 		get_tree().change_scene_to_file("res://scenes/levels/room_retro_game.tscn")
-	elif found != -1 and _cmd == "PRINT":
+	elif found != -1 and _cmd == "IMPRIMIR":
 		Global.play_sound(Global.TerminalPrintSFX)
-		current_message = "PRINTING...\nREADY" + "\n"
+		current_message = "IMPRIMIENDO...\nLISTO" + "\n"
 		$Info.visible = true
 		$Info.terminal_number = terminal_number
-	elif found != -1 and _cmd == "LIST":
+	elif found != -1 and _cmd == "LISTAR":
 		var commands = ""
 		var lines = 0
 		for i in range(Global.Terminals.size()):
-			commands += "#" + str(i) + " " + Global.Terminals[i].name + "# | STATUS: " + trad_state(Global.Terminals[i].status) + "\n"
+			commands += "#" + str(i) + " " + Global.Terminals[i].name + "# | ESTADO: " + trad_state(Global.Terminals[i].status) + "\n"
 			lines += 1
 			var vars = trad_vars(Global.Terminals[i].variable)
 			if vars != "":
 				commands += "\t" + vars+ "\n\n"
 				lines += 2
-		current_message = "LIST OF TERMINALS:\n" + commands + "\nREADY" + "\n"
-	elif found != -1 and _cmd == "EXIT":
+		current_message = "LISTA DE TERMINALES:\n" + commands + "\nLISTO" + "\n"
+	elif found != -1 and _cmd == "SALIR":
 		CMD.text = ""
 		$display/Terminal.visible = false
 		$display/back.visible = false
@@ -565,7 +574,7 @@ func parser(_cmd, gamepad):
 		Global.player_obj.terminal_mode = false
 		Global.player_obj.visible = true
 	else:
-		current_message = "ERROR: TYPE HELP <COMMAND> OR HELP FOR A LIST OF COMMANDS" + "\n"
+		current_message = "ERROR: ESCRIBE AYUDA <COMANDO> O AYUDA PARA VER COMANDOS"+ "\n"
 		
 	if gamepad:
 		if current_message:
@@ -580,11 +589,11 @@ func trad_vars(val):
 		
 func trad_state(val):
 	if val == true:
-		return "ON"
+		return "SI"
 	elif val == false:
-		return "OFF"
+		return "NO"
 	elif val == null:
-		return "UNKNOWN"
+		return "DESCONOCIDO"
 	
 			
 func _on_body_entered(body):

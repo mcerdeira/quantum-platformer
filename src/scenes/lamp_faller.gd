@@ -43,6 +43,8 @@ func _physics_process(delta):
 						velocity.x = lerp(velocity.x, 0.0, friction)
 					
 func got_broken():
+	var options = {"pitch_scale": Global.pick_random([1, 1.1, 1.2])}
+	Global.play_sound(Global.BrokenLampSFX, options, global_position)
 	await get_tree().create_timer(1).timeout
 	$Lamp.animation = "broken"
 	$Lamp/sprite.visible = false

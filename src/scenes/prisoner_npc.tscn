@@ -219,5 +219,9 @@ position = Vector2(44, 36)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nd76e")
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

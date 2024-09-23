@@ -55,3 +55,7 @@ func _on_body_exited(body):
 			current_message = ""
 			Global.kill(dialog_sfx)
 
+func _on_timer_timeout():
+	$Timer.wait_time = Global.pick_random([2, 3, 4])
+	var options = {"pitch_scale": Global.pick_random([1, 0.7, 1.1])}
+	Global.play_sound(Global.CryingSFX, options, global_position)

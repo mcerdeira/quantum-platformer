@@ -28,6 +28,8 @@ func _on_body_entered(_body):
 		$sprite.visible = false
 		$particles.emitting = true
 		await get_tree().create_timer(0.3).timeout
+		var options = {"pitch_scale": Global.pick_random([1, 0.9, 0.8])}
+		Global.play_sound(Global.WaterDropSFX, options, global_position)
 		global_position = initial_position 
 		$sprite.scale.y = 0
 		$particles.emitting = false
@@ -39,6 +41,8 @@ func _on_area_entered(_area):
 		$sprite.visible = false
 		$particles.emitting = true
 		await get_tree().create_timer(1).timeout
+		var options = {"pitch_scale": Global.pick_random([1, 0.9, 0.8])}
+		Global.play_sound(Global.WaterDropSFX, options, global_position)
 		global_position = initial_position 
 		$sprite.scale.y = 0
 		$particles.emitting = false

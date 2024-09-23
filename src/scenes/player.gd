@@ -202,11 +202,15 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 		return
 		
-	if binocular:
+	if true:
 		if Input.is_action_just_released("zoomin"):
-			$Camera2D.enabled = !$Camera2D.enabled
-			Global.global_camera.enabled = !Global.global_camera.enabled
-
+			if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
+				Global.play_sound(Global.BinocularSFX)
+				$Camera2D.enabled = !$Camera2D.enabled
+				Global.global_camera.enabled = !Global.global_camera.enabled
+			else:
+				Global.player_obj.show_message_custom("No puedo usar eso aqui.")
+		
 	$Cosito.visible = !iam_clone and !dead
 	if is_on_floor() or grabbed:
 		last_safe_position = global_position
@@ -419,16 +423,29 @@ func process_player(delta):
 				velocity.y = speed
 				
 		var input_time = Time.get_ticks_msec() / 1000.0
-		
-		if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
-			if !in_air and $WalkSoundTimer.is_stopped():
-				$WalkSoundTimer.start()
-			
-		if (!Input.is_action_pressed("left") and !Input.is_action_pressed("right")) or in_air:
-			if !$WalkSoundTimer.is_stopped():
-				if in_air:
-					await get_tree().create_timer(0.3).timeout
-				$WalkSoundTimer.stop()
+				
+		#if !is_on_stairs and !grabbed:
+			#if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
+				#if !in_air and $WalkSoundTimer.is_stopped():
+					#$WalkSoundTimer.start()
+					#
+			#if (!Input.is_action_pressed("left") and !Input.is_action_pressed("right")) or in_air:
+				#if !$WalkSoundTimer.is_stopped():
+					#if in_air:
+						#await get_tree().create_timer(0.3).timeout
+					#$WalkSoundTimer.stop()
+				#
+		#if is_on_stairs or grabbed:
+			#if Input.is_action_pressed("up") or Input.is_action_pressed("down"):
+				#if $WalkSoundTimer.is_stopped():
+					#if is_on_stairs and grabbed:
+						#$WalkSoundTimer.start()
+					#
+			#if (!Input.is_action_pressed("up") and !Input.is_action_pressed("down")):
+				#if !$WalkSoundTimer.is_stopped():
+					#if in_air:
+						#await get_tree().create_timer(0.3).timeout
+					#$WalkSoundTimer.stop()
 		
 		if !shoot_mode and Input.is_action_pressed("left"):
 			idle_play = idle_play_total
@@ -451,7 +468,17 @@ func process_player(delta):
 			$sprite.flip_h = false
 			$sprite_eyes.flip_h = $sprite.flip_h
 			$gun_sprite.rotation = initial_rotation
-	
+			
+	#Control SFX walk and stairs
+	if moving and !in_air:
+		if !in_air and $WalkSoundTimer.is_stopped():
+			$WalkSoundTimer.start()
+	else:
+		if !$WalkSoundTimer.is_stopped():
+			if in_air:
+				await get_tree().create_timer(0.3).timeout
+			$WalkSoundTimer.stop()
+
 	if gravityon:
 		idle_play -= 1 * delta
 	
@@ -620,4 +647,7 @@ func kill_fire(tt_total = null):
 func _on_walk_sound_timer_timeout():
 	if !dead and blowed <= 0:
 		var options = {"pitch_scale": Global.pick_random([0.5, 0.7])}
-		Global.play_sound(Global.WalkSFX, options)
+		if is_on_stairs and grabbed:
+			Global.play_sound(Global.ClimbSFX, options)
+		else:
+			Global.play_sound(Global.WalkSFX,options)
