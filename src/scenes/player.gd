@@ -202,12 +202,16 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 		return
 		
-	if true:
+	if true or binocular:
 		if Input.is_action_just_released("zoomin"):
 			if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
 				Global.play_sound(Global.BinocularSFX)
 				$Camera2D.enabled = !$Camera2D.enabled
 				Global.global_camera.enabled = !Global.global_camera.enabled
+				if Global.global_camera.enabled:
+					Engine.time_scale = 0.01
+				else:
+					Engine.time_scale = 1.0
 			else:
 				Global.player_obj.show_message_custom("No puedo usar eso aqui.")
 		
