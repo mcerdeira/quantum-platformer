@@ -22,6 +22,7 @@ var OverWorldFromGameOver = false
 var TunnelTerminalNumber = false
 var boss_bar = null
 
+var RetroTheme = null
 var MainTheme = null
 var MainThemeShort = null
 var BossTheme = null
@@ -78,6 +79,9 @@ var ResurrectSFX = null
 var BinocularSFX = null
 var WaterDropSFX = null
 var PrisonerReleasedSFX = null
+var ExplodeRetroSFX = null
+var BigExplodeRetroSFX = null
+var PlayerHurtSFX = null
 
 #CHEST ITEMS 
 var smoke_bomb = {
@@ -584,6 +588,10 @@ func load_sfx():
 	TerminalLevelUPSFX = load("res://sfx/level_up.wav")
 	PrisonerReleasedSFX = load("res://sfx/prisoner_liberate.wav")
 	BinocularSFX = load("res://sfx/binocular.wav")
+	RetroTheme = load("res://music/retro_theme.mp3")
+	BigExplodeRetroSFX = load("res://sfx/big_explode_retro.wav")
+	ExplodeRetroSFX = load("res://sfx/explode_retro.wav")
+	PlayerHurtSFX = load("res://sfx/player_hurt.wav")
 	
 func init():
 	gunz_equiped = []

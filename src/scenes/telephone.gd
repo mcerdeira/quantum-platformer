@@ -8,6 +8,7 @@ var current_message = ""
 var ttl = 0
 @export var Door : Area2D
 var dialog_sfx = null
+var ring_sfx = null
 
 func _on_timer_timeout():
 	if !opened:
@@ -18,7 +19,7 @@ func _on_timer_timeout():
 			
 		if !ringing:
 			ringing = true
-			Global.play_sound(Global.TelephoneRingSFX)
+			ring_sfx = Global.play_sound(Global.TelephoneRingSFX)
 			$AnimationPlayer.play("new_animation")
 			$Computer.play()
 		else:
@@ -46,6 +47,7 @@ func _physics_process(delta):
 	
 	if active and !opened:
 		if Input.is_action_just_pressed("up"):
+			Global.kill(ring_sfx)
 			Global.play_sound(Global.InteractSFX)
 			Global.play_sound(Global.TelephoneUpSFX)
 			opened = true

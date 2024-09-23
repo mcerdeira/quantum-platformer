@@ -6,6 +6,8 @@ var game_ended = false
 var player_turn = true
 
 func _ready():
+	Ambience.stop()
+	Music.play(Global.RetroTheme)
 	update_score()
 	var pos1 = Global.pick_random([$mark_p1_1, $mark_p1_2, $mark_p1_3, $mark_p1_4])
 	var pos2 = Global.pick_random([$mark_p2_1, $mark_p2_2, $mark_p2_3, $mark_p2_4])
@@ -23,6 +25,7 @@ func shoot():
 	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("quit"):
+		Music.stop()
 		get_tree().change_scene_to_file("res://scenes/main.tscn")	
 	
 	if game_ended:

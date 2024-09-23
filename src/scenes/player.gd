@@ -631,6 +631,7 @@ func dead_fire():
 	dead_animation = "dead_fire"
 	
 func reset_to_last():
+	Global.play_sound(Global.PlayerHurtSFX)
 	global_position = last_safe_position
 	$AnimationPlayer.play("reset_position")
 

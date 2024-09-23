@@ -17,6 +17,7 @@ func _ready():
 		$sprite/sprite.rotation_degrees = -180
 		
 func die():
+	Global.play_sound(Global.BigExplodeRetroSFX)
 	visible = false
 	if player_input:
 		gameman.lose()

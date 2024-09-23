@@ -224,7 +224,9 @@ func _physics_process(delta):
 				$display/back.visible = false
 				$display/back/arrows.visible = false
 				$display/Terminal.visible = true
-				current_message = "BIENVENIDO A LA GRUTA TERMINAL #" + str(terminal_number) + " " + Global.Terminals[terminal_number].name.strip_edges() + "# \nLISTO\n"
+				current_message = "BIENVENIDO A LA GRUTA TERMINAL #" + str(terminal_number) + " " + Global.Terminals[terminal_number].name.strip_edges() + "# \n"
+				current_message += "ESCRIBA LOS COMANDOS O USE LAS FLECHAS PARA INTERACTUAR CON ELLOS\n"
+				current_message += "LISTO\n"
 				Global.player_obj.terminal_mode = true
 				Global.player_obj.visible = false
 			
@@ -583,18 +585,19 @@ func parser(_cmd, gamepad):
 		
 func trad_vars(val):
 	if val != {}:
-		return str(val).replace("{", "").replace("}", "")
+		var str_ = str(val).replace("{", "").replace("}", "")
+		str_= str_.replace("false", "F").replace("true", "V")
+		return str_
 	else:
 		return ""
 		
 func trad_state(val):
 	if val == true:
-		return "SI"
+		return "DISPONIBLE"
 	elif val == false:
-		return "NO"
+		return "NO DISPONIBLE"
 	elif val == null:
 		return "DESCONOCIDO"
-	
 			
 func _on_body_entered(body):
 	if !opened and body.is_in_group("players") and !body.is_in_group("prisoners"):

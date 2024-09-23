@@ -26,6 +26,7 @@ func droped(_direction):
 	shoted = true
 
 func explode():
+	Global.play_sound(Global.ExplodeRetroSFX)
 	velocity = Vector2.ZERO
 	_explode = true
 	visible = false

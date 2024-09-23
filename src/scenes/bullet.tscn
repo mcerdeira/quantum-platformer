@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ben51hnbkc3ta"]
 
 [ext_resource type="Script" path="res://scenes/levels/bullet.gd" id="1_fp7mu"]
-[ext_resource type="Texture2D" uid="uid://dxuwgip5cccig" path="res://sprites/tank_bullet.png" id="2_gq4e6"]
+[ext_resource type="Texture2D" uid="uid://dfhsi7skdxav2" path="res://sprites/tank_bullet.png" id="2_gq4e6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqoul"]
 size = Vector2(7, 5.5)
