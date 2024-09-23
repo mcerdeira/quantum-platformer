@@ -319,29 +319,30 @@ func hearing_alerted(body):
 		alerted = true
 			
 func eat_gizmo(current_item):
-	current_target_alerted = null
-	alerted = false
-	hostile = false
-	killing = total_killing
-	if current_item.name == "teleport":
-		do_when_finish_killing = "teleport"
-	elif current_item.name == "clone":
-		do_when_finish_killing = "clone"
-	elif current_item.name == "bomb":
-		pass
-	elif current_item.name == "smoke":
-		pass
-	elif current_item.name == "spring":
-		do_when_finish_killing = "spring"
-	elif current_item.name == "muffin":
-		do_when_finish_killing = "muffin"
-	elif current_item.name == "plant":
-		do_when_finish_killing = "plant"
-		
-	await get_tree().create_timer(0.6).timeout
-	Global.play_sound(Global.EnemyEatingSFX, {}, global_position)
-	await get_tree().create_timer(0.2).timeout
-	Global.play_sound(Global.EnemyChewingSFX, {}, global_position)
+	if !dead and blowed <= 0 and !sleep:
+		current_target_alerted = null
+		alerted = false
+		hostile = false
+		killing = total_killing
+		if current_item.name == "teleport":
+			do_when_finish_killing = "teleport"
+		elif current_item.name == "clone":
+			do_when_finish_killing = "clone"
+		elif current_item.name == "bomb":
+			pass
+		elif current_item.name == "smoke":
+			pass
+		elif current_item.name == "spring":
+			do_when_finish_killing = "spring"
+		elif current_item.name == "muffin":
+			do_when_finish_killing = "muffin"
+		elif current_item.name == "plant":
+			do_when_finish_killing = "plant"
+			
+		await get_tree().create_timer(0.6).timeout
+		Global.play_sound(Global.EnemyEatingSFX, {}, global_position)
+		await get_tree().create_timer(0.2).timeout
+		Global.play_sound(Global.EnemyChewingSFX, {}, global_position)
 	
 func kill_fall():
 	visible = false
