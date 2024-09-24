@@ -42,6 +42,11 @@ IN_PROGRESS:
 - Musica
 
 BUGS/Ajustes:
+- Enemigo comio la bomba y no exploto
+- Sonido de gotas muy bajos
+- Niveles no se pueden recorrer (saltos, etc)
+- Musica del boss muy baja
+- Texto el manual impreso está en inglés
 
 Features:
 - Cascadas (ala Minecraft) que interactuen con bombas y enemigos

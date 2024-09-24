@@ -202,7 +202,7 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 		return
 		
-	if true or binocular:
+	if binocular:
 		if Input.is_action_just_released("zoomin"):
 			if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
 				Global.play_sound(Global.BinocularSFX)
