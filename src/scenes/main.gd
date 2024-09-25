@@ -315,3 +315,4 @@ func _physics_process(delta):
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 			return
+

@@ -48,6 +48,10 @@ func is_on_floor_custom():
 	return is_on_floor() or buff > 0
 	
 func _physics_process(delta):
+	if Engine.time_scale != 1.0:
+		return
+	
+	
 	speed = total_speed
 	
 	if blowed > 0:
