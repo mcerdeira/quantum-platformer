@@ -36,6 +36,7 @@ var enemy = load("res://scenes/enemy.tscn")
 
 func _ready():
 	add_to_group("enemies")
+	add_to_group("eater")
 	$sprite.animation = "idle"
 	
 func is_on_floor_custom():

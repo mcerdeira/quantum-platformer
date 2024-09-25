@@ -19,6 +19,7 @@ var parent_lbl = null
 var current_item = null
 var action_executed = false
 var count_down = 0
+var attach_to = null
 
 func _ready():
 	add_to_group("interactuable")
@@ -31,10 +32,19 @@ func _physics_process(delta):
 	if !action_executed:
 		$sprite.material.set_shader_parameter("crisis", false)
 		velocity.y += gravity * delta
+		
+		if attach_to != null:
+			velocity = Vector2.ZERO
+		
 		var collision = move_and_collide(velocity * delta)
-		if collision: 
-			var normal = collision.get_normal()
-			velocity = velocity.bounce(normal) * Global.bounce_amount
+		if collision or attach_to:
+			var normal = null
+			if attach_to:
+				normal = Vector2.UP
+			else:
+				normal = collision.get_normal()
+				velocity = velocity.bounce(normal) * Global.bounce_amount
+				
 			if is_on_floor_custom(normal):
 				if !landed:
 					if !action_executed:
@@ -50,38 +60,38 @@ func _physics_process(delta):
 					Global.play_sound(Global.GizmoDropSFX)
 				landed = true 
 				
-			if !landed:
-				rotation += 5 * delta
+		if !landed:
+			rotation += 5 * delta
+		else:
+			if current_item.has_action:
+				if count_down > 0:
+					count_down -= 1 * delta
+					$lbl_count.text = str(round(count_down)) 
+					if count_down < 2:
+						var a : AnimationPlayer = $AnimationPlayer
+						if !a.is_playing():
+							a.play("shak_")
+							a.speed_scale += 100 * delta
+					
+					if count_down <= 0:
+						do_action(parent, parent_lbl)
 			else:
-				if current_item.has_action:
-					if count_down > 0:
-						count_down -= 1 * delta
-						$lbl_count.text = str(round(count_down)) 
-						if count_down < 2:
-							var a : AnimationPlayer = $AnimationPlayer
-							if !a.is_playing():
-								a.play("shak_")
-								a.speed_scale += 100 * delta
-						
-						if count_down <= 0:
-							do_action(parent, parent_lbl)
+				do_action(parent, parent_lbl)
+			
+			if noise_time > 0:
+				noise_time -= 1 * delta
+				if noise_time <= 0:
+					$noise/collider.set_deferred("disabled", true)
+			
+			rotation = 0
+			if blowed > 0:
+				blowed -= 1 * delta
+			else:
+				pass
+				if !is_on_floor():
+					velocity.x = lerp(velocity.x, 0.0, friction / 10)
 				else:
-					do_action(parent, parent_lbl)
-				
-				if noise_time > 0:
-					noise_time -= 1 * delta
-					if noise_time <= 0:
-						$noise/collider.set_deferred("disabled", true)
-				
-				rotation = 0
-				if blowed > 0:
-					blowed -= 1 * delta
-				else:
-					pass
-					if !is_on_floor():
-						velocity.x = lerp(velocity.x, 0.0, friction / 10)
-					else:
-						velocity.x = lerp(velocity.x, 0.0, friction)
+					velocity.x = lerp(velocity.x, 0.0, friction)
 					
 	if explosion_delay > 0:
 		explosion_delay -= 1 * delta
@@ -122,8 +132,9 @@ func droped(_parent, _parent_lbl, direction, _current_item, _simulation = false)
 		$Line2D.queue_free()
 	
 func do_action(_player, lbl):
+	$lbl_count.visible = false
 	if !simulation and !action_executed:
-		if true or landed:
+		if landed:
 			if current_item.has_action:
 				action_executed = true
 				lbl.visible = true
@@ -190,6 +201,7 @@ func create_smoke_object():
 	
 func explode():
 	if !simulation:
+		attach_to = null
 		visible = true
 		$sprite.visible = false
 		$explosion/collider.set_deferred("disabled", false)
@@ -205,7 +217,7 @@ func explode():
 
 func _on_area_body_entered(body):
 	if !simulation:
-		if body and body.is_in_group("enemies"):
+		if body and body.is_in_group("enemies") and body.is_in_group("eater"):
 			body.eat_gizmo(current_item)
 			Global.emit(global_position, 1)
 			if current_item.name == "teleport":
@@ -214,6 +226,8 @@ func _on_area_body_entered(body):
 				queue_free()
 			elif current_item.name == "bomb":
 				visible = false
+				velocity = Vector2.ZERO
+				attach_to = body
 			elif current_item.name == "spring":
 				queue_free()
 			elif current_item.name == "muffin":
@@ -222,6 +236,8 @@ func _on_area_body_entered(body):
 				queue_free()
 			elif current_item.name == "smoke":
 				visible = false
+				velocity = Vector2.ZERO
+				attach_to = body
 			elif current_item.name == "spikeball":
 				pass
 			
