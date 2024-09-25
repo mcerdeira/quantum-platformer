@@ -10,13 +10,13 @@ config_version=5
 
 [application]
 
-config/name="quantum-platformer"
+config/name="gruta-demo"
+config/version="1.0"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="res://icon.svg"
 
 [autoload]
 
