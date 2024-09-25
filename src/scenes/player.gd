@@ -96,6 +96,7 @@ func hide_eyes():
 	$sprite_eyes.visible = false
 	
 func show_message_demo():
+	await get_tree().create_timer(4).timeout
 	$display.visible = true
 	$display/back/lbl_item.text = "Hasta aqui la demo.\n¡Gracias por jugar!!"
 	

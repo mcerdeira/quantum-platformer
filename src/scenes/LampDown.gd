@@ -57,7 +57,10 @@ func _on_lamp_area_body_entered(body):
 			var sound = Global.pick_random([Global.Chains1SFX, Global.Chains2SFX])
 			var db = linear_to_db(abs(body.velocity.x) * 0.01)
 			var options = {"volume_db": db}
-			Global.play_sound(sound, options, global_position)
+			if body.is_in_group("bosses"):
+				Global.play_sound(sound)
+			else:
+				Global.play_sound(sound, options, global_position)
 			
 			var dir = sign(body.velocity.x)
 			add_angular_velocity(dir * 0.02)

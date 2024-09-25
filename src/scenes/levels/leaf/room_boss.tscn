@@ -398,26 +398,23 @@ collision_mask = 41
 position = Vector2(156, -325)
 fixed = true
 
-[node name="LampLong8" parent="." instance=ExtResource("19_liafp")]
-position = Vector2(-132, -229)
-fixed = true
-
 [node name="LampLong4" parent="." instance=ExtResource("19_liafp")]
 position = Vector2(1252, -373)
-fixed = true
-
-[node name="LampLong5" parent="." instance=ExtResource("19_liafp")]
-position = Vector2(1436, -261)
-fixed = true
-
-[node name="LampLong7" parent="." instance=ExtResource("19_liafp")]
-position = Vector2(1706, -381)
 fixed = true
 
 [node name="LampLongSpikes" parent="." instance=ExtResource("22_4hltv")]
 position = Vector2(428, -237)
 
+[node name="LampLongSpikes3" parent="." instance=ExtResource("22_4hltv")]
+position = Vector2(-125, -243)
+
 [node name="LampLongSpikes2" parent="." instance=ExtResource("22_4hltv")]
 position = Vector2(991, -330)
+
+[node name="LampLongSpikes4" parent="." instance=ExtResource("22_4hltv")]
+position = Vector2(1783, -370)
+
+[node name="LampLongSpikes5" parent="." instance=ExtResource("22_4hltv")]
+position = Vector2(1455, -274)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="CameraZoomer" method="_on_animation_player_animation_finished"]

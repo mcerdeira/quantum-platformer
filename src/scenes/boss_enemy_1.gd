@@ -51,7 +51,9 @@ func _physics_process(delta):
 		if in_air:
 			in_air = false
 			$sprite.scale.y = 0.5
-			Global.emit(global_position, 14)
+			var options = {"pitch_scale": 0.5}
+			Global.play_sound(Global.BigExplodeRetroSFX, options)
+			Global.emit(global_position, 30)
 			Global.shaker_obj.shake(10, 0.5)
 			jump()
 		buff = 0.2

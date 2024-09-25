@@ -7,11 +7,12 @@ var vine = 2
 var whatiam = null
 var continuation = false
 var child = null
+@export var force_tile = -1
 
 var tiles = [
-	[1, 1, 1],
-	[4, 5, 6],
-	[10, 8, 11],
+	[1, 1, 1],  #stair
+	[4, 5, 6], 	 #rope
+	[10, 8, 11], #plants
 ]
 
 func change_motherfucker(_whatiam):
@@ -52,7 +53,10 @@ func define_me():
 func _ready():
 	add_to_group("stairs")
 	if tilemap:
-		whatiam = Global.pick_random([stair, rope, vine])
+		if force_tile != -1:
+			whatiam = force_tile
+		else:
+			whatiam = Global.pick_random([stair, rope, vine])
 		define_me()
 		
 	if plant_stair:

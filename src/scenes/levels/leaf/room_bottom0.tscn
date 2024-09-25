@@ -275,10 +275,16 @@ position = Vector2(336, 656)
 
 [node name="Stair" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("19_a3i1n")]
 position = Vector2(560, 512)
-scale = Vector2(1, 14)
+scale = Vector2(1, 15)
 tilemap = NodePath("..")
+force_tile = 1
 
 [node name="moving_plat" parent="." instance=ExtResource("20_khxhp")]
 z_index = 1000
 z_as_relative = false
 position = Vector2(210, 191)
+
+[node name="moving_plat2" parent="." instance=ExtResource("20_khxhp")]
+z_index = 1000
+z_as_relative = false
+position = Vector2(690, 191)

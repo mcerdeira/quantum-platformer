@@ -41,6 +41,7 @@ collision_mask = 33
 shape = SubResource("CircleShape2D_yyehc")
 
 [node name="Lamp" type="Sprite2D" parent="LampDown/LampArea"]
+position = Vector2(-1, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("6_sg750")
 

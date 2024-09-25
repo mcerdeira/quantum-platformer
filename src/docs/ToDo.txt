@@ -42,11 +42,6 @@ IN_PROGRESS:
 - Musica
 
 BUGS/Ajustes:
-- Enemigo comio la bomba y no exploto
-- Sonido de gotas muy bajos
-- Niveles no se pueden recorrer (saltos, etc)
-- Musica del boss muy baja
-- Texto el manual impreso está en inglés
 
 Features:
 - Cascadas (ala Minecraft) que interactuen con bombas y enemigos
@@ -90,6 +85,9 @@ Features:
 - Decoraciones: La sangre debería desaparecer al tocar la lava
 
 --------------------------------- DONE ---------------------------------
+- Texto el manual impreso está en inglés
+- Niveles no se pueden recorrer (saltos, etc)
+- Enemigo comio la bomba y no exploto
 - Jefe de The Leaf: Es como estar jugando al basquet, tiramos una pelota con la habilidad y hay que pegarle
   Si nos golpea de costado nos stunea, si nos cae encima nos aplasta
 - Ajustar prisioneros para que al liberarlos, al ratito se vayan de algun forma (pueden morir, pero hay una ventana mas chica de tiempo)

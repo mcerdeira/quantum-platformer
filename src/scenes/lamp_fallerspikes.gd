@@ -11,7 +11,6 @@ var broken = false
 var master_parent = null
 
 func _ready():
-	add_to_group("fireballholder")
 	add_to_group("interactuable")
 	
 func is_on_floor_custom(normal):
@@ -28,6 +27,7 @@ func _physics_process(delta):
 			velocity = velocity.bounce(normal) * Global.bounce_amount
 			if is_on_floor_custom(normal):
 				if !landed and !broken:
+					Global.play_sound(Global.GizmoDropSFX)
 					Global.emit(global_position, 10)
 					got_broken()
 		
