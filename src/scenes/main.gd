@@ -114,6 +114,7 @@ func generate_level():
 	var _rooms_middle2 = null
 	var _rooms_bottom = null
 	if Global.BOSS_ROOM:
+		Global.reset_gunz()
 		$frame.queue_free()
 		$CanvasLayer/Control.visible = false
 		prisonercount = 0

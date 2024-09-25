@@ -308,7 +308,7 @@ func _on_area_body_entered(body):
 func _on_agro_body_entered(body):
 	if !Global.GAMEOVER:
 		if !hostile:
-			if !dead and blowed <= 0 and !sleep:
+			if !dead and blowed <= 0 and !sleep and killing <= 0:
 				Global.play_sound(Global.EnemyEaterAlertedSFX)
 				current_target = body
 				hostile = true
