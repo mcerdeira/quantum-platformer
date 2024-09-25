@@ -282,9 +282,9 @@ force_tile = 1
 [node name="moving_plat" parent="." instance=ExtResource("20_khxhp")]
 z_index = 1000
 z_as_relative = false
-position = Vector2(210, 191)
+position = Vector2(210, 182)
 
 [node name="moving_plat2" parent="." instance=ExtResource("20_khxhp")]
 z_index = 1000
 z_as_relative = false
-position = Vector2(690, 191)
+position = Vector2(690, 86)

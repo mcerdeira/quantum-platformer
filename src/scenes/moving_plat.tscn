@@ -1,8 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccrniksfhd6lb"]
+[gd_scene load_steps=12 format=3 uid="uid://ccrniksfhd6lb"]
 
 [ext_resource type="Script" path="res://scenes/moving_plat.gd" id="1_cwmde"]
 [ext_resource type="Script" path="res://scenes/moving_platform.gd" id="1_y82u2"]
+[ext_resource type="Script" path="res://scenes/area_jump.gd" id="3_aqe71"]
 [ext_resource type="Texture2D" uid="uid://c286brcfcywi4" path="res://sprites/cloud_block_spr_0.png" id="3_xw1ld"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hwjf2"]
+size = Vector2(88, 10)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7rqct"]
 animations = [{
@@ -63,6 +67,26 @@ _data = {
 "new_animation": SubResource("Animation_jyy2v")
 }
 
+[sub_resource type="Animation" id="Animation_yyjow"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("plat/sprites:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.5), Vector2(1, 1.3), Vector2(1, 0.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6eaj1"]
+_data = {
+"new_animation": SubResource("Animation_yyjow")
+}
+
 [node name="moving_plat" type="Node2D"]
 script = ExtResource("1_y82u2")
 
@@ -71,15 +95,25 @@ collision_layer = 33
 collision_mask = 33
 script = ExtResource("1_cwmde")
 
-[node name="sprite" type="AnimatedSprite2D" parent="plat"]
+[node name="area_jump" type="Area2D" parent="plat"]
+script = ExtResource("3_aqe71")
+
+[node name="collider" type="CollisionShape2D" parent="plat/area_jump"]
+position = Vector2(0, -21)
+shape = SubResource("RectangleShape2D_hwjf2")
+
+[node name="sprites" type="Node2D" parent="plat"]
 position = Vector2(-32, 0)
+
+[node name="sprite" type="AnimatedSprite2D" parent="plat/sprites"]
 sprite_frames = SubResource("SpriteFrames_7rqct")
 
-[node name="sprite2" type="AnimatedSprite2D" parent="plat"]
-sprite_frames = SubResource("SpriteFrames_7rqct")
-
-[node name="sprite3" type="AnimatedSprite2D" parent="plat"]
+[node name="sprite2" type="AnimatedSprite2D" parent="plat/sprites"]
 position = Vector2(32, 0)
+sprite_frames = SubResource("SpriteFrames_7rqct")
+
+[node name="sprite3" type="AnimatedSprite2D" parent="plat/sprites"]
+position = Vector2(64, 0)
 sprite_frames = SubResource("SpriteFrames_7rqct")
 
 [node name="collision" type="CollisionShape2D" parent="plat"]
@@ -90,6 +124,13 @@ libraries = {
 "": SubResource("AnimationLibrary_u335w")
 }
 autoplay = "new_animation"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="plat"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_6eaj1")
+}
+speed_scale = 5.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(320, 0)

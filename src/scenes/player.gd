@@ -100,10 +100,14 @@ func show_message_demo():
 	$display.visible = true
 	$display/back/lbl_item.text = "Hasta aqui la demo.\n¡Gracias por jugar!!"
 	
-func show_message_custom(_msg):
+func show_message_custom(_msg, override_time = null):
 	$display.visible = true
 	$display/back/lbl_item.text = _msg
-	await get_tree().create_timer(message_timeout).timeout
+	var timeout = message_timeout
+	if override_time:
+		timeout = override_time
+	
+	await get_tree().create_timer(timeout).timeout
 	$display.visible = false 
 	
 func show_message_death():
@@ -640,6 +644,7 @@ func kill_fire(tt_total = null):
 	if fire_obj == null or !is_instance_valid(fire_obj):
 		Global.play_sound(Global.LavaFallSFX)
 		Global.emit(global_position, 10)
+		show_message_custom("¡¡AHH!! ¡¡SACUDIME!!!", 2.1)
 		var parent = level_parent
 		var p = fires.instantiate()
 		if tt_total != null:

@@ -309,7 +309,6 @@ _data = {
 script = ExtResource("1_tvtda")
 
 [node name="GlobalCamera" type="Camera2D" parent="."]
-position = Vector2(-436, -58)
 anchor_mode = 0
 enabled = false
 zoom = Vector2(0.2, 0.2)
