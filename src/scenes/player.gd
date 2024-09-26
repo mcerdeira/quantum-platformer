@@ -307,6 +307,21 @@ func camera_limits():
 			
 		if $Camera2D.global_position.y > 2450:
 			$Camera2D.global_position.y = 2450
+			
+func check_shoot_released(delta):
+	var shoot_released = Input.is_action_just_released("shoot")	
+		
+	if !dead and shoot_mode and (shoot_released or blowed):
+		if !Global.gunz_equiped[Global.gunz_index].pasive:
+			if Global.slots_stock[Global.gunz_index] > 0:
+				idle_play = idle_play_total
+				Engine.time_scale = 1.0
+				destroy_trayectory()
+				shoot_mode = false
+				shoot(delta)
+				Global.remove_item()
+				await get_tree().create_timer(0.3).timeout
+				#$gun_sprite.visible = true			
 
 func process_player(delta):
 	moving = false
@@ -325,6 +340,7 @@ func process_player(delta):
 		$sprite_eyes.animation = $sprite.animation
 		$lbl_action.visible = false
 		idle_play = idle_play_total
+		check_shoot_released(delta)
 		return
 	elif blowed <= 0 and $sprite.animation == "stunned":
 		$sprite.animation = idle_animation
@@ -357,17 +373,7 @@ func process_player(delta):
 				update_trayectory(delta)
 				shoot_mode = true
 		
-	if !dead and shoot_mode and Input.is_action_just_released("shoot"):
-		if !Global.gunz_equiped[Global.gunz_index].pasive:
-			if Global.slots_stock[Global.gunz_index] > 0:
-				idle_play = idle_play_total
-				Engine.time_scale = 1.0
-				destroy_trayectory()
-				shoot_mode = false
-				shoot(delta)
-				Global.remove_item()
-				await get_tree().create_timer(0.3).timeout
-				#$gun_sprite.visible = true
+	check_shoot_released(delta)
 		
 	if !dead and shoot_mode:
 		if Input.is_action_pressed("left") or Input.is_action_pressed("down"):

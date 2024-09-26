@@ -49,8 +49,9 @@ func is_on_floor_custom():
 	
 func _physics_process(delta):
 	if Engine.time_scale != 1.0:
+		if tween:
+			tween.pause()
 		return
-	
 	
 	speed = total_speed
 	
