@@ -1,12 +1,14 @@
 extends Node2D
 var focus_exit = false
+var paused = false
 
 func _ready():
+	paused = false
 	visible = false
 
 func _physics_process(delta):
 	if Global.CurrentState != Global.GameStates.TITLE and !Global.TunnelTerminalNumber:
-		if visible:
+		if paused:
 			if Input.is_action_just_pressed("left"):
 				$btn_salir.grab_focus()
 				focus_exit = true
@@ -42,9 +44,19 @@ func _on_btn_resumir_pressed():
 func pause_unpause():
 	$btn_resumir.grab_focus()
 	focus_exit = false
-	visible = !visible
-	if visible:
+	paused = !paused
+	if paused:
+		visible = true
+		$AnimationPlayer.play("new_animation")
+	else:
+		$AnimationPlayer.play_backwards("new_animation")
+		
+	if paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	get_tree().paused = visible
+	get_tree().paused = paused
+
+func _on_animation_player_animation_finished(anim_name):
+	if !paused:
+		visible = false 
