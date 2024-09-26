@@ -82,6 +82,7 @@ var PrisonerReleasedSFX = null
 var ExplodeRetroSFX = null
 var BigExplodeRetroSFX = null
 var PlayerHurtSFX = null
+var PauseSFX = null
 
 #CHEST ITEMS 
 var smoke_bomb = {
@@ -592,6 +593,7 @@ func load_sfx():
 	BigExplodeRetroSFX = load("res://sfx/big_explode_retro.wav")
 	ExplodeRetroSFX = load("res://sfx/explode_retro.wav")
 	PlayerHurtSFX = load("res://sfx/player_hurt.wav")
+	PauseSFX = load("res://sfx/pause_sfx.wav")
 	
 func init():
 	gunz_equiped = []
