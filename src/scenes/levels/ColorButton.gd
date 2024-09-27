@@ -5,14 +5,19 @@ func _ready():
 	show_button_color()
 
 func _on_red_body_entered(body):
-	if body.is_in_group("players") or body.is_in_group("interactuable"):
-		switch_button()
-		show_button_color()
+	if Global.SwitchColorActive == "blue":
+		if body.is_in_group("players") or body.is_in_group("interactuable"):
+			var options = {"pitch_scale": 1.5}
+			Global.play_sound(Global.ButtonSFX, options)
+			switch_button()
+			show_button_color()
 		
 func _on_blue_body_entered(body):
-	if body.is_in_group("players") or body.is_in_group("interactuable"):
-		switch_button()
-		show_button_color()
+	if Global.SwitchColorActive == "red":
+		if body.is_in_group("players") or body.is_in_group("interactuable"):
+			Global.play_sound(Global.ButtonSFX)
+			switch_button()
+			show_button_color()
 
 func switch_button():
 	var op_color = ""

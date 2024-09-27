@@ -176,7 +176,7 @@ script = ExtResource("12_iupwu")
 anchor_mode = 0
 
 [node name="Tunnel" parent="." instance=ExtResource("14_jklm0")]
-position = Vector2(580, 299)
+position = Vector2(569, 299)
 
 [node name="display" type="Node2D" parent="."]
 position = Vector2(582, 305)

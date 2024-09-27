@@ -263,13 +263,14 @@ func kill():
 	
 func kill_fire():
 	if fire_obj == null or !is_instance_valid(fire_obj):
-		Global.emit(global_position, 10)
-		var parent = level_parent
-		var p = fires.instantiate()
-		p.global_position = global_position
-		p.kill_me = self
-		parent.add_child(p)
-		fire_obj = p
+		if level_parent != null:
+			Global.emit(global_position, 10)
+			var parent = level_parent
+			var p = fires.instantiate()
+			p.global_position = global_position
+			p.kill_me = self
+			parent.add_child(p)
+			fire_obj = p
 	
 func dead_fire():
 	dead = true

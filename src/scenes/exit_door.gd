@@ -29,6 +29,10 @@ func assign(_terminal_number):
 func open():
 	closed = false
 	$sprite.frame = 1
+	if gotoBOSS:
+		var options = {"pitch_scale": 0.7}
+		Global.play_sound(Global.DoorOpensSFX, options)
+		Global.shaker_obj.shake(15, 3)
 
 func _on_body_entered(body):
 	if !closed and body.is_in_group("players"):

@@ -253,6 +253,7 @@ func _physics_process(delta):
 	if blowed > 0:
 		blowed -= 1 * delta
 		if blowed <= 0:
+			blowed = 0
 			$stars_stunned.visible = false
 			$lbl_action.visible = false
 			velocity.x = lerp(velocity.x, 0.0, 0.1)
@@ -311,7 +312,7 @@ func camera_limits():
 func check_shoot_released(delta):
 	var shoot_released = Input.is_action_just_released("shoot")	
 		
-	if !dead and shoot_mode and (shoot_released or blowed):
+	if !dead and shoot_mode and (shoot_released or blowed > 0):
 		if !Global.gunz_equiped[Global.gunz_index].pasive:
 			if Global.slots_stock[Global.gunz_index] > 0:
 				idle_play = idle_play_total
@@ -654,18 +655,19 @@ func reset_to_last():
 
 func kill_fire(tt_total = null):
 	if fire_obj == null or !is_instance_valid(fire_obj):
-		Global.play_sound(Global.LavaFallSFX)
-		Global.emit(global_position, 10)
-		show_message_custom("¡¡AHH!! ¡¡SACUDIME!!!", 2.1)
-		var parent = level_parent
-		var p = fires.instantiate()
-		if tt_total != null:
-			p.tt_total = tt_total
-			
-		p.global_position = global_position
-		p.kill_me = self
-		parent.add_child(p)
-		fire_obj = p
+		if level_parent:
+			Global.play_sound(Global.LavaFallSFX)
+			Global.emit(global_position, 10)
+			show_message_custom("¡¡AHH!! ¡¡SACUDIME!!!", 2.1)
+			var parent = level_parent
+			var p = fires.instantiate()
+			if tt_total != null:
+				p.tt_total = tt_total
+				
+			p.global_position = global_position
+			p.kill_me = self
+			parent.add_child(p)
+			fire_obj = p
 
 func _on_walk_sound_timer_timeout():
 	if !dead and blowed <= 0:

@@ -72,7 +72,6 @@ func terminal_trad():
 func _on_txt_terminal_text_changed():
 	terminal_trad()
 
-
 func _on_btn_liberate_pressed():
 	var targets = get_tree().get_nodes_in_group("prisoners")
 	if targets.size() > 0:

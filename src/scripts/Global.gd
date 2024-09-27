@@ -22,6 +22,7 @@ var OverWorldFromGameOver = false
 var TunnelTerminalNumber = false
 var boss_bar = null
 
+var ButtonSFX = null
 var RetroTheme = null
 var MainTheme = null
 var MainThemeShort = null
@@ -41,6 +42,7 @@ var LavaFallSFX = null
 var DialogSFX = null
 var JumpSFX = null
 var WalkSFX = null
+var DoorOpensSFX = null
 var ClimbSFX = null
 var FallSFX = null
 var PlayerSpikedSFX = null
@@ -594,6 +596,8 @@ func load_sfx():
 	ExplodeRetroSFX = load("res://sfx/explode_retro.wav")
 	PlayerHurtSFX = load("res://sfx/player_hurt.wav")
 	PauseSFX = load("res://sfx/pause_sfx.wav")
+	ButtonSFX = load("res://sfx/button_sound.wav")
+	DoorOpensSFX = load("res://sfx/door_opens.wav")
 	
 func init():
 	gunz_equiped = []
