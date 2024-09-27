@@ -52,9 +52,9 @@ var resurrecting = 0
 var ghost_inst = null
 
 var last_input_time = 0.0
-var shake_count = 0
-var shake_timeout = 0.9
-var required_shakes = 3
+var shake_count = 0.9
+var shake_timeout = 1.1
+var required_shakes = 2
 var pending_reactivate = 0
 
 var last_safe_position = null
@@ -376,12 +376,18 @@ func process_player(delta):
 	check_shoot_released(delta)
 		
 	if !dead and shoot_mode:
-		if Input.is_action_pressed("left") or Input.is_action_pressed("down"):
-			$gun_sprite.rotation -= 10 * delta
+		if Input.is_action_pressed("down"):
+			if direction == "left":
+				$gun_sprite.rotation -= 10 * delta
+			else:
+				$gun_sprite.rotation += 10 * delta
 			idle_play = idle_play_total
 			update_trayectory(delta)
-		elif Input.is_action_pressed("right") or Input.is_action_pressed("up"):
-			$gun_sprite.rotation += 10 * delta
+		elif Input.is_action_pressed("up"):
+			if direction == "left":
+				$gun_sprite.rotation += 10 * delta
+			else:
+				$gun_sprite.rotation -= 10 * delta
 			idle_play = idle_play_total
 			update_trayectory(delta)
 	
@@ -464,22 +470,22 @@ func process_player(delta):
 		
 		if !shoot_mode and Input.is_action_pressed("left"):
 			idle_play = idle_play_total
+			check_shake(input_time)
 			direction = "left"
 			moving = true
 			idle_time = 0
 			velocity.x = lerp(velocity.x, -speed, 0.7)
-			check_shake(input_time)
 			$sprite.flip_h = true
 			$sprite_eyes.flip_h = $sprite.flip_h
 			$gun_sprite.rotation = initial_rotation - 45
 			
 		elif !shoot_mode and Input.is_action_pressed("right"):
 			idle_play = idle_play_total
+			check_shake(input_time)
 			direction = "right"
 			moving = true
 			idle_time = 0
 			velocity.x = lerp(velocity.x, speed, 0.7)
-			check_shake(input_time)
 			$sprite.flip_h = false
 			$sprite_eyes.flip_h = $sprite.flip_h
 			$gun_sprite.rotation = initial_rotation
@@ -543,10 +549,10 @@ func check_shake(current_time):
 			shake_count += 1
 		else:
 			shake_count = 0
-
+		
 		last_input_time = current_time
 		
-		if shake_count >= required_shakes:
+		if shake_count >= required_shakes or (shake_count == 1 and (randi() % 10 == 0)):
 			if enemy_attached:
 				enemy_attached.super_jump()
 				enemy_attached = null
