@@ -43,6 +43,14 @@ IN_PROGRESS:
 
 BUGS/Ajustes:
 
+FIJA:
+- Cortar salto
+- Saltar en los enemigos
+- Cofres más visibles
+- Cofres no muestran el cartel (relacionado al clon?)
+- Parte que no se puede salir saltando
+- Dificultad un poco mucho
+
 Features:
 - Cascadas (ala Minecraft) que interactuen con bombas y enemigos
 - Momento: el nivel empieza a explotar/irse para arriba, se puede hacer con objetos que simulen ser tiles pero no lo son
