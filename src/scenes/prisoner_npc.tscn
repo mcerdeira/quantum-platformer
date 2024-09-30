@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://buyi5kind5agu" path="res://sprites/horu/images/pet3.png" id="13_507yq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n3es1"]
-size = Vector2(52, 52)
+size = Vector2(52, 286)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t7d8p"]
 animations = [{
@@ -165,7 +165,7 @@ position = Vector2(480, 351)
 script = ExtResource("1_1mpam")
 
 [node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2(1, -24)
+position = Vector2(1, -141)
 shape = SubResource("RectangleShape2D_n3es1")
 
 [node name="Computer" type="AnimatedSprite2D" parent="."]

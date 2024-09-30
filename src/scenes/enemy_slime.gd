@@ -118,7 +118,7 @@ func process_player(delta):
 		
 			if killing <= 0:
 				if moving:
-					if $sprite.animation == "idle":
+					if $sprite.animation != "walking":
 						$sprite.animation = "walking"
 					$sprite.play()
 				else:

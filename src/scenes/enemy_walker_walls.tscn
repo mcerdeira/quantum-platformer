@@ -200,7 +200,7 @@ script = ExtResource("1_53he0")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(16, -16)
 sprite_frames = SubResource("SpriteFrames_0vk2b")
-animation = &"stunned"
+animation = &"idle"
 
 [node name="eyes" type="AnimatedSprite2D" parent="sprite"]
 sprite_frames = SubResource("SpriteFrames_efk2u")

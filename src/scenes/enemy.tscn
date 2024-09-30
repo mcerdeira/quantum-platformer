@@ -209,18 +209,20 @@ shape = SubResource("RectangleShape2D_kwrcj")
 [node name="Vision" type="Sprite2D" parent="Agro"]
 modulate = Color(1, 1, 1, 0.129412)
 position = Vector2(9, -13)
+scale = Vector2(0.534, 1)
 texture = ExtResource("7_2aecm")
 offset = Vector2(250, 0)
 
 [node name="PointLight2D" type="PointLight2D" parent="Agro/Vision"]
-position = Vector2(261, 1)
+position = Vector2(255.5, 1)
+scale = Vector2(0.978, 1)
 energy = 25.0
 shadow_enabled = true
 texture = ExtResource("7_2aecm")
 
 [node name="RayCast2D" type="RayCast2D" parent="Agro"]
 position = Vector2(25, 0)
-target_position = Vector2(484, 0)
+target_position = Vector2(242, 0)
 collision_mask = 524288
 collide_with_areas = true
 script = ExtResource("5_ermrk")

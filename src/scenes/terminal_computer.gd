@@ -354,7 +354,7 @@ func KeyUpDown(event_keycode):
 				if numeric_param > Global.Gold:
 					numeric_param = Global.Gold
 				if numeric_param < 0:
-					numeric_param = 0	
+					numeric_param = Global.Gold
 				
 				command = terminal_commands[terminal_number][commands_idx].name
 				command += cursor + str(numeric_param)
@@ -406,7 +406,7 @@ func calc_progress():
 		var percent = current * 100 / total
 		var count = percent * PB_LEN / 100
 		var rest =  PB_NO.repeat(PB_LEN - count)
-		return "NIVEL: " + str(Global.CurrentLevel + 1) + " [" + PB_YES.repeat(count) + rest + "]"
+		return "NIVEL: " + str(Global.CurrentLevel + 1) + "\n[" + PB_YES.repeat(count) + rest + "]"
 		
 func calc_progress_percent():
 	if Global.CurrentLevel == Global.GOLD_PER_LEVEL.size() - 1:
@@ -529,7 +529,7 @@ func parser(_cmd, gamepad):
 						for i in range(Global.perks_equiped.size()):
 							if i > 0:
 								if result[i] == null and Global.perks_equiped[i] != null:
-									current_message += "\t. " + Global.perks_equiped[i].name.to_upper() + "\n"
+									current_message += "\t. " + Global.perks_equiped[i].friendly_name.to_upper() + "\n"
 									current_message += "\t\t" + Global.perks_equiped[i].description + "\n"
 					
 					await get_tree().create_timer(3.2).timeout

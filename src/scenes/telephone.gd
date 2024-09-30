@@ -44,6 +44,10 @@ func _physics_process(delta):
 			current_message = current_message.substr(1, current_message.length() - 1)
 			if !current_message:
 				Global.kill(dialog_sfx)
+				Global.player_obj.dont_camera = false
+				active = false
+				await get_tree().create_timer(1.3).timeout
+				$back.visible = false
 	
 	if active and !opened:
 		if Input.is_action_just_pressed("up"):
@@ -73,10 +77,7 @@ func _on_body_entered(body):
 
 func _on_body_exited(body):
 	if body.is_in_group("players") and !body.is_in_group("prisoners"):
-		body.dont_camera = false
-		$back.visible = false
-		active = false
-		body.dont_camera = false
-		if opened:
-			current_message = ""
-			Global.kill(dialog_sfx)
+		if !opened or (opened and current_message == ""):
+			body.dont_camera = false
+			$back.visible = false
+			active = false

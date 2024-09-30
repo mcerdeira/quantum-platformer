@@ -208,8 +208,8 @@ position = Vector2(325, 240)
 position = Vector2(898, 208)
 
 [node name="enemy_marker" parent="." instance=ExtResource("9_da3di")]
-position = Vector2(538, 272)
-selected_enemy = "enemy_walker_walls"
+position = Vector2(560, 272)
+selected_enemy = "enemy_flyer"
 by_chance = false
 
 [node name="enemy_marker2" parent="." instance=ExtResource("9_da3di")]

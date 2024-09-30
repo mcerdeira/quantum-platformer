@@ -12,14 +12,14 @@ func _ready():
 	$display.visible = false
 	if !Global.artifactPicked:
 		if !Global.ARTIFACT_PER_LEVEL[Global.TerminalNumber]:
-			if randi() % 15 == 0:
+			if randi() % 25 == 0:
 				Global.artifactPicked = true
 				has_artifact = true
 				
 	if has_artifact:
 		$display/back/lbl_item.text = "== ITEM DESCONOCIDO =="
 		$display/back/sprite.animation = "unknown"
-	elif randi() % 3 == 0:
+	elif randi() % 2 == 0:
 		current_item = Global.pick_random(Global.gunz_objs_prob)
 		if current_item.name == "bomb":
 			QTY = Global.pick_random([2, 3, 5])

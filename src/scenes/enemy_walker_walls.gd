@@ -51,7 +51,12 @@ func _physics_process(delta):
 	if Engine.time_scale != 1.0:
 		if tween:
 			tween.pause()
+			var pep : Tween
 		return
+	else:
+		if tween:
+			if !tween.is_running():
+				tween.play()
 	
 	speed = total_speed
 	
@@ -248,7 +253,7 @@ func process_player(delta):
 
 	if killing <= 0:
 		if moving:
-			if $sprite.animation == "idle":
+			if $sprite.animation != "walking":
 				$sprite.animation = "walking"
 			$sprite.play()
 			$sprite/eyes.play()

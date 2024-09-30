@@ -71,6 +71,7 @@ func process_player(delta):
 	if blowed > 0:
 		$stars_stunned.visible = true
 		$sprite.animation = "stunned" + spr_sufix
+		$sprite/eyes.animation = $sprite.animation.replace(spr_sufix, "")
 		return
 		
 	if Global.GAMEOVER:
@@ -125,7 +126,7 @@ func process_player(delta):
 	
 	if killing <= 0:
 		if moving:
-			if $sprite.animation == "idle" + spr_sufix:
+			if $sprite.animation != "walking" + spr_sufix:
 				$sprite.animation = "walking" + spr_sufix
 			$sprite.play()
 			$sprite/eyes.play()

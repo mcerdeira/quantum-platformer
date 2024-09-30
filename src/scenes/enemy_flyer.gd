@@ -134,7 +134,7 @@ func process_player(delta):
 	
 	if killing <= 0:
 		if moving:
-			if $sprite.animation == "idle" + spr_sufix:
+			if $sprite.animation != "walking" + spr_sufix:
 				$sprite.animation = "walking" + spr_sufix
 			$sprite.play()
 			$sprite/Nose.play()
@@ -183,6 +183,9 @@ func kill_fire():
 
 func dead_fire():
 	dead = true
+	$wing2.visible = false
+	$wing1.visible = false
+	$sprite/Nose.visible = false
 	$sprite.animation = "dead_fire" + spr_sufix
 	$sprite.play()
 	set_collision_layer_value(5, true)

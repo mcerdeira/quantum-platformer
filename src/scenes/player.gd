@@ -2,7 +2,7 @@ extends CharacterBody2D
 var gravity = 10.0
 var speed_original = 215.0
 var speed = speed_original
-var jump_speed_original = -300.0
+var jump_speed_original = -350.0
 var jump_speed = jump_speed_original
 
 @export var direction = "right"
@@ -60,6 +60,7 @@ var pending_reactivate = 0
 var last_safe_position = null
 var enemy_attached = null
 var message_timeout = 4.5
+var jumping = false
 
 func calc_perks():
 	double_jump = Global.find_my_item("wings")
@@ -83,13 +84,12 @@ func _ready():
 	$Cosito.play()
 	$Cosito.visible = false
 	LineTrayectory = $Line2D
-	Global.shaker_obj.camera = $Camera2D
 	if !iam_clone:
+		Global.shaker_obj.camera = $Camera2D
 		Global.player_obj = self
 		Global.Fader.fade_out()
 	if invisible:
 		set_invisible(true)
-		
 	
 func hide_eyes():
 	#Ocultar los ojos cuando estamos entrando a una puerta
@@ -201,9 +201,11 @@ func _physics_process(delta):
 			set_collision_mask_value(2, false)
 	
 	if dead and is_on_stairs:
+		jumping = false
 		velocity = Vector2.ZERO
 	
 	if dead_fall:
+		jumping = false
 		velocity = Vector2.ZERO
 		return
 		
@@ -236,6 +238,7 @@ func _physics_process(delta):
 			else:
 				if !first_fall:
 					Global.emit(global_position, 1)
+					jumping = false
 					Global.play_sound(Global.FallSFX)
 				else:
 					first_fall = false
@@ -252,6 +255,9 @@ func _physics_process(delta):
 			
 	if blowed > 0:
 		blowed -= 1 * delta
+		if fire_obj != null and is_instance_valid(fire_obj):
+			fire_obj.extinguish_fire()
+			
 		if blowed <= 0:
 			blowed = 0
 			$stars_stunned.visible = false
@@ -395,10 +401,15 @@ func process_player(delta):
 	if !dead and !shoot_mode and Input.is_action_just_pressed("jump"):
 		idle_play = idle_play_total
 		if is_on_stairs and grabbed:
+			jumping = false
 			velocity.y = -speed * 1.1
 			Global.emit(global_position, 2)
 		else:
 			jump(delta)
+	
+	if jumping and Input.is_action_just_released("jump"):
+		jumping = false
+		velocity.y = velocity.y / 2
 					
 	camera_limits()
 	
@@ -583,13 +594,26 @@ func jump(_delta):
 			buff = 0
 			Global.emit(global_position, 2)
 			Global.play_sound(Global.JumpSFX)
+			jumping = true
 			velocity.y = jump_speed
+			
+func jump_forced():
+	if !dead:
+		buff = 0
+		Global.emit(global_position, 2)
+		velocity.y = jump_speed
 			
 func super_jump():
 	if !dead:
 		buff = 0
 		Global.emit(global_position, 2)
 		velocity.y = jump_speed * 2
+		
+func mini_jump():
+	if !dead:
+		buff = 0
+		Global.emit(global_position, 2)
+		velocity.y = jump_speed / 2
 
 func do_action(_delta):
 	if !dead:
@@ -660,7 +684,8 @@ func kill_fire(tt_total = null):
 		if level_parent:
 			Global.play_sound(Global.LavaFallSFX)
 			Global.emit(global_position, 10)
-			show_message_custom("¡¡AHH!! ¡¡SACUDIME!!!", 2.1)
+			if blowed <= 0:
+				show_message_custom("¡¡AHH!! ¡¡SACUDIME!!!", 2.1)
 			var parent = level_parent
 			var p = fires.instantiate()
 			if tt_total != null:

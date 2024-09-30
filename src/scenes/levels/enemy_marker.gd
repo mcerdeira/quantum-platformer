@@ -24,7 +24,7 @@ func _process(_delta):
 		if selected_enemy or rand == 0: 
 			var Main = get_node("/root/Main")
 			if !selected_enemy:
-				eobj = Global.pick_random([enemy, enemy_walker])
+				eobj = Global.pick_random([enemy, enemy_walker, enemy_flyer])
 			else:
 				if selected_enemy == "enemy_walker_walls":
 					eobj = enemy_walker_walls

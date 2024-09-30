@@ -53,13 +53,16 @@ func _on_btn_nextscene_pressed():
 		Global.scene_next(int($txt_terminal.text), $chk_boss.button_pressed)
 
 func _on_btn_reset_pressed():
+	Global.ARTIFACT_PER_LEVEL = [false, false, false, false, false]
+	Global.perks_equiped = [null, null, null, null, null, null, null]
 	Global.CurrentLevel = 0
 	Global.Gold = 0
 	Global.GoldDonation = 0
 	Global.first_time = true
 	Global.FirstDeath = true
 	Global.erase_game()
-	Global.CurrentState = Global.GameStates.HOME
+	Global.init_game()
+	Global.CurrentState = Global.GameStates.TITLE
 	Global.Fader.fade_in()
 	get_tree().reload_current_scene()
 

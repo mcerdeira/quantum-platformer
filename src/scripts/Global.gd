@@ -193,7 +193,8 @@ var map = {
 var double_jump = {
 	"name": "wings",
 	"dialog": "EPA!",
-	"description": "¡Volar!",
+	"friendly_name": "Alas",
+	"description": "¡Volar! (casi)",
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
@@ -527,12 +528,28 @@ func load_game():
 					Global.ARTIFACT_PER_LEVEL = a_per_level
 				if first_death != null:
 					Global.FirstDeath = first_death
-
-func _ready():
+	else:
+		Global.FirstState =  GameStates.HOME
+		Global.first_time = true
+		Global.retro_game_high_score = 9000
+		Global.LASERS = true
+		Global.GHOSTS = true
+		Global.WATERFALLS = true
+		Global.FIREBALLS = true
+		Global.Gold = 0
+		Global.CurrentLevel = 0
+		Global.GoldDonation = 0
+		Global.ARTIFACT_PER_LEVEL = [false, false, false, false, false]
+		Global.FirstDeath = true
+					
+func init_game():
 	load_sfx()
 	load_game()
 	set_current_perks()
 	init()
+
+func _ready():
+	init_game()
 	
 func load_sfx():
 	MainTheme = load("res://music/main_theme.mp3")

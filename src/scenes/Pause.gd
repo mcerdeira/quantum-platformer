@@ -65,7 +65,7 @@ func pause_unpause():
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		
-	await get_tree().create_timer(0.5).timeout	
+	await get_tree().create_timer(0.5).timeout
 	get_tree().paused = paused
 
 func _on_animation_player_animation_finished(anim_name):
