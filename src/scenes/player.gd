@@ -651,6 +651,8 @@ func dead_fire():
 func reset_to_last():
 	Global.play_sound(Global.PlayerHurtSFX)
 	global_position = last_safe_position
+	blowed = 1.1
+	velocity = Vector2.ZERO
 	$AnimationPlayer.play("reset_position")
 
 func kill_fire(tt_total = null):
