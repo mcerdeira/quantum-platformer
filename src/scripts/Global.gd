@@ -440,6 +440,7 @@ func get_item(current_item, qty = 1):
 				break;
 				
 		if !found:
+			Global.gunz_equiped.append(none)
 			for i in range(Global.gunz_equiped.size()):  #Try to find empty slot 
 				if Global.gunz_equiped[i].name == "none":
 					Global.gunz_equiped[i] = current_item
@@ -647,7 +648,7 @@ func init():
 		gunz_objs_prob.append(coin)
 		gunz_objs_prob.append(coin)
 	
-	gunz_equiped = [none, none, none, none, none, none, none]
+	gunz_equiped = []
 	
 	#DEBUG
 	#slots_stock = [2, 0]
@@ -656,7 +657,7 @@ func init():
 	randomize()
 	
 func reset_gunz():
-	gunz_equiped = [none, none, none, none, none, none, none]
+	gunz_equiped = []
 	
 func pick_random(container):
 	if typeof(container) == TYPE_DICTIONARY:

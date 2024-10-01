@@ -38,7 +38,6 @@
 ==================================================================================================================
 
 IN_PROGRESS:
-- Saltar en los enemigos
 
 BUGS/Ajustes:
 
@@ -84,6 +83,7 @@ Features:
 - Decoraciones: La sangre debería desaparecer al tocar la lava
 
 --------------------------------- DONE ---------------------------------
+- Saltar en los enemigos
 - SFX
 - Musica
 - Cortar salto

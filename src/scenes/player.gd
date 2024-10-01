@@ -336,6 +336,37 @@ func check_shoot_released(delta):
 				await get_tree().create_timer(0.3).timeout
 				$collider.set_deferred("disabled", false)
 				gravity = gravity_total
+			
+func inv_move_right():
+	if Global.gunz_equiped.size() > 0:
+		var last_element = Global.gunz_equiped[Global.gunz_equiped.size() - 1]
+		for i in range(Global.gunz_equiped.size() - 1, 0, -1):
+			Global.gunz_equiped[i] = Global.gunz_equiped[i - 1]
+		Global.gunz_equiped[0] = last_element
+		#for i in range(0, Global.gunz_equiped.size()):
+			#if Global.gunz_equiped[i].name == "muffin":
+				#print(Global.gunz_equiped[i].name + "<")
+			#else:
+				#print(Global.gunz_equiped[i].name)
+		#print("-----------")
+		
+	
+func inv_move_left():
+	if Global.gunz_equiped.size() > 0:
+		var first_element = Global.gunz_equiped[0]
+		for i in range(1, Global.gunz_equiped.size()):
+			Global.gunz_equiped[i - 1] = Global.gunz_equiped[i]
+		Global.gunz_equiped[Global.gunz_equiped.size() - 1] = first_element
+		#for i in range(0, Global.gunz_equiped.size()):
+			#if Global.gunz_equiped[i].name == "muffin":
+				#print(Global.gunz_equiped[i].name + "<")
+			#else:
+				#print(Global.gunz_equiped[i].name)
+		#print("-----------")
+		
+func refresh_item():
+	#Solo para el cheats
+	$Selector.refresh_item()
 
 func process_player(delta):
 	moving = false
@@ -365,21 +396,21 @@ func process_player(delta):
 		fire_obj.z_index = z_index + 1
 		
 	if !dead and !iam_clone:
-		if Input.is_action_just_pressed("scroll_u"):
+		if Input.is_action_just_pressed("scroll_L"):
+			$Selector.modulate.a = 1
 			selector_visibility_ttl = 2
-			Global.gunz_index += 1
-			if Global.gunz_index > Global.gunz_index_max:
-				Global.gunz_index = 0
+			Global.gunz_index = 0
+			inv_move_left()
 			
 			$Cosito.visible = false
 			$Selector.visible = true
 			$Selector.refresh_item()
 			get_parent().setHUD(false, false)
-		if Input.is_action_just_pressed("scroll_d"):
+		if Input.is_action_just_pressed("scroll_R"):
+			$Selector.modulate.a = 1
 			selector_visibility_ttl = 2
-			Global.gunz_index -= 1
-			if Global.gunz_index < 0:
-				Global.gunz_index = Global.gunz_index_max
+			Global.gunz_index = 0
+			inv_move_right()
 				
 			$Cosito.visible = false
 			$Selector.visible = true

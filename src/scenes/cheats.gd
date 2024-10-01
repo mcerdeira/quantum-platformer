@@ -23,24 +23,31 @@ func _on_bnt_coin_pressed():
 
 func _on_bnt_muffin_pressed():
 	Global.get_item(Global.muffin)
+	Global.player_obj.refresh_item()
 
 func _on_bnt_clone_pressed():
 	Global.get_item(Global.clone)
+	Global.player_obj.refresh_item()
 
 func _on_bnt_teleport_pressed():
 	Global.get_item(Global.teleport)
+	Global.player_obj.refresh_item()
 
 func _on_bnt_bomb_pressed():
 	Global.get_item(Global.bomb)
+	Global.player_obj.refresh_item()
 
 func _on_bnt_smoke_pressed():
 	Global.get_item(Global.smoke_bomb)
+	Global.player_obj.refresh_item()
 
 func _on_bnt_plant_pressed():
 	Global.get_item(Global.plant)
+	Global.player_obj.refresh_item()
 
 func _on_bnt_spring_pressed():
 	Global.get_item(Global.spring)
+	Global.player_obj.refresh_item()
 
 func _on_bnt_level_pressed():
 	Global.get_item(Global.coin, 10)

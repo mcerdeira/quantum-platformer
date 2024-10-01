@@ -253,9 +253,10 @@ func setHUD(only_gold = false, first_time = false):
 	if only_gold:
 		return
 		
-	var slot = get_node("CanvasLayer/Control/gun_slot0")
-	slot.animation = Global.gunz_equiped[Global.gunz_index].name
-	calc_selected(first_time)
+	if Global.gunz_equiped.size() > 0:
+		var slot = get_node("CanvasLayer/Control/gun_slot0")
+		slot.animation = Global.gunz_equiped[Global.gunz_index ].name
+		calc_selected(first_time)
 	
 func calc_selected(first_time = false):
 	var sel = get_node("CanvasLayer/Control/selected0")

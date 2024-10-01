@@ -1,0 +1,27 @@
+Hola! Soy Martín, el unico dev del juego GRUTA, un plataformero con toques de puzzles y roguelike, inspirado en titulos
+como Spelunky, FEZ, You Have to win the Game y otros.
+El juego hoy mismo tiene 1 nivel/zona (procedural) y el boss del nivel, que fue lo que se llegó a cerrar para el evento, a modo de demo.
+Idealmente no todos los niveles/zonas van a ser aleatorios, como así tampoco las mecánicas van a ser siempre 100% de un plataformero, más 
+allá de que ese sea el core del juego, me voy a permitir jugar con algún otro género.
+
+La idea (como en todo devlog) es ir compartiendo por acá avances del mismo, a la vez de comentar detalles de la implementación
+de algunos features en particular, por ahora un poco de data:
+
+Herramientas que uso:
+- Godot 4
+- Aseprite
+- Audacity
+- Bfxr 
+
+En el roadmap lo que se viene es:
+- Correcciones y ajustes en base al playtesting del evento FIJA
+- Implementación de las 4 zonas restantes
+- Implementación de los 4 bosses
+- Final/finales(?)
+
+Dejo una playlist donde se puede ver un poco el progreso hasta la versión que llevé al evento: 
+https://www.youtube.com/watch?v=yuTn9EX00Aw&list=PLS40q5guUOZMJrMcF6qVVtcjlPsrWTFEk
+
+Iré actualizando en breve!
+
+Saludos, Martin.
