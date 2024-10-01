@@ -253,28 +253,23 @@ func setHUD(only_gold = false, first_time = false):
 	if only_gold:
 		return
 		
-	for i in range(Global.gunz_equiped.size()):
-		var slot = get_node("CanvasLayer/Control/gun_slot" + str(i))
-		slot.animation = Global.gunz_equiped[i].name
+	var slot = get_node("CanvasLayer/Control/gun_slot0")
+	slot.animation = Global.gunz_equiped[Global.gunz_index].name
 	calc_selected(first_time)
 	
 func calc_selected(first_time = false):
-	for i in range(Global.gunz_equiped.size()):
-		var sel = get_node("CanvasLayer/Control/selected" + str(i))
-		sel.visible = false
-		var lbl = get_node("CanvasLayer/Control/gun_slot" + str(i) + "/lbl_stock")
-		if !Global.gunz_equiped[i].pasive and Global.gunz_equiped[i].name != "none":
-			lbl.text = "x" + str(Global.slots_stock[i])
-		else:
-			lbl.text = ""
-		
-		if i == Global.gunz_index:
-			sel.visible = true
-			if !first_time:
-				var count = 3
-				for ei in range(count):
-					var p = particle.instantiate()
-					sel.add_child(p)
+	var sel = get_node("CanvasLayer/Control/selected0")
+	var lbl = get_node("CanvasLayer/Control/gun_slot0/lbl_stock")
+	if !Global.gunz_equiped[Global.gunz_index].pasive and Global.gunz_equiped[Global.gunz_index].name != "none":
+		lbl.text = "x" + str(Global.slots_stock[Global.gunz_index])
+	else:
+		lbl.text = ""
+	
+	if !first_time:
+		var count = 3
+		for ei in range(count):
+			var p = particle.instantiate()
+			sel.add_child(p)
 
 func _physics_process(delta):
 	$CanvasLayer/Control/lbl_gameover.visible = Global.GAMEOVER

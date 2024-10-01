@@ -1,4 +1,5 @@
 extends CharacterBody2D
+var gravity_total = 10.0
 var gravity = 10.0
 var speed_original = 215.0
 var speed = speed_original
@@ -41,6 +42,7 @@ var gravityon = true
 var cameralimits_on = true
 var terminal_mode = false
 var double_jumped = false
+var selector_visibility_ttl = 0
 #PERKS
 var double_jump = false
 var invisible = false
@@ -150,6 +152,10 @@ func _physics_process(delta):
 	else:
 		jump_speed = jump_speed_original
 		speed = speed_original
+		
+	if fire_obj and is_instance_valid(fire_obj):
+		if randi() % 10 == 0:
+			Global.emit(Vector2(global_position.x, global_position.y - 16), 3)
 	
 	if terminal_mode:
 		return
@@ -328,7 +334,8 @@ func check_shoot_released(delta):
 				shoot(delta)
 				Global.remove_item()
 				await get_tree().create_timer(0.3).timeout
-				#$gun_sprite.visible = true			
+				$collider.set_deferred("disabled", false)
+				gravity = gravity_total
 
 func process_player(delta):
 	moving = false
@@ -358,12 +365,35 @@ func process_player(delta):
 		fire_obj.z_index = z_index + 1
 		
 	if !dead and !iam_clone:
-		if Input.is_action_just_pressed("scroll"):
-			if Global.gunz_index == 0:
-				Global.gunz_index = 1
-			elif Global.gunz_index == 1:
+		if Input.is_action_just_pressed("scroll_u"):
+			selector_visibility_ttl = 2
+			Global.gunz_index += 1
+			if Global.gunz_index > Global.gunz_index_max:
 				Global.gunz_index = 0
-			get_parent().calc_selected()
+			
+			$Cosito.visible = false
+			$Selector.visible = true
+			$Selector.refresh_item()
+			get_parent().setHUD(false, false)
+		if Input.is_action_just_pressed("scroll_d"):
+			selector_visibility_ttl = 2
+			Global.gunz_index -= 1
+			if Global.gunz_index < 0:
+				Global.gunz_index = Global.gunz_index_max
+				
+			$Cosito.visible = false
+			$Selector.visible = true
+			$Selector.refresh_item()
+			get_parent().setHUD(false, false)
+			
+		if $Selector.visible and !Input.is_action_pressed("scroll_u") and !Input.is_action_pressed("scroll_d"):
+			selector_visibility_ttl -= 1 * delta
+			if selector_visibility_ttl <= 0:
+				$Selector.modulate.a -= 3 * delta
+				if $Selector.modulate.a <= 0:
+					$Cosito.visible = true
+					$Selector.visible = false
+					$Selector.modulate.a = 1
 						
 		if radar:
 			if Input.is_action_just_pressed("radar"):
@@ -375,6 +405,9 @@ func process_player(delta):
 	if !dead and Input.is_action_pressed("shoot"):
 		if !Global.gunz_equiped[Global.gunz_index].pasive:
 			if Global.slots_stock[Global.gunz_index] > 0:
+				$Selector.visible = false
+				$Cosito.visible = true
+				$Selector.modulate.a = 1
 				idle_play = idle_play_total
 				Engine.time_scale = 0.1
 				update_trayectory(delta)
@@ -383,6 +416,8 @@ func process_player(delta):
 	check_shoot_released(delta)
 		
 	if !dead and shoot_mode:
+		$collider.set_deferred("disabled", true)
+		gravity = 0.0
 		if Input.is_action_pressed("down"):
 			if direction == "left":
 				$gun_sprite.rotation -= 10 * delta

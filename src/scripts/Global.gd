@@ -239,7 +239,8 @@ var none = {
 var gunz_objs = []
 var gunz_objs_prob = []
 var gunz_equiped = []
-var slots_stock = [0, 0]
+var slots_stock = [0, 0, 0, 0, 0, 0, 0, 0]
+var gunz_index_max = 0
 var gunz_index = 0
 var main_camera = null
 var targets : Array = []
@@ -337,6 +338,7 @@ var FirstState : GameStates = GameStates.HOME
 
 func scene_next(terminal_number = -1, boss = false):
 	Global.gunz_index = 0
+	Global.gunz_index_max = 0
 	BOSS_ROOM = boss
 	Global.TerminalNumber = terminal_number
 	if Global.CurrentState == Global.GameStates.TITLE:
@@ -434,6 +436,7 @@ func get_item(current_item, qty = 1):
 			if Global.gunz_equiped[i].name == current_item.name:
 				found = true
 				slots_stock[i] += qty
+				Global.gunz_index_max = i
 				break;
 				
 		if !found:
@@ -442,11 +445,8 @@ func get_item(current_item, qty = 1):
 					Global.gunz_equiped[i] = current_item
 					found = true
 					slots_stock[i] = qty
+					Global.gunz_index_max = i
 					break;
-					
-		if !found: #If previus fails, override item to current selected
-			Global.gunz_equiped[Global.gunz_index] = current_item
-			slots_stock[Global.gunz_index] = 1
 			
 	var coin_o = (current_item.name == "coin")
 	Global.GizmoWatcher.setHUD(coin_o)
@@ -618,6 +618,7 @@ func load_sfx():
 	
 func init():
 	gunz_equiped = []
+	gunz_index_max = 0
 	gunz_index = 0
 	main_camera = null
 	targets = []
@@ -646,7 +647,7 @@ func init():
 		gunz_objs_prob.append(coin)
 		gunz_objs_prob.append(coin)
 	
-	gunz_equiped = [none, none]
+	gunz_equiped = [none, none, none, none, none, none, none]
 	
 	#DEBUG
 	#slots_stock = [2, 0]
@@ -655,7 +656,7 @@ func init():
 	randomize()
 	
 func reset_gunz():
-	gunz_equiped = [none, none]
+	gunz_equiped = [none, none, none, none, none, none, none]
 	
 func pick_random(container):
 	if typeof(container) == TYPE_DICTIONARY:

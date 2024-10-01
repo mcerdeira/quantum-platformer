@@ -472,26 +472,6 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(60, 18)
 texture = ExtResource("7_rtry5")
 
-[node name="gun_slot1" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
-position = Vector2(100, 18)
-sprite_frames = SubResource("SpriteFrames_yq7gw")
-animation = &"none"
-
-[node name="lbl_stock" type="Label" parent="CanvasLayer/Control/gun_slot1"]
-offset_left = -6.53807
-offset_top = 15.8462
-offset_right = 17.4619
-offset_bottom = 25.8462
-theme_override_colors/font_color = Color(0, 0.913725, 0.392157, 1)
-theme_override_fonts/font = ExtResource("7_2v1dk")
-theme_override_font_sizes/font_size = 8
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="selected1" type="Sprite2D" parent="CanvasLayer/Control"]
-position = Vector2(100, 18)
-texture = ExtResource("7_rtry5")
-
 [node name="perks1" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
 visible = false
 position = Vector2(380.461, 18)

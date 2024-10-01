@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://evskswf05b50"]
+[gd_scene load_steps=66 format=3 uid="uid://evskswf05b50"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_u3t4v"]
 [ext_resource type="Texture2D" uid="uid://capc1hdlw0gpl" path="res://sprites/horu/images/stars1.png" id="2_iinm7"]
@@ -43,6 +43,17 @@
 [ext_resource type="Texture2D" uid="uid://bx020p5ppko2a" path="res://sprites/horu/images/player_face_idle_spr_17.png" id="34_7tp0g"]
 [ext_resource type="Texture2D" uid="uid://gvlg00iy8hqq" path="res://sprites/horu/images/player_face_idle_spr_18.png" id="35_f11c7"]
 [ext_resource type="Texture2D" uid="uid://dc6uusxchhw1f" path="res://sprites/horu/images/player_face_spr_0.png" id="37_ntmvv"]
+[ext_resource type="Texture2D" uid="uid://cog7sk80ykf4o" path="res://sprites/bomb.png" id="44_5mkf2"]
+[ext_resource type="Script" path="res://scenes/Selector.gd" id="44_ux1mn"]
+[ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="45_keogv"]
+[ext_resource type="Texture2D" uid="uid://b3tca6epdaoix" path="res://sprites/rock.png" id="46_x122r"]
+[ext_resource type="Texture2D" uid="uid://c23gqep4iu84m" path="res://sprites/none.png" id="47_tmfkb"]
+[ext_resource type="Texture2D" uid="uid://df545tsy68qs1" path="res://sprites/growing_plant.png" id="48_7nwke"]
+[ext_resource type="Texture2D" uid="uid://trxeowv3jmbb" path="res://sprites/smoke_bomb.png" id="49_gnc1r"]
+[ext_resource type="Texture2D" uid="uid://ckfvyg1tc54kk" path="res://sprites/spike_ball.png" id="50_es33g"]
+[ext_resource type="Texture2D" uid="uid://csp0ardyjl54b" path="res://sprites/spring.png" id="51_a4no5"]
+[ext_resource type="Texture2D" uid="uid://c3wmt7870xukn" path="res://sprites/teleporter_box.png" id="52_0xhej"]
+[ext_resource type="Texture2D" uid="uid://c2adubgvb8e4q" path="res://sprites/selected.png" id="53_nhvon"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8thie"]
 animations = [{
@@ -281,6 +292,81 @@ _data = {
 "reset_position": SubResource("Animation_oojrp")
 }
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_oyy64"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("44_5mkf2")
+}],
+"loop": true,
+"name": &"bomb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("45_keogv")
+}],
+"loop": true,
+"name": &"clone",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("46_x122r")
+}],
+"loop": true,
+"name": &"muffin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("47_tmfkb")
+}],
+"loop": true,
+"name": &"none",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("48_7nwke")
+}],
+"loop": true,
+"name": &"plant",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("49_gnc1r")
+}],
+"loop": true,
+"name": &"smoke",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("50_es33g")
+}],
+"loop": true,
+"name": &"spikeball",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("51_a4no5")
+}],
+"loop": true,
+"name": &"spring",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("52_0xhej")
+}],
+"loop": true,
+"name": &"teleport",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 4094
 collision_layer = 524297
@@ -291,7 +377,7 @@ script = ExtResource("1_u3t4v")
 wait_time = 0.3
 
 [node name="Cosito" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -28)
+position = Vector2(0, -29)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_8thie")
 frame_progress = 0.0612838
@@ -390,7 +476,7 @@ speed_scale = 5.0
 
 [node name="display" type="Node2D" parent="."]
 visible = false
-position = Vector2(0, -87)
+position = Vector2(32, -87)
 
 [node name="back2" type="ColorRect" parent="display"]
 z_index = 4096
@@ -419,5 +505,60 @@ theme_override_fonts/font = ExtResource("7_1mbn0")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Selector" type="Node2D" parent="."]
+position = Vector2(0, -29)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("44_ux1mn")
+
+[node name="gun_slot0" type="AnimatedSprite2D" parent="Selector"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_oyy64")
+animation = &"plant"
+
+[node name="selected0" type="Sprite2D" parent="Selector/gun_slot0"]
+texture = ExtResource("53_nhvon")
+
+[node name="gun_slot1" type="AnimatedSprite2D" parent="Selector"]
+visible = false
+modulate = Color(1, 1, 1, 0.533333)
+position = Vector2(40, 0)
+sprite_frames = SubResource("SpriteFrames_oyy64")
+animation = &"muffin"
+
+[node name="gun_slot2" type="AnimatedSprite2D" parent="Selector"]
+visible = false
+modulate = Color(1, 1, 1, 0.533333)
+position = Vector2(-40, 0)
+sprite_frames = SubResource("SpriteFrames_oyy64")
+animation = &"plant"
+
+[node name="gun_slot3" type="AnimatedSprite2D" parent="Selector"]
+visible = false
+modulate = Color(1, 1, 1, 0.533333)
+position = Vector2(80, 0)
+sprite_frames = SubResource("SpriteFrames_oyy64")
+animation = &"plant"
+
+[node name="gun_slot4" type="AnimatedSprite2D" parent="Selector"]
+visible = false
+modulate = Color(1, 1, 1, 0.533333)
+position = Vector2(-80, 0)
+sprite_frames = SubResource("SpriteFrames_oyy64")
+animation = &"plant"
+
+[node name="gun_slot5" type="AnimatedSprite2D" parent="Selector"]
+visible = false
+modulate = Color(1, 1, 1, 0.533333)
+position = Vector2(120, 0)
+sprite_frames = SubResource("SpriteFrames_oyy64")
+animation = &"plant"
+
+[node name="gun_slot6" type="AnimatedSprite2D" parent="Selector"]
+visible = false
+modulate = Color(1, 1, 1, 0.533333)
+position = Vector2(-120, 0)
+sprite_frames = SubResource("SpriteFrames_oyy64")
+animation = &"plant"
 
 [connection signal="timeout" from="WalkSoundTimer" to="." method="_on_walk_sound_timer_timeout"]
