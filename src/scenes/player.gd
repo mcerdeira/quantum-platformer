@@ -434,15 +434,16 @@ func process_player(delta):
 					$Arrow.activate(true)
 					
 	if !dead and Input.is_action_pressed("shoot"):
-		if !Global.gunz_equiped[Global.gunz_index].pasive:
-			if Global.slots_stock[Global.gunz_index] > 0:
-				$Selector.visible = false
-				$Cosito.visible = true
-				$Selector.modulate.a = 1
-				idle_play = idle_play_total
-				Engine.time_scale = 0.1
-				update_trayectory(delta)
-				shoot_mode = true
+		if Global.gunz_equiped.size() > 0:
+			if !Global.gunz_equiped[Global.gunz_index].pasive:
+				if Global.slots_stock[Global.gunz_index] > 0:
+					$Selector.visible = false
+					$Cosito.visible = true
+					$Selector.modulate.a = 1
+					idle_play = idle_play_total
+					Engine.time_scale = 0.1
+					update_trayectory(delta)
+					shoot_mode = true
 		
 	check_shoot_released(delta)
 		

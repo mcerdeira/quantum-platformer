@@ -507,11 +507,12 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Selector" type="Node2D" parent="."]
-position = Vector2(0, -29)
+position = Vector2(0, -32)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("44_ux1mn")
 
 [node name="gun_slot0" type="AnimatedSprite2D" parent="Selector"]
+visible = false
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_oyy64")
 animation = &"none"
@@ -520,36 +521,42 @@ animation = &"none"
 texture = ExtResource("53_nhvon")
 
 [node name="gun_slot1" type="AnimatedSprite2D" parent="Selector"]
+visible = false
 modulate = Color(1, 1, 1, 0.384314)
 position = Vector2(40, 0)
 sprite_frames = SubResource("SpriteFrames_oyy64")
 animation = &"none"
 
 [node name="gun_slot2" type="AnimatedSprite2D" parent="Selector"]
+visible = false
 modulate = Color(1, 1, 1, 0.384314)
 position = Vector2(-40, 0)
 sprite_frames = SubResource("SpriteFrames_oyy64")
 animation = &"none"
 
 [node name="gun_slot3" type="AnimatedSprite2D" parent="Selector"]
+visible = false
 modulate = Color(1, 1, 1, 0.384314)
 position = Vector2(80, 0)
 sprite_frames = SubResource("SpriteFrames_oyy64")
 animation = &"none"
 
 [node name="gun_slot4" type="AnimatedSprite2D" parent="Selector"]
+visible = false
 modulate = Color(1, 1, 1, 0.384314)
 position = Vector2(-80, 0)
 sprite_frames = SubResource("SpriteFrames_oyy64")
 animation = &"none"
 
 [node name="gun_slot5" type="AnimatedSprite2D" parent="Selector"]
+visible = false
 modulate = Color(1, 1, 1, 0.384314)
 position = Vector2(120, 0)
 sprite_frames = SubResource("SpriteFrames_oyy64")
 animation = &"none"
 
 [node name="gun_slot6" type="AnimatedSprite2D" parent="Selector"]
+visible = false
 modulate = Color(1, 1, 1, 0.384314)
 position = Vector2(-120, 0)
 sprite_frames = SubResource("SpriteFrames_oyy64")
