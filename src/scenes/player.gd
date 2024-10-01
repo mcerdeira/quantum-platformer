@@ -143,7 +143,7 @@ func destroy_trayectory():
 func center_camera():
 	$Camera2D.position = Vector2.ZERO
 
-func _physics_process(delta):
+func _physics_process(delta):	
 	if enemy_attached != null:
 		jump_speed = jump_speed_original / 2
 		speed = speed_original / 2

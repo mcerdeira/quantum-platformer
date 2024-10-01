@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://irdn6sjvaj0e"]
+[gd_scene load_steps=28 format=3 uid="uid://irdn6sjvaj0e"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_8vrwn"]
 [ext_resource type="Texture2D" uid="uid://ceilou14j5ris" path="res://sprites/chest_idle.png" id="2_ckle5"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://ie8qco0scwdc" path="res://sprites/horu/images/sleep1.png" id="15_4vsls"]
 [ext_resource type="Texture2D" uid="uid://dtysodoxvl0pg" path="res://sprites/horu/images/sleep2.png" id="16_udmmr"]
 [ext_resource type="Texture2D" uid="uid://d2tggb22a780p" path="res://sprites/horu/images/sleep3.png" id="17_jmgi5"]
+[ext_resource type="Script" path="res://scenes/enemy_jump.gd" id="20_hptej"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eqtew"]
 animations = [{
@@ -105,20 +106,6 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_7jtwr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_wvmb0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_2r3ry")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": ExtResource("15_4vsls")
 }, {
 "duration": 1.0,
@@ -129,6 +116,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"sleep",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_7jtwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wvmb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2r3ry")
+}],
+"loop": true,
+"name": &"stunned",
 "speed": 5.0
 }]
 
@@ -158,6 +159,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kwrcj"]
 size = Vector2(32, 33)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56vlq"]
+size = Vector2(18, 6)
+
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(201, 172)
 script = ExtResource("1_8vrwn")
@@ -185,6 +189,7 @@ visible = false
 position = Vector2(0, -7)
 scale = Vector2(1.3, 1.3)
 sprite_frames = SubResource("SpriteFrames_rw2kj")
+animation = &"stunned"
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
@@ -226,5 +231,12 @@ target_position = Vector2(242, 0)
 collision_mask = 524288
 collide_with_areas = true
 script = ExtResource("5_ermrk")
+
+[node name="enemy_jump" type="Area2D" parent="."]
+script = ExtResource("20_hptej")
+
+[node name="collider" type="CollisionShape2D" parent="enemy_jump"]
+position = Vector2(0, -19)
+shape = SubResource("RectangleShape2D_56vlq")
 
 [connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]

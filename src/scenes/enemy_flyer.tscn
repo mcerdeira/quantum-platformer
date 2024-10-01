@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ctfvfhtlw28a7"]
+[gd_scene load_steps=37 format=3 uid="uid://ctfvfhtlw28a7"]
 
 [ext_resource type="Script" path="res://scenes/enemy_flyer.gd" id="1_s28ew"]
 [ext_resource type="Texture2D" uid="uid://bfmd1soivmlg7" path="res://sprites/dead_fire_spr_0.png" id="2_7248k"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://4oo3wlj34det" path="res://sprites/horu/images/nose2.png" id="19_1jw57"]
 [ext_resource type="Texture2D" uid="uid://cwgrq0uuoaf5g" path="res://sprites/horu/images/nose3.png" id="20_ke2du"]
 [ext_resource type="Texture2D" uid="uid://c1fa6mp1vngqq" path="res://sprites/horu/images/enemy_danger_spr_0.png" id="23_nd5yc"]
+[ext_resource type="Script" path="res://scenes/enemy_jump.gd" id="24_l062u"]
 [ext_resource type="Texture2D" uid="uid://q0bln7b1u2oh" path="res://sprites/horu/images/enemy_danger_spr_1.png" id="24_ppn4t"]
 [ext_resource type="Texture2D" uid="uid://1ybi7osvso8b" path="res://sprites/horu/images/enemy_danger_spr_2.png" id="25_dkssi"]
 [ext_resource type="Texture2D" uid="uid://da61udeb1h6ll" path="res://sprites/horu/images/wing.png" id="26_d1tvy"]
@@ -247,6 +248,9 @@ _data = {
 "new_animation": SubResource("Animation_8dsu1")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7qix"]
+size = Vector2(18, 6)
+
 [node name="EnemyFlyer" type="CharacterBody2D"]
 script = ExtResource("1_s28ew")
 
@@ -258,7 +262,7 @@ sprite_frames = SubResource("SpriteFrames_n414r")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0vk2b")
-animation = &"walking"
+animation = &"stunned"
 autoplay = "dead_fire"
 
 [node name="eyes" type="AnimatedSprite2D" parent="sprite"]
@@ -304,5 +308,12 @@ libraries = {
 "": SubResource("AnimationLibrary_f8xkc")
 }
 speed_scale = 5.0
+
+[node name="enemy_jump" type="Area2D" parent="."]
+script = ExtResource("24_l062u")
+
+[node name="collider" type="CollisionShape2D" parent="enemy_jump"]
+position = Vector2(0, -19)
+shape = SubResource("RectangleShape2D_a7qix")
 
 [connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
