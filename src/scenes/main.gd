@@ -271,6 +271,9 @@ func calc_selected(first_time = false):
 		for ei in range(count):
 			var p = particle.instantiate()
 			sel.add_child(p)
+			
+#func _process(delta):
+	#print("FPS " + str(Engine.get_frames_per_second()))
 
 func _physics_process(delta):
 	$CanvasLayer/Control/lbl_gameover.visible = Global.GAMEOVER

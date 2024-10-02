@@ -29,7 +29,9 @@ func _on_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_inde
 				if parent:
 					var p = fires.instantiate()
 					p.position = global_coords
-					parent.add_child(p)
+					#parent.add_child(p)
+					parent.call_deferred("add_child", p)
+					
 					Global.emit(global_position, 5)
 
 func _on_area_entered(area):

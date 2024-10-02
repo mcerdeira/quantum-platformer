@@ -46,7 +46,11 @@ func _physics_process(delta):
 		buff -= 1 * delta
 		
 	if fire_obj and is_instance_valid(fire_obj):
-		fire_obj.reparent(level_parent)
+		var current = fire_obj.get_parent()
+		if current:
+			fire_obj.reparent(level_parent)
+		else:
+			level_parent.add_child(fire_obj)
 		fire_obj.global_position = global_position
 		fire_obj.z_index = z_index + 1
 	
@@ -70,7 +74,7 @@ func _physics_process(delta):
 	move_and_slide()	
 	
 func process_player(delta):
-	var moving = false
+	moving = false
 	if blowed > 0:
 		$stars_stunned.visible = true
 		$sprite.animation = "stunned" + spr_sufix
@@ -151,7 +155,7 @@ func process_player(delta):
 		$sprite/eyes.flip_h = $sprite.flip_h 
 		$sprite/Nose.flip_h = $sprite.flip_h 
 
-func jump(delta):
+func jump(_delta):
 	if !Global.GAMEOVER:
 		if is_on_floor_custom():
 			buff = 0
@@ -178,7 +182,8 @@ func kill_fire():
 			var p = fires.instantiate()
 			p.global_position = global_position
 			p.kill_me = self
-			parent.add_child(p)
+			#parent.add_child(p)
+			parent.call_deferred("add_child", p)
 			fire_obj = p
 
 func dead_fire():
@@ -193,21 +198,21 @@ func dead_fire():
 	set_collision_layer_value(1, false)
 	set_collision_mask_value(1, false)
 	
-func hearing_alerted(body):
+func hearing_alerted(_body):
 	pass
 	
-func eat_gizmo(current_item):
+func eat_gizmo(_current_item):
 	killing = total_killing
 	
 func kill_fall():
 	visible = false
 	queue_free()
 
-func flyaway(direction):
+func flyaway(_direction):
 	if blowed <= 0:
 		blowed = 6.2
 		Global.emit(global_position, 2)
-		velocity = Global.flyaway(direction, jump_speed)
+		velocity = Global.flyaway(_direction, jump_speed)
 		previus_velocity = velocity
 
 func super_jump():

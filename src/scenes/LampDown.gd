@@ -71,4 +71,5 @@ func _on_lamp_area_body_entered(body):
 				p.velocity = body.velocity
 				p.position = LampDown.global_position
 				Global.emit(LampDown.global_position, 5)
-				super_parent.add_child(p)
+				#super_parent.add_child(p)
+				super_parent.call_deferred("add_child", p)

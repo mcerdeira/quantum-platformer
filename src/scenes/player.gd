@@ -391,7 +391,11 @@ func process_player(delta):
 		$sprite.animation = idle_animation
 
 	if fire_obj and is_instance_valid(fire_obj):
-		fire_obj.reparent(level_parent)
+		var current = fire_obj.get_parent()
+		if current:
+			fire_obj.reparent(level_parent)
+		else:
+			level_parent.add_child(fire_obj)
 		fire_obj.global_position = global_position
 		fire_obj.z_index = z_index + 1
 		
@@ -417,7 +421,7 @@ func process_player(delta):
 			$Selector.refresh_item()
 			get_parent().setHUD(false, false)
 			
-		if $Selector.visible and !Input.is_action_pressed("scroll_u") and !Input.is_action_pressed("scroll_d"):
+		if $Selector.visible and !Input.is_action_pressed("scroll_R") and !Input.is_action_pressed("scroll_L"):
 			selector_visibility_ttl -= 1 * delta
 			if selector_visibility_ttl <= 0:
 				$Selector.modulate.a -= 3 * delta
@@ -721,8 +725,9 @@ func bleed(count):
 	for i in range(count):
 		var blood_instance : Area2D = blood.instantiate()
 		blood_instance.global_position = global_position
-		get_parent().add_child(blood_instance)
-
+		#get_parent().add_child(blood_instance)
+		get_parent().call_deferred("add_child", blood_instance)
+		
 func kill_fall():
 	dead = true
 	visible = false
@@ -760,7 +765,8 @@ func kill_fire(tt_total = null):
 				
 			p.global_position = global_position
 			p.kill_me = self
-			parent.add_child(p)
+			#parent.add_child(p)
+			parent.call_deferred("add_child", p)
 			fire_obj = p
 
 func _on_walk_sound_timer_timeout():

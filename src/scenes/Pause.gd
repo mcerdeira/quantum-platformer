@@ -6,7 +6,7 @@ func _ready():
 	paused = false
 	visible = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Global.CurrentState != Global.GameStates.TITLE and !Global.TunnelTerminalNumber:
 		if paused:
 			if Input.is_action_just_pressed("left"):
@@ -68,6 +68,6 @@ func pause_unpause():
 	await get_tree().create_timer(0.5).timeout
 	get_tree().paused = paused
 
-func _on_animation_player_animation_finished(anim_name):
+func _on_animation_player_animation_finished(_anim_name):
 	if !paused:
 		visible = false 

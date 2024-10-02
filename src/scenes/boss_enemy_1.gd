@@ -93,7 +93,7 @@ func process_player(delta):
 	if !active:
 		return
 	
-	var moving = false
+	moving = false
 	
 	if blowed > 0 and !dead:
 		$stars_stunned.visible = true
@@ -176,10 +176,10 @@ func kill_fire():
 func dead_fire():
 	pass
 	
-func hearing_alerted(body):
+func hearing_alerted(_body):
 	pass
 	
-func eat_gizmo(current_item):
+func eat_gizmo(_current_item):
 	pass
 	
 func kill_fall():

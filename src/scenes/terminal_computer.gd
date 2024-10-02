@@ -558,14 +558,11 @@ func parser(_cmd, gamepad):
 		$Info.terminal_number = terminal_number
 	elif found != -1 and _cmd == "LISTAR":
 		var commands = ""
-		var lines = 0
 		for i in range(Global.Terminals.size()):
 			commands += "#" + str(i) + " " + Global.Terminals[i].name + "# | ESTADO: " + trad_state(Global.Terminals[i].status) + "\n"
-			lines += 1
 			var vars = trad_vars(Global.Terminals[i].variable)
 			if vars != "":
 				commands += "\t" + vars+ "\n\n"
-				lines += 2
 		current_message = "LISTA DE TERMINALES:\n" + commands + "\nLISTO" + "\n"
 	elif found != -1 and _cmd == "SALIR":
 		CMD.text = ""
