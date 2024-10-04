@@ -246,9 +246,10 @@ func setHUD(only_gold = false, first_time = false):
 	var lbl_coin = get_node("CanvasLayer/Control/coin_slot2/lbl_stock")
 	lbl_coin.text = "x" + str(Global.Gold)
 	
-	for i in range(1, Global.CurrentLevel + 1):
-		var perk = get_node("CanvasLayer/Control/perks" + str(i))
-		perk.visible = true
+	if !Global.BOSS_ROOM:
+		for i in range(1, Global.CurrentLevel + 1):
+			var perk = get_node("CanvasLayer/Control/perks" + str(i))
+			perk.visible = true
 	
 	if only_gold:
 		return

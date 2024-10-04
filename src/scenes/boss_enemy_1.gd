@@ -101,7 +101,8 @@ func process_player(delta):
 		return
 		
 	if dead:
-		Global.player_obj.show_message_demo()
+		#Global.player_obj.show_message_demo()
+		Global.TOMB_STATUS = true
 		
 		$sprite.scale.y = 1
 		$stars_stunned.visible = false
