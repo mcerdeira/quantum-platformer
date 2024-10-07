@@ -16,7 +16,7 @@ func _physics_process(_delta):
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 			
 func special_rooms():
-	return Global.CurrentState == Global.GameStates.HOME or Global.CurrentState == Global.GameStates.FALLING or Global.CurrentState == Global.GameStates.OUTSIDE
+	return Global.CurrentState == Global.GameStates.DEMO or Global.CurrentState == Global.GameStates.HOME or Global.CurrentState == Global.GameStates.FALLING or Global.CurrentState == Global.GameStates.OUTSIDE
 
 func _on_bnt_coin_pressed():
 	Global.get_item(Global.coin, 1)
@@ -87,3 +87,14 @@ func _on_btn_liberate_pressed():
 	if targets.size() > 0:
 		for t in targets:
 			t.liberate()
+
+
+func _on_btn_killboss_pressed():
+	var bosses = get_tree().get_nodes_in_group("bosses")
+	for b in bosses:
+		b.force_kill()
+
+
+func _on_btn_demoroom_pressed():
+	Global.CurrentState = Global.GameStates.DEMO
+	get_tree().reload_current_scene()

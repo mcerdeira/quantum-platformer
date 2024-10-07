@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu7ckbjmd1lhd"]
+
+[ext_resource type="VideoStream" path="res://video/muffin_tutorial.ogv" id="1_rkhxy"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer"]
+z_index = 4096
+z_as_relative = false
+offset_left = -573.0
+offset_top = -331.0
+offset_right = 579.0
+offset_bottom = 309.0
+stream = ExtResource("1_rkhxy")
+loop = true

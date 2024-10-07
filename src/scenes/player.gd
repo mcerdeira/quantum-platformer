@@ -63,6 +63,8 @@ var last_safe_position = null
 var enemy_attached = null
 var message_timeout = 4.5
 var jumping = false
+var restore_camera_zoom_ttl = 2.1
+var restore_camera_zoom = false
 
 func calc_perks():
 	double_jump = Global.find_my_item("wings")
@@ -96,6 +98,15 @@ func _ready():
 func hide_eyes():
 	#Ocultar los ojos cuando estamos entrando a una puerta
 	$sprite_eyes.visible = false
+	
+func restart_camera(_camera_prev_status):
+	await get_tree().create_timer(2.1).timeout
+	_camera_prev_status.enabled = false
+	restore_camera_zoom = true
+	$Camera2D.zoom = _camera_prev_status.zoom
+	$Camera2D.global_position = _camera_prev_status.global_position
+	$Camera2D.enabled = true
+	Global.shaker_obj.camera = $Camera2D
 	
 func show_message_demo():
 	await get_tree().create_timer(4).timeout
@@ -145,7 +156,14 @@ func destroy_trayectory():
 func center_camera():
 	$Camera2D.position = Vector2.ZERO
 
-func _physics_process(delta):	
+func _physics_process(delta):
+	if restore_camera_zoom:
+		restore_camera_zoom_ttl -= 1 * delta
+		if restore_camera_zoom_ttl <= 0:
+			cameralimits_on = true
+			$Camera2D.zoom = lerp($Camera2D.zoom, Vector2(1, 1), 0.01)
+			$Camera2D.position.y  = lerp($Camera2D.position.y, -100.00, 0.1)
+	
 	if enemy_attached != null:
 		jump_speed = jump_speed_original / 2
 		speed = speed_original / 2

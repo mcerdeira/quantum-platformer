@@ -403,7 +403,7 @@ position = Vector2(1252, -373)
 fixed = true
 
 [node name="LampLongSpikes" parent="." instance=ExtResource("22_4hltv")]
-position = Vector2(428, -237)
+position = Vector2(428, -302)
 
 [node name="LampLongSpikes3" parent="." instance=ExtResource("22_4hltv")]
 position = Vector2(-125, -243)

@@ -22,7 +22,7 @@ var dead = false
 var TOTAL_LIFE = 5.0
 var LIFE = TOTAL_LIFE
 var explode_ttl = 3
-var end_ttl = 10
+var prisoner_obj = preload("res://scenes/prisoner.tscn")
 
 func _ready():
 	add_to_group("enemies")
@@ -108,15 +108,20 @@ func process_player(delta):
 		$stars_stunned.visible = false
 		$sprite.animation = "stunned"
 		explode_ttl -= 1 * delta
-		end_ttl -= 1 * delta
-		if end_ttl <= 0:
-			Global.scene_next(Global.TerminalNumber, false)
 		
 		if explode_ttl <= 0 and $sprite.visible:
 			Global.shaker_obj.shake(12, 1.2)
 			$BossExplosionShader.start()
 			$sprite.visible = false
+			var pri = prisoner_obj.instantiate()
+			pri.convert_into_npc()
+			pri.global_position = global_position
+			get_parent().add_child(pri)
 			$explosions.stop()
+			$collider.set_deferred("disabled", true)	
+			Music.stop()
+			Ambience.play(Global.CaveAmbienceSFX)
+			Global.player_obj.restart_camera($"../CameraZoomer")
 		return
 
 	else:
@@ -192,17 +197,21 @@ func flyaway():
 		LIFE -= 1.0
 		Global.play_sound(Global.BOSS1RoarSFX)
 		if LIFE <= 0.0:
-			$explosions.start()
-			dead = true
-			LIFE = 0.0
-			explode_ttl = 3
-			Global.shaker_obj.shake(3, 0.5)
+			force_kill()
 			
 		total_speed *= 1.8
 		speed = total_speed
 		Global.shaker_obj.shake(3, 0.5)
 		Global.boss_bar.calc_life_bar(TOTAL_LIFE, LIFE)
 		blowed = 6.2
+		
+func force_kill():
+	$explosion.queue_free()
+	$explosions.start()
+	dead = true
+	LIFE = 0.0
+	explode_ttl = 3
+	Global.shaker_obj.shake(3, 0.5)
 			
 func super_jump():
 	pass

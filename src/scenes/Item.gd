@@ -7,6 +7,7 @@ var delay_camera = 0.2
 var QTY = 1
 var has_artifact = false
 var itemfound = load("res://scenes/Item3D.tscn")
+@export var fixed = false
 
 func _ready():
 	$display.visible = false
@@ -16,10 +17,13 @@ func _ready():
 				Global.artifactPicked = true
 				has_artifact = true
 				
+	if fixed:
+		has_artifact = false
+				
 	if has_artifact:
 		$display/back/lbl_item.text = "== ITEM DESCONOCIDO =="
 		$display/back/sprite.animation = "unknown"
-	elif randi() % 2 == 0:
+	elif randi() % 2 == 0 or fixed:
 		current_item = Global.pick_random(Global.gunz_objs_prob)
 		if current_item.name == "bomb":
 			QTY = Global.pick_random([2, 3, 5])
@@ -55,6 +59,8 @@ func _physics_process(delta):
 			active = false
 			Global.emit(global_position, 5)
 			get_item()
+			if !has_artifact:
+				Global.video_tutorial.play(current_item)
 			$sprite.animation = "open"
 			$display.visible = false
 		

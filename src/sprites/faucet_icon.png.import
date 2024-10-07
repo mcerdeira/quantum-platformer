@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hbe7l45ob5gp"
-path="res://.godot/imported/window_spr_1.png-76ac9e6d01f0206771bfa980a8ed978c.ctex"
+uid="uid://jwkpmr5n1bns"
+path="res://.godot/imported/faucet_icon.png-7fb5526d7eda4e5d26103ddeea982d9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/horu/images/window_spr_1.png"
-dest_files=["res://.godot/imported/window_spr_1.png-76ac9e6d01f0206771bfa980a8ed978c.ctex"]
+source_file="res://sprites/faucet_icon.png"
+dest_files=["res://.godot/imported/faucet_icon.png-7fb5526d7eda4e5d26103ddeea982d9e.ctex"]
 
 [params]
 

@@ -16,6 +16,7 @@ var idle_time = 0
 var dead = false
 var blowed = 0
 const blood = preload("res://scenes/blood.tscn")
+var npc_obj = preload("res://scenes/prisoner_npc.tscn")
 var previus_velocity = Vector2.ZERO
 var trapped = true
 var dir = 1
@@ -43,6 +44,7 @@ var stairdetect_ttl = 1
 var libetared_ttl = 3
 var scaping = false
 var scaping_ttl = 3
+var var_convert_into_npc = false
 
 func _ready():
 	add_to_group("players")
@@ -53,6 +55,22 @@ func _ready():
 	
 func is_on_floor_custom():
 	return is_on_floor() or buff > 0
+	
+func convert_into_npc():
+	var_convert_into_npc = true
+	set_collision_layer_value(6, true)
+	set_collision_mask_value(6, true)
+	set_collision_layer_value(1, false)
+	set_collision_mask_value(1, false)
+	set_collision_layer_value(4, false)
+	set_collision_mask_value(4, false)
+	liberating = 0.0
+	$trapped_area.queue_free()
+	$collider.set_deferred("disabled", false)
+	trapped = false
+	$sprite.animation = "idle"
+	$lbl_action.text = ""
+	$lbl_action.visible = false
 
 func _physics_process(delta):
 	speed = total_speed 
@@ -96,6 +114,13 @@ func _physics_process(delta):
 			if in_air:
 				in_air = false
 				Global.emit(global_position, 1)
+				if var_convert_into_npc:
+					var npc = npc_obj.instantiate()
+					npc.global_position = global_position + Vector2(0, 16)
+					npc.boss_1_npc = true
+					get_parent().add_child(npc)
+					queue_free()
+					
 			buff = 0.2
 		else:
 			in_air = true

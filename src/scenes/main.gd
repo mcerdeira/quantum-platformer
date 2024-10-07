@@ -10,6 +10,7 @@ var room_outside = preload("res://scenes/levels/room_outside.tscn")
 var room_falling = preload("res://scenes/levels/room_falling.tscn")
 var room_overworld = preload("res://scenes/levels/room_overworld.tscn")
 var room_tunnel = preload("res://scenes/levels/room_tunnel.tscn")
+var room_demo = preload("res://scenes/levels/room_demo.tscn")
 
 var rooms_bottom_dragon = [
 	preload("res://scenes/levels/dragon/room_bottom_dragon.tscn")
@@ -214,6 +215,9 @@ func _ready():
 			Ambience.play(Global.CaveAmbienceSFX)
 			Global.TunnelTerminalNumber = false
 			generate_level()
+	
+	if Global.CurrentState == Global.GameStates.DEMO:
+		generate_fixed_level(room_demo, false)
 	if Global.CurrentState == Global.GameStates.TITLE:
 		Music.play(Global.MainTheme)
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -300,6 +304,12 @@ func _physics_process(delta):
 				Global.exit_door.open()
 		
 	var sel = get_node("/root/Main/CanvasLayer/Control/PrisonerHead/counter")
+	
+	if Global.TerminalNumber == Global.TerminalsEnum.TOMB:
+		$CanvasLayer/Control/PrisonerHead.animation = "tomb"
+	elif Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
+		$CanvasLayer/Control/PrisonerHead.animation = "faucet"
+	
 	if sel:
 		sel.text = str(Global.prisoner_total - Global.prisoner_counter) + "/" + str(Global.prisoner_total) 
 		

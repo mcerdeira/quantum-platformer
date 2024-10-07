@@ -6,6 +6,9 @@ var target = null
 @export var gotoBOSS = true
 
 func _ready():
+	if terminal_number != -1:
+		$sprite.animation = str(terminal_number)
+	
 	if !gotoBOSS:
 		if terminal_number == -1:
 			if !nope:

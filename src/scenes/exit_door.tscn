@@ -1,11 +1,60 @@
-[gd_scene load_steps=6 format=3 uid="uid://q767q018lep8"]
+[gd_scene load_steps=11 format=3 uid="uid://q767q018lep8"]
 
 [ext_resource type="Script" path="res://scenes/exit_door.gd" id="1_0vvlk"]
 [ext_resource type="Texture2D" uid="uid://fe2jknlm3i6n" path="res://sprites/horu/images/exit_spr_0.png" id="4_186lq"]
+[ext_resource type="Texture2D" uid="uid://r88ulgnxbdg0" path="res://sprites/horu/images/exit_spr_stone_0.png" id="4_hag28"]
+[ext_resource type="Texture2D" uid="uid://dcwiheprlh8k6" path="res://sprites/horu/images/hidden_exit_spr_0.png" id="4_l1025"]
+[ext_resource type="Texture2D" uid="uid://bt512oj6aqplr" path="res://sprites/horu/images/exit_spr_stone_1.png" id="5_d6kef"]
 [ext_resource type="Texture2D" uid="uid://c8cdp2o43edo7" path="res://sprites/horu/images/exit_spr_1.png" id="5_kdr3r"]
+[ext_resource type="Texture2D" uid="uid://duvbsm4ugc1yw" path="res://sprites/horu/images/exit_spr_hell_0.png" id="7_4ogp0"]
+[ext_resource type="Texture2D" uid="uid://wckik736tf2t" path="res://sprites/horu/images/exit_spr_hell_1.png" id="8_lyevj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3viko"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_186lq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kdr3r")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hag28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d6kef")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_l1025")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kdr3r")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_4ogp0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lyevj")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_186lq")

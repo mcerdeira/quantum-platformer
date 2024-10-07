@@ -42,6 +42,7 @@ IN_PROGRESS:
 BUGS/Ajustes:
 
 Features:
+- Inventario cuando hacemos pausa
 - Hacer tutorial en la tele
 - Mas items, menos monedas + monedas en enemigos Muertos o dormidos?
 - Cascadas (ala Minecraft) que interactuen con bombas y enemigos
@@ -57,10 +58,6 @@ Features:
   - Si giramos los discos, atrás se forma un QR, el QR tiene la password para las terminales.
 
 - Terminales: se pueden activar variables para el final bueno, pero ese comando necesita password
-
-- Item super raro: es un cd o vhs
-  . Si lo obtenemos, nunca más aparece, hay que quitarlo de la pool
-  . Si se empieza un new-game habiendo tomado ese item en algun momento, en la casa, al ir a la tele se reproduce un video del dev hablando sobre el juego  
 
 - Armar zona Dragon. Estilo volcanico, lava por todos lados, lasers. La mecánica principal es... ?????
 - Armar zona Mermaid. Fondo más claro, piso negro, lluvia y truenos. La mecánica principal son unas canillas que abrimos para inundar o no lugares 
@@ -86,6 +83,7 @@ Features:
 - Decoraciones: La sangre debería desaparecer al tocar la lava
 
 --------------------------------- DONE ---------------------------------
+- Hacer que un npc aparezca desde el boss y nos de parte de la historia
 - Saltar en los enemigos
 - SFX
 - Musica

@@ -86,6 +86,15 @@ var BigExplodeRetroSFX = null
 var PlayerHurtSFX = null
 var PauseSFX = null
 
+var first_time_smoke = true
+var first_time_plant = true
+var first_time_clone = true
+var first_time_teleport = true
+var first_time_muffin = true
+var first_time_bomb = true
+var first_time_spring = true
+var video_tutorial = null
+
 #CHEST ITEMS 
 var smoke_bomb = {
 	"name": "smoke",
@@ -337,6 +346,7 @@ enum GameStates {
 	OVERWORLD,
 	RANDOMLEVEL,
 	TITLE,
+	DEMO,
 }
 
 var CurrentState : GameStates = GameStates.TITLE

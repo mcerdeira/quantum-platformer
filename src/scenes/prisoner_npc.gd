@@ -6,10 +6,22 @@ var delay_camera = 0.2
 var current_message = ""
 var ttl = 0
 var dialog_sfx = null
+var boss_1_npc = false
+var end_ttl = 5
 
 func _physics_process(delta):
+	if boss_1_npc:
+		$Timer.stop()
+		$Computer.animation = "boss1"
+		$Computer/cry.animation = "boss1"
+	
 	$back2.visible = $back.visible 
 	if !active and opened:
+		if !current_message:
+			end_ttl -= 1 * delta
+			if end_ttl <= 0:
+				Global.scene_next(Global.TerminalNumber, false)
+		
 		if player:
 			if delay_camera > 0:
 				delay_camera -= 1 * delta
@@ -28,7 +40,6 @@ func _physics_process(delta):
 				active = false
 				await get_tree().create_timer(1.3).timeout
 				$back.visible = false
-				
 	
 	if active and !opened:
 		if Input.is_action_just_pressed("up"):
@@ -36,10 +47,21 @@ func _physics_process(delta):
 			opened = true
 			active = false
 			Global.emit(global_position, 5)
-			$back/sprite.animation = "prisoner"
+			if boss_1_npc:
+				$Computer.animation = "boss1"
+				$Computer/cry.animation = "boss1"
+				$back/sprite.animation = "boss1"
+				$back/sprite.scale.x = 0.1
+				$back/sprite.scale.y = 0.1
+			else:
+				$back/sprite.animation = "prisoner"
+				
 			$back/sprite.play()
 			dialog_sfx = Global.play_sound(Global.DialogSFX)
-			current_message = "¡La  G R U T A  se llevo a mis amigos y a tu perro!"
+			if boss_1_npc:
+				current_message = "¡GRACIAS! El bicho este horrible me había comido... pero acá no está tu perro..."
+			else:
+				current_message = "¡La  G R U T A  se llevo a mis amigos y a tu perro!"
 			$back/lbl_item.text = ""
 			$back/arrows.visible = false
 
@@ -58,6 +80,7 @@ func _on_body_exited(body):
 			active = false
 
 func _on_timer_timeout():
-	$Timer.wait_time = Global.pick_random([2, 3, 4])
-	var options = {"pitch_scale": Global.pick_random([1, 0.7, 1.1])}
-	Global.play_sound(Global.CryingSFX, options, global_position)
+	if !boss_1_npc:
+		$Timer.wait_time = Global.pick_random([2, 3, 4])
+		var options = {"pitch_scale": Global.pick_random([1, 0.7, 1.1])}
+		Global.play_sound(Global.CryingSFX, options, global_position)

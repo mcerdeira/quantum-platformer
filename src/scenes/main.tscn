@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bveav6ctdlmbu"]
+[gd_scene load_steps=60 format=3 uid="uid://bveav6ctdlmbu"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_tvtda"]
 [ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="2_6led8"]
@@ -20,11 +20,15 @@
 [ext_resource type="Texture2D" uid="uid://pm7mhxqnqxtq" path="res://sprites/radar.png" id="8_fdv2s"]
 [ext_resource type="PackedScene" uid="uid://dv6t6lrhdu04u" path="res://scenes/boss_bar.tscn" id="9_acvra"]
 [ext_resource type="Shader" path="res://scenes/FX.gdshader" id="9_l7p0g"]
+[ext_resource type="PackedScene" uid="uid://bu7ckbjmd1lhd" path="res://scenes/video_stream_player.tscn" id="9_qiw31"]
+[ext_resource type="Script" path="res://scenes/VideoContainer.gd" id="9_tko05"]
 [ext_resource type="Script" path="res://scenes/Pause.gd" id="9_wpesn"]
 [ext_resource type="Script" path="res://scenes/FX.gd" id="10_agwh5"]
 [ext_resource type="PackedScene" uid="uid://c8j4ld6iulqjl" path="res://scenes/map.tscn" id="10_wiiij"]
 [ext_resource type="Script" path="res://scenes/LavaFX.gd" id="12_wh2nv"]
 [ext_resource type="Texture2D" uid="uid://bljcg74u2x5sd" path="res://sprites/invisibility.png" id="15_7qhek"]
+[ext_resource type="Texture2D" uid="uid://cwiafy02tr7dy" path="res://sprites/gravestone_spr_0.png" id="15_h1amw"]
+[ext_resource type="Texture2D" uid="uid://jwkpmr5n1bns" path="res://sprites/faucet_icon.png" id="15_hmopd"]
 [ext_resource type="Texture2D" uid="uid://c23gqep4iu84m" path="res://sprites/none.png" id="16_lx8b7"]
 [ext_resource type="Texture2D" uid="uid://csp0ardyjl54b" path="res://sprites/spring.png" id="17_3xuhu"]
 [ext_resource type="Texture2D" uid="uid://df545tsy68qs1" path="res://sprites/growing_plant.png" id="17_s4wuu"]
@@ -121,6 +125,26 @@ sources/1 = SubResource("TileSetAtlasSource_qr43o")
 sources/3 = SubResource("TileSetAtlasSource_kdlq4")
 sources/2 = SubResource("TileSetAtlasSource_da60i")
 
+[sub_resource type="Animation" id="Animation_1kwyb"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 1e-05), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l3b71"]
+_data = {
+"new_animation": SubResource("Animation_1kwyb")
+}
+
 [sub_resource type="Animation" id="Animation_tie5b"]
 resource_name = "new_animation"
 tracks/0/type = "value"
@@ -140,6 +164,33 @@ tracks/0/keys = {
 _data = {
 "new_animation": SubResource("Animation_tie5b")
 }
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e02py"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_rjva8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_hmopd")
+}],
+"loop": true,
+"name": &"faucet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_h1amw")
+}],
+"loop": true,
+"name": &"tomb",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yq7gw"]
 animations = [{
@@ -349,6 +400,19 @@ script = ExtResource("4_t3tcr")
 scale = Vector2(1.3, 1.3)
 transform = Transform2D(1.3, 0, 0, 1.3, 0, 0)
 
+[node name="VideoContainer" type="Node2D" parent="CanvasLayer"]
+process_mode = 3
+position = Vector2(431.539, 226.923)
+scale = Vector2(0.5, 1e-05)
+script = ExtResource("9_tko05")
+
+[node name="VideoStreamPlayer" parent="CanvasLayer/VideoContainer" instance=ExtResource("9_qiw31")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/VideoContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_l3b71")
+}
+
 [node name="Pause" type="Node2D" parent="CanvasLayer"]
 process_mode = 3
 position = Vector2(436.154, 217.692)
@@ -431,10 +495,10 @@ modulate = Color(1, 1, 1, 0.741176)
 position = Vector2(432.308, 240.769)
 scale = Vector2(5, 5)
 
-[node name="PrisonerHead" type="Sprite2D" parent="CanvasLayer/Control"]
+[node name="PrisonerHead" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
 position = Vector2(741.54, 19.2308)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("6_rjva8")
+sprite_frames = SubResource("SpriteFrames_e02py")
 
 [node name="counter" type="Label" parent="CanvasLayer/Control/PrisonerHead"]
 anchors_preset = -1
@@ -582,6 +646,7 @@ libraries = {
 }
 speed_scale = 0.5
 
+[connection signal="animation_finished" from="CanvasLayer/VideoContainer/AnimationPlayer" to="CanvasLayer/VideoContainer" method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="CanvasLayer/Pause/btn_salir" to="CanvasLayer/Pause" method="_on_btn_salir_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/btn_resumir" to="CanvasLayer/Pause" method="_on_btn_resumir_pressed"]
 [connection signal="animation_finished" from="CanvasLayer/Pause/AnimationPlayer" to="CanvasLayer/Pause" method="_on_animation_player_animation_finished"]

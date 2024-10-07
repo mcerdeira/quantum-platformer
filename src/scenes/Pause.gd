@@ -24,7 +24,8 @@ func _physics_process(_delta):
 					resume()
 		
 		if Input.is_action_just_pressed("quit"):
-			pause_unpause()
+			if !$"../VideoContainer".visible:
+				pause_unpause()
 			
 func exit():
 	Global.CurrentState = Global.GameStates.TITLE

@@ -127,6 +127,20 @@ offset_right = 136.0
 offset_bottom = 176.0
 text = "Free Prisoners"
 
+[node name="btn_killboss" type="Button" parent="."]
+offset_left = 421.0
+offset_top = 155.0
+offset_right = 490.0
+offset_bottom = 186.0
+text = "< KILL"
+
+[node name="btn_demoroom" type="Button" parent="."]
+offset_left = 328.0
+offset_top = 233.0
+offset_right = 470.0
+offset_bottom = 287.0
+text = "Demo Room"
+
 [connection signal="pressed" from="bnt_coin" to="." method="_on_bnt_coin_pressed"]
 [connection signal="pressed" from="bnt_plant" to="." method="_on_bnt_plant_pressed"]
 [connection signal="pressed" from="bnt_spring" to="." method="_on_bnt_spring_pressed"]
@@ -140,3 +154,5 @@ text = "Free Prisoners"
 [connection signal="pressed" from="btn_reset" to="." method="_on_btn_reset_pressed"]
 [connection signal="text_changed" from="txt_terminal" to="." method="_on_txt_terminal_text_changed"]
 [connection signal="pressed" from="btn_liberate" to="." method="_on_btn_liberate_pressed"]
+[connection signal="pressed" from="btn_killboss" to="." method="_on_btn_killboss_pressed"]
+[connection signal="pressed" from="btn_demoroom" to="." method="_on_btn_demoroom_pressed"]
