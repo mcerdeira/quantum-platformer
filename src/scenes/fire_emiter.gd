@@ -21,7 +21,6 @@ func _physics_process(_delta):
 		$Line2D.points[1].y = lerp($Line2D.points[1].y, ($RayCast2D.cast_point.y - 16), 1)
 	
 	
-	var coso = abs($Line2D.points[1].y)
 	$RaySprite.scale.x = abs($Line2D.points[1].y - 2)
 	$fire_part.position = $Line2D.points[1]
 	$RayParticles2.position = $Line2D.points[1]

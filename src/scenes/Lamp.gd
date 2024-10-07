@@ -10,6 +10,9 @@ func _ready():
 	if Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
 		killme = true
 	else:
+		if Global.TerminalNumber == Global.TerminalsEnum.TOMB:
+			fixed = true
+		
 		if !fixed:
 			if randi() % 3 == 0:
 				queue_free()

@@ -31,6 +31,10 @@ window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[editor]
+
+movie_writer/movie_file="C:/Datos/Personal/Godot/gameplay.avi"
+
 [file_customization]
 
 folder_colors={

@@ -225,7 +225,7 @@ func _physics_process(delta):
 				$display/back/arrows.visible = false
 				$display/Terminal.visible = true
 				current_message = "BIENVENIDO A LA GRUTA TERMINAL #" + str(terminal_number) + " " + Global.Terminals[terminal_number].name.strip_edges() + "# \n"
-				current_message += "ESCRIBA LOS COMANDOS O USE LAS FLECHAS PARA INTERACTUAR CON ELLOS\n"
+				current_message += "ESCRIBA LOS COMANDOS O USE LAS FLECHAS (↑↓→) PARA INTERACTUAR CON ELLOS\n"
 				current_message += "LISTO\n"
 				Global.player_obj.terminal_mode = true
 				Global.player_obj.visible = false
@@ -558,14 +558,11 @@ func parser(_cmd, gamepad):
 		$Info.terminal_number = terminal_number
 	elif found != -1 and _cmd == "LISTAR":
 		var commands = ""
-		var lines = 0
 		for i in range(Global.Terminals.size()):
 			commands += "#" + str(i) + " " + Global.Terminals[i].name + "# | ESTADO: " + trad_state(Global.Terminals[i].status) + "\n"
-			lines += 1
 			var vars = trad_vars(Global.Terminals[i].variable)
 			if vars != "":
 				commands += "\t" + vars+ "\n\n"
-				lines += 2
 		current_message = "LISTA DE TERMINALES:\n" + commands + "\nLISTO" + "\n"
 	elif found != -1 and _cmd == "SALIR":
 		CMD.text = ""
@@ -576,7 +573,7 @@ func parser(_cmd, gamepad):
 		Global.player_obj.terminal_mode = false
 		Global.player_obj.visible = true
 	else:
-		current_message = "ERROR: ESCRIBE AYUDA <COMANDO> O AYUDA PARA VER COMANDOS"+ "\n"
+		current_message = "ERROR: ESCRIBE AYUDA <COMANDO> O AYUDA PARA VER COMANDOS O USE LAS FLECHAS (↑↓→) PARA INTERACTUAR"+ "\n"
 		
 	if gamepad:
 		if current_message:

@@ -11,8 +11,9 @@ func _ready():
 			if !nope:
 				Global.exit_door = self
 		else:
+			var change = Global.sync_this_terminal(terminal_number)
 			if Global.Terminals[terminal_number].status:
-				open()
+				open(change)
 		
 func _physics_process(delta):
 	if !closed and target:
@@ -26,10 +27,10 @@ func assign(_terminal_number):
 	terminal_number = _terminal_number
 	Global.exit_door = self
 
-func open():
+func open(with_sound = false):
 	closed = false
 	$sprite.frame = 1
-	if gotoBOSS:
+	if gotoBOSS or with_sound:
 		var options = {"pitch_scale": 0.7}
 		Global.play_sound(Global.DoorOpensSFX, options)
 		Global.shaker_obj.shake(15, 3)

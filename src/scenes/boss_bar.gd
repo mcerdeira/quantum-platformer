@@ -15,5 +15,5 @@ func showme():
 	$"../perks6".visible = false
 
 func calc_life_bar(total, current):
-	var scale = current / total
-	$ProgressBarFillSpr0.scale.x = scale
+	var scale_c = current / total
+	$ProgressBarFillSpr0.scale.x = scale_c

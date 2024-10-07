@@ -277,7 +277,7 @@ position = Vector2(336, 656)
 position = Vector2(560, 512)
 scale = Vector2(1, 15)
 tilemap = NodePath("..")
-force_tile = 1
+whatiam = 1
 
 [node name="moving_plat" parent="." instance=ExtResource("20_khxhp")]
 z_index = 1000

@@ -15,6 +15,9 @@ func _physics_process(_delta):
 	elif Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
 		Global.lava_FX.set_intensity(0.0, 0.0)
 		queue_free()
+	elif Global.TerminalNumber == Global.TerminalsEnum.TOMB:
+		Global.lava_FX.set_intensity(0.0, 0.0)
+		queue_free()
 	else:
 		if Global.player_obj != null:
 			var faked = Vector2(global_position.x, Global.player_obj.global_position.y)

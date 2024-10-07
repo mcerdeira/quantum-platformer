@@ -4,10 +4,9 @@ extends Area2D
 var stair = 0
 var rope = 1
 var vine = 2
-var whatiam = null
+@export var whatiam = -1
 var continuation = false
 var child = null
-@export var force_tile = -1
 
 var tiles = [
 	[1, 1, 1],  #stair
@@ -53,9 +52,7 @@ func define_me():
 func _ready():
 	add_to_group("stairs")
 	if tilemap:
-		if force_tile != -1:
-			whatiam = force_tile
-		else:
+		if whatiam == -1:
 			whatiam = Global.pick_random([stair, rope, vine])
 		define_me()
 		

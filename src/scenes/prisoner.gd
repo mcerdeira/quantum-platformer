@@ -144,7 +144,11 @@ func process_player(delta):
 		return
 		
 	if fire_obj and is_instance_valid(fire_obj):
-		fire_obj.reparent(level_parent)
+		var current = fire_obj.get_parent()
+		if current:
+			fire_obj.reparent(level_parent)
+		else:
+			level_parent.add_child(fire_obj)
 		fire_obj.global_position = global_position
 		fire_obj.z_index = z_index + 1
 		

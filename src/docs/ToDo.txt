@@ -50,6 +50,7 @@ Features:
 - Geisers
 - Truenos
 - Lluvia
+- Cadenas para colgarse
 
 - Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
   - Alinear los discos, llama al bote.

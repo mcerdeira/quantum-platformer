@@ -5,7 +5,7 @@ extends Camera2D
 func _ready():
 	Global.shaker_obj.camera = self
 
-func _process(delta):
+func _process(_delta):
 	Global.shaker_obj.camera = self
 
 func _on_animation_player_animation_finished(anim_name):

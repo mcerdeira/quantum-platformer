@@ -246,9 +246,10 @@ func setHUD(only_gold = false, first_time = false):
 	var lbl_coin = get_node("CanvasLayer/Control/coin_slot2/lbl_stock")
 	lbl_coin.text = "x" + str(Global.Gold)
 	
-	for i in range(1, Global.CurrentLevel + 1):
-		var perk = get_node("CanvasLayer/Control/perks" + str(i))
-		perk.visible = true
+	if !Global.BOSS_ROOM:
+		for i in range(1, Global.CurrentLevel + 1):
+			var perk = get_node("CanvasLayer/Control/perks" + str(i))
+			perk.visible = true
 	
 	if only_gold:
 		return
@@ -271,6 +272,9 @@ func calc_selected(first_time = false):
 		for ei in range(count):
 			var p = particle.instantiate()
 			sel.add_child(p)
+			
+#func _process(delta):
+	#print("FPS " + str(Engine.get_frames_per_second()))
 
 func _physics_process(delta):
 	$CanvasLayer/Control/lbl_gameover.visible = Global.GAMEOVER

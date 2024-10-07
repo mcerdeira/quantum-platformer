@@ -279,6 +279,12 @@ enum TerminalsEnum {
 	SERAPH = 5,
 }
 
+var LEAF_STATUS = true
+var TOMB_STATUS = false
+var MERMAID_STATUS = false
+var SALAMANDER_STATUS = false
+var SERAPH_STATUS = false
+
 var Terminals = [
 	{
 		"name": "El Ojo       ",
@@ -482,6 +488,13 @@ func save_game():
 		saved_game.store_var(Global.GoldDonation)
 		saved_game.store_var(Global.ARTIFACT_PER_LEVEL)
 		saved_game.store_var(Global.FirstDeath)
+		
+		saved_game.store_var(Global.LEAF_STATUS)
+		saved_game.store_var(Global.TOMB_STATUS)
+		saved_game.store_var(Global.MERMAID_STATUS)
+		saved_game.store_var(Global.SALAMANDER_STATUS)
+		saved_game.store_var(Global.SERAPH_STATUS)
+	
 		saved_game.close()
 	
 func load_game():
@@ -501,6 +514,12 @@ func load_game():
 			var g_donation = saved_game.get_var()
 			var a_per_level = saved_game.get_var()
 			var first_death = saved_game.get_var()
+			
+			var leaf_status =  saved_game.get_var()
+			var tomb_status =  saved_game.get_var()
+			var mermaid_status =  saved_game.get_var()
+			var salamander_status =  saved_game.get_var()
+			var seraph_status =  saved_game.get_var()
 			
 			if cur_state != null:
 				Global.FirstState = cur_state
@@ -529,6 +548,18 @@ func load_game():
 					Global.ARTIFACT_PER_LEVEL = a_per_level
 				if first_death != null:
 					Global.FirstDeath = first_death
+					
+				if leaf_status != null:
+					Global.LEAF_STATUS = leaf_status
+				if tomb_status != null:
+					Global.TOMB_STATUS = tomb_status
+				if mermaid_status != null:
+					Global.MERMAID_STATUS = mermaid_status
+				if salamander_status != null:
+					Global.SALAMANDER_STATUS = salamander_status
+				if seraph_status != null:
+					Global.SERAPH_STATUS = seraph_status
+				
 	else:
 		Global.FirstState =  GameStates.HOME
 		Global.first_time = true
@@ -542,6 +573,49 @@ func load_game():
 		Global.GoldDonation = 0
 		Global.ARTIFACT_PER_LEVEL = [false, false, false, false, false]
 		Global.FirstDeath = true
+		Global.LEAF_STATUS = true
+		Global.TOMB_STATUS = false
+		Global.MERMAID_STATUS = false
+		Global.SALAMANDER_STATUS = false
+		Global.SERAPH_STATUS = false
+		
+	sync_terminals()
+	
+func sync_terminals():
+	for t in Global.Terminals:
+		if t.name.strip_edges() == "La Hoja":
+			t.status = Global.LEAF_STATUS
+		elif t.name.strip_edges() == "La Tumba":
+			t.status = Global.TOMB_STATUS
+		elif t.name.strip_edges() == "La Sirena":
+			t.status = Global.MERMAID_STATUS
+		elif t.name.strip_edges() == "La Salamandra":
+			t.status = Global.SALAMANDER_STATUS
+		elif t.name.strip_edges() == "El Serafin":
+			t.status = Global.SERAPH_STATUS
+			
+func sync_this_terminal(terminal_number):
+	var t = Global.Terminals[terminal_number]
+	if t.name.strip_edges() == "La Hoja":
+		if t.status != Global.LEAF_STATUS:
+			t.status = Global.LEAF_STATUS
+			return true
+	elif t.name.strip_edges() == "La Tumba":
+		if t.status != Global.TOMB_STATUS:
+			t.status = Global.TOMB_STATUS
+			return true
+	elif t.name.strip_edges() == "La Sirena":
+		if t.status != Global.MERMAID_STATUS:
+			t.status = Global.MERMAID_STATUS
+			return true
+	elif t.name.strip_edges() == "La Salamandra":
+		if t.status != Global.SALAMANDER_STATUS:
+			t.status = Global.SALAMANDER_STATUS
+			return true
+	elif t.name.strip_edges() == "El Serafin":
+		if t.status != Global.SERAPH_STATUS:
+			t.status = Global.SERAPH_STATUS
+			return true
 					
 func init_game():
 	load_sfx()
@@ -640,13 +714,8 @@ func init():
 	gunz_objs.append(smoke_bomb)
 	
 	gunz_objs_prob = [] + gunz_objs
-	for i in range(5):
-		gunz_objs_prob.append(muffin)
-		gunz_objs_prob.append(bomb)
-		gunz_objs_prob.append(smoke_bomb)
-		gunz_objs_prob.append(coin)
-		gunz_objs_prob.append(coin)
-		gunz_objs_prob.append(coin)
+	gunz_objs_prob.append(coin)
+	gunz_objs_prob.append(coin)
 	
 	gunz_equiped = []
 	
