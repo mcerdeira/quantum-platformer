@@ -86,6 +86,16 @@ var BigExplodeRetroSFX = null
 var PlayerHurtSFX = null
 var PauseSFX = null
 
+var video_tutorials = []
+
+var bomb_tutorial = null
+var clone_tutorial = null
+var muffin_tutorial = null
+var plant_tutorial = null
+var smoke_tutorial = null
+var spring_tutorial = null
+var teleport_tutorial = null
+
 var first_time_smoke = true
 var first_time_plant = true
 var first_time_clone = true
@@ -96,11 +106,14 @@ var first_time_spring = true
 var video_tutorial = null
 
 #CHEST ITEMS 
+
 var smoke_bomb = {
 	"name": "smoke",
 	"dialog": "PUFF!!",
 	"friendly_name": "Humo",
 	"description": "Los enemigos no te veran.",
+	"tutorial": "Con esta bomba vas a pasar inadvertido, ya que los enemigos no te verán.",
+	"tutorial_idx": 4,
 	"has_action": true,
 	"pasive": false,
 	"full_scale": true,
@@ -110,6 +123,8 @@ var plant = {
 	"dialog": "VAMOS!",
 	"friendly_name": "Plantita",
 	"description": "¡Crece y crece!",
+	"tutorial": "Lanza una pequeña planta que se extiende verticalmete funcionando como una escalera.",
+	"tutorial_idx": 3,
 	"has_action": true,
 	"pasive": false,
 	"full_scale": true,
@@ -119,6 +134,8 @@ var clone = {
 	"dialog": "EPA!",
 	"friendly_name": "Clonador",
 	"description": "Genera una copia tuya.",
+	"tutorial": "Genera copias de ti mismo, pero cuidado: no te abuses.",
+	"tutorial_idx": 1,
 	"has_action": true,
 	"pasive": false,
 	"full_scale": false,
@@ -128,6 +145,8 @@ var teleport = {
 	"dialog": "EPA!",
 	"friendly_name": "Teletransportador",
 	"description": "Viaje instantaneo en el espacio.",
+	"tutorial": "Muy util teletransportación instantánea.",
+	"tutorial_idx": 6,
 	"has_action": true,
 	"pasive": false,
 	"full_scale": false,
@@ -138,6 +157,8 @@ var spikeball = {
 	"dialog": "EPA!",
 	"friendly_name": "Bola Pinchuda",
 	"description": "¡Ouch!",
+	"tutorial": "",
+	"tutorial_idx": -1,
 	"has_action": false,
 	"pasive": false,
 	"full_scale": true,
@@ -148,6 +169,8 @@ var muffin = {
 	"dialog": "RICO!!",
 	"friendly_name": "Golosina",
 	"description": "¡Que rico!",
+	"tutorial": "Si algunos enemigos comen esta golosina, se quedarán dormidos.",
+	"tutorial_idx": 2,
 	"has_action": false,
 	"pasive": false,
 	"full_scale": false,
@@ -157,6 +180,8 @@ var bomb = {
 	"dialog": "PUMMM!!",
 	"friendly_name": "Bomba",
 	"description": "¡Bum!",
+	"tutorial": "Al explotar stunnea a los enemigos ¡pero no los mata!",
+	"tutorial_idx": 0,
 	"has_action": true,
 	"pasive": false,
 	"full_scale": true,
@@ -166,6 +191,8 @@ var coin = {
 	"dialog": "EPA!",
 	"friendly_name": "Moneda",
 	"description": "Gruta-Monedas",
+	"tutorial": "",
+	"tutorial_idx": -1,
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
@@ -175,6 +202,8 @@ var spring = {
 	"dialog": "EPA!",
 	"friendly_name": "Resorte",
 	"description": "¡Toing! ¡Toing!",
+	"tutorial": "Lanza este item para usarlo como catapulta para saltar mucho mas alto.",
+	"tutorial_idx": 5,
 	"has_action": false,
 	"pasive": false,
 	"full_scale": true,
@@ -700,6 +729,16 @@ func load_sfx():
 	PauseSFX = load("res://sfx/pause_sfx.wav")
 	ButtonSFX = load("res://sfx/button_sound.wav")
 	DoorOpensSFX = load("res://sfx/door_opens.wav")
+	
+	bomb_tutorial = load("res://video/bomb_tutorial.ogv")
+	clone_tutorial = load("res://video/clone_tutorial.ogv")
+	muffin_tutorial = load("res://video/muffin_tutorial.ogv")
+	plant_tutorial = load("res://video/plant_tutorial.ogv")
+	smoke_tutorial = load("res://video/smoke_tutorial.ogv")
+	spring_tutorial = load("res://video/spring_tutorial.ogv")
+	teleport_tutorial = load("res://video/teleport_tutorial.ogv")
+	
+	video_tutorials = [bomb_tutorial, clone_tutorial, muffin_tutorial, plant_tutorial, smoke_tutorial, spring_tutorial, teleport_tutorial]
 	
 func init():
 	gunz_equiped = []

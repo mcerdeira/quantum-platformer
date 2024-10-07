@@ -33,7 +33,7 @@ window/stretch/aspect="expand"
 
 [editor]
 
-movie_writer/movie_file="C:/Datos/Personal/Godot/gameplay.avi"
+movie_writer/movie_file="C:/Develop/Godot/gameplay.avi"
 
 [file_customization]
 

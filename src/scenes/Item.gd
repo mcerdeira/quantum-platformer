@@ -26,13 +26,21 @@ func _ready():
 	elif randi() % 2 == 0 or fixed:
 		current_item = Global.pick_random(Global.gunz_objs_prob)
 		if current_item.name == "bomb":
-			QTY = Global.pick_random([2, 3, 5])
+			QTY = Global.pick_random([5, 8, 10])
 		elif current_item.name == "smoke":
-			QTY = Global.pick_random([2, 3, 5])
+			QTY = Global.pick_random([5, 8, 10])
 		elif current_item.name == "coin":
-			QTY = Global.pick_random([1, 5, 10])
+			QTY = Global.pick_random([1, 5, 8])
 		elif current_item.name == "muffin":
-			QTY = Global.pick_random([2, 3, 5])
+			QTY = Global.pick_random([5, 8, 10])
+		elif current_item.name == "spring":
+			QTY = Global.pick_random([5, 8, 10])
+		elif current_item.name == "clone":
+			QTY = Global.pick_random([5, 8, 10])
+		elif current_item.name == "teleport":
+			QTY = Global.pick_random([5, 8, 10])
+		elif current_item.name == "plant":
+			QTY = Global.pick_random([5, 8, 10])
 		
 		$display/back/sprite.animation = current_item.name
 		var qty_str = ""
