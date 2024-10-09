@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bveav6ctdlmbu"]
+[gd_scene load_steps=64 format=3 uid="uid://bveav6ctdlmbu"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_tvtda"]
 [ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="2_6led8"]
@@ -41,6 +41,9 @@
 [ext_resource type="Texture2D" uid="uid://stlndvxp0x7l" path="res://sprites/wings.png" id="24_m12jp"]
 [ext_resource type="PackedScene" uid="uid://yw5hjnyqexic" path="res://scenes/lava.tscn" id="24_nijr5"]
 [ext_resource type="Script" path="res://scenes/FADE.gd" id="26_4o44h"]
+[ext_resource type="Texture2D" uid="uid://dsq1qbrwmy7u3" path="res://sprites/cosito1.png" id="28_eqb2r"]
+[ext_resource type="Texture2D" uid="uid://chgbadtf8x5k6" path="res://sprites/cosito2.png" id="29_rgt4v"]
+[ext_resource type="Texture2D" uid="uid://ytl3s67gkq0y" path="res://sprites/cosito3.png" id="30_mxdic"]
 [ext_resource type="PackedScene" uid="uid://bm27sx6y5d26" path="res://scenes/river.tscn" id="31_3m334"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qr43o"]
@@ -267,6 +270,23 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_0q3kr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_eqb2r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_rgt4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_mxdic")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_hurq8"]
 animations = [{
 "frames": [{
@@ -403,8 +423,6 @@ transform = Transform2D(1.3, 0, 0, 1.3, 0, 0)
 [node name="VideoContainer" type="CanvasLayer" parent="CanvasLayer"]
 process_mode = 3
 visible = false
-scale = Vector2(1, 0.01)
-transform = Transform2D(1, 0, 0, 0.01, 0, 0)
 script = ExtResource("9_tko05")
 
 [node name="VideoStreamPlayer" parent="CanvasLayer/VideoContainer" instance=ExtResource("9_qiw31")]
@@ -532,7 +550,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="gun_slot0" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
-position = Vector2(60, 18)
+position = Vector2(78.4615, 18)
 sprite_frames = SubResource("SpriteFrames_yq7gw")
 animation = &"none"
 
@@ -548,8 +566,24 @@ horizontal_alignment = 2
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="cosito1" type="AnimatedSprite2D" parent="CanvasLayer/Control/gun_slot0"]
+visible = false
+position = Vector2(28.4616, 0)
+rotation = 4.71239
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_0q3kr")
+autoplay = "default"
+
+[node name="cosito2" type="AnimatedSprite2D" parent="CanvasLayer/Control/gun_slot0"]
+visible = false
+position = Vector2(-27.6923, 0)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_0q3kr")
+autoplay = "default"
+
 [node name="selected0" type="Sprite2D" parent="CanvasLayer/Control"]
-position = Vector2(60, 18)
+position = Vector2(78.4615, 18)
 texture = ExtResource("7_rtry5")
 
 [node name="perks1" type="AnimatedSprite2D" parent="CanvasLayer/Control"]

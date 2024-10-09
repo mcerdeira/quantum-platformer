@@ -176,6 +176,8 @@ func kill_fire():
 			fire_obj = p
 
 func dead_fire():
+	if randi() % 2 == 0:
+		$Item.visible = true
 	dead = true
 	$sprite.animation = "dead_fire" + spr_sufix
 	$sprite.play()

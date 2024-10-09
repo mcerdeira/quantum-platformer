@@ -38,13 +38,12 @@
 ==================================================================================================================
 
 IN_PROGRESS:
+- Inventario cuando hacemos pausa
+
 
 BUGS/Ajustes:
 
 Features:
-- Inventario cuando hacemos pausa
-- Hacer tutorial en la tele
-- Mas items, menos monedas + monedas en enemigos Muertos o dormidos?
 - Cascadas (ala Minecraft) que interactuen con bombas y enemigos
 - Momento: el nivel empieza a explotar/irse para arriba, se puede hacer con objetos que simulen ser tiles pero no lo son
 - Armar items 3D que se puede girar en todas las direcciones con una porción del QR, algun titulo y forma de cerrarlo
@@ -83,6 +82,10 @@ Features:
 - Decoraciones: La sangre debería desaparecer al tocar la lava
 
 --------------------------------- DONE ---------------------------------
+- Hacer tutorial en la tele
+- Mas items, menos monedas  
+- Monedas en enemigos Muertos o dormidos?
+- Si enemigo se come un clon, se queda dormido
 - Hacer que un npc aparezca desde el boss y nos de parte de la historia
 - Saltar en los enemigos
 - SFX

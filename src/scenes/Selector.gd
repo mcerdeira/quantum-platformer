@@ -21,6 +21,7 @@ func refresh_item():
 		var gslot = get_node("gun_slot" + str(i))
 		if Global.gunz_equiped[i].name != "none":
 			gslot.animation = Global.gunz_equiped[i].name
+			
 
 	if count == 1:
 		$gun_slot0.visible = true

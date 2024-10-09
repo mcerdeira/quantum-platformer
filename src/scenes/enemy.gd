@@ -302,6 +302,9 @@ func _on_area_body_entered(body):
 	if !dead and !sleep and blowed <= 0:
 		if body and body.is_in_group("players"):
 			Global.play_sound(Global.EnemyChewingSFX, {}, global_position)
+			if body.iam_clone:
+				do_when_finish_killing = "muffin"
+			
 			body.kill()
 			killing = total_killing
 			if global_position.x > body.global_position.x:
@@ -354,6 +357,8 @@ func kill_fall():
 	queue_free()
 	
 func dead_fire():
+	if randi() % 2 == 0:
+		$Item.visible = true
 	dead = true
 	$sprite.animation = "dead_fire"
 	$sprite.play()

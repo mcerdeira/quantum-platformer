@@ -187,7 +187,10 @@ func kill_fire():
 			fire_obj = p
 
 func dead_fire():
+	if randi() % 2 == 0:
+		$Item.visible = true
 	dead = true
+	gravity = 10.0
 	$wing2.visible = false
 	$wing1.visible = false
 	$sprite/Nose.visible = false

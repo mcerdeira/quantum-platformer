@@ -258,9 +258,15 @@ func setHUD(only_gold = false, first_time = false):
 	if only_gold:
 		return
 		
+	$CanvasLayer/Control/gun_slot0/cosito1.visible = false
+	$CanvasLayer/Control/gun_slot0/cosito2.visible = false
+		
 	if Global.gunz_equiped.size() > 0:
+		$CanvasLayer/Control/gun_slot0/cosito1.visible = Global.gunz_equiped.size() > 1
+		$CanvasLayer/Control/gun_slot0/cosito2.visible = $CanvasLayer/Control/gun_slot0/cosito1.visible
+		
 		var slot = get_node("CanvasLayer/Control/gun_slot0")
-		slot.animation = Global.gunz_equiped[Global.gunz_index ].name
+		slot.animation = Global.gunz_equiped[Global.gunz_index].name
 		calc_selected(first_time)
 	
 func calc_selected(first_time = false):

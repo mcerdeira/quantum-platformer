@@ -68,7 +68,37 @@ func _physics_process(delta):
 			Global.emit(global_position, 5)
 			get_item()
 			if !has_artifact:
-				Global.video_tutorial.play(current_item)
+				var show_video = false
+				if current_item.name == "smoke" and Global.first_time_smoke:
+					Global.first_time_smoke = false
+					show_video = true
+				
+				if current_item.name == "plant" and Global.first_time_plant:
+					Global.first_time_plant = false
+					show_video = true
+					
+				if current_item.name == "clone" and Global.first_time_clone:
+					Global.first_time_clone = false
+					show_video = true
+					
+				if current_item.name == "teleport" and Global.first_time_teleport:
+					Global.first_time_teleport = false
+					show_video = true
+					
+				if current_item.name == "muffin" and Global.first_time_muffin:
+					Global.first_time_muffin = false
+					show_video = true
+					
+				if current_item.name == "bomb" and Global.first_time_bomb:
+					Global.first_time_bomb = false
+					show_video = true
+					
+				if current_item.name == "spring" and Global.first_time_spring:
+					Global.first_time_spring = false
+					show_video = true
+					
+				if show_video:
+					Global.video_tutorial.play(current_item)
 			$sprite.animation = "open"
 			$display.visible = false
 		

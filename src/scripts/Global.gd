@@ -533,6 +533,14 @@ func save_game():
 		saved_game.store_var(Global.MERMAID_STATUS)
 		saved_game.store_var(Global.SALAMANDER_STATUS)
 		saved_game.store_var(Global.SERAPH_STATUS)
+		
+		saved_game.store_var(Global.first_time_smoke)
+		saved_game.store_var(Global.first_time_plant)
+		saved_game.store_var(Global.first_time_clone)
+		saved_game.store_var(Global.first_time_teleport)
+		saved_game.store_var(Global.first_time_muffin)
+		saved_game.store_var(Global.first_time_bomb)
+		saved_game.store_var(Global.first_time_spring)
 	
 		saved_game.close()
 	
@@ -554,11 +562,19 @@ func load_game():
 			var a_per_level = saved_game.get_var()
 			var first_death = saved_game.get_var()
 			
-			var leaf_status =  saved_game.get_var()
-			var tomb_status =  saved_game.get_var()
-			var mermaid_status =  saved_game.get_var()
-			var salamander_status =  saved_game.get_var()
-			var seraph_status =  saved_game.get_var()
+			var leaf_status = saved_game.get_var()
+			var tomb_status = saved_game.get_var()
+			var mermaid_status = saved_game.get_var()
+			var salamander_status = saved_game.get_var()
+			var seraph_status = saved_game.get_var()
+			
+			var _first_time_smoke = saved_game.get_var()
+			var _first_time_plant = saved_game.get_var()
+			var _first_time_clone = saved_game.get_var()
+			var _first_time_teleport = saved_game.get_var()
+			var _first_time_muffin = saved_game.get_var()
+			var _first_time_bomb = saved_game.get_var()
+			var _first_time_spring = saved_game.get_var()
 			
 			if cur_state != null:
 				Global.FirstState = cur_state
@@ -598,6 +614,21 @@ func load_game():
 					Global.SALAMANDER_STATUS = salamander_status
 				if seraph_status != null:
 					Global.SERAPH_STATUS = seraph_status
+					
+				if _first_time_smoke != null:
+					Global.first_time_smoke = _first_time_smoke
+				if _first_time_plant != null:
+					Global.first_time_plant = _first_time_plant
+				if _first_time_clone != null:
+					Global.first_time_clone = _first_time_clone
+				if _first_time_teleport != null:
+					Global.first_time_teleport = _first_time_teleport
+				if _first_time_muffin != null:
+					Global.first_time_muffin = _first_time_muffin
+				if _first_time_bomb != null:
+					Global.first_time_bomb = _first_time_bomb
+				if _first_time_spring != null:
+					Global.first_time_spring = _first_time_spring
 				
 	else:
 		Global.FirstState =  GameStates.HOME
@@ -617,6 +648,13 @@ func load_game():
 		Global.MERMAID_STATUS = false
 		Global.SALAMANDER_STATUS = false
 		Global.SERAPH_STATUS = false
+		Global.first_time_smoke = true
+		Global.first_time_plant = true
+		Global.first_time_clone = true
+		Global.first_time_teleport = true
+		Global.first_time_muffin = true
+		Global.first_time_bomb = true
+		Global.first_time_spring = true
 		
 	sync_terminals()
 	
@@ -763,7 +801,6 @@ func init():
 	gunz_objs.append(smoke_bomb)
 	
 	gunz_objs_prob = [] + gunz_objs
-	gunz_objs_prob.append(coin)
 	gunz_objs_prob.append(coin)
 	
 	gunz_equiped = []

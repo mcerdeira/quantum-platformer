@@ -1,9 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://bu7ckbjmd1lhd"]
+[gd_scene load_steps=5 format=3 uid="uid://bu7ckbjmd1lhd"]
 
+[ext_resource type="Shader" path="res://scenes/VideoStream.gdshader" id="1_di240"]
 [ext_resource type="VideoStream" path="res://video/muffin_tutorial.ogv" id="1_rkhxy"]
 [ext_resource type="Script" path="res://scenes/video_stream_player.gd" id="2_gh1f1"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3yi7g"]
+shader = ExtResource("1_di240")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.1
+shader_parameter/aberration = 4.75e-08
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.2
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.0
+
 [node name="VideoStreamPlayer" type="VideoStreamPlayer"]
+material = SubResource("ShaderMaterial_3yi7g")
 offset_left = -573.0
 offset_top = -331.0
 offset_right = 579.0
