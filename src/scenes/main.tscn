@@ -148,53 +148,6 @@ _data = {
 "new_animation": SubResource("Animation_1ni5f")
 }
 
-[sub_resource type="Animation" id="Animation_tie5b"]
-resource_name = "new_animation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 0), Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_sq6dk"]
-_data = {
-"new_animation": SubResource("Animation_tie5b")
-}
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_e02py"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_rjva8")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("15_hmopd")
-}],
-"loop": true,
-"name": &"faucet",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("15_h1amw")
-}],
-"loop": true,
-"name": &"tomb",
-"speed": 5.0
-}]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_yq7gw"]
 animations = [{
 "frames": [{
@@ -211,6 +164,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"clone",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_l8g3j")
+}],
+"loop": true,
+"name": &"coin",
 "speed": 5.0
 }, {
 "frames": [{
@@ -267,6 +228,53 @@ animations = [{
 }],
 "loop": true,
 "name": &"teleport",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_tie5b"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sq6dk"]
+_data = {
+"new_animation": SubResource("Animation_tie5b")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e02py"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_rjva8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_hmopd")
+}],
+"loop": true,
+"name": &"faucet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_h1amw")
+}],
+"loop": true,
+"name": &"tomb",
 "speed": 5.0
 }]
 
@@ -449,7 +457,7 @@ libraries = {
 
 [node name="Pause" type="Node2D" parent="CanvasLayer"]
 process_mode = 3
-position = Vector2(436.154, 217.692)
+position = Vector2(436.154, 163.846)
 scale = Vector2(1, 1e-05)
 script = ExtResource("9_wpesn")
 
@@ -467,6 +475,156 @@ offset_right = 237.0
 offset_bottom = 62.0
 color = Color(0, 0, 0.12549, 1)
 
+[node name="pause_color2" type="ColorRect" parent="CanvasLayer/Pause"]
+offset_left = -115.0
+offset_top = 33.0
+offset_right = 123.0
+offset_bottom = 182.0
+
+[node name="pause_color2" type="ColorRect" parent="CanvasLayer/Pause/pause_color2"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 237.0
+offset_bottom = 148.0
+color = Color(0, 0, 0.12549, 1)
+
+[node name="gun_slot0" type="AnimatedSprite2D" parent="CanvasLayer/Pause/pause_color2"]
+position = Vector2(58.4615, 51.8461)
+sprite_frames = SubResource("SpriteFrames_yq7gw")
+animation = &"muffin"
+
+[node name="lbl_stock" type="Label" parent="CanvasLayer/Pause/pause_color2/gun_slot0"]
+offset_left = -6.53847
+offset_top = 15.8462
+offset_right = 17.4615
+offset_bottom = 25.8462
+theme_override_colors/font_color = Color(0, 0.913725, 0.392157, 1)
+theme_override_fonts/font = ExtResource("7_2v1dk")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="gun_slot4" type="AnimatedSprite2D" parent="CanvasLayer/Pause/pause_color2"]
+position = Vector2(58.4615, 101.538)
+sprite_frames = SubResource("SpriteFrames_yq7gw")
+animation = &"clone"
+
+[node name="lbl_stock" type="Label" parent="CanvasLayer/Pause/pause_color2/gun_slot4"]
+offset_left = -6.53847
+offset_top = 15.8462
+offset_right = 17.4615
+offset_bottom = 25.8462
+theme_override_colors/font_color = Color(0, 0.913725, 0.392157, 1)
+theme_override_fonts/font = ExtResource("7_2v1dk")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="gun_slot5" type="AnimatedSprite2D" parent="CanvasLayer/Pause/pause_color2"]
+position = Vector2(98.4615, 101.538)
+sprite_frames = SubResource("SpriteFrames_yq7gw")
+animation = &"teleport"
+
+[node name="lbl_stock" type="Label" parent="CanvasLayer/Pause/pause_color2/gun_slot5"]
+offset_left = -6.53847
+offset_top = 15.8462
+offset_right = 17.4615
+offset_bottom = 25.8462
+theme_override_colors/font_color = Color(0, 0.913725, 0.392157, 1)
+theme_override_fonts/font = ExtResource("7_2v1dk")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="gun_slot6" type="AnimatedSprite2D" parent="CanvasLayer/Pause/pause_color2"]
+position = Vector2(138.461, 101.538)
+sprite_frames = SubResource("SpriteFrames_yq7gw")
+animation = &"spring"
+
+[node name="lbl_stock" type="Label" parent="CanvasLayer/Pause/pause_color2/gun_slot6"]
+offset_left = -6.53847
+offset_top = 15.8462
+offset_right = 17.4615
+offset_bottom = 25.8462
+theme_override_colors/font_color = Color(0, 0.913725, 0.392157, 1)
+theme_override_fonts/font = ExtResource("7_2v1dk")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="gun_slot1" type="AnimatedSprite2D" parent="CanvasLayer/Pause/pause_color2"]
+position = Vector2(98.4615, 51.8461)
+sprite_frames = SubResource("SpriteFrames_yq7gw")
+animation = &"bomb"
+
+[node name="lbl_stock" type="Label" parent="CanvasLayer/Pause/pause_color2/gun_slot1"]
+offset_left = -6.53847
+offset_top = 15.8462
+offset_right = 17.4615
+offset_bottom = 25.8462
+theme_override_colors/font_color = Color(0, 0.913725, 0.392157, 1)
+theme_override_fonts/font = ExtResource("7_2v1dk")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="gun_slot2" type="AnimatedSprite2D" parent="CanvasLayer/Pause/pause_color2"]
+position = Vector2(138.461, 51.8461)
+sprite_frames = SubResource("SpriteFrames_yq7gw")
+animation = &"smoke"
+
+[node name="lbl_stock" type="Label" parent="CanvasLayer/Pause/pause_color2/gun_slot2"]
+offset_left = -6.53847
+offset_top = 15.8462
+offset_right = 17.4615
+offset_bottom = 25.8462
+theme_override_colors/font_color = Color(0, 0.913725, 0.392157, 1)
+theme_override_fonts/font = ExtResource("7_2v1dk")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="gun_slot3" type="AnimatedSprite2D" parent="CanvasLayer/Pause/pause_color2"]
+position = Vector2(178.461, 51.8461)
+sprite_frames = SubResource("SpriteFrames_yq7gw")
+animation = &"plant"
+
+[node name="lbl_stock" type="Label" parent="CanvasLayer/Pause/pause_color2/gun_slot3"]
+offset_left = -6.53847
+offset_top = 15.8462
+offset_right = 17.4615
+offset_bottom = 25.8462
+theme_override_colors/font_color = Color(0, 0.913725, 0.392157, 1)
+theme_override_fonts/font = ExtResource("7_2v1dk")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="gun_slot7" type="AnimatedSprite2D" parent="CanvasLayer/Pause/pause_color2"]
+position = Vector2(178.461, 101.538)
+sprite_frames = SubResource("SpriteFrames_yq7gw")
+animation = &"coin"
+
+[node name="lbl_stock" type="Label" parent="CanvasLayer/Pause/pause_color2/gun_slot7"]
+offset_left = -6.53847
+offset_top = 15.8462
+offset_right = 17.4615
+offset_bottom = 25.8462
+theme_override_colors/font_color = Color(0, 0.913725, 0.392157, 1)
+theme_override_fonts/font = ExtResource("7_2v1dk")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="lbl" type="Label" parent="CanvasLayer/Pause"]
 offset_left = -114.384
 offset_top = -37.9234
@@ -474,6 +632,17 @@ offset_right = 121.616
 offset_bottom = -14.9234
 theme_override_fonts/font = ExtResource("7_2v1dk")
 text = "PAUSA
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lbl2" type="Label" parent="CanvasLayer/Pause"]
+offset_left = -114.384
+offset_top = 35.1535
+offset_right = 121.616
+offset_bottom = 58.1535
+theme_override_fonts/font = ExtResource("7_2v1dk")
+text = "INVENTARIO
 "
 horizontal_alignment = 1
 vertical_alignment = 1

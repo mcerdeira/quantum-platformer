@@ -1,5 +1,5 @@
 extends Area2D
-var terminal_number = -1
+@export var terminal_number = -1
 var active = false
 var opened = false
 var player = null

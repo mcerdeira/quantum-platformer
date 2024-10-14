@@ -50,6 +50,7 @@ animations = [{
 [node name="TerminalComputer" type="Area2D"]
 position = Vector2(194, 597)
 script = ExtResource("1_12f75")
+terminal_number = 1
 
 [node name="Info" parent="." instance=ExtResource("7_bwgqr")]
 visible = false

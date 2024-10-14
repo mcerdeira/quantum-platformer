@@ -375,7 +375,9 @@ enum GameStates {
 	OVERWORLD,
 	RANDOMLEVEL,
 	TITLE,
-	DEMO,
+	DEMO,#No se usa en el juego, es para grabar videos
+	CHALLENGE,
+	SHOP,
 }
 
 var CurrentState : GameStates = GameStates.TITLE

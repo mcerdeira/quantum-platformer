@@ -38,6 +38,7 @@ movie_writer/movie_file="C:/Develop/Godot/gameplay.avi"
 [file_customization]
 
 folder_colors={
+"res://scenes/levels/challenge/": "pink",
 "res://scenes/levels/dragon/": "red",
 "res://scenes/levels/leaf/": "green",
 "res://scenes/levels/mermaid/": "purple",

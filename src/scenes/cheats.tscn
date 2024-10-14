@@ -141,6 +141,14 @@ offset_right = 470.0
 offset_bottom = 287.0
 text = "Demo Room"
 
+[node name="btn_shop" type="Button" parent="."]
+offset_left = 475.0
+offset_top = 233.0
+offset_right = 617.0
+offset_bottom = 287.0
+text = "Shop
+ Room"
+
 [connection signal="pressed" from="bnt_coin" to="." method="_on_bnt_coin_pressed"]
 [connection signal="pressed" from="bnt_plant" to="." method="_on_bnt_plant_pressed"]
 [connection signal="pressed" from="bnt_spring" to="." method="_on_bnt_spring_pressed"]
@@ -156,3 +164,4 @@ text = "Demo Room"
 [connection signal="pressed" from="btn_liberate" to="." method="_on_btn_liberate_pressed"]
 [connection signal="pressed" from="btn_killboss" to="." method="_on_btn_killboss_pressed"]
 [connection signal="pressed" from="btn_demoroom" to="." method="_on_btn_demoroom_pressed"]
+[connection signal="pressed" from="btn_shop" to="." method="_on_btn_shop_pressed"]

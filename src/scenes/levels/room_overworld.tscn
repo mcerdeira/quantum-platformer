@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://owqspaw5kj07"]
+[gd_scene load_steps=33 format=3 uid="uid://owqspaw5kj07"]
 
 [ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="1_aus13"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_omadn"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="10_y3x5j"]
 [ext_resource type="PackedScene" uid="uid://c2hr571lqpqmf" path="res://scenes/Fireball_holder.tscn" id="11_0ulxh"]
 [ext_resource type="PackedScene" uid="uid://ba5hq2bchhv8x" path="res://scenes/Plants.tscn" id="12_01ouc"]
-[ext_resource type="PackedScene" uid="uid://1bt2t2jgbtos" path="res://scenes/terminal_computer.tscn" id="13_56lm4"]
 [ext_resource type="Texture2D" uid="uid://xqd6pmw2bxyy" path="res://sprites/horu/images/light.png" id="15_tbb2n"]
 [ext_resource type="PackedScene" uid="uid://vhwoh2cbshha" path="res://scenes/water.tscn" id="16_llciw"]
 [ext_resource type="PackedScene" uid="uid://c30c81wrrb650" path="res://scenes/Artifact.tscn" id="17_hfakf"]
@@ -392,18 +391,6 @@ fixed = true
 position = Vector2(156, 632)
 scale = Vector2(3, 3)
 fixed = true
-
-[node name="TerminalComputer" parent="." node_paths=PackedStringArray("InfoPosition") instance=ExtResource("13_56lm4")]
-position = Vector2(1634, 597)
-terminal_number = 0
-InfoPosition = NodePath("../PrintMarker")
-
-[node name="PrintMarker" type="Marker2D" parent="."]
-position = Vector2(1749, 640)
-scale = Vector2(129.327, -5.55232)
-
-[node name="player_marker_terminal" type="Marker2D" parent="."]
-position = Vector2(1632, 592)
 
 [node name="Light" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.239216)

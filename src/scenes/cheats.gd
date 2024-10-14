@@ -98,3 +98,8 @@ func _on_btn_killboss_pressed():
 func _on_btn_demoroom_pressed():
 	Global.CurrentState = Global.GameStates.DEMO
 	get_tree().reload_current_scene()
+
+
+func _on_btn_shop_pressed():
+	Global.CurrentState = Global.GameStates.SHOP
+	get_tree().reload_current_scene()

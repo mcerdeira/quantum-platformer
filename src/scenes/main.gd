@@ -11,6 +11,7 @@ var room_falling = preload("res://scenes/levels/room_falling.tscn")
 var room_overworld = preload("res://scenes/levels/room_overworld.tscn")
 var room_tunnel = preload("res://scenes/levels/room_tunnel.tscn")
 var room_demo = preload("res://scenes/levels/room_demo.tscn")
+var room_shop = preload("res://scenes/levels/room_shop.tscn")
 
 var rooms_bottom_dragon = [
 	preload("res://scenes/levels/dragon/room_bottom_dragon.tscn")
@@ -60,6 +61,16 @@ var rooms_bottom = [
 var rooms_bosses = [
 	null,
 	[preload("res://scenes/levels/leaf/room_boss.tscn")],
+]
+
+var rooms_chllenge_vertical = [
+	preload("res://scenes/levels/challenge/room_challenge_vertical1.tscn"),
+	preload("res://scenes/levels/challenge/room_challenge_vertical2.tscn")
+]
+var rooms_chllenge_horizontal = [
+	preload("res://scenes/levels/challenge/room_challenge_horizontal1.tscn"),
+	preload("res://scenes/levels/challenge/room_challenge_horizontal2.tscn")
+	
 ]
 
 var list_rooms_top = [
@@ -218,6 +229,8 @@ func _ready():
 	
 	if Global.CurrentState == Global.GameStates.DEMO:
 		generate_fixed_level(room_demo, false)
+	if Global.CurrentState == Global.GameStates.SHOP:
+		generate_fixed_level(room_shop, false)
 	if Global.CurrentState == Global.GameStates.TITLE:
 		Music.play(Global.MainTheme)
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

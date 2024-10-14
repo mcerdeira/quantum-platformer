@@ -51,6 +51,37 @@ func pause_unpause():
 	if paused:
 		Music.pause()
 		Ambience.pause()
+		
+		$pause_color2/gun_slot0/lbl_stock.text = "x0"
+		$pause_color2/gun_slot1/lbl_stock.text = "x0"
+		$pause_color2/gun_slot2/lbl_stock.text = "x0"
+		$pause_color2/gun_slot3/lbl_stock.text = "x0"
+		$pause_color2/gun_slot4/lbl_stock.text = "x0"
+		$pause_color2/gun_slot5/lbl_stock.text = "x0"
+		$pause_color2/gun_slot6/lbl_stock.text = "x0"
+		$pause_color2/gun_slot7/lbl_stock.text = "x" + str(Global.Gold)
+		
+		
+		
+		for i in range(Global.gunz_equiped.size()):
+			var name = Global.gunz_equiped[i].name
+			if name != "none":
+				var c = Global.slots_stock[i]
+				if name == "muffin":
+					$pause_color2/gun_slot0/lbl_stock.text = "x" + str(c)
+				elif name == "bomb":
+					$pause_color2/gun_slot1/lbl_stock.text = "x" + str(c)
+				elif name == "smoke":
+					$pause_color2/gun_slot2/lbl_stock.text = "x" + str(c)
+				elif name == "plant":
+					$pause_color2/gun_slot3/lbl_stock.text = "x" + str(c)
+				elif name == "clone":
+					$pause_color2/gun_slot4/lbl_stock.text = "x" + str(c)
+				elif name == "teleport":
+					$pause_color2/gun_slot5/lbl_stock.text = "x" + str(c)
+				elif name == "spring":
+					$pause_color2/gun_slot6/lbl_stock.text = "x" + str(c)
+		
 	else:
 		Music.resume()
 		Ambience.resume()
