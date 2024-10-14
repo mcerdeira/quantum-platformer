@@ -63,13 +63,11 @@ var rooms_bosses = [
 	[preload("res://scenes/levels/leaf/room_boss.tscn")],
 ]
 
-var rooms_chllenge_vertical = [
+var rooms_challenge_vertical = [
 	preload("res://scenes/levels/challenge/room_challenge_vertical1.tscn"),
-	preload("res://scenes/levels/challenge/room_challenge_vertical2.tscn")
 ]
-var rooms_chllenge_horizontal = [
+var rooms_challenge_horizontal = [
 	preload("res://scenes/levels/challenge/room_challenge_horizontal1.tscn"),
-	preload("res://scenes/levels/challenge/room_challenge_horizontal2.tscn")
 	
 ]
 
@@ -110,6 +108,36 @@ func generate_fixed_level(room, visible_hud):
 	r.q = q
 	add_child(r)
 	$CanvasLayer/Control.visible = visible_hud
+	
+func generate_challenge_horizontal():
+	var player_room = Vector2(randi() % 4, 0)
+	var door_room = Vector2(randi() % 4, randi() % 4)
+	var size = Vector2(1152, 640) #TODO: Cambiar
+	var room_pos = Vector2.ZERO
+	var total_w = 16
+	var room = null
+	var q = 1
+
+	player_room = Vector2(0, 0)
+	
+	$frame.queue_free()
+
+	for w in range(total_w):
+		room = rooms_challenge_horizontal[0]
+		var r = room.instantiate()
+		r.global_position = room_pos
+		r.q = q
+		q += 1
+		
+		room_pos.x += size.x
+		if w != 0:
+			r.delete_player()
+			
+		if w != total_w:
+			r.delete_door()
+			
+		add_child(r)
+	
 		
 func generate_level():
 	var player_room = Vector2(randi() % 4, 0)
@@ -223,9 +251,11 @@ func _ready():
 			Global.TunnelTerminalNumber = true
 			generate_fixed_level(room_tunnel, false)
 		else:
+			Global.CurrentState = Global.GameStates.CHALLENGE
 			Ambience.play(Global.CaveAmbienceSFX)
 			Global.TunnelTerminalNumber = false
-			generate_level()
+			generate_challenge_horizontal()
+			#generate_level()
 	
 	if Global.CurrentState == Global.GameStates.DEMO:
 		generate_fixed_level(room_demo, false)

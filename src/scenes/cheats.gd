@@ -16,7 +16,7 @@ func _physics_process(_delta):
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 			
 func special_rooms():
-	return Global.CurrentState == Global.GameStates.DEMO or Global.CurrentState == Global.GameStates.HOME or Global.CurrentState == Global.GameStates.FALLING or Global.CurrentState == Global.GameStates.OUTSIDE
+	return Global.CurrentState == Global.GameStates.SHOP or Global.CurrentState == Global.GameStates.DEMO or Global.CurrentState == Global.GameStates.HOME or Global.CurrentState == Global.GameStates.FALLING or Global.CurrentState == Global.GameStates.OUTSIDE
 
 func _on_bnt_coin_pressed():
 	Global.get_item(Global.coin, 1)

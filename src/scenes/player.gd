@@ -330,8 +330,12 @@ func camera_limits():
 		if $Camera2D.global_position.x < 446:
 			$Camera2D.global_position.x = 446
 			
-		if $Camera2D.global_position.x > 4152:
-			$Camera2D.global_position.x = 4152
+		if Global.CurrentState == Global.GameStates.CHALLENGE:
+			if $Camera2D.global_position.x > 4152 * 4:
+				$Camera2D.global_position.x = 4152 * 4
+		else:
+			if $Camera2D.global_position.x > 4152:
+				$Camera2D.global_position.x = 4152
 			
 		if $Camera2D.global_position.y < 176:
 			$Camera2D.global_position.y = 176
