@@ -66,6 +66,8 @@ var jumping = false
 var restore_camera_zoom_ttl = 2.1
 var restore_camera_zoom = false
 
+var CustomCamera : Camera2D = null
+
 func calc_perks():
 	double_jump = Global.find_my_item("wings")
 	invisible = Global.find_my_item("invisibility") 
@@ -321,7 +323,7 @@ func attached(_enemy_attached):
 	enemy_attached = _enemy_attached
 	
 func camera_limits():
-	if cameralimits_on:
+	if cameralimits_on and !CustomCamera:
 		if direction == "right":
 			$Camera2D.position.x = lerp($Camera2D.position.x, 200.00, 0.01)
 		else:
@@ -330,12 +332,8 @@ func camera_limits():
 		if $Camera2D.global_position.x < 446:
 			$Camera2D.global_position.x = 446
 			
-		if Global.CurrentState == Global.GameStates.CHALLENGE:
-			if $Camera2D.global_position.x > 4152 * 4:
-				$Camera2D.global_position.x = 4152 * 4
-		else:
-			if $Camera2D.global_position.x > 4152:
-				$Camera2D.global_position.x = 4152
+		if $Camera2D.global_position.x > 4152:
+			$Camera2D.global_position.x = 4152
 			
 		if $Camera2D.global_position.y < 176:
 			$Camera2D.global_position.y = 176

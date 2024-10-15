@@ -4,12 +4,18 @@ var nope = false
 var target = null
 @export var terminal_number = -1
 @export var gotoBOSS = true
+@export var special_door = false 
 
 func _ready():
 	if terminal_number != -1:
 		$sprite.animation = str(terminal_number)
+		
+	if special_door:
+		add_to_group("special_doors")
+		$sprite.animation = "special"
+		open(false)
 	
-	if !gotoBOSS:
+	if !gotoBOSS and !special_door:
 		if terminal_number == -1:
 			if !nope:
 				Global.exit_door = self
@@ -24,20 +30,22 @@ func _physics_process(delta):
 		target.global_position.x = global_position.x
 		target.modulate.a -= 2 * delta
 		if target.modulate.a <= 0:
-			Global.scene_next(terminal_number, gotoBOSS)
+			Global.scene_next(terminal_number, gotoBOSS, special_door)
 
 func assign(_terminal_number):
-	terminal_number = _terminal_number
-	Global.exit_door = self
+	if !special_door:
+		terminal_number = _terminal_number
+		Global.exit_door = self
 
 func open(with_sound = false):
 	closed = false
 	$sprite.frame = 1
-	if gotoBOSS or with_sound:
+	if gotoBOSS or with_sound and !special_door:
 		var options = {"pitch_scale": 0.7}
 		Global.play_sound(Global.DoorOpensSFX, options)
 		Global.shaker_obj.shake(15, 3)
 
 func _on_body_entered(body):
-	if !closed and body.is_in_group("players"):
-		target = body
+	if Global.player_obj and is_instance_valid(Global.player_obj) and Global.player_obj.is_on_floor_custom():
+		if !closed and body.is_in_group("players"):
+			target = body

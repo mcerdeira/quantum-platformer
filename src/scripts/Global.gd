@@ -383,7 +383,7 @@ enum GameStates {
 var CurrentState : GameStates = GameStates.TITLE
 var FirstState : GameStates = GameStates.HOME
 
-func scene_next(terminal_number = -1, boss = false):
+func scene_next(terminal_number = -1, boss = false, special = false):
 	Global.gunz_index = 0
 	Global.gunz_index_max = 0
 	BOSS_ROOM = boss
@@ -399,6 +399,8 @@ func scene_next(terminal_number = -1, boss = false):
 	elif Global.CurrentState == Global.GameStates.OVERWORLD or BOSS_ROOM:
 		Global.LevelCurrentTerminalNumber = terminal_number
 		Global.CurrentState = Global.GameStates.RANDOMLEVEL
+	elif Global.CurrentState == Global.GameStates.RANDOMLEVEL and special:
+		Global.CurrentState = Global.GameStates.CHALLENGE
 	elif Global.CurrentState == Global.GameStates.RANDOMLEVEL:
 		Global.CurrentState = Global.GameStates.OVERWORLD
 
@@ -499,10 +501,15 @@ func get_item(current_item, qty = 1):
 	var coin_o = (current_item.name == "coin")
 	Global.GizmoWatcher.setHUD(coin_o)
 	
-func emit(_global_position, count):
+func emit(_global_position, count, particle_obj = null, size = 1):
+	var part = particle
+	if particle_obj:
+		part = particle_obj
+	
 	for i in range(count):
-		var p = particle.instantiate()
+		var p = part.instantiate()
 		p.global_position = _global_position
+		p.size = size
 		add_child(p)
 		
 func flyaway(direction, jump_speed):
@@ -580,8 +587,8 @@ func load_game():
 			
 			if cur_state != null:
 				Global.FirstState = cur_state
-				if Global.FirstState == Global.GameStates.RANDOMLEVEL:
-					#No se puede guardar en un randomlevel
+				if Global.FirstState == Global.GameStates.RANDOMLEVEL or Global.FirstState == Global.GameStates.SHOP or Global.FirstState == Global.GameStates.CHALLENGE:
+					#No se puede guardar en un nivel random, o el shop o el challenge
 					Global.FirstState = Global.GameStates.OVERWORLD
 				
 				Global.first_time = f_time

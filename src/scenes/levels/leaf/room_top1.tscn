@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bu8jnjwcac08u"]
+[gd_scene load_steps=43 format=3 uid="uid://bu8jnjwcac08u"]
 
 [ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="1_ln5kr"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_4jdgr"]
@@ -23,7 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://c1hauk6vcsonh" path="res://scenes/Item.tscn" id="12_d0mmw"]
 [ext_resource type="PackedScene" uid="uid://drudyu8hb2tx6" path="res://scenes/levels/Spikes.tscn" id="13_0o8t5"]
 [ext_resource type="PackedScene" uid="uid://c2hr571lqpqmf" path="res://scenes/Fireball_holder.tscn" id="14_8yxyg"]
-[ext_resource type="PackedScene" uid="uid://1bt2t2jgbtos" path="res://scenes/terminal_computer.tscn" id="17_lafpo"]
 [ext_resource type="PackedScene" uid="uid://cv3n3jd3p3yty" path="res://scenes/Lamp.tscn" id="18_ukhna"]
 [ext_resource type="PackedScene" uid="uid://lcdyg55itdyt" path="res://scenes/switch_platform.tscn" id="19_hua57"]
 [ext_resource type="PackedScene" uid="uid://cemy1qgtp317t" path="res://scenes/color_button.tscn" id="20_m22l8"]
@@ -284,14 +283,6 @@ position = Vector2(688, 113)
 [node name="FireballHolder2" parent="." instance=ExtResource("14_8yxyg")]
 position = Vector2(433, 593)
 
-[node name="TerminalComputer" parent="." node_paths=PackedStringArray("InfoPosition") instance=ExtResource("17_lafpo")]
-position = Vector2(534, 341)
-InfoPosition = NodePath("../PrintMarker")
-
-[node name="PrintMarker" type="Marker2D" parent="."]
-position = Vector2(593, 352)
-scale = Vector2(129.327, -5.55232)
-
 [node name="Lamp" parent="." instance=ExtResource("18_ukhna")]
 position = Vector2(899, 134)
 
@@ -324,3 +315,8 @@ position = Vector2(464, 592)
 
 [node name="DeadlyPlatform4" parent="." instance=ExtResource("21_os5j5")]
 position = Vector2(1072, 272)
+
+[node name="ExitDoor2" parent="." instance=ExtResource("8_jg5en")]
+position = Vector2(498, 352)
+gotoBOSS = false
+special_door = true

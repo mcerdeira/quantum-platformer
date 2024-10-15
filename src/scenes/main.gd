@@ -131,6 +131,7 @@ func generate_challenge_horizontal():
 		
 		room_pos.x += size.x
 		if w != 0:
+			r.delete_bicho()
 			r.delete_player()
 			
 		if w != total_w:
@@ -217,10 +218,10 @@ func generate_level():
 		room_pos.x = 0
 		
 	if !Global.BOSS_ROOM:
-		var terminals = get_tree().get_nodes_in_group("terminals")
-		while terminals.size() > 1:
-			terminals.shuffle()
-			var t = terminals.pop_front()
+		var special_doors = get_tree().get_nodes_in_group("special_doors")
+		while special_doors.size() > 1:
+			special_doors.shuffle()
+			var t = special_doors.pop_front()
 			t.queue_free()
 			
 		var color_buttons = get_tree().get_nodes_in_group("color_button")
@@ -241,6 +242,11 @@ func generate_level():
 				_pm.done = true
 		
 func _ready():
+	var particles2 = get_tree().get_nodes_in_group("particles2")
+	for p in particles2:
+		p.visible = false
+		p.queue_free()
+	
 	Global.prisoner_counter = 0
 	Global.prisoner_total = 0
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -251,16 +257,16 @@ func _ready():
 			Global.TunnelTerminalNumber = true
 			generate_fixed_level(room_tunnel, false)
 		else:
-			Global.CurrentState = Global.GameStates.CHALLENGE
 			Ambience.play(Global.CaveAmbienceSFX)
 			Global.TunnelTerminalNumber = false
-			generate_challenge_horizontal()
-			#generate_level()
+			generate_level()
 	
 	if Global.CurrentState == Global.GameStates.DEMO:
 		generate_fixed_level(room_demo, false)
 	if Global.CurrentState == Global.GameStates.SHOP:
 		generate_fixed_level(room_shop, false)
+	if Global.CurrentState == Global.GameStates.CHALLENGE:
+		generate_challenge_horizontal()
 	if Global.CurrentState == Global.GameStates.TITLE:
 		Music.play(Global.MainTheme)
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

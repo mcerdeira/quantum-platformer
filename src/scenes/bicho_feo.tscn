@@ -1,0 +1,184 @@
+[gd_scene load_steps=13 format=3 uid="uid://b7hufagbkuyww"]
+
+[ext_resource type="Texture2D" uid="uid://dydp1vry5wnd3" path="res://sprites/bicho_feo1.png" id="1_8joaw"]
+[ext_resource type="Texture2D" uid="uid://cchn0xjmts5vl" path="res://sprites/bicho_feo2.png" id="2_xdjb2"]
+[ext_resource type="Texture2D" uid="uid://o4a3fh1m6hx1" path="res://sprites/bicho_feo3.png" id="3_s6sp3"]
+[ext_resource type="Script" path="res://scenes/bicho_feo.gd" id="4_l1852"]
+[ext_resource type="Script" path="res://scenes/explosions_bicho.gd" id="5_6fjrs"]
+[ext_resource type="Script" path="res://scenes/areagood.gd" id="5_6ms16"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k03m1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8joaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xdjb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s6sp3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rem1g"]
+radius = 336.027
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q06gq"]
+size = Vector2(572, 293)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_booyj"]
+size = Vector2(868, 476.5)
+
+[sub_resource type="Animation" id="Animation_xtbmi"]
+resource_name = "new_animation"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yrmyh"]
+_data = {
+"new_animation": SubResource("Animation_xtbmi")
+}
+
+[node name="BichoFeo" type="AnimatedSprite2D"]
+position = Vector2(171, 325)
+sprite_frames = SubResource("SpriteFrames_k03m1")
+autoplay = "default"
+frame_progress = 0.0897389
+script = ExtResource("4_l1852")
+
+[node name="areagood" type="Area2D" parent="."]
+script = ExtResource("5_6ms16")
+
+[node name="collider" type="CollisionShape2D" parent="areagood"]
+position = Vector2(105, -6)
+shape = SubResource("CircleShape2D_rem1g")
+
+[node name="area" type="Area2D" parent="."]
+
+[node name="collider" type="CollisionShape2D" parent="area"]
+position = Vector2(-263, 161)
+shape = SubResource("RectangleShape2D_q06gq")
+
+[node name="collider2" type="CollisionShape2D" parent="area"]
+position = Vector2(-535, -228)
+shape = SubResource("RectangleShape2D_booyj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.1
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yrmyh")
+}
+autoplay = "new_animation"
+
+[node name="Timer2" type="Timer" parent="."]
+
+[node name="explosions" type="Node2D" parent="."]
+z_index = 4096
+z_as_relative = false
+position = Vector2(70, 0)
+script = ExtResource("5_6fjrs")
+
+[node name="Marker2D" type="Marker2D" parent="explosions"]
+position = Vector2(-90, 46)
+
+[node name="Marker2D2" type="Marker2D" parent="explosions"]
+position = Vector2(16, 228)
+
+[node name="Marker2D27" type="Marker2D" parent="explosions"]
+position = Vector2(47, 255)
+
+[node name="Marker2D3" type="Marker2D" parent="explosions"]
+position = Vector2(-72, -9)
+
+[node name="Marker2D4" type="Marker2D" parent="explosions"]
+position = Vector2(-84, 16)
+
+[node name="Marker2D5" type="Marker2D" parent="explosions"]
+position = Vector2(-43, 231)
+
+[node name="Marker2D6" type="Marker2D" parent="explosions"]
+position = Vector2(-94, -197)
+
+[node name="Marker2D7" type="Marker2D" parent="explosions"]
+position = Vector2(-18, 235)
+
+[node name="Marker2D8" type="Marker2D" parent="explosions"]
+position = Vector2(-90, 151)
+
+[node name="Marker2D10" type="Marker2D" parent="explosions"]
+position = Vector2(-87, 181)
+
+[node name="Marker2D11" type="Marker2D" parent="explosions"]
+position = Vector2(-74, 135)
+
+[node name="Marker2D12" type="Marker2D" parent="explosions"]
+position = Vector2(-93, -54)
+
+[node name="Marker2D13" type="Marker2D" parent="explosions"]
+position = Vector2(-83, 108)
+
+[node name="Marker2D14" type="Marker2D" parent="explosions"]
+position = Vector2(-37, 180)
+
+[node name="Marker2D15" type="Marker2D" parent="explosions"]
+position = Vector2(-98, 60)
+
+[node name="Marker2D16" type="Marker2D" parent="explosions"]
+position = Vector2(-87, 210)
+
+[node name="Marker2D17" type="Marker2D" parent="explosions"]
+position = Vector2(68, 177)
+
+[node name="Marker2D26" type="Marker2D" parent="explosions"]
+position = Vector2(109, 162)
+
+[node name="Marker2D18" type="Marker2D" parent="explosions"]
+position = Vector2(-79, -155)
+
+[node name="Marker2D19" type="Marker2D" parent="explosions"]
+position = Vector2(-89, 245)
+
+[node name="Marker2D20" type="Marker2D" parent="explosions"]
+position = Vector2(-78, -81)
+
+[node name="Marker2D21" type="Marker2D" parent="explosions"]
+position = Vector2(-78, 259)
+
+[node name="Marker2D22" type="Marker2D" parent="explosions"]
+position = Vector2(0, 186)
+
+[node name="Marker2D23" type="Marker2D" parent="explosions"]
+position = Vector2(-98, -119)
+
+[node name="Marker2D24" type="Marker2D" parent="explosions"]
+position = Vector2(-86, -239)
+
+[node name="Marker2D25" type="Marker2D" parent="explosions"]
+position = Vector2(-84, 274)
+
+[node name="Marker2D9" type="Marker2D" parent="explosions"]
+position = Vector2(37, 178)
+
+[connection signal="body_entered" from="areagood" to="." method="_on_areagood_body_entered"]
+[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="explosions" method="_on_timer_2_timeout"]

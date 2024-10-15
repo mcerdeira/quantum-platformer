@@ -13,3 +13,6 @@ func assign_door(_terminal_number):
 func delete_door():
 	$ExitDoor.nope = true
 	$ExitDoor.queue_free()
+	
+func delete_bicho():
+	$BichoFeo.queue_free()

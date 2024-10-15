@@ -15,3 +15,7 @@ func _process(_delta):
 		if body != parent and (body.is_in_group("enemies") or body.is_in_group("players") or body.is_in_group("interactuable")):
 			var direction = (body.global_position-parent.global_position).normalized()
 			body.flyaway(direction * 10) 
+
+func _on_area_entered(area):
+	if area and area.is_in_group("bicho_feo"):
+		area.slow_down()

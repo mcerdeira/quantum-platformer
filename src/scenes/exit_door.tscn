@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://q767q018lep8"]
+[gd_scene load_steps=13 format=3 uid="uid://q767q018lep8"]
 
 [ext_resource type="Script" path="res://scenes/exit_door.gd" id="1_0vvlk"]
 [ext_resource type="Texture2D" uid="uid://fe2jknlm3i6n" path="res://sprites/horu/images/exit_spr_0.png" id="4_186lq"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://c8cdp2o43edo7" path="res://sprites/horu/images/exit_spr_1.png" id="5_kdr3r"]
 [ext_resource type="Texture2D" uid="uid://duvbsm4ugc1yw" path="res://sprites/horu/images/exit_spr_hell_0.png" id="7_4ogp0"]
 [ext_resource type="Texture2D" uid="uid://wckik736tf2t" path="res://sprites/horu/images/exit_spr_hell_1.png" id="8_lyevj"]
+[ext_resource type="Texture2D" uid="uid://bleiorijjtati" path="res://sprites/crack_spr_1.png" id="9_2s1i0"]
+[ext_resource type="Texture2D" uid="uid://cp584rsfkw4d5" path="res://sprites/crack_spr_2.png" id="9_jy613"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3viko"]
 animations = [{
@@ -65,10 +67,21 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_jy613")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2s1i0")
+}],
+"loop": true,
+"name": &"special",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njti7"]
-size = Vector2(36, 31)
+size = Vector2(36, 2)
 
 [node name="ExitDoor" type="Area2D"]
 collision_layer = 33
@@ -78,9 +91,10 @@ script = ExtResource("1_0vvlk")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(39, -37)
 sprite_frames = SubResource("SpriteFrames_3viko")
+animation = &"special"
 
 [node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2(1, -15.5)
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_njti7")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

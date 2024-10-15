@@ -8,6 +8,7 @@ var nope = false
 @export var createme_on_firsttime = false
 @export var cameralimits_on = true
 @export var starting_valocity : Vector2 = Vector2.ZERO  
+@export var CustomCamera : Camera2D = null
 
 func _ready():
 	visible = false
@@ -35,6 +36,7 @@ func _process(_delta):
 			
 			var Main = get_node("/root/Main")
 			var pclone = player_clone.instantiate()
+			pclone.CustomCamera = CustomCamera
 			pclone.global_position = global_position
 			pclone.cameralimits_on = cameralimits_on
 			if starting_valocity != Vector2.ZERO:
