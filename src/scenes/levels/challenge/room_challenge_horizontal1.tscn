@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cwncwh4h42h2o"]
+[gd_scene load_steps=41 format=3 uid="uid://cwncwh4h42h2o"]
 
 [ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="1_bfpx8"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_wdhf3"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://c2hr571lqpqmf" path="res://scenes/Fireball_holder.tscn" id="23_hl2jf"]
 [ext_resource type="PackedScene" uid="uid://b7hufagbkuyww" path="res://scenes/bicho_feo.tscn" id="24_h5oqe"]
 [ext_resource type="PackedScene" uid="uid://cv3n3jd3p3yty" path="res://scenes/Lamp.tscn" id="25_0he8d"]
+[ext_resource type="PackedScene" uid="uid://c3hd5xs8u3b15" path="res://scenes/Coin.tscn" id="25_gnctx"]
 [ext_resource type="PackedScene" uid="uid://b2w80dxra5rut" path="res://scenes/deadly_platform.tscn" id="28_f1vog"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
@@ -293,3 +294,57 @@ position = Vector2(784, 592)
 
 [node name="ExitDoor" parent="." instance=ExtResource("19_2ew2i")]
 position = Vector2(959, 512)
+
+[node name="Coin" parent="." instance=ExtResource("25_gnctx")]
+position = Vector2(73.0939, 554.552)
+
+[node name="Coin6" parent="." instance=ExtResource("25_gnctx")]
+position = Vector2(385.094, 234.552)
+
+[node name="Coin8" parent="." instance=ExtResource("25_gnctx")]
+position = Vector2(473.094, 266.552)
+
+[node name="Coin7" parent="." instance=ExtResource("25_gnctx")]
+position = Vector2(657.094, 234.552)
+
+[node name="Coin9" parent="." instance=ExtResource("25_gnctx")]
+position = Vector2(1011.09, 201.552)
+
+[node name="Coin10" parent="." instance=ExtResource("25_gnctx")]
+position = Vector2(1072.09, 232.552)
+
+[node name="Coin2" parent="." instance=ExtResource("25_gnctx")]
+position = Vector2(131.094, 522.552)
+
+[node name="Coin3" parent="." instance=ExtResource("25_gnctx")]
+position = Vector2(179.094, 522.552)
+
+[node name="Coin4" parent="." instance=ExtResource("25_gnctx")]
+position = Vector2(227.094, 522.552)
+
+[node name="Coin5" parent="." instance=ExtResource("25_gnctx")]
+position = Vector2(278.094, 553.552)
+
+[node name="Coin11" parent="." instance=ExtResource("25_gnctx")]
+position = Vector2(768.094, 560.552)
+
+[node name="Coin12" parent="." instance=ExtResource("25_gnctx")]
+position = Vector2(768.094, 520.552)
+
+[node name="Coin13" parent="." instance=ExtResource("25_gnctx")]
+position = Vector2(768.094, 480.552)
+
+[node name="Coin14" parent="." instance=ExtResource("25_gnctx")]
+position = Vector2(768.094, 440.552)
+
+[node name="Coin15" parent="." instance=ExtResource("25_gnctx")]
+position = Vector2(1079.09, 522.552)
+
+[node name="Coin16" parent="." instance=ExtResource("25_gnctx")]
+position = Vector2(1110.09, 554.552)
+
+[node name="Coin17" parent="." instance=ExtResource("25_gnctx")]
+position = Vector2(1142.09, 586.552)
+
+[node name="Coin18" parent="." instance=ExtResource("25_gnctx")]
+position = Vector2(894.094, 451.552)

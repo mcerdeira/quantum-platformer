@@ -87,16 +87,16 @@ offset_bottom = 65.0
 text = "Smoke"
 
 [node name="btn_nextscene" type="Button" parent="."]
-offset_left = 183.0
+offset_left = 121.0
 offset_top = 232.0
-offset_right = 321.0
+offset_right = 231.0
 offset_bottom = 287.0
 text = "Next Scene"
 
 [node name="btn_reset" type="Button" parent="."]
-offset_left = 17.0
+offset_left = 4.0
 offset_top = 233.0
-offset_right = 155.0
+offset_right = 116.0
 offset_bottom = 288.0
 text = "Reset"
 
@@ -135,19 +135,26 @@ offset_bottom = 186.0
 text = "< KILL"
 
 [node name="btn_demoroom" type="Button" parent="."]
-offset_left = 328.0
+offset_left = 237.0
 offset_top = 233.0
-offset_right = 470.0
+offset_right = 351.0
 offset_bottom = 287.0
 text = "Demo Room"
 
 [node name="btn_shop" type="Button" parent="."]
-offset_left = 475.0
+offset_left = 357.0
 offset_top = 233.0
-offset_right = 617.0
+offset_right = 462.0
 offset_bottom = 287.0
 text = "Shop
  Room"
+
+[node name="btn_challenge" type="Button" parent="."]
+offset_left = 467.0
+offset_top = 233.0
+offset_right = 572.0
+offset_bottom = 287.0
+text = "Challenge"
 
 [connection signal="pressed" from="bnt_coin" to="." method="_on_bnt_coin_pressed"]
 [connection signal="pressed" from="bnt_plant" to="." method="_on_bnt_plant_pressed"]
@@ -165,3 +172,4 @@ text = "Shop
 [connection signal="pressed" from="btn_killboss" to="." method="_on_btn_killboss_pressed"]
 [connection signal="pressed" from="btn_demoroom" to="." method="_on_btn_demoroom_pressed"]
 [connection signal="pressed" from="btn_shop" to="." method="_on_btn_shop_pressed"]
+[connection signal="pressed" from="btn_challenge" to="." method="_on_btn_challenge_pressed"]

@@ -6,6 +6,8 @@ var try = 2
 func _on_area_body_entered(body):
 	if body and body.is_in_group("players"):
 		started = false
+		var options = {"pitch_scale": 0.7}
+		Global.play_sound(Global.BichoFeoSFX, options)
 		body.kill()
 		$area.set_deferred("disabled", true)
 		

@@ -266,6 +266,8 @@ func _ready():
 	if Global.CurrentState == Global.GameStates.SHOP:
 		generate_fixed_level(room_shop, false)
 	if Global.CurrentState == Global.GameStates.CHALLENGE:
+		Music.play(Global.SpecialLevelTheme)
+		Ambience.stop()
 		generate_challenge_horizontal()
 	if Global.CurrentState == Global.GameStates.TITLE:
 		Music.play(Global.MainTheme)

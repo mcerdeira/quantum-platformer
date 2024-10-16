@@ -22,6 +22,7 @@ var OverWorldFromGameOver = false
 var TunnelTerminalNumber = false
 var boss_bar = null
 
+var SpecialLevelTheme = null
 var ButtonSFX = null
 var RetroTheme = null
 var MainTheme = null
@@ -42,6 +43,7 @@ var LavaFallSFX = null
 var DialogSFX = null
 var JumpSFX = null
 var WalkSFX = null
+var BichoFeoSFX = null
 var DoorOpensSFX = null
 var ClimbSFX = null
 var FallSFX = null
@@ -403,6 +405,8 @@ func scene_next(terminal_number = -1, boss = false, special = false):
 		Global.CurrentState = Global.GameStates.CHALLENGE
 	elif Global.CurrentState == Global.GameStates.RANDOMLEVEL:
 		Global.CurrentState = Global.GameStates.OVERWORLD
+	elif Global.CurrentState == Global.GameStates.CHALLENGE:
+		Global.CurrentState = Global.GameStates.OVERWORLD
 
 	Global.Fader.fade_in()
 	get_tree().reload_current_scene()
@@ -713,6 +717,7 @@ func _ready():
 	init_game()
 	
 func load_sfx():
+	SpecialLevelTheme = load("res://music/SpecialLevel.wav")
 	MainTheme = load("res://music/main_theme.mp3")
 	MainThemeShort = load("res://music/main_theme_short.mp3")
 	BossTheme = load("res://music/boss_theme.mp3")
@@ -776,6 +781,7 @@ func load_sfx():
 	PauseSFX = load("res://sfx/pause_sfx.wav")
 	ButtonSFX = load("res://sfx/button_sound.wav")
 	DoorOpensSFX = load("res://sfx/door_opens.wav")
+	BichoFeoSFX = load("res://sfx/BichoFeo.wav")
 	
 	bomb_tutorial = load("res://video/bomb_tutorial.ogv")
 	clone_tutorial = load("res://video/clone_tutorial.ogv")
