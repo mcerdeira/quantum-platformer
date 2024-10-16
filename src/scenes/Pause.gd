@@ -49,8 +49,7 @@ func pause_unpause():
 	paused = !paused
 
 	if paused:
-		Music.pause()
-		Ambience.pause()
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -20)
 		
 		$pause_color2/gun_slot0/lbl_stock.text = "x0"
 		$pause_color2/gun_slot1/lbl_stock.text = "x0"
@@ -83,14 +82,15 @@ func pause_unpause():
 					$pause_color2/gun_slot6/lbl_stock.text = "x" + str(c)
 		
 	else:
-		Music.resume()
-		Ambience.resume()
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), 0)
 	
 	if paused:
+		$"../../Pause".visible = true
 		visible = true
 		$AnimationPlayer.play("new_animation")
 	else:
 		$AnimationPlayer.play_backwards("new_animation")
+		$"../../Pause".visible = false
 		
 	if paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
