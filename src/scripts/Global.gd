@@ -15,6 +15,7 @@ var DestructedID = 2
 var BurnableID = 4
 var BurnedID = 5
 var CameFromConsole = false
+var CameFromShop = false
 var fade_finished = false
 var BOSS_ROOM = false
 var FirstDeath = true
@@ -26,6 +27,7 @@ var SpecialLevelTheme = null
 var ButtonSFX = null
 var RetroTheme = null
 var MainTheme = null
+var ShopTheme = null
 var MainThemeShort = null
 var BossTheme = null
 var CaveAmbienceSFX = null 
@@ -385,7 +387,7 @@ enum GameStates {
 var CurrentState : GameStates = GameStates.TITLE
 var FirstState : GameStates = GameStates.HOME
 
-func scene_next(terminal_number = -1, boss = false, special = false):
+func scene_next(terminal_number = -1, boss = false, special = false, shop = false):
 	Global.gunz_index = 0
 	Global.gunz_index_max = 0
 	BOSS_ROOM = boss
@@ -401,11 +403,17 @@ func scene_next(terminal_number = -1, boss = false, special = false):
 	elif Global.CurrentState == Global.GameStates.OVERWORLD or BOSS_ROOM:
 		Global.LevelCurrentTerminalNumber = terminal_number
 		Global.CurrentState = Global.GameStates.RANDOMLEVEL
+		if shop:
+			Global.CurrentState = Global.GameStates.SHOP
+		
 	elif Global.CurrentState == Global.GameStates.RANDOMLEVEL and special:
 		Global.CurrentState = Global.GameStates.CHALLENGE
 	elif Global.CurrentState == Global.GameStates.RANDOMLEVEL:
 		Global.CurrentState = Global.GameStates.OVERWORLD
 	elif Global.CurrentState == Global.GameStates.CHALLENGE:
+		Global.CurrentState = Global.GameStates.OVERWORLD
+	elif Global.CurrentState == Global.GameStates.SHOP:
+		Global.CameFromShop = true
 		Global.CurrentState = Global.GameStates.OVERWORLD
 
 	Global.Fader.fade_in()
@@ -717,6 +725,7 @@ func _ready():
 	init_game()
 	
 func load_sfx():
+	ShopTheme = load("res://music/ShopTheme.mp3")
 	SpecialLevelTheme = load("res://music/SpecialLevel.wav")
 	MainTheme = load("res://music/main_theme.mp3")
 	MainThemeShort = load("res://music/main_theme_short.mp3")

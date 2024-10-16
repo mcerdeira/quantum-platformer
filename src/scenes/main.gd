@@ -134,11 +134,10 @@ func generate_challenge_horizontal():
 			r.delete_bicho()
 			r.delete_player()
 			
-		if w != total_w:
+		if w != total_w - 1:
 			r.delete_door()
 			
 		add_child(r)
-	
 		
 func generate_level():
 	var player_room = Vector2(randi() % 4, 0)
@@ -264,6 +263,8 @@ func _ready():
 	if Global.CurrentState == Global.GameStates.DEMO:
 		generate_fixed_level(room_demo, false)
 	if Global.CurrentState == Global.GameStates.SHOP:
+		Music.play(Global.ShopTheme)
+		Ambience.play(Global.HouseAmbienceSFX)
 		generate_fixed_level(room_shop, false)
 	if Global.CurrentState == Global.GameStates.CHALLENGE:
 		Music.play(Global.SpecialLevelTheme)

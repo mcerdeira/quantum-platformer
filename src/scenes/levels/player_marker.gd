@@ -31,9 +31,11 @@ func _process(_delta):
 			if !createme_on_firsttime:
 				if Global.CameFromConsole:
 					global_position = $"../player_marker_terminal".global_position
+					Global.CameFromConsole = false
+				if Global.CameFromShop:
+					global_position = $"../player_marker_shop".global_position
+					Global.CameFromShop = false
 				
-				Global.CameFromConsole = false
-			
 			var Main = get_node("/root/Main")
 			var pclone = player_clone.instantiate()
 			pclone.CustomCamera = CustomCamera

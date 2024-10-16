@@ -200,7 +200,7 @@ material = SubResource("ShaderMaterial_jtgsv")
 position = Vector2(45, 61)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_jkk80")
-animation = &"invisibility"
+animation = &"teleport"
 offset = Vector2(0, -16)
 
 [node name="lbl_item" type="Label" parent="display/back"]

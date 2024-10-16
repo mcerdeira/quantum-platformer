@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dvlc4ydhtggsb"]
+[gd_scene load_steps=26 format=3 uid="uid://dvlc4ydhtggsb"]
 
 [ext_resource type="Script" path="res://scenes/prisoner_npc.gd" id="1_1mpam"]
 [ext_resource type="Texture2D" uid="uid://i7fh6wo2ambk" path="res://sprites/horu/images/prisoner_cry.png" id="2_a0o5m"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://btxspjx88sugq" path="res://sprites/horu/images/pet2.png" id="12_l2hlw"]
 [ext_resource type="Texture2D" uid="uid://bcxds63hckph7" path="res://sprites/horu/images/plus.png" id="12_tpajq"]
 [ext_resource type="Texture2D" uid="uid://buyi5kind5agu" path="res://sprites/horu/images/pet3.png" id="13_507yq"]
+[ext_resource type="Texture2D" uid="uid://c6gf7vjf30biq" path="res://sprites/coin.png" id="20_30sei"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n3es1"]
 size = Vector2(52, 286)
@@ -183,6 +184,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"prisoner",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_30sei")
+}],
+"loop": true,
+"name": &"shop",
 "speed": 5.0
 }]
 

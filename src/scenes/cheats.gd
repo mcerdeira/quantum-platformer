@@ -88,7 +88,6 @@ func _on_btn_liberate_pressed():
 		for t in targets:
 			t.liberate()
 
-
 func _on_btn_killboss_pressed():
 	var bosses = get_tree().get_nodes_in_group("bosses")
 	for b in bosses:

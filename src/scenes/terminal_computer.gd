@@ -22,8 +22,6 @@ var PB_LEN = 40
 
 var terminal_commands_with_help = [
 	[
-		"COMPRAR <ITEM> <CANTIDAD>",
-		"DONAR <CANTIDAD>",
 		"ESTADO",
 		"JUEGO",
 		"AYUDA",
@@ -33,7 +31,6 @@ var terminal_commands_with_help = [
 		"SALIR",
 	],
 	[
-		"COMPRAR <ITEM> <CANTIDAD>",
 		"AYUDA",
 		"ESTABLECER <VARIABLE> <VALOR>",
 		"VARIABLES",
@@ -42,7 +39,6 @@ var terminal_commands_with_help = [
 		"SALIR",
 	],
 	[
-		"COMPRAR <ITEM> <CANTIDAD>",
 		"AYUDA",
 		"ESTABLECER <VARIABLE> <VALOR>",
 		"VARIABLES",
@@ -51,7 +47,6 @@ var terminal_commands_with_help = [
 		"SALIR",
 	],
 	[
-		"COMPRAR <ITEM> <CANTIDAD>",
 		"AYUDA",
 		"ESTABLECER <VARIABLE> <VALOR>",
 		"VARIABLES",
@@ -60,7 +55,6 @@ var terminal_commands_with_help = [
 		"SALIR",
 	],
 	[
-		"COMPRAR <ITEM> <QUANTITY>",
 		"AYUDA",
 		"ESTABLECER <VARIABLE> <VALOR>",
 		"VARIABLES",
@@ -78,16 +72,6 @@ var mode_idx = 0
 var mode = ["cmd", "param1", "param2"]
 
 
-var BUY = {
-	"name": "COMPRAR",
-	"param1": BUY_ITEMS,
-	"param2": 1
-}
-var DONATE = {
-	"name": "DONAR",
-	"param1": 1,
-	"param2": null
-}
 var STATUS = {
 	"name": "ESTADO",
 	"param1": null,
@@ -100,13 +84,13 @@ var GAME = {
 } 
 var HELP = {
 	"name": "AYUDA",
-	"param1": ["COMPRAR", "DONAR", "ESTADO", "JUEGO", "LISTAR", "IMPRIMIR", "LIMPIAR", "SALIR"],
+	"param1": ["ESTADO", "JUEGO", "LISTAR", "IMPRIMIR", "LIMPIAR", "SALIR"],
 	"param2": null
 }
 
 var HELP2 = {
 	"name": "AYUDA",
-	"param1": ["COMPRAR", "ESTABLECER", "VARIABLES", "IMPRIMIR", "LIMPIAR", "SALIR"],
+	"param1": ["ESTABLECER", "VARIABLES", "IMPRIMIR", "LIMPIAR", "SALIR"],
 	"param2": null
 }
 
@@ -144,8 +128,6 @@ var EXIT = {
 
 var terminal_commands = [
 	[
-		BUY,
-		DONATE,
 		STATUS,
 		GAME,
 		HELP,
@@ -155,7 +137,6 @@ var terminal_commands = [
 		EXIT,
 	],
 	[
-		BUY,
 		HELP2,
 		SET,
 		VARIABLES,
@@ -164,7 +145,6 @@ var terminal_commands = [
 		EXIT,
 	],
 	[
-		BUY,
 		HELP2,
 		SET,
 		VARIABLES,
@@ -173,7 +153,6 @@ var terminal_commands = [
 		EXIT,
 	],
 	[
-		BUY,
 		HELP2,
 		SET,
 		VARIABLES,
@@ -182,7 +161,6 @@ var terminal_commands = [
 		EXIT,
 	],
 	[
-		BUY,
 		HELP2,
 		SET,
 		VARIABLES,

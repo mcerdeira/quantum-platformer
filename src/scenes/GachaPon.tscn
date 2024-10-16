@@ -1,0 +1,184 @@
+[gd_scene load_steps=10 format=3 uid="uid://d2o5807fjfxn6"]
+
+[ext_resource type="Texture2D" uid="uid://c3wmt7870xukn" path="res://sprites/teleporter_box.png" id="2_0n8jh"]
+[ext_resource type="Texture2D" uid="uid://cog7sk80ykf4o" path="res://sprites/bomb.png" id="2_abijd"]
+[ext_resource type="Texture2D" uid="uid://csp0ardyjl54b" path="res://sprites/spring.png" id="2_alrsi"]
+[ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="2_axyrs"]
+[ext_resource type="Texture2D" uid="uid://derjexefjinfy" path="res://sprites/gatcha.png" id="2_mugay"]
+[ext_resource type="Texture2D" uid="uid://df545tsy68qs1" path="res://sprites/growing_plant.png" id="3_dgqly"]
+[ext_resource type="Texture2D" uid="uid://trxeowv3jmbb" path="res://sprites/smoke_bomb.png" id="3_ql0pn"]
+[ext_resource type="Texture2D" uid="uid://b3tca6epdaoix" path="res://sprites/rock.png" id="4_55mgg"]
+[ext_resource type="Texture2D" uid="uid://dlpgs1xdpjh2p" path="res://sprites/gatcha_machine.png" id="9_s6kgy"]
+
+[node name="GachaPon" type="Node2D"]
+
+[node name="Gatcha" type="Sprite2D" parent="."]
+position = Vector2(-22, -102)
+scale = Vector2(1, 1)
+texture = ExtResource("2_mugay")
+
+[node name="Spring" type="Sprite2D" parent="Gatcha"]
+rotation = 0.905826
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_alrsi")
+
+[node name="Gatcha2" type="Sprite2D" parent="."]
+position = Vector2(-35, -79)
+scale = Vector2(1, 1)
+texture = ExtResource("2_mugay")
+
+[node name="Rock" type="Sprite2D" parent="Gatcha2"]
+rotation = -1.79594
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_55mgg")
+
+[node name="Gatcha15" type="Sprite2D" parent="."]
+position = Vector2(12, -82)
+scale = Vector2(1, 1)
+texture = ExtResource("2_mugay")
+
+[node name="Rock" type="Sprite2D" parent="Gatcha15"]
+rotation = -1.79594
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_55mgg")
+
+[node name="Gatcha3" type="Sprite2D" parent="."]
+position = Vector2(-11, -67)
+scale = Vector2(1, 1)
+texture = ExtResource("2_mugay")
+
+[node name="Bomb" type="Sprite2D" parent="Gatcha3"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_abijd")
+
+[node name="Gatcha4" type="Sprite2D" parent="."]
+position = Vector2(50, -60)
+scale = Vector2(1, 1)
+texture = ExtResource("2_mugay")
+
+[node name="Box" type="Sprite2D" parent="Gatcha4"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_axyrs")
+
+[node name="Gatcha5" type="Sprite2D" parent="."]
+position = Vector2(31, -99)
+scale = Vector2(1, 1)
+texture = ExtResource("2_mugay")
+
+[node name="SmokeBomb" type="Sprite2D" parent="Gatcha5"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_ql0pn")
+
+[node name="Gatcha6" type="Sprite2D" parent="."]
+position = Vector2(7, -103)
+scale = Vector2(1, 1)
+texture = ExtResource("2_mugay")
+
+[node name="TeleporterBox" type="Sprite2D" parent="Gatcha6"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0n8jh")
+
+[node name="Gatcha7" type="Sprite2D" parent="."]
+position = Vector2(49, -82)
+scale = Vector2(1, 1)
+texture = ExtResource("2_mugay")
+
+[node name="GrowingPlant" type="Sprite2D" parent="Gatcha7"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_dgqly")
+
+[node name="Gatcha8" type="Sprite2D" parent="."]
+position = Vector2(-48, -62)
+scale = Vector2(1, 1)
+texture = ExtResource("2_mugay")
+
+[node name="Spring" type="Sprite2D" parent="Gatcha8"]
+rotation = 0.905826
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_alrsi")
+
+[node name="Gatcha9" type="Sprite2D" parent="."]
+position = Vector2(-6, -124)
+scale = Vector2(1, 1)
+texture = ExtResource("2_mugay")
+
+[node name="Rock" type="Sprite2D" parent="Gatcha9"]
+rotation = -1.79594
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_55mgg")
+
+[node name="Gatcha10" type="Sprite2D" parent="."]
+position = Vector2(24, -118)
+scale = Vector2(1, 1)
+texture = ExtResource("2_mugay")
+
+[node name="Bomb" type="Sprite2D" parent="Gatcha10"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_abijd")
+
+[node name="Gatcha18" type="Sprite2D" parent="."]
+position = Vector2(31, -79)
+scale = Vector2(1, 1)
+texture = ExtResource("2_mugay")
+
+[node name="Bomb" type="Sprite2D" parent="Gatcha18"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_abijd")
+
+[node name="Gatcha11" type="Sprite2D" parent="."]
+position = Vector2(-43, -99)
+scale = Vector2(1, 1)
+texture = ExtResource("2_mugay")
+
+[node name="Box" type="Sprite2D" parent="Gatcha11"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_axyrs")
+
+[node name="Gatcha16" type="Sprite2D" parent="."]
+position = Vector2(-27, -117)
+scale = Vector2(1, 1)
+texture = ExtResource("2_mugay")
+
+[node name="Box" type="Sprite2D" parent="Gatcha16"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_axyrs")
+
+[node name="Gatcha12" type="Sprite2D" parent="."]
+position = Vector2(-28, -60)
+scale = Vector2(1, 1)
+texture = ExtResource("2_mugay")
+
+[node name="SmokeBomb" type="Sprite2D" parent="Gatcha12"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_ql0pn")
+
+[node name="Gatcha13" type="Sprite2D" parent="."]
+position = Vector2(-12, -88)
+scale = Vector2(1, 1)
+texture = ExtResource("2_mugay")
+
+[node name="TeleporterBox" type="Sprite2D" parent="Gatcha13"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0n8jh")
+
+[node name="Gatcha17" type="Sprite2D" parent="."]
+position = Vector2(27, -57)
+scale = Vector2(1, 1)
+texture = ExtResource("2_mugay")
+
+[node name="TeleporterBox" type="Sprite2D" parent="Gatcha17"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0n8jh")
+
+[node name="Gatcha14" type="Sprite2D" parent="."]
+position = Vector2(3, -57)
+scale = Vector2(1, 1)
+texture = ExtResource("2_mugay")
+
+[node name="GrowingPlant" type="Sprite2D" parent="Gatcha14"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_dgqly")
+
+[node name="Lamp" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+texture = ExtResource("9_s6kgy")
