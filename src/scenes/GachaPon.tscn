@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2o5807fjfxn6"]
+[gd_scene load_steps=25 format=3 uid="uid://d2o5807fjfxn6"]
 
+[ext_resource type="Script" path="res://scenes/GachaPon.gd" id="1_p6t3q"]
 [ext_resource type="Texture2D" uid="uid://c3wmt7870xukn" path="res://sprites/teleporter_box.png" id="2_0n8jh"]
 [ext_resource type="Texture2D" uid="uid://cog7sk80ykf4o" path="res://sprites/bomb.png" id="2_abijd"]
 [ext_resource type="Texture2D" uid="uid://csp0ardyjl54b" path="res://sprites/spring.png" id="2_alrsi"]
@@ -9,12 +10,162 @@
 [ext_resource type="Texture2D" uid="uid://trxeowv3jmbb" path="res://sprites/smoke_bomb.png" id="3_ql0pn"]
 [ext_resource type="Texture2D" uid="uid://b3tca6epdaoix" path="res://sprites/rock.png" id="4_55mgg"]
 [ext_resource type="Texture2D" uid="uid://dlpgs1xdpjh2p" path="res://sprites/gatcha_machine.png" id="9_s6kgy"]
+[ext_resource type="Shader" path="res://scenes/Item.gdshader" id="11_rdlru"]
+[ext_resource type="Texture2D" uid="uid://c6gf7vjf30biq" path="res://sprites/coin.png" id="12_8x5mk"]
+[ext_resource type="Texture2D" uid="uid://bljcg74u2x5sd" path="res://sprites/invisibility.png" id="13_5llb6"]
+[ext_resource type="Texture2D" uid="uid://cgwhbneb6ejq7" path="res://sprites/no-coin.png" id="14_3k1kh"]
+[ext_resource type="Texture2D" uid="uid://pm7mhxqnqxtq" path="res://sprites/radar.png" id="14_xjn8y"]
+[ext_resource type="Texture2D" uid="uid://mpqlvpcht35a" path="res://sprites/simul_box.png" id="15_nd04h"]
+[ext_resource type="Texture2D" uid="uid://cjg71ls267rbj" path="res://sprites/question_mark.png" id="16_pfpiw"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="17_1k8l3"]
+[ext_resource type="Texture2D" uid="uid://b3n7eech0mndx" path="res://sprites/arrows1.png" id="18_ufc7f"]
+[ext_resource type="Texture2D" uid="uid://dkompgmyj4pmk" path="res://sprites/arrows2.png" id="19_a4uef"]
 
-[node name="GachaPon" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2dt7j"]
+size = Vector2(46, 69)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2fyx0"]
+resource_local_to_scene = true
+shader = ExtResource("11_rdlru")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 3.0
+shader_parameter/shine_size = 0.01
+shader_parameter/white = null
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6pxuf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_abijd")
+}],
+"loop": true,
+"name": &"bomb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_axyrs")
+}],
+"loop": true,
+"name": &"clone",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_8x5mk")
+}],
+"loop": true,
+"name": &"coin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_5llb6")
+}],
+"loop": true,
+"name": &"invisibility",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_55mgg")
+}],
+"loop": true,
+"name": &"muffin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_3k1kh")
+}],
+"loop": true,
+"name": &"no-coin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dgqly")
+}],
+"loop": true,
+"name": &"plant",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_xjn8y")
+}],
+"loop": true,
+"name": &"radar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_nd04h")
+}],
+"loop": true,
+"name": &"simul",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ql0pn")
+}],
+"loop": true,
+"name": &"smoke",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_alrsi")
+}],
+"loop": true,
+"name": &"spring",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0n8jh")
+}],
+"loop": true,
+"name": &"teleport",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_pfpiw")
+}],
+"loop": true,
+"name": &"unknown",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_voacp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_ufc7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_a4uef")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}]
+
+[node name="GachaPon" type="Area2D"]
+script = ExtResource("1_p6t3q")
 
 [node name="Gatcha" type="Sprite2D" parent="."]
 position = Vector2(-22, -102)
-scale = Vector2(1, 1)
 texture = ExtResource("2_mugay")
 
 [node name="Spring" type="Sprite2D" parent="Gatcha"]
@@ -24,7 +175,6 @@ texture = ExtResource("2_alrsi")
 
 [node name="Gatcha2" type="Sprite2D" parent="."]
 position = Vector2(-35, -79)
-scale = Vector2(1, 1)
 texture = ExtResource("2_mugay")
 
 [node name="Rock" type="Sprite2D" parent="Gatcha2"]
@@ -34,7 +184,6 @@ texture = ExtResource("4_55mgg")
 
 [node name="Gatcha15" type="Sprite2D" parent="."]
 position = Vector2(12, -82)
-scale = Vector2(1, 1)
 texture = ExtResource("2_mugay")
 
 [node name="Rock" type="Sprite2D" parent="Gatcha15"]
@@ -44,7 +193,6 @@ texture = ExtResource("4_55mgg")
 
 [node name="Gatcha3" type="Sprite2D" parent="."]
 position = Vector2(-11, -67)
-scale = Vector2(1, 1)
 texture = ExtResource("2_mugay")
 
 [node name="Bomb" type="Sprite2D" parent="Gatcha3"]
@@ -53,7 +201,6 @@ texture = ExtResource("2_abijd")
 
 [node name="Gatcha4" type="Sprite2D" parent="."]
 position = Vector2(50, -60)
-scale = Vector2(1, 1)
 texture = ExtResource("2_mugay")
 
 [node name="Box" type="Sprite2D" parent="Gatcha4"]
@@ -62,7 +209,6 @@ texture = ExtResource("2_axyrs")
 
 [node name="Gatcha5" type="Sprite2D" parent="."]
 position = Vector2(31, -99)
-scale = Vector2(1, 1)
 texture = ExtResource("2_mugay")
 
 [node name="SmokeBomb" type="Sprite2D" parent="Gatcha5"]
@@ -71,7 +217,6 @@ texture = ExtResource("3_ql0pn")
 
 [node name="Gatcha6" type="Sprite2D" parent="."]
 position = Vector2(7, -103)
-scale = Vector2(1, 1)
 texture = ExtResource("2_mugay")
 
 [node name="TeleporterBox" type="Sprite2D" parent="Gatcha6"]
@@ -80,7 +225,6 @@ texture = ExtResource("2_0n8jh")
 
 [node name="Gatcha7" type="Sprite2D" parent="."]
 position = Vector2(49, -82)
-scale = Vector2(1, 1)
 texture = ExtResource("2_mugay")
 
 [node name="GrowingPlant" type="Sprite2D" parent="Gatcha7"]
@@ -89,7 +233,6 @@ texture = ExtResource("3_dgqly")
 
 [node name="Gatcha8" type="Sprite2D" parent="."]
 position = Vector2(-48, -62)
-scale = Vector2(1, 1)
 texture = ExtResource("2_mugay")
 
 [node name="Spring" type="Sprite2D" parent="Gatcha8"]
@@ -99,7 +242,6 @@ texture = ExtResource("2_alrsi")
 
 [node name="Gatcha9" type="Sprite2D" parent="."]
 position = Vector2(-6, -124)
-scale = Vector2(1, 1)
 texture = ExtResource("2_mugay")
 
 [node name="Rock" type="Sprite2D" parent="Gatcha9"]
@@ -109,7 +251,6 @@ texture = ExtResource("4_55mgg")
 
 [node name="Gatcha10" type="Sprite2D" parent="."]
 position = Vector2(24, -118)
-scale = Vector2(1, 1)
 texture = ExtResource("2_mugay")
 
 [node name="Bomb" type="Sprite2D" parent="Gatcha10"]
@@ -118,7 +259,6 @@ texture = ExtResource("2_abijd")
 
 [node name="Gatcha18" type="Sprite2D" parent="."]
 position = Vector2(31, -79)
-scale = Vector2(1, 1)
 texture = ExtResource("2_mugay")
 
 [node name="Bomb" type="Sprite2D" parent="Gatcha18"]
@@ -127,7 +267,6 @@ texture = ExtResource("2_abijd")
 
 [node name="Gatcha11" type="Sprite2D" parent="."]
 position = Vector2(-43, -99)
-scale = Vector2(1, 1)
 texture = ExtResource("2_mugay")
 
 [node name="Box" type="Sprite2D" parent="Gatcha11"]
@@ -136,7 +275,6 @@ texture = ExtResource("2_axyrs")
 
 [node name="Gatcha16" type="Sprite2D" parent="."]
 position = Vector2(-27, -117)
-scale = Vector2(1, 1)
 texture = ExtResource("2_mugay")
 
 [node name="Box" type="Sprite2D" parent="Gatcha16"]
@@ -145,7 +283,6 @@ texture = ExtResource("2_axyrs")
 
 [node name="Gatcha12" type="Sprite2D" parent="."]
 position = Vector2(-28, -60)
-scale = Vector2(1, 1)
 texture = ExtResource("2_mugay")
 
 [node name="SmokeBomb" type="Sprite2D" parent="Gatcha12"]
@@ -154,7 +291,6 @@ texture = ExtResource("3_ql0pn")
 
 [node name="Gatcha13" type="Sprite2D" parent="."]
 position = Vector2(-12, -88)
-scale = Vector2(1, 1)
 texture = ExtResource("2_mugay")
 
 [node name="TeleporterBox" type="Sprite2D" parent="Gatcha13"]
@@ -163,7 +299,6 @@ texture = ExtResource("2_0n8jh")
 
 [node name="Gatcha17" type="Sprite2D" parent="."]
 position = Vector2(27, -57)
-scale = Vector2(1, 1)
 texture = ExtResource("2_mugay")
 
 [node name="TeleporterBox" type="Sprite2D" parent="Gatcha17"]
@@ -172,7 +307,6 @@ texture = ExtResource("2_0n8jh")
 
 [node name="Gatcha14" type="Sprite2D" parent="."]
 position = Vector2(3, -57)
-scale = Vector2(1, 1)
 texture = ExtResource("2_mugay")
 
 [node name="GrowingPlant" type="Sprite2D" parent="Gatcha14"]
@@ -182,3 +316,57 @@ texture = ExtResource("3_dgqly")
 [node name="Lamp" type="Sprite2D" parent="."]
 position = Vector2(0, -64)
 texture = ExtResource("9_s6kgy")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -23.5)
+shape = SubResource("RectangleShape2D_2dt7j")
+
+[node name="display" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, -87)
+
+[node name="back2" type="ColorRect" parent="display"]
+z_index = 4096
+offset_left = -303.0
+offset_top = -32.0
+offset_right = 247.0
+offset_bottom = 47.0
+metadata/_edit_use_anchors_ = true
+
+[node name="back" type="ColorRect" parent="display"]
+z_index = 4096
+offset_left = -302.0
+offset_top = -31.0
+offset_right = 246.0
+offset_bottom = 46.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="sprite" type="AnimatedSprite2D" parent="display/back"]
+material = SubResource("ShaderMaterial_2fyx0")
+position = Vector2(45, 61)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_6pxuf")
+animation = &"coin"
+offset = Vector2(0, -16)
+
+[node name="lbl_item" type="Label" parent="display/back"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 2.0
+offset_right = 508.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("17_1k8l3")
+text = "==GACHAPON==
+Obtener un item al azar por 1 moneda. "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="arrows" type="AnimatedSprite2D" parent="display/back"]
+position = Vector2(520, 39)
+sprite_frames = SubResource("SpriteFrames_voacp")
+autoplay = "default"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

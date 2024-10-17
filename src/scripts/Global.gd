@@ -280,6 +280,7 @@ var none = {
 
 var gunz_objs = []
 var gunz_objs_prob = []
+var gunz_objs_prob_nocoin = []
 var gunz_equiped = []
 var slots_stock = [0, 0, 0, 0, 0, 0, 0, 0]
 var gunz_index_max = 0
@@ -480,6 +481,8 @@ func buy_item(item, qty):
 			itm = plant
 		elif item == "MUFFIN":
 			itm = muffin
+		elif item == "TELEPORT":
+			itm = teleport	
 			
 		if itm:
 			Global.Gold -= qty
@@ -815,6 +818,8 @@ func init():
 	
 	gunz_objs = []
 	
+	gunz_objs_prob_nocoin = []
+	
 	gunz_objs.append(clone)
 	gunz_objs.append(teleport)
 	gunz_objs.append(coin)
@@ -826,6 +831,14 @@ func init():
 	
 	gunz_objs_prob = [] + gunz_objs
 	gunz_objs_prob.append(coin)
+	
+	gunz_objs_prob_nocoin.append(clone)
+	gunz_objs_prob_nocoin.append(teleport)
+	gunz_objs_prob_nocoin.append(muffin)
+	gunz_objs_prob_nocoin.append(bomb)
+	gunz_objs_prob_nocoin.append(spring)
+	gunz_objs_prob_nocoin.append(plant)
+	gunz_objs_prob_nocoin.append(smoke_bomb)
 	
 	gunz_equiped = []
 	
