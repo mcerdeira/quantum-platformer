@@ -10,6 +10,8 @@ func _physics_process(delta):
 	if ttl > 0:
 		ttl -= 1 * delta
 		return
+		
+	$display.visible = active
 	
 	if !active and opened:
 		if player:
@@ -61,20 +63,14 @@ func _physics_process(delta):
 					$display/back/sprite.animation = current_item.name
 					$display/back/arrows.animation = "empty"
 					Global.play_sound(Global.InteractSFX)
-					await get_tree().create_timer(2.1).timeout
 			else:
 				$display/back/lbl_item.text = "== POBREZA ==" + "\nNo te quedan mas monedas =(" 
 				$display/back/sprite.animation = "no-coin"
 				$display/back/arrows.animation = "empty"
-				await get_tree().create_timer(2.1).timeout
 					
 			active = true
-			opened = false 
-			$display.visible = false
+			opened = true 
 			ttl = 1.1
-			$display/back/lbl_item.text = "==GACHAPON==\nObtener un item al azar por 1 moneda."
-			$display/back/sprite.animation = "coin"
-			$display/back/arrows.animation = "default"
 
 func _on_body_entered(body):
 	if !opened and body.is_in_group("players") and !body.is_in_group("prisoners"):
@@ -84,10 +80,14 @@ func _on_body_entered(body):
 		$display.global_position = center
 		active = true
 		player = body
+		$display/back/lbl_item.text = "==GACHAPON==\nObtener un item al azar por 1 moneda."
+		$display/back/sprite.animation = "coin"
+		$display/back/arrows.animation = "default"
 
 func _on_body_exited(body):
 	if body.is_in_group("players") and !body.is_in_group("prisoners"):
 		body.dont_camera = false
 		$display.visible = false
 		active = false
+		opened = false
 		body.dont_camera = false

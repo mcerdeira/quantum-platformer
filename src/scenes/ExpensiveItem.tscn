@@ -1,0 +1,188 @@
+[gd_scene load_steps=19 format=3 uid="uid://cklb77x6u2b12"]
+
+[ext_resource type="Script" path="res://scenes/ExpensiveItem.gd" id="1_7mcex"]
+[ext_resource type="Texture2D" uid="uid://caixacae0wr0c" path="res://sprites/map_item.png" id="2_08b40"]
+[ext_resource type="Texture2D" uid="uid://d3thnnqfp2f03" path="res://sprites/binocular.png" id="2_g705h"]
+[ext_resource type="Texture2D" uid="uid://stlndvxp0x7l" path="res://sprites/wings.png" id="4_a2603"]
+[ext_resource type="Texture2D" uid="uid://cc6ruwut57x1q" path="res://sprites/resurrect.png" id="6_bmjtl"]
+[ext_resource type="Texture2D" uid="uid://cd1t17i8jwu4w" path="res://sprites/notfound.png" id="7_yrgv7"]
+[ext_resource type="Shader" path="res://scenes/Item.gdshader" id="11_qk6xm"]
+[ext_resource type="Texture2D" uid="uid://c6gf7vjf30biq" path="res://sprites/coin.png" id="12_oyiq4"]
+[ext_resource type="Texture2D" uid="uid://bljcg74u2x5sd" path="res://sprites/invisibility.png" id="13_3p5ql"]
+[ext_resource type="Texture2D" uid="uid://cgwhbneb6ejq7" path="res://sprites/no-coin.png" id="14_ve3b2"]
+[ext_resource type="Texture2D" uid="uid://pm7mhxqnqxtq" path="res://sprites/radar.png" id="15_71dqn"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="18_t18km"]
+[ext_resource type="Texture2D" uid="uid://b3n7eech0mndx" path="res://sprites/arrows1.png" id="19_7kxny"]
+[ext_resource type="Texture2D" uid="uid://dkompgmyj4pmk" path="res://sprites/arrows2.png" id="20_geesl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_reyy3"]
+shader = ExtResource("11_qk6xm")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 1.0
+shader_parameter/shine_size = 0.01
+shader_parameter/white = null
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ljkth"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g705h")
+}],
+"loop": true,
+"name": &"binocular",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_3p5ql")
+}],
+"loop": true,
+"name": &"invisibility",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_08b40")
+}],
+"loop": true,
+"name": &"map",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_ve3b2")
+}],
+"loop": true,
+"name": &"no-coin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_yrgv7")
+}],
+"loop": true,
+"name": &"no-stock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_71dqn")
+}],
+"loop": true,
+"name": &"radar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_bmjtl")
+}],
+"loop": true,
+"name": &"resurrect",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_a2603")
+}],
+"loop": true,
+"name": &"wings",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2dt7j"]
+size = Vector2(46, 69)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_voacp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_7kxny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_geesl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}]
+
+[node name="ExpensiveItem" type="Area2D"]
+script = ExtResource("1_7mcex")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_reyy3")
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_ljkth")
+animation = &"invisibility"
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -23.5)
+shape = SubResource("RectangleShape2D_2dt7j")
+
+[node name="display" type="Node2D" parent="."]
+visible = false
+position = Vector2(33, -87)
+
+[node name="back2" type="ColorRect" parent="display"]
+z_index = 4096
+offset_left = -303.0
+offset_top = -71.0
+offset_right = 247.0
+offset_bottom = 47.0
+
+[node name="back" type="ColorRect" parent="display"]
+z_index = 4096
+offset_left = -302.0
+offset_top = -70.0
+offset_right = 242.0
+offset_bottom = 46.0
+color = Color(0, 0, 0, 1)
+
+[node name="Coin" type="Sprite2D" parent="display/back"]
+position = Vector2(242, 94)
+texture = ExtResource("12_oyiq4")
+
+[node name="lbl_price" type="Label" parent="display/back"]
+offset_left = 263.0
+offset_top = 82.0
+offset_right = 346.0
+offset_bottom = 113.0
+theme_override_fonts/font = ExtResource("18_t18km")
+text = "x100"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="sprite" type="AnimatedSprite2D" parent="display/back"]
+material = SubResource("ShaderMaterial_reyy3")
+position = Vector2(45, 41)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_ljkth")
+animation = &"no-stock"
+
+[node name="lbl_item" type="Label" parent="display/back"]
+offset_left = 84.0
+offset_top = 6.0
+offset_right = 508.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("18_t18km")
+text = "==GACHAPON==
+Obtener un item al azar por 1 moneda. "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="arrows" type="AnimatedSprite2D" parent="display/back"]
+position = Vector2(520, 43)
+sprite_frames = SubResource("SpriteFrames_voacp")
+autoplay = "default"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -19,7 +19,8 @@ func special_rooms():
 	return Global.CurrentState == Global.GameStates.SHOP or Global.CurrentState == Global.GameStates.DEMO or Global.CurrentState == Global.GameStates.HOME or Global.CurrentState == Global.GameStates.FALLING or Global.CurrentState == Global.GameStates.OUTSIDE
 
 func _on_bnt_coin_pressed():
-	Global.get_item(Global.coin, 1)
+	var coins = int($txt_coin.text)
+	Global.get_item(Global.coin, coins)
 
 func _on_bnt_muffin_pressed():
 	Global.get_item(Global.muffin)

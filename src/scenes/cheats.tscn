@@ -28,7 +28,7 @@ offset_left = 8.0
 offset_top = 34.0
 offset_right = 79.0
 offset_bottom = 65.0
-text = "Coins+1"
+text = "Coins+"
 
 [node name="bnt_plant" type="Button" parent="."]
 offset_left = 8.0
@@ -52,16 +52,16 @@ offset_bottom = 121.0
 text = "LevelUp"
 
 [node name="bnt_muffin" type="Button" parent="."]
-offset_left = 103.0
+offset_left = 119.0
 offset_top = 34.0
-offset_right = 174.0
+offset_right = 190.0
 offset_bottom = 65.0
 text = "Muffin"
 
 [node name="bnt_clone" type="Button" parent="."]
-offset_left = 196.0
+offset_left = 206.0
 offset_top = 34.0
-offset_right = 267.0
+offset_right = 277.0
 offset_bottom = 65.0
 text = "Clone"
 
@@ -105,6 +105,13 @@ offset_left = 347.0
 offset_top = 118.0
 offset_right = 466.0
 offset_bottom = 149.0
+text = "1"
+
+[node name="txt_coin" type="TextEdit" parent="."]
+offset_left = 82.0
+offset_top = 34.0
+offset_right = 115.0
+offset_bottom = 65.0
 text = "1"
 
 [node name="lbl_terminal" type="Label" parent="."]
@@ -168,6 +175,7 @@ text = "Challenge"
 [connection signal="pressed" from="btn_nextscene" to="." method="_on_btn_nextscene_pressed"]
 [connection signal="pressed" from="btn_reset" to="." method="_on_btn_reset_pressed"]
 [connection signal="text_changed" from="txt_terminal" to="." method="_on_txt_terminal_text_changed"]
+[connection signal="text_changed" from="txt_coin" to="." method="_on_txt_terminal_text_changed"]
 [connection signal="pressed" from="btn_liberate" to="." method="_on_btn_liberate_pressed"]
 [connection signal="pressed" from="btn_killboss" to="." method="_on_btn_killboss_pressed"]
 [connection signal="pressed" from="btn_demoroom" to="." method="_on_btn_demoroom_pressed"]

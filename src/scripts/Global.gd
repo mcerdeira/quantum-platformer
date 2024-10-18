@@ -212,7 +212,6 @@ var spring = {
 	"pasive": false,
 	"full_scale": true,
 }
-
 #PASIVE ITEMS 
 var radar = {
 	"name": "radar",
@@ -222,6 +221,8 @@ var radar = {
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
+	"price": 50,
+	"idx": 3,
 }
 var map = {
 	"name": "map",
@@ -231,6 +232,8 @@ var map = {
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
+	"price": 25,
+	"idx": 1,
 }
 var double_jump = {
 	"name": "wings",
@@ -240,6 +243,8 @@ var double_jump = {
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
+	"price": 25,
+	"idx": 2,
 }
 var resurrect = {
 	"name": "resurrect",
@@ -249,6 +254,8 @@ var resurrect = {
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
+	"price": 220,
+	"idx": 6,
 }
 var invisibility = {
 	"name": "invisibility",
@@ -258,6 +265,8 @@ var invisibility = {
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
+	"price": 125,
+	"idx": 4,
 }
 var binocular = {
 	"name": "binocular",
@@ -267,6 +276,8 @@ var binocular = {
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
+	"price": 10,
+	"idx": 5,
 }
 var none = {
 	"name": "none",
@@ -276,6 +287,7 @@ var none = {
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
+	"price": 0,
 }
 
 var gunz_objs = []
@@ -430,39 +442,55 @@ func find_my_item(itm):
 			return true
 			
 	return false
-
-func donate(qty):
-	if Global.Gold < qty or qty == 0:
-		return null
-	else:
-		Global.GoldDonation += qty
-		Global.Gold -= qty
-		var result = levelup()
-		save_game()
-		Global.GizmoWatcher.setHUD(true)
-		return result
-		
-func levelup():
-	var new_level = 0
-	for l in range(Global.GOLD_PER_LEVEL.size()):
-		if Global.CurrentLevel < l:
-			if Global.GoldDonation >= Global.GOLD_PER_LEVEL[l]:
-				new_level += 1
-			else:
-				break
-			
-	if new_level > 0:
-		var perks_equiped_prev = [] + Global.perks_equiped
-		Global.CurrentLevel += new_level
-		set_current_perks()
-		Global.player_obj.calc_perks()
-		return perks_equiped_prev
-	else:
-		return Global.perks_equiped
 	
-func set_current_perks():
-	for i in range(Global.CurrentLevel + 1):
-		Global.perks_equiped[i] = Global.UNLOCKS_PER_LEVEL[i]
+func find_item(find_name):
+	for itm in UNLOCKS_PER_LEVEL:
+		if itm != null:
+			if itm.name == find_name:
+				return itm
+
+#func donate(qty):
+	#if Global.Gold < qty or qty == 0:
+		#return null
+	#else:
+		#Global.GoldDonation += qty
+		#Global.Gold -= qty
+		#var result = levelup()
+		#save_game()
+		#Global.GizmoWatcher.setHUD(true)
+		#return result
+		
+#func levelup():
+	#var new_level = 0
+	#for l in range(Global.GOLD_PER_LEVEL.size()):
+		#if Global.CurrentLevel < l:
+			#if Global.GoldDonation >= Global.GOLD_PER_LEVEL[l]:
+				#new_level += 1
+			#else:
+				#break
+			#
+	#if new_level > 0:
+		#var perks_equiped_prev = [] + Global.perks_equiped
+		#Global.CurrentLevel += new_level
+		#set_current_perks()
+		#Global.player_obj.calc_perks()
+		#return perks_equiped_prev
+	#else:
+		#return Global.perks_equiped
+	
+#func set_current_perks():
+	#for i in range(Global.CurrentLevel + 1):
+		#Global.perks_equiped[i] = Global.UNLOCKS_PER_LEVEL[i]
+		
+func buy_item_perk(item, qty, idx):
+	if Global.Gold < qty or qty == 0:
+		return false
+	else:
+		Global.perks_equiped[idx] = Global.UNLOCKS_PER_LEVEL[idx]
+		Global.player_obj.calc_perks()
+		Global.GizmoWatcher.setHUD(true)
+		save_game()
+		return true
 
 func buy_item(item, qty):
 	if Global.Gold < qty or qty == 0:
@@ -482,7 +510,7 @@ func buy_item(item, qty):
 		elif item == "MUFFIN":
 			itm = muffin
 		elif item == "TELEPORT":
-			itm = teleport	
+			itm = teleport
 			
 		if itm:
 			Global.Gold -= qty
@@ -547,7 +575,7 @@ func save_game():
 		saved_game.store_var(Global.FIREBALLS) #DRAGON
 		saved_game.store_var(Global.retro_game_high_score)
 		saved_game.store_var(Global.Gold)
-		saved_game.store_var(Global.CurrentLevel)
+		saved_game.store_var(Global.perks_equiped)
 		saved_game.store_var(Global.GoldDonation)
 		saved_game.store_var(Global.ARTIFACT_PER_LEVEL)
 		saved_game.store_var(Global.FirstDeath)
@@ -581,7 +609,7 @@ func load_game():
 			var fireballs = saved_game.get_var()
 			var high_score = saved_game.get_var()
 			var gold = saved_game.get_var()
-			var curr_level = saved_game.get_var()
+			var perks_equiped = saved_game.get_var()
 			var g_donation = saved_game.get_var()
 			var a_per_level = saved_game.get_var()
 			var first_death = saved_game.get_var()
@@ -619,8 +647,8 @@ func load_game():
 					Global.FIREBALLS = fireballs
 				if gold != null:
 					Global.Gold = gold
-				if curr_level != null:
-					Global.CurrentLevel = curr_level
+				if perks_equiped != null:
+					Global.perks_equiped = perks_equiped
 				if g_donation != null:
 					Global.GoldDonation = g_donation
 				if a_per_level != null:
@@ -663,7 +691,7 @@ func load_game():
 		Global.WATERFALLS = true
 		Global.FIREBALLS = true
 		Global.Gold = 0
-		Global.CurrentLevel = 0
+		Global.perks_equiped = [null, null, null, null, null, null, null]
 		Global.GoldDonation = 0
 		Global.ARTIFACT_PER_LEVEL = [false, false, false, false, false]
 		Global.FirstDeath = true
@@ -721,7 +749,7 @@ func sync_this_terminal(terminal_number):
 func init_game():
 	load_sfx()
 	load_game()
-	set_current_perks()
+	#set_current_perks()
 	init()
 
 func _ready():
