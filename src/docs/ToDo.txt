@@ -40,6 +40,8 @@
 IN_PROGRESS:
 - Simplificar la consola a solo cosas opcionales
 - Hacer que las compras y leveleo sea en el shop
+- Hacer animación en puertas 
+- El spikeball que queda en el piso del jefe, debe tener el brillo para que se entienda que es un ítem. 
 
 BUGS/Ajustes:
 
