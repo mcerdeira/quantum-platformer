@@ -2,6 +2,8 @@ extends Area2D
 var closed = true
 var nope = false
 var target = null
+var opening = false
+var offset = 0.0
 @export var terminal_number = -1
 @export var gotoBOSS = true
 @export var special_door = false 
@@ -35,6 +37,14 @@ func _ready():
 				open(change)
 				
 func _physics_process(delta):
+	if opening:
+		$sprite.material.set_shader_parameter("offset", offset)
+		offset += 0.3 * delta
+		if offset >= 1:
+			reallyopen()
+			opening = false
+		return
+	
 	if !closed and target:
 		target.hide_eyes()
 		target.global_position.x = global_position.x
@@ -48,12 +58,19 @@ func assign(_terminal_number):
 		Global.exit_door = self
 
 func open(with_sound = false):
-	closed = false
-	$sprite.frame = 1
 	if (gotoBOSS or with_sound) and !special_door and !shop_door:
+		opening = true
 		var options = {"pitch_scale": 0.7}
 		Global.play_sound(Global.DoorOpensSFX, options)
 		Global.shaker_obj.shake(15, 3)
+	else:
+		reallyopen()	
+
+func reallyopen():
+	closed = false
+	$sprite_open.visible = false
+	$sprite.material.set_shader_parameter("offset", 0)
+	$sprite.frame = 1
 
 func _on_body_entered(body):
 	if Global.player_obj and is_instance_valid(Global.player_obj) and Global.player_obj.is_on_floor_custom():

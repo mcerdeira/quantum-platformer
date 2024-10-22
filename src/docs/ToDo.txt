@@ -38,7 +38,6 @@
 ==================================================================================================================
 
 IN_PROGRESS:
-- Hacer animación en puertas 
 
 BUGS/Ajustes:
 
@@ -81,6 +80,7 @@ Features:
 - Decoraciones: La sangre debería desaparecer al tocar la lava
 
 --------------------------------- DONE ---------------------------------
+- Hacer animación en puertas 
 - Simplificar la consola a solo cosas opcionales
 - Hacer que las compras y leveleo sea en el shop
 - Bug con el stock de los items
