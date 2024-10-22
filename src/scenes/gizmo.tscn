@@ -46,8 +46,13 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nlsrr"]
 shader = ExtResource("8_14h7y")
-shader_parameter/blacked = null
+shader_parameter/blacked = false
 shader_parameter/crisis = false
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 3.5
+shader_parameter/shine_size = 0.01
+shader_parameter/white = null
+shader_parameter/gizmomode = false
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3r5gg"]
 animations = [{

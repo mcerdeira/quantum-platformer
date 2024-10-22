@@ -22,11 +22,10 @@ var PB_LEN = 40
 
 var terminal_commands_with_help = [
 	[
-		"ESTADO",
-		"JUEGO",
 		"AYUDA",
 		"LISTAR",
 		"IMPRIMIR",
+		"JUEGO",
 		"LIMPIAR",
 		"SALIR",
 	],
@@ -72,11 +71,6 @@ var mode_idx = 0
 var mode = ["cmd", "param1", "param2"]
 
 
-var STATUS = {
-	"name": "ESTADO",
-	"param1": null,
-	"param2": null
-}
 var GAME = {
 	"name": "JUEGO",
 	"param1": null,
@@ -84,7 +78,7 @@ var GAME = {
 } 
 var HELP = {
 	"name": "AYUDA",
-	"param1": ["ESTADO", "JUEGO", "LISTAR", "IMPRIMIR", "LIMPIAR", "SALIR"],
+	"param1": ["JUEGO", "LISTAR", "IMPRIMIR", "LIMPIAR", "SALIR"],
 	"param2": null
 }
 
@@ -128,11 +122,10 @@ var EXIT = {
 
 var terminal_commands = [
 	[
-		STATUS,
-		GAME,
 		HELP,
 		LIST,
 		PRINT,
+		GAME,
 		CLEAR,
 		EXIT,
 	],

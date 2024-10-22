@@ -346,7 +346,7 @@ func check_shoot_released(delta):
 		
 	if !dead and shoot_mode and (shoot_released or blowed > 0):
 		if !Global.gunz_equiped[Global.gunz_index].pasive:
-			if Global.slots_stock[Global.gunz_index] > 0:
+			if Global.gunz_equiped[Global.gunz_index].stock > 0:
 				idle_play = idle_play_total
 				Engine.time_scale = 1.0
 				destroy_trayectory()
@@ -424,6 +424,7 @@ func process_player(delta):
 			$Selector.modulate.a = 1
 			selector_visibility_ttl = 2
 			Global.gunz_index = 0
+			
 			inv_move_left()
 			
 			$Cosito.visible = false
@@ -434,6 +435,7 @@ func process_player(delta):
 			$Selector.modulate.a = 1
 			selector_visibility_ttl = 2
 			Global.gunz_index = 0
+
 			inv_move_right()
 				
 			$Cosito.visible = false
@@ -460,7 +462,7 @@ func process_player(delta):
 	if !dead and Input.is_action_pressed("shoot"):
 		if Global.gunz_equiped.size() > 0:
 			if !Global.gunz_equiped[Global.gunz_index].pasive:
-				if Global.slots_stock[Global.gunz_index] > 0:
+				if Global.gunz_equiped[Global.gunz_index].stock > 0:
 					$Selector.visible = false
 					$Cosito.visible = true
 					$Selector.modulate.a = 1

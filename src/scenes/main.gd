@@ -326,7 +326,7 @@ func calc_selected(first_time = false):
 	var sel = get_node("CanvasLayer/Control/selected0")
 	var lbl = get_node("CanvasLayer/Control/gun_slot0/lbl_stock")
 	if !Global.gunz_equiped[Global.gunz_index].pasive and Global.gunz_equiped[Global.gunz_index].name != "none":
-		lbl.text = "x" + str(Global.slots_stock[Global.gunz_index])
+		lbl.text = "x" + str(Global.gunz_equiped[Global.gunz_index].stock)
 	else:
 		lbl.text = ""
 	

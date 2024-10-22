@@ -20,6 +20,7 @@ var current_item = null
 var action_executed = false
 var count_down = 0
 var attach_to = null
+var gizmo_mode = false
 
 func _ready():
 	add_to_group("interactuable")
@@ -63,11 +64,14 @@ func _physics_process(delta):
 		if !landed:
 			rotation += 5 * delta
 		else:
+			$sprite.material.set_shader_parameter("gizmomode", gizmo_mode)
 			if current_item.has_action:
 				if count_down > 0:
 					count_down -= 1 * delta
 					$lbl_count.text = str(round(count_down)) 
 					if count_down < 2:
+						gizmo_mode = true
+						$sprite.material.set_shader_parameter("gizmomode", gizmo_mode)
 						var a : AnimationPlayer = $AnimationPlayer
 						if !a.is_playing():
 							a.play("shak_")
@@ -267,4 +271,5 @@ func super_jump():
 	velocity.y = jump_speed * 2
 
 func set_red_color(val):
+	$sprite.material.set_shader_parameter("gizmomode", gizmo_mode)
 	$sprite.material.set_shader_parameter("crisis", val)

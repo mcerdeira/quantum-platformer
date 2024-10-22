@@ -65,7 +65,7 @@ func pause_unpause():
 		for i in range(Global.gunz_equiped.size()):
 			var name = Global.gunz_equiped[i].name
 			if name != "none":
-				var c = Global.slots_stock[i]
+				var c = Global.gunz_equiped[i].stock
 				if name == "muffin":
 					$pause_color2/gun_slot0/lbl_stock.text = "x" + str(c)
 				elif name == "bomb":

@@ -38,10 +38,9 @@
 ==================================================================================================================
 
 IN_PROGRESS:
+- Hacer animación en puertas 
 - Simplificar la consola a solo cosas opcionales
 - Hacer que las compras y leveleo sea en el shop
-- Hacer animación en puertas 
-- El spikeball que queda en el piso del jefe, debe tener el brillo para que se entienda que es un ítem. 
 
 BUGS/Ajustes:
 
@@ -84,6 +83,8 @@ Features:
 - Decoraciones: La sangre debería desaparecer al tocar la lava
 
 --------------------------------- DONE ---------------------------------
+- Bug con el stock de los items
+- El spikeball que queda en el piso del jefe, debe tener el brillo para que se entienda que es un ítem. 
 - Hacer que en los niveles, en vez de haber una terminal haya un nivel challenge por monedas
 - Hacer humito amarillo para la nube voladora
 - Inventario cuando hacemos pausa

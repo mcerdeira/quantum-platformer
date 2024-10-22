@@ -151,6 +151,7 @@ position = Vector2(242, 94)
 texture = ExtResource("12_oyiq4")
 
 [node name="lbl_price" type="Label" parent="display/back"]
+layout_mode = 0
 offset_left = 263.0
 offset_top = 82.0
 offset_right = 346.0
@@ -168,6 +169,7 @@ sprite_frames = SubResource("SpriteFrames_ljkth")
 animation = &"no-stock"
 
 [node name="lbl_item" type="Label" parent="display/back"]
+layout_mode = 0
 offset_left = 84.0
 offset_top = 6.0
 offset_right = 508.0

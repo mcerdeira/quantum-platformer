@@ -121,6 +121,7 @@ var smoke_bomb = {
 	"has_action": true,
 	"pasive": false,
 	"full_scale": true,
+	"stock": 0,
 }
 var plant = {
 	"name": "plant",
@@ -132,6 +133,7 @@ var plant = {
 	"has_action": true,
 	"pasive": false,
 	"full_scale": true,
+	"stock": 0,
 }
 var clone = {
 	"name": "clone",
@@ -143,6 +145,7 @@ var clone = {
 	"has_action": true,
 	"pasive": false,
 	"full_scale": false,
+	"stock": 0,
 }
 var teleport = {
 	"name": "teleport",
@@ -154,6 +157,7 @@ var teleport = {
 	"has_action": true,
 	"pasive": false,
 	"full_scale": false,
+	"stock": 0,
 }
 
 var spikeball = {
@@ -166,6 +170,7 @@ var spikeball = {
 	"has_action": false,
 	"pasive": false,
 	"full_scale": true,
+	"stock": 0,
 }
 
 var muffin = {
@@ -178,6 +183,7 @@ var muffin = {
 	"has_action": false,
 	"pasive": false,
 	"full_scale": false,
+	"stock": 0,
 }
 var bomb = {
 	"name": "bomb",
@@ -189,6 +195,7 @@ var bomb = {
 	"has_action": true,
 	"pasive": false,
 	"full_scale": true,
+	"stock": 0,
 }
 var coin = {
 	"name": "coin",
@@ -211,6 +218,7 @@ var spring = {
 	"has_action": false,
 	"pasive": false,
 	"full_scale": true,
+	"stock": 0,
 }
 #PASIVE ITEMS 
 var radar = {
@@ -294,7 +302,6 @@ var gunz_objs = []
 var gunz_objs_prob = []
 var gunz_objs_prob_nocoin = []
 var gunz_equiped = []
-var slots_stock = [0, 0, 0, 0, 0, 0, 0, 0]
 var gunz_index_max = 0
 var gunz_index = 0
 var main_camera = null
@@ -353,28 +360,28 @@ var Terminals = [
 		"description" : "La Hoja    ",
 		"status": true,
 		"prisoners": 5,
-		"variable" : {"LASERS": false}
+		"variable" : {"BOLAS_FUEGO": true}
 	},
 	{
 		"name": "La Tumba     ",
 		"description" : "La Tumba   ",
 		"status": false,
 		"prisoners": 5,
-		"variable" : {"FANTASMAS": false}
+		"variable" : {"FANTASMAS": true}
 	},
 	{
 		"name": "La Sirena    ",
 		"description" : "La Sirena     ",
 		"status": false,
 		"prisoners": 7,
-		"variable" : {"CASCADAS": false}
+		"variable" : {"CASCADAS": true}
 	},
 	{
 		"name": "La Salamandra",
 		"description" : "La Salamandra",
 		"status": false,
 		"prisoners": 7,
-		"variable" : {"BOLAS_FUEGO": false}
+		"variable" : {"LASERS": true}
 	},
 	{
 		"name": "El Serafin   ",
@@ -433,7 +440,7 @@ func scene_next(terminal_number = -1, boss = false, special = false, shop = fals
 	get_tree().reload_current_scene()
 
 func remove_item():
-	Global.slots_stock[Global.gunz_index] -= 1
+	Global.gunz_equiped[0].stock -= 1
 	Global.GizmoWatcher.setHUD()
 	
 func find_my_item(itm):
@@ -527,7 +534,7 @@ func get_item(current_item, qty = 1):
 		for i in range(Global.gunz_equiped.size()): #Try to add stock
 			if Global.gunz_equiped[i].name == current_item.name:
 				found = true
-				slots_stock[i] += qty
+				Global.gunz_equiped[i].stock += qty
 				Global.gunz_index_max = i
 				break;
 				
@@ -537,7 +544,7 @@ func get_item(current_item, qty = 1):
 				if Global.gunz_equiped[i].name == "none":
 					Global.gunz_equiped[i] = current_item
 					found = true
-					slots_stock[i] = qty
+					Global.gunz_equiped[i].stock = qty
 					Global.gunz_index_max = i
 					break;
 			
@@ -569,10 +576,10 @@ func save_game():
 		var saved_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 		saved_game.store_var(Global.CurrentState)
 		saved_game.store_var(Global.first_time)
-		saved_game.store_var(Global.LASERS) #LEAF
+		saved_game.store_var(Global.FIREBALLS) #LEAF
 		saved_game.store_var(Global.GHOSTS) #TOMB
 		saved_game.store_var(Global.WATERFALLS) #MERMAID
-		saved_game.store_var(Global.FIREBALLS) #DRAGON
+		saved_game.store_var(Global.LASERS) #DRAGON
 		saved_game.store_var(Global.retro_game_high_score)
 		saved_game.store_var(Global.Gold)
 		saved_game.store_var(Global.perks_equiped)
@@ -603,10 +610,10 @@ func load_game():
 		if saved_game:
 			var cur_state = saved_game.get_var()
 			var f_time = saved_game.get_var()
-			var lasers = saved_game.get_var()
+			var fireballs = saved_game.get_var()
 			var ghosts = saved_game.get_var()
 			var waterfalls = saved_game.get_var()
-			var fireballs = saved_game.get_var()
+			var lasers = saved_game.get_var()
 			var high_score = saved_game.get_var()
 			var gold = saved_game.get_var()
 			var perks_equiped = saved_game.get_var()
@@ -869,10 +876,6 @@ func init():
 	gunz_objs_prob_nocoin.append(smoke_bomb)
 	
 	gunz_equiped = []
-	
-	#DEBUG
-	#slots_stock = [2, 0]
-	#gunz_equiped[0] = plant
 	
 	randomize()
 	
