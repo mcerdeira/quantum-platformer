@@ -8,12 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://bt512oj6aqplr" path="res://sprites/horu/images/exit_spr_stone_1.png" id="5_d6kef"]
 [ext_resource type="Texture2D" uid="uid://c8cdp2o43edo7" path="res://sprites/horu/images/exit_spr_1.png" id="5_kdr3r"]
 [ext_resource type="Texture2D" uid="uid://duvbsm4ugc1yw" path="res://sprites/horu/images/exit_spr_hell_0.png" id="7_4ogp0"]
-[ext_resource type="Texture2D" uid="uid://wckik736tf2t" path="res://sprites/horu/images/exit_spr_hell_1.png" id="8_lyevj"]
 [ext_resource type="Texture2D" uid="uid://bleiorijjtati" path="res://sprites/crack_spr_1.png" id="9_2s1i0"]
 [ext_resource type="Texture2D" uid="uid://bot7elnfslb64" path="res://sprites/shop_spr_2.png" id="9_gmybn"]
 [ext_resource type="Texture2D" uid="uid://cp584rsfkw4d5" path="res://sprites/crack_spr_2.png" id="9_jy613"]
 [ext_resource type="Texture2D" uid="uid://b75mbd3rd8k03" path="res://sprites/shop_spr_1.png" id="10_2m2sv"]
 [ext_resource type="Texture2D" uid="uid://chfc4wjjp3ms6" path="res://sprites/horu/images/exit_spr_3.png" id="13_bd7jd"]
+[ext_resource type="Script" path="res://scenes/explode_door.gd" id="15_6dkxm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y4ebb"]
 animations = [{
@@ -71,7 +71,7 @@ animations = [{
 "texture": ExtResource("7_4ogp0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_lyevj")
+"texture": ExtResource("5_kdr3r")
 }],
 "loop": true,
 "name": &"4",
@@ -120,6 +120,7 @@ collision_mask = 33
 script = ExtResource("1_0vvlk")
 
 [node name="sprite_open" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(1, -37)
 sprite_frames = SubResource("SpriteFrames_y4ebb")
 
@@ -132,4 +133,46 @@ sprite_frames = SubResource("SpriteFrames_3viko")
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_njti7")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="explode" type="Node2D" parent="."]
+script = ExtResource("15_6dkxm")
+
+[node name="mark" type="Marker2D" parent="explode"]
+
+[node name="mark2" type="Marker2D" parent="explode"]
+position = Vector2(15, -41)
+
+[node name="mark3" type="Marker2D" parent="explode"]
+position = Vector2(-11, -51)
+
+[node name="mark4" type="Marker2D" parent="explode"]
+position = Vector2(3, -59)
+
+[node name="mark5" type="Marker2D" parent="explode"]
+position = Vector2(-7, -21)
+
+[node name="mark6" type="Marker2D" parent="explode"]
+position = Vector2(6, -30)
+
+[node name="mark7" type="Marker2D" parent="explode"]
+position = Vector2(13, -9)
+
+[node name="mark8" type="Marker2D" parent="explode"]
+position = Vector2(-14, -7)
+
+[node name="mark9" type="Marker2D" parent="explode"]
+position = Vector2(-14, -68)
+
+[node name="mark10" type="Marker2D" parent="explode"]
+position = Vector2(15, -71)
+
+[node name="mark11" type="Marker2D" parent="explode"]
+position = Vector2(-4, -75)
+
+[node name="mark12" type="Marker2D" parent="explode"]
+position = Vector2(9, -56)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="explode" method="_on_timer_timeout"]

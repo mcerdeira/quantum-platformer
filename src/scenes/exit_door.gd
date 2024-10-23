@@ -3,6 +3,7 @@ var closed = true
 var nope = false
 var target = null
 var opening = false
+var opening_tl = 0.5
 var offset = 0.0
 @export var terminal_number = -1
 @export var gotoBOSS = true
@@ -39,7 +40,7 @@ func _ready():
 func _physics_process(delta):
 	if opening:
 		$sprite.material.set_shader_parameter("offset", offset)
-		offset += 0.3 * delta
+		offset += opening_tl * delta
 		if offset >= 1:
 			reallyopen()
 			opening = false
@@ -60,13 +61,17 @@ func assign(_terminal_number):
 func open(with_sound = false):
 	if (gotoBOSS or with_sound) and !special_door and !shop_door:
 		opening = true
+		$Timer.start()
+		$sprite_open.visible = true
+		opening_tl = 0.3
 		var options = {"pitch_scale": 0.7}
 		Global.play_sound(Global.DoorOpensSFX, options)
 		Global.shaker_obj.shake(15, 3)
 	else:
-		reallyopen()	
+		reallyopen()
 
 func reallyopen():
+	$Timer.stop()
 	closed = false
 	$sprite_open.visible = false
 	$sprite.material.set_shader_parameter("offset", 0)
