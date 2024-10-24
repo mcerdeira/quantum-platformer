@@ -19,15 +19,17 @@ func _physics_process(_delta):
 		if first_time:
 			first_time = false
 			Global.lava_FX.set_intensity(0.0, 0.0)
-			$TileMap.queue_free()
+			if $TileMap:
+				$TileMap.queue_free()
 	elif Global.TerminalNumber == Global.TerminalsEnum.TOMB:
 		if first_time:
-			if !Global.TunnelTerminalNumber:
-				var p = fog.instantiate()
-				get_parent().add_child(p)
+			if !Global.TunnelTerminalNumber and Global.CurrentState == Global.GameStates.RANDOMLEVEL:
+				var f = fog.instantiate()
+				get_parent().add_child(f)
 			first_time = false
 			Global.lava_FX.set_intensity(0.0, 0.0)
-			$TileMap.queue_free()
+			if $TileMap:
+				$TileMap.queue_free()
 	else:
 		if Global.player_obj != null:
 			var faked = Vector2(global_position.x, Global.player_obj.global_position.y)

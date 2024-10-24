@@ -61,7 +61,6 @@ func pause_unpause():
 		$pause_color2/gun_slot7/lbl_stock.text = "x" + str(Global.Gold)
 		
 		
-		
 		for i in range(Global.gunz_equiped.size()):
 			var name = Global.gunz_equiped[i].name
 			if name != "none":
