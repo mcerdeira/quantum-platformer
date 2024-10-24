@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtqbrsfnl0dtw"]
+
+[ext_resource type="Shader" path="res://scenes/Fog.gdshader" id="1_bwf73"]
+[ext_resource type="Script" path="res://scenes/Fog.gd" id="1_hdt85"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mlt87"]
+frequency = 0.0181
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ymck3"]
+seamless = true
+seamless_blend_skirt = 0.75
+noise = SubResource("FastNoiseLite_mlt87")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8s4fx"]
+shader = ExtResource("1_bwf73")
+shader_parameter/density = 0.25
+shader_parameter/speed = Vector2(0.02, 0.01)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_ymck3")
+
+[node name="Fog" type="ParallaxBackground"]
+layer = 2
+visible = false
+scroll_ignore_camera_zoom = true
+script = ExtResource("1_hdt85")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+autostart = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1152, 640)
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxLayer"]
+material = SubResource("ShaderMaterial_8s4fx")
+offset_right = 1152.0
+offset_bottom = 640.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

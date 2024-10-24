@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccrniksfhd6lb"]
+[gd_scene load_steps=14 format=3 uid="uid://ccrniksfhd6lb"]
 
 [ext_resource type="Script" path="res://scenes/moving_plat.gd" id="1_cwmde"]
 [ext_resource type="Script" path="res://scenes/moving_platform.gd" id="1_y82u2"]
 [ext_resource type="Script" path="res://scenes/area_jump.gd" id="3_aqe71"]
 [ext_resource type="Texture2D" uid="uid://c286brcfcywi4" path="res://sprites/cloud_block_spr_0.png" id="3_xw1ld"]
+[ext_resource type="Script" path="res://scenes/moving_plat_sprite.gd" id="4_2gm0m"]
+[ext_resource type="Texture2D" uid="uid://cvjfenuq51ej2" path="res://sprites/skull_spr_0.png" id="6_1e5qn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hwjf2"]
 size = Vector2(88, 10)
@@ -16,6 +18,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_1e5qn")
+}],
+"loop": true,
+"name": &"tomb",
 "speed": 5.0
 }]
 
@@ -110,6 +120,7 @@ shape = SubResource("RectangleShape2D_hwjf2")
 
 [node name="sprites" type="Node2D" parent="plat"]
 position = Vector2(-32, 0)
+script = ExtResource("4_2gm0m")
 
 [node name="sprite" type="AnimatedSprite2D" parent="plat/sprites"]
 sprite_frames = SubResource("SpriteFrames_7rqct")

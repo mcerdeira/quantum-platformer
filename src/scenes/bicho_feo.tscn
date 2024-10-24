@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b7hufagbkuyww"]
+[gd_scene load_steps=14 format=3 uid="uid://b7hufagbkuyww"]
 
 [ext_resource type="Texture2D" uid="uid://dydp1vry5wnd3" path="res://sprites/bicho_feo1.png" id="1_8joaw"]
 [ext_resource type="Texture2D" uid="uid://cchn0xjmts5vl" path="res://sprites/bicho_feo2.png" id="2_xdjb2"]
@@ -26,6 +26,9 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rem1g"]
 radius = 336.027
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3fxb"]
+size = Vector2(192, 925)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q06gq"]
 size = Vector2(572, 293)
@@ -55,6 +58,7 @@ _data = {
 }
 
 [node name="BichoFeo" type="AnimatedSprite2D"]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(171, 325)
 sprite_frames = SubResource("SpriteFrames_k03m1")
 autoplay = "default"
@@ -67,6 +71,12 @@ script = ExtResource("5_6ms16")
 [node name="collider" type="CollisionShape2D" parent="areagood"]
 position = Vector2(105, -6)
 shape = SubResource("CircleShape2D_rem1g")
+
+[node name="area_starter" type="Area2D" parent="."]
+
+[node name="collider" type="CollisionShape2D" parent="area_starter"]
+position = Vector2(681, -11)
+shape = SubResource("RectangleShape2D_c3fxb")
 
 [node name="area" type="Area2D" parent="."]
 
@@ -81,13 +91,11 @@ shape = SubResource("RectangleShape2D_booyj")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.1
 one_shot = true
-autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_yrmyh")
 }
-autoplay = "new_animation"
 
 [node name="Timer2" type="Timer" parent="."]
 
@@ -178,7 +186,7 @@ position = Vector2(-84, 274)
 [node name="Marker2D9" type="Marker2D" parent="explosions"]
 position = Vector2(37, 178)
 
-[connection signal="body_entered" from="areagood" to="." method="_on_areagood_body_entered"]
+[connection signal="body_entered" from="area_starter" to="." method="_on_area_starter_body_entered"]
 [connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="explosions" method="_on_timer_2_timeout"]

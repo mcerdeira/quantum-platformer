@@ -28,10 +28,7 @@
 	       Bueno: Pasar los niveles, llamar al bote e ir a la parte final con el verdadero boss.
                       El boss es nuestra mascota.
 
-               Opcional: Apagar las variables usando la password que está escondida en el QR 
-                      
-	    
-  . Hay terminales en los niveles que no vamos a saber para que son. En cada una podemos apagar variables.
+               Opcional: Apagar las variables usando la password que está escondida en el QR y acceder a la zona oculta
 
 ==================================================================================================================
 ==================================================================================================================
@@ -39,47 +36,48 @@
 
 IN_PROGRESS:
 
+- [Armar zona Tomb] Muy blanco y negro, con bruma. Hay unas lápidas especiales que tenemos que hacer algo, pero pueden disparar q aparezca un fantasma
+  - Lapidas que pueden disparar un enemigo
+  - Cadenas para colgarse
+  - JEFE: Fantasma que se mueve y hace la musica (ver Deep Down Low)
+
 BUGS/Ajustes:
 
 Features:
-- Cascadas (ala Minecraft) que interactuen con bombas y enemigos
-- Momento: el nivel empieza a explotar/irse para arriba, se puede hacer con objetos que simulen ser tiles pero no lo son
-- Armar items 3D que se puede girar en todas las direcciones con una porción del QR, algun titulo y forma de cerrarlo
-- Geisers
-- Truenos
-- Lluvia
-- Cadenas para colgarse
 
 - Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
   - Alinear los discos, llama al bote.
   - Si giramos los discos, atrás se forma un QR, el QR tiene la password para las terminales.
+  - Armar items 3D que se puede girar en todas las direcciones con una porción del QR, algun titulo y forma de cerrarlo
 
-- Terminales: se pueden activar variables para el final bueno, pero ese comando necesita password
+- Terminales: se pueden desactivar variables para la zona secreta, pero ese comando necesita password QR
 
-- Armar zona Dragon. Estilo volcanico, lava por todos lados, lasers. La mecánica principal es... ?????
-- Armar zona Mermaid. Fondo más claro, piso negro, lluvia y truenos. La mecánica principal son unas canillas que abrimos para inundar o no lugares 
+
+- [Armar zona Mermaid] Fondo más claro, piso negro, lluvia y truenos. La mecánica principal son unas canillas que abrimos para inundar o no lugares 
+  - Cascadas (ala Minecraft) que interactuen con bombas y enemigos
   - Truenos
   - Lluvia
   - Cascadas
   - Canillas: que hacen desaparecer las cascadas y la lluvia
+  - JEFE: Es top down 2D
 
-- Armar zona Tomb. Muy blanco y negro, con bruma. Hay unas lápidas especiales que tenemos que hacer algo, pero pueden disparar q aparezca un fantasma
-- Lapidas que pueden disparar un enemigo
+- [Armar zona Dragon] Estilo volcanico, lava por todos lados, lasers. La mecánica principal es... ?????
+  - Geisers
+  - JEFE: Objeto 3D que nos dispara  
+
+- [Armar zona Seraph]
+- JEFE FINAL (la mascota): Pelea carrera donde nos alargamos como serpientes hacia el cielo vs el boss
+                           Momento shmup
 
 - Menu de opciones
-- Armar textos de cada terminal 
-- Armar manuales de cada terminal, subirlos a drive y generar los QR (QRS: https://qr.io/dashboard/)
-
-- Jefe de The Tomb: Fantasma que se mueve y hace la musica (ver Deep Down Low)
-- Jefe de The Mermaid: Es top down 2D
-- Jefe de The Dragon: Objeto 3D que nos dispara  
-- Jefe Final (la mascota): Pelea carrera donde nos alargamos como serpientes hacia el cielo vs el boss
+- Armar manual que se imprime y subirlos a drive y generar los QR (QRS: https://qr.io/dashboard/)
 
 - Decoraciones: Splash al caer en la lava
 - Decoraciones: Backgrounds con parallax
 - Decoraciones: La sangre debería desaparecer al tocar la lava
 
 --------------------------------- DONE ---------------------------------
+- Nivel challenge que el monstruo aparezca después de avanzar un poco
 - Hacer animación en puertas 
 - Simplificar la consola a solo cosas opcionales
 - Hacer que las compras y leveleo sea en el shop
@@ -300,6 +298,7 @@ Features:
   . Sin confirmás y ya no hay más parámetros, es como el "Enter"
 
 --------------------------------- CANCELADO ---------------------------------
+- Momento: el nivel empieza a explotar/irse para arriba, se puede hacer con objetos que simulen ser tiles pero no lo son
 - Item cohete 
 - Plantas para esconderse
 - Hacer que el tamaño del nivel sea variable (y parametrizable según que terminal sea) 

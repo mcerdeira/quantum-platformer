@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhoti11gyh17k"]
+
+[ext_resource type="Texture2D" uid="uid://cao8kgiajlrt1" path="res://sprites/waterfall2_spr_0.png" id="1_7cqsv"]
+[ext_resource type="Texture2D" uid="uid://b1ok1dyle82cx" path="res://sprites/waterfall_spr_0.png" id="1_70wo7"]
+[ext_resource type="Texture2D" uid="uid://df7uvkml0qpic" path="res://sprites/waterfall2_spr_1.png" id="2_r6o2j"]
+[ext_resource type="Texture2D" uid="uid://c87fd86yy6dcl" path="res://sprites/waterfall_spr_1.png" id="2_y3224"]
+[ext_resource type="PackedScene" uid="uid://dsb6dbx10a67k" path="res://scenes/ray_particles.tscn" id="5_ewilc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_snrvq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_70wo7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_y3224")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ibmd5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7cqsv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_r6o2j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Waterfall" type="Node2D"]
+
+[node name="sprite2" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 15)
+sprite_frames = SubResource("SpriteFrames_snrvq")
+autoplay = "default"
+frame_progress = 0.764775
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 337)
+sprite_frames = SubResource("SpriteFrames_ibmd5")
+autoplay = "default"
+frame_progress = 0.601715
+
+[node name="RayParticles" parent="." instance=ExtResource("5_ewilc")]
+
+[node name="RayParticles2" parent="." instance=ExtResource("5_ewilc")]
+position = Vector2(-13, 611)
+
+[node name="RayParticles3" parent="." instance=ExtResource("5_ewilc")]
+position = Vector2(19, 616)
+
+[node name="RayParticles4" parent="." instance=ExtResource("5_ewilc")]
+position = Vector2(4, 613)

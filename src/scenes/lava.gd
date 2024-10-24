@@ -4,20 +4,30 @@ var val = 0.0
 var temp = 0.0
 var upper_limit = 0.09
 var upper_limit_temp = 1.0
-var first_time 
+var first_time = true
+var fog = preload("res://scenes/Fog.tscn")
 
 func _physics_process(_delta):
 	if Global.TerminalNumber <= Global.TerminalsEnum.EYE:
-		Global.lava_FX.set_intensity(0.0, 0.0)
-		queue_free()
+		if first_time:
+			first_time = false
+			Global.lava_FX.set_intensity(0.0, 0.0)
+			queue_free()
 	elif Global.TerminalNumber == Global.TerminalsEnum.SALAMANDER:
 		Global.lava_FX.set_intensity(0.089, 0.9)
 	elif Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
-		Global.lava_FX.set_intensity(0.0, 0.0)
-		queue_free()
+		if first_time:
+			first_time = false
+			Global.lava_FX.set_intensity(0.0, 0.0)
+			$TileMap.queue_free()
 	elif Global.TerminalNumber == Global.TerminalsEnum.TOMB:
-		Global.lava_FX.set_intensity(0.0, 0.0)
-		queue_free()
+		if first_time:
+			if !Global.TunnelTerminalNumber:
+				var p = fog.instantiate()
+				get_parent().add_child(p)
+			first_time = false
+			Global.lava_FX.set_intensity(0.0, 0.0)
+			$TileMap.queue_free()
 	else:
 		if Global.player_obj != null:
 			var faked = Vector2(global_position.x, Global.player_obj.global_position.y)

@@ -9,6 +9,11 @@ func _physics_process(_delta):
 				return
 			Global.play_sound(Global.SpringSFX, {}, global_position)
 			body.super_jump()
-			Global.emit($"../marker_cloud".global_position, 5, particle)
-			Global.emit($"../marker_cloud2".global_position, 5, particle)
+			if Global.TerminalNumber == Global.TerminalsEnum.TOMB:
+				Global.emit($"../marker_cloud".global_position, 5)
+				Global.emit($"../marker_cloud2".global_position, 5)
+			else:
+				Global.emit($"../marker_cloud".global_position, 5, particle)
+				Global.emit($"../marker_cloud2".global_position, 5, particle)
+			
 			$"../AnimationPlayer2".play("new_animation")
