@@ -31,10 +31,10 @@ radius = 336.027
 size = Vector2(192, 925)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q06gq"]
-size = Vector2(572, 293)
+size = Vector2(924, 303.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_booyj"]
-size = Vector2(868, 476.5)
+size = Vector2(847, 324.25)
 
 [sub_resource type="Animation" id="Animation_xtbmi"]
 resource_name = "new_animation"
@@ -81,11 +81,11 @@ shape = SubResource("RectangleShape2D_c3fxb")
 [node name="area" type="Area2D" parent="."]
 
 [node name="collider" type="CollisionShape2D" parent="area"]
-position = Vector2(-263, 161)
+position = Vector2(-508, 166.25)
 shape = SubResource("RectangleShape2D_q06gq")
 
 [node name="collider2" type="CollisionShape2D" parent="area"]
-position = Vector2(-535, -228)
+position = Vector2(-545.5, -151.875)
 shape = SubResource("RectangleShape2D_booyj")
 
 [node name="Timer" type="Timer" parent="."]

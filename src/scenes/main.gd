@@ -61,6 +61,7 @@ var rooms_bottom = [
 var rooms_bosses = [
 	null,
 	[preload("res://scenes/levels/leaf/room_boss.tscn")],
+	[preload("res://scenes/levels/tomb/room_boss.tscn")],
 ]
 
 var rooms_challenge_vertical = [
@@ -68,7 +69,6 @@ var rooms_challenge_vertical = [
 ]
 var rooms_challenge_horizontal = [
 	preload("res://scenes/levels/challenge/room_challenge_horizontal1.tscn"),
-	
 ]
 
 var list_rooms_top = [
@@ -114,7 +114,7 @@ func generate_challenge_horizontal():
 	var door_room = Vector2(randi() % 4, randi() % 4)
 	var size = Vector2(1152, 640) #TODO: Cambiar
 	var room_pos = Vector2.ZERO
-	var total_w = 16
+	var total_w = 10
 	var room = null
 	var q = 1
 
@@ -130,11 +130,15 @@ func generate_challenge_horizontal():
 		q += 1
 		
 		room_pos.x += size.x
+		
 		if w != 0:
 			r.delete_bicho()
 			r.delete_player()
+			r.deletelimit2()
+			r.deletelimit1()
 			
 		if w != total_w - 1:
+			r.deletelimit2()
 			r.delete_door()
 			
 		add_child(r)

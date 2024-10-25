@@ -14,5 +14,11 @@ func delete_door():
 	$ExitDoor.nope = true
 	$ExitDoor.queue_free()
 	
+func deletelimit1():
+	$level_limtit.queue_free()
+	
+func deletelimit2():
+	$level_limtit2.queue_free()
+	
 func delete_bicho():
 	$BichoFeo.queue_free()

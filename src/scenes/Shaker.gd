@@ -5,7 +5,6 @@ var camera_shake_duration = 0.0
 var camera = null
 
 enum Type {Random, Sine, Noise}
-var camera_shake_type = Type.Random
 
 func _ready():
 	Global.shaker_obj = self
@@ -17,7 +16,6 @@ func shake(intensity, duration, type = Type.Random, _global_position = null):
 	if intensity > camera_shake_intensity and duration > camera_shake_duration:
 		camera_shake_intensity = intensity
 		camera_shake_duration = duration
-		camera_shake_type = type
 
 func _physics_process(delta):
 	if camera == null:
@@ -36,10 +34,9 @@ func _physics_process(delta):
 	# Shake it
 	var offset = Vector2.ZERO
 		
-	if camera_shake_type == Type.Random:
-		offset = Vector2(randf(), randf()) * camera_shake_intensity
+	offset = Vector2(randf(), randf()) * camera_shake_intensity
 
-	Global.CHROM_FX.setdistort(randf())
+	Global.CHROM_FX.setdistort(randf() * camera_shake_intensity / 30)
 	
 	offset = offset
 	

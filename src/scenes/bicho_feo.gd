@@ -17,7 +17,7 @@ func _on_area_body_entered(body):
 		
 func _physics_process(delta):
 	if started:
-		Global.shaker_obj.shake(2, 10)
+		Global.shaker_obj.shake(2, 1)
 		Global.shaker_obj.camera = $Camera2D
 		speed += 10 * delta
 		if speed > 250:
@@ -27,6 +27,7 @@ func _physics_process(delta):
 		
 func slow_down():
 	speed = 100
+	Global.shaker_obj.shake(3, 5)
 
 func _on_timer_timeout():
 	started = true
