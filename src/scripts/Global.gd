@@ -366,7 +366,7 @@ var Terminals = [
 		"name": "La Tumba     ",
 		"description" : "La Tumba   ",
 		"status": false,
-		"prisoners": 5,
+		"prisoners": 4,
 		"variable" : {"FANTASMAS": true}
 	},
 	{

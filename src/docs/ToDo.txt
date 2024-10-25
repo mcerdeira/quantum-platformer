@@ -36,9 +36,12 @@
 
 IN_PROGRESS:
 
+- Terminar de probar el special level
+- Ver como se une el tema de las lapidas y la historia de por que tenemos que hacer lo que tenemos que hacer
+- Sumar la posibilidad de que los dialogos duren mas de una linea de texto
+
 - [Armar zona Tomb] Muy blanco y negro, con bruma. Hay unas lápidas especiales que tenemos que hacer algo, pero pueden disparar q aparezca un fantasma
   - Lapidas que pueden disparar un enemigo
-  - Cadenas para colgarse
   - JEFE: Fantasma que se mueve y hace la musica (ver Deep Down Low)
 
 BUGS/Ajustes:
@@ -55,6 +58,7 @@ Features:
 
 - [Armar zona Mermaid] Fondo más claro, piso negro, lluvia y truenos. La mecánica principal son unas canillas que abrimos para inundar o no lugares 
   - Cascadas (ala Minecraft) que interactuen con bombas y enemigos
+  - Cadenas para colgarse
   - Truenos
   - Lluvia
   - Cascadas
