@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bgbf68jube28r"]
+[gd_scene load_steps=43 format=3 uid="uid://bgbf68jube28r"]
 
 [ext_resource type="Texture2D" uid="uid://i4s6on6v0134" path="res://sprites/spritesheets/floor_tomb1-sheet.png" id="1_b5wof"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_jiwqc"]
@@ -19,11 +19,9 @@
 [ext_resource type="Script" path="res://scenes/levels/room.gd" id="17_7mji6"]
 [ext_resource type="Texture2D" uid="uid://dw02vd8s8wsrw" path="res://sprites/vines.png" id="18_ptg8s"]
 [ext_resource type="Texture2D" uid="uid://dpcrtwqa2mio7" path="res://sprites/vines_burn.png" id="19_xgpqa"]
-[ext_resource type="PackedScene" uid="uid://c4vd4vxwdwdqh" path="res://scenes/levels/enemy_marker.tscn" id="21_iwwbv"]
 [ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="22_uuis1"]
 [ext_resource type="PackedScene" uid="uid://cwhyl7fwuaawq" path="res://scenes/boss_enemy_2.tscn" id="24_mklrq"]
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="25_xdruq"]
-[ext_resource type="PackedScene" uid="uid://bv8neefvj7c83" path="res://scenes/window.tscn" id="32_xeyfh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4llcy"]
 texture = ExtResource("1_b5wof")
@@ -378,24 +376,5 @@ visible = false
 collision_layer = 41
 collision_mask = 41
 
-[node name="enemy_marker3" parent="." instance=ExtResource("21_iwwbv")]
-position = Vector2(983, 240)
-selected_enemy = "enemy_slime"
-by_chance = false
-
-[node name="enemy_marker4" parent="." instance=ExtResource("21_iwwbv")]
-position = Vector2(484, 560)
-selected_enemy = "enemy_slime"
-by_chance = false
-
-[node name="enemy_marker5" parent="." instance=ExtResource("21_iwwbv")]
-position = Vector2(867, 496)
-selected_enemy = "enemy_slime"
-by_chance = false
-
-[node name="window" parent="." instance=ExtResource("32_xeyfh")]
-position = Vector2(573, 300)
-frame_progress = 0.141286
-
 [node name="boss_enemy_2" parent="." instance=ExtResource("24_mklrq")]
-position = Vector2(329, 305)
+position = Vector2(335, 216)

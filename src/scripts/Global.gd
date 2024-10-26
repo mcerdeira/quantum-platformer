@@ -89,6 +89,8 @@ var ExplodeRetroSFX = null
 var BigExplodeRetroSFX = null
 var PlayerHurtSFX = null
 var PauseSFX = null
+var GhostBossLaughSFX = null
+var BossThemeGhost = null
 
 var video_tutorials = []
 
@@ -768,6 +770,7 @@ func load_sfx():
 	MainTheme = load("res://music/main_theme.mp3")
 	MainThemeShort = load("res://music/main_theme_short.mp3")
 	BossTheme = load("res://music/boss_theme.mp3")
+	BossThemeGhost = load("res://music/BossGhostLoop.wav")
 	CaveAmbienceSFX = load("res://sfx/cave_ambience.mp3")
 	HouseAmbienceSFX = load("res://sfx/house_ambience.mp3")
 	ExteriorAmbienceSFX = load("res://sfx/exterior_ambience.mp3")
@@ -829,6 +832,7 @@ func load_sfx():
 	ButtonSFX = load("res://sfx/button_sound.wav")
 	DoorOpensSFX = load("res://sfx/door_opens.wav")
 	BichoFeoSFX = load("res://sfx/BichoFeo.wav")
+	GhostBossLaughSFX = load("res://sfx/ghost_boss_laugh.mp3")
 	
 	bomb_tutorial = load("res://video/bomb_tutorial.ogv")
 	clone_tutorial = load("res://video/clone_tutorial.ogv")

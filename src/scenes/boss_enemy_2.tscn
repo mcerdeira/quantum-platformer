@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwhyl7fwuaawq"]
+[gd_scene load_steps=8 format=3 uid="uid://cwhyl7fwuaawq"]
 
+[ext_resource type="Script" path="res://scenes/boss_enemy_2.gd" id="1_jf26j"]
 [ext_resource type="Texture2D" uid="uid://byml36jufg4fw" path="res://sprites/horu/images/ghost_boss1.png" id="1_nvobh"]
 [ext_resource type="Texture2D" uid="uid://bqivo8fkubm4f" path="res://sprites/horu/images/ghost_boss2.png" id="2_xtvig"]
 [ext_resource type="Texture2D" uid="uid://clsh1xnpq8tn3" path="res://sprites/horu/images/ghost_boss3.png" id="3_yf8ol"]
@@ -25,7 +26,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Area2D" type="Area2D"]
+[node name="BossEnemy2" type="Area2D"]
+script = ExtResource("1_jf26j")
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -3)
@@ -49,3 +51,10 @@ position = Vector2(-10, 37)
 
 [node name="RayParticles5" parent="." instance=ExtResource("4_0cea7")]
 position = Vector2(-13, -38)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.3
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
