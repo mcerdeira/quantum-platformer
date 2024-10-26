@@ -36,9 +36,9 @@
 
 IN_PROGRESS:
 
-- Terminar de probar el special level
 - Ver como se une el tema de las lapidas y la historia de por que tenemos que hacer lo que tenemos que hacer
-- Sumar la posibilidad de que los dialogos duren mas de una linea de texto
+  - Las puertas deben cerrarse y no dejar jugar niveles viejos
+  - Algun NCP te manda a explorar las tumbas
 
 - [Armar zona Tomb] Muy blanco y negro, con bruma. Hay unas lápidas especiales que tenemos que hacer algo, pero pueden disparar q aparezca un fantasma
   - Lapidas que pueden disparar un enemigo
@@ -81,6 +81,8 @@ Features:
 - Decoraciones: La sangre debería desaparecer al tocar la lava
 
 --------------------------------- DONE ---------------------------------
+- Sumar la posibilidad de que los dialogos duren mas de una linea de texto
+- Terminar de probar el special level
 - Nivel challenge que el monstruo aparezca después de avanzar un poco
 - Hacer animación en puertas 
 - Simplificar la consola a solo cosas opcionales

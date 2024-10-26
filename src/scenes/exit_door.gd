@@ -3,6 +3,8 @@ var closed = true
 var nope = false
 var target = null
 var opening = false
+var closing = false
+var closing_ttl = 0.5
 var opening_tl = 0.5
 var offset = 0.0
 @export var terminal_number = -1
@@ -36,6 +38,8 @@ func _ready():
 			var change = Global.sync_this_terminal(terminal_number)
 			if Global.Terminals[terminal_number].status:
 				open(change)
+			else:
+				close(change)
 				
 func _physics_process(delta):
 	if opening:
@@ -44,6 +48,14 @@ func _physics_process(delta):
 		if offset >= 1:
 			reallyopen()
 			opening = false
+		return
+		
+	if closing:
+		$sprite.material.set_shader_parameter("offset", offset)
+		offset -= closing_ttl * delta
+		if offset <= 0:
+			reallyclose()
+			closing = false
 		return
 	
 	if !closed and target:
@@ -69,6 +81,28 @@ func open(with_sound = false):
 		Global.shaker_obj.shake(15, 3)
 	else:
 		reallyopen()
+		
+func close(with_sound = false):
+	if (gotoBOSS or with_sound) and !special_door and !shop_door:
+		$sprite.frame = 0
+		offset = 1.0
+		$sprite.material.set_shader_parameter("offset", 1)
+		closing = true
+		$Timer.start()
+		$sprite_open.visible = true
+		closing_ttl = 0.3
+		var options = {"pitch_scale": 0.7}
+		Global.play_sound(Global.DoorOpensSFX, options)
+		Global.shaker_obj.shake(15, 3)
+	else:
+		reallyclose()
+		
+func reallyclose():
+	$Timer.stop()
+	closed = true
+	$sprite_open.visible = false
+	$sprite.material.set_shader_parameter("offset", 0)
+	$sprite.frame = 0
 
 func reallyopen():
 	$Timer.stop()
@@ -79,5 +113,5 @@ func reallyopen():
 
 func _on_body_entered(body):
 	if Global.player_obj and is_instance_valid(Global.player_obj) and Global.player_obj.is_on_floor_custom():
-		if !closed and body.is_in_group("players"):
+		if !closed and !closing and !opening and body.is_in_group("players"):
 			target = body

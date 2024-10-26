@@ -114,7 +114,7 @@ func generate_challenge_horizontal():
 	var door_room = Vector2(randi() % 4, randi() % 4)
 	var size = Vector2(1152, 640) #TODO: Cambiar
 	var room_pos = Vector2.ZERO
-	var total_w = 10
+	var total_w = 8
 	var room = null
 	var q = 1
 
@@ -131,13 +131,17 @@ func generate_challenge_horizontal():
 		
 		room_pos.x += size.x
 		
-		if w != 0:
-			r.delete_bicho()
-			r.delete_player()
+		if w == 0:
 			r.deletelimit2()
+			r.delete_door()
+		elif w == total_w - 1:
+			r.delete_player()
+			r.delete_bicho()
 			r.deletelimit1()
-			
-		if w != total_w - 1:
+		else:
+			r.delete_player()
+			r.delete_bicho()
+			r.deletelimit1()
 			r.deletelimit2()
 			r.delete_door()
 			

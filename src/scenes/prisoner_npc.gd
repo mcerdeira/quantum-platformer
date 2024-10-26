@@ -4,12 +4,22 @@ var opened = false
 var player = null
 var delay_camera = 0.2
 var current_message = ""
+var current_message_count = 0
+var current_messages = ["", ""]
 var ttl = 0
 var dialog_sfx = null
 @export var boss_1_npc = false
 var end_ttl = 5
+var change_ttl = 0
 
 func _physics_process(delta):
+	if change_ttl > 0:
+		change_ttl -= 1 * delta
+		if change_ttl <= 0:
+			$back/lbl_item.text = ""
+			dialog_sfx = Global.play_sound(Global.DialogSFX)
+		return
+	
 	if boss_1_npc:
 		$Timer.stop()
 		$Computer.animation = "boss1"
@@ -36,11 +46,17 @@ func _physics_process(delta):
 			$back/lbl_item.text += current_message.substr(0, 1)
 			current_message = current_message.substr(1, current_message.length() - 1)
 			if !current_message:
-				Global.kill(dialog_sfx)
-				Global.player_obj.dont_camera = false
-				active = false
-				await get_tree().create_timer(1.3).timeout
-				$back.visible = false
+				current_message_count -= 1
+				if current_message_count < 0:
+					Global.kill(dialog_sfx)
+					Global.player_obj.dont_camera = false
+					active = false
+					await get_tree().create_timer(1.3).timeout
+					$back.visible = false
+				else:
+					Global.kill(dialog_sfx)
+					current_message = current_messages[current_message_count]
+					change_ttl = 1.3
 	
 	if active and !opened:
 		if Input.is_action_just_pressed("up"):
@@ -64,9 +80,14 @@ func _physics_process(delta):
 			dialog_sfx = Global.play_sound(Global.DialogSFX)
 			if boss_1_npc:
 				if Global.CurrentState == Global.GameStates.SHOP:
-					current_message = "¡Gracias de nuevo! Pude abrir la tienda y te doy un descuento por ser vos..."
+					current_message = "¡Gracias de nuevo! Pude abrir la tienda que es mi verdadera pasion."
+					current_messages[0] = "En agradecimiento... ¡Te doy un descuento en todos los items!"
+					current_message_count = 1
 				else:
-					current_message = "¡GRACIAS! El bicho este horrible me había comido... pero acá no está tu perro..."
+					current_message = "¡GRACIAS! El bicho este horrible me había comido, fue un asco..."
+					current_messages[1] = "Lamentablemente, tu mascato no está acá..."
+					current_messages[0] = "Nos vemos afuera en un rato."
+					current_message_count = 2
 			else:
 				current_message = "¡La  G R U T A  se llevo a mis amigos y a tu perro!"
 			$back/lbl_item.text = ""

@@ -102,6 +102,7 @@ func process_player(delta):
 		
 	if dead:
 		#Global.player_obj.show_message_demo()
+		Global.LEAF_STATUS = false
 		Global.TOMB_STATUS = true
 		
 		$sprite.scale.y = 1
