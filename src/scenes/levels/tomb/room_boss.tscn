@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bgbf68jube28r"]
+[gd_scene load_steps=47 format=3 uid="uid://bgbf68jube28r"]
 
 [ext_resource type="Texture2D" uid="uid://i4s6on6v0134" path="res://sprites/spritesheets/floor_tomb1-sheet.png" id="1_b5wof"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_jiwqc"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dw02vd8s8wsrw" path="res://sprites/vines.png" id="18_ptg8s"]
 [ext_resource type="Texture2D" uid="uid://dpcrtwqa2mio7" path="res://sprites/vines_burn.png" id="19_xgpqa"]
 [ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="22_uuis1"]
+[ext_resource type="AudioStream" uid="uid://djd2y4kc7i1x3" path="res://music/BossGhostLoop.wav" id="23_0v2xg"]
 [ext_resource type="PackedScene" uid="uid://cwhyl7fwuaawq" path="res://scenes/boss_enemy_2.tscn" id="24_mklrq"]
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="25_xdruq"]
 
@@ -358,6 +359,97 @@ physics_layer_0/collision_mask = 128
 sources/4 = SubResource("TileSetAtlasSource_1nakb")
 sources/5 = SubResource("TileSetAtlasSource_l6icf")
 
+[sub_resource type="Animation" id="Animation_pbwju"]
+resource_name = "new_animation"
+length = 3.83
+loop_mode = 1
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("23_0v2xg")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = false
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("boss_enemy_2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0245, 0.4995, 0.9756, 1.4742, 1.964, 2.32321, 2.66402, 2.9206, 3.36378),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"position"
+}, {
+"args": [],
+"method": &"position"
+}, {
+"args": [],
+"method": &"position"
+}, {
+"args": [],
+"method": &"position"
+}, {
+"args": [],
+"method": &"position"
+}, {
+"args": [],
+"method": &"position"
+}, {
+"args": [],
+"method": &"position"
+}, {
+"args": [],
+"method": &"position"
+}, {
+"args": [],
+"method": &"position"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("effect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0245, 0.4995, 0.9756, 1.4742, 1.964, 2.32321, 2.664, 2.9206, 3.3638),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0.000710011, 0.000710011, 0.000710011, 1), Color(1, 1, 1, 1), Color(0.000710011, 0.000710011, 0.000710011, 1), Color(1, 1, 1, 1), Color(0.000710011, 0.000710011, 0.000710011, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("effect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0245, 0.242584, 0.4995, 0.741747, 0.9756, 1.25957, 1.4742, 1.74007, 1.964, 2.15993, 2.3232, 2.48648, 2.664, 2.80837, 2.9206, 3.14426, 3.3638),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_8ts3n"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t6qjf"]
+_data = {
+"RESET": SubResource("Animation_8ts3n"),
+"new_animation": SubResource("Animation_pbwju")
+}
+
 [node name="level" type="TileMap"]
 tile_set = SubResource("TileSet_4lr5i")
 format = 2
@@ -371,10 +463,53 @@ format = 2
 [node name="player_marker" parent="." instance=ExtResource("22_uuis1")]
 position = Vector2(181, 528)
 
+[node name="effect" type="ColorRect" parent="."]
+offset_left = -2241.0
+offset_top = -1463.0
+offset_right = 3209.0
+offset_bottom = 2027.0
+color = Color(0.358035, 0.358035, 0.358035, 1)
+
 [node name="qdtector" parent="." instance=ExtResource("25_xdruq")]
 visible = false
 collision_layer = 41
 collision_mask = 41
 
-[node name="boss_enemy_2" parent="." instance=ExtResource("24_mklrq")]
-position = Vector2(335, 216)
+[node name="boss_enemy_2" parent="." node_paths=PackedStringArray("pos", "Anim") instance=ExtResource("24_mklrq")]
+position = Vector2(157, 239)
+pos = [NodePath("../Marker2D1"), NodePath("../Marker2D2"), NodePath("../Marker2D3"), NodePath("../Marker2D4"), NodePath("../Marker2D5"), NodePath("../Marker2D6"), NodePath("../Marker2D7"), NodePath("../Marker2D8"), NodePath("../Marker2D9")]
+Anim = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t6qjf")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Marker2D1" type="Marker2D" parent="."]
+position = Vector2(157, 239)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(629, 239)
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(629, 407)
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+position = Vector2(373, 407)
+
+[node name="Marker2D5" type="Marker2D" parent="."]
+position = Vector2(245, 407)
+
+[node name="Marker2D6" type="Marker2D" parent="."]
+position = Vector2(245, 311)
+
+[node name="Marker2D7" type="Marker2D" parent="."]
+position = Vector2(373, 311)
+
+[node name="Marker2D8" type="Marker2D" parent="."]
+position = Vector2(501, 311)
+
+[node name="Marker2D9" type="Marker2D" parent="."]
+position = Vector2(629, 311)
