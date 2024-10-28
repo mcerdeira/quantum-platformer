@@ -2,6 +2,12 @@ extends Area2D
 var fires = preload("res://scenes/Fires.tscn")
 @export var free_fireball = false
 
+func _ready():
+	if Global.BOSS_ROOM:
+		$PointLight2D.color = Color(1, 1, 1)
+		$sprite.animation = "ghost"
+	
+	$sprite.play()
 
 func _on_body_entered(body):
 	if body and (body.is_in_group("players") or body.is_in_group("enemies")):

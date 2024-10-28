@@ -5,9 +5,15 @@ var master_parent = null
 
 func _ready():
 	add_to_group("fireballholder")
+	if Global.BOSS_ROOM:
+		speed = 100.0
 
 func _physics_process(delta):
-	translate(direction * speed * delta)
+	if Global.BOSS_ROOM: 
+		if Global.BULLETS_MOVE:
+			translate(direction * speed * delta)
+	else:
+		translate(direction * speed * delta)
 
 func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	if body is TileMap:

@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwhyl7fwuaawq"]
+[gd_scene load_steps=14 format=3 uid="uid://cwhyl7fwuaawq"]
 
 [ext_resource type="Script" path="res://scenes/boss_enemy_2.gd" id="1_jf26j"]
 [ext_resource type="Texture2D" uid="uid://byml36jufg4fw" path="res://sprites/horu/images/ghost_boss1.png" id="1_nvobh"]
 [ext_resource type="Texture2D" uid="uid://bqivo8fkubm4f" path="res://sprites/horu/images/ghost_boss2.png" id="2_xtvig"]
 [ext_resource type="Texture2D" uid="uid://clsh1xnpq8tn3" path="res://sprites/horu/images/ghost_boss3.png" id="3_yf8ol"]
 [ext_resource type="PackedScene" uid="uid://dsb6dbx10a67k" path="res://scenes/ray_particles.tscn" id="4_0cea7"]
+[ext_resource type="Texture2D" uid="uid://baai5xe5gq4q8" path="res://sprites/horu/images/ghost_boss_inv1.png" id="5_mew06"]
+[ext_resource type="Texture2D" uid="uid://bdx7wc38b6xry" path="res://sprites/horu/images/ghost_boss_laugh.png" id="5_plqqi"]
+[ext_resource type="Texture2D" uid="uid://b17a85qrbc7t" path="res://sprites/horu/images/ghost_boss_inv2.png" id="6_n4oiu"]
+[ext_resource type="Texture2D" uid="uid://bn2a6dh2h1hw3" path="res://sprites/horu/images/ghost_boss_inv3.png" id="7_k6h2b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yito6"]
 radius = 41.4367
@@ -24,7 +28,42 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_mew06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_n4oiu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_k6h2b")
+}],
+"loop": true,
+"name": &"invisible",
+"speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_agw38"]
+resource_name = "new_animation"
+length = 2.28
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("boss_enemy_2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.44831, 0.531681, 0.620533, 0.779191, 0.867689, 0.930369, 1.00886, 1.10469, 1.19404, 1.26716, 1.33491, 1.41569, 1.49243, 1.56513, 1.64186, 1.70649, 1.78322, 1.85996, 1.9367, 1.99324, 2.06998, 2.13056, 2.17095, 2.23557, 2.27596),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.4), Vector2(1, 1), Vector2(0.6, 1.3), Vector2(1, 1), Vector2(0.8, 1.2), Vector2(1, 1), Vector2(1, 1.5), Vector2(1, 1), Vector2(0.9, 1.1), Vector2(1, 1), Vector2(1, 1.1), Vector2(1, 1), Vector2(1, 1.5), Vector2(1, 1), Vector2(1, 1.4), Vector2(1, 1), Vector2(1, 1.9), Vector2(1, 1), Vector2(1, 1.3), Vector2(1, 1), Vector2(1, 1.1), Vector2(1, 1), Vector2(1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ylps5"]
+_data = {
+"new_animation": SubResource("Animation_agw38")
+}
 
 [node name="BossEnemy2" type="Area2D"]
 script = ExtResource("1_jf26j")
@@ -35,26 +74,45 @@ shape = SubResource("CircleShape2D_yito6")
 
 [node name="boss_enemy_2" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ghd0v")
-frame_progress = 0.557952
+autoplay = "default"
 
-[node name="RayParticles" parent="." instance=ExtResource("4_0cea7")]
+[node name="GhostBossLaugh" type="Sprite2D" parent="boss_enemy_2"]
+visible = false
+position = Vector2(1.5, 19.5)
+scale = Vector2(1.05814, 1.54054)
+texture = ExtResource("5_plqqi")
+
+[node name="RayParticles" parent="boss_enemy_2" instance=ExtResource("4_0cea7")]
 position = Vector2(-39, -21)
 
-[node name="RayParticles2" parent="." instance=ExtResource("4_0cea7")]
+[node name="RayParticles2" parent="boss_enemy_2" instance=ExtResource("4_0cea7")]
 position = Vector2(17, 36)
 
-[node name="RayParticles3" parent="." instance=ExtResource("4_0cea7")]
+[node name="RayParticles3" parent="boss_enemy_2" instance=ExtResource("4_0cea7")]
 position = Vector2(23, -33)
 
-[node name="RayParticles4" parent="." instance=ExtResource("4_0cea7")]
+[node name="RayParticles4" parent="boss_enemy_2" instance=ExtResource("4_0cea7")]
 position = Vector2(-10, 37)
 
-[node name="RayParticles5" parent="." instance=ExtResource("4_0cea7")]
+[node name="RayParticles5" parent="boss_enemy_2" instance=ExtResource("4_0cea7")]
 position = Vector2(-13, -38)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.3
+wait_time = 1.5
 one_shot = true
-autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ylps5")
+}
+
+[node name="shoot_pos" type="Marker2D" parent="."]
+position = Vector2(2, 22)
+
+[node name="shoot_pos1" type="Marker2D" parent="."]
+position = Vector2(24, -11)
+
+[node name="shoot_pos2" type="Marker2D" parent="."]
+position = Vector2(-19, -12)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

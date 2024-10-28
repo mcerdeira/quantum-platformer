@@ -22,6 +22,7 @@ var FirstDeath = true
 var OverWorldFromGameOver = false
 var TunnelTerminalNumber = false
 var boss_bar = null
+var BULLETS_MOVE = true
 
 var SpecialLevelTheme = null
 var ButtonSFX = null
