@@ -36,10 +36,6 @@
 
 IN_PROGRESS:
 
-- Ver como se une el tema de las lapidas y la historia de por que tenemos que hacer lo que tenemos que hacer
-  - Las puertas deben cerrarse y no dejar jugar niveles viejos
-  - Algun NCP te manda a explorar las tumbas
-
 - [Armar zona Tomb] Muy blanco y negro, con bruma. Hay unas lápidas especiales que tenemos que hacer algo, pero pueden disparar q aparezca un fantasma
   - Lapidas que pueden disparar un enemigo
   - JEFE: Fantasma que se mueve y hace la musica (ver Deep Down Low)
@@ -302,6 +298,9 @@ Features:
   . Si apretás "A" confirmas
   . Si confirmas y el comando es un comando con parámetros, pasás al siguiente y te moves con las flechas
   . Sin confirmás y ya no hay más parámetros, es como el "Enter"
+- Ver como se une el tema de las lapidas y la historia de por que tenemos que hacer lo que tenemos que hacer
+  - Las puertas deben cerrarse y no dejar jugar niveles viejos
+  - Algun NPC te manda a explorar las tumbas
 
 --------------------------------- CANCELADO ---------------------------------
 - Momento: el nivel empieza a explotar/irse para arriba, se puede hacer con objetos que simulen ser tiles pero no lo son
