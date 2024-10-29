@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dvlc4ydhtggsb"]
+[gd_scene load_steps=27 format=3 uid="uid://dvlc4ydhtggsb"]
 
 [ext_resource type="Script" path="res://scenes/prisoner_npc.gd" id="1_1mpam"]
 [ext_resource type="Texture2D" uid="uid://i7fh6wo2ambk" path="res://sprites/horu/images/prisoner_cry.png" id="2_a0o5m"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c1fa6mp1vngqq" path="res://sprites/horu/images/enemy_danger_spr_0.png" id="3_gi0x4"]
 [ext_resource type="Texture2D" uid="uid://q0bln7b1u2oh" path="res://sprites/horu/images/enemy_danger_spr_1.png" id="4_63cxl"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="4_lhypj"]
+[ext_resource type="Texture2D" uid="uid://bmjl1encnsp13" path="res://sprites/horu/images/prisoner_uncle.png" id="4_vj5ct"]
 [ext_resource type="Texture2D" uid="uid://1ybi7osvso8b" path="res://sprites/horu/images/enemy_danger_spr_2.png" id="5_3gbfd"]
 [ext_resource type="Texture2D" uid="uid://b3n7eech0mndx" path="res://sprites/arrows1.png" id="5_11l7x"]
 [ext_resource type="Texture2D" uid="uid://cjfk1120ldllh" path="res://sprites/sleepy_trap_0.png" id="6_6wuvg"]
@@ -40,6 +41,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_vj5ct")
+}],
+"loop": true,
+"name": &"uncle",
 "speed": 5.0
 }]
 
@@ -184,6 +193,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"prisoner",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_stlm0")
+}],
+"loop": true,
+"name": &"prisoner_1",
 "speed": 5.0
 }, {
 "frames": [{

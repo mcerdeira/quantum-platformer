@@ -45,6 +45,7 @@ var libetared_ttl = 3
 var scaping = false
 var scaping_ttl = 3
 var var_convert_into_npc = false
+var delay_fall = 0
 
 func _ready():
 	add_to_group("players")
@@ -73,6 +74,10 @@ func convert_into_npc():
 	$lbl_action.visible = false
 
 func _physics_process(delta):
+	if delay_fall > 0:
+		delay_fall -= 1 * delta
+		return	
+	
 	speed = total_speed 
 	if trapped:
 		if liberating > 0:

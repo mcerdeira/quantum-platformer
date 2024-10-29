@@ -5,12 +5,17 @@ var player = null
 var delay_camera = 0.2
 var current_message = ""
 var current_message_count = 0
-var current_messages = ["", ""]
+var current_messages = []
 var ttl = 0
 var dialog_sfx = null
 @export var boss_1_npc = false
+@export var uncle = false
 var end_ttl = 5
 var change_ttl = 0
+
+func _ready():
+	for i in range(20):
+		current_messages.append("")
 
 func _physics_process(delta):
 	if change_ttl > 0:
@@ -23,6 +28,10 @@ func _physics_process(delta):
 	if boss_1_npc:
 		$Timer.stop()
 		$Computer.animation = "boss1"
+		$Computer/cry.animation = "boss1"
+		
+	if uncle:
+		$Computer.animation = "uncle"
 		$Computer/cry.animation = "boss1"
 	
 	$back2.visible = $back.visible 
@@ -69,6 +78,8 @@ func _physics_process(delta):
 				$Computer/cry.animation = "boss1"
 				if Global.CurrentState == Global.GameStates.SHOP:
 					$back/sprite.animation = "shop"
+				elif Global.CurrentState == Global.GameStates.OVERWORLD:
+					$back/sprite.animation = "prisoner_1"
 				else:
 					$back/sprite.animation = "boss1"
 					$back/sprite.scale.x = 0.1
@@ -80,14 +91,61 @@ func _physics_process(delta):
 			dialog_sfx = Global.play_sound(Global.DialogSFX)
 			if boss_1_npc:
 				if Global.CurrentState == Global.GameStates.SHOP:
-					current_message = "¡Gracias de nuevo! Pude abrir la tienda que es mi verdadera pasion."
-					current_messages[0] = "En agradecimiento... ¡Te doy un descuento en todos los items!"
-					current_message_count = 1
+					if uncle:
+						current_message = "BIENVENIDO A LA TIENDA: TIO&SOBRINO"
+						current_messages[1] = "¡Gracias por salvar a mi sobrino!"
+						current_messages[0] = "En agradecimiento... ¡Te damos un descuento en todos los items!"
+						current_message_count = 2
+					else:
+						current_message = "BIENVENIDO A LA TIENDA: TIO&SOBRINO"
+						if Global.TOMB_STATUS:
+							current_messages[6] = "¡Gracias de nuevo!"
+							current_messages[5] = "¿Pudiste ir al cementerio como te dije?"
+							current_messages[4] = "(...)"
+							current_messages[3] = "(miedoso)"
+							current_messages[2] = "Solo por ser vos... te dejamos usar la compu."
+							current_messages[1] = "Tiene muchas cosas que no sabemos que son..."
+							current_messages[0] = "¡Y un video juego genial!"
+							current_message_count = 7
+						else:
+							current_messages[3] = "¡Gracias de nuevo!"
+							current_messages[2] = "Solo por ser vos... te dejamos usar la compu."
+							current_messages[1] = "Tiene muchas cosas que no sabemos que son..."
+							current_messages[0] = "¡Y un video juego genial!"
+							current_message_count = 4
+						
+				elif Global.CurrentState == Global.GameStates.OVERWORLD:
+					current_message = "Bueno... llegamos..."
+					current_messages[17] = "(...)"
+					current_messages[16] = "¡Interesante viaje!"
+					current_messages[15] = "Me preocupe un poco cuando aparecio el monstruo serpiente..."
+					current_messages[14] = "Pero bueno, ya ambos sabemos la historia."
+					current_messages[13] = "De alguna forma matar al bicho horrendo"
+					current_messages[12] = "hizo que la puerta del cementerio se abra..."
+					current_messages[11] = "El fantasmote que vive ahi siempre esta enterado de todo."
+					current_messages[10] = "Podríamos preguntarle a el... el unico problema es..."
+					current_messages[9] = "que no le gusta salir demasiado..."
+					current_messages[8] = "(...)"
+					current_messages[7] = "¡YA SE! Por que no te adentras al cementerio y..."
+					current_messages[6] = "profanas algunas tumbas, no son tantas..."
+					current_messages[5] = "¡Estoy seguro que asi lo haremos salir!"
+					current_messages[4] = "MI PLAN NO TIENE FALLAS"
+					current_messages[3] = "(...)"
+					current_messages[2] = "(espero que no se enoje mucho)"
+					current_messages[1] = "(...)"
+					current_messages[0] = "Eso es todo, ¡si podes pasa por la tienda de mi tio!"
+					current_message_count = 18
 				else:
 					current_message = "¡GRACIAS! El bicho este horrible me había comido, fue un asco..."
-					current_messages[1] = "Lamentablemente, tu mascato no está acá..."
-					current_messages[0] = "Nos vemos afuera en un rato."
-					current_message_count = 2
+					current_messages[6] = "Lamentablemente, tu mascota no está acá..."
+					current_messages[5] = "Pasa por la tienda de mi tio, quiza te podamos ayudar."
+					current_messages[4] = "(...)"
+					current_messages[3] = "¿¿COMO?? ¿¿¿No sabes como volver???"
+					current_messages[2] = "(¿como llego aca en primer lugar?)"
+					current_messages[1] = "(...)"
+					current_messages[0] = "Bueno, veni conmigo que te ayudo a volver..."
+					
+					current_message_count = 7
 			else:
 				current_message = "¡La  G R U T A  se llevo a mis amigos y a tu perro!"
 			$back/lbl_item.text = ""

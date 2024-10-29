@@ -1,5 +1,6 @@
 extends Marker2D
 var player_clone = load("res://scenes/player.tscn")
+var prisoner_obj = preload("res://scenes/prisoner.tscn")
 var done = false
 var nope = false
 @export var gravityon = true
@@ -35,7 +36,16 @@ func _process(_delta):
 				if Global.CameFromShop:
 					global_position = $"../player_marker_shop".global_position
 					Global.CameFromShop = false
-				
+				if Global.FromPipe:
+					global_position = $"../player_marker_pipe".global_position
+					Global.FromPipe = false
+					
+					var pri = prisoner_obj.instantiate()
+					pri.global_position = Vector2(global_position.x + 5, global_position.y - 16)
+					get_parent().add_child(pri)
+					pri.convert_into_npc()
+					pri.delay_fall = 2.3
+					
 			var Main = get_node("/root/Main")
 			var pclone = player_clone.instantiate()
 			pclone.CustomCamera = CustomCamera

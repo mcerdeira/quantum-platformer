@@ -216,6 +216,11 @@ position = Vector2(826.27, 327)
 [node name="prisoner_npc" parent="." instance=ExtResource("17_r433y")]
 position = Vector2(248, 641)
 boss_1_npc = true
+uncle = true
+
+[node name="prisoner_npc2" parent="." instance=ExtResource("17_r433y")]
+position = Vector2(677, 385)
+boss_1_npc = true
 
 [node name="GachaPon" parent="." instance=ExtResource("18_hro57")]
 position = Vector2(439, 629)

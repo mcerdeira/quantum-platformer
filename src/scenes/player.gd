@@ -254,6 +254,9 @@ func _physics_process(delta):
 		if in_air:
 			in_air = false
 			double_jumped = false
+			
+			$sprite_eyes.position.y = 3
+			
 			if !cameralimits_on:
 				velocity.x = 0
 				Global.play_sound(Global.BigFallSFX)

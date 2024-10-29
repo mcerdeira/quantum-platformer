@@ -115,13 +115,14 @@ func process_player(delta):
 			$BossExplosionShader.start()
 			$sprite.visible = false
 			var pri = prisoner_obj.instantiate()
-			pri.convert_into_npc()
 			pri.global_position = global_position
 			get_parent().add_child(pri)
+			pri.convert_into_npc()
 			$explosions.stop()
 			$collider.set_deferred("disabled", true)	
-			Music.stop()
-			Ambience.play(Global.CaveAmbienceSFX)
+			Music.play(Global.ShopTheme)
+			Global.FromPipe = true
+			Ambience.stop()
 			Global.player_obj.restart_camera($"../CameraZoomer")
 		return
 

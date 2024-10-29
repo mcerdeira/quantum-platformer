@@ -327,6 +327,7 @@ var ARTIFACT_PER_LEVEL = [false, false, false, false, false]
 var UNLOCKS_PER_LEVEL = [null, map, double_jump, radar, invisibility, binocular, resurrect]
 var GOLD_PER_LEVEL = [0, 10, 25, 50, 125, 200, 220]
 var perks_equiped = [null, null, null, null, null, null, null]
+var FromPipe = false
 
 var LASERS = true
 var GHOSTS = true
