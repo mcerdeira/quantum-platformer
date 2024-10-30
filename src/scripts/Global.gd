@@ -25,6 +25,11 @@ var boss_bar = null
 var BULLETS_MOVE = true
 
 var SpecialLevelTheme = null
+var WhooshSFX = null
+var TombHitSFX = null
+var TombBrokeSFX = null
+var GhostBossHitSFX = null
+
 var ButtonSFX = null
 var RetroTheme = null
 var MainTheme = null
@@ -835,6 +840,12 @@ func load_sfx():
 	DoorOpensSFX = load("res://sfx/door_opens.wav")
 	BichoFeoSFX = load("res://sfx/BichoFeo.wav")
 	GhostBossLaughSFX = load("res://sfx/ghost_boss_laugh.mp3")
+	
+	WhooshSFX = load("res://sfx/Whoosh.wav")
+	TombHitSFX = load("res://sfx/TombHit.ogg")
+	TombBrokeSFX = load("res://sfx/TombBroke.wav")
+	GhostBossHitSFX = load("res://sfx/GhostBossHit.wav")
+	
 	
 	bomb_tutorial = load("res://video/bomb_tutorial.ogv")
 	clone_tutorial = load("res://video/clone_tutorial.ogv")

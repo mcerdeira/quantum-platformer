@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bgbf68jube28r"]
+[gd_scene load_steps=50 format=3 uid="uid://bgbf68jube28r"]
 
 [ext_resource type="Texture2D" uid="uid://i4s6on6v0134" path="res://sprites/spritesheets/floor_tomb1-sheet.png" id="1_b5wof"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_jiwqc"]
@@ -23,11 +23,9 @@
 [ext_resource type="AudioStream" uid="uid://djd2y4kc7i1x3" path="res://music/BossGhostLoop.wav" id="23_0v2xg"]
 [ext_resource type="PackedScene" uid="uid://cwhyl7fwuaawq" path="res://scenes/boss_enemy_2.tscn" id="24_mklrq"]
 [ext_resource type="PackedScene" uid="uid://bheswcl3ede2p" path="res://scenes/kill_zone.tscn" id="24_t8ppf"]
-[ext_resource type="Texture2D" uid="uid://cwiafy02tr7dy" path="res://sprites/gravestone_spr_0.png" id="25_v5ma3"]
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="25_xdruq"]
-[ext_resource type="Texture2D" uid="uid://bmjy1jkwima0m" path="res://sprites/gravestone_spr_1.png" id="26_wwkex"]
-[ext_resource type="Texture2D" uid="uid://dp75s2t7pnhpr" path="res://sprites/gravestone_spr_3.png" id="27_bax5m"]
-[ext_resource type="Texture2D" uid="uid://b1sq8wju3n8o0" path="res://sprites/gravestone_spr_4.png" id="28_4gykg"]
+[ext_resource type="PackedScene" uid="uid://ddm2fi6agoe1p" path="res://scenes/tomb_boss.tscn" id="25_yiqwe"]
+[ext_resource type="PackedScene" uid="uid://cxrfysnm3t4eq" path="res://scenes/hammer.tscn" id="26_tau1l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4llcy"]
 texture = ExtResource("1_b5wof")
@@ -455,7 +453,7 @@ tracks/4/path = NodePath("boss_enemy_2")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.9756, 2.3232, 2.9206),
+"times": PackedFloat32Array(0.9756, 1.4742, 2.3232),
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [],
@@ -487,30 +485,10 @@ _data = {
 "new_animation": SubResource("Animation_pbwju")
 }
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_mtsnf"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("25_v5ma3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_wwkex")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_bax5m")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_4gykg")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="level" type="TileMap"]
 tile_set = SubResource("TileSet_4lr5i")
 format = 2
-layer_0/tile_data = PackedInt32Array(1114115, 131072, 0, 1114116, 196608, 0, 1114117, 196608, 0, 1114118, 196608, 0, 1114119, 65536, 0, 1048595, 131072, 0, 1048596, 196608, 0, 1048597, 65536, 0, 1114131, 786432, 0, 131072, 458752, 0, 65536, 786432, 0, 0, 131072, 0, 131073, 524288, 0, 65560, 524288, 0, 131098, 524288, 0, 131097, 458752, 0, 65571, 393216, 0, 35, 65536, 0, 131088, 524288, 0, 131087, 524288, 0, 131094, 524288, 0, 131093, 458752, 0, 131089, 393216, 0, 131095, 393216, 0, 131104, 524288, 0, 131105, 524288, 0, 131106, 393216, 0, 196635, 327680, 0, 196616, 524288, 0, 196617, 393216, 0, 131074, 524288, 0, 196612, 524288, 0, 196611, 458752, 0, 262149, 458752, 0, 262150, 524288, 0, 262151, 393216, 0, 196620, 458752, 0, 262157, 327680, 0, 196622, 393216, 0, 1245195, 655360, 0, 1114134, 65536, 0, 1179670, 851968, 0, 1, 196608, 0, 2, 196608, 0, 3, 196608, 0, 4, 196608, 0, 5, 196608, 0, 6, 196608, 0, 7, 196608, 0, 8, 196608, 0, 12, 196608, 0, 13, 196608, 0, 14, 196608, 0, 15, 196608, 0, 16, 196608, 0, 17, 196608, 0, 21, 196608, 0, 22, 196608, 0, 23, 196608, 0, 24, 196608, 0, 25, 196608, 0, 26, 196608, 0, 31, 196608, 0, 32, 196608, 0, 33, 196608, 0, 34, 196608, 0, 1245188, 458752, 0, 1245189, 524288, 0, 1245203, 458752, 0, 1245204, 524288, 0, 1245205, 524288, 0, 1245206, 393216, 0, 1245217, 393216, 0, 1245216, 524288, 0, 1245215, 524288, 0, 1245214, 458752, 0, 1114142, 131072, 0, 1179678, 786432, 0, 65537, 262144, 0, 65538, 262144, 0, 65539, 262144, 0, 65540, 262144, 0, 65541, 262144, 0, 65542, 12, 0, 65543, 262144, 0, 65544, 262144, 0, 65548, 262144, 0, 65549, 262144, 0, 65550, 262144, 0, 65551, 262144, 0, 65552, 11, 0, 65553, 262144, 0, 131075, 262144, 0, 131076, 262144, 0, 131077, 11, 0, 131079, 262144, 0, 131080, 262144, 0, 196613, 262144, 0, 196615, 262144, 0, 65557, 262144, 0, 65558, 262144, 0, 65559, 262144, 0, 65561, 262144, 0, 65562, 262144, 0, 65565, 262144, 0, 65570, 262144, 0, 65569, 262144, 0, 65568, 262144, 0, 65567, 262144, 0, 131103, 524288, 0, 196637, 262144, 0, 1179651, 458752, 0, 1179652, 12, 0, 1179653, 13, 0, 1179654, 11, 0, 1179655, 393216, 0, 1114132, 12, 0, 1114133, 262144, 0, 1179669, 11, 0, 1179667, 786432, 0, 1114144, 196608, 0, 1179680, 11, 0, 1179679, 8, 0, 1179681, 851968, 0, 196621, 262144, 0, 1179668, 13, 0, 1245190, 393216, 0, 1179660, 131072, 0, 1179661, 65536, 0, 1245197, 393216, 0, 1245196, 524288, 0, 1114145, 65536, 0, 131082, 524288, 0, 131083, 524288, 0, 9, 196608, 0, 10, 196608, 0, 11, 196608, 0, 18, 196608, 0, 19, 196608, 0, 20, 196608, 0, 27, 196608, 0, 28, 196608, 0, 29, 196608, 0, 30, 196608, 0, 131100, 524288, 0, 131101, 524288, 0, 65554, 524288, 0, 65555, 524288, 0, 65556, 524288, 0, 720926, 589824, 0, 720925, 655360, 0, 655380, 589824, 0, 655379, 655360, 0, 917518, 589824, 0, 917517, 655360, 0, 1179672, 655360, 0, 1179673, 589824, 0, 1114143, 196608, 0, 917535, 655360, 0, 917536, 589824, 0, 720920, 655360, 0, 720921, 589824, 0, 458769, 655360, 0, 458770, 589824, 0, 720909, 655360, 0, 720910, 589824, 0, 458784, 655360, 0, 458785, 589824, 0, 131102, 524288, 0)
+layer_0/tile_data = PackedInt32Array(1114115, 131072, 0, 1114116, 196608, 0, 1114117, 196608, 0, 1114118, 196608, 0, 1114119, 65536, 0, 1048595, 131072, 0, 1048596, 196608, 0, 1048597, 65536, 0, 1114131, 786432, 0, 131072, 458752, 0, 65536, 786432, 0, 0, 131072, 0, 131073, 524288, 0, 65560, 524288, 0, 131098, 524288, 0, 131097, 458752, 0, 65571, 393216, 0, 35, 65536, 0, 131088, 524288, 0, 131087, 524288, 0, 131094, 524288, 0, 131093, 458752, 0, 131089, 393216, 0, 131095, 393216, 0, 131104, 524288, 0, 131105, 524288, 0, 131106, 393216, 0, 196635, 327680, 0, 196616, 524288, 0, 196617, 393216, 0, 131074, 524288, 0, 196612, 524288, 0, 196611, 458752, 0, 262149, 458752, 0, 262150, 524288, 0, 262151, 393216, 0, 196620, 458752, 0, 262157, 327680, 0, 196622, 393216, 0, 1245195, 655360, 0, 1114134, 65536, 0, 1179670, 851968, 0, 1, 196608, 0, 2, 196608, 0, 3, 196608, 0, 4, 196608, 0, 5, 196608, 0, 6, 196608, 0, 7, 196608, 0, 8, 196608, 0, 12, 196608, 0, 13, 196608, 0, 14, 196608, 0, 15, 196608, 0, 16, 196608, 0, 17, 196608, 0, 21, 196608, 0, 22, 196608, 0, 23, 196608, 0, 24, 196608, 0, 25, 196608, 0, 26, 196608, 0, 31, 196608, 0, 32, 196608, 0, 33, 196608, 0, 34, 196608, 0, 1245188, 458752, 0, 1245189, 524288, 0, 1245203, 458752, 0, 1245204, 524288, 0, 1245205, 524288, 0, 1245206, 393216, 0, 1245217, 393216, 0, 1245216, 524288, 0, 1245215, 524288, 0, 1245214, 458752, 0, 1114142, 131072, 0, 1179678, 786432, 0, 65537, 262144, 0, 65538, 262144, 0, 65539, 262144, 0, 65540, 262144, 0, 65541, 262144, 0, 65542, 12, 0, 65543, 262144, 0, 65544, 262144, 0, 65548, 262144, 0, 65549, 262144, 0, 65550, 262144, 0, 65551, 262144, 0, 65552, 11, 0, 65553, 262144, 0, 131075, 262144, 0, 131076, 262144, 0, 131077, 11, 0, 131079, 262144, 0, 131080, 262144, 0, 196613, 262144, 0, 196615, 262144, 0, 65557, 262144, 0, 65558, 262144, 0, 65559, 262144, 0, 65561, 262144, 0, 65562, 262144, 0, 65565, 262144, 0, 65570, 262144, 0, 65569, 262144, 0, 65568, 262144, 0, 65567, 262144, 0, 131103, 524288, 0, 196637, 262144, 0, 1179651, 458752, 0, 1179652, 12, 0, 1179653, 13, 0, 1179654, 11, 0, 1179655, 393216, 0, 1114132, 12, 0, 1114133, 262144, 0, 1179669, 11, 0, 1179667, 786432, 0, 1114144, 196608, 0, 1179680, 11, 0, 1179679, 8, 0, 1179681, 851968, 0, 196621, 262144, 0, 1179668, 13, 0, 1245190, 393216, 0, 1179660, 131072, 0, 1179661, 65536, 0, 1245197, 393216, 0, 1245196, 524288, 0, 1114145, 65536, 0, 131082, 524288, 0, 131083, 524288, 0, 9, 196608, 0, 10, 196608, 0, 11, 196608, 0, 18, 196608, 0, 19, 196608, 0, 20, 196608, 0, 27, 196608, 0, 28, 196608, 0, 29, 196608, 0, 30, 196608, 0, 131100, 524288, 0, 131101, 524288, 0, 65554, 524288, 0, 65555, 524288, 0, 65556, 524288, 0, 720926, 589824, 0, 720925, 655360, 0, 655380, 589824, 0, 655379, 655360, 0, 917518, 589824, 0, 917517, 655360, 0, 1179672, 655360, 0, 1179673, 589824, 0, 1114143, 196608, 0, 917535, 655360, 0, 917536, 589824, 0, 720920, 655360, 0, 720921, 589824, 0, 458769, 655360, 0, 458770, 589824, 0, 720909, 655360, 0, 720910, 589824, 0, 458784, 655360, 0, 458785, 589824, 0, 131102, 524288, 0, 1114128, 655360, 0, 1114129, 589824, 0, 524315, 655360, 0, 524316, 589824, 0)
 script = ExtResource("17_7mji6")
 
 [node name="vines" type="TileMap" parent="."]
@@ -519,6 +497,9 @@ format = 2
 
 [node name="player_marker" parent="." instance=ExtResource("22_uuis1")]
 position = Vector2(416, 560)
+direction = "left"
+force_lookup = true
+locked_ctrls = true
 
 [node name="effect" type="ColorRect" parent="."]
 visible = false
@@ -543,6 +524,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
 
 [node name="Marker2D1" type="Marker2D" parent="."]
 position = Vector2(164, 261)
@@ -574,50 +556,37 @@ position = Vector2(164, 528)
 [node name="KillZone" parent="." instance=ExtResource("24_t8ppf")]
 position = Vector2(626, 796)
 
-[node name="tomb" type="AnimatedSprite2D" parent="."]
-position = Vector2(171, 543)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_mtsnf")
-offset = Vector2(0, -11)
+[node name="tomb2" parent="." node_paths=PackedStringArray("boss_obj") instance=ExtResource("25_yiqwe")]
+position = Vector2(442, 351)
+boss_obj = NodePath("../boss_enemy_2")
 
-[node name="tomb7" type="AnimatedSprite2D" parent="."]
-position = Vector2(447, 351)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_mtsnf")
-offset = Vector2(0, -11)
-
-[node name="tomb2" type="AnimatedSprite2D" parent="."]
-position = Vector2(448, 447)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_mtsnf")
-offset = Vector2(0, -11)
-
-[node name="tomb3" type="AnimatedSprite2D" parent="."]
-position = Vector2(800, 575)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_mtsnf")
-offset = Vector2(0, -11)
-
-[node name="tomb4" type="AnimatedSprite2D" parent="."]
-position = Vector2(1025, 447)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_mtsnf")
-offset = Vector2(0, -11)
-
-[node name="tomb5" type="AnimatedSprite2D" parent="."]
-position = Vector2(798, 351)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_mtsnf")
-offset = Vector2(0, -11)
-
-[node name="tomb6" type="AnimatedSprite2D" parent="."]
+[node name="tomb3" parent="." node_paths=PackedStringArray("boss_obj") instance=ExtResource("25_yiqwe")]
 position = Vector2(577, 223)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_mtsnf")
-offset = Vector2(0, -11)
+boss_obj = NodePath("../boss_enemy_2")
 
-[node name="tomb8" type="AnimatedSprite2D" parent="."]
-position = Vector2(1056, 223)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_mtsnf")
-offset = Vector2(0, -11)
+[node name="tomb4" parent="." node_paths=PackedStringArray("boss_obj") instance=ExtResource("25_yiqwe")]
+position = Vector2(799, 351)
+boss_obj = NodePath("../boss_enemy_2")
+
+[node name="tomb5" parent="." node_paths=PackedStringArray("boss_obj") instance=ExtResource("25_yiqwe")]
+position = Vector2(1054, 223)
+boss_obj = NodePath("../boss_enemy_2")
+
+[node name="tomb6" parent="." node_paths=PackedStringArray("boss_obj") instance=ExtResource("25_yiqwe")]
+position = Vector2(1025, 447)
+boss_obj = NodePath("../boss_enemy_2")
+
+[node name="tomb7" parent="." node_paths=PackedStringArray("boss_obj") instance=ExtResource("25_yiqwe")]
+position = Vector2(799, 575)
+boss_obj = NodePath("../boss_enemy_2")
+
+[node name="tomb8" parent="." node_paths=PackedStringArray("boss_obj") instance=ExtResource("25_yiqwe")]
+position = Vector2(442, 447)
+boss_obj = NodePath("../boss_enemy_2")
+
+[node name="tomb9" parent="." node_paths=PackedStringArray("boss_obj") instance=ExtResource("25_yiqwe")]
+position = Vector2(165, 544)
+boss_obj = NodePath("../boss_enemy_2")
+
+[node name="Hammer" parent="." instance=ExtResource("26_tau1l")]
+position = Vector2(642, 488)

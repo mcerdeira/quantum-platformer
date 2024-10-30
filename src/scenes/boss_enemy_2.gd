@@ -1,7 +1,7 @@
 extends Area2D
 var active = false
 var dead = false
-var TOTAL_LIFE = 5.0
+var TOTAL_LIFE = 8.0
 var LIFE = TOTAL_LIFE
 var idx = 0
 var current_anim = null
@@ -30,7 +30,6 @@ func _ready():
 	$Timer.start()
 	
 func shoot():
-	Global.shaker_obj.shake(3, 2.1)
 	for i in range(num_bullets):
 		var p = FireBallHolderShoot.instantiate()
 		var parent = get_parent()
@@ -38,13 +37,15 @@ func shoot():
 		p.direction = bullets_pos[i]
 		parent.add_child(p)
 		Global.emit(global_position, 15)
+		
+func hit():
+	Global.shaker_obj.shake(6, 2.1)
+	LIFE -= 1.0
+	var options = {"pitch_scale": 0.5}
+	Global.play_sound(Global.GhostBossHitSFX, options)
 	
 func _physics_process(delta):
 	if active:
-		LIFE -= 0.1 * delta
-		if LIFE <= 0:
-			LIFE = 0
-			
 		Global.boss_bar.calc_life_bar(TOTAL_LIFE, LIFE)
 		if Global.player_obj:
 			if global_position.x > Global.player_obj.global_position.x:
@@ -52,7 +53,7 @@ func _physics_process(delta):
 			else:
 				$boss_enemy_2.scale.x = 1
 			
-		if !epilepsy_mode and LIFE <= 3.0:
+		if !epilepsy_mode and LIFE <= 4.0:
 			ttl -= 1 * delta
 			if ttl <= 0:
 				if Anim.current_animation_position >= 3.81:
@@ -67,19 +68,17 @@ func position():
 		$boss_enemy_2.animation = "default"
 		
 	Global.BULLETS_MOVE = !Global.BULLETS_MOVE
-	#global_position = pos[idx].global_position
-	#idx += 1
-	#if idx > pos.size() - 1:
-		#idx = 0
-	
+
 func activate():
+	Global.player_obj.locked_ctrls = false
+	Global.player_obj.force_lookup = false
 	$boss_enemy_2/GhostBossLaugh.visible = false
 	Ambience.stop()
 	Music.stop()
 	Anim.play("new_animation")
 	visible = true
 	active = true
-	Global.boss_bar.showme()
+	Global.boss_bar.showme("FANTASMOTE")
 
 func _on_timer_timeout():
 	activate()

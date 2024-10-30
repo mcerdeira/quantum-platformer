@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxrfysnm3t4eq"]
+
+[ext_resource type="Shader" path="res://scenes/Item.gdshader" id="1_0xd0p"]
+[ext_resource type="Texture2D" uid="uid://b15crly7ketnr" path="res://sprites/horu/images/hammer.png" id="1_wubha"]
+[ext_resource type="Script" path="res://scenes/hammer.gd" id="3_ia7wm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xfuon"]
+shader = ExtResource("1_0xd0p")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 1.0
+shader_parameter/shine_size = 0.01
+shader_parameter/white = null
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qflu7"]
+
+[node name="Hammer" type="Sprite2D"]
+material = SubResource("ShaderMaterial_xfuon")
+position = Vector2(653, 489)
+scale = Vector2(2, 2)
+texture = ExtResource("1_wubha")
+script = ExtResource("3_ia7wm")
+
+[node name="area" type="Area2D" parent="."]
+
+[node name="collider" type="CollisionShape2D" parent="area"]
+shape = SubResource("CircleShape2D_qflu7")
+
+[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]

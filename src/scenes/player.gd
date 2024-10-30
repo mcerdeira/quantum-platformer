@@ -5,8 +5,11 @@ var speed_original = 215.0
 var speed = speed_original
 var jump_speed_original = -350.0
 var jump_speed = jump_speed_original
+var locked_ctrls = false
+var force_lookup = false
 
 @export var direction = "right"
+var has_hammer = false
 var first_fall = true
 var total_friction = 0.6
 var friction = total_friction
@@ -81,6 +84,15 @@ func _ready():
 	calc_perks()
 	last_safe_position = global_position
 	
+	if direction == "left":
+		$sprite.flip_h = true
+		$sprite_eyes.flip_h = $sprite.flip_h
+		$gun_sprite.rotation = initial_rotation - 45
+	elif direction == "right":
+		$sprite.flip_h = false
+		$sprite_eyes.flip_h = $sprite.flip_h
+		$gun_sprite.rotation = initial_rotation
+	
 	add_to_group("players")
 	$sprite.animation = "idle"
 	$sprite_eyes.animation = $sprite.animation
@@ -150,6 +162,9 @@ func is_on_floor_custom():
 func update_trayectory(delta):
 	LineTrayectory.visible = true 
 	LineTrayectory.update_trayectory(Vector2.from_angle($gun_sprite.rotation) * tspeed, delta)
+	
+func get_hammer():
+	has_hammer = true
 
 func destroy_trayectory():
 	LineTrayectory.visible = false 
@@ -195,6 +210,14 @@ func _physics_process(delta):
 		Global.GAMEOVER = dead
 		if Global.GAMEOVER:
 			Global.OverWorldFromGameOver = true
+			
+	if has_hammer:
+		if direction == "right":
+			$Hammer_R.visible = true
+			$Hammer_L.visible = false
+		else:
+			$Hammer_R.visible = false
+			$Hammer_L.visible = true
 		
 	if resurrecting > 0:
 		if fire_obj != null and is_instance_valid(fire_obj):
@@ -343,7 +366,7 @@ func camera_limits():
 			
 		if $Camera2D.global_position.y > 2450:
 			$Camera2D.global_position.y = 2450
-			
+				
 func check_shoot_released(delta):
 	var shoot_released = Input.is_action_just_released("shoot")	
 		
@@ -423,7 +446,7 @@ func process_player(delta):
 		fire_obj.z_index = z_index + 1
 		
 	if !dead and !iam_clone:
-		if Input.is_action_just_pressed("scroll_L"):
+		if Input.is_action_just_pressed("scroll_L") and !locked_ctrls:
 			$Selector.modulate.a = 1
 			selector_visibility_ttl = 2
 			Global.gunz_index = 0
@@ -434,7 +457,7 @@ func process_player(delta):
 			$Selector.visible = true
 			$Selector.refresh_item()
 			get_parent().setHUD(false, false)
-		if Input.is_action_just_pressed("scroll_R"):
+		if Input.is_action_just_pressed("scroll_R") and !locked_ctrls:
 			$Selector.modulate.a = 1
 			selector_visibility_ttl = 2
 			Global.gunz_index = 0
@@ -456,13 +479,19 @@ func process_player(delta):
 					$Selector.modulate.a = 1
 						
 		if radar:
-			if Input.is_action_just_pressed("radar"):
+			if Input.is_action_just_pressed("radar") and !locked_ctrls:
 				if $Arrow.visible:
 					$Arrow.activate(false)
 				else:
 					$Arrow.activate(true)
 					
-	if !dead and Input.is_action_pressed("shoot"):
+	if !dead and Input.is_action_pressed("shoot") and !locked_ctrls:
+		if has_hammer:
+			if !$AnimHammer.is_playing():
+				var options = {"pitch_scale": 1.5}
+				Global.play_sound(Global.WhooshSFX, options)
+				$AnimHammer.play("new_animation")
+		
 		if Global.gunz_equiped.size() > 0:
 			if !Global.gunz_equiped[Global.gunz_index].pasive:
 				if Global.gunz_equiped[Global.gunz_index].stock > 0:
@@ -476,7 +505,7 @@ func process_player(delta):
 		
 	check_shoot_released(delta)
 		
-	if !dead and shoot_mode:
+	if !dead and shoot_mode and !locked_ctrls:
 		$collider.set_deferred("disabled", true)
 		gravity = 0.0
 		if Input.is_action_pressed("down"):
@@ -494,7 +523,7 @@ func process_player(delta):
 			idle_play = idle_play_total
 			update_trayectory(delta)
 	
-	if !dead and !shoot_mode and Input.is_action_just_pressed("jump"):
+	if !dead and !shoot_mode and Input.is_action_just_pressed("jump") and !locked_ctrls:
 		idle_play = idle_play_total
 		if is_on_stairs and grabbed:
 			jumping = false
@@ -503,7 +532,7 @@ func process_player(delta):
 		else:
 			jump(delta)
 	
-	if jumping and Input.is_action_just_released("jump"):
+	if jumping and Input.is_action_just_released("jump") and !locked_ctrls:
 		jumping = false
 		velocity.y = velocity.y / 2
 					
@@ -515,7 +544,7 @@ func process_player(delta):
 			$Camera2D.position.y  = lerp($Camera2D.position.y, -100.00, 0.1)
 		
 	if !dead:
-		if !shoot_mode and Input.is_action_pressed("down"):
+		if !shoot_mode and Input.is_action_pressed("down") and !locked_ctrls:
 			if is_on_floor_custom() and !dont_camera:
 				$sprite_eyes.position.y = 8
 				var sp = 0
@@ -526,7 +555,7 @@ func process_player(delta):
 		
 				$Camera2D.position.y = lerp($Camera2D.position.y, 150.0, sp)
 			
-		if !shoot_mode and Input.is_action_pressed("up"):
+		if force_lookup or (!shoot_mode and Input.is_action_pressed("up") and !locked_ctrls):
 			if is_on_floor_custom() and !dont_camera:
 				$sprite_eyes.position.y = 0
 				var sp = 0
@@ -536,14 +565,14 @@ func process_player(delta):
 					sp = 0.1
 				$Camera2D.position.y = lerp($Camera2D.position.y, -250.0, sp)
 		
-		if !shoot_mode and Input.is_action_pressed("up"):
+		if !shoot_mode and Input.is_action_pressed("up") and !locked_ctrls:
 			idle_play = idle_play_total
 			if is_on_stairs:
 				grabbed = true 
 				moving = true
 				idle_time = 0
 				velocity.y = -speed
-		elif !shoot_mode and Input.is_action_pressed("down"):
+		elif !shoot_mode and Input.is_action_pressed("down") and !locked_ctrls:
 			idle_play = idle_play_total
 			if is_on_stairs:
 				grabbed = true 
@@ -552,31 +581,8 @@ func process_player(delta):
 				velocity.y = speed
 				
 		var input_time = Time.get_ticks_msec() / 1000.0
-				
-		#if !is_on_stairs and !grabbed:
-			#if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
-				#if !in_air and $WalkSoundTimer.is_stopped():
-					#$WalkSoundTimer.start()
-					#
-			#if (!Input.is_action_pressed("left") and !Input.is_action_pressed("right")) or in_air:
-				#if !$WalkSoundTimer.is_stopped():
-					#if in_air:
-						#await get_tree().create_timer(0.3).timeout
-					#$WalkSoundTimer.stop()
-				#
-		#if is_on_stairs or grabbed:
-			#if Input.is_action_pressed("up") or Input.is_action_pressed("down"):
-				#if $WalkSoundTimer.is_stopped():
-					#if is_on_stairs and grabbed:
-						#$WalkSoundTimer.start()
-					#
-			#if (!Input.is_action_pressed("up") and !Input.is_action_pressed("down")):
-				#if !$WalkSoundTimer.is_stopped():
-					#if in_air:
-						#await get_tree().create_timer(0.3).timeout
-					#$WalkSoundTimer.stop()
-		
-		if !shoot_mode and Input.is_action_pressed("left"):
+			
+		if !shoot_mode and Input.is_action_pressed("left") and !locked_ctrls:
 			idle_play = idle_play_total
 			check_shake(input_time)
 			direction = "left"
@@ -587,7 +593,7 @@ func process_player(delta):
 			$sprite_eyes.flip_h = $sprite.flip_h
 			$gun_sprite.rotation = initial_rotation - 45
 			
-		elif !shoot_mode and Input.is_action_pressed("right"):
+		elif !shoot_mode and Input.is_action_pressed("right") and !locked_ctrls:
 			idle_play = idle_play_total
 			check_shake(input_time)
 			direction = "right"

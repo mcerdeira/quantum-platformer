@@ -4,7 +4,8 @@ extends Node2D
 func _ready():
 	Global.boss_bar = self
 
-func showme():
+func showme(name):
+	$lbl_boss_name.text = name
 	visible = true
 	control.visible = true
 	$"../perks1".visible = false

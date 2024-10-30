@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://ddm2fi6agoe1p"]
+
+[ext_resource type="Texture2D" uid="uid://wkm8f1slui1" path="res://sprites/tomb_boss_spr_0.png" id="1_qcyhu"]
+[ext_resource type="Texture2D" uid="uid://dc1avmjgn3e3x" path="res://sprites/tomb_boss_spr_1.png" id="2_ipxtv"]
+[ext_resource type="Texture2D" uid="uid://dlyr0jt7uanyb" path="res://sprites/tomb_boss_spr_2.png" id="3_nebap"]
+[ext_resource type="Texture2D" uid="uid://d3sgbeayqownq" path="res://sprites/tomb_boss_spr_3.png" id="4_qo6i6"]
+[ext_resource type="Texture2D" uid="uid://c2q3s5v6yp4o3" path="res://sprites/tomb_boss_spr_4.png" id="5_jbdlr"]
+[ext_resource type="Script" path="res://scenes/tomb_boss.gd" id="6_v2b6m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mtsnf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qcyhu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ipxtv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nebap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qo6i6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jbdlr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vfyrb"]
+size = Vector2(31, 34.6667)
+
+[node name="tomb_boss" type="Area2D"]
+script = ExtResource("6_v2b6m")
+
+[node name="tomb" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -1)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_mtsnf")
+offset = Vector2(0, -11)
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -16.6667)
+shape = SubResource("RectangleShape2D_vfyrb")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-5, -35)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(5, -36)

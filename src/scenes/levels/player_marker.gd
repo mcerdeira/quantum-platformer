@@ -3,6 +3,8 @@ var player_clone = load("res://scenes/player.tscn")
 var prisoner_obj = preload("res://scenes/prisoner.tscn")
 var done = false
 var nope = false
+@export var direction = "right"
+@export var force_lookup = false
 @export var gravityon = true
 @export var enablecamera = true  
 @export var first_time_based = false
@@ -10,6 +12,7 @@ var nope = false
 @export var cameralimits_on = true
 @export var starting_valocity : Vector2 = Vector2.ZERO  
 @export var CustomCamera : Camera2D = null
+@export var locked_ctrls = false
 
 func _ready():
 	visible = false
@@ -48,9 +51,12 @@ func _process(_delta):
 					
 			var Main = get_node("/root/Main")
 			var pclone = player_clone.instantiate()
+			pclone.direction = direction
+			pclone.force_lookup = force_lookup
 			pclone.CustomCamera = CustomCamera
 			pclone.global_position = global_position
 			pclone.cameralimits_on = cameralimits_on
+			pclone.locked_ctrls = locked_ctrls
 			if starting_valocity != Vector2.ZERO:
 				pclone.velocity = starting_valocity
 			

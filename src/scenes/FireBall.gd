@@ -1,20 +1,28 @@
 extends Area2D
 var fires = preload("res://scenes/Fires.tscn")
 @export var free_fireball = false
+var ttl = 0.0
 
 func _ready():
 	if Global.BOSS_ROOM:
+		ttl = 1.2
 		$PointLight2D.color = Color(1, 1, 1)
 		$sprite.animation = "ghost"
 	
 	$sprite.play()
 
 func _on_body_entered(body):
-	if body and (body.is_in_group("players") or body.is_in_group("enemies")):
-		body.kill_fire()
+	if ttl <= 0:
+		if body and (body.is_in_group("players") or body.is_in_group("enemies")):
+			if Global.BOSS_ROOM: 
+				body.kill_fire(0.5)
+			else:
+				body.kill_fire()
 
 func _physics_process(delta):
 	$sprite.rotation += 10 * delta
+	if ttl > 0:
+		ttl -= 1 * delta
 
 func _on_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_index):
 	if body is TileMap:

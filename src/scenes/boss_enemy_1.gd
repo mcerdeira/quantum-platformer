@@ -40,7 +40,7 @@ func activate():
 	active = true
 	$"../BossSpawn".visible = false
 	$"../BossSpawn".queue_free()
-	Global.boss_bar.showme()
+	Global.boss_bar.showme("BICHO FEO")
 	
 func _physics_process(delta):
 	if !active:

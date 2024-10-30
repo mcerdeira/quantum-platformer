@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dv6t6lrhdu04u"]
+[gd_scene load_steps=5 format=3 uid="uid://dv6t6lrhdu04u"]
 
 [ext_resource type="Script" path="res://scenes/boss_bar.gd" id="1_1doyj"]
 [ext_resource type="Texture2D" uid="uid://6t2e7re7ft4p" path="res://sprites/progress_bar_fill_spr_0.png" id="1_rr0mg"]
 [ext_resource type="Texture2D" uid="uid://qklgljdedemf" path="res://sprites/progress_bar_spr_0.png" id="2_ue658"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="4_0ccea"]
 
 [node name="BossBar" type="Node2D"]
 script = ExtResource("1_1doyj")
@@ -15,3 +16,12 @@ offset = Vector2(240, 0)
 [node name="ProgressBarSpr0" type="Sprite2D" parent="."]
 position = Vector2(258, 44)
 texture = ExtResource("2_ue658")
+
+[node name="lbl_boss_name" type="Label" parent="."]
+offset_left = 25.0
+offset_top = 29.0
+offset_right = 467.0
+offset_bottom = 61.0
+theme_override_fonts/font = ExtResource("4_0ccea")
+text = "BOSS"
+vertical_alignment = 1
