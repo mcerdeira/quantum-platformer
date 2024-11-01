@@ -10,13 +10,14 @@ var epilepsy_mode = false
 var num_bullets = 4
 var bullets_pos = [Vector2(1, 0), Vector2(-1, 0), Vector2(0, 1), Vector2(0, -1)]
 const FireBallHolderShoot = preload("res://scenes/FireBallHolderShoot.tscn")
+var brokens = []
 @export var pos : Array[Marker2D]
 @export var Anim : AnimationPlayer
 
 func _ready():
 	$boss_enemy_2/GhostBossLaugh.visible = false
 	Global.BULLETS_MOVE = true
-	visible = false
+	visible = true
 	await get_tree().create_timer(2.3).timeout
 	visible = true
 	await get_tree().create_timer(1.2).timeout
@@ -29,20 +30,21 @@ func _ready():
 	
 	$Timer.start()
 	
-func shoot():
-	for i in range(num_bullets):
-		var p = FireBallHolderShoot.instantiate()
-		var parent = get_parent()
-		p.global_position = global_position
-		p.direction = bullets_pos[i]
-		parent.add_child(p)
-		Global.emit(global_position, 15)
-		
+func shoot(idx):
+	if brokens.find(idx) != -1:
+		for i in range(num_bullets):
+			var p = FireBallHolderShoot.instantiate()
+			var parent = get_parent()
+			p.global_position = global_position
+			p.direction = bullets_pos[i]
+			parent.add_child(p)
+			Global.emit(global_position, 15)
+			
 func hit():
 	Global.shaker_obj.shake(6, 2.1)
 	LIFE -= 1.0
-	var options = {"pitch_scale": 0.5}
-	Global.play_sound(Global.GhostBossHitSFX, options)
+	var options = {"pitch_scale": 0.7}
+	Global.play_sound(Global.GhostBossLaughSFX, options)
 	
 func _physics_process(delta):
 	if active:
