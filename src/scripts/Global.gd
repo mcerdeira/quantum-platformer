@@ -842,7 +842,7 @@ func load_sfx():
 	GhostBossLaughSFX = load("res://sfx/ghost_boss_laugh.mp3")
 	
 	WhooshSFX = load("res://sfx/Whoosh.wav")
-	TombHitSFX = load("res://sfx/TombHit.ogg")
+	TombHitSFX = load("res://sfx/TombHit.wav")
 	TombBrokeSFX = load("res://sfx/TombBroke.wav")
 	GhostBossHitSFX = load("res://sfx/GhostBossHit.wav")
 	

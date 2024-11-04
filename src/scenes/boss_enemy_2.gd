@@ -10,11 +10,13 @@ var epilepsy_mode = false
 var num_bullets = 4
 var bullets_pos = [Vector2(1, 0), Vector2(-1, 0), Vector2(0, 1), Vector2(0, -1)]
 const FireBallHolderShoot = preload("res://scenes/FireBallHolderShoot.tscn")
+const BossExplosionShader_Ghost = preload("res://sprites/BossExplosionShader_Ghost.tscn")
 var brokens = []
 @export var pos : Array[Marker2D]
 @export var Anim : AnimationPlayer
 
 func _ready():
+	add_to_group("bosses")
 	$boss_enemy_2/GhostBossLaugh.visible = false
 	Global.BULLETS_MOVE = true
 	visible = true
@@ -41,10 +43,34 @@ func shoot(idx):
 			Global.emit(global_position, 15)
 			
 func hit():
-	Global.shaker_obj.shake(6, 2.1)
-	LIFE -= 1.0
-	var options = {"pitch_scale": 0.7}
-	Global.play_sound(Global.GhostBossLaughSFX, options)
+	if !dead:
+		Global.shaker_obj.shake(6, 2.1)
+		LIFE -= 1.0
+		var options = {"pitch_scale": 0.7}
+		Global.play_sound(Global.GhostBossLaughSFX, options)
+		if LIFE <= 0:
+			die()
+		
+func die():
+	Ambience.stop()
+	Music.stop()
+	dead = true
+	var p = BossExplosionShader_Ghost.instantiate()
+	var parent = get_parent()
+	p.global_position = global_position
+	parent.add_child(p)
+	current_anim.track_set_enabled(2, false)
+	current_anim.track_set_enabled(3, false)
+	$boss_enemy_2.visible = false
+	$AnimationPlayer.stop()
+	Anim.stop()
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	for e in enemies:
+		e.kill_fall()
+
+func force_kill():
+	LIFE = 0.0
+	die()
 	
 func _physics_process(delta):
 	if active:

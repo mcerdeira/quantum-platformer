@@ -5,7 +5,7 @@ var ttl = 0.0
 
 func _ready():
 	if Global.BOSS_ROOM:
-		ttl = 1.2
+		ttl = 0.8
 		$PointLight2D.color = Color(1, 1, 1)
 		$sprite.animation = "ghost"
 	
