@@ -910,7 +910,7 @@ func pick_random(container):
 	return container[randi() % container.size()]
 	
 func is_ok_FX(global_position):
-	if global_position and Global.player_obj:
+	if global_position and Global.player_obj and is_instance_valid(Global.player_obj):
 		var width = Vector2(global_position.x, 0)
 		var height = Vector2(0, global_position.y)
 		var player_width = Vector2(Global.player_obj.global_position.x, 0)

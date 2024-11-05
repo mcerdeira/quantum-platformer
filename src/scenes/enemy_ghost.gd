@@ -168,6 +168,7 @@ func eat_gizmo(current_item):
 	
 func kill_fall():
 	visible = false
+	Global.emit(global_position, 16)
 	queue_free()
 
 func flyaway(direction):
