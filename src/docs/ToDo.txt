@@ -29,6 +29,8 @@
                       El boss es nuestra mascota.
 
                Opcional: Apagar las variables usando la password que está escondida en el QR y acceder a la zona oculta
+               https://new.express.adobe.com/tools/generate-qr-code
+               https://drive.google.com/drive/folders/1lWx_oJ--q5Un7JjxEHKZR6ftHcutnUcp?dmr=1&ec=wgc-drive-globalnav-goto
 
 ==================================================================================================================
 ==================================================================================================================
@@ -41,7 +43,6 @@ IN_PROGRESS:
   - JEFE: Fantasma que se mueve y hace la musica (ver Deep Down Low)
 
 BUGS/Ajustes:
-- Al volver del boss 1, sigue apareciendo en el inventario el item de la bola con pinches
 
 Features:
 
@@ -78,6 +79,7 @@ Features:
 - Decoraciones: La sangre debería desaparecer al tocar la lava
 
 --------------------------------- DONE ---------------------------------
+- Al volver del boss 1, sigue apareciendo en el inventario el item de la bola con pinches
 - Sumar la posibilidad de que los dialogos duren mas de una linea de texto
 - Terminar de probar el special level
 - Nivel challenge que el monstruo aparezca después de avanzar un poco

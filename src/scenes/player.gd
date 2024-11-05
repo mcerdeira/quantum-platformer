@@ -55,6 +55,8 @@ var binocular = false
 var lifes = 1
 var resurrecting = 0
 var ghost_inst = null
+var look_counter_total = 0.4
+var look_counter = 0.0
 
 var last_input_time = 0.0
 var shake_count = 0.9
@@ -540,12 +542,14 @@ func process_player(delta):
 	
 	if $sprite_eyes.position.y != 4:
 		if !Input.is_action_pressed("up") and !Input.is_action_pressed("down"):
+			look_counter = 0.0
 			$sprite_eyes.position.y = lerp($sprite_eyes.position.y, 4.0, 0.1)
 			$Camera2D.position.y  = lerp($Camera2D.position.y, -100.00, 0.1)
 		
 	if !dead:
 		if !shoot_mode and Input.is_action_pressed("down") and !locked_ctrls:
-			if is_on_floor_custom() and !dont_camera:
+			look_counter += 1 * delta
+			if is_on_floor_custom() and !dont_camera and look_counter >= look_counter_total:
 				$sprite_eyes.position.y = 8
 				var sp = 0
 				if is_on_stairs:
@@ -556,7 +560,8 @@ func process_player(delta):
 				$Camera2D.position.y = lerp($Camera2D.position.y, 150.0, sp)
 			
 		if force_lookup or (!shoot_mode and Input.is_action_pressed("up") and !locked_ctrls):
-			if is_on_floor_custom() and !dont_camera:
+			look_counter += 1 * delta
+			if is_on_floor_custom() and !dont_camera and look_counter >= look_counter_total:
 				$sprite_eyes.position.y = 0
 				var sp = 0
 				if is_on_stairs:

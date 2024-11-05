@@ -7,6 +7,7 @@ var closing = false
 var closing_ttl = 0.5
 var opening_tl = 0.5
 var offset = 0.0
+var entering = false
 @export var terminal_number = -1
 @export var gotoBOSS = true
 @export var special_door = false 
@@ -59,11 +60,14 @@ func _physics_process(delta):
 		return
 	
 	if !closed and target:
-		target.hide_eyes()
-		target.global_position.x = global_position.x
-		target.modulate.a -= 2 * delta
-		if target.modulate.a <= 0:
-			Global.scene_next(terminal_number, gotoBOSS, special_door, shop_door)
+		if Input.is_action_pressed("up") or entering:
+			entering = true
+			target.dont_camera = true
+			target.hide_eyes()
+			target.global_position.x = global_position.x
+			target.modulate.a -= 2 * delta
+			if target.modulate.a <= 0:
+				Global.scene_next(terminal_number, gotoBOSS, special_door, shop_door)
 
 func assign(_terminal_number):
 	if !special_door and !shop_door:
@@ -115,3 +119,8 @@ func _on_body_entered(body):
 	if Global.player_obj and is_instance_valid(Global.player_obj) and Global.player_obj.is_on_floor_custom():
 		if !closed and !closing and !opening and body.is_in_group("players"):
 			target = body
+
+func _on_body_exited(body):
+	if Global.player_obj and is_instance_valid(Global.player_obj) and Global.player_obj.is_on_floor_custom():
+		if !closed and !closing and !opening and body.is_in_group("players"):
+			target = null

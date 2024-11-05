@@ -84,7 +84,6 @@ position = Vector2(-2, -10)
 shape = SubResource("RectangleShape2D_xc2co")
 
 [node name="InfoDisplay" type="Node2D" parent="."]
-visible = false
 position = Vector2(282, -157)
 scale = Vector2(2, 2)
 
@@ -99,20 +98,20 @@ offset_bottom = -91.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_xwgrf")
 theme_override_font_sizes/font_size = 14
-text = "== THE LEAF =="
+text = "== GRUTA =="
 horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="lbl_body" type="Label" parent="InfoDisplay"]
-offset_left = -196.0
-offset_top = -87.0
-offset_right = 216.0
-offset_bottom = 69.0
+offset_left = -205.0
+offset_top = -91.0
+offset_right = 217.0
+offset_bottom = 98.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_xwgrf")
 theme_override_font_sizes/font_size = 14
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
+text = "Manual del usuario.
+"
 autowrap_mode = 2
 
 [node name="qr" type="AnimatedSprite2D" parent="InfoDisplay"]
