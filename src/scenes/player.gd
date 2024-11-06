@@ -152,7 +152,10 @@ func show_message_death():
 			if randi() % 2 == 0:
 				$display/back/lbl_item.text = "¡Que sueño mas loco!"
 			else:
-				$display/back/lbl_item.text = "¡Una P E S A D I L L A!"
+				if randi() % 2 == 0:
+					$display/back/lbl_item.text = "¡Una P E S A D I L L A!"
+				else:
+					$display/back/lbl_item.text = "Fue un sueño... ¿NO?"
 				
 			await get_tree().create_timer(message_timeout).timeout
 			$display.visible = false

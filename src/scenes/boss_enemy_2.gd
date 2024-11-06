@@ -14,6 +14,7 @@ const BossExplosionShader_Ghost = preload("res://sprites/BossExplosionShader_Gho
 var brokens = []
 @export var pos : Array[Marker2D]
 @export var Anim : AnimationPlayer
+@export var CinematicPos = Marker2D
 
 func _ready():
 	add_to_group("bosses")
@@ -57,12 +58,18 @@ func die():
 	dead = true
 	var p = BossExplosionShader_Ghost.instantiate()
 	var parent = get_parent()
+	p.CinematicPos = CinematicPos
 	p.global_position = global_position
 	parent.add_child(p)
 	current_anim.track_set_enabled(2, false)
 	current_anim.track_set_enabled(3, false)
 	$boss_enemy_2.visible = false
 	$AnimationPlayer.stop()
+	Global.LEAF_STATUS = false
+	Global.TOMB_STATUS = false
+	Global.MERMAID_STATUS = true
+	Global.FromPipe = true
+	
 	Anim.stop()
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	for e in enemies:

@@ -42,12 +42,12 @@ func _process(_delta):
 				if Global.FromPipe:
 					global_position = $"../player_marker_pipe".global_position
 					Global.FromPipe = false
-					
-					var pri = prisoner_obj.instantiate()
-					pri.global_position = Vector2(global_position.x + 5, global_position.y - 16)
-					get_parent().add_child(pri)
-					pri.convert_into_npc()
-					pri.delay_fall = 2.3
+					if Global.TOMB_STATUS:
+						var pri = prisoner_obj.instantiate()
+						pri.global_position = Vector2(global_position.x + 5, global_position.y - 16)
+						get_parent().add_child(pri)
+						pri.convert_into_npc()
+						pri.delay_fall = 2.3
 					
 			var Main = get_node("/root/Main")
 			var pclone = player_clone.instantiate()

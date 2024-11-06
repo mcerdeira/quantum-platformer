@@ -28,7 +28,7 @@ func _ready():
 		if Global.CurrentState == Global.GameStates.SHOP:
 			open(false)
 		else:
-			if Global.TOMB_STATUS:
+			if Global.TOMB_STATUS or Global.MERMAID_STATUS or Global.SALAMANDER_STATUS or Global.SERAPH_STATUS:
 				open(false)
 			
 	if !gotoBOSS and !special_door and !shop_door:

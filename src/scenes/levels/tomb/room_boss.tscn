@@ -528,11 +528,12 @@ visible = false
 collision_layer = 41
 collision_mask = 41
 
-[node name="boss_enemy_2" parent="." node_paths=PackedStringArray("pos", "Anim") instance=ExtResource("24_mklrq")]
+[node name="boss_enemy_2" parent="." node_paths=PackedStringArray("pos", "Anim", "CinematicPos") instance=ExtResource("24_mklrq")]
 z_index = 10
 position = Vector2(164.049, 273.315)
 pos = [NodePath("../Marker2D1"), NodePath("../Marker2D2"), NodePath("../Marker2D3"), NodePath("../Marker2D4"), NodePath("../Marker2D5"), NodePath("../Marker2D6"), NodePath("../Marker2D7"), NodePath("../Marker2D8"), NodePath("../Marker2D9")]
 Anim = NodePath("../AnimationPlayer")
+CinematicPos = NodePath("../Marker2D10")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -541,6 +542,9 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"Music"
+
+[node name="Marker2D10" type="Marker2D" parent="."]
+position = Vector2(333, 390)
 
 [node name="Marker2D1" type="Marker2D" parent="."]
 position = Vector2(164, 261)

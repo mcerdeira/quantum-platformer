@@ -148,6 +148,8 @@ func _physics_process(delta):
 					current_message_count = 7
 			else:
 				current_message = "¡La  G R U T A  se llevo a mis amigos y a tu perro!"
+				current_messages[0] = "¡¡BUAAA!! ¡¡BUAAA!!"
+				current_message_count = 1
 			$back/lbl_item.text = ""
 			$back/arrows.visible = false
 

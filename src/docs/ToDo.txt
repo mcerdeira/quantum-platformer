@@ -11,7 +11,6 @@
                      procedural, donde tenemos que rescatar a un numero de prisioneros fijo.
                      Se destraban las demas puertas ganandole al boss.
 - Tienen que ser distintos los mundos/puertas.
-- Debemos evitar que se mueran los prisioneros porque sino nos siguen en forma de fantasmas y están en el momento boss, dificultando la pelea.
 
 - Escena Nivel Procedural: Liberar a todos los <OBJETOS>, encontrar la puerta, ganarle al boss e irse (simil alien 3/sega)
 - Niveles/Zonas:
@@ -29,8 +28,6 @@
                       El boss es nuestra mascota.
 
                Opcional: Apagar las variables usando la password que está escondida en el QR y acceder a la zona oculta
-               https://new.express.adobe.com/tools/generate-qr-code
-               https://drive.google.com/drive/folders/1lWx_oJ--q5Un7JjxEHKZR6ftHcutnUcp?dmr=1&ec=wgc-drive-globalnav-goto
 
 ==================================================================================================================
 ==================================================================================================================
@@ -38,20 +35,25 @@
 
 IN_PROGRESS:
 
-- [Armar zona Tomb] Muy blanco y negro, con bruma. Hay unas lápidas especiales que tenemos que hacer algo, pero pueden disparar q aparezca un fantasma
-  - Lapidas que pueden disparar un enemigo
-  - JEFE: Fantasma que se mueve y hace la musica (ver Deep Down Low)
+- [Zona Tomb]  
+  - Puzzles que nos haga usar el clone o el teleport
 
 BUGS/Ajustes:
+- Al perder con un boss, si volvemos a intentar entrar a la Puerta del nivel, que nos lleve directo al boss
+- Los items no los tenes que perder mas, solamente se limita su uso a los niveles pero se mantienen para siempre
+- Cuando hay un dialogo, bloquear al personaje para que no pueda moverse
+
 
 Features:
 
 - Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
   - Alinear los discos, llama al bote.
-  - Si giramos los discos, atrás se forma un QR, el QR tiene la password para las terminales.
-  - Armar items 3D que se puede girar en todas las direcciones con una porción del QR, algun titulo y forma de cerrarlo
+  - Si giramos los discos, atrás se forma el password para la terminal
+  - Armar items 3D que se puede girar en todas las direcciones
+  - Al no poderse jugar los niveles para siempre, estos items te los debería dar 
+  - JEFE: cuando subimos al bote para ir al jefe final, aparece un mini boss en el bote de una serpiente marina
 
-- Terminales: se pueden desactivar variables para la zona secreta, pero ese comando necesita password QR
+- Terminales: se pueden desactivar variables para la zona secreta, pero ese comando necesita password
 
 
 - [Armar zona Mermaid] Fondo más claro, piso negro, lluvia y truenos. La mecánica principal son unas canillas que abrimos para inundar o no lugares 
@@ -59,6 +61,7 @@ Features:
   - Cadenas para colgarse
   - Truenos
   - Lluvia
+  - Puzzles que nos haga usar el clone o el teleport
   - Cascadas
   - Canillas: que hacen desaparecer las cascadas y la lluvia
   - JEFE: Es top down 2D
@@ -72,13 +75,18 @@ Features:
                            Momento shmup
 
 - Menu de opciones
-- Armar manual que se imprime y subirlos a drive y generar los QR (QRS: https://qr.io/dashboard/)
+- Armar manual que se imprime y subirlos a drive y generar los QR: https://new.express.adobe.com/tools/generate-qr-code
+               https://drive.google.com/drive/folders/1lWx_oJ--q5Un7JjxEHKZR6ftHcutnUcp?dmr=1&ec=wgc-drive-globalnav-goto
 
 - Decoraciones: Splash al caer en la lava
 - Decoraciones: Backgrounds con parallax
 - Decoraciones: La sangre debería desaparecer al tocar la lava
 
 --------------------------------- DONE ---------------------------------
+- Cinematica del fantasma que nos habla post ganarle
+- [Armar zona Tomb] Muy blanco y negro, con bruma. Hay unas lápidas especiales que tenemos que hacer algo, pero pueden disparar q aparezca un fantasma
+- JEFE: Fantasma que se mueve y hace la musica (ver Deep Down Low)
+- Lapidas que pueden disparar un enemigo
 - Al volver del boss 1, sigue apareciendo en el inventario el item de la bola con pinches
 - Sumar la posibilidad de que los dialogos duren mas de una linea de texto
 - Terminar de probar el special level

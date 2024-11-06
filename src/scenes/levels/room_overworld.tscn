@@ -224,7 +224,7 @@ terminal_number = 2
 gotoBOSS = false
 
 [node name="ExitDoor3" parent="." instance=ExtResource("9_hgtxn")]
-position = Vector2(112, 417)
+position = Vector2(112, 416)
 terminal_number = 3
 gotoBOSS = false
 
