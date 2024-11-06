@@ -292,7 +292,7 @@ func _on_area_body_entered(body):
 			else:
 				$sprite.flip_h = false
 
-func kill_fire():
+func kill_fire(tt_total = null):
 	if fire_obj == null or !is_instance_valid(fire_obj):
 		if level_parent:
 			Global.emit(global_position, 10)	

@@ -40,7 +40,7 @@ func _physics_process(delta):
 			end_ttl -= 1 * delta
 			if end_ttl <= 0:
 				if boss_1_npc and Global.CurrentState != Global.GameStates.SHOP:
-					Global.scene_next(Global.TerminalNumber, false)
+					Global.scene_next(Global.TerminalNumber, false, false, false, true)
 		
 		if player:
 			if delay_camera > 0:

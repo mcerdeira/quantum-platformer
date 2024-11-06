@@ -17,6 +17,7 @@ var brokens = []
 @export var CinematicPos = Marker2D
 
 func _ready():
+	Global.BOSS_DEAD = false
 	add_to_group("bosses")
 	$boss_enemy_2/GhostBossLaugh.visible = false
 	Global.BULLETS_MOVE = true
@@ -30,6 +31,7 @@ func _ready():
 	current_anim = Anim.get_animation("new_animation")
 	current_anim.track_set_enabled(2, false)
 	current_anim.track_set_enabled(3, false)
+	Global.gotoBOSS = true
 	
 	$Timer.start()
 	
@@ -69,7 +71,8 @@ func die():
 	Global.TOMB_STATUS = false
 	Global.MERMAID_STATUS = true
 	Global.FromPipe = true
-	
+	Global.gotoBOSS = false
+	Global.BOSS_DEAD = true
 	Anim.stop()
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	for e in enemies:

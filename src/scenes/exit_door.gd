@@ -67,6 +67,9 @@ func _physics_process(delta):
 			target.global_position.x = global_position.x
 			target.modulate.a -= 2 * delta
 			if target.modulate.a <= 0:
+				if Global.CurrentState == Global.GameStates.OVERWORLD:
+					gotoBOSS = Global.gotoBOSS
+				
 				Global.scene_next(terminal_number, gotoBOSS, special_door, shop_door)
 
 func assign(_terminal_number):
@@ -75,16 +78,16 @@ func assign(_terminal_number):
 		Global.exit_door = self
 
 func open(with_sound = false):
-	if (gotoBOSS or with_sound) and !special_door and !shop_door:
-		opening = true
-		$Timer.start()
-		$sprite_open.visible = true
-		opening_tl = 0.3
-		var options = {"pitch_scale": 0.7}
-		Global.play_sound(Global.DoorOpensSFX, options)
-		Global.shaker_obj.shake(15, 3)
-	else:
-		reallyopen()
+	if !opening:
+		if (gotoBOSS or with_sound) and !special_door and !shop_door:
+			opening = true
+			$Timer.start()
+			$sprite_open.visible = true
+			opening_tl = 0.3
+			Global.play_sound(Global.DoorOpensSFX)
+			Global.shaker_obj.shake(15, 3)
+		else:
+			reallyopen()
 		
 func close(with_sound = false):
 	if (gotoBOSS or with_sound) and !special_door and !shop_door:
@@ -95,8 +98,7 @@ func close(with_sound = false):
 		$Timer.start()
 		$sprite_open.visible = true
 		closing_ttl = 0.3
-		var options = {"pitch_scale": 0.7}
-		Global.play_sound(Global.DoorOpensSFX, options)
+		Global.play_sound(Global.DoorOpensSFX)
 		Global.shaker_obj.shake(15, 3)
 	else:
 		reallyclose()

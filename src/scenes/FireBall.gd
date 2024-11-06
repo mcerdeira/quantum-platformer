@@ -14,7 +14,7 @@ func _ready():
 func _on_body_entered(body):
 	if ttl <= 0:
 		if body and (body.is_in_group("players") or body.is_in_group("enemies")):
-			if Global.BOSS_ROOM: 
+			if Global.BOSS_ROOM and Global.TOMB_STATUS:
 				body.kill_fire(0.5)
 			else:
 				body.kill_fire()

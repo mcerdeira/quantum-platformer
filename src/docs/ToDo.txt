@@ -39,7 +39,6 @@ IN_PROGRESS:
   - Puzzles que nos haga usar el clone o el teleport
 
 BUGS/Ajustes:
-- Al perder con un boss, si volvemos a intentar entrar a la Puerta del nivel, que nos lleve directo al boss
 - Cuando hay un dialogo, bloquear al personaje para que no pueda moverse
 
 
@@ -82,6 +81,9 @@ Features:
 - Decoraciones: La sangre debería desaparecer al tocar la lava
 
 --------------------------------- DONE ---------------------------------
+- Si nos quemamos en el boss room despues de que murio el jefe, no morir
+- Bloquear el uso de items si no es en el nivel
+- Al perder con un boss, si volvemos a intentar entrar a la puerta del nivel, que nos lleve directo al boss
 - Los items no los tenes que perder mas, solamente se limita su uso a los niveles pero se mantienen para siempre
 - Cinematica del fantasma que nos habla post ganarle
 - [Armar zona Tomb] Muy blanco y negro, con bruma. Hay unas lápidas especiales que tenemos que hacer algo, pero pueden disparar q aparezca un fantasma

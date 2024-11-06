@@ -309,6 +309,10 @@ func _physics_process(delta):
 		if gravityon:
 			if velocity.y < 1080: 
 				velocity.y += gravity
+				
+	if Global.BOSS_ROOM and Global.BOSS_DEAD:
+		if fire_obj != null and is_instance_valid(fire_obj):
+			fire_obj.extinguish_fire()
 			
 	if blowed > 0:
 		blowed -= 1 * delta
@@ -360,17 +364,18 @@ func camera_limits():
 		else:
 			$Camera2D.position.x = lerp($Camera2D.position.x, -200.00, 0.01)
 		
-		if $Camera2D.global_position.x < 446:
-			$Camera2D.global_position.x = 446
-			
-		if $Camera2D.global_position.x > 4152:
-			$Camera2D.global_position.x = 4152
-			
-		if $Camera2D.global_position.y < 176:
-			$Camera2D.global_position.y = 176
-			
-		if $Camera2D.global_position.y > 2450:
-			$Camera2D.global_position.y = 2450
+		if !Global.BOSS_ROOM:
+			if $Camera2D.global_position.x < 446:
+				$Camera2D.global_position.x = 446
+				
+			if $Camera2D.global_position.x > 4152:
+				$Camera2D.global_position.x = 4152
+				
+			if $Camera2D.global_position.y < 176:
+				$Camera2D.global_position.y = 176
+				
+			if $Camera2D.global_position.y > 2450:
+				$Camera2D.global_position.y = 2450
 				
 func check_shoot_released(delta):
 	var shoot_released = Input.is_action_just_released("shoot")	
@@ -497,16 +502,19 @@ func process_player(delta):
 				Global.play_sound(Global.WhooshSFX, options)
 				$AnimHammer.play("new_animation")
 		
-		if Global.gunz_equiped.size() > 0:
-			if !Global.gunz_equiped[Global.gunz_index].pasive:
-				if Global.gunz_equiped[Global.gunz_index].stock > 0:
-					$Selector.visible = false
-					$Cosito.visible = true
-					$Selector.modulate.a = 1
-					idle_play = idle_play_total
-					Engine.time_scale = 0.1
-					update_trayectory(delta)
-					shoot_mode = true
+		if Global.CurrentState == Global.GameStates.RANDOMLEVEL or Global.BOSS_ROOM:
+			if Global.gunz_equiped.size() > 0:
+				if !Global.gunz_equiped[Global.gunz_index].pasive:
+					if Global.gunz_equiped[Global.gunz_index].stock > 0:
+						$Selector.visible = false
+						$Cosito.visible = true
+						$Selector.modulate.a = 1
+						idle_play = idle_play_total
+						Engine.time_scale = 0.1
+						update_trayectory(delta)
+						shoot_mode = true
+		else:
+			Global.player_obj.show_message_custom("No quiero usar eso aqui.")
 		
 	check_shoot_released(delta)
 		
@@ -779,9 +787,13 @@ func kill():
 	bleed(25)
 	
 func dead_fire():
-	Global.play_sound(Global.LavaFallSFX)
-	dead = true
-	dead_animation = "dead_fire"
+	if Global.BOSS_ROOM and Global.BOSS_DEAD:
+		if fire_obj != null and is_instance_valid(fire_obj):
+			fire_obj.extinguish_fire()
+	else:
+		Global.play_sound(Global.LavaFallSFX)
+		dead = true
+		dead_animation = "dead_fire"
 	
 func reset_to_last():
 	Global.play_sound(Global.PlayerHurtSFX)

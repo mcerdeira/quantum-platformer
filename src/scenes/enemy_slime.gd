@@ -154,7 +154,7 @@ func _on_area_body_entered(body):
 			$collider.set_deferred("disabled", true)
 			$Area/collider.set_deferred("disabled", true)
 
-func kill_fire():
+func kill_fire(tt_total = null):
 	if fire_obj == null or !is_instance_valid(fire_obj):
 		if level_parent:
 			Global.emit(global_position, 10)	

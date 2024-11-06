@@ -23,6 +23,8 @@ var OverWorldFromGameOver = false
 var TunnelTerminalNumber = false
 var boss_bar = null
 var BULLETS_MOVE = true
+var gotoBOSS = false
+var BOSS_DEAD = false
 
 var SpecialLevelTheme = null
 var WhooshSFX = null
@@ -417,7 +419,7 @@ enum GameStates {
 var CurrentState : GameStates = GameStates.TITLE
 var FirstState : GameStates = GameStates.HOME
 
-func scene_next(terminal_number = -1, boss = false, special = false, shop = false):
+func scene_next(terminal_number = -1, boss = false, special = false, shop = false, from_boss = false):
 	Global.gunz_index = 0
 	Global.gunz_index_max = 0
 	BOSS_ROOM = boss
@@ -439,7 +441,8 @@ func scene_next(terminal_number = -1, boss = false, special = false, shop = fals
 	elif Global.CurrentState == Global.GameStates.RANDOMLEVEL and special:
 		Global.CurrentState = Global.GameStates.CHALLENGE
 	elif Global.CurrentState == Global.GameStates.RANDOMLEVEL:
-		Global.reset_gunz()
+		if !from_boss:
+			Global.reset_gunz()
 		Global.restore_gunz()
 		Global.CurrentState = Global.GameStates.OVERWORLD
 	elif Global.CurrentState == Global.GameStates.CHALLENGE:
@@ -613,6 +616,7 @@ func save_game():
 		saved_game.store_var(Global.first_time_bomb)
 		saved_game.store_var(Global.first_time_spring)
 		saved_game.store_var(Global.gunz_equiped_real)
+		saved_game.store_var(Global.gotoBOSS)
 	
 		saved_game.close()
 	
@@ -648,6 +652,7 @@ func load_game():
 			var _first_time_bomb = saved_game.get_var()
 			var _first_time_spring = saved_game.get_var()
 			var _gunz_equiped_real = saved_game.get_var()
+			var _gotoBOSS = saved_game.get_var()
 			
 			if cur_state != null:
 				Global.FirstState = cur_state
@@ -704,6 +709,8 @@ func load_game():
 					Global.first_time_spring = _first_time_spring
 				if _gunz_equiped_real != null:
 					Global.gunz_equiped_real = _gunz_equiped_real
+				if _gotoBOSS != null:
+					Global.gotoBOSS = _gotoBOSS
 				
 	else:
 		Global.FirstState =  GameStates.HOME
@@ -731,6 +738,7 @@ func load_game():
 		Global.first_time_bomb = true
 		Global.first_time_spring = true
 		Global.gunz_equiped_real = []
+		Global.gotoBOSS = false
 		
 	sync_terminals()
 	
@@ -911,12 +919,16 @@ func restore_gunz():
 			gunz_equiped.append(gun)
 	
 func reset_gunz():
-	gunz_equiped_real = []
+	var gunz_tmp = []
 	for gun in gunz_equiped:
 		if gun.name != "spikeball":
-			gunz_equiped_real.append(gun)
+			gunz_tmp.append(gun)
 	
 	gunz_equiped = []
+	if gunz_tmp.size() > 0:
+		gunz_equiped_real = []
+		for gun in gunz_tmp:
+			gunz_equiped_real.append(gun)
 	
 func pick_random(container):
 	if typeof(container) == TYPE_DICTIONARY:

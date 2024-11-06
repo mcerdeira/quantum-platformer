@@ -53,7 +53,7 @@ func _physics_process(delta):
 		if !current_message:
 			end_ttl -= 1 * delta
 			if end_ttl <= 0:
-				Global.scene_next(Global.TerminalNumber, false)
+				Global.scene_next(Global.TerminalNumber, false, false, false, true)
 						
 		if current_message:
 			ttl -= 1 * delta

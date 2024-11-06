@@ -25,10 +25,12 @@ var explode_ttl = 3
 var prisoner_obj = preload("res://scenes/prisoner.tscn")
 
 func _ready():
+	Global.BOSS_DEAD = false
 	add_to_group("enemies")
 	add_to_group("bosses")
 	$sprite.animation = "idle"
 	z_index = 100
+	Global.gotoBOSS = true
 	
 func is_on_floor_custom():
 	return is_on_floor() or buff > 0
@@ -178,7 +180,7 @@ func _on_area_body_entered(body):
 			body.kill()
 			$Area/collider.set_deferred("disabled", true)
 			
-func kill_fire():
+func kill_fire(tt_total = null):
 	pass
 
 func dead_fire():
@@ -213,7 +215,9 @@ func force_kill():
 	dead = true
 	LIFE = 0.0
 	explode_ttl = 3
+	Global.gotoBOSS = false
 	Global.shaker_obj.shake(3, 0.5)
+	Global.BOSS_DEAD = true
 			
 func super_jump():
 	pass
