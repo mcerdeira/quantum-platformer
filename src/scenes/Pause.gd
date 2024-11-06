@@ -28,6 +28,7 @@ func _physics_process(_delta):
 				pause_unpause()
 			
 func exit():
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), 0)
 	Global.CurrentState = Global.GameStates.TITLE
 	visible = false
 	get_tree().paused = visible

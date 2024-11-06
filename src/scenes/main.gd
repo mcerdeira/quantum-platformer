@@ -354,9 +354,11 @@ func _physics_process(delta):
 		gameover_ttl -= 1 * delta
 		if gameover_ttl <= 0:
 			gameover_ttl = gameover_ttl_total
-			Global.GAMEOVER = false
-			Global.reset_gunz()
-			Global.scene_next()
+			if Global.GAMEOVER:
+				Global.reset_gunz()
+				Global.restore_gunz()
+				Global.scene_next()
+				Global.GAMEOVER = false
 			return
 		
 	if Global.exit_door and is_instance_valid(Global.exit_door) and Global.exit_door.closed:

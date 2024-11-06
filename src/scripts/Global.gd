@@ -309,6 +309,7 @@ var none = {
 var gunz_objs = []
 var gunz_objs_prob = []
 var gunz_objs_prob_nocoin = []
+var gunz_equiped_real = []
 var gunz_equiped = []
 var gunz_index_max = 0
 var gunz_index = 0
@@ -439,6 +440,7 @@ func scene_next(terminal_number = -1, boss = false, special = false, shop = fals
 		Global.CurrentState = Global.GameStates.CHALLENGE
 	elif Global.CurrentState == Global.GameStates.RANDOMLEVEL:
 		Global.reset_gunz()
+		Global.restore_gunz()
 		Global.CurrentState = Global.GameStates.OVERWORLD
 	elif Global.CurrentState == Global.GameStates.CHALLENGE:
 		Global.CurrentState = Global.GameStates.OVERWORLD
@@ -610,6 +612,7 @@ func save_game():
 		saved_game.store_var(Global.first_time_muffin)
 		saved_game.store_var(Global.first_time_bomb)
 		saved_game.store_var(Global.first_time_spring)
+		saved_game.store_var(Global.gunz_equiped_real)
 	
 		saved_game.close()
 	
@@ -644,6 +647,7 @@ func load_game():
 			var _first_time_muffin = saved_game.get_var()
 			var _first_time_bomb = saved_game.get_var()
 			var _first_time_spring = saved_game.get_var()
+			var _gunz_equiped_real = saved_game.get_var()
 			
 			if cur_state != null:
 				Global.FirstState = cur_state
@@ -698,6 +702,8 @@ func load_game():
 					Global.first_time_bomb = _first_time_bomb
 				if _first_time_spring != null:
 					Global.first_time_spring = _first_time_spring
+				if _gunz_equiped_real != null:
+					Global.gunz_equiped_real = _gunz_equiped_real
 				
 	else:
 		Global.FirstState =  GameStates.HOME
@@ -724,6 +730,7 @@ func load_game():
 		Global.first_time_muffin = true
 		Global.first_time_bomb = true
 		Global.first_time_spring = true
+		Global.gunz_equiped_real = []
 		
 	sync_terminals()
 	
@@ -893,11 +900,22 @@ func init():
 	gunz_objs_prob_nocoin.append(plant)
 	gunz_objs_prob_nocoin.append(smoke_bomb)
 	
-	gunz_equiped = []
+	Global.restore_gunz()
 	
 	randomize()
 	
+func restore_gunz():
+	gunz_equiped = []
+	for gun in gunz_equiped_real:
+		if gun.name != "spikeball":
+			gunz_equiped.append(gun)
+	
 func reset_gunz():
+	gunz_equiped_real = []
+	for gun in gunz_equiped:
+		if gun.name != "spikeball":
+			gunz_equiped_real.append(gun)
+	
 	gunz_equiped = []
 	
 func pick_random(container):
