@@ -39,7 +39,6 @@ IN_PROGRESS:
   - Puzzles que nos haga usar el clone o el teleport
 
 BUGS/Ajustes:
-- Cuando hay un dialogo, bloquear al personaje para que no pueda moverse
 
 
 Features:
@@ -81,6 +80,7 @@ Features:
 - Decoraciones: La sangre debería desaparecer al tocar la lava
 
 --------------------------------- DONE ---------------------------------
+- Cuando hay un dialogo, bloquear al personaje para que no pueda moverse
 - Si nos quemamos en el boss room despues de que murio el jefe, no morir
 - Bloquear el uso de items si no es en el nivel
 - Al perder con un boss, si volvemos a intentar entrar a la puerta del nivel, que nos lleve directo al boss

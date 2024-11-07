@@ -488,21 +488,21 @@ func process_player(delta):
 					$Selector.visible = false
 					$Selector.modulate.a = 1
 						
-		if radar:
+		if !iam_clone and radar:
 			if Input.is_action_just_pressed("radar") and !locked_ctrls:
 				if $Arrow.visible:
 					$Arrow.activate(false)
 				else:
 					$Arrow.activate(true)
 					
-	if !dead and Input.is_action_pressed("shoot") and !locked_ctrls:
+	if !iam_clone and !dead and Input.is_action_pressed("shoot") and !locked_ctrls:
 		if has_hammer:
 			if !$AnimHammer.is_playing():
 				var options = {"pitch_scale": 1.5}
 				Global.play_sound(Global.WhooshSFX, options)
 				$AnimHammer.play("new_animation")
 		
-		if Global.CurrentState == Global.GameStates.RANDOMLEVEL or Global.BOSS_ROOM:
+		if !iam_clone and Global.CurrentState == Global.GameStates.RANDOMLEVEL or Global.BOSS_ROOM:
 			if Global.gunz_equiped.size() > 0:
 				if !Global.gunz_equiped[Global.gunz_index].pasive:
 					if Global.gunz_equiped[Global.gunz_index].stock > 0:
@@ -514,12 +514,14 @@ func process_player(delta):
 						update_trayectory(delta)
 						shoot_mode = true
 		else:
-			Global.player_obj.show_message_custom("No quiero usar eso aqui.")
+			if !iam_clone:
+				Global.player_obj.show_message_custom("No quiero usar eso aqui.")
 		
 	check_shoot_released(delta)
 		
-	if !dead and shoot_mode and !locked_ctrls:
+	if !iam_clone and !dead and shoot_mode and !locked_ctrls:
 		$collider.set_deferred("disabled", true)
+		velocity.y = 0
 		gravity = 0.0
 		if Input.is_action_pressed("down"):
 			if direction == "left":

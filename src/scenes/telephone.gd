@@ -43,6 +43,7 @@ func _physics_process(delta):
 			$back/lbl_item.text += current_message.substr(0, 1)
 			current_message = current_message.substr(1, current_message.length() - 1)
 			if !current_message:
+				Global.player_obj.locked_ctrls = false
 				Global.kill(dialog_sfx)
 				Global.player_obj.dont_camera = false
 				active = false
@@ -71,6 +72,7 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	if !opened and body.is_in_group("players") and !body.is_in_group("prisoners"):
 		body.dont_camera = true
+		body.locked_ctrls = true
 		$back.visible = true
 		active = true
 		player = body

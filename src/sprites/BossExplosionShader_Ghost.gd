@@ -64,6 +64,7 @@ func _physics_process(delta):
 				if !current_message:
 					current_message_count -= 1
 					if current_message_count < 0:
+						Global.player_obj.locked_ctrls = false
 						Global.kill(dialog_sfx)
 						Global.player_obj.dont_camera = false
 						await get_tree().create_timer(1.3).timeout
@@ -73,7 +74,8 @@ func _physics_process(delta):
 						current_message = current_messages[current_message_count]
 						change_ttl = 1.3
 func start():
-	$AnimationPlayer.play("new_animation")	
+	Global.player_obj.locked_ctrls = true
+	$AnimationPlayer.play("new_animation")
 	Global.play_sound(Global.BOSS1RoarSFX)
 	Ambience.play(Global.CaveAmbienceSFX)
 
