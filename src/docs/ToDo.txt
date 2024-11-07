@@ -73,7 +73,7 @@ Features:
 
 - Menu de opciones
 - Armar manual que se imprime y subirlos a drive y generar los QR: https://new.express.adobe.com/tools/generate-qr-code
-               https://drive.google.com/drive/folders/1lWx_oJ--q5Un7JjxEHKZR6ftHcutnUcp?dmr=1&ec=wgc-drive-globalnav-goto
+               https://drive.google.com/file/d/1S8vxbmv_BJ105wv-vcsFPzTaY0lo-Ayk/view?usp=drive_link
 
 - Decoraciones: Splash al caer en la lava
 - Decoraciones: Backgrounds con parallax

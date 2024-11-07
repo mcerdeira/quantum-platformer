@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://df3wc86jxuqv0" path="res://sprites/info.png" id="1_sl63s"]
 [ext_resource type="FontFile" uid="uid://df8tenaf40ylu" path="res://fonts/cour.ttf" id="2_xwgrf"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="5_ccuuj"]
+[ext_resource type="Texture2D" uid="uid://bx5xou8715s4j" path="res://sprites/qr/qrcode-manual.png" id="5_vagb1"]
 [ext_resource type="Texture2D" uid="uid://b3n7eech0mndx" path="res://sprites/arrows1.png" id="6_eg2o3"]
 [ext_resource type="Texture2D" uid="uid://dkompgmyj4pmk" path="res://sprites/arrows2.png" id="7_xjha2"]
-[ext_resource type="Texture2D" uid="uid://b62iyqavdj0re" path="res://sprites/qr/1.png" id="8_60hef"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xc2co"]
 size = Vector2(28, 20)
@@ -16,7 +16,7 @@ size = Vector2(28, 20)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_60hef")
+"texture": ExtResource("5_vagb1")
 }],
 "loop": true,
 "name": &"1",
@@ -84,6 +84,7 @@ position = Vector2(-2, -10)
 shape = SubResource("RectangleShape2D_xc2co")
 
 [node name="InfoDisplay" type="Node2D" parent="."]
+visible = false
 position = Vector2(282, -157)
 scale = Vector2(2, 2)
 
@@ -91,32 +92,38 @@ scale = Vector2(2, 2)
 texture = ExtResource("1_sl63s")
 
 [node name="lbl_title" type="Label" parent="InfoDisplay"]
-offset_left = -129.0
+offset_left = -223.0
 offset_top = -110.0
-offset_right = 146.0
+offset_right = 224.0
 offset_bottom = -91.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_xwgrf")
 theme_override_font_sizes/font_size = 14
-text = "== GRUTA =="
+text = "== GRUTA OS v1.0 =="
 horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="lbl_body" type="Label" parent="InfoDisplay"]
-offset_left = -205.0
-offset_top = -91.0
-offset_right = 217.0
-offset_bottom = 98.0
+offset_left = -199.0
+offset_top = -86.0
+offset_right = 207.0
+offset_bottom = 100.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_xwgrf")
 theme_override_font_sizes/font_size = 14
-text = "Manual del usuario.
-"
+text = "Para mas informacion por favor contactarse con 0800-333-GRUTA.   
+
+
+
+
+
+
+GROTTO-SOFT 1992"
 autowrap_mode = 2
 
 [node name="qr" type="AnimatedSprite2D" parent="InfoDisplay"]
-position = Vector2(182, 69)
-scale = Vector2(0.08, 0.08)
+position = Vector2(141.5, 27.5)
+scale = Vector2(0.2625, 0.2625)
 sprite_frames = SubResource("SpriteFrames_i33r2")
 animation = &"1"
 

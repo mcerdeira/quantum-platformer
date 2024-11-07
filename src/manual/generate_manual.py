@@ -16,4 +16,4 @@ for imagen in imagenes:
     pdf.image(imagen, x = 0, y = 0, w = 297, h = 210)  # Ajusta el tamaño si es necesario
 
 # Guarda el PDF
-pdf.output("manual.pdf")
+pdf.output("manual-es.pdf")

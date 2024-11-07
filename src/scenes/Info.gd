@@ -6,11 +6,6 @@ var player = null
 var delay_camera = 0.2
 
 func _physics_process(delta):
-	if terminal_number != -1:
-		$InfoDisplay/lbl_title.text = "== " + Global.Terminals[terminal_number].name.strip_edges() + " =="
-		$InfoDisplay/qr.animation = str(terminal_number)
-		$InfoDisplay/lbl_body.text = Global.Terminals[terminal_number].description
-	
 	$back2.visible = $back.visible 
 	if !active and opened:
 		if player:
