@@ -35,14 +35,13 @@
 
 IN_PROGRESS:
 
-- [Zona Tomb]  
-  - Puzzles que nos haga usar el clone o el teleport
 
 BUGS/Ajustes:
 
 
 Features:
 
+- Enemigo que te revolea Bombas
 - Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
   - Alinear los discos, llama al bote.
   - Si giramos los discos, atrás se forma el password para la terminal
@@ -50,8 +49,10 @@ Features:
   - Al no poderse jugar los niveles para siempre, estos items te los debería dar 
   - JEFE: cuando subimos al bote para ir al jefe final, aparece un mini boss en el bote de una serpiente marina
 
-- Terminales: se pueden desactivar variables para la zona secreta, pero ese comando necesita password
+- Terminales: se pueden desactivar variables para la zona secreta, pero ese comando necesita password (está en el manual, en el teléfono de GROTTO SOFT)
 
+- [Zona Tomb]  
+  - Puzzles que nos haga usar el clone o el teleport
 
 - [Armar zona Mermaid] Fondo más claro, piso negro, lluvia y truenos. La mecánica principal son unas canillas que abrimos para inundar o no lugares 
   - Cascadas (ala Minecraft) que interactuen con bombas y enemigos

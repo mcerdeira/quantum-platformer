@@ -30,6 +30,7 @@ script = ExtResource("1_ofwwj")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_85dri")
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_clvs6")
 
 [node name="collider" type="CollisionShape2D" parent="."]

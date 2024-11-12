@@ -64,11 +64,10 @@ var rooms_bosses = [
 	[preload("res://scenes/levels/tomb/room_boss.tscn")],
 ]
 
-var rooms_challenge_vertical = [
-	preload("res://scenes/levels/challenge/room_challenge_vertical1.tscn"),
-]
 var rooms_challenge_horizontal = [
 	preload("res://scenes/levels/challenge/room_challenge_horizontal1.tscn"),
+	preload("res://scenes/levels/challenge/room_challenge_horizontal2.tscn"),
+	preload("res://scenes/levels/challenge/room_challenge_horizontal3.tscn"),
 ]
 
 var list_rooms_top = [
@@ -123,7 +122,7 @@ func generate_challenge_horizontal():
 	$frame.queue_free()
 
 	for w in range(total_w):
-		room = rooms_challenge_horizontal[0]
+		room = Global.pick_random(rooms_challenge_horizontal)
 		var r = room.instantiate()
 		r.global_position = room_pos
 		r.q = q
