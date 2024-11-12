@@ -8,8 +8,12 @@ var player = null
 var delay_camera = 0.2
 var ttl = 0
 var NO_STOCK = false
+var inflation = 1.0
 
 func _ready():
+	if !Global.TOMB_STATUS and !Global.MERMAID_STATUS and !Global.SALAMANDER_STATUS and !Global.SERAPH_STATUS:
+		inflation = 10.0
+	
 	$sprite.animation = current_item_name
 	$display/back/sprite.animation = current_item_name
 	current_item = Global.find_item(current_item_name)
@@ -22,7 +26,7 @@ func _ready():
 		NO_STOCK = true
 	else:
 		$display/back/lbl_item.text = "== " + current_item.friendly_name.to_upper() + " ==" + "\n" + current_item.description
-		$display/back/lbl_price.text = str(current_item.price)
+		$display/back/lbl_price.text = str(current_item.price * inflation)
 
 func _physics_process(delta):
 	if ttl > 0:
@@ -43,7 +47,7 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("up") and !NO_STOCK:
 			Global.play_sound(Global.ChestOpenSFX)
 			Global.emit(global_position, 5)
-			if Global.buy_item_perk(current_item.name.to_upper(), current_item.price, current_item.idx):
+			if Global.buy_item_perk(current_item.name.to_upper(), current_item.price * inflation, current_item.idx):
 				$display/back/lbl_item.text = "== AGOTADO =="
 				$display/back/sprite.animation = "no-stock"
 				$display/back/arrows.animation = "empty"

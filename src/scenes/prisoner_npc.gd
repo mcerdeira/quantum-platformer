@@ -26,13 +26,20 @@ func _physics_process(delta):
 		return
 	
 	if boss_1_npc:
+		if Global.CurrentState == Global.GameStates.SHOP:
+			if !Global.TOMB_STATUS and !Global.MERMAID_STATUS and !Global.SALAMANDER_STATUS and !Global.SERAPH_STATUS:
+				queue_free()
+			
 		$Timer.stop()
 		$Computer.animation = "boss1"
 		$Computer/cry.animation = "boss1"
 		
 	if uncle:
-		$Computer.animation = "uncle"
-		$Computer/cry.animation = "boss1"
+		if Global.TOMB_STATUS or Global.MERMAID_STATUS or Global.SALAMANDER_STATUS or Global.SERAPH_STATUS:
+			$Computer.animation = "uncle"
+			$Computer/cry.animation = "boss1"
+		else:
+			queue_free()
 	
 	$back2.visible = $back.visible 
 	if !active and opened:
