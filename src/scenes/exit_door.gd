@@ -20,6 +20,7 @@ func _ready():
 	if special_door:
 		add_to_group("special_doors")
 		$sprite.animation = "special"
+		$bonus.visible = true
 		open(false)
 		
 	if shop_door:
@@ -28,8 +29,7 @@ func _ready():
 		if Global.CurrentState == Global.GameStates.SHOP:
 			open(false)
 		else:
-			if Global.TOMB_STATUS or Global.MERMAID_STATUS or Global.SALAMANDER_STATUS or Global.SERAPH_STATUS:
-				open(false)
+			open(false)
 			
 	if !gotoBOSS and !special_door and !shop_door:
 		if terminal_number == -1:

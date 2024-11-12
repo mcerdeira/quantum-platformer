@@ -1,10 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://q767q018lep8"]
+[gd_scene load_steps=23 format=3 uid="uid://q767q018lep8"]
 
 [ext_resource type="Script" path="res://scenes/exit_door.gd" id="1_0vvlk"]
+[ext_resource type="Texture2D" uid="uid://bdtkcki2t0cwe" path="res://sprites/horu/images/bonus1.png" id="2_7f7sj"]
+[ext_resource type="Texture2D" uid="uid://c88m81h0eqi2r" path="res://sprites/horu/images/bonus2.png" id="3_g3yad"]
 [ext_resource type="Shader" path="res://scenes/exit_door.gdshader" id="3_ohfai"]
 [ext_resource type="Texture2D" uid="uid://fe2jknlm3i6n" path="res://sprites/horu/images/exit_spr_0.png" id="4_186lq"]
 [ext_resource type="Texture2D" uid="uid://r88ulgnxbdg0" path="res://sprites/horu/images/exit_spr_stone_0.png" id="4_hag28"]
 [ext_resource type="Texture2D" uid="uid://dcwiheprlh8k6" path="res://sprites/horu/images/hidden_exit_spr_0.png" id="4_l1025"]
+[ext_resource type="Texture2D" uid="uid://d0icdkalwapo6" path="res://sprites/horu/images/bonus3.png" id="4_y2k2l"]
 [ext_resource type="Texture2D" uid="uid://bt512oj6aqplr" path="res://sprites/horu/images/exit_spr_stone_1.png" id="5_d6kef"]
 [ext_resource type="Texture2D" uid="uid://c8cdp2o43edo7" path="res://sprites/horu/images/exit_spr_1.png" id="5_kdr3r"]
 [ext_resource type="Texture2D" uid="uid://duvbsm4ugc1yw" path="res://sprites/horu/images/exit_spr_hell_0.png" id="7_4ogp0"]
@@ -14,6 +17,23 @@
 [ext_resource type="Texture2D" uid="uid://b75mbd3rd8k03" path="res://sprites/shop_spr_1.png" id="10_2m2sv"]
 [ext_resource type="Texture2D" uid="uid://chfc4wjjp3ms6" path="res://sprites/horu/images/exit_spr_3.png" id="13_bd7jd"]
 [ext_resource type="Script" path="res://scenes/explode_door.gd" id="15_6dkxm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8806p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7f7sj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_g3yad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y2k2l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y4ebb"]
 animations = [{
@@ -118,6 +138,13 @@ size = Vector2(36, 2)
 collision_layer = 33
 collision_mask = 33
 script = ExtResource("1_0vvlk")
+
+[node name="bonus" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(5, -81)
+sprite_frames = SubResource("SpriteFrames_8806p")
+autoplay = "default"
+frame_progress = 0.598015
 
 [node name="sprite_open" type="AnimatedSprite2D" parent="."]
 visible = false
