@@ -16,7 +16,7 @@ func _ready():
 		
 	current_message = "?????????"
 	current_messages[17] = "¡MOMENTO! Yo soy un fantasma... No puedo morir..."
-	current_messages[16] = "(...)"
+	current_messages[16] = "(JA JA JA JA JA)"
 	current_messages[15] = "¿¿¿POR QUE PROFANASTE TODAS MIS TUMBAS???"
 	current_messages[14] = "(...)"
 	current_messages[13] = "¿¿PARA HACERME SALIR?? ¡¡¡ME HUBIERAS PREGUNTADO!!!"
@@ -24,7 +24,7 @@ func _ready():
 	current_messages[11] = "De tu mascota lo que se es que estuvo, si..."
 	current_messages[10] = "Pero se asusto y se fue para la zona de las cascadas."
 	current_messages[9] = "(...)"
-	current_messages[8] = "O eso me parecio ver."
+	current_messages[8] = "O eso me parecio."
 	current_messages[7] = "Te voy a abrir la puerta de esa zona asi podes ir a ver."
 	current_messages[6] = "Lo que si te advierto, esta muy inundado todo, es un peligro."
 	current_messages[5] = "(...)"
@@ -32,7 +32,7 @@ func _ready():
 	current_messages[3] = "(...)"
 	current_messages[2] = "¿¿COMO?? ¿¿¿No sabes como volver???"
 	current_messages[1] = "(>_<)"
-	current_messages[0] = "En fin... te indico por donde ir..., ¿Ves aquella tuberia?"	
+	current_messages[0] = "En fin... te indico por donde ir... ¿Ves aquella tuberia?"
 	current_message_count = 18
 
 func _physics_process(delta):
