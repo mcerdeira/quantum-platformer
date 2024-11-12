@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://2t17q8uh38pg"]
 
-[ext_resource type="Script" path="res://sprites/BossExplosionShader.gd" id="1_51u5l"]
+[ext_resource type="Script" path="res://scenes/BossExplosionShader.gd" id="1_51u5l"]
 [ext_resource type="Shader" path="res://scenes/boss_explosion_sprite.gdshader" id="1_vgcf1"]
 [ext_resource type="Texture2D" uid="uid://d1ntc3x374hru" path="res://sprites/horu/images/boss_leaf_shader.png" id="2_cddep"]
 
