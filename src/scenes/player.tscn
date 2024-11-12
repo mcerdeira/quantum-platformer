@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://evskswf05b50"]
+[gd_scene load_steps=73 format=3 uid="uid://evskswf05b50"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_u3t4v"]
 [ext_resource type="Texture2D" uid="uid://capc1hdlw0gpl" path="res://sprites/horu/images/stars1.png" id="2_iinm7"]
@@ -13,6 +13,7 @@
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="7_1mbn0"]
 [ext_resource type="PackedScene" uid="uid://d0otpjtodaem7" path="res://scenes/arrow.tscn" id="12_hgq3s"]
 [ext_resource type="Shader" path="res://scenes/player.gdshader" id="13_1jkvy"]
+[ext_resource type="Texture2D" uid="uid://dx8ucfq000dy" path="res://sprites/horu/images/player_face_push_spr_0.png" id="13_eykga"]
 [ext_resource type="Texture2D" uid="uid://b2qs54x45h05p" path="res://sprites/lines.png" id="13_h7iaa"]
 [ext_resource type="Texture2D" uid="uid://bwarsmkyb2ekr" path="res://sprites/horu/images/player_dead_spr_0.png" id="14_n7pba"]
 [ext_resource type="Texture2D" uid="uid://cdp7mhhwwq6yn" path="res://sprites/horu/images/player_spr_0.png" id="14_p217l"]
@@ -171,6 +172,14 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5rugl"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_eykga")
+}],
+"loop": true,
+"name": &"angry",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": null
@@ -652,5 +661,15 @@ modulate = Color(1, 1, 1, 0.384314)
 position = Vector2(-120, 0)
 sprite_frames = SubResource("SpriteFrames_oyy64")
 animation = &"none"
+
+[node name="raycastR" type="RayCast2D" parent="."]
+position = Vector2(11, 0)
+target_position = Vector2(7, 0)
+hit_from_inside = true
+
+[node name="raycastL" type="RayCast2D" parent="."]
+position = Vector2(-11, 0)
+target_position = Vector2(-7, 0)
+hit_from_inside = true
 
 [connection signal="timeout" from="WalkSoundTimer" to="." method="_on_walk_sound_timer_timeout"]

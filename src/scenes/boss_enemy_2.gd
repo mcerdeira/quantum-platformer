@@ -10,7 +10,7 @@ var epilepsy_mode = false
 var num_bullets = 4
 var bullets_pos = [Vector2(1, 0), Vector2(-1, 0), Vector2(0, 1), Vector2(0, -1)]
 const FireBallHolderShoot = preload("res://scenes/FireBallHolderShoot.tscn")
-const BossExplosionShader_Ghost = preload("res://sprites/BossExplosionShader_Ghost.tscn")
+const BossExplosionShader_Ghost = preload("res://scenes/BossExplosionShader_Ghost.tscn")
 var brokens = []
 @export var pos : Array[Marker2D]
 @export var Anim : AnimationPlayer

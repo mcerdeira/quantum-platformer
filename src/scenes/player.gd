@@ -651,6 +651,17 @@ func process_player(delta):
 					
 				$sprite.animation = "walking"
 				$sprite_eyes.animation = $sprite.animation
+
+			var ra : RayCast2D
+			if direction == "right":
+				ra = $raycastR
+			else:
+				ra = $raycastL
+			if ra and ra.is_colliding():
+				$sprite_eyes.animation = "angry"
+			else:
+				$sprite_eyes.animation = $sprite.animation
+				
 			$sprite.play()
 		else:
 			$sprite.stop()
