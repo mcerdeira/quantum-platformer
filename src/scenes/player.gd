@@ -7,6 +7,7 @@ var jump_speed_original = -350.0
 var jump_speed = jump_speed_original
 var locked_ctrls = false
 var force_lookup = false
+var rainobj = preload("res://scenes/Rain.tscn")
 
 @export var direction = "right"
 var has_hammer = false
@@ -108,6 +109,11 @@ func _ready():
 		Global.shaker_obj.camera = $Camera2D
 		Global.player_obj = self
 		Global.Fader.fade_out()
+		if Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
+			var rain = rainobj.instantiate()
+			rain.position = Vector2(-431, -467) 
+			add_child(rain)
+			
 	if invisible:
 		set_invisible(true)
 	
@@ -573,6 +579,8 @@ func process_player(delta):
 				$Camera2D.position.y = lerp($Camera2D.position.y, 150.0, sp)
 			
 		if force_lookup or (!shoot_mode and Input.is_action_pressed("up") and !locked_ctrls):
+			if force_lookup:
+				look_counter = look_counter_total
 			look_counter += 1 * delta
 			if is_on_floor_custom() and !dont_camera and look_counter >= look_counter_total:
 				$sprite_eyes.position.y = 0

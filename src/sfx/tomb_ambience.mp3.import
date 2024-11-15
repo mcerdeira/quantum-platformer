@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/tomb_ambience.mp3-0d3c72da555972297fb2c88ca0b
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

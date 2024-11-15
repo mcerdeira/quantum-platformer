@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://caxsrqo2tu60c"]
+
+[ext_resource type="Script" path="res://scenes/Rain.gd" id="1_kutrt"]
+[ext_resource type="Shader" path="res://scenes/Rain.gdshader" id="1_mrjlv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_de8n3"]
+shader = ExtResource("1_mrjlv")
+shader_parameter/count = 150
+shader_parameter/slant = 0.089
+shader_parameter/speed = 38.636
+shader_parameter/blur = 0.002
+shader_parameter/colour = Color(1, 1, 1, 1)
+shader_parameter/size = Vector2(0.005, 0.2)
+
+[sub_resource type="Animation" id="Animation_cfrgh"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ashqc"]
+_data = {
+"new_animation": SubResource("Animation_cfrgh")
+}
+
+[node name="Rain" type="Node2D"]
+script = ExtResource("1_kutrt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_de8n3")
+offset_left = -51.0
+offset_top = -69.0
+offset_right = 1223.0
+offset_bottom = 699.0
+color = Color(0.301961, 0.301961, 0.301961, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+offset_left = -1367.0
+offset_top = -933.0
+offset_right = 2569.0
+offset_bottom = 1447.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ashqc")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -267,6 +267,9 @@ func _ready():
 				Ambience.play(Global.CaveAmbienceSFX)
 			elif Global.TerminalNumber == Global.TerminalsEnum.TOMB:
 				Ambience.play(Global.TombAmbienceSFX)
+			elif Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
+				Ambience.play(Global.RainAmbienceSFX)	
+				
 			Global.TunnelTerminalNumber = false
 			generate_level()
 	
@@ -384,6 +387,9 @@ func _physics_process(delta):
 	
 	if sel:
 		sel.text = str(Global.prisoner_total - Global.prisoner_counter) + "/" + str(Global.prisoner_total) 
+		
+	if Global.BOSS_ROOM or Global.CurrentState == Global.GameStates.OVERWORLD:
+		$CanvasLayer/Control/PrisonerHead.visible = false
 		
 	#if Input.is_action_just_pressed("fx"):
 		#$FX.visible = !$FX.visible

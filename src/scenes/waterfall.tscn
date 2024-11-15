@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhoti11gyh17k"]
+[gd_scene load_steps=9 format=3 uid="uid://bhoti11gyh17k"]
 
 [ext_resource type="Texture2D" uid="uid://cao8kgiajlrt1" path="res://sprites/waterfall2_spr_0.png" id="1_7cqsv"]
 [ext_resource type="Texture2D" uid="uid://b1ok1dyle82cx" path="res://sprites/waterfall_spr_0.png" id="1_70wo7"]
 [ext_resource type="Texture2D" uid="uid://df7uvkml0qpic" path="res://sprites/waterfall2_spr_1.png" id="2_r6o2j"]
 [ext_resource type="Texture2D" uid="uid://c87fd86yy6dcl" path="res://sprites/waterfall_spr_1.png" id="2_y3224"]
 [ext_resource type="PackedScene" uid="uid://dsb6dbx10a67k" path="res://scenes/ray_particles.tscn" id="5_ewilc"]
+[ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="6_wjawk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_snrvq"]
 animations = [{
@@ -58,3 +59,7 @@ position = Vector2(19, 616)
 
 [node name="RayParticles4" parent="." instance=ExtResource("5_ewilc")]
 position = Vector2(4, 613)
+
+[node name="Stair" parent="." instance=ExtResource("6_wjawk")]
+position = Vector2(2, 621)
+scale = Vector2(1, 19)
