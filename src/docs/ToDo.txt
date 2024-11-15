@@ -34,7 +34,7 @@
 ==================================================================================================================
 
 IN_PROGRESS:
-
+- Enemigo que te revolea Bombas
 
 BUGS/Ajustes:
 
@@ -43,9 +43,8 @@ Features:
 
 - Enemigo que te persigue por cañería
 - Mejorar vines? Interactivos?
-- Explosiones que no spawneen fuego directo
 
-- Enemigo que te revolea Bombas
+
 - Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
   - Alinear los discos, llama al bote.
   - Si giramos los discos, atrás se forma el password para la terminal

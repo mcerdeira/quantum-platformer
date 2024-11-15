@@ -559,4 +559,5 @@ texture = ExtResource("20_736su")
 
 [connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
 [connection signal="body_entered" from="noise" to="." method="_on_noise_body_entered"]
+[connection signal="body_shape_entered" from="explosion" to="explosion" method="_on_body_shape_entered"]
 [connection signal="body_shape_entered" from="explosion_mini" to="explosion_mini" method="_on_body_shape_entered"]

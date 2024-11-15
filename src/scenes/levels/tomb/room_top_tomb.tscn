@@ -472,6 +472,7 @@ color = "red"
 position = Vector2(1045, 240)
 
 [node name="window" parent="." instance=ExtResource("33_eodg3")]
+master = true
 
 [node name="window2" parent="." instance=ExtResource("33_eodg3")]
 position = Vector2(869, 300)

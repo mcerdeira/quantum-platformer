@@ -263,7 +263,10 @@ func _ready():
 			Global.TunnelTerminalNumber = true
 			generate_fixed_level(room_tunnel, false)
 		else:
-			Ambience.play(Global.CaveAmbienceSFX)
+			if Global.TerminalNumber == Global.TerminalsEnum.LEAF:
+				Ambience.play(Global.CaveAmbienceSFX)
+			elif Global.TerminalNumber == Global.TerminalsEnum.TOMB:
+				Ambience.play(Global.TombAmbienceSFX)
 			Global.TunnelTerminalNumber = false
 			generate_level()
 	

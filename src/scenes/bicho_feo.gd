@@ -10,8 +10,7 @@ func _on_area_body_entered(body):
 	if visible and started:
 		if body and body.is_in_group("players"):
 			started = false
-			var options = {"pitch_scale": 0.7}
-			Global.play_sound(Global.BichoFeoSFX, options)
+			Global.play_sound(Global.pick_random([Global.BichoFeoSFX ,Global.BichoFeo2SFX]))
 			body.kill()
 			$area.set_deferred("disabled", true)
 		
@@ -35,8 +34,7 @@ func _on_timer_timeout():
 
 func _on_area_starter_body_entered(body):
 	if !started and body and body.is_in_group("players"):
-		var options = {"pitch_scale": 0.7}
-		Global.play_sound(Global.BichoFeoSFX, options)
+		Global.play_sound(Global.pick_random([Global.BichoFeoSFX ,Global.BichoFeo2SFX]))
 		visible = true
 		$AnimationPlayer.play("new_animation")
 		$Timer.start()

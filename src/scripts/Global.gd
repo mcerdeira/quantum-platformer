@@ -38,7 +38,9 @@ var MainTheme = null
 var ShopTheme = null
 var MainThemeShort = null
 var BossTheme = null
+var ThunderSFX = null
 var CaveAmbienceSFX = null 
+var TombAmbienceSFX = null
 var HouseAmbienceSFX = null
 var ExteriorAmbienceSFX = null
 var FallingAmbienceSFX = null
@@ -54,6 +56,7 @@ var DialogSFX = null
 var JumpSFX = null
 var WalkSFX = null
 var BichoFeoSFX = null
+var BichoFeo2SFX = null
 var DoorOpensSFX = null
 var ClimbSFX = null
 var FallSFX = null
@@ -795,6 +798,7 @@ func load_sfx():
 	BossTheme = load("res://music/boss_theme.mp3")
 	BossThemeGhost = load("res://music/BossGhostLoop.wav")
 	CaveAmbienceSFX = load("res://sfx/cave_ambience.mp3")
+	TombAmbienceSFX = load("res://sfx/tomb_ambience.mp3")
 	HouseAmbienceSFX = load("res://sfx/house_ambience.mp3")
 	ExteriorAmbienceSFX = load("res://sfx/exterior_ambience.mp3")
 	PressStartSFX = load("res://sfx/press_start.wav")
@@ -855,13 +859,14 @@ func load_sfx():
 	ButtonSFX = load("res://sfx/button_sound.wav")
 	DoorOpensSFX = load("res://sfx/door_opens.wav")
 	BichoFeoSFX = load("res://sfx/BichoFeo.wav")
+	BichoFeo2SFX = load("res://sfx/BichoFeo2.wav")
 	GhostBossLaughSFX = load("res://sfx/ghost_boss_laugh.mp3")
 	
 	WhooshSFX = load("res://sfx/Whoosh.wav")
 	TombHitSFX = load("res://sfx/TombHit.wav")
 	TombBrokeSFX = load("res://sfx/TombBroke.wav")
 	GhostBossHitSFX = load("res://sfx/GhostBossHit.wav")
-	
+	ThunderSFX = load("res://sfx/thunder.wav") 
 	
 	bomb_tutorial = load("res://video/bomb_tutorial.ogv")
 	clone_tutorial = load("res://video/clone_tutorial.ogv")

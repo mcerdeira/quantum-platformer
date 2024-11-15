@@ -3,6 +3,9 @@ var q = 0
 
 func _ready():
 	Global.save_game()
+	
+func thunder_sound():
+	Global.play_sound(Global.ThunderSFX)
 
 func delete_player():
 	$player_marker.nope = true

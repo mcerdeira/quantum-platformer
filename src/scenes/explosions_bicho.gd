@@ -14,8 +14,8 @@ func explode():
 
 func _on_timer_2_timeout():
 	if randi() % 2 == 0:
-		var options = {"pitch_scale": 0.7}
-		var sfx = Global.pick_random([Global.BichoFeoSFX, Global.DoorOpensSFX])
-		Global.play_sound(sfx, options)
+		var bicho = Global.pick_random([Global.BichoFeoSFX, Global.BichoFeo2SFX])
+		var sfx = Global.pick_random([bicho, Global.DoorOpensSFX])
+		Global.play_sound(sfx)
 		
 	explode()
