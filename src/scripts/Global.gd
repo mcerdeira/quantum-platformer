@@ -966,6 +966,7 @@ func play_sound(stream: AudioStream, options:= {}, _global_position = null) -> A
 		return
 	
 	var audio_stream_player = AudioStreamPlayer.new()
+	audio_stream_player.process_mode = Node.PROCESS_MODE_ALWAYS
 
 	add_child(audio_stream_player)
 	audio_stream_player.stream = stream

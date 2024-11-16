@@ -28,6 +28,8 @@ func _physics_process(_delta):
 				pause_unpause()
 			
 func exit():
+	Music.stop()
+	Ambience.stop()
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), 0)
 	Global.CurrentState = Global.GameStates.TITLE
 	visible = false
@@ -97,7 +99,6 @@ func pause_unpause():
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		
-	await get_tree().create_timer(0.5).timeout
 	get_tree().paused = paused
 
 func _on_animation_player_animation_finished(_anim_name):

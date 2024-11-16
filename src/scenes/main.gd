@@ -349,8 +349,8 @@ func calc_selected(first_time = false):
 			var p = particle.instantiate()
 			sel.add_child(p)
 			
-#func _process(delta):
-	#print("FPS " + str(Engine.get_frames_per_second()))
+func _process(delta):
+	print("FPS " + str(Engine.get_frames_per_second()))
 
 func _physics_process(delta):
 	$CanvasLayer/Control/lbl_gameover.visible = Global.GAMEOVER
@@ -388,7 +388,7 @@ func _physics_process(delta):
 	if sel:
 		sel.text = str(Global.prisoner_total - Global.prisoner_counter) + "/" + str(Global.prisoner_total) 
 		
-	if Global.BOSS_ROOM or Global.CurrentState == Global.GameStates.OVERWORLD:
+	if Global.BOSS_ROOM or Global.CurrentState == Global.GameStates.OVERWORLD or Global.CurrentState == Global.GameStates.SHOP:
 		$CanvasLayer/Control/PrisonerHead.visible = false
 		
 	#if Input.is_action_just_pressed("fx"):

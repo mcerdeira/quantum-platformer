@@ -37,6 +37,10 @@ IN_PROGRESS:
 - Enemigo que te revolea Bombas
 
 BUGS/Ajustes:
+- Los fuegos que spawnea la bomba, si están invisibles no tiene que quemarte, deberian durar un segundo e irse
+- Las puertas, a veces, toman que estamos adentro. Hay que cambiar la forma de detectar la colision.
+- En mermaid se caen mucho los frames, ver si reducir los enemigos que ya arrancan prendidos fuego ayuda        
+- En mermaid el fuego debería durar mucho menos
 
 
 Features:
@@ -60,8 +64,6 @@ Features:
 - [Armar zona Mermaid] Fondo más claro, piso negro, lluvia y truenos. La mecánica principal son unas canillas que abrimos para inundar o no lugares 
   - Cascadas (ala Minecraft) que interactuen con bombas y enemigos
   - Cadenas para colgarse
-  - Truenos
-  - Lluvia
   - Puzzles que nos haga usar el clone o el teleport
   - Cascadas
   - Canillas: que hacen desaparecer las cascadas y la lluvia
@@ -84,6 +86,9 @@ Features:
 - Decoraciones: La sangre debería desaparecer al tocar la lava
 
 --------------------------------- DONE ---------------------------------
+- Truenos
+- Lluvia
+- Bug con la pausa y el sonido
 - Cuando hay un dialogo, bloquear al personaje para que no pueda moverse
 - Si nos quemamos en el boss room despues de que murio el jefe, no morir
 - Bloquear el uso de items si no es en el nivel
