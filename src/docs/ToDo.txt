@@ -43,7 +43,13 @@ BUGS/Ajustes:
 - En mermaid se caen mucho los frames, ver si reducir los enemigos que ya arrancan prendidos fuego ayuda        
 - En mermaid el fuego debería durar mucho menos
 - El jefe fantasma tiene que tener una muerte mas aparatosa (con rayos que salen) para que el chiste de que no murio funcione y ver que se posicione donde si o si se vea el dialogo
-
+- En mermaid todad las escaleras tienen que ser la planta
+- Hacer que la bomba de humo sea más simple 
+- El mini boss del nivel 1 se tiene que poder "matar" 
+- Tiene que haber un mini boss pez en mermaid, hay que hacerle comer la bomba
+- Tiene que haber un mini boss zombie o algo en el cementerio 
+- Matar al mini boss nos tiene que dar algo (monedas?) 
+- Situaciones más puzzleras en todos los niveles 
 
 Features:
 
@@ -52,7 +58,7 @@ Features:
 - Enemigo araña
 - Enemigo murcielago o volador
 - Enemigo torreta que dispara
-
+- Pañal de abejas en mermaid, no son lámparas y al caer salen abejas
 
 - Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
   - Alinear los discos, llama al bote.
