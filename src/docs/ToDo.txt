@@ -34,11 +34,11 @@
 ==================================================================================================================
 
 IN_PROGRESS:
+- Ver motivo de fuego que queda quemando la "nada"
+- Las interacciones de los enemigos con el fuego no deben pasar cuando están lejos del personaje
 
 BUGS/Ajustes:
-- Ver motivo de fuego que queda quemando la "nada", quiza es por el layer de los tiles de vines, ver si se puede manejar distinto o si estan mal en niveles "viejos"
-- Los fuegos que spawnea la bomba, si están invisibles no tiene que quemarte, deberian durar un segundo e irse
-- Las interacciones de los enemigos con el fuego no deben pasar cuando están lejos del personaje
+
 - Las puertas a veces toman que estamos adentro. Hay que cambiar la forma de detectar la colision.
 - En mermaid se caen mucho los frames, ver si reducir los enemigos que ya arrancan prendidos fuego ayuda        
 - En mermaid el fuego debería durar mucho menos
@@ -97,6 +97,7 @@ Features:
 - Decoraciones: La sangre debería desaparecer al tocar la lava
 
 --------------------------------- DONE ---------------------------------
+- Los fuegos que spawnea la bomba deberian durar un segundo e irse
 - Truenos
 - Lluvia
 - Bug con la pausa y el sonido

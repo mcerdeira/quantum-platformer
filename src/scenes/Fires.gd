@@ -13,10 +13,15 @@ func _physics_process(delta):
 		ttl -= 1 * delta
 		if ttl <= 0:
 			$collider.set_deferred("disabled", false)
-			$collider4.set_deferred("disabled", false)
-			$collider5.set_deferred("disabled", false)
 			$collider2.set_deferred("disabled", false)
 			$collider3.set_deferred("disabled", false)
+			$collider4.set_deferred("disabled", false)
+			$collider5.set_deferred("disabled", false)
+			$collider6.set_deferred("disabled", false)
+			$collider7.set_deferred("disabled", false)
+			$collider8.set_deferred("disabled", false)
+			$collider9.set_deferred("disabled", false)
+			
 			if visible:
 				Global.emit(global_position, 5)
 	
@@ -37,6 +42,8 @@ func _on_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_inde
 	if body is TileMap:
 		var coords = body.get_coords_for_body_rid(body_rid)
 		if body.get_cell_source_id(0, coords) == Global.BurnableID:
+			if !visible:
+				tt_total = 5
 			visible = true 
 			var c = body.map_to_local(coords)
 			var global_coords = c
@@ -51,5 +58,11 @@ func _on_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_inde
 			
 func _on_body_entered(body):
 	if body and (body.is_in_group("players") or body.is_in_group("enemies")):
+		if body.is_in_group("enemies"):
+			if !Global.is_ok_FX(global_position):
+				return
+			
+		if !visible:
+			tt_total = 5
 		visible = true
 		body.kill_fire()
