@@ -1,6 +1,7 @@
 extends Area2D
 var fires = preload("res://scenes/Fires.tscn")
 @export var free_fireball = false
+@export var from_spawner = false
 var ttl = 0.0
 
 func _ready():
@@ -28,6 +29,9 @@ func _on_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_inde
 	if body is TileMap:
 		var coords = body.get_coords_for_body_rid(body_rid)
 		if body.get_cell_source_id(0, coords) == Global.BurnableID:
+			if from_spawner:
+				get_parent().tt_total = 7
+			
 			var c = body.map_to_local(coords)
 			var global_coords = c
 			body.set_cell(0, coords, Global.BurnedID, Vector2(0, 0))

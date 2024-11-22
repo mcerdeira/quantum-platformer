@@ -1,6 +1,6 @@
 extends Node2D
 var fires = preload("res://scenes/FireBall.tscn")
-var lampfaller = preload("res://scenes/lamp_faller.tscn")
+var firespawner = preload("res://scenes/FireSpawner.tscn")
 
 func explode():
 	$blast.visible = true
@@ -17,16 +17,7 @@ func explode():
 	for c in childs:
 		Global.emit(c.global_position, 3)
 		
-		#TODO: Armar una estructura similar al lampfaller
 		var parent = get_node("/root/Main")
-		var p = lampfaller.instantiate()
+		var p = firespawner.instantiate()
 		p.global_position = c.global_position
 		parent.add_child(p)
-#
-		#var parent = get_parent().get_parent() #get_node("/root/Main")
-		#var p = fires.instantiate()
-		#p.global_position = c.global_position
-		#p.free_fireball = true
-		#p.visible = false
-		##p.tt_total = 1.5
-		#parent.add_child(p)

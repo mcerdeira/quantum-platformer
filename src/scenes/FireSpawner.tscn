@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c560cjh2ik1tp"]
+
+[ext_resource type="Script" path="res://scenes/FireSpawner.gd" id="1_4dill"]
+[ext_resource type="PackedScene" uid="uid://bgf6ly14u3fi1" path="res://scenes/FireBall.tscn" id="2_bp5d2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o0pip"]
+radius = 7.0
+
+[node name="FireSpawner" type="Area2D"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_4dill")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o0pip")
+
+[node name="FireBall" parent="." instance=ExtResource("2_bp5d2")]
+visible = false
+free_fireball = true
