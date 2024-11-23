@@ -17,6 +17,7 @@ var count  = 0
 @onready var draw_surface : paint = get_node("/root/Main/Surface")
 
 func _ready():
+	add_to_group("bloods")
 	set_as_top_level(true)
 
 func _physics_process(_delta: float) -> void:

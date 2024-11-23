@@ -89,11 +89,10 @@ Features:
 - Armar manual que se imprime y subirlos a drive y generar los QR: https://new.express.adobe.com/tools/generate-qr-code
                https://drive.google.com/file/d/1S8vxbmv_BJ105wv-vcsFPzTaY0lo-Ayk/view?usp=drive_link
 
-- Decoraciones: Splash al caer en la lava
 - Decoraciones: Backgrounds con parallax
-- Decoraciones: La sangre debería desaparecer al tocar la lava
 
 --------------------------------- DONE ---------------------------------
+- Decoraciones: La sangre debería desaparecer al tocar la lava
 - Las puertas a veces toman que estamos adentro. Hay que cambiar la forma de detectar la colision.
 - Las interacciones de los enemigos con el fuego no deben pasar cuando están lejos del personaje
 - Ver motivo de fuego que queda quemando la "nada"
@@ -343,3 +342,4 @@ Features:
 - Hacer que el tamaño del nivel sea variable (y parametrizable según que terminal sea) 
 - Ver tema de trepar la escalera y como eso hace un salto 
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
+- Decoraciones: Splash al caer en la lava
