@@ -36,21 +36,22 @@ func _on_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_inde
 			var global_coords = c
 			body.set_cell(0, coords, Global.BurnedID, Vector2(0, 0))
 			
-			var parent = get_parent().get_parent()
-			if parent:
-				if free_fireball:
-					parent = get_parent().master_parent
-					if !parent:
-						#TODO: Ver que pasa con esto!!!
-						parent = get_parent().get_parent()
-					
+			if Global.is_ok_FX(global_position):
+				var parent = get_parent().get_parent()
 				if parent:
-					var p = fires.instantiate()
-					p.position = global_coords
-					#parent.add_child(p)
-					parent.call_deferred("add_child", p)
-					
-					Global.emit(global_position, 5)
+					if free_fireball:
+						parent = get_parent().master_parent
+						if !parent:
+							#TODO: Ver que pasa con esto!!!
+							parent = get_parent().get_parent()
+						
+					if parent:
+						var p = fires.instantiate()
+						p.position = global_coords
+						#parent.add_child(p)
+						parent.call_deferred("add_child", p)
+						
+						Global.emit(global_position, 5)
 
 func _on_area_entered(area):
 	if free_fireball:

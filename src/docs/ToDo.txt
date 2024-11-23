@@ -34,14 +34,11 @@
 ==================================================================================================================
 
 IN_PROGRESS:
-- Ver motivo de fuego que queda quemando la "nada"
-- Las interacciones de los enemigos con el fuego no deben pasar cuando están lejos del personaje
+- En mermaid se caen mucho los frames, ver si reducir los enemigos que ya arrancan prendidos fuego ayuda        
+- En mermaid el fuego debería durar mucho menos
 
 BUGS/Ajustes:
 
-- Las puertas a veces toman que estamos adentro. Hay que cambiar la forma de detectar la colision.
-- En mermaid se caen mucho los frames, ver si reducir los enemigos que ya arrancan prendidos fuego ayuda        
-- En mermaid el fuego debería durar mucho menos
 - El jefe fantasma tiene que tener una muerte mas aparatosa (con rayos que salen) para que el chiste de que no murio funcione y ver que se posicione donde si o si se vea el dialogo
 - En mermaid todad las escaleras tienen que ser la planta
 - Hacer que la bomba de humo sea más simple 
@@ -97,6 +94,9 @@ Features:
 - Decoraciones: La sangre debería desaparecer al tocar la lava
 
 --------------------------------- DONE ---------------------------------
+- Las puertas a veces toman que estamos adentro. Hay que cambiar la forma de detectar la colision.
+- Las interacciones de los enemigos con el fuego no deben pasar cuando están lejos del personaje
+- Ver motivo de fuego que queda quemando la "nada"
 - Los fuegos que spawnea la bomba deberian durar un segundo e irse
 - Truenos
 - Lluvia

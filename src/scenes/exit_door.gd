@@ -1,13 +1,13 @@
 extends Area2D
 var closed = true
 var nope = false
-var target = null
 var opening = false
 var closing = false
 var closing_ttl = 0.5
 var opening_tl = 0.5
 var offset = 0.0
 var entering = false
+var target = null
 @export var terminal_number = -1
 @export var gotoBOSS = true
 @export var special_door = false 
@@ -59,9 +59,17 @@ func _physics_process(delta):
 			closing = false
 		return
 	
-	if !closed and target:
-		if Input.is_action_pressed("up") or entering:
-			entering = true
+	if !closed:
+		if Input.is_action_pressed("up") and !entering:
+			var overlapping_bodies = get_overlapping_bodies()
+			for body in overlapping_bodies:
+				if body.is_in_group("players"):
+					if !body.in_air:
+						target = body
+						entering = true
+					break
+					
+		if entering:
 			target.dont_camera = true
 			target.hide_eyes()
 			target.global_position.x = global_position.x
@@ -116,13 +124,3 @@ func reallyopen():
 	$sprite_open.visible = false
 	$sprite.material.set_shader_parameter("offset", 0)
 	$sprite.frame = 1
-
-func _on_body_entered(body):
-	if Global.player_obj and is_instance_valid(Global.player_obj) and Global.player_obj.is_on_floor_custom():
-		if !closed and !closing and !opening and body.is_in_group("players"):
-			target = body
-
-func _on_body_exited(body):
-	if Global.player_obj and is_instance_valid(Global.player_obj) and Global.player_obj.is_on_floor_custom():
-		if !closed and !closing and !opening and body.is_in_group("players"):
-			target = null

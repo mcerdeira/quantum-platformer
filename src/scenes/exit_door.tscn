@@ -201,6 +201,4 @@ position = Vector2(-4, -75)
 [node name="mark12" type="Marker2D" parent="explode"]
 position = Vector2(9, -56)
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="timeout" from="Timer" to="explode" method="_on_timer_timeout"]
