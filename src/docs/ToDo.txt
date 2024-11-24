@@ -33,8 +33,7 @@
 ==================================================================================================================
 ==================================================================================================================
 
-IN_PROGRESS:
-- En mermaid se caen mucho los frames, ver si reducir los enemigos que ya arrancan prendidos fuego ayuda        
+IN_PROGRESS:       
 - En mermaid el fuego debería durar mucho menos
 
 BUGS/Ajustes:
@@ -92,6 +91,7 @@ Features:
 - Decoraciones: Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- En mermaid se caen mucho los frames, ver si reducir los enemigos que ya arrancan prendidos fuego ayuda 
 - Decoraciones: La sangre debería desaparecer al tocar la lava
 - Las puertas a veces toman que estamos adentro. Hay que cambiar la forma de detectar la colision.
 - Las interacciones de los enemigos con el fuego no deben pasar cuando están lejos del personaje

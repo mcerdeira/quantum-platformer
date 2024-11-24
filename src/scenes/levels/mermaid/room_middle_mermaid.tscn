@@ -1,8 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://4dsnnn4hass5"]
+[gd_scene load_steps=36 format=3 uid="uid://4dsnnn4hass5"]
 
 [ext_resource type="Texture2D" uid="uid://cfr4242x4qruc" path="res://sprites/spritesheets/floor_dragon1-sheet.png" id="1_uvmva"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_dcsvg"]
 [ext_resource type="Texture2D" uid="uid://bx06swrbyq4p3" path="res://sprites/floor_spr_blasted.png" id="3_fkxwn"]
+[ext_resource type="Texture2D" uid="uid://bpklywyo2vuhm" path="res://sprites/stair_v3.png" id="3_ubcm0"]
+[ext_resource type="Texture2D" uid="uid://cl4yofko80xxp" path="res://sprites/stair_v4.png" id="4_0ynwf"]
 [ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="4_g4m4g"]
 [ext_resource type="Texture2D" uid="uid://cvgek1xj28trv" path="res://sprites/fireball_box.png" id="5_smt4e"]
 [ext_resource type="Texture2D" uid="uid://b0nxv8yj8yswl" path="res://sprites/spritesheets/floor_mermaid-sheet.png" id="6_6ppr5"]
@@ -10,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dw02vd8s8wsrw" path="res://sprites/vines.png" id="7_ytatv"]
 [ext_resource type="Texture2D" uid="uid://dpcrtwqa2mio7" path="res://sprites/vines_burn.png" id="8_oi3bu"]
 [ext_resource type="PackedScene" uid="uid://bfmdje7uoppc1" path="res://scenes/levels/prisoner_marker.tscn" id="9_5hija"]
+[ext_resource type="Texture2D" uid="uid://ddjpinqcpwyw5" path="res://sprites/stair_v2.png" id="9_cokcv"]
 [ext_resource type="PackedScene" uid="uid://c4vd4vxwdwdqh" path="res://scenes/levels/enemy_marker.tscn" id="10_7rwdb"]
 [ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="11_rqmf8"]
 [ext_resource type="PackedScene" uid="uid://q767q018lep8" path="res://scenes/exit_door.tscn" id="12_a5ym4"]
@@ -18,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://cv3n3jd3p3yty" path="res://scenes/Lamp.tscn" id="17_s28jx"]
 [ext_resource type="PackedScene" uid="uid://ccrniksfhd6lb" path="res://scenes/moving_plat.tscn" id="18_66vs5"]
 [ext_resource type="PackedScene" uid="uid://bhoti11gyh17k" path="res://scenes/waterfall.tscn" id="19_ndyav"]
+[ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="19_xqc8x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q5sct"]
 texture = ExtResource("6_6ppr5")
@@ -85,6 +89,20 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qr43o"]
 texture = ExtResource("2_dcsvg")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qnir1"]
+texture = ExtResource("3_ubcm0")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_utnge"]
+texture = ExtResource("4_0ynwf")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -233,6 +251,13 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wpfr1"]
+texture = ExtResource("9_cokcv")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
 [sub_resource type="TileSet" id="TileSet_4lr5i"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 524595
@@ -243,6 +268,9 @@ sources/3 = SubResource("TileSetAtlasSource_ba0bd")
 sources/23 = SubResource("TileSetAtlasSource_iwogt")
 sources/24 = SubResource("TileSetAtlasSource_6c8e6")
 sources/0 = SubResource("TileSetAtlasSource_q5sct")
+sources/10 = SubResource("TileSetAtlasSource_qnir1")
+sources/8 = SubResource("TileSetAtlasSource_wpfr1")
+sources/11 = SubResource("TileSetAtlasSource_utnge")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e5oqw"]
 texture = ExtResource("7_ytatv")
@@ -333,10 +361,13 @@ z_as_relative = false
 position = Vector2(272, 176)
 
 [node name="Waterfall" parent="." instance=ExtResource("19_ndyav")]
-position = Vector2(334, -2)
-
-[node name="Waterfall2" parent="." instance=ExtResource("19_ndyav")]
-position = Vector2(750, -4)
+position = Vector2(334, 126)
 
 [node name="Waterfall3" parent="." instance=ExtResource("19_ndyav")]
-position = Vector2(942, 9)
+position = Vector2(942, 81)
+
+[node name="Stair" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("19_xqc8x")]
+position = Vector2(752, 640)
+scale = Vector2(1, 20)
+tilemap = NodePath("..")
+whatiam = 2
