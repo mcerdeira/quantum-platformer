@@ -103,6 +103,7 @@ var PlayerHurtSFX = null
 var PauseSFX = null
 var GhostBossLaughSFX = null
 var BossThemeGhost = null
+var GurgleSFX = null
 
 var video_tutorials = []
 
@@ -340,6 +341,7 @@ var UNLOCKS_PER_LEVEL = [null, map, double_jump, radar, invisibility, binocular,
 var GOLD_PER_LEVEL = [0, 10, 25, 50, 125, 200, 220]
 var perks_equiped = [null, null, null, null, null, null, null]
 var FromPipe = false
+var FromBonus = false
 
 var LASERS = true
 var GHOSTS = true
@@ -863,6 +865,7 @@ func load_sfx():
 	BichoFeoSFX = load("res://sfx/BichoFeo.wav")
 	BichoFeo2SFX = load("res://sfx/BichoFeo2.wav")
 	GhostBossLaughSFX = load("res://sfx/ghost_boss_laugh.mp3")
+	GurgleSFX = load("res://sfx/gurgle.wav")
 	
 	WhooshSFX = load("res://sfx/Whoosh.wav")
 	TombHitSFX = load("res://sfx/TombHit.wav")

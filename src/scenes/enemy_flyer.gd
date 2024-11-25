@@ -187,19 +187,20 @@ func kill_fire(tt_total = null):
 			fire_obj = p
 
 func dead_fire():
-	if randi() % 2 == 0:
-		$Item.visible = true
-	dead = true
-	gravity = 10.0
-	$wing2.visible = false
-	$wing1.visible = false
-	$sprite/Nose.visible = false
-	$sprite.animation = "dead_fire" + spr_sufix
-	$sprite.play()
-	set_collision_layer_value(5, true)
-	set_collision_mask_value(5, true)
-	set_collision_layer_value(1, false)
-	set_collision_mask_value(1, false)
+	if Global.TerminalNumber != Global.TerminalsEnum.MERMAID:
+		if randi() % 2 == 0:
+			$Item.visible = true
+		dead = true
+		gravity = 10.0
+		$wing2.visible = false
+		$wing1.visible = false
+		$sprite/Nose.visible = false
+		$sprite.animation = "dead_fire" + spr_sufix
+		$sprite.play()
+		set_collision_layer_value(5, true)
+		set_collision_mask_value(5, true)
+		set_collision_layer_value(1, false)
+		set_collision_mask_value(1, false)
 	
 func hearing_alerted(_body):
 	pass

@@ -34,14 +34,10 @@
 ==================================================================================================================
 
 IN_PROGRESS:       
-- En mermaid el fuego debería durar mucho menos
-
-BUGS/Ajustes:
-
-- El jefe fantasma tiene que tener una muerte mas aparatosa (con rayos que salen) para que el chiste de que no murio funcione y ver que se posicione donde si o si se vea el dialogo
-- En mermaid todad las escaleras tienen que ser la planta
 - Hacer que la bomba de humo sea más simple 
 - El mini boss del nivel 1 se tiene que poder "matar" 
+
+BUGS/Ajustes:
 - Tiene que haber un mini boss pez en mermaid, hay que hacerle comer la bomba
 - Tiene que haber un mini boss zombie o algo en el cementerio 
 - Matar al mini boss nos tiene que dar algo (monedas?) 
@@ -91,6 +87,10 @@ Features:
 - Decoraciones: Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- El jefe fantasma tiene que tener una muerte mas aparatosa (con rayos que salen) para que el chiste de que no murio funcione y ver que se posicione donde si o si se vea el dialogo
+- Cuando volves del bonus, deberías entrar por el tubo y tirar un comentario onda "al menos agarre monedas" algo por el estilo
+- En mermaid el fuego debería durar mucho menos
+- En mermaid todad las escaleras tienen que ser la planta
 - En mermaid se caen mucho los frames, ver si reducir los enemigos que ya arrancan prendidos fuego ayuda 
 - Decoraciones: La sangre debería desaparecer al tocar la lava
 - Las puertas a veces toman que estamos adentro. Hay que cambiar la forma de detectar la colision.

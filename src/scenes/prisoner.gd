@@ -307,8 +307,9 @@ func kill_fire(tt_total = null):
 			fire_obj = p
 	
 func dead_fire():
-	dead = true
-	dead_animation = "dead_fire"
+	if Global.TerminalNumber != Global.TerminalsEnum.MERMAID:
+		dead = true
+		dead_animation = "dead_fire"
 
 func super_jump():
 	if !dead:

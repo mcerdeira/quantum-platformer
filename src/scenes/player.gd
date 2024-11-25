@@ -145,6 +145,18 @@ func show_message_custom(_msg, override_time = null):
 	await get_tree().create_timer(timeout).timeout
 	$display.visible = false 
 	
+func show_message_bonus():
+	if Global.CurrentState == Global.GameStates.OVERWORLD:
+		if Global.FromBonus:
+			$display.visible = true
+			if randi() % 2 == 0:
+				$display/back/lbl_item.text = "Interesante... y ¡RARO!"
+			else:
+				$display/back/lbl_item.text = "Bueno, al menos consegui moneditas..."
+				
+			await get_tree().create_timer(message_timeout).timeout
+			$display.visible = false
+	
 func show_message_death():
 	if Global.CurrentState == Global.GameStates.OVERWORLD:
 		if Global.OverWorldFromGameOver:
@@ -808,13 +820,14 @@ func kill():
 	bleed(25)
 	
 func dead_fire():
-	if Global.BOSS_ROOM and Global.BOSS_DEAD:
-		if fire_obj != null and is_instance_valid(fire_obj):
-			fire_obj.extinguish_fire()
-	else:
-		Global.play_sound(Global.LavaFallSFX)
-		dead = true
-		dead_animation = "dead_fire"
+	if Global.TerminalNumber != Global.TerminalsEnum.MERMAID:
+		if Global.BOSS_ROOM and Global.BOSS_DEAD:
+			if fire_obj != null and is_instance_valid(fire_obj):
+				fire_obj.extinguish_fire()
+		else:
+			Global.play_sound(Global.LavaFallSFX)
+			dead = true
+			dead_animation = "dead_fire"
 	
 func reset_to_last():
 	Global.play_sound(Global.PlayerHurtSFX)

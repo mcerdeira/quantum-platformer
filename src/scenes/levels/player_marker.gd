@@ -42,7 +42,7 @@ func _process(_delta):
 				if Global.FromPipe:
 					global_position = $"../player_marker_pipe".global_position
 					Global.FromPipe = false
-					if Global.TOMB_STATUS:
+					if Global.TOMB_STATUS and !Global.FromBonus:
 						var pri = prisoner_obj.instantiate()
 						pri.global_position = Vector2(global_position.x + 5, global_position.y - 16)
 						get_parent().add_child(pri)

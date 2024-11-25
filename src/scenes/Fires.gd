@@ -25,7 +25,11 @@ func _physics_process(delta):
 			if visible:
 				Global.emit(global_position, 5)
 	
-	tt_total -= 1 * delta
+	var _sp = 1
+	if Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
+		_sp = 2
+	
+	tt_total -= _sp * delta
 	if tt_total <= 0:
 		if visible:
 			Global.emit(global_position, 5)

@@ -357,15 +357,16 @@ func kill_fall():
 	queue_free()
 	
 func dead_fire():
-	if randi() % 2 == 0:
-		$Item.visible = true
-	dead = true
-	$sprite.animation = "dead_fire"
-	$sprite.play()
-	set_collision_layer_value(5, true)
-	set_collision_mask_value(5, true)
-	set_collision_layer_value(1, false)
-	set_collision_mask_value(1, false)
+	if Global.TerminalNumber != Global.TerminalsEnum.MERMAID:
+		if randi() % 2 == 0:
+			$Item.visible = true
+		dead = true
+		$sprite.animation = "dead_fire"
+		$sprite.play()
+		set_collision_layer_value(5, true)
+		set_collision_mask_value(5, true)
+		set_collision_layer_value(1, false)
+		set_collision_mask_value(1, false)
 
 func kill_fire(tt_total = null):
 	if fire_obj == null or !is_instance_valid(fire_obj):

@@ -65,6 +65,10 @@ func _physics_process(delta):
 			for body in overlapping_bodies:
 				if body.is_in_group("players"):
 					if !body.in_air:
+						if special_door:
+							Global.FromPipe = true
+							Global.FromBonus = true
+							
 						target = body
 						entering = true
 					break

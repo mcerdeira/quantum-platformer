@@ -9,8 +9,26 @@ var end_ttl = 5
 var change_ttl = 0
 var dialog_sfx = null
 var cinematic = false
+var precoso = true
+var precoso_ttl = 6
+var audio_stream_player : AudioStreamPlayer = null
 
 func _ready():
+	audio_stream_player = AudioStreamPlayer.new()
+	add_child(audio_stream_player)
+	audio_stream_player.stream = Global.GurgleSFX
+	audio_stream_player.bus = "SFX"
+	audio_stream_player.play()
+	
+	$LightBossGhost.play()
+	$LightBossGhost6.play()
+	$LightBossGhost7.play()
+	$LightBossGhost8.play()
+	$LightBossGhost5.play()
+	$LightBossGhost2.play()
+	$LightBossGhost3.play()
+	$LightBossGhost4.play()
+	
 	for i in range(20):
 		current_messages.append("")
 		
@@ -36,48 +54,70 @@ func _ready():
 	current_message_count = 18
 
 func _physics_process(delta):
-	if !cinematic:
-		if ttl > 0:
-			ttl -= 1 * delta
-			if ttl <= 0:
-				start()
+	if precoso:
+		$BossExplosionShader.position.x = Global.pick_random([1, -1]) * randi() % 15
+		$BossExplosionShader.position.y = Global.pick_random([1, -1]) * randi() % 15
+		precoso_ttl -= 1 * delta
+		audio_stream_player.pitch_scale += 1 * delta
+		
+		if precoso_ttl <= 0:
+			audio_stream_player.stop()
+			audio_stream_player.queue_free()
+			precoso = false
+			$BossExplosionShader.position.x = 0
+			$BossExplosionShader.position.y = 0
+			$LightBossGhost.visible = false
+			$LightBossGhost6.visible = false
+			$LightBossGhost7.visible = false
+			$LightBossGhost8.visible = false
+			$LightBossGhost5.visible = false
+			$LightBossGhost2.visible = false
+			$LightBossGhost3.visible = false
+			$LightBossGhost4.visible = false
 	else:
-		if change_ttl > 0:
-			change_ttl -= 1 * delta
-			if change_ttl <= 0:
-				$back/lbl_item.text = ""
-				dialog_sfx = Global.play_sound(Global.DialogSFX)
-			return
-				
-		$back2.visible = $back.visible 
-		if !current_message:
-			end_ttl -= 1 * delta
-			if end_ttl <= 0:
-				Global.scene_next(Global.TerminalNumber, false, false, false, true)
-						
-		if current_message:
-			ttl -= 1 * delta
-			if ttl <= 0:
-				ttl = 0.05
-				$back/lbl_item.text += current_message.substr(0, 1)
-				current_message = current_message.substr(1, current_message.length() - 1)
-				if !current_message:
-					current_message_count -= 1
-					if current_message_count < 0:
-						Global.player_obj.locked_ctrls = false
-						Global.kill(dialog_sfx)
-						Global.player_obj.dont_camera = false
-						await get_tree().create_timer(1.3).timeout
-						$back.visible = false
-					else:
-						Global.kill(dialog_sfx)
-						current_message = current_messages[current_message_count]
-						change_ttl = 1.3
+		if !cinematic:
+			if ttl > 0:
+				ttl -= 1 * delta
+				if ttl <= 0:
+					start()
+		else:
+			if change_ttl > 0:
+				change_ttl -= 1 * delta
+				if change_ttl <= 0:
+					$back/lbl_item.text = ""
+					dialog_sfx = Global.play_sound(Global.DialogSFX)
+				return
+					
+			$back2.visible = $back.visible 
+			if !current_message:
+				end_ttl -= 1 * delta
+				if end_ttl <= 0:
+					Global.scene_next(Global.TerminalNumber, false, false, false, true)
+							
+			if current_message:
+				ttl -= 1 * delta
+				if ttl <= 0:
+					ttl = 0.05
+					$back/lbl_item.text += current_message.substr(0, 1)
+					current_message = current_message.substr(1, current_message.length() - 1)
+					if !current_message:
+						current_message_count -= 1
+						if current_message_count < 0:
+							Global.player_obj.locked_ctrls = false
+							Global.kill(dialog_sfx)
+							Global.player_obj.dont_camera = false
+							await get_tree().create_timer(1.3).timeout
+							$back.visible = false
+						else:
+							Global.kill(dialog_sfx)
+							current_message = current_messages[current_message_count]
+							change_ttl = 1.3
 func start():
 	Global.player_obj.locked_ctrls = true
 	$AnimationPlayer.play("new_animation")
-	Global.play_sound(Global.BOSS1RoarSFX)
-	Ambience.play(Global.CaveAmbienceSFX)
+	var options = {"pitch_scale": 1.5}
+	Global.play_sound(Global.BOSS1RoarSFX, options)
+	Ambience.play(Global.TombAmbienceSFX)
 
 func _on_animation_player_animation_finished(anim_name):
 	if forward:
@@ -88,3 +128,6 @@ func _on_timer_timeout():
 	global_position = CinematicPos.global_position
 	$AnimationPlayer.play_backwards("new_animation")
 	cinematic = true
+	$back2.visible = true
+	$back.visible = true
+	$BossExplosionShader.animation = "dialog"

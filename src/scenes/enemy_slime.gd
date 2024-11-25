@@ -166,13 +166,14 @@ func kill_fire(tt_total = null):
 			fire_obj = p
 
 func dead_fire():
-	dead = true
-	$sprite.animation = "dead_fire"
-	$sprite.play()
-	set_collision_layer_value(5, true)
-	set_collision_mask_value(5, true)
-	set_collision_layer_value(1, false)
-	set_collision_mask_value(1, false)
+	if Global.TerminalNumber != Global.TerminalsEnum.MERMAID:
+		dead = true
+		$sprite.animation = "dead_fire"
+		$sprite.play()
+		set_collision_layer_value(5, true)
+		set_collision_mask_value(5, true)
+		set_collision_layer_value(1, false)
+		set_collision_mask_value(1, false)
 	
 func hearing_alerted(_body):
 	pass
