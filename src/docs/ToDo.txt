@@ -34,7 +34,6 @@
 ==================================================================================================================
 
 IN_PROGRESS:       
-- Hacer que la bomba de humo sea más simple 
 - El mini boss del nivel 1 se tiene que poder "matar" 
 
 BUGS/Ajustes:
@@ -87,6 +86,7 @@ Features:
 - Decoraciones: Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- Hacer que la bomba de humo sea más simple 
 - El jefe fantasma tiene que tener una muerte mas aparatosa (con rayos que salen) para que el chiste de que no murio funcione y ver que se posicione donde si o si se vea el dialogo
 - Cuando volves del bonus, deberías entrar por el tubo y tirar un comentario onda "al menos agarre monedas" algo por el estilo
 - En mermaid el fuego debería durar mucho menos
