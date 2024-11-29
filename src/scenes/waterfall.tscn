@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhoti11gyh17k"]
+[gd_scene load_steps=12 format=3 uid="uid://bhoti11gyh17k"]
 
 [ext_resource type="Texture2D" uid="uid://cao8kgiajlrt1" path="res://sprites/waterfall2_spr_0.png" id="1_7cqsv"]
 [ext_resource type="Texture2D" uid="uid://b1ok1dyle82cx" path="res://sprites/waterfall_spr_0.png" id="1_70wo7"]
+[ext_resource type="Script" path="res://scenes/waterfall.gd" id="1_ebo8q"]
 [ext_resource type="Texture2D" uid="uid://df7uvkml0qpic" path="res://sprites/waterfall2_spr_1.png" id="2_r6o2j"]
 [ext_resource type="Texture2D" uid="uid://c87fd86yy6dcl" path="res://sprites/waterfall_spr_1.png" id="2_y3224"]
+[ext_resource type="Texture2D" uid="uid://cllscniifsnk6" path="res://sprites/waterfallD_spr_0.png" id="3_w2gii"]
+[ext_resource type="Texture2D" uid="uid://sypvd2wnhdn7" path="res://sprites/waterfallD_spr_1.png" id="4_w2473"]
 [ext_resource type="PackedScene" uid="uid://dsb6dbx10a67k" path="res://scenes/ray_particles.tscn" id="5_ewilc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_snrvq"]
@@ -14,6 +17,20 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("2_y3224")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tjeq7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_w2gii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_w2473")
 }],
 "loop": true,
 "name": &"default",
@@ -35,12 +52,19 @@ animations = [{
 }]
 
 [node name="Waterfall" type="Node2D"]
+modulate = Color(1, 1, 1, 0.431373)
+script = ExtResource("1_ebo8q")
 
 [node name="sprite2" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, 15)
 sprite_frames = SubResource("SpriteFrames_snrvq")
 autoplay = "default"
 frame_progress = 0.764775
+
+[node name="sprite3" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 496)
+sprite_frames = SubResource("SpriteFrames_tjeq7")
+autoplay = "default"
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, 261)
@@ -52,10 +76,7 @@ frame_progress = 0.175715
 [node name="RayParticles" parent="." instance=ExtResource("5_ewilc")]
 
 [node name="RayParticles2" parent="." instance=ExtResource("5_ewilc")]
-position = Vector2(-13, 468)
+position = Vector2(-20, 0)
 
 [node name="RayParticles3" parent="." instance=ExtResource("5_ewilc")]
-position = Vector2(19, 473)
-
-[node name="RayParticles4" parent="." instance=ExtResource("5_ewilc")]
-position = Vector2(4, 470)
+position = Vector2(21, 2)
