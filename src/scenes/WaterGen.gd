@@ -17,14 +17,16 @@ func create_particle():
 	var water_col = ps.body_create()
 	ps.body_set_mode(water_col,PhysicsServer2D.BODY_MODE_RIGID)
 	ps.body_set_space(water_col,get_world_2d().space)
-	#create circle shape for collision
-	var shape = ps.circle_shape_create()
-	ps.shape_set_data(shape,8)
-	#add shape to rigid body
-	ps.body_add_shape(water_col,shape,Transform2D.IDENTITY)
+	
 	#set collision layer and mask
-	ps.body_set_collision_layer(water_col, 2048)
-	ps.body_set_collision_mask(water_col, 2048)
+	var layer = 1 << 16
+	ps.body_set_collision_layer(water_col, layer)
+	ps.body_set_collision_mask(water_col, layer)
+	
+	var shape = ps.circle_shape_create()
+	ps.shape_set_data(shape,5)
+	ps.body_add_shape(water_col,shape,Transform2D.IDENTITY)
+	
 	#set physics parameters
 	ps.body_set_param(water_col,PhysicsServer2D.BODY_PARAM_FRICTION,0.0)
 	ps.body_set_param(water_col,PhysicsServer2D.BODY_PARAM_MASS, 0.001)
