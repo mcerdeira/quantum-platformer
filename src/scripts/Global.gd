@@ -25,6 +25,7 @@ var boss_bar = null
 var BULLETS_MOVE = true
 var gotoBOSS = false
 var BOSS_DEAD = false
+var total_water_particles = 0
 
 var SpecialLevelTheme = null
 var WhooshSFX = null
