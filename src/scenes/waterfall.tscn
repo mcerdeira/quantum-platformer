@@ -1,13 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhoti11gyh17k"]
+[gd_scene load_steps=9 format=3 uid="uid://bhoti11gyh17k"]
 
 [ext_resource type="Texture2D" uid="uid://cao8kgiajlrt1" path="res://sprites/waterfall2_spr_0.png" id="1_7cqsv"]
 [ext_resource type="Texture2D" uid="uid://b1ok1dyle82cx" path="res://sprites/waterfall_spr_0.png" id="1_70wo7"]
 [ext_resource type="Script" path="res://scenes/waterfall.gd" id="1_ebo8q"]
+[ext_resource type="Texture2D" uid="uid://de6a7trcv6ukp" path="res://sprites/waterfall2_spr_2.png" id="2_3wlp7"]
 [ext_resource type="Texture2D" uid="uid://df7uvkml0qpic" path="res://sprites/waterfall2_spr_1.png" id="2_r6o2j"]
 [ext_resource type="Texture2D" uid="uid://c87fd86yy6dcl" path="res://sprites/waterfall_spr_1.png" id="2_y3224"]
-[ext_resource type="Texture2D" uid="uid://cllscniifsnk6" path="res://sprites/waterfallD_spr_0.png" id="3_w2gii"]
-[ext_resource type="Texture2D" uid="uid://sypvd2wnhdn7" path="res://sprites/waterfallD_spr_1.png" id="4_w2473"]
-[ext_resource type="PackedScene" uid="uid://dsb6dbx10a67k" path="res://scenes/ray_particles.tscn" id="5_ewilc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_snrvq"]
 animations = [{
@@ -17,20 +15,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("2_y3224")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_tjeq7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_w2gii")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_w2473")
 }],
 "loop": true,
 "name": &"default",
@@ -55,28 +39,63 @@ animations = [{
 modulate = Color(1, 1, 1, 0.431373)
 script = ExtResource("1_ebo8q")
 
+[node name="Waterfall2Spr2" type="Sprite2D" parent="."]
+position = Vector2(2, 1402.8)
+scale = Vector2(0.5, 5.28242)
+texture = ExtResource("2_3wlp7")
+
 [node name="sprite2" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, 15)
+scale = Vector2(0.5, 1)
 sprite_frames = SubResource("SpriteFrames_snrvq")
 autoplay = "default"
 frame_progress = 0.764775
 
-[node name="sprite3" type="AnimatedSprite2D" parent="."]
-position = Vector2(2, 496)
-sprite_frames = SubResource("SpriteFrames_tjeq7")
-autoplay = "default"
-
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(2, 261)
-scale = Vector2(1, 0.746667)
+position = Vector2(2, 234)
+scale = Vector2(0.5, 0.746667)
 sprite_frames = SubResource("SpriteFrames_ibmd5")
 autoplay = "default"
 frame_progress = 0.175715
 
-[node name="RayParticles" parent="." instance=ExtResource("5_ewilc")]
+[node name="sprite3" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 628)
+scale = Vector2(0.5, 0.746667)
+sprite_frames = SubResource("SpriteFrames_ibmd5")
+autoplay = "default"
+frame_progress = 0.175715
 
-[node name="RayParticles2" parent="." instance=ExtResource("5_ewilc")]
-position = Vector2(-20, 0)
+[node name="sprite4" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 1023)
+scale = Vector2(0.5, 0.746667)
+sprite_frames = SubResource("SpriteFrames_ibmd5")
+autoplay = "default"
+frame_progress = 0.175715
 
-[node name="RayParticles3" parent="." instance=ExtResource("5_ewilc")]
-position = Vector2(21, 2)
+[node name="sprite5" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 1418)
+scale = Vector2(0.5, 0.746667)
+sprite_frames = SubResource("SpriteFrames_ibmd5")
+autoplay = "default"
+frame_progress = 0.175715
+
+[node name="sprite6" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 1813)
+scale = Vector2(0.5, 0.746667)
+sprite_frames = SubResource("SpriteFrames_ibmd5")
+autoplay = "default"
+frame_progress = 0.175715
+
+[node name="sprite7" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 2208)
+scale = Vector2(0.5, 0.746667)
+sprite_frames = SubResource("SpriteFrames_ibmd5")
+autoplay = "default"
+frame_progress = 0.175715
+
+[node name="sprite8" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 2603)
+scale = Vector2(0.5, 0.746667)
+sprite_frames = SubResource("SpriteFrames_ibmd5")
+autoplay = "default"
+frame_progress = 0.175715
