@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b5ta7xpckn1ia"]
+[gd_scene load_steps=26 format=3 uid="uid://b5ta7xpckn1ia"]
 
 [ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="1_x3dy5"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_h54sa"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="9_p0oux"]
 [ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="10_r8dlq"]
 [ext_resource type="Script" path="res://scenes/WaterGen.gd" id="12_10xxc"]
-[ext_resource type="PackedScene" uid="uid://c4vd4vxwdwdqh" path="res://scenes/levels/enemy_marker.tscn" id="12_77uqy"]
 [ext_resource type="Texture2D" uid="uid://d0s0bv48hurgp" path="res://icon.svg" id="13_40dul"]
 [ext_resource type="Texture2D" uid="uid://c2owm266k2g1q" path="res://sprites/water_particle.png" id="13_ybt2p"]
 [ext_resource type="Shader" path="res://scenes/WaterColor.gdshader" id="14_oav85"]
@@ -166,14 +165,11 @@ format = 2
 
 [node name="qdtector" parent="." instance=ExtResource("9_p0oux")]
 visible = false
+light_mask = 0
+visibility_layer = 0
 
 [node name="player_marker" parent="." instance=ExtResource("10_r8dlq")]
 position = Vector2(205, 624)
-
-[node name="enemy_marker" parent="." instance=ExtResource("12_77uqy")]
-position = Vector2(449, 560)
-selected_enemy = "enemy"
-by_chance = false
 
 [node name="WaterGen" type="Marker2D" parent="."]
 position = Vector2(306, 294)

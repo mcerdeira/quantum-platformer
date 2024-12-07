@@ -1,7 +1,7 @@
 extends Node2D
 #Water Gen with Physics2DServer
 @export var particle_texture:Texture
-@export var max_water_particles = 1000
+@export var max_water_particles = 500
 var current_particle_count = 0
 var spawn_timer = 0
 @export var spawn_time = 1.0
@@ -24,8 +24,8 @@ func create_particle():
 	ps.body_set_collision_mask(water_col, layer)
 	
 	var shape = ps.circle_shape_create()
-	ps.shape_set_data(shape,5)
-	ps.body_add_shape(water_col,shape,Transform2D.IDENTITY)
+	ps.shape_set_data(shape, 5.0)
+	ps.body_add_shape(water_col,shape, Transform2D.IDENTITY, false)
 	
 	#set physics parameters
 	ps.body_set_param(water_col,PhysicsServer2D.BODY_PARAM_FRICTION,0.0)
@@ -34,6 +34,7 @@ func create_particle():
 	ps.body_set_state(water_col,PhysicsServer2D.BODY_STATE_TRANSFORM,trans)
 	#Visual
 	#create canvas item(all 2D objects are canvas items)
+	
 	var water_particle = vs.canvas_item_create()
 	#set the parent to this object
 	vs.canvas_item_set_parent(water_particle, get_canvas_item())
@@ -64,7 +65,7 @@ func _physics_process(delta):
 		trans.origin = trans.origin - global_position
 		RenderingServer.canvas_item_set_transform(col[1],trans)
 		#Delete particles if Y position > than 1500. 2D y down is positive
-		if trans.origin.y > 1500:
+		if trans.origin.y > 500:
 			#remove RIDs
 			PhysicsServer2D.free_rid(col[0])
 			RenderingServer.free_rid(col[1])
