@@ -177,7 +177,7 @@ gizmo_extents = 60.0
 script = ExtResource("12_10xxc")
 particle_texture = ExtResource("13_ybt2p")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="WaterColor" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_cs2uw")
 position = Vector2(639.5, 354)
 scale = Vector2(10.9922, 6.53125)

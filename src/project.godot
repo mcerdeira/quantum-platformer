@@ -24,10 +24,6 @@ Global="*res://scripts/Global.gd"
 Music="*res://scripts/Music.gd"
 Ambience="*res://scripts/Music.gd"
 
-[debug]
-
-shapes/collision/shape_color=Color(0.619608, 0, 0.447059, 1)
-
 [display]
 
 window/size/viewport_height=640

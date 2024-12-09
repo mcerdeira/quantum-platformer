@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://bveav6ctdlmbu"]
+[gd_scene load_steps=68 format=3 uid="uid://bveav6ctdlmbu"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_tvtda"]
 [ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="2_6led8"]
@@ -45,6 +45,8 @@
 [ext_resource type="Texture2D" uid="uid://chgbadtf8x5k6" path="res://sprites/cosito2.png" id="29_rgt4v"]
 [ext_resource type="Texture2D" uid="uid://ytl3s67gkq0y" path="res://sprites/cosito3.png" id="30_mxdic"]
 [ext_resource type="PackedScene" uid="uid://bm27sx6y5d26" path="res://scenes/river.tscn" id="31_3m334"]
+[ext_resource type="Shader" path="res://scenes/WaterColor.gdshader" id="41_xvntn"]
+[ext_resource type="Texture2D" uid="uid://d0s0bv48hurgp" path="res://icon.svg" id="42_6pf6b"]
 [ext_resource type="PackedScene" uid="uid://bhoti11gyh17k" path="res://scenes/waterfall.tscn" id="46_v8l5n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qr43o"]
@@ -369,6 +371,13 @@ fog_light_energy = 16.0
 fog_sun_scatter = 7.3
 fog_density = 0.0605
 volumetric_fog_density = 0.4546
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kggx7"]
+shader = ExtResource("41_xvntn")
+shader_parameter/water_speed = 0.01
+shader_parameter/color_detect_threshold = 0.35
+shader_parameter/water_dev_color = Color(1, 0, 1, 1)
+shader_parameter/water_color = Color(0, 0.360784, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_knga3"]
 shader = ExtResource("9_l7p0g")
@@ -829,6 +838,13 @@ position = Vector2(1093, 2616)
 
 [node name="River" parent="." instance=ExtResource("31_3m334")]
 position = Vector2(-172, 2595)
+
+[node name="WaterColor" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_kggx7")
+position = Vector2(2868.5, 1904)
+scale = Vector2(48.6484, 33.5781)
+texture = ExtResource("42_6pf6b")
 
 [node name="FX" type="ColorRect" parent="."]
 visible = false
