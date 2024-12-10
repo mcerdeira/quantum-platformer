@@ -71,4 +71,5 @@ func _physics_process(delta):
 			RenderingServer.free_rid(col[1])
 			#remove reference
 			water_particles.erase(col)
+			current_particle_count -= 1
 			Global.total_water_particles -=1

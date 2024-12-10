@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b5ta7xpckn1ia"]
+[gd_scene load_steps=25 format=3 uid="uid://b5ta7xpckn1ia"]
 
 [ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="1_x3dy5"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_h54sa"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="9_p0oux"]
 [ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="10_r8dlq"]
 [ext_resource type="Script" path="res://scenes/WaterGen.gd" id="12_10xxc"]
-[ext_resource type="Texture2D" uid="uid://d0s0bv48hurgp" path="res://icon.svg" id="13_40dul"]
 [ext_resource type="Texture2D" uid="uid://c2owm266k2g1q" path="res://sprites/water_particle.png" id="13_ybt2p"]
 [ext_resource type="Shader" path="res://scenes/WaterColor.gdshader" id="14_oav85"]
 
@@ -145,12 +144,12 @@ physics_layer_0/collision_mask = 128
 sources/4 = SubResource("TileSetAtlasSource_75di2")
 sources/5 = SubResource("TileSetAtlasSource_5x0v5")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cs2uw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rjb1p"]
 shader = ExtResource("14_oav85")
 shader_parameter/water_speed = 0.01
 shader_parameter/color_detect_threshold = 0.35
-shader_parameter/water_dev_color = Color(1, 0, 1, 1)
-shader_parameter/water_color = Color(0, 0.360784, 1, 1)
+shader_parameter/water_dev_color = Color(0, 0, 1, 1)
+shader_parameter/water_color = Color(0, 0, 1, 1)
 
 [node name="level" type="TileMap"]
 tile_set = SubResource("TileSet_4lr5i")
@@ -177,8 +176,9 @@ gizmo_extents = 60.0
 script = ExtResource("12_10xxc")
 particle_texture = ExtResource("13_ybt2p")
 
-[node name="WaterColor" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_cs2uw")
-position = Vector2(639.5, 354)
-scale = Vector2(10.9922, 6.53125)
-texture = ExtResource("13_40dul")
+[node name="WaterColor" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_rjb1p")
+offset_left = -45.0
+offset_top = -21.0
+offset_right = 1212.0
+offset_bottom = 690.0
