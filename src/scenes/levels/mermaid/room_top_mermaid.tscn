@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://c674smpxcptd1"]
+[gd_scene load_steps=44 format=3 uid="uid://c674smpxcptd1"]
 
 [ext_resource type="Texture2D" uid="uid://cfr4242x4qruc" path="res://sprites/spritesheets/floor_dragon1-sheet.png" id="1_fdwsf"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_uu78e"]
@@ -25,7 +25,10 @@
 [ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="23_hc46v"]
 [ext_resource type="PackedScene" uid="uid://cemy1qgtp317t" path="res://scenes/color_button.tscn" id="23_pc0ed"]
 [ext_resource type="Script" path="res://scenes/WaterGen.gd" id="25_8t6h0"]
-[ext_resource type="Texture2D" uid="uid://c2owm266k2g1q" path="res://sprites/water_particle.png" id="26_26721"]
+[ext_resource type="Texture2D" uid="uid://qgduk6k1nv0e" path="res://sprites/water_particle1.png" id="26_sqc61"]
+[ext_resource type="Texture2D" uid="uid://bgp7oxv602gio" path="res://sprites/water_particle2.png" id="27_42kiu"]
+[ext_resource type="Texture2D" uid="uid://c0ptorw7704tu" path="res://sprites/water_particle3.png" id="28_uynau"]
+[ext_resource type="Texture2D" uid="uid://bsk54c8p277pm" path="res://sprites/water_particle4.png" id="29_jt21q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wjtq2"]
 texture = ExtResource("6_fftef")
@@ -407,4 +410,7 @@ whatiam = 2
 position = Vector2(797, 291)
 gizmo_extents = 60.0
 script = ExtResource("25_8t6h0")
-particle_texture = ExtResource("26_26721")
+particle_texture1 = ExtResource("26_sqc61")
+particle_texture2 = ExtResource("27_42kiu")
+particle_texture3 = ExtResource("28_uynau")
+particle_texture4 = ExtResource("29_jt21q")

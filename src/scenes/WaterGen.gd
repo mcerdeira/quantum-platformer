@@ -1,6 +1,9 @@
 extends Node2D
 #Water Gen with Physics2DServer
-@export var particle_texture:Texture
+@export var particle_texture1:Texture
+@export var particle_texture2:Texture
+@export var particle_texture3:Texture
+@export var particle_texture4:Texture
 @export var max_water_particles = 500
 var current_particle_count = 0
 var spawn_timer = 0
@@ -43,11 +46,14 @@ func create_particle():
 	#create a rectangle that will contain the texture
 	var rect = Rect2()
 	rect.position = Vector2(-8,-8)
-	rect.size = particle_texture.get_size()/2
+	var particle_texture = Global.pick_random([particle_texture1, particle_texture2, particle_texture3, particle_texture4])
+	rect.size = particle_texture.get_size()/ Global.pick_random([2, 1.4])
+
 	#add the texture to the canvas item
 	vs.canvas_item_add_texture_rect(water_particle,rect,particle_texture)
+	
 	#set the texture color to pink
-	vs.canvas_item_set_self_modulate(water_particle,Color("ff00ff"))
+	#vs.canvas_item_set_self_modulate(water_particle,Color("ff00ff"))
 	#add RID pair to array
 	water_particles.append([water_col,water_particle])
 
