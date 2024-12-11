@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://4dsnnn4hass5"]
+[gd_scene load_steps=41 format=3 uid="uid://4dsnnn4hass5"]
 
 [ext_resource type="Texture2D" uid="uid://cfr4242x4qruc" path="res://sprites/spritesheets/floor_dragon1-sheet.png" id="1_uvmva"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_dcsvg"]
@@ -21,6 +21,12 @@
 [ext_resource type="PackedScene" uid="uid://cv3n3jd3p3yty" path="res://scenes/Lamp.tscn" id="17_s28jx"]
 [ext_resource type="PackedScene" uid="uid://ccrniksfhd6lb" path="res://scenes/moving_plat.tscn" id="18_66vs5"]
 [ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="19_xqc8x"]
+[ext_resource type="Script" path="res://scenes/WaterGen.gd" id="22_tfd6h"]
+[ext_resource type="Texture2D" uid="uid://qgduk6k1nv0e" path="res://sprites/water_particle1.png" id="23_s457w"]
+[ext_resource type="Texture2D" uid="uid://bgp7oxv602gio" path="res://sprites/water_particle2.png" id="24_xbj6k"]
+[ext_resource type="Texture2D" uid="uid://c0ptorw7704tu" path="res://sprites/water_particle3.png" id="25_dkofs"]
+[ext_resource type="Texture2D" uid="uid://bsk54c8p277pm" path="res://sprites/water_particle4.png" id="26_7gmqm"]
+[ext_resource type="Texture2D" uid="uid://bkvbv3vmlo380" path="res://sprites/water_particle5.png" id="27_7e14q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q5sct"]
 texture = ExtResource("6_6ppr5")
@@ -370,3 +376,14 @@ position = Vector2(336, 640)
 scale = Vector2(1, 20)
 tilemap = NodePath("..")
 whatiam = 2
+
+[node name="WaterGen" type="Marker2D" parent="."]
+visible = false
+position = Vector2(797, 291)
+gizmo_extents = 60.0
+script = ExtResource("22_tfd6h")
+particle_texture1 = ExtResource("23_s457w")
+particle_texture2 = ExtResource("24_xbj6k")
+particle_texture3 = ExtResource("25_dkofs")
+particle_texture4 = ExtResource("26_7gmqm")
+particle_texture5 = ExtResource("27_7e14q")

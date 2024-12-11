@@ -4,6 +4,7 @@ extends Node2D
 @export var particle_texture2:Texture
 @export var particle_texture3:Texture
 @export var particle_texture4:Texture
+@export var particle_texture5:Texture
 @export var max_water_particles = 500
 var current_particle_count = 0
 var spawn_timer = 0
@@ -44,10 +45,11 @@ func create_particle():
 	#set its transform
 	vs.canvas_item_set_transform(water_particle,trans)
 	#create a rectangle that will contain the texture
+	var part_array = [particle_texture1, particle_texture2, particle_texture3, particle_texture4, particle_texture5]	
 	var rect = Rect2()
 	rect.position = Vector2(-8,-8)
-	var particle_texture = Global.pick_random([particle_texture1, particle_texture2, particle_texture3, particle_texture4])
-	rect.size = particle_texture.get_size()/ Global.pick_random([2, 1.4])
+	var particle_texture = Global.pick_random(part_array)
+	rect.size = particle_texture.get_size()/ Global.pick_random([2, 1.1, 1.4])
 
 	#add the texture to the canvas item
 	vs.canvas_item_add_texture_rect(water_particle,rect,particle_texture)
