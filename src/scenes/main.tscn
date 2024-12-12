@@ -835,8 +835,8 @@ z_index = 4096
 material = SubResource("ShaderMaterial_knga3")
 offset_left = -279.0
 offset_top = -210.0
-offset_right = 4928.0
-offset_bottom = 2671.0
+offset_right = 5156.0
+offset_bottom = 3023.0
 mouse_filter = 2
 script = ExtResource("10_agwh5")
 
@@ -846,8 +846,8 @@ z_index = 4096
 material = SubResource("ShaderMaterial_hb6nw")
 offset_left = -475.0
 offset_top = -832.0
-offset_right = 5357.0
-offset_bottom = 3310.0
+offset_right = 6061.0
+offset_bottom = 3833.0
 script = ExtResource("12_wh2nv")
 
 [node name="Pause" type="ColorRect" parent="."]
@@ -855,8 +855,8 @@ visible = false
 z_index = 4096
 offset_left = -658.0
 offset_top = -553.0
-offset_right = 3109.0
-offset_bottom = 1534.0
+offset_right = 6536.0
+offset_bottom = 3812.0
 color = Color(0, 0, 0, 0.862745)
 
 [node name="FADE" type="ColorRect" parent="."]
@@ -877,96 +877,127 @@ libraries = {
 speed_scale = 0.5
 
 [node name="Waterfall" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(121, 182)
 
 [node name="Waterfall2" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(332, 298)
 
 [node name="Waterfall24" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(664, 653)
 
 [node name="Waterfall25" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(1155, 540)
 
 [node name="Waterfall28" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(2174, 540)
 
 [node name="Waterfall29" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(2899, 721)
 
 [node name="Waterfall30" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(3375, 479)
 
 [node name="Waterfall31" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(3186, 796)
 
 [node name="Waterfall26" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(891, 230)
 
 [node name="Waterfall27" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(1540, 623)
 
 [node name="Waterfall5" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(1720, 939)
 
 [node name="Waterfall6" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(1953, 227)
 
 [node name="Waterfall7" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(2293, 553)
 
 [node name="Waterfall13" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(3640, 185)
 
 [node name="Waterfall14" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(3703, 338)
 
 [node name="Waterfall15" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(3982, 844)
 
 [node name="Waterfall16" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(4088, 308)
 
 [node name="Waterfall17" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(4216, 535)
 
 [node name="Waterfall18" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(4458, 369)
 
 [node name="Waterfall19" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(4722, 452)
 
 [node name="Waterfall8" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(3011, 110)
 
 [node name="Waterfall9" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(2594, 358)
 
 [node name="Waterfall10" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(3498, 378)
 
 [node name="Waterfall11" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(4868, 138)
 
 [node name="Waterfall20" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(5049, 1293)
 
 [node name="Waterfall21" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(5313, 598)
 
 [node name="Waterfall22" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(5472, 251)
 
 [node name="Waterfall23" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(5623, 757)
 
 [node name="Waterfall12" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(5212, 239)
 
 [node name="Waterfall3" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(1261, 181)
 
 [node name="Waterfall4" parent="." instance=ExtResource("46_v8l5n")]
+z_index = -4096
 position = Vector2(559, 399)
 
 [connection signal="animation_finished" from="CanvasLayer/VideoContainer/AnimationPlayer" to="CanvasLayer/VideoContainer" method="_on_animation_player_animation_finished"]

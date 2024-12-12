@@ -5,12 +5,11 @@ var player = null
 var delay_camera = 0.2
 var trapped = true
 var level_parent = null
-var ghost = preload("res://scenes/enemy_ghost.tscn")
 var q = -1
+var watergen = null
 
 func _ready():
 	add_to_group("prisoners")
-	$sprite.play()
 	$display.visible = false
 
 func _physics_process(delta):
@@ -33,8 +32,10 @@ func _physics_process(delta):
 func get_item():
 	Global.prisoner_counter -= 1
 	Global.map_obj.notify_prisoner_done(q)
-	$display/back/sprite.visible = false
-	$sprite.animation = "default"
+	$display.visible = false
+	$sprite.animation = "on"
+	$sprite.play()
+	watergen.stop()
 
 func _on_body_entered(body):
 	if !opened and body.is_in_group("players") and !body.is_in_group("prisoners"):

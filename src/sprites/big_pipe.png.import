@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqcht8t25qe24"
-path="res://.godot/imported/faucet_spr_0.png-8af8a4e5e595a4c688e399b7194e911a.ctex"
+uid="uid://cg1vqems4301m"
+path="res://.godot/imported/big_pipe.png-0a3e0baf85209a4c77d885e7d9810f7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/faucet_spr_0.png"
-dest_files=["res://.godot/imported/faucet_spr_0.png-8af8a4e5e595a4c688e399b7194e911a.ctex"]
+source_file="res://sprites/big_pipe.png"
+dest_files=["res://.godot/imported/big_pipe.png-0a3e0baf85209a4c77d885e7d9810f7f.ctex"]
 
 [params]
 

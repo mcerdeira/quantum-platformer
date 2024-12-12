@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://c674smpxcptd1"]
+[gd_scene load_steps=46 format=3 uid="uid://c674smpxcptd1"]
 
 [ext_resource type="Texture2D" uid="uid://cfr4242x4qruc" path="res://sprites/spritesheets/floor_dragon1-sheet.png" id="1_fdwsf"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_uu78e"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://c0ptorw7704tu" path="res://sprites/water_particle3.png" id="28_uynau"]
 [ext_resource type="Texture2D" uid="uid://bsk54c8p277pm" path="res://sprites/water_particle4.png" id="29_jt21q"]
 [ext_resource type="Texture2D" uid="uid://bkvbv3vmlo380" path="res://sprites/water_particle5.png" id="30_feg2w"]
+[ext_resource type="Texture2D" uid="uid://cg1vqems4301m" path="res://sprites/big_pipe.png" id="31_bxldl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wjtq2"]
 texture = ExtResource("6_fftef")
@@ -323,8 +324,9 @@ tile_set = SubResource("TileSet_cmcrj")
 format = 2
 layer_0/tile_data = PackedInt32Array(720902, 4, 0, 655366, 4, 0, 589829, 4, 0, 589830, 4, 0, 786437, 4, 0, 524292, 4, 0, 524293, 4, 0, 458757, 4, 0, 393221, 4, 0, 327686, 4, 0, 327685, 4, 0, 262146, 4, 0, 262147, 4, 0, 196609, 4, 0, 196610, 4, 0, 327687, 4, 0, 262148, 4, 0, 262152, 4, 0, 262153, 4, 0, 196618, 4, 0, 851973, 4, 0, 851972, 4, 0, 917508, 4, 0, 917509, 4, 0, 983045, 4, 0, 1048581, 4, 0, 1048580, 4, 0, 1048579, 4, 0, 1048578, 4, 0, 1114114, 4, 0, 131096, 4, 0, 196632, 4, 0, 262168, 4, 0, 327704, 4, 0, 393240, 4, 0, 393241, 4, 0, 458777, 4, 0, 458778, 4, 0, 524314, 4, 0, 589850, 4, 0, 655386, 4, 0, 655387, 4, 0, 720923, 4, 0, 720924, 4, 0, 786460, 4, 0, 917534, 4, 0, 983070, 4, 0, 983071, 4, 0, 983072, 4, 0, 983073, 4, 0, 1048609, 4, 0, 1048610, 4, 0, 1114146, 4, 0, 1114147, 4, 0, 1179683, 4, 0, 196624, 4, 0, 262160, 4, 0, 327696, 4, 0, 327697, 4, 0, 393233, 4, 0, 458769, 4, 0, 458768, 4, 0, 524304, 4, 0, 524303, 4, 0, 589839, 4, 0, 589840, 4, 0, 655376, 4, 0, 786448, 4, 0, 786447, 4, 0, 851983, 4, 0, 851982, 4, 0, 851981, 4, 0, 917517, 4, 0, 917516, 4, 0, 983052, 4, 0, 983053, 4, 0, 1048589, 4, 0, 1048590, 4, 0, 1048591, 4, 0, 1048592, 4, 0, 1048593, 4, 0, 983057, 4, 0, 983058, 4, 0, 983059, 4, 0, 917523, 4, 0, 917524, 4, 0, 917525, 4, 0, 917526, 4, 0, 983062, 4, 0, 983047, 4, 0, 983048, 4, 0, 917512, 4, 0, 917513, 4, 0, 851977, 4, 0, 786441, 4, 0, 720905, 4, 0, 589833, 4, 0, 458761, 4, 0, 393225, 4, 0, 327689, 4, 0, 524296, 4, 0, 655368, 4, 0, 393238, 4, 0, 393237, 4, 0, 393236, 4, 0, 458773, 4, 0, 458772, 4, 0, 458771, 4, 0, 524307, 4, 0, 524308, 4, 0, 589844, 4, 0, 589845, 4, 0, 655381, 4, 0, 720917, 4, 0, 786453, 4, 0, 851989, 4, 0, 655388, 4, 0, 655390, 4, 0, 327710, 4, 0, 262175, 4, 0, 720926, 4, 0, 786462, 4, 0, 851998, 4, 0, 393246, 4, 0, 393247, 4, 0, 458783, 4, 0, 393248, 4, 0, 458784, 4, 0, 458785, 4, 0, 458786, 4, 0, 524322, 4, 0, 589858, 4, 0, 655394, 4, 0, 655393, 4, 0, 655392, 4, 0, 655391, 4, 0, 458763, 4, 0, 524299, 4, 0, 589835, 4, 0)
 
-[node name="prisoner_marker" parent="." instance=ExtResource("10_c2alj")]
+[node name="prisoner_marker" parent="." node_paths=PackedStringArray("watergen") instance=ExtResource("10_c2alj")]
 position = Vector2(653, 496)
+watergen = NodePath("../WaterGen")
 
 [node name="enemy_marker" parent="." instance=ExtResource("11_nsn1q")]
 position = Vector2(1074, 496)
@@ -416,3 +418,8 @@ particle_texture2 = ExtResource("27_42kiu")
 particle_texture3 = ExtResource("28_uynau")
 particle_texture4 = ExtResource("29_jt21q")
 particle_texture5 = ExtResource("30_feg2w")
+
+[node name="BigPipe" type="Sprite2D" parent="WaterGen"]
+z_index = -4095
+scale = Vector2(2, 2)
+texture = ExtResource("31_bxldl")

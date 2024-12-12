@@ -11,6 +11,9 @@ var spawn_timer = 0
 @export var spawn_time = 1.0
 var water_particles = []
 
+func stop():
+	max_water_particles = 0
+
 func create_particle():
 	var ps = PhysicsServer2D
 	var vs = RenderingServer
@@ -73,7 +76,7 @@ func _physics_process(delta):
 		trans.origin = trans.origin - global_position
 		RenderingServer.canvas_item_set_transform(col[1],trans)
 		#Delete particles if Y position > than 1500. 2D y down is positive
-		if trans.origin.y > 500:
+		if trans.origin.y > global_position.y + 500:
 			#remove RIDs
 			PhysicsServer2D.free_rid(col[0])
 			RenderingServer.free_rid(col[1])
