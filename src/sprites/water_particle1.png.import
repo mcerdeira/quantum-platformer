@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqcht8t25qe24"
-path="res://.godot/imported/faucet_spr_0.png-8af8a4e5e595a4c688e399b7194e911a.ctex"
+uid="uid://qgduk6k1nv0e"
+path="res://.godot/imported/water_particle1.png-93bd9a2675d3dbf2dceeb7dd8303518a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/faucet_spr_0.png"
-dest_files=["res://.godot/imported/faucet_spr_0.png-8af8a4e5e595a4c688e399b7194e911a.ctex"]
+source_file="res://sprites/water_particle1.png"
+dest_files=["res://.godot/imported/water_particle1.png-93bd9a2675d3dbf2dceeb7dd8303518a.ctex"]
 
 [params]
 
@@ -25,10 +25,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

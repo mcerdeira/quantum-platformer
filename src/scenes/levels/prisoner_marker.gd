@@ -6,6 +6,7 @@ var tomb = load("res://scenes/Tomb.tscn")
 var faucet = load("res://scenes/Faucet.tscn")
 var dead = false
 @export var fixed = false
+@export var watergen : Marker2D = null
 
 func _ready():
 	add_to_group("prisoner_markers")
@@ -14,6 +15,8 @@ func _ready():
 	
 func kill():
 	dead = true
+	if watergen:
+		watergen.queue_free()
 	queue_free()
 
 func _process(_delta):
@@ -36,6 +39,7 @@ func _process(_delta):
 		elif Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
 			post = faucet.instantiate()
 			post.global_position = Vector2(global_position.x, global_position.y + 16)
+			post.watergen = watergen
 			Main.add_child(post)
 		elif Global.TerminalNumber == Global.TerminalsEnum.SALAMANDER:
 			pass

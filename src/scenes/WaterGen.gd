@@ -1,11 +1,18 @@
 extends Node2D
 #Water Gen with Physics2DServer
-@export var particle_texture:Texture
+@export var particle_texture1:Texture
+@export var particle_texture2:Texture
+@export var particle_texture3:Texture
+@export var particle_texture4:Texture
+@export var particle_texture5:Texture
 @export var max_water_particles = 500
 var current_particle_count = 0
 var spawn_timer = 0
 @export var spawn_time = 1.0
 var water_particles = []
+
+func stop():
+	max_water_particles = 0
 
 func create_particle():
 	var ps = PhysicsServer2D
@@ -41,13 +48,17 @@ func create_particle():
 	#set its transform
 	vs.canvas_item_set_transform(water_particle,trans)
 	#create a rectangle that will contain the texture
+	var part_array = [particle_texture1, particle_texture2, particle_texture3, particle_texture4, particle_texture5]	
 	var rect = Rect2()
 	rect.position = Vector2(-8,-8)
-	rect.size = particle_texture.get_size()/2
+	var particle_texture = Global.pick_random(part_array)
+	rect.size = particle_texture.get_size()/ Global.pick_random([2, 1.1, 1.4])
+
 	#add the texture to the canvas item
 	vs.canvas_item_add_texture_rect(water_particle,rect,particle_texture)
+	
 	#set the texture color to pink
-	vs.canvas_item_set_self_modulate(water_particle,Color("ff00ff"))
+	#vs.canvas_item_set_self_modulate(water_particle,Color("ff00ff"))
 	#add RID pair to array
 	water_particles.append([water_col,water_particle])
 
@@ -65,7 +76,7 @@ func _physics_process(delta):
 		trans.origin = trans.origin - global_position
 		RenderingServer.canvas_item_set_transform(col[1],trans)
 		#Delete particles if Y position > than 1500. 2D y down is positive
-		if trans.origin.y > 500:
+		if trans.origin.y > global_position.y + 500:
 			#remove RIDs
 			PhysicsServer2D.free_rid(col[0])
 			RenderingServer.free_rid(col[1])

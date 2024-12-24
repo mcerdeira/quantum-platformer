@@ -1,9 +1,10 @@
 [gd_scene load_steps=27 format=3 uid="uid://b1gr0wx1o3wie"]
 
 [ext_resource type="Script" path="res://scenes/Faucet.gd" id="1_ebcof"]
-[ext_resource type="Texture2D" uid="uid://dqcht8t25qe24" path="res://sprites/faucet_spr_0.png" id="2_etr5e"]
 [ext_resource type="Texture2D" uid="uid://c3e645gx3onmi" path="res://sprites/faucet_open_spr_1.png" id="3_88cu0"]
 [ext_resource type="Texture2D" uid="uid://c31o8i6wflmd6" path="res://sprites/faucet_open_spr_0.png" id="4_fhwj4"]
+[ext_resource type="Texture2D" uid="uid://qcyy6jmrlmmd" path="res://sprites/faucet_open_spr_2.png" id="4_t3lds"]
+[ext_resource type="Texture2D" uid="uid://ucsdk84pc61a" path="res://sprites/faucet_open_spr_3.png" id="5_ngyix"]
 [ext_resource type="Shader" path="res://scenes/Item.gdshader" id="6_5hpnv"]
 [ext_resource type="Texture2D" uid="uid://cog7sk80ykf4o" path="res://sprites/bomb.png" id="7_fyuqi"]
 [ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="8_msngi"]
@@ -24,11 +25,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evds0"]
 size = Vector2(31, 10)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_6p2lu"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_01mev"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_etr5e")
+"texture": ExtResource("4_fhwj4")
 }],
 "loop": true,
 "name": &"default",
@@ -36,12 +37,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("4_fhwj4")
+}, {
+"duration": 1.0,
 "texture": ExtResource("3_88cu0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_fhwj4")
+"texture": ExtResource("4_t3lds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ngyix")
 }],
-"loop": true,
+"loop": false,
 "name": &"on",
 "speed": 5.0
 }]
@@ -82,7 +89,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_etr5e")
+"texture": ExtResource("4_fhwj4")
 }],
 "loop": true,
 "name": &"faucet",
@@ -175,9 +182,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo6p8"]
-size = Vector2(17, 3)
-
 [node name="Faucet" type="Area2D"]
 collision_layer = 8
 collision_mask = 8
@@ -190,9 +194,8 @@ shape = SubResource("RectangleShape2D_evds0")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_6p2lu")
+sprite_frames = SubResource("SpriteFrames_01mev")
 animation = &"on"
-frame_progress = 0.814012
 offset = Vector2(0, -11)
 
 [node name="display" type="Node2D" parent="."]
@@ -230,7 +233,7 @@ offset_top = 2.0
 offset_right = 489.0
 offset_bottom = 64.0
 theme_override_fonts/font = ExtResource("19_crwrh")
-text = "== CANILLA ==
+text = "== VALVULA ==
 ¿CERRAR?"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -240,15 +243,6 @@ autowrap_mode = 2
 position = Vector2(520, 39)
 sprite_frames = SubResource("SpriteFrames_fbffi")
 autoplay = "default"
-
-[node name="trapped_area" type="Area2D" parent="."]
-position = Vector2(0, -26)
-collision_layer = 9
-collision_mask = 9
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="trapped_area"]
-position = Vector2(0.5, 14.5)
-shape = SubResource("RectangleShape2D_bo6p8")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

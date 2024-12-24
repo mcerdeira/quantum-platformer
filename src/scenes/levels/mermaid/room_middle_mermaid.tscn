@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://4dsnnn4hass5"]
+[gd_scene load_steps=42 format=3 uid="uid://4dsnnn4hass5"]
 
 [ext_resource type="Texture2D" uid="uid://cfr4242x4qruc" path="res://sprites/spritesheets/floor_dragon1-sheet.png" id="1_uvmva"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_dcsvg"]
@@ -21,6 +21,13 @@
 [ext_resource type="PackedScene" uid="uid://cv3n3jd3p3yty" path="res://scenes/Lamp.tscn" id="17_s28jx"]
 [ext_resource type="PackedScene" uid="uid://ccrniksfhd6lb" path="res://scenes/moving_plat.tscn" id="18_66vs5"]
 [ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="19_xqc8x"]
+[ext_resource type="Script" path="res://scenes/WaterGen.gd" id="22_tfd6h"]
+[ext_resource type="Texture2D" uid="uid://qgduk6k1nv0e" path="res://sprites/water_particle1.png" id="23_s457w"]
+[ext_resource type="Texture2D" uid="uid://bgp7oxv602gio" path="res://sprites/water_particle2.png" id="24_xbj6k"]
+[ext_resource type="Texture2D" uid="uid://c0ptorw7704tu" path="res://sprites/water_particle3.png" id="25_dkofs"]
+[ext_resource type="Texture2D" uid="uid://bsk54c8p277pm" path="res://sprites/water_particle4.png" id="26_7gmqm"]
+[ext_resource type="Texture2D" uid="uid://bkvbv3vmlo380" path="res://sprites/water_particle5.png" id="27_7e14q"]
+[ext_resource type="Texture2D" uid="uid://cg1vqems4301m" path="res://sprites/big_pipe.png" id="28_jxi6c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q5sct"]
 texture = ExtResource("6_6ppr5")
@@ -304,8 +311,9 @@ tile_set = SubResource("TileSet_nobh8")
 format = 2
 layer_0/tile_data = PackedInt32Array(983072, 4, 0, 917536, 4, 0, 851999, 4, 0, 786463, 4, 0, 720928, 4, 0, 786436, 4, 0, 786437, 4, 0, 786439, 4, 0, 786438, 4, 0, 720902, 4, 0, 720903, 4, 0, 655367, 4, 0, 589831, 4, 0, 524295, 4, 0, 458759, 4, 0, 1245187, 4, 0, 1245188, 4, 0, 1245189, 4, 0, 1179653, 4, 0, 1179652, 4, 0, 1114116, 4, 0, 1114117, 4, 0, 1179654, 4, 0, 1245190, 4, 0, 1048580, 4, 0, 983044, 4, 0, 917508, 4, 0, 917509, 4, 0, 851973, 4, 0, 393223, 4, 0, 393222, 4, 0, 327686, 4, 0, 327685, 4, 0, 262149, 4, 0, 262150, 4, 0, 16, 4, 0, 65552, 4, 0, 65551, 4, 0, 131087, 4, 0, 131088, 4, 0, 131089, 4, 0, 196625, 4, 0, 196624, 4, 0, 262160, 4, 0, 262159, 4, 0, 327695, 4, 0, 327696, 4, 0, 393232, 4, 0, 393233, 4, 0, 458769, 4, 0, 458768, 4, 0, 458767, 4, 0, 458766, 4, 0, 524302, 4, 0, 524301, 4, 0, 589837, 4, 0, 655374, 4, 0, 720909, 4, 0, 786445, 4, 0, 851981, 4, 0, 851982, 4, 0, 917518, 4, 0, 917519, 4, 0, 917520, 4, 0, 983056, 4, 0, 1048591, 4, 0, 983062, 4, 0, 917526, 4, 0, 851990, 4, 0, 786454, 4, 0, 720918, 4, 0, 655382, 4, 0, 589846, 4, 0, 589848, 4, 0, 589849, 4, 0, 524313, 4, 0, 524314, 4, 0, 458778, 4, 0, 458777, 4, 0, 393241, 4, 0, 327705, 4, 0, 262169, 4, 0, 196633, 4, 0, 196634, 4, 0, 196635, 4, 0, 131099, 4, 0, 131100, 4, 0, 65564, 4, 0, 655385, 4, 0, 720921, 4, 0, 720922, 4, 0, 786458, 4, 0, 786459, 4, 0, 851995, 4, 0, 917531, 4, 0, 917532, 4, 0, 983068, 4, 0, 1048604, 4, 0, 1114140, 4, 0, 655393, 4, 0, 589857, 4, 0, 524321, 4, 0, 917521, 4, 0, 851985, 4, 0, 851986, 4, 0, 786450, 4, 0, 786451, 4, 0, 786452, 4, 0, 720916, 4, 0, 655380, 4, 0, 589844, 4, 0, 524308, 4, 0, 524309, 4, 0, 458773, 4, 0, 393237, 4, 0, 327701, 4, 0, 786440, 4, 0, 851976, 4, 0, 917512, 4, 0, 917513, 4, 0, 917515, 4, 0, 917516, 4, 0, 983052, 4, 0, 1048588, 4, 0, 1048589, 4, 0, 1048590, 4, 0, 524315, 4, 0, 524316, 4, 0, 524318, 4, 0, 524320, 4, 0, 458783, 4, 0)
 
-[node name="prisoner_marker" parent="." instance=ExtResource("9_5hija")]
+[node name="prisoner_marker" parent="." node_paths=PackedStringArray("watergen") instance=ExtResource("9_5hija")]
 position = Vector2(653, 496)
+watergen = NodePath("../WaterGen")
 
 [node name="enemy_marker" parent="." instance=ExtResource("10_7rwdb")]
 position = Vector2(1074, 496)
@@ -370,3 +378,18 @@ position = Vector2(336, 640)
 scale = Vector2(1, 20)
 tilemap = NodePath("..")
 whatiam = 2
+
+[node name="WaterGen" type="Marker2D" parent="."]
+position = Vector2(854, 314)
+gizmo_extents = 60.0
+script = ExtResource("22_tfd6h")
+particle_texture1 = ExtResource("23_s457w")
+particle_texture2 = ExtResource("24_xbj6k")
+particle_texture3 = ExtResource("25_dkofs")
+particle_texture4 = ExtResource("26_7gmqm")
+particle_texture5 = ExtResource("27_7e14q")
+
+[node name="BigPipe" type="Sprite2D" parent="WaterGen"]
+z_index = -4095
+scale = Vector2(2, 2)
+texture = ExtResource("28_jxi6c")
