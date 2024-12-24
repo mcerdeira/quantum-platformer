@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://decsysq8odilw"]
+
+[ext_resource type="Texture2D" uid="uid://b7cp1mghpck5r" path="res://sprites/door.png" id="1_onbpq"]
+[ext_resource type="Script" path="res://scenes/FloatPlatform.gd" id="1_qp35m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fw5o8"]
+size = Vector2(96, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7h8o"]
+size = Vector2(108, 26)
+
+[node name="FloatPlatform" type="StaticBody2D"]
+collision_layer = 65537
+collision_mask = 65537
+script = ExtResource("1_qp35m")
+
+[node name="sprite" type="Sprite2D" parent="."]
+visible = false
+rotation = 1.5708
+texture = ExtResource("1_onbpq")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fw5o8")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 65537
+collision_mask = 65537
+
+[node name="collider" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_x7h8o")

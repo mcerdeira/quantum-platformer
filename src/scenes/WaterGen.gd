@@ -10,6 +10,7 @@ var current_particle_count = 0
 var spawn_timer = 0
 @export var spawn_time = 1.0
 var water_particles = []
+var water_positions = []
 
 func stop():
 	max_water_particles = 0
@@ -39,6 +40,7 @@ func create_particle():
 	ps.body_set_param(water_col,PhysicsServer2D.BODY_PARAM_MASS, 0.001)
 	ps.body_set_param(water_col,PhysicsServer2D.BODY_PARAM_GRAVITY_SCALE, 0.5)
 	ps.body_set_state(water_col,PhysicsServer2D.BODY_STATE_TRANSFORM,trans)
+
 	#Visual
 	#create canvas item(all 2D objects are canvas items)
 	
@@ -61,7 +63,7 @@ func create_particle():
 	#vs.canvas_item_set_self_modulate(water_particle,Color("ff00ff"))
 	#add RID pair to array
 	water_particles.append([water_col,water_particle])
-
+	
 func _physics_process(delta):
 	#add particles while less than max amount set and timer < 0
 	if spawn_timer < 0 and current_particle_count < max_water_particles:
@@ -71,16 +73,21 @@ func _physics_process(delta):
 		spawn_timer = spawn_time
 	spawn_timer -= 1
 	#update particle texture position to be at Rigid body position
+	water_positions = []
 	for col in water_particles:
 		var trans = PhysicsServer2D.body_get_state(col[0],PhysicsServer2D.BODY_STATE_TRANSFORM)
 		trans.origin = trans.origin - global_position
 		RenderingServer.canvas_item_set_transform(col[1],trans)
+		
+		water_positions.append(trans.origin) 
+		
 		#Delete particles if Y position > than 1500. 2D y down is positive
 		if trans.origin.y > global_position.y + 500:
 			#remove RIDs
 			PhysicsServer2D.free_rid(col[0])
 			RenderingServer.free_rid(col[1])
 			#remove reference
+			water_positions.erase(trans.origin)
 			water_particles.erase(col)
 			current_particle_count -= 1
 			Global.total_water_particles -=1

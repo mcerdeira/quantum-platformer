@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b5ta7xpckn1ia"]
+[gd_scene load_steps=31 format=3 uid="uid://b5ta7xpckn1ia"]
 
 [ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="1_x3dy5"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_h54sa"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cg1vqems4301m" path="res://sprites/big_pipe.png" id="17_6odh1"]
 [ext_resource type="PackedScene" uid="uid://kab1tbkymscc" path="res://scenes/rotating_plat.tscn" id="18_grnsm"]
 [ext_resource type="PackedScene" uid="uid://btd5sxsoknjld" path="res://scenes/valve.tscn" id="19_l1jeo"]
+[ext_resource type="PackedScene" uid="uid://decsysq8odilw" path="res://scenes/FloatPlatform.tscn" id="20_rrnbw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
 texture = ExtResource("1_x3dy5")
@@ -184,11 +185,26 @@ z_index = -4095
 scale = Vector2(2, 2)
 texture = ExtResource("17_6odh1")
 
+[node name="WaterGen2" type="Marker2D" parent="."]
+position = Vector2(220, 451)
+gizmo_extents = 60.0
+script = ExtResource("11_ceiqr")
+particle_texture1 = ExtResource("12_1rrg4")
+particle_texture2 = ExtResource("13_dbenq")
+particle_texture3 = ExtResource("14_nnqbw")
+particle_texture4 = ExtResource("15_x2461")
+particle_texture5 = ExtResource("16_wejgf")
+
+[node name="BigPipe" type="Sprite2D" parent="WaterGen2"]
+z_index = -4095
+scale = Vector2(2, 2)
+texture = ExtResource("17_6odh1")
+
 [node name="rotating_plat" parent="." instance=ExtResource("18_grnsm")]
 position = Vector2(511, 395)
 
 [node name="rotating_plat2" parent="." instance=ExtResource("18_grnsm")]
-position = Vector2(602, 458)
+position = Vector2(602, 461)
 
 [node name="Valve" parent="." node_paths=PackedStringArray("platform") instance=ExtResource("19_l1jeo")]
 position = Vector2(432, 529)
@@ -197,3 +213,7 @@ platform = NodePath("../rotating_plat")
 [node name="Valve2" parent="." node_paths=PackedStringArray("platform") instance=ExtResource("19_l1jeo")]
 position = Vector2(720, 528)
 platform = NodePath("../rotating_plat2")
+
+[node name="FloatPlatform" parent="." node_paths=PackedStringArray("watergen") instance=ExtResource("20_rrnbw")]
+position = Vector2(113, 624)
+watergen = NodePath("../WaterGen2")
