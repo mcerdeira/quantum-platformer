@@ -42,12 +42,11 @@ BUGS/Ajustes:
 
 Features:
 
-- Enemigo que te revolea Bombas
 - Enemigo que te persigue por cañería
 - Enemigo araña
 - Enemigo murcielago o volador
 - Enemigo torreta que dispara
-- Pañal de abejas en mermaid, no son lámparas y al caer salen abejas
+- Panal de abejas en mermaid, no son lámparas y al caer salen abejas
 
 - Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
   - Alinear los discos, llama al bote.
@@ -62,10 +61,9 @@ Features:
   - Puzzles que nos haga usar el clone o el teleport
 
 - [Armar zona Mermaid] Fondo más claro, piso negro, lluvia y truenos. La mecánica principal son unas canillas que abrimos para inundar o no lugares 
-  - Cascadas (ala Minecraft) que interactuen con bombas y enemigos
+  - Cascadas   
   - Cadenas para colgarse
   - Puzzles que nos haga usar el clone o el teleport
-  - Cascadas
   - Canillas: que hacen desaparecer las cascadas y la lluvia
   - JEFE: Es top down 2D
 
@@ -84,6 +82,7 @@ Features:
 - Decoraciones: Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- Enemigo que te revolea Bombas
 - Matar al mini boss nos tiene que dar algo (monedas?) 
 - El mini boss del nivel 1 se tiene que poder "matar" 
 - Hacer que la bomba de humo sea más simple 

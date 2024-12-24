@@ -21,6 +21,7 @@ var action_executed = false
 var count_down = 0
 var attach_to = null
 var gizmo_mode = false
+var from_enemy = false
 
 func _ready():
 	add_to_group("interactuable")
@@ -102,10 +103,11 @@ func _physics_process(delta):
 		if explosion_delay <= 0:
 			queue_free()
 		
-func droped(_parent, _parent_lbl, direction, _current_item, _simulation = false):
+func droped(_parent, _parent_lbl, direction, _current_item, _simulation = false, _from_enemy = false):
 	Global.play_sound(Global.GizmoLaunchSFX)
 	parent_lbl = _parent_lbl
 	parent = _parent
+	from_enemy = _from_enemy
 	velocity = direction
 	friction = 0.1
 	simulation = _simulation
@@ -141,8 +143,9 @@ func do_action(_player, lbl):
 		if landed:
 			if current_item.has_action:
 				action_executed = true
-				lbl.visible = true
-				lbl.text = current_item.dialog.to_upper() + "!"
+				if !from_enemy:
+					lbl.visible = true
+					lbl.text = current_item.dialog.to_upper() + "!"
 				
 			if current_item.name == "teleport":
 				Global.play_sound(Global.TeleportSFX)
@@ -182,7 +185,8 @@ func do_action(_player, lbl):
 				
 			if current_item.has_action:
 				_player.visible = true
-				_player.lbl_hide_delegate(false, 1)
+				if !from_enemy:
+					_player.lbl_hide_delegate(false, 1)
 			
 func create_spring_object():
 	var spring_o = spring_obj.instantiate()
@@ -245,7 +249,7 @@ func _on_area_body_entered(body):
 			elif current_item.name == "spikeball":
 				pass
 			
-		elif body and body.is_in_group("players") and !body.is_in_group("prisoners"):
+		elif body and !from_enemy and body.is_in_group("players") and !body.is_in_group("prisoners"):
 			Global.play_sound(Global.InteractSFX)
 			Global.emit(global_position, 1)
 			Global.get_item(current_item)

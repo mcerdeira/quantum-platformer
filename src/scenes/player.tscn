@@ -434,7 +434,6 @@ script = ExtResource("2_wq3mp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaterDetection"]
 shape = SubResource("CircleShape2D_usoxj")
-debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="WalkSoundTimer" type="Timer" parent="."]
 wait_time = 0.3
@@ -462,12 +461,10 @@ script = ExtResource("6_34sgw")
 [node name="collider" type="CollisionShape2D" parent="Hammer_R/AreaHammer"]
 position = Vector2(25, -23)
 shape = SubResource("RectangleShape2D_ew6hr")
-debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="collider2" type="CollisionShape2D" parent="Hammer_R/AreaHammer"]
 position = Vector2(20, -10)
 shape = SubResource("RectangleShape2D_80bl1")
-debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Hammer_L" type="Sprite2D" parent="."]
 visible = false
@@ -487,12 +484,10 @@ direction = "left"
 [node name="collider" type="CollisionShape2D" parent="Hammer_L/AreaHammer"]
 position = Vector2(25, -23)
 shape = SubResource("RectangleShape2D_ew6hr")
-debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="collider2" type="CollisionShape2D" parent="Hammer_L/AreaHammer"]
 position = Vector2(20, -10)
 shape = SubResource("RectangleShape2D_80bl1")
-debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="AnimHammer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -520,7 +515,6 @@ frame_progress = 0.96567
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_18lep")
-debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="gun_sprite" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -586,7 +580,6 @@ script = ExtResource("17_0h5lj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stairs_test"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_7li6r")
-debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
