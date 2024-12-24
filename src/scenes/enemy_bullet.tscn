@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cwlt1clvornbo"]
+[gd_scene load_steps=20 format=3 uid="uid://cwlt1clvornbo"]
 
 [ext_resource type="Texture2D" uid="uid://clr0juhr8h16n" path="res://sprites/horu/images/monkey_spr_0.png" id="1_coiab"]
 [ext_resource type="Script" path="res://scenes/enemy_bullet.gd" id="1_jcpgp"]
@@ -7,11 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://dlhhldrfwwxnb" path="res://sprites/horu/images/monkey_face_spr_1.png" id="3_s3pon"]
 [ext_resource type="Texture2D" uid="uid://dgla05b10lgke" path="res://sprites/horu/images/monkey_awake2.png" id="3_ve755"]
 [ext_resource type="Texture2D" uid="uid://1o88cp40osu" path="res://sprites/horu/images/monkey_face_spr_2.png" id="4_jg462"]
+[ext_resource type="Texture2D" uid="uid://b0g35fuhbo36" path="res://sprites/horu/images/monkey_awake_dead.png" id="5_leqef"]
 [ext_resource type="Texture2D" uid="uid://dfharctwhdwjv" path="res://sprites/horu/images/monkey_awake_shoot1.png" id="7_1um5l"]
 [ext_resource type="Texture2D" uid="uid://capc1hdlw0gpl" path="res://sprites/horu/images/stars1.png" id="9_lpu4s"]
 [ext_resource type="Texture2D" uid="uid://caxf4k5okg3cr" path="res://sprites/horu/images/stars2.png" id="10_gs46t"]
 [ext_resource type="Texture2D" uid="uid://bpaljgkr5iu14" path="res://sprites/horu/images/stars3.png" id="11_8m6mf"]
 [ext_resource type="Script" path="res://scenes/bounce.gd" id="12_fkvj0"]
+[ext_resource type="Script" path="res://scenes/en_bulletexplosions.gd" id="13_k5t3h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oeaso"]
 radius = 271.671
@@ -53,6 +55,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"awake",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_leqef")
+}],
+"loop": true,
+"name": &"dead",
 "speed": 5.0
 }, {
 "frames": [{
@@ -135,5 +145,59 @@ script = ExtResource("12_fkvj0")
 position = Vector2(-1, 3)
 shape = SubResource("CircleShape2D_8j8w4")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="explosions" type="Node2D" parent="."]
+script = ExtResource("13_k5t3h")
+
+[node name="Marker2D" type="Marker2D" parent="explosions"]
+
+[node name="Marker2D3" type="Marker2D" parent="explosions"]
+position = Vector2(-10, -8)
+
+[node name="Marker2D4" type="Marker2D" parent="explosions"]
+position = Vector2(-16, 12)
+
+[node name="Marker2D5" type="Marker2D" parent="explosions"]
+position = Vector2(15, 22)
+
+[node name="Marker2D6" type="Marker2D" parent="explosions"]
+position = Vector2(-16, -25)
+
+[node name="Marker2D8" type="Marker2D" parent="explosions"]
+position = Vector2(26, -9)
+
+[node name="Marker2D12" type="Marker2D" parent="explosions"]
+position = Vector2(-32, 4)
+
+[node name="Marker2D13" type="Marker2D" parent="explosions"]
+position = Vector2(-31, 20)
+
+[node name="Marker2D15" type="Marker2D" parent="explosions"]
+position = Vector2(0, -30)
+
+[node name="Marker2D16" type="Marker2D" parent="explosions"]
+position = Vector2(24, 29)
+
+[node name="Marker2D18" type="Marker2D" parent="explosions"]
+position = Vector2(6, 15)
+
+[node name="Marker2D19" type="Marker2D" parent="explosions"]
+position = Vector2(15, -20)
+
+[node name="Marker2D22" type="Marker2D" parent="explosions"]
+position = Vector2(-11, 22)
+
+[node name="Marker2D23" type="Marker2D" parent="explosions"]
+position = Vector2(27, 3)
+
+[node name="Marker2D24" type="Marker2D" parent="explosions"]
+position = Vector2(-27, -17)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="sprite_eyes" to="." method="_on_sprite_eyes_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

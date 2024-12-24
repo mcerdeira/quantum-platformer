@@ -9,7 +9,6 @@ func _on_body_entered(body):
 			Global.play_sound(Global.FallInWellSFX, {}, body.global_position)
 		body.kill_fall()
 
-
 func _on_area_entered(area):
 	if Global.TerminalNumber == Global.TerminalsEnum.LEAF:
 		if area and area.is_in_group("bloods"):

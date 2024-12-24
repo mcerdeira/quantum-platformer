@@ -473,6 +473,7 @@ visible = false
 collision_layer = 289
 collision_mask = 289
 script = ExtResource("7_54k6n")
+from_gizmo = true
 
 [node name="collider" type="CollisionShape2D" parent="explosion"]
 position = Vector2(0, -1)

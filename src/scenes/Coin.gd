@@ -1,4 +1,5 @@
 extends Area2D
+@export var coin_exploder = false
 
 func _on_body_entered(body):
 	if visible:
@@ -6,4 +7,6 @@ func _on_body_entered(body):
 			Global.play_sound(Global.CoinSFX)
 			visible = false
 			Global.get_item(Global.coin, 1)
+			if coin_exploder:
+				get_parent().queue_free()
 			queue_free()

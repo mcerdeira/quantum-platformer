@@ -834,6 +834,7 @@ vertical_alignment = 1
 environment = SubResource("Environment_pu2uo")
 
 [node name="Lava" parent="." instance=ExtResource("24_nijr5")]
+z_index = 700
 position = Vector2(1093, 2616)
 
 [node name="River" parent="." instance=ExtResource("31_3m334")]
@@ -849,7 +850,6 @@ offset_bottom = 3342.0
 script = ExtResource("43_mpifu")
 
 [node name="FX" type="ColorRect" parent="."]
-visible = false
 z_index = 4096
 material = SubResource("ShaderMaterial_knga3")
 offset_left = -279.0
