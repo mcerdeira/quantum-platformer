@@ -34,6 +34,7 @@
 ==================================================================================================================
 
 IN_PROGRESS:       
+- Terminar puzzle con el agua en mermaid
 
 BUGS/Ajustes:
 - Tiene que haber un mini boss pez en mermaid, hay que hacerle comer la bomba
@@ -41,11 +42,9 @@ BUGS/Ajustes:
 - Situaciones más puzzleras en todos los niveles 
 
 Features:
-
 - Enemigo que te persigue por cañería
 - Enemigo araña
 - Enemigo murcielago o volador
-- Enemigo torreta que dispara
 - Panal de abejas en mermaid, no son lámparas y al caer salen abejas
 
 - Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
@@ -335,6 +334,7 @@ Features:
   - Algun NPC te manda a explorar las tumbas
 
 --------------------------------- CANCELADO ---------------------------------
+- Enemigo torreta que dispara 
 - Momento: el nivel empieza a explotar/irse para arriba, se puede hacer con objetos que simulen ser tiles pero no lo son
 - Item cohete 
 - Plantas para esconderse
