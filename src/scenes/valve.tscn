@@ -1,0 +1,222 @@
+[gd_scene load_steps=24 format=3 uid="uid://btd5sxsoknjld"]
+
+[ext_resource type="Texture2D" uid="uid://cgd8wudikitjd" path="res://sprites/valve.png" id="1_wtdyv"]
+[ext_resource type="Script" path="res://scenes/Valve.gd" id="2_a0ptf"]
+[ext_resource type="Shader" path="res://scenes/Item.gdshader" id="3_nuhfd"]
+[ext_resource type="Texture2D" uid="uid://cog7sk80ykf4o" path="res://sprites/bomb.png" id="4_lrigj"]
+[ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="5_5407a"]
+[ext_resource type="Texture2D" uid="uid://c6gf7vjf30biq" path="res://sprites/coin.png" id="6_a15xs"]
+[ext_resource type="Texture2D" uid="uid://bljcg74u2x5sd" path="res://sprites/invisibility.png" id="7_k0ckt"]
+[ext_resource type="Texture2D" uid="uid://cwjka3w6mxat3" path="res://sprites/slots.png" id="8_nnuwy"]
+[ext_resource type="Texture2D" uid="uid://b3tca6epdaoix" path="res://sprites/rock.png" id="9_e7ab0"]
+[ext_resource type="Texture2D" uid="uid://df545tsy68qs1" path="res://sprites/growing_plant.png" id="10_s1c8e"]
+[ext_resource type="Texture2D" uid="uid://pm7mhxqnqxtq" path="res://sprites/radar.png" id="11_tmwkp"]
+[ext_resource type="Texture2D" uid="uid://mpqlvpcht35a" path="res://sprites/simul_box.png" id="12_roc0w"]
+[ext_resource type="Texture2D" uid="uid://trxeowv3jmbb" path="res://sprites/smoke_bomb.png" id="13_351kj"]
+[ext_resource type="Texture2D" uid="uid://csp0ardyjl54b" path="res://sprites/spring.png" id="14_jbh15"]
+[ext_resource type="Texture2D" uid="uid://c3wmt7870xukn" path="res://sprites/teleporter_box.png" id="15_11y2l"]
+[ext_resource type="Texture2D" uid="uid://cjg71ls267rbj" path="res://sprites/question_mark.png" id="16_0ltqi"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="17_ehl75"]
+[ext_resource type="Texture2D" uid="uid://b3n7eech0mndx" path="res://sprites/arrows1.png" id="18_wrc03"]
+[ext_resource type="Texture2D" uid="uid://dkompgmyj4pmk" path="res://sprites/arrows2.png" id="19_kqm7v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xtcnf"]
+size = Vector2(31, 71)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbpmn"]
+resource_local_to_scene = true
+shader = ExtResource("3_nuhfd")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 3.0
+shader_parameter/shine_size = 0.01
+shader_parameter/white = null
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oc5dc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_lrigj")
+}],
+"loop": true,
+"name": &"bomb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_5407a")
+}],
+"loop": true,
+"name": &"clone",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_a15xs")
+}],
+"loop": true,
+"name": &"coin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_k0ckt")
+}],
+"loop": true,
+"name": &"invisibility",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_nnuwy")
+}],
+"loop": true,
+"name": &"monolith",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_e7ab0")
+}],
+"loop": true,
+"name": &"muffin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_s1c8e")
+}],
+"loop": true,
+"name": &"plant",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_tmwkp")
+}],
+"loop": true,
+"name": &"radar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_roc0w")
+}],
+"loop": true,
+"name": &"simul",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_351kj")
+}],
+"loop": true,
+"name": &"smoke",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_jbh15")
+}],
+"loop": true,
+"name": &"spring",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_11y2l")
+}],
+"loop": true,
+"name": &"teleport",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_0ltqi")
+}],
+"loop": true,
+"name": &"unknown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wtdyv")
+}],
+"loop": true,
+"name": &"valve",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_78cqs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_wrc03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_kqm7v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Valve" type="Node2D"]
+position = Vector2(447, 550)
+script = ExtResource("2_a0ptf")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_wtdyv")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="collider" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 18.5)
+shape = SubResource("RectangleShape2D_xtcnf")
+
+[node name="display" type="Node2D" parent="."]
+visible = false
+position = Vector2(34, 7)
+
+[node name="back2" type="ColorRect" parent="display"]
+z_index = 4096
+offset_left = -295.0
+offset_top = -118.0
+offset_right = 255.0
+offset_bottom = -39.0
+metadata/_edit_use_anchors_ = true
+
+[node name="back" type="ColorRect" parent="display"]
+z_index = 4096
+offset_left = -294.0
+offset_top = -117.0
+offset_right = 254.0
+offset_bottom = -40.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="sprite" type="AnimatedSprite2D" parent="display/back"]
+material = SubResource("ShaderMaterial_dbpmn")
+position = Vector2(45, 61)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_oc5dc")
+animation = &"valve"
+offset = Vector2(0, -16)
+
+[node name="lbl_item" type="Label" parent="display/back"]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 544.0
+offset_bottom = 65.0
+theme_override_fonts/font = ExtResource("17_ehl75")
+text = "== VALVULA =="
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="arrows" type="AnimatedSprite2D" parent="display/back"]
+position = Vector2(520, 39)
+sprite_frames = SubResource("SpriteFrames_78cqs")
+autoplay = "default"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

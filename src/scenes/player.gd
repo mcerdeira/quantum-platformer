@@ -121,6 +121,9 @@ func hide_eyes():
 	#Ocultar los ojos cuando estamos entrando a una puerta
 	$sprite_eyes.visible = false
 	
+func show_eyes():
+	$sprite_eyes.visible = true
+	
 func restart_camera(_camera_prev_status):
 	await get_tree().create_timer(2.1).timeout
 	_camera_prev_status.enabled = false

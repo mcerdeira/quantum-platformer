@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://kab1tbkymscc"]
+
+[ext_resource type="Script" path="res://scenes/rotating_plat.gd" id="1_12qr0"]
+[ext_resource type="Texture2D" uid="uid://stjrg38hrtgr" path="res://sprites/moving_plat_3.png" id="2_f8nvb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3v5is"]
+size = Vector2(94, 30)
+
+[node name="rotating_plat" type="StaticBody2D"]
+position = Vector2(492, 415)
+rotation = 1.5708
+collision_layer = 65537
+collision_mask = 65537
+script = ExtResource("1_12qr0")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_f8nvb")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3v5is")
