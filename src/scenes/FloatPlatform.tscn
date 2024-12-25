@@ -7,12 +7,12 @@
 size = Vector2(96, 13)
 
 [node name="FloatPlatform" type="StaticBody2D"]
+z_index = 90
 collision_layer = 65537
 collision_mask = 65537
 script = ExtResource("1_qp35m")
 
 [node name="sprite" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.439216)
 position = Vector2(0, -16)
 rotation = 1.5708
 texture = ExtResource("1_onbpq")

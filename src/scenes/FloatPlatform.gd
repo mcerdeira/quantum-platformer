@@ -3,9 +3,11 @@ var started = false
 var change_ttl = 0
 var shape = RectangleShape2D.new()
 var goupttl = 2.0
+var original_position = null
 
 func _ready():
 	shape.size = Vector2(96, 16)  # Tamaño del rectángulo
+	original_position = global_position
 
 func _physics_process(delta):
 	check_collision_with_bodies(global_position, delta)
@@ -42,11 +44,13 @@ func check_collision_with_bodies(area_position: Vector2, delta):
 			change_ttl -= 1 * delta
 			if change_ttl <= 0:
 				global_position.y += 25 * delta
+				if global_position.y > original_position.y:
+					global_position.y = original_position.y
 				shape.size.x = lerp(shape.size.x, 96.0, 0.1)
 				shape.size.y = lerp(shape.size.y, 32.0, 0.1)
 	
-	queue_redraw()
-		
-func _draw():
-	var color = Color(1, 0, 0, 1)  # Rojo transparente
-	draw_rect(Rect2(-shape.size / 2, shape.size), color, true)
+	#queue_redraw()
+		#
+#func _draw():
+	#var color = Color(1, 0, 0, 1)  # Rojo transparente
+	#draw_rect(Rect2(-shape.size / 2, shape.size), color, true)
