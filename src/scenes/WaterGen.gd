@@ -32,7 +32,7 @@ func create_particle():
 	ps.body_set_collision_mask(water_col, layer)
 	
 	var shape = ps.circle_shape_create()
-	ps.shape_set_data(shape, 5.0)
+	ps.shape_set_data(shape, 2.0)
 	ps.body_add_shape(water_col,shape, Transform2D.IDENTITY, false)
 	
 	#set physics parameters
