@@ -7,5 +7,7 @@ func _ready():
 		z_index = 4095
 
 func _physics_process(delta):
+	if Global.BOSS_ROOM:
+		queue_free()
 	if Global.TerminalNumber != Global.TerminalsEnum.MERMAID or Global.TunnelTerminalNumber:
 		queue_free()

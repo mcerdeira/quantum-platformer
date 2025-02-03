@@ -38,13 +38,16 @@ func _physics_process(delta):
 	
 	if active and !opened:
 		if Input.is_action_just_pressed("up"):
-			Global.play_sound(Global.InteractSFX)
-			Global.play_sound(Global.TombBrokeSFX)
-			trapped = false
-			opened = true
-			active = false
-			Global.emit(global_position, 5)
-			get_item()
+			liberate()
+			
+func liberate():
+	Global.play_sound(Global.InteractSFX)
+	Global.play_sound(Global.TombBrokeSFX)
+	trapped = false
+	opened = true
+	active = false
+	Global.emit(global_position, 5)
+	get_item()
 			
 func get_item():
 	Global.prisoner_counter -= 1

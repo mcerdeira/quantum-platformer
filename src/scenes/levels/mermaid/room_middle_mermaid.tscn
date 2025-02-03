@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://4dsnnn4hass5"]
+[gd_scene load_steps=39 format=3 uid="uid://4dsnnn4hass5"]
 
 [ext_resource type="Texture2D" uid="uid://cfr4242x4qruc" path="res://sprites/spritesheets/floor_dragon1-sheet.png" id="1_uvmva"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_dcsvg"]
@@ -9,15 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://cvgek1xj28trv" path="res://sprites/fireball_box.png" id="5_smt4e"]
 [ext_resource type="Texture2D" uid="uid://b0nxv8yj8yswl" path="res://sprites/spritesheets/floor_mermaid-sheet.png" id="6_6ppr5"]
 [ext_resource type="Script" path="res://scenes/levels/room.gd" id="6_u760g"]
-[ext_resource type="Texture2D" uid="uid://dw02vd8s8wsrw" path="res://sprites/vines.png" id="7_ytatv"]
-[ext_resource type="Texture2D" uid="uid://dpcrtwqa2mio7" path="res://sprites/vines_burn.png" id="8_oi3bu"]
-[ext_resource type="PackedScene" uid="uid://bfmdje7uoppc1" path="res://scenes/levels/prisoner_marker.tscn" id="9_5hija"]
 [ext_resource type="Texture2D" uid="uid://ddjpinqcpwyw5" path="res://sprites/stair_v2.png" id="9_cokcv"]
 [ext_resource type="PackedScene" uid="uid://c4vd4vxwdwdqh" path="res://scenes/levels/enemy_marker.tscn" id="10_7rwdb"]
 [ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="11_rqmf8"]
 [ext_resource type="PackedScene" uid="uid://q767q018lep8" path="res://scenes/exit_door.tscn" id="12_a5ym4"]
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="14_0quk0"]
+[ext_resource type="PackedScene" uid="uid://kab1tbkymscc" path="res://scenes/rotating_plat.tscn" id="15_pk73j"]
 [ext_resource type="PackedScene" uid="uid://c1hauk6vcsonh" path="res://scenes/Item.tscn" id="15_ywhhj"]
+[ext_resource type="PackedScene" uid="uid://btd5sxsoknjld" path="res://scenes/valve.tscn" id="16_8x84s"]
+[ext_resource type="PackedScene" uid="uid://decsysq8odilw" path="res://scenes/FloatPlatform.tscn" id="17_4kpek"]
 [ext_resource type="PackedScene" uid="uid://cv3n3jd3p3yty" path="res://scenes/Lamp.tscn" id="17_s28jx"]
 [ext_resource type="PackedScene" uid="uid://ccrniksfhd6lb" path="res://scenes/moving_plat.tscn" id="18_66vs5"]
 [ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="19_xqc8x"]
@@ -266,8 +266,8 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_4lr5i"]
 tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 524595
-physics_layer_0/collision_mask = 524595
+physics_layer_0/collision_layer = 590131
+physics_layer_0/collision_mask = 590131
 sources/1 = SubResource("TileSetAtlasSource_qr43o")
 sources/2 = SubResource("TileSetAtlasSource_5f8m4")
 sources/3 = SubResource("TileSetAtlasSource_ba0bd")
@@ -278,48 +278,14 @@ sources/10 = SubResource("TileSetAtlasSource_qnir1")
 sources/8 = SubResource("TileSetAtlasSource_wpfr1")
 sources/11 = SubResource("TileSetAtlasSource_utnge")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e5oqw"]
-texture = ExtResource("7_ytatv")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5sf7f"]
-texture = ExtResource("8_oi3bu")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-
-[sub_resource type="TileSet" id="TileSet_nobh8"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 128
-physics_layer_0/collision_mask = 128
-sources/4 = SubResource("TileSetAtlasSource_e5oqw")
-sources/5 = SubResource("TileSetAtlasSource_5sf7f")
-
 [node name="level" type="TileMap"]
 tile_set = SubResource("TileSet_4lr5i")
 format = 2
-layer_0/tile_data = PackedInt32Array(1114127, 131072, 0, 1048592, 131072, 0, 1048593, 196608, 0, 1048594, 196608, 0, 1048595, 196608, 0, 1048596, 196608, 0, 1048597, 65536, 0, 1048601, 131072, 0, 1048602, 196608, 0, 1048603, 65536, 0, 1048608, 131072, 0, 1048609, 196608, 0, 1048610, 196608, 0, 1048611, 65536, 0, 1114147, 851968, 0, 1179683, 851968, 0, 1245219, 393216, 0, 1245184, 458752, 0, 1245186, 393216, 0, 1245191, 458752, 0, 1179662, 131072, 0, 1179669, 851968, 0, 1114137, 786432, 0, 1114139, 851968, 0, 1114142, 131072, 0, 1114143, 196608, 0, 1245215, 458752, 0, 1245211, 393216, 0, 1245209, 458752, 0, 1245206, 589824, 0, 1245198, 458752, 0, 1179655, 131072, 0, 1179656, 65536, 0, 1114133, 851968, 0, 1179675, 851968, 0, 1179678, 458752, 0, 1179672, 655360, 0, 131076, 458752, 0, 196614, 524288, 0, 131080, 393216, 0, 65545, 393216, 0, 9, 65536, 0, 196615, 393216, 0, 65539, 524288, 0, 65538, 524288, 0, 65537, 458752, 0, 0, 655360, 0, 196613, 458752, 0, 17, 655360, 0, 18, 720896, 0, 327700, 393216, 0, 393235, 327680, 0, 22, 65536, 0, 35, 65536, 0, 65571, 851968, 0, 131107, 393216, 0, 196642, 851968, 0, 262179, 65536, 0, 327715, 851968, 0, 393251, 851968, 0, 65568, 131072, 0, 131104, 786432, 0, 196640, 786432, 0, 262176, 786432, 0, 327712, 458752, 0, 393249, 786432, 0, 458785, 458752, 0, 458787, 851968, 0, 524323, 393216, 0, 524322, 786432, 0, 589858, 917504, 0, 655394, 917504, 0, 1245185, 524288, 0, 1245192, 393216, 0, 34, 196608, 0, 33, 131072, 0, 1, 196608, 0, 2, 196608, 0, 3, 196608, 0, 4, 196608, 0, 5, 196608, 0, 6, 196608, 0, 7, 196608, 0, 8, 196608, 0, 19, 720896, 0, 20, 720896, 0, 21, 196608, 0, 786466, 327680, 0, 720930, 917504, 0, 1245216, 524288, 0, 1245217, 524288, 0, 1245218, 524288, 0, 1245210, 524288, 0, 1245199, 524288, 0, 1245200, 524288, 0, 1245201, 524288, 0, 1245202, 524288, 0, 1245203, 524288, 0, 1245204, 524288, 0, 1245205, 524288, 0, 327699, 786432, 0, 262163, 131072, 0, 262165, 524288, 0, 262166, 393216, 0, 196630, 851968, 0, 131094, 851968, 0, 65558, 851968, 0, 131093, 786432, 0, 262164, 196608, 0, 196629, 786432, 0, 1179649, 196608, 0, 1179648, 131072, 0, 1179650, 65536, 0, 65540, 262144, 0, 65541, 262144, 0, 65542, 262144, 0, 65543, 262144, 0, 65544, 262144, 0, 131078, 262144, 0, 131077, 262144, 0, 131079, 262144, 0, 458786, 262144, 0, 393250, 262144, 0, 327714, 262144, 0, 262178, 262144, 0, 327713, 262144, 0, 262177, 262144, 0, 196641, 262144, 0, 131105, 262144, 0, 65569, 262144, 0, 65570, 262144, 0, 131106, 262144, 0, 1114138, 262144, 0, 1179674, 262144, 0, 1179673, 262144, 0, 1114144, 262144, 0, 1114145, 262144, 0, 1114146, 262144, 0, 1179682, 262144, 0, 1179681, 262144, 0, 1179680, 262144, 0, 1179679, 262144, 0, 1114129, 262144, 0, 1114130, 262144, 0, 1114131, 262144, 0, 1114132, 262144, 0, 1179668, 262144, 0, 1179667, 262144, 0, 1179666, 262144, 0, 1179665, 262144, 0, 1179664, 262144, 0, 1114128, 262144, 0, 1179663, 262144, 0, 65554, 458752, 0, 65555, 524288, 0, 65556, 524288, 0, 65557, 262144, 0)
+layer_0/tile_data = PackedInt32Array(1114127, 131072, 0, 1048592, 131072, 0, 1048593, 196608, 0, 1048594, 196608, 0, 1048595, 196608, 0, 1048596, 65536, 0, 1048608, 131072, 0, 1048609, 196608, 0, 1048610, 196608, 0, 1048611, 65536, 0, 1114147, 851968, 0, 1179683, 851968, 0, 1245219, 393216, 0, 1245184, 458752, 0, 1245186, 393216, 0, 1245191, 458752, 0, 1179662, 131072, 0, 1179669, 851968, 0, 1114142, 131072, 0, 1114143, 196608, 0, 1245215, 458752, 0, 1245211, 393216, 0, 1245209, 458752, 0, 1245206, 589824, 0, 1245198, 458752, 0, 1179655, 131072, 0, 1179656, 65536, 0, 1114133, 65536, 0, 1179678, 458752, 0, 131076, 458752, 0, 196614, 524288, 0, 131080, 393216, 0, 65545, 393216, 0, 9, 65536, 0, 196615, 393216, 0, 65539, 524288, 0, 65538, 524288, 0, 65537, 458752, 0, 0, 655360, 0, 196613, 458752, 0, 17, 655360, 0, 18, 720896, 0, 327700, 393216, 0, 393235, 327680, 0, 22, 65536, 0, 35, 65536, 0, 65571, 851968, 0, 131107, 393216, 0, 196642, 851968, 0, 262179, 65536, 0, 327715, 851968, 0, 393251, 851968, 0, 65568, 131072, 0, 131104, 786432, 0, 196640, 786432, 0, 262176, 786432, 0, 327712, 458752, 0, 393249, 786432, 0, 458785, 458752, 0, 458787, 851968, 0, 524323, 393216, 0, 524322, 786432, 0, 589858, 917504, 0, 655394, 917504, 0, 1245185, 524288, 0, 1245192, 393216, 0, 34, 196608, 0, 33, 131072, 0, 1, 196608, 0, 2, 196608, 0, 3, 196608, 0, 4, 196608, 0, 5, 196608, 0, 6, 196608, 0, 7, 196608, 0, 8, 196608, 0, 19, 720896, 0, 20, 720896, 0, 21, 196608, 0, 786466, 2, 0, 1245216, 524288, 0, 1245217, 524288, 0, 1245218, 524288, 0, 1245210, 524288, 0, 1245199, 524288, 0, 1245200, 524288, 0, 1245201, 524288, 0, 1245202, 524288, 0, 1245203, 524288, 0, 1245204, 524288, 0, 1245205, 524288, 0, 327699, 786432, 0, 262163, 131072, 0, 262165, 524288, 0, 262166, 393216, 0, 196630, 851968, 0, 131094, 851968, 0, 65558, 851968, 0, 131093, 786432, 0, 262164, 196608, 0, 196629, 786432, 0, 1179649, 196608, 0, 1179648, 131072, 0, 1179650, 65536, 0, 65540, 262144, 0, 65541, 262144, 0, 65542, 262144, 0, 65543, 262144, 0, 65544, 262144, 0, 131078, 262144, 0, 131077, 262144, 0, 131079, 262144, 0, 458786, 262144, 0, 393250, 262144, 0, 327714, 262144, 0, 262178, 262144, 0, 327713, 262144, 0, 262177, 262144, 0, 196641, 262144, 0, 131105, 262144, 0, 65569, 262144, 0, 65570, 262144, 0, 131106, 262144, 0, 1114144, 262144, 0, 1114145, 262144, 0, 1114146, 262144, 0, 1179682, 262144, 0, 1179681, 262144, 0, 1179680, 262144, 0, 1179679, 262144, 0, 1114129, 262144, 0, 1114130, 262144, 0, 1114131, 262144, 0, 1114132, 262144, 0, 1179668, 262144, 0, 1179667, 262144, 0, 1179666, 262144, 0, 1179665, 262144, 0, 1179664, 262144, 0, 1114128, 262144, 0, 1179663, 262144, 0, 65554, 458752, 0, 65555, 524288, 0, 65556, 524288, 0, 65557, 262144, 0, 983058, 2, 0, 917522, 2, 0, 851986, 2, 0, 786451, 2, 0, 851988, 2, 0, 917524, 2, 0, 983060, 2, 0, 983073, 2, 0, 917537, 2, 0, 852001, 2, 0, 852003, 2, 0, 917539, 2, 0, 983075, 2, 0, 720930, 327680, 0, 1114140, 917504, 0, 1048604, 917504, 0, 983068, 0, 0, 1179676, 393216, 0, 1179673, 196608, 0, 1179674, 196608, 0, 1179675, 196608, 0, 1114136, 0, 0, 1179672, 458752, 0)
 script = ExtResource("6_u760g")
-
-[node name="vines" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_nobh8")
-format = 2
-layer_0/tile_data = PackedInt32Array(983072, 4, 0, 917536, 4, 0, 851999, 4, 0, 786463, 4, 0, 720928, 4, 0, 786436, 4, 0, 786437, 4, 0, 786439, 4, 0, 786438, 4, 0, 720902, 4, 0, 720903, 4, 0, 655367, 4, 0, 589831, 4, 0, 524295, 4, 0, 458759, 4, 0, 1245187, 4, 0, 1245188, 4, 0, 1245189, 4, 0, 1179653, 4, 0, 1179652, 4, 0, 1114116, 4, 0, 1114117, 4, 0, 1179654, 4, 0, 1245190, 4, 0, 1048580, 4, 0, 983044, 4, 0, 917508, 4, 0, 917509, 4, 0, 851973, 4, 0, 393223, 4, 0, 393222, 4, 0, 327686, 4, 0, 327685, 4, 0, 262149, 4, 0, 262150, 4, 0, 16, 4, 0, 65552, 4, 0, 65551, 4, 0, 131087, 4, 0, 131088, 4, 0, 131089, 4, 0, 196625, 4, 0, 196624, 4, 0, 262160, 4, 0, 262159, 4, 0, 327695, 4, 0, 327696, 4, 0, 393232, 4, 0, 393233, 4, 0, 458769, 4, 0, 458768, 4, 0, 458767, 4, 0, 458766, 4, 0, 524302, 4, 0, 524301, 4, 0, 589837, 4, 0, 655374, 4, 0, 720909, 4, 0, 786445, 4, 0, 851981, 4, 0, 851982, 4, 0, 917518, 4, 0, 917519, 4, 0, 917520, 4, 0, 983056, 4, 0, 1048591, 4, 0, 983062, 4, 0, 917526, 4, 0, 851990, 4, 0, 786454, 4, 0, 720918, 4, 0, 655382, 4, 0, 589846, 4, 0, 589848, 4, 0, 589849, 4, 0, 524313, 4, 0, 524314, 4, 0, 458778, 4, 0, 458777, 4, 0, 393241, 4, 0, 327705, 4, 0, 262169, 4, 0, 196633, 4, 0, 196634, 4, 0, 196635, 4, 0, 131099, 4, 0, 131100, 4, 0, 65564, 4, 0, 655385, 4, 0, 720921, 4, 0, 720922, 4, 0, 786458, 4, 0, 786459, 4, 0, 851995, 4, 0, 917531, 4, 0, 917532, 4, 0, 983068, 4, 0, 1048604, 4, 0, 1114140, 4, 0, 655393, 4, 0, 589857, 4, 0, 524321, 4, 0, 917521, 4, 0, 851985, 4, 0, 851986, 4, 0, 786450, 4, 0, 786451, 4, 0, 786452, 4, 0, 720916, 4, 0, 655380, 4, 0, 589844, 4, 0, 524308, 4, 0, 524309, 4, 0, 458773, 4, 0, 393237, 4, 0, 327701, 4, 0, 786440, 4, 0, 851976, 4, 0, 917512, 4, 0, 917513, 4, 0, 917515, 4, 0, 917516, 4, 0, 983052, 4, 0, 1048588, 4, 0, 1048589, 4, 0, 1048590, 4, 0, 524315, 4, 0, 524316, 4, 0, 524318, 4, 0, 524320, 4, 0, 458783, 4, 0)
-
-[node name="prisoner_marker" parent="." node_paths=PackedStringArray("watergen") instance=ExtResource("9_5hija")]
-position = Vector2(653, 496)
-watergen = NodePath("../WaterGen")
 
 [node name="enemy_marker" parent="." instance=ExtResource("10_7rwdb")]
 position = Vector2(1074, 496)
-
-[node name="enemy_marker2" parent="." instance=ExtResource("10_7rwdb")]
-position = Vector2(783, 560)
 
 [node name="enemy_marker3" parent="." instance=ExtResource("10_7rwdb")]
 position = Vector2(257, 560)
@@ -328,7 +294,41 @@ position = Vector2(257, 560)
 position = Vector2(79, 560)
 
 [node name="ExitDoor" parent="." instance=ExtResource("12_a5ym4")]
-position = Vector2(819, 512)
+position = Vector2(845, 476)
+water_level_exit = true
+
+[node name="rotating_plat" parent="ExitDoor" instance=ExtResource("15_pk73j")]
+position = Vector2(-93, 22)
+rotation = 3.14159
+
+[node name="rotating_plat2" parent="ExitDoor" instance=ExtResource("15_pk73j")]
+position = Vector2(170, -185)
+
+[node name="Valve" parent="ExitDoor" node_paths=PackedStringArray("platform") instance=ExtResource("16_8x84s")]
+position = Vector2(258, -19)
+platform = NodePath("../rotating_plat2")
+
+[node name="Valve2" parent="ExitDoor" node_paths=PackedStringArray("platform") instance=ExtResource("16_8x84s")]
+position = Vector2(-221, -18)
+platform = NodePath("../rotating_plat")
+
+[node name="FloatPlatform" parent="ExitDoor" instance=ExtResource("17_4kpek")]
+position = Vector2(2, 99)
+
+[node name="WaterGen" type="Marker2D" parent="ExitDoor"]
+position = Vector2(140, -294)
+gizmo_extents = 60.0
+script = ExtResource("22_tfd6h")
+particle_texture1 = ExtResource("23_s457w")
+particle_texture2 = ExtResource("24_xbj6k")
+particle_texture3 = ExtResource("25_dkofs")
+particle_texture4 = ExtResource("26_7gmqm")
+particle_texture5 = ExtResource("27_7e14q")
+
+[node name="BigPipe" type="Sprite2D" parent="ExitDoor/WaterGen"]
+z_index = -4095
+scale = Vector2(2, 2)
+texture = ExtResource("28_jxi6c")
 
 [node name="qdtector" parent="." instance=ExtResource("14_0quk0")]
 visible = false
@@ -354,7 +354,7 @@ position = Vector2(988, 544)
 position = Vector2(62, 70)
 
 [node name="Lamp2" parent="." instance=ExtResource("17_s28jx")]
-position = Vector2(1039, 198)
+position = Vector2(556, 38)
 
 [node name="Lamp3" parent="." instance=ExtResource("17_s28jx")]
 position = Vector2(622, 230)
@@ -378,18 +378,3 @@ position = Vector2(336, 640)
 scale = Vector2(1, 20)
 tilemap = NodePath("..")
 whatiam = 2
-
-[node name="WaterGen" type="Marker2D" parent="."]
-position = Vector2(854, 314)
-gizmo_extents = 60.0
-script = ExtResource("22_tfd6h")
-particle_texture1 = ExtResource("23_s457w")
-particle_texture2 = ExtResource("24_xbj6k")
-particle_texture3 = ExtResource("25_dkofs")
-particle_texture4 = ExtResource("26_7gmqm")
-particle_texture5 = ExtResource("27_7e14q")
-
-[node name="BigPipe" type="Sprite2D" parent="WaterGen"]
-z_index = -4095
-scale = Vector2(2, 2)
-texture = ExtResource("28_jxi6c")

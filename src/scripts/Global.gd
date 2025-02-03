@@ -804,7 +804,7 @@ func load_sfx():
 	CaveAmbienceSFX = load("res://sfx/cave_ambience.mp3")
 	TombAmbienceSFX = load("res://sfx/tomb_ambience.mp3")
 	HouseAmbienceSFX = load("res://sfx/house_ambience.mp3")
-	RainAmbienceSFX = load("res://sfx/rain_ambience.mp3") 
+	RainAmbienceSFX = load("res://sfx/rain_ambience.wav")
 	ExteriorAmbienceSFX = load("res://sfx/exterior_ambience.mp3")
 	PressStartSFX = load("res://sfx/press_start.wav")
 	InteractSFX = load("res://sfx/interact_snd.wav")

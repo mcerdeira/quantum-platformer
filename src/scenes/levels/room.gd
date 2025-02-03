@@ -11,11 +11,13 @@ func delete_player():
 	$player_marker.nope = true
 	
 func assign_door(_terminal_number):
-	$ExitDoor.assign(_terminal_number)
+	if $ExitDoor:
+		$ExitDoor.assign(_terminal_number)
 	
 func delete_door():
-	$ExitDoor.nope = true
-	$ExitDoor.queue_free()
+	if $ExitDoor:
+		$ExitDoor.nope = true
+		$ExitDoor.queue_free()
 	
 func deletelimit1():
 	$level_limtit.queue_free()

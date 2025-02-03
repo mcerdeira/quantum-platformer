@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://q767q018lep8"]
+[gd_scene load_steps=24 format=3 uid="uid://q767q018lep8"]
 
 [ext_resource type="Script" path="res://scenes/exit_door.gd" id="1_0vvlk"]
 [ext_resource type="Texture2D" uid="uid://bdtkcki2t0cwe" path="res://sprites/horu/images/bonus1.png" id="2_7f7sj"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bot7elnfslb64" path="res://sprites/shop_spr_2.png" id="9_gmybn"]
 [ext_resource type="Texture2D" uid="uid://cp584rsfkw4d5" path="res://sprites/crack_spr_2.png" id="9_jy613"]
 [ext_resource type="Texture2D" uid="uid://b75mbd3rd8k03" path="res://sprites/shop_spr_1.png" id="10_2m2sv"]
+[ext_resource type="Texture2D" uid="uid://py3cnp00g88o" path="res://sprites/horu/images/exit_spr_no_1.png" id="12_1bdxj"]
 [ext_resource type="Texture2D" uid="uid://chfc4wjjp3ms6" path="res://sprites/horu/images/exit_spr_3.png" id="13_bd7jd"]
 [ext_resource type="Script" path="res://scenes/explode_door.gd" id="15_6dkxm"]
 
@@ -80,7 +81,7 @@ animations = [{
 "texture": ExtResource("4_l1025")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_kdr3r")
+"texture": ExtResource("12_1bdxj")
 }],
 "loop": true,
 "name": &"3",
@@ -132,7 +133,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njti7"]
-size = Vector2(36, 2)
+size = Vector2(36, 15)
 
 [node name="ExitDoor" type="Area2D"]
 collision_layer = 33
@@ -155,9 +156,10 @@ sprite_frames = SubResource("SpriteFrames_y4ebb")
 material = SubResource("ShaderMaterial_k3i2x")
 position = Vector2(39, -37)
 sprite_frames = SubResource("SpriteFrames_3viko")
+animation = &"3"
 
 [node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(1, -6.5)
 shape = SubResource("RectangleShape2D_njti7")
 
 [node name="Timer" type="Timer" parent="."]

@@ -5,15 +5,21 @@ extends Node2D
 @export var particle_texture3:Texture
 @export var particle_texture4:Texture
 @export var particle_texture5:Texture
-@export var max_water_particles = 500
+@export var max_water_particles = 0
 var current_particle_count = 0
 var spawn_timer = 0
 @export var spawn_time = 1.0
 var water_particles = []
 var water_positions = []
 
+func _ready():
+	add_to_group("water_generation")
+
 func stop():
 	max_water_particles = 0
+	
+func start():
+	max_water_particles = 500
 
 func create_particle():
 	var ps = PhysicsServer2D
