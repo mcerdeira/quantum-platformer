@@ -432,10 +432,12 @@ transform = Transform2D(1.3, 0, 0, 1.3, 0, 0)
 
 [node name="VideoContainer" type="CanvasLayer" parent="CanvasLayer"]
 process_mode = 3
-visible = false
+scale = Vector2(1, 0.01)
+transform = Transform2D(1, 0, 0, 0.01, 0, 0)
 script = ExtResource("9_tko05")
 
 [node name="VideoStreamPlayer" parent="CanvasLayer/VideoContainer" instance=ExtResource("9_qiw31")]
+visible = false
 offset_left = 194.0
 offset_top = 99.0
 offset_right = 994.0
