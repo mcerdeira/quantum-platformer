@@ -832,6 +832,7 @@ position = Vector2(1093, 2616)
 position = Vector2(-172, 2595)
 
 [node name="FX" type="ColorRect" parent="."]
+visible = false
 z_index = 4096
 material = SubResource("ShaderMaterial_knga3")
 offset_left = -279.0

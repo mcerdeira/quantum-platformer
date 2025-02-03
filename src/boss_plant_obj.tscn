@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://breiggv80wqpb"]
+
+[ext_resource type="PackedScene" uid="uid://ba5hq2bchhv8x" path="res://scenes/Plants.tscn" id="1_lhnug"]
+
+[node name="PlantObj" type="Node2D"]
+position = Vector2(265, 214)
+
+[node name="Plants" parent="." instance=ExtResource("1_lhnug")]
+z_index = 0
+position = Vector2(-25, 0)
+scale = Vector2(2, 2)
+fixed = true
+
+[node name="Plants2" parent="." instance=ExtResource("1_lhnug")]
+z_index = 0
+position = Vector2(31, 0)
+scale = Vector2(3, 3)
+fixed = true
+
+[node name="Plants3" parent="." instance=ExtResource("1_lhnug")]
+z_index = 0
+position = Vector2(-12, 0)
+scale = Vector2(2, 2)
+fixed = true
+
+[node name="Plants4" parent="." instance=ExtResource("1_lhnug")]
+z_index = 0
+position = Vector2(6, 0)
+fixed = true
+
+[node name="Plants5" parent="." instance=ExtResource("1_lhnug")]
+z_index = 0
+position = Vector2(20, 0)
+scale = Vector2(2, 2)
+fixed = true
