@@ -39,7 +39,6 @@ func _process(_delta):
 		elif Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
 			post = faucet.instantiate()
 			post.global_position = Vector2(global_position.x, global_position.y + 16)
-			post.watergen = watergen
 			Main.add_child(post)
 		elif Global.TerminalNumber == Global.TerminalsEnum.SALAMANDER:
 			pass

@@ -133,7 +133,10 @@ func droped(_parent, _parent_lbl, direction, _current_item, _simulation = false,
 		$sprite.animation = "simul"
 		modulate.a = 0.5
 	else:
-		$sprite.animation = Global.gunz_equiped[Global.gunz_index].name
+		if from_enemy:
+			$sprite.animation = "bomb"
+		else:
+			$sprite.animation = Global.gunz_equiped[Global.gunz_index].name
 		$Line2D.visible = false
 		$Line2D.queue_free()
 	

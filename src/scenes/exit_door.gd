@@ -12,6 +12,7 @@ var target = null
 @export var gotoBOSS = true
 @export var special_door = false 
 @export var shop_door = false
+@export var water_level_exit = false
 
 func _ready():
 	if terminal_number != -1:

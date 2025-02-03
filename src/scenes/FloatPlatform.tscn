@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/FloatPlatform.gd" id="1_qp35m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fw5o8"]
-size = Vector2(96, 13)
+size = Vector2(85, 13)
 
 [node name="FloatPlatform" type="StaticBody2D"]
 z_index = 90
@@ -18,5 +18,5 @@ rotation = 1.5708
 texture = ExtResource("1_onbpq")
 
 [node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -25.5)
+position = Vector2(-0.5, -25.5)
 shape = SubResource("RectangleShape2D_fw5o8")

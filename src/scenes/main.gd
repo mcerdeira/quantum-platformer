@@ -62,6 +62,7 @@ var rooms_bosses = [
 	null,
 	[preload("res://scenes/levels/leaf/room_boss.tscn")],
 	[preload("res://scenes/levels/tomb/room_boss.tscn")],
+	[preload("res://scenes/levels/mermaid/room_boss.tscn")],
 ]
 
 var rooms_challenge_horizontal = [
@@ -377,6 +378,9 @@ func _physics_process(delta):
 					found = true
 					break
 			if !found:
+				var water_gen = get_tree().get_nodes_in_group("water_generation")
+				for w in water_gen:
+					w.start()
 				Global.exit_door.open()
 		
 	var sel = get_node("/root/Main/CanvasLayer/Control/PrisonerHead/counter")

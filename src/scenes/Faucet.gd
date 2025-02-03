@@ -6,7 +6,6 @@ var delay_camera = 0.2
 var trapped = true
 var level_parent = null
 var q = -1
-var watergen = null
 
 func _ready():
 	add_to_group("prisoners")
@@ -22,12 +21,15 @@ func _physics_process(delta):
 	
 	if active and !opened:
 		if Input.is_action_just_pressed("up"):
-			Global.play_sound(Global.InteractSFX)
-			trapped = false
-			opened = true
-			active = false
-			Global.emit(global_position, 5)
-			get_item()
+			liberate()
+			
+func liberate():
+	Global.play_sound(Global.InteractSFX)
+	trapped = false
+	opened = true
+	active = false
+	Global.emit(global_position, 5)
+	get_item()
 			
 func get_item():
 	Global.prisoner_counter -= 1
@@ -35,7 +37,6 @@ func get_item():
 	$display.visible = false
 	$sprite.animation = "on"
 	$sprite.play()
-	watergen.stop()
 
 func _on_body_entered(body):
 	if !opened and body.is_in_group("players") and !body.is_in_group("prisoners"):
