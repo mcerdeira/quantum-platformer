@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://dghkfuk6l70pa"]
+
+[ext_resource type="Script" path="res://scenes/levels/mermaid/WaterDrp.gd" id="1_kfcdv"]
+[ext_resource type="Texture2D" uid="uid://ch0lf7l2ngiiw" path="res://sprites/water_drops1.png" id="2_pbo20"]
+[ext_resource type="Texture2D" uid="uid://bn6g6nehfvf0r" path="res://sprites/water_drops2.png" id="3_vol1a"]
+[ext_resource type="Texture2D" uid="uid://sn202a0d5ilu" path="res://sprites/water_drops3.png" id="4_k4ju3"]
+[ext_resource type="Texture2D" uid="uid://b3sbau7bvv0ld" path="res://sprites/water_drops4.png" id="5_b6uto"]
+[ext_resource type="Texture2D" uid="uid://0e5cg8cum6i1" path="res://sprites/water_drops5.png" id="6_5bxhl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o77ug"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pbo20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vol1a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_k4ju3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b6uto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5bxhl")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="WaterDrp" type="Node2D"]
+position = Vector2(45, 24)
+script = ExtResource("1_kfcdv")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.380392)
+sprite_frames = SubResource("SpriteFrames_o77ug")
+autoplay = "default"
+frame_progress = 0.302153
+
+[connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]

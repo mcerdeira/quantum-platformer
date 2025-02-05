@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdvdlbsrcv1ga"]
+
+[ext_resource type="Texture2D" uid="uid://dopeluopkggcj" path="res://sprites/horu/images/worm_boss2.png" id="1_m03af"]
+
+[node name="Tail4" type="Sprite2D"]
+position = Vector2(-52, 54)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_m03af")
+
+[node name="transform" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../Tail4")
+update_rotation = false
+
+[node name="Tail4" type="Sprite2D" parent="."]
+top_level = true
+z_index = -4096
+z_as_relative = false
+position = Vector2(-52, 54)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_m03af")
+offset = Vector2(0, 48)
+flip_v = true

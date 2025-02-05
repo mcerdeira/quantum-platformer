@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://0vidjg0yiu7i"]
+[gd_scene load_steps=64 format=3 uid="uid://0vidjg0yiu7i"]
 
 [ext_resource type="Texture2D" uid="uid://b0nxv8yj8yswl" path="res://sprites/spritesheets/floor_mermaid-sheet.png" id="1_tsi6p"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_a7c25"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ddjpinqcpwyw5" path="res://sprites/stair_v2.png" id="9_j4x1g"]
 [ext_resource type="Texture2D" uid="uid://cvgek1xj28trv" path="res://sprites/fireball_box.png" id="10_cgbew"]
 [ext_resource type="Shader" path="res://scenes/levels/mermaid/watershader.gdshader" id="12_jltic"]
+[ext_resource type="Texture2D" uid="uid://dsxslgcc1hcb5" path="res://sprites/horu/images/rock_break_spr_0.png" id="12_le3le"]
 [ext_resource type="PackedScene" uid="uid://breiggv80wqpb" path="res://boss_plant_obj.tscn" id="12_vh0e1"]
 [ext_resource type="Texture2D" uid="uid://d0s0bv48hurgp" path="res://icon.svg" id="13_mry70"]
 [ext_resource type="Script" path="res://scenes/PlayerTop.gd" id="14_6xcr7"]
@@ -17,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://b2ktaq5q0ak3t" path="res://sprites/horu/images/player_dead_fire_spr_0.png" id="15_c3lmb"]
 [ext_resource type="Texture2D" uid="uid://dk13v5x1btxmq" path="res://sprites/horu/images/player_spr_2.png" id="15_waq0b"]
 [ext_resource type="Texture2D" uid="uid://cdp7mhhwwq6yn" path="res://sprites/horu/images/player_spr_0.png" id="16_d2ety"]
+[ext_resource type="PackedScene" uid="uid://chgeck41w1cmq" path="res://scenes/boss_enemy_3.tscn" id="16_nbqwu"]
 [ext_resource type="Texture2D" uid="uid://bai8rdtfyncto" path="res://sprites/horu/images/player_spr_invisible.png" id="17_634cp"]
 [ext_resource type="Script" path="res://scenes/levels/room.gd" id="17_h65tp"]
 [ext_resource type="Texture2D" uid="uid://w8jhkurhs8h2" path="res://sprites/horu/images/player_spr_1.png" id="18_u1eor"]
@@ -491,7 +493,7 @@ animations = [{
 [node name="level" type="TileMap"]
 tile_set = SubResource("TileSet_4lr5i")
 format = 2
-layer_0/tile_data = PackedInt32Array(1048611, 917504, 0, 1114147, 917504, 0, 1179683, 917504, 0, 1245219, 393216, 0, 1245184, 458752, 0, 1245186, 720896, 0, 1245191, 720896, 0, 1245215, 720896, 0, 1245211, 720896, 0, 1245209, 720896, 0, 1245206, 720896, 0, 1245198, 720896, 0, 9, 720896, 0, 17, 720896, 0, 18, 720896, 0, 22, 720896, 0, 35, 65536, 0, 1245185, 720896, 0, 1245192, 720896, 0, 34, 720896, 0, 33, 720896, 0, 4, 720896, 0, 5, 720896, 0, 6, 720896, 0, 7, 720896, 0, 8, 720896, 0, 19, 720896, 0, 20, 720896, 0, 21, 720896, 0, 1245216, 720896, 0, 1245217, 720896, 0, 1245218, 720896, 0, 1245210, 720896, 0, 1245199, 720896, 0, 1245200, 720896, 0, 1245201, 720896, 0, 1245202, 720896, 0, 1245203, 720896, 0, 1245204, 720896, 0, 1245205, 720896, 0, 458786, 262144, 0, 327714, 262144, 0, 262178, 262144, 0, 131105, 262144, 0, 131106, 262144, 0, 1114145, 262144, 0, 1114131, 262144, 0, 262144, 917504, 0, 327680, 917504, 0, 393216, 917504, 0, 458752, 917504, 0, 524288, 917504, 0, 589824, 917504, 0, 655360, 917504, 0, 720896, 917504, 0, 786432, 917504, 0, 851968, 917504, 0, 917504, 917504, 0, 983040, 917504, 0, 1048576, 917504, 0, 1114112, 917504, 0, 1179648, 917504, 0, 0, 131072, 0, 10, 720896, 0, 11, 720896, 0, 12, 720896, 0, 13, 720896, 0, 14, 720896, 0, 15, 720896, 0, 16, 720896, 0, 1245187, 720896, 0, 1245188, 720896, 0, 1245189, 720896, 0, 1245190, 720896, 0, 1245193, 720896, 0, 1245194, 720896, 0, 1245195, 720896, 0, 1245196, 720896, 0, 1245197, 720896, 0, 1245207, 720896, 0, 1245208, 720896, 0, 1245212, 720896, 0, 1245213, 720896, 0, 1245214, 720896, 0, 23, 720896, 0, 24, 720896, 0, 25, 720896, 0, 26, 720896, 0, 27, 720896, 0, 28, 720896, 0, 29, 720896, 0, 30, 720896, 0, 31, 720896, 0, 32, 720896, 0, 983075, 917504, 0, 917539, 917504, 0, 852003, 917504, 0, 786467, 917504, 0, 720931, 917504, 0, 655395, 917504, 0, 589859, 917504, 0, 524323, 917504, 0, 458787, 917504, 0, 393251, 917504, 0, 327715, 917504, 0, 262179, 917504, 0, 196643, 917504, 0, 131107, 917504, 0, 65571, 917504, 0, 196608, 917504, 0, 65536, 917504, 0, 131072, 917504, 0, 1, 720896, 0, 2, 720896, 0, 3, 720896, 0)
+layer_0/tile_data = PackedInt32Array(1114131, 262144, 0, 65572, 917504, 0, 131108, 917504, 0, 196644, 917504, 0, 262180, 917504, 0, 327716, 917504, 0, 393252, 917504, 0, 458788, 917504, 0, 524324, 917504, 0, 589860, 917504, 0, 655396, 917504, 0, 720932, 917504, 0, 786468, 917504, 0, 852004, 917504, 0, 917540, 917504, 0, 983076, 917504, 0, 1048612, 917504, 0, 1114148, 917504, 0, 1179684, 917504, 0, 1310721, 720896, 0, 1310722, 720896, 0, 1310723, 720896, 0, 1310724, 720896, 0, 1310725, 720896, 0, 1310726, 720896, 0, 1310727, 720896, 0, 1310728, 720896, 0, 1310742, 720896, 0, 1310743, 720896, 0, 1310744, 720896, 0, 1310745, 720896, 0, 1310746, 720896, 0, 1310747, 720896, 0, 1310748, 720896, 0, 1310749, 720896, 0, 1310750, 720896, 0, 1310751, 720896, 0, 1310752, 720896, 0, 1310753, 720896, 0, 1310754, 720896, 0, 1310755, 720896, 0, 1310729, 720896, 0, 1310730, 720896, 0, 1310731, 720896, 0, 1310732, 720896, 0, 1310733, 720896, 0, 1310734, 720896, 0, 1310735, 720896, 0, 1310736, 720896, 0, 1310737, 720896, 0, 1310738, 720896, 0, 1310739, 720896, 0, 1310740, 720896, 0, 1310741, 720896, 0, -65535, 720896, 0, -65534, 720896, 0, -65533, 720896, 0, -65532, 720896, 0, -65531, 720896, 0, -65530, 720896, 0, -65529, 720896, 0, -65528, 720896, 0, -65527, 720896, 0, -65526, 720896, 0, -65525, 720896, 0, -65524, 720896, 0, -65523, 720896, 0, -65522, 720896, 0, -65521, 720896, 0, -65520, 720896, 0, -65519, 720896, 0, -65518, 720896, 0, -65517, 720896, 0, -65516, 720896, 0, -65515, 720896, 0, -65514, 720896, 0, -65513, 720896, 0, -65512, 720896, 0, -65511, 720896, 0, -65510, 720896, 0, -65509, 720896, 0, -65508, 720896, 0, -65507, 720896, 0, -65506, 720896, 0, -65505, 720896, 0, -65504, 720896, 0, -65503, 720896, 0, -65502, 720896, 0, -65501, 720896, 0, 65535, 917504, 0, 131071, 917504, 0, 196607, 917504, 0, 262143, 917504, 0, 327679, 917504, 0, 393215, 917504, 0, 458751, 917504, 0, 720895, 917504, 0, 786431, 917504, 0, 851967, 917504, 0, 917503, 917504, 0, 983039, 917504, 0, 1048575, 917504, 0, 1310719, 917504, 0, 1245183, 917504, 0, 1179647, 917504, 0, 1114111, 917504, 0, 524287, 917504, 0, 589823, 917504, 0, 655359, 917504, 0, -65536, 720896, 0, -1, 131072, 0, 1310720, 720896, 0, 1376255, 458752, 0, 1310756, 393216, 0, 1245220, 917504, 0, 36, 917504, 0, -65500, 65536, 0)
 script = ExtResource("17_h65tp")
 
 [node name="qdtector" parent="." instance=ExtResource("19_6hb3n")]
@@ -499,7 +501,30 @@ visible = false
 collision_layer = 41
 collision_mask = 41
 
+[node name="RockBreakSpr0" type="Sprite2D" parent="."]
+position = Vector2(180, 67)
+texture = ExtResource("12_le3le")
+
+[node name="RockBreakSpr4" type="Sprite2D" parent="."]
+position = Vector2(210, 81)
+texture = ExtResource("12_le3le")
+
+[node name="RockBreakSpr3" type="Sprite2D" parent="."]
+position = Vector2(207, 51)
+texture = ExtResource("12_le3le")
+
+[node name="RockBreakSpr1" type="Sprite2D" parent="."]
+position = Vector2(386, 403)
+texture = ExtResource("12_le3le")
+
+[node name="RockBreakSpr2" type="Sprite2D" parent="."]
+position = Vector2(746, 333)
+texture = ExtResource("12_le3le")
+
 [node name="PlantObj" parent="." instance=ExtResource("12_vh0e1")]
+
+[node name="PlantObj10" parent="." instance=ExtResource("12_vh0e1")]
+position = Vector2(277, 235)
 
 [node name="PlantObj2" parent="." instance=ExtResource("12_vh0e1")]
 position = Vector2(877, 474)
@@ -527,12 +552,16 @@ position = Vector2(81, 96)
 
 [node name="WaterBig" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_hw3b2")
-position = Vector2(576, 322)
-scale = Vector2(8.48437, 4.42188)
+position = Vector2(576.5, 316)
+scale = Vector2(9.61719, 5.625)
 texture = ExtResource("13_mry70")
 
+[node name="BossEnemy3" parent="." instance=ExtResource("16_nbqwu")]
+position = Vector2(659, 290)
+scale = Vector2(1.5, 1.5)
+
 [node name="PlayerTop" type="Node2D" parent="."]
-position = Vector2(472, 256)
+position = Vector2(244, 285)
 script = ExtResource("14_6xcr7")
 
 [node name="sprite" type="AnimatedSprite2D" parent="PlayerTop"]

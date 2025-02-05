@@ -43,6 +43,7 @@ z_as_relative = false
 script = ExtResource("1_4f8lo")
 
 [node name="collider" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_gyyxg")
 
