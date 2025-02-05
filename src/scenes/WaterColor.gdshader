@@ -16,7 +16,7 @@ void fragment(){
 	//check if the color is pink i.e ff00ff
 	//if it is set it to the new color else set it to transparent
 	if(step(color_detect_threshold,screen_tex) == water_dev_color){
-		
+
 		particle_color = water_color;
 	}else{
 		//transparent

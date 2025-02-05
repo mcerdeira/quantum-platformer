@@ -95,6 +95,8 @@ func create_drop(pos):
 		ttl_drop = 0.5
 		var drop = waterdrop.instantiate()
 		drop.position = pos
+		drop.scale.x = 1.906
+		drop.scale.y = 1.906
 		get_parent().add_child(drop)
 
 func pick_new_direction():

@@ -14,4 +14,3 @@ func _process(_delta):
 		if body != parent and body.is_in_group("players"):
 			var direction = (body.global_position-parent.global_position).normalized()
 			body.flyaway(direction * 5) 
-

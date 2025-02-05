@@ -48,4 +48,3 @@ func _process(_delta):
 			
 		done = true
 		queue_free()
-

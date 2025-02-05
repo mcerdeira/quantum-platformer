@@ -864,4 +864,3 @@ func _on_walk_sound_timer_timeout():
 			Global.play_sound(Global.ClimbSFX, options)
 		else:
 			Global.play_sound(Global.WalkSFX,options)
-
