@@ -37,6 +37,8 @@ IN_PROGRESS:
 - Terminar puzzle con el agua en mermaid
 
 BUGS/Ajustes:
+- El mapa funciona mal, muestra tipitos donde no los hay
+- Hay niveles de bonus que son inaccesibles
 - Tiene que haber un mini boss pez en mermaid, hay que hacerle comer la bomba
 - Tiene que haber un mini boss zombie o algo en el cementerio 
 - Situaciones más puzzleras en todos los niveles 
@@ -51,7 +53,7 @@ Features:
   - Alinear los discos, llama al bote.
   - Si giramos los discos, atrás se forma el password para la terminal
   - Armar items 3D que se puede girar en todas las direcciones
-  - Al no poderse jugar los niveles para siempre, estos items te los debería dar 
+  - Al no poderse jugar los niveles para siempre, estos items te los debería dar cada JEFE
   - JEFE: cuando subimos al bote para ir al jefe final, aparece un mini boss en el bote de una serpiente marina
 
 - Terminales: se pueden desactivar variables para la zona secreta, pero ese comando necesita password (está en el manual, en el teléfono de GROTTO SOFT)

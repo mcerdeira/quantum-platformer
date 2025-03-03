@@ -245,7 +245,7 @@ var radar = {
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
-	"price": 50,
+	"price": 500,
 	"idx": 3,
 }
 var map = {
@@ -256,7 +256,7 @@ var map = {
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
-	"price": 25,
+	"price": 0.1,
 	"idx": 1,
 }
 var double_jump = {
@@ -267,7 +267,7 @@ var double_jump = {
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
-	"price": 25,
+	"price": 250,
 	"idx": 2,
 }
 var resurrect = {
@@ -278,7 +278,7 @@ var resurrect = {
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
-	"price": 220,
+	"price": 2200,
 	"idx": 6,
 }
 var invisibility = {
@@ -289,7 +289,7 @@ var invisibility = {
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
-	"price": 125,
+	"price": 1250,
 	"idx": 4,
 }
 var binocular = {
@@ -300,7 +300,7 @@ var binocular = {
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
-	"price": 10,
+	"price": 100,
 	"idx": 5,
 }
 var none = {
