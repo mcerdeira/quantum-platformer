@@ -1,8 +1,8 @@
 extends SubViewport
 
 func _ready():
-	for i in range(4):
-		set_stuff(i+1)
+	for i in range(1, 5):
+		set_stuff(i)
 
 func rotation_set(r, n):
 	var node = get_node("Node3D/art3d_part" + str(n))

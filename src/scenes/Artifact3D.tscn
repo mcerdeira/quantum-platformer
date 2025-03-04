@@ -1,10 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsl8ifjv0hjav"]
+[gd_scene load_steps=21 format=3 uid="uid://dsl8ifjv0hjav"]
 
 [ext_resource type="Script" path="res://scenes/Artifact3D.gd" id="1_6pjhq"]
 [ext_resource type="Script" path="res://scenes/3d_view_ports_art.gd" id="2_3vdyr"]
 [ext_resource type="Texture2D" uid="uid://0m7nv2v35ed" path="res://sprites/qr/artifact_parts1.png" id="2_7q6dh"]
 [ext_resource type="Script" path="res://scenes/art3d_part.gd" id="3_1u3n8"]
 [ext_resource type="Texture2D" uid="uid://d0hfxvcnnhsmb" path="res://sprites/qr/artifact_parts2.png" id="5_jqpdw"]
+[ext_resource type="Texture2D" uid="uid://dsq1qbrwmy7u3" path="res://sprites/cosito1.png" id="6_eilp8"]
+[ext_resource type="Texture2D" uid="uid://tdvf78scu0tt" path="res://sprites/qr/artifact_parts3.png" id="6_jy86o"]
+[ext_resource type="Texture2D" uid="uid://chgbadtf8x5k6" path="res://sprites/cosito2.png" id="7_0dgww"]
+[ext_resource type="Texture2D" uid="uid://tcuqtln2ca3k" path="res://sprites/qr/artifact_parts4.png" id="7_u5wrp"]
+[ext_resource type="Texture2D" uid="uid://ytl3s67gkq0y" path="res://sprites/cosito3.png" id="8_42w4c"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_g6ghd"]
 viewport_path = NodePath("SubViewport")
@@ -23,6 +28,35 @@ albedo_texture = ExtResource("5_jqpdw")
 [sub_resource type="BoxMesh" id="BoxMesh_rxlwx"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_7v0bd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4jii8"]
+albedo_texture = ExtResource("6_jy86o")
+
+[sub_resource type="BoxMesh" id="BoxMesh_c4dxk"]
+material = SubResource("StandardMaterial3D_4jii8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xmmyn"]
+albedo_texture = ExtResource("7_u5wrp")
+
+[sub_resource type="BoxMesh" id="BoxMesh_olejn"]
+material = SubResource("StandardMaterial3D_xmmyn")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_12ovp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_eilp8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0dgww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_42w4c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Artifact3D" type="Node2D"]
 process_mode = 3
@@ -46,6 +80,17 @@ script = ExtResource("3_1u3n8")
 [node name="art3d_part2" type="MeshInstance3D" parent="SubViewport/Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 mesh = SubResource("BoxMesh_rxlwx")
+script = ExtResource("3_1u3n8")
+
+[node name="art3d_part3" type="MeshInstance3D" parent="SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 0)
+mesh = SubResource("BoxMesh_c4dxk")
+script = ExtResource("3_1u3n8")
+
+[node name="art3d_part4" type="MeshInstance3D" parent="SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0)
+mesh = SubResource("BoxMesh_olejn")
+script = ExtResource("3_1u3n8")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 7)
@@ -53,3 +98,22 @@ fov = 50.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)
+
+[node name="cositor" type="AnimatedSprite2D" parent="."]
+position = Vector2(-63, -192)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_12ovp")
+autoplay = "default"
+frame_progress = 0.0556104
+
+[node name="pos1" type="Marker2D" parent="."]
+position = Vector2(-63, -192)
+
+[node name="pos2" type="Marker2D" parent="."]
+position = Vector2(-63, -95)
+
+[node name="pos4" type="Marker2D" parent="."]
+position = Vector2(151, -95)
+
+[node name="pos3" type="Marker2D" parent="."]
+position = Vector2(153, -192)
