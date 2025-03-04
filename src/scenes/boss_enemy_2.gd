@@ -55,6 +55,7 @@ func hit():
 			die()
 		
 func die():
+	Global.ARTIFACT_PER_LEVEL[Global.TerminalNumber] = true
 	Ambience.stop()
 	Music.stop()
 	dead = true

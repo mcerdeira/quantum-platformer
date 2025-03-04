@@ -1,14 +1,10 @@
-extends Node3D
+extends Node2D
 var active_number = 1
+var speed = 1
 
 func _ready():
 	get_tree().paused = true
-	var material
-	for i in range(4):
-		var mesh = get_node("art3d_part" + str(i+1))
-		material = mesh.get_active_material(0)
-		material.albedo_texture = load("res://sprites/qr/artifact_parts"+str(i+1)+".png")
-	
+		
 func _physics_process(delta):
 	if Input.is_action_just_pressed("quit"):
 		Global.play_sound(Global.InteractSFX)
@@ -24,3 +20,10 @@ func _physics_process(delta):
 		active_number -= 1
 		if active_number < 1:
 			active_number = 3
+			
+	elif Input.is_action_pressed("left"):
+		var node = $SubViewport
+		node.rotation_set(-speed * delta, active_number)
+	elif Input.is_action_pressed("right"):
+		var node = $SubViewport 
+		node.rotation_set(speed * delta, active_number)

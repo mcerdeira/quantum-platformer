@@ -197,6 +197,20 @@ func apply_jump(delta):
 			$JumpTimer.stop()
 			$Timer.wait_time = randf_range(3, 5)
 			$Timer.start()
+			
+func force_kill():
+	LIFE = 0.0
+	die()
+			
+func die():
+	Global.ARTIFACT_PER_LEVEL[Global.TerminalNumber] = true
+	Global.LEAF_STATUS = false
+	Global.TOMB_STATUS = false
+	Global.MERMAID_STATUS = false
+	Global.SALAMANDER_STATUS = true
+	Global.FromPipe = true
+	Global.gotoBOSS = false
+	Global.BOSS_DEAD = true
 
 func _on_timer_timeout():
 	if count <= 0:

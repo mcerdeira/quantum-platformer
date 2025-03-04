@@ -179,8 +179,6 @@ func generate_level():
 		_rooms_middle1 = list_rooms_middle1[Global.TerminalNumber]
 		_rooms_middle2 = list_rooms_middle2[Global.TerminalNumber]
 		_rooms_bottom = list_rooms_bottom [Global.TerminalNumber]
-	
-	Global.artifactPicked = false
 
 	for h in range(total_h):
 		for w in range(total_w):

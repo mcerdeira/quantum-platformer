@@ -215,6 +215,7 @@ func force_kill():
 	dead = true
 	LIFE = 0.0
 	explode_ttl = 3
+	Global.ARTIFACT_PER_LEVEL[Global.TerminalNumber] = true
 	Global.gotoBOSS = false
 	Global.shaker_obj.shake(3, 0.5)
 	Global.BOSS_DEAD = true

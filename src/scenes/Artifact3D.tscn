@@ -1,101 +1,55 @@
-[gd_scene load_steps=17 format=3 uid="uid://dsl8ifjv0hjav"]
+[gd_scene load_steps=11 format=3 uid="uid://dsl8ifjv0hjav"]
 
 [ext_resource type="Script" path="res://scenes/Artifact3D.gd" id="1_6pjhq"]
+[ext_resource type="Script" path="res://scenes/3d_view_ports_art.gd" id="2_3vdyr"]
+[ext_resource type="Texture2D" uid="uid://0m7nv2v35ed" path="res://sprites/qr/artifact_parts1.png" id="2_7q6dh"]
 [ext_resource type="Script" path="res://scenes/art3d_part.gd" id="3_1u3n8"]
-[ext_resource type="Texture2D" uid="uid://feyxgrn8ox3b" path="res://sprites/black_background.png" id="4_7yv51"]
+[ext_resource type="Texture2D" uid="uid://d0hfxvcnnhsmb" path="res://sprites/qr/artifact_parts2.png" id="5_jqpdw"]
 
-[sub_resource type="Environment" id="Environment_r74ps"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_g6ghd"]
+viewport_path = NodePath("SubViewport")
 
-[sub_resource type="BoxMesh" id="BoxMesh_satyr"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_acj7l"]
 resource_local_to_scene = true
+albedo_texture = ExtResource("2_7q6dh")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rg2xp"]
-load_path = "res://.godot/imported/example.png-87b1922df3a2b0d2e5b6dd078337ac06.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_66fgu"]
+[sub_resource type="BoxMesh" id="BoxMesh_tgn6c"]
 resource_local_to_scene = true
-albedo_texture = SubResource("CompressedTexture2D_rg2xp")
-normal_scale = 13.29
-texture_filter = 0
+material = SubResource("StandardMaterial3D_acj7l")
 
-[sub_resource type="BoxMesh" id="BoxMesh_ijaky"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7v0bd"]
+albedo_texture = ExtResource("5_jqpdw")
+
+[sub_resource type="BoxMesh" id="BoxMesh_rxlwx"]
 resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_7v0bd")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pkf4r"]
-load_path = "res://.godot/imported/example.png-87b1922df3a2b0d2e5b6dd078337ac06.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ucc0j"]
-resource_local_to_scene = true
-albedo_texture = SubResource("CompressedTexture2D_pkf4r")
-normal_scale = 13.29
-texture_filter = 0
-
-[sub_resource type="BoxMesh" id="BoxMesh_ohwih"]
-resource_local_to_scene = true
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4qeyx"]
-load_path = "res://.godot/imported/example.png-87b1922df3a2b0d2e5b6dd078337ac06.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlhos"]
-resource_local_to_scene = true
-albedo_texture = SubResource("CompressedTexture2D_4qeyx")
-normal_scale = 13.29
-texture_filter = 0
-
-[sub_resource type="BoxMesh" id="BoxMesh_myyn3"]
-resource_local_to_scene = true
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_brlk1"]
-load_path = "res://.godot/imported/example.png-87b1922df3a2b0d2e5b6dd078337ac06.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_koqi0"]
-resource_local_to_scene = true
-albedo_texture = SubResource("CompressedTexture2D_brlk1")
-normal_scale = 13.29
-texture_filter = 0
-
-[node name="Artifact3D" type="Node3D"]
+[node name="Artifact3D" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_6pjhq")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_r74ps")
+[node name="Sprite2D1" type="Sprite2D" parent="."]
+position = Vector2(0, -96)
+texture = SubResource("ViewportTexture_g6ghd")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, -2.38419e-07, 0, 1, 0, 2.38419e-07, 0, 1, 0, 3.16149, 13)
-current = true
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+script = ExtResource("2_3vdyr")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="Node3D" type="Node3D" parent="SubViewport"]
 
-[node name="art3d_part1" type="MeshInstance3D" parent="."]
-transform = Transform3D(-5.60638, 0, 8.28061, 0, 2, 0, -8.28061, 0, -5.60638, 0, 6, 0)
-mesh = SubResource("BoxMesh_satyr")
-surface_material_override/0 = SubResource("StandardMaterial3D_66fgu")
+[node name="art3d_part1" type="MeshInstance3D" parent="SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("BoxMesh_tgn6c")
 script = ExtResource("3_1u3n8")
-part_n = 1
 
-[node name="art3d_part2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-5.60638, 0, 8.28061, 0, 2, 0, -8.28061, 0, -5.60638, 0, 4, 0)
-mesh = SubResource("BoxMesh_ijaky")
-surface_material_override/0 = SubResource("StandardMaterial3D_ucc0j")
-script = ExtResource("3_1u3n8")
-part_n = 2
+[node name="art3d_part2" type="MeshInstance3D" parent="SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("BoxMesh_rxlwx")
 
-[node name="art3d_part3" type="MeshInstance3D" parent="."]
-transform = Transform3D(-5.60638, 0, 8.28061, 0, 2, 0, -8.28061, 0, -5.60638, 0, 2, 0)
-mesh = SubResource("BoxMesh_ohwih")
-surface_material_override/0 = SubResource("StandardMaterial3D_nlhos")
-script = ExtResource("3_1u3n8")
-part_n = 3
+[node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 7)
+fov = 50.0
 
-[node name="art3d_part4" type="MeshInstance3D" parent="."]
-transform = Transform3D(-5.60638, 0, 8.28061, 0, 2, 0, -8.28061, 0, -5.60638, 0, 0, 0)
-mesh = SubResource("BoxMesh_myyn3")
-surface_material_override/0 = SubResource("StandardMaterial3D_koqi0")
-script = ExtResource("3_1u3n8")
-part_n = 4
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-200, 0, -1.74846e-05, 0, 150, 0, 1.74846e-05, 0, -200, 2.03606, -2.07829, -27.2379)
-texture_filter = 0
-texture = ExtResource("4_7yv51")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)

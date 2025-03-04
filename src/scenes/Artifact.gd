@@ -3,7 +3,7 @@ var active = false
 var opened = false
 var player = null
 var delay_camera = 0.2
-var itemfound = load("res://scenes/Item3D.tscn")
+var itemfound = load("res://scenes/Artifact3D.tscn")
 var has_artifact = false
 var initial_message = "== MONOLITO ==\n¿EXAMINAR?"
 
@@ -30,10 +30,9 @@ func _physics_process(delta):
 			
 func get_item():
 	Global.play_sound(Global.InteractSFX)
-	if has_artifact:
+	if true or has_artifact:
 		var p = itemfound.instantiate()
-		var parent = get_parent()
-		parent.add_child(p)
+		add_child(p)
 		$display.visible = false
 	else:
 		$display/back/lbl_item.text = "HAY 4 RANURAS... ¿PARA QUE SON?"

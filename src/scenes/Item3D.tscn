@@ -1,44 +1,38 @@
-[gd_scene load_steps=8 format=3 uid="uid://cusnut7c2fjy3"]
+[gd_scene load_steps=7 format=3 uid="uid://cusnut7c2fjy3"]
 
 [ext_resource type="Script" path="res://scenes/Item3D.gd" id="1_x667o"]
 [ext_resource type="Script" path="res://scenes/MeshInstance3D.gd" id="2_eadms"]
-[ext_resource type="Texture2D" uid="uid://feyxgrn8ox3b" path="res://sprites/black_background.png" id="4_seh7o"]
+[ext_resource type="Texture2D" uid="uid://0m7nv2v35ed" path="res://sprites/qr/artifact_parts1.png" id="2_s3qwg"]
 
-[sub_resource type="Environment" id="Environment_r74ps"]
-background_color = Color(0, 0.764706, 0, 1)
+[sub_resource type="ViewportTexture" id="ViewportTexture_bwg3g"]
+viewport_path = NodePath("SubViewport")
 
-[sub_resource type="BoxMesh" id="BoxMesh_sa77f"]
-resource_local_to_scene = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20jdx"]
+albedo_texture = ExtResource("2_s3qwg")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o4m68"]
-load_path = "res://.godot/imported/example.png-87b1922df3a2b0d2e5b6dd078337ac06.s3tc.ctex"
+[sub_resource type="BoxMesh" id="BoxMesh_hvquc"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dj8yo"]
-resource_local_to_scene = true
-albedo_texture = SubResource("CompressedTexture2D_o4m68")
-normal_scale = 13.29
-texture_filter = 0
-
-[node name="Item3D" type="Node3D"]
+[node name="Item3D" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_x667o")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_r74ps")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.5, 9.5)
+scale = Vector2(1.03711, 1.03711)
+texture = SubResource("ViewportTexture_bwg3g")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, -2.38419e-07, 0, 1, 0, 2.38419e-07, 0, 1, 0, 1.20456, 11)
-current = true
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="Node3D" type="Node3D" parent="SubViewport"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-5.60638, 0, 8.28061, 0, 2, 0, -8.28061, 0, -5.60638, 0, 1, 0)
-mesh = SubResource("BoxMesh_sa77f")
-surface_material_override/0 = SubResource("StandardMaterial3D_dj8yo")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/Node3D"]
+material_override = SubResource("StandardMaterial3D_20jdx")
+mesh = SubResource("BoxMesh_hvquc")
 script = ExtResource("2_eadms")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-200, 0, -1.74846e-05, 0, 150, 0, 1.74846e-05, 0, -200, 2.03606, -2.07829, -27.2379)
-texture_filter = 0
-texture = ExtResource("4_seh7o")
+[node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.88493)
+fov = 50.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/Node3D"]
