@@ -46,6 +46,10 @@ func _on_btn_resumir_pressed():
 	resume()
 
 func pause_unpause():
+	if Global.PauseStop:
+		Global.PauseStop = false
+		return
+	
 	Global.play_sound(Global.PauseSFX)
 	$btn_resumir.grab_focus()
 	focus_exit = false

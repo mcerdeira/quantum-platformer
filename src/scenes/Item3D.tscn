@@ -1,8 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://cusnut7c2fjy3"]
+[gd_scene load_steps=27 format=3 uid="uid://cusnut7c2fjy3"]
 
 [ext_resource type="Script" path="res://scenes/Item3D.gd" id="1_x667o"]
 [ext_resource type="Script" path="res://scenes/MeshInstance3D.gd" id="2_eadms"]
 [ext_resource type="Texture2D" uid="uid://0m7nv2v35ed" path="res://sprites/qr/artifact_parts1.png" id="2_s3qwg"]
+[ext_resource type="Shader" path="res://scenes/Item.gdshader" id="4_6ukj5"]
+[ext_resource type="Texture2D" uid="uid://cog7sk80ykf4o" path="res://sprites/bomb.png" id="5_4k6kj"]
+[ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="6_fnbwx"]
+[ext_resource type="Texture2D" uid="uid://c6gf7vjf30biq" path="res://sprites/coin.png" id="7_kt4j6"]
+[ext_resource type="Texture2D" uid="uid://bljcg74u2x5sd" path="res://sprites/invisibility.png" id="8_mo2dk"]
+[ext_resource type="Texture2D" uid="uid://cwjka3w6mxat3" path="res://sprites/slots.png" id="9_efuww"]
+[ext_resource type="Texture2D" uid="uid://b3tca6epdaoix" path="res://sprites/rock.png" id="10_ufuf3"]
+[ext_resource type="Texture2D" uid="uid://df545tsy68qs1" path="res://sprites/growing_plant.png" id="11_xonwr"]
+[ext_resource type="Texture2D" uid="uid://pm7mhxqnqxtq" path="res://sprites/radar.png" id="12_1rrat"]
+[ext_resource type="Texture2D" uid="uid://mpqlvpcht35a" path="res://sprites/simul_box.png" id="13_mlwxu"]
+[ext_resource type="Texture2D" uid="uid://trxeowv3jmbb" path="res://sprites/smoke_bomb.png" id="14_juc01"]
+[ext_resource type="Texture2D" uid="uid://csp0ardyjl54b" path="res://sprites/spring.png" id="15_v7kby"]
+[ext_resource type="Texture2D" uid="uid://c3wmt7870xukn" path="res://sprites/teleporter_box.png" id="16_4tvd3"]
+[ext_resource type="Texture2D" uid="uid://cjg71ls267rbj" path="res://sprites/question_mark.png" id="17_evmg3"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="18_iwylu"]
+[ext_resource type="Texture2D" uid="uid://b3n7eech0mndx" path="res://sprites/arrows1.png" id="19_wagro"]
+[ext_resource type="Texture2D" uid="uid://dkompgmyj4pmk" path="res://sprites/arrows2.png" id="20_bk6bv"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_bwg3g"]
 viewport_path = NodePath("SubViewport")
@@ -12,8 +29,138 @@ albedo_texture = ExtResource("2_s3qwg")
 
 [sub_resource type="BoxMesh" id="BoxMesh_hvquc"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_obpyo"]
+resource_local_to_scene = true
+shader = ExtResource("4_6ukj5")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 3.0
+shader_parameter/shine_size = 0.01
+shader_parameter/white = null
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7w1j6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_4k6kj")
+}],
+"loop": true,
+"name": &"bomb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_fnbwx")
+}],
+"loop": true,
+"name": &"clone",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_kt4j6")
+}],
+"loop": true,
+"name": &"coin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_mo2dk")
+}],
+"loop": true,
+"name": &"invisibility",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_efuww")
+}],
+"loop": true,
+"name": &"monolith",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_ufuf3")
+}],
+"loop": true,
+"name": &"muffin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_xonwr")
+}],
+"loop": true,
+"name": &"plant",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_1rrat")
+}],
+"loop": true,
+"name": &"radar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_mlwxu")
+}],
+"loop": true,
+"name": &"simul",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_juc01")
+}],
+"loop": true,
+"name": &"smoke",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_v7kby")
+}],
+"loop": true,
+"name": &"spring",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_4tvd3")
+}],
+"loop": true,
+"name": &"teleport",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_evmg3")
+}],
+"loop": true,
+"name": &"unknown",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_we8v6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_wagro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bk6bv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Item3D" type="Node2D"]
 process_mode = 3
+z_index = 4096
 script = ExtResource("1_x667o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -36,3 +183,49 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.88493)
 fov = 50.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/Node3D"]
+
+[node name="display" type="Node2D" parent="."]
+position = Vector2(37, -83)
+
+[node name="back2" type="ColorRect" parent="display"]
+z_index = 4096
+offset_left = -295.0
+offset_top = -118.0
+offset_right = 255.0
+offset_bottom = -39.0
+metadata/_edit_use_anchors_ = true
+
+[node name="back" type="ColorRect" parent="display"]
+z_index = 4096
+offset_left = -294.0
+offset_top = -117.0
+offset_right = 254.0
+offset_bottom = -40.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="sprite" type="AnimatedSprite2D" parent="display/back"]
+material = SubResource("ShaderMaterial_obpyo")
+position = Vector2(45, 61)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_7w1j6")
+animation = &"unknown"
+offset = Vector2(0, -16)
+
+[node name="lbl_item" type="Label" parent="display/back"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 2.0
+offset_right = 494.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("18_iwylu")
+text = "\"== ARTEFACTO ==
+La encontraste..."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="arrows" type="AnimatedSprite2D" parent="display/back"]
+position = Vector2(520, 39)
+sprite_frames = SubResource("SpriteFrames_we8v6")
+autoplay = "default"

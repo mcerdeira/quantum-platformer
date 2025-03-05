@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready():
+	Global.PauseStop = true
 	get_tree().paused = true
 	var material = $SubViewport/Node3D/MeshInstance3D.get_active_material(0)
 	material.albedo_texture = load("res://sprites/qr/artifact_parts"+str(Global.TerminalNumber)+".png")

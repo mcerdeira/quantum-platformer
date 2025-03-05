@@ -2,11 +2,18 @@ extends SubViewport
 
 func _ready():
 	for i in range(1, 5):
-		set_stuff(i)
+		if Global.ARTIFACT_PER_LEVEL[i]:
+			set_stuff(i)
+		else:
+			disable_me(i)
 
 func rotation_set(r, n):
 	var node = get_node("Node3D/art3d_part" + str(n))
-	node.rotation_set(r)
+	return node.rotation_set(r)
+	
+func disable_me(n):
+	var node = get_node("Node3D/art3d_part" + str(n))
+	node.visible = false
 
 func set_stuff(n):
 	var node = get_node("Node3D/art3d_part" + str(n))

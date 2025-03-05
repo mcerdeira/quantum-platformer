@@ -124,7 +124,7 @@ func hide_eyes():
 func show_eyes():
 	$sprite_eyes.visible = true
 	
-func restart_camera(_camera_prev_status):
+func restart_camera(_camera_prev_status, show_3ditem = false):
 	await get_tree().create_timer(2.1).timeout
 	_camera_prev_status.enabled = false
 	restore_camera_zoom = true
@@ -132,7 +132,16 @@ func restart_camera(_camera_prev_status):
 	$Camera2D.global_position = _camera_prev_status.global_position
 	$Camera2D.enabled = true
 	Global.shaker_obj.camera = $Camera2D
+	if show_3ditem:
+		show_current_item3D()
 	
+func show_current_item3D():
+	var itemfound = load("res://scenes/Item3D.tscn")
+	await get_tree().create_timer(5.0).timeout
+	var p = itemfound.instantiate()
+	p.position.y = -150
+	add_child(p)
+
 func show_message_demo():
 	await get_tree().create_timer(4).timeout
 	$display.visible = true

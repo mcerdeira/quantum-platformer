@@ -103,7 +103,6 @@ func process_player(delta):
 		return
 		
 	if dead:
-		#Global.player_obj.show_message_demo()
 		Global.LEAF_STATUS = false
 		Global.TOMB_STATUS = true
 		
@@ -125,7 +124,7 @@ func process_player(delta):
 			Music.play(Global.ShopTheme)
 			Global.FromPipe = true
 			Ambience.stop()
-			Global.player_obj.restart_camera($"../CameraZoomer")
+			Global.player_obj.restart_camera($"../CameraZoomer", true)
 		return
 
 	else:

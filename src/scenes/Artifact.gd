@@ -11,6 +11,14 @@ func _ready():
 	$display/back/lbl_item.text = initial_message
 	$display/back/sprite.animation = "unknown"
 	$display.visible = false
+	has_artifact = got_some()
+	
+func got_some():
+	for a in Global.ARTIFACT_PER_LEVEL:
+		if a:
+			return true
+			
+	return false
 
 func _physics_process(delta):
 	if !active and opened:
@@ -30,7 +38,7 @@ func _physics_process(delta):
 			
 func get_item():
 	Global.play_sound(Global.InteractSFX)
-	if true or has_artifact:
+	if has_artifact:
 		var p = itemfound.instantiate()
 		add_child(p)
 		$display.visible = false
