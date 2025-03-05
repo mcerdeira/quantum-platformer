@@ -64,7 +64,7 @@ func _physics_process(delta):
 		if Input.is_action_pressed("up") and !entering:
 			var overlapping_bodies = get_overlapping_bodies()
 			for body in overlapping_bodies:
-				if body.is_in_group("players"):
+				if body.is_in_group("players") and !body.is_in_group("prisoners"):
 					if !body.in_air:
 						if special_door:
 							Global.FromPipe = true

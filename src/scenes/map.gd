@@ -20,6 +20,8 @@ func _physics_process(_delta):
 func notify_map(q):
 	var qq = get_node("q" + str(q))
 	qq.animation = str(q)
+	var qqq = get_node("q" + str(q) + "/prisoner")
+	$player_q.global_position = qqq.global_position
 
 func notify_prisoner(q):
 	var qq = get_node("q" + str(q) + "/prisoner")

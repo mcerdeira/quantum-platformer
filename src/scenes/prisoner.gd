@@ -20,6 +20,7 @@ var npc_obj = preload("res://scenes/prisoner_npc.tscn")
 var previus_velocity = Vector2.ZERO
 var trapped = true
 var dir = 1
+var free = false
 var liberating = 0
 var help_messages = ["¡AYUDA!", "¡SALVAME!", "S.O.S"]
 var thanks_messages = ["¡GRACIAS!", "¡ME SALVASTE!", "¡VIVA LA VIDA!"]
@@ -322,6 +323,7 @@ func _on_trapped_area_body_entered(body):
 		liberate(body)
 		
 func liberate(body = null):
+	free = true
 	direction = Global.pick_random(["right", "left"])
 	liberating = 2.0
 	if body:

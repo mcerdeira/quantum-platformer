@@ -5,6 +5,7 @@ var player = null
 var delay_camera = 0.2
 var trapped = true
 var level_parent = null
+var free = true
 var q = -1
 
 func _ready():

@@ -241,7 +241,6 @@ func generate_level():
 			var pm = prisoner_markers.pop_front()
 			pm.kill()
 		
-		prisoner_markers = get_tree().get_nodes_in_group("prisoner_markers")
 		for _pm in prisoner_markers:
 			if !_pm.dead:
 				_pm.done = true

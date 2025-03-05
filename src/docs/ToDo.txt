@@ -38,7 +38,6 @@ IN_PROGRESS:
 
 BUGS/Ajustes:
 - De alguna forma sucedio que volvimos a entrar al nivel 1: al volver del boss 1, hablar con el npc e ir al monolito, apretar para arriba tomó (asumo) el evento de entrar a la puerta, que además está cerrada...
-- El mapa funciona mal, muestra tipitos donde no los hay
 - Hay niveles de bonus que son inaccesibles
 - Tiene que haber un mini boss pez en mermaid, hay que hacerle comer la bomba
 - Tiene que haber un mini boss zombie o algo en el cementerio 
@@ -335,6 +334,7 @@ Features:
   - Las puertas deben cerrarse y no dejar jugar niveles viejos
   - Algun NPC te manda a explorar las tumbas
 - Terminar puzzle con el agua en mermaid
+- El mapa funciona mal, muestra tipitos donde no los hay
 
 --------------------------------- CANCELADO ---------------------------------
 - Enemigo torreta que dispara 

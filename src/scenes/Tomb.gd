@@ -5,6 +5,7 @@ var player = null
 var delay_camera = 0.2
 var has_artifact = false
 var trapped = true
+var free = true
 var level_parent = null
 var ghost = preload("res://scenes/enemy_ghost.tscn")
 var q = -1

@@ -10,4 +10,3 @@ func _ready():
 			p.queue_free()
 	else:
 		queue_free()
-
