@@ -37,28 +37,23 @@ IN_PROGRESS:
 
 
 BUGS/Ajustes:
-- De alguna forma sucedio que volvimos a entrar al nivel 1: al volver del boss 1, hablar con el npc e ir al monolito, apretar para arriba tomó (asumo) el evento de entrar a la puerta, que además está cerrada...
 - Hay niveles de bonus que son inaccesibles
 - Tiene que haber un mini boss pez en mermaid, hay que hacerle comer la bomba
 - Tiene que haber un mini boss zombie o algo en el cementerio 
 
 Features:
-- Enemigo que te persigue por cañería
+- Bonus verion 2: Enemigo que te persigue por cañería
 - Enemigo araña
 - Enemigo murcielago o volador
 - Panal de abejas en mermaid, no son lámparas y al caer salen abejas
 
 - Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
-  - Alinear los discos, llama al bote.
-  - Si giramos los discos, atrás se forma el password para la terminal
-  - Armar items 3D que se puede girar en todas las direcciones
-  - Al no poderse jugar los niveles para siempre, estos items te los debería dar cada JEFE
+  - Alinear los discos para forma la figura, llama al bote.
+  - Si giramos los discos, atrás se forma el QR del manual
+
   - JEFE: cuando subimos al bote para ir al jefe final, aparece un mini boss en el bote de una serpiente marina
 
-- Terminales: se pueden desactivar variables para la zona secreta, pero ese comando necesita password (está en el manual, en el teléfono de GROTTO SOFT)
-
-- [Zona Tomb]  
-  - Puzzles que nos haga usar el clone o el teleport
+- Terminales: se pueden desactivar variables para el final, pero ese comando necesita password (está en el manual, en el teléfono de GROTTO SOFT)
 
 - [Armar zona Mermaid] Fondo más claro, piso negro, lluvia y truenos. La mecánica principal son unas canillas que abrimos para inundar o no lugares 
   - Cascadas   
@@ -69,9 +64,10 @@ Features:
 
 - [Armar zona Dragon] Estilo volcanico, lava por todos lados, lasers. La mecánica principal es... ?????
   - Geisers
+  - Es una zona falsa, es directamente el jefe
   - JEFE: Objeto 3D que nos dispara  
 
-- [Armar zona Seraph]
+- [FINAL]
 - JEFE FINAL (la mascota): Pelea carrera donde nos alargamos como serpientes hacia el cielo vs el boss
                            Momento shmup
 
@@ -335,6 +331,9 @@ Features:
   - Algun NPC te manda a explorar las tumbas
 - Terminar puzzle con el agua en mermaid
 - El mapa funciona mal, muestra tipitos donde no los hay
+- De alguna forma sucedio que volvimos a entrar al nivel 1: al volver del boss 1, hablar con el npc e ir al monolito, apretar para arriba tomó (asumo) el evento de entrar a la puerta, que además está cerrada...
+  (en realidad el monolito no tenia nada que ver, fue porque el NPC es el mismo que se usa en el boss, y al cabo de un rato redirecciona y acá redireccionó al TerminalNumber)
+- Al no poderse jugar los niveles para siempre, estos items te los debería dar cada JEFE
 
 --------------------------------- CANCELADO ---------------------------------
 - Enemigo torreta que dispara 

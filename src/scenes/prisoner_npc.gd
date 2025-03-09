@@ -46,7 +46,7 @@ func _physics_process(delta):
 		if !current_message:
 			end_ttl -= 1 * delta
 			if end_ttl <= 0:
-				if boss_1_npc and Global.CurrentState != Global.GameStates.SHOP:
+				if boss_1_npc and Global.CurrentState != Global.GameStates.SHOP and Global.CurrentState != Global.GameStates.OVERWORLD:
 					Global.scene_next(Global.TerminalNumber, false, false, false, true)
 		
 		if player:
