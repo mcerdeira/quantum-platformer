@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://dammqq876uu3j"]
+
+[ext_resource type="Texture2D" uid="uid://2cvoimmrh44h" path="res://sprites/bees1.png" id="1_lkpth"]
+[ext_resource type="Texture2D" uid="uid://cejs0uqdc6w8" path="res://sprites/vine_lamp.png" id="1_o4asy"]
+[ext_resource type="Texture2D" uid="uid://d1vett6l1nmfl" path="res://sprites/bees2.png" id="2_4e2fe"]
+[ext_resource type="Texture2D" uid="uid://chcppb83erest" path="res://sprites/vine_chain.png" id="2_rknsq"]
+[ext_resource type="Texture2D" uid="uid://j82xsj7eg0nj" path="res://sprites/bees3.png" id="3_6vhvf"]
+[ext_resource type="Script" path="res://scenes/lamp_pivothoney.gd" id="3_qius5"]
+[ext_resource type="Script" path="res://scenes/LampDownSpikes.gd" id="4_vk530"]
+[ext_resource type="Texture2D" uid="uid://4ciuk1qq06to" path="res://sprites/honeycomb.png" id="5_as6vi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pn8bk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lkpth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4e2fe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6vhvf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yyehc"]
+radius = 25.9422
+
+[node name="LampLongWasp" type="Node2D"]
+z_index = 4094
+z_as_relative = false
+
+[node name="LampUp" type="Sprite2D" parent="."]
+texture = ExtResource("1_o4asy")
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 5.0
+texture = ExtResource("2_rknsq")
+texture_mode = 1
+
+[node name="LampPivot" type="Node2D" parent="." node_paths=PackedStringArray("LampDown", "Chain")]
+position = Vector2(0, 6)
+script = ExtResource("3_qius5")
+LampDown = NodePath("../LampDown")
+Chain = NodePath("../Line2D")
+
+[node name="LampDown" type="Node2D" parent="."]
+position = Vector2(0, 262)
+script = ExtResource("4_vk530")
+
+[node name="LampArea" type="Area2D" parent="LampDown"]
+collision_layer = 33
+collision_mask = 33
+
+[node name="Lamp" type="Sprite2D" parent="LampDown/LampArea"]
+position = Vector2(0, 35)
+scale = Vector2(2, 2)
+texture = ExtResource("5_as6vi")
+
+[node name="BeesSprite" type="AnimatedSprite2D" parent="LampDown/LampArea"]
+position = Vector2(4, 35)
+sprite_frames = SubResource("SpriteFrames_pn8bk")
+autoplay = "default"
+frame_progress = 0.835292
+
+[node name="collider" type="CollisionShape2D" parent="LampDown/LampArea"]
+position = Vector2(3, 32)
+shape = SubResource("CircleShape2D_yyehc")
+
+[connection signal="body_entered" from="LampDown/LampArea" to="LampPivot" method="_on_lamp_area_body_entered"]

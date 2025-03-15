@@ -34,8 +34,7 @@
 ==================================================================================================================
 
 IN_PROGRESS:       
-- Panal de abejas en mermaid, no son lámparas y al caer salen abejas
-
+- SFX de abejas
 
 BUGS/Ajustes:
 - Hay niveles de bonus que son inaccesibles
@@ -76,6 +75,7 @@ Features:
 - Decoraciones: Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- Panal de abejas en mermaid, no son lámparas y al caer salen abejas
 - Enemigo araña
 - Enemigo murcielago o volador
 - Enemigo que te revolea Bombas

@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://ggdou85s6qj0"]
+
+[ext_resource type="Texture2D" uid="uid://cgfjsmh61f6d4" path="res://sprites/bee.png" id="1_fut64"]
+
+[sub_resource type="Curve" id="Curve_6oddk"]
+_data = [Vector2(0, 0.894737), 0.0, 0.0, 0, 0, Vector2(0.404389, 0.905263), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2ldrl"]
+curve = SubResource("Curve_6oddk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_up8q0"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 117.63
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_2ldrl")
+
+[node name="BeesParticles" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(3, 3)
+process_material = SubResource("ParticleProcessMaterial_up8q0")
+texture = ExtResource("1_fut64")
+lifetime = 0.3
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(-6, 3)
+process_material = SubResource("ParticleProcessMaterial_up8q0")
+texture = ExtResource("1_fut64")
+lifetime = 0.3
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="."]
+position = Vector2(5, -5)
+process_material = SubResource("ParticleProcessMaterial_up8q0")
+texture = ExtResource("1_fut64")
+lifetime = 0.3
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="."]
+position = Vector2(-5, -9)
+process_material = SubResource("ParticleProcessMaterial_up8q0")
+texture = ExtResource("1_fut64")
+lifetime = 0.3
+
+[node name="GPUParticles2D5" type="GPUParticles2D" parent="."]
+position = Vector2(-2, -3)
+process_material = SubResource("ParticleProcessMaterial_up8q0")
+texture = ExtResource("1_fut64")
+lifetime = 0.3

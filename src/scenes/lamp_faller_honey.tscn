@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://bm3ot84ree1bg"]
+
+[ext_resource type="Script" path="res://scenes/lamp_faller_honey.gd" id="1_0nej0"]
+[ext_resource type="Texture2D" uid="uid://chfph0b7cfle3" path="res://sprites/honeycomb_broken.png" id="2_38y2c"]
+[ext_resource type="Texture2D" uid="uid://4ciuk1qq06to" path="res://sprites/honeycomb.png" id="3_lrpv3"]
+[ext_resource type="Texture2D" uid="uid://2cvoimmrh44h" path="res://sprites/bees1.png" id="4_d45fy"]
+[ext_resource type="Texture2D" uid="uid://d1vett6l1nmfl" path="res://sprites/bees2.png" id="5_6374i"]
+[ext_resource type="Texture2D" uid="uid://j82xsj7eg0nj" path="res://sprites/bees3.png" id="6_ss1ep"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qpfni"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_38y2c")
+}],
+"loop": true,
+"name": &"broken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lrpv3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wpqrd"]
+radius = 22.0907
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5kcqh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_d45fy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6374i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ss1ep")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="LampFallerHoney" type="CharacterBody2D"]
+position = Vector2(0, 6)
+collision_layer = 10
+collision_mask = 2
+script = ExtResource("1_0nej0")
+
+[node name="Lamp" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_qpfni")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(1, 9)
+shape = SubResource("CircleShape2D_wpqrd")
+
+[node name="BeesSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5kcqh")
+autoplay = "default"

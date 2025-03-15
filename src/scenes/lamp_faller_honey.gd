@@ -9,6 +9,7 @@ var blowed = 0
 var count_down = 0
 var broken = false
 var master_parent = null
+var bees_obj = load("res://scenes/enemy_bees.tscn")
 
 func _ready():
 	add_to_group("interactuable")
@@ -27,7 +28,6 @@ func _physics_process(delta):
 			velocity = velocity.bounce(normal) * Global.bounce_amount
 			if is_on_floor_custom(normal):
 				if !landed and !broken:
-					Global.play_sound(Global.GizmoDropSFX)
 					Global.emit(global_position, 10)
 					got_broken()
 		
@@ -43,11 +43,17 @@ func _physics_process(delta):
 						velocity.x = lerp(velocity.x, 0.0, friction)
 					
 func got_broken():
+	var options = {"pitch_scale": Global.pick_random([1, 1.1, 1.2])}
+	Global.play_sound(Global.TombBrokeSFX, options, global_position)
 	await get_tree().create_timer(1).timeout
 	$Lamp.animation = "broken"
 	Global.emit(global_position, 10)
 	$collider.set_deferred("disabled", true)
 	broken = true
+	var p = bees_obj.instantiate()
+	get_parent().add_child(p)
+	p.global_position = global_position
+	$BeesSprite.queue_free()
 
 func flyaway(direction):
 	if blowed <= 0:

@@ -1,0 +1,183 @@
+[gd_scene load_steps=14 format=3 uid="uid://dm7q5qrqdeljp"]
+
+[ext_resource type="Script" path="res://scenes/enemy_bees.gd" id="1_kxddt"]
+[ext_resource type="PackedScene" uid="uid://ggdou85s6qj0" path="res://scenes/bees_particles.tscn" id="8_gbpix"]
+[ext_resource type="Texture2D" uid="uid://2cvoimmrh44h" path="res://sprites/bees1.png" id="9_nm4ap"]
+[ext_resource type="Texture2D" uid="uid://d1vett6l1nmfl" path="res://sprites/bees2.png" id="10_mlnh2"]
+[ext_resource type="Texture2D" uid="uid://j82xsj7eg0nj" path="res://sprites/bees3.png" id="11_atvr8"]
+[ext_resource type="Texture2D" uid="uid://capc1hdlw0gpl" path="res://sprites/horu/images/stars1.png" id="18_xktou"]
+[ext_resource type="Texture2D" uid="uid://caxf4k5okg3cr" path="res://sprites/horu/images/stars2.png" id="19_ccysy"]
+[ext_resource type="Texture2D" uid="uid://bpaljgkr5iu14" path="res://sprites/horu/images/stars3.png" id="20_hbqju"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0vk2b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_nm4ap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mlnh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_atvr8")
+}],
+"loop": true,
+"name": &"dead_fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_nm4ap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mlnh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_atvr8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_nm4ap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mlnh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_atvr8")
+}],
+"loop": true,
+"name": &"killing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_nm4ap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mlnh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_atvr8")
+}],
+"loop": true,
+"name": &"stunned",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_nm4ap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mlnh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_atvr8")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6yeio"]
+radius = 37.0
+
+[sub_resource type="Animation" id="Animation_k8fva"]
+resource_name = "killing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.5), Vector2(1.5, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b5rsm"]
+_data = {
+"killing": SubResource("Animation_k8fva")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4xq1w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_xktou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ccysy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_hbqju")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EnemyBees" type="CharacterBody2D"]
+script = ExtResource("1_kxddt")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0vk2b")
+animation = &"walking"
+autoplay = "walking"
+frame_progress = 0.355957
+speed_scale = 2.0
+
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 33
+collision_mask = 33
+
+[node name="collider" type="CollisionShape2D" parent="Area"]
+shape = SubResource("CircleShape2D_6yeio")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b5rsm")
+}
+speed_scale = 2.0
+
+[node name="stars_stunned" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_4xq1w")
+autoplay = "default"
+frame_progress = 0.742572
+
+[node name="BeesParticles" parent="." instance=ExtResource("8_gbpix")]
+position = Vector2(22, 27)
+
+[node name="BeesParticles9" parent="." instance=ExtResource("8_gbpix")]
+position = Vector2(0, -2)
+
+[node name="BeesParticles2" parent="." instance=ExtResource("8_gbpix")]
+position = Vector2(26, -25)
+
+[node name="BeesParticles3" parent="." instance=ExtResource("8_gbpix")]
+position = Vector2(-29, -19)
+
+[node name="BeesParticles4" parent="." instance=ExtResource("8_gbpix")]
+position = Vector2(-24, 28)
+
+[node name="BeesParticles5" parent="." instance=ExtResource("8_gbpix")]
+position = Vector2(-34, 2)
+
+[node name="BeesParticles6" parent="." instance=ExtResource("8_gbpix")]
+position = Vector2(35, 3)
+
+[node name="BeesParticles7" parent="." instance=ExtResource("8_gbpix")]
+position = Vector2(-3, -35)
+
+[node name="BeesParticles8" parent="." instance=ExtResource("8_gbpix")]
+position = Vector2(1, 37)
+
+[connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
