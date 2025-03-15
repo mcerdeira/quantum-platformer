@@ -37,8 +37,13 @@ var rooms_bottom_tomb = [
 	preload("res://scenes/levels/tomb/room_bottom_tomb.tscn")
 ]
 var rooms_middle_tomb = [
-	preload("res://scenes/levels/tomb/room_middle_tomb.tscn")
+	preload("res://scenes/levels/tomb/room_middle_tomb.tscn"),
 ]
+
+var rooms_middle_tomb2 = [
+	preload("res://scenes/levels/tomb/room_middle_tomb_b.tscn"),
+]
+
 var rooms_top_tomb = [
 	preload("res://scenes/levels/tomb/room_top_tomb.tscn")
 ]
@@ -88,7 +93,7 @@ var list_rooms_middle1 = [
 var list_rooms_middle2  = [
 	null,
 	rooms_middle2,
-	rooms_middle_tomb, #2 #TODO
+	rooms_middle_tomb2, #2 #TODO
 	rooms_middle_mermaid,#2
 	rooms_middle_dragon#2
 ]

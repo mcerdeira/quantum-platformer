@@ -63,9 +63,9 @@ func _on_body_entered(body):
 	if body.is_in_group("movebable"):
 		is_colliding_temp = true
 		
-	if !(body.is_in_group("players") or body.is_in_group("enemies") or body.is_in_group("interactuable")):
+	if !(body.is_in_group("players") or body.is_in_group("moving_platform") or body.is_in_group("enemies") or body.is_in_group("interactuable")):
 		is_colliding = true
 
 func _on_body_exited(body):
-	if !(body.is_in_group("players") or body.is_in_group("enemies") or body.is_in_group("interactuable")):
+	if !(body.is_in_group("players") or body.is_in_group("moving_platform") or body.is_in_group("enemies") or body.is_in_group("interactuable")):
 		is_colliding = false

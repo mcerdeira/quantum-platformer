@@ -1,35 +1,36 @@
-[gd_scene load_steps=44 format=3 uid="uid://bcvxce801i6k4"]
+[gd_scene load_steps=45 format=3 uid="uid://c4iwts1ppvhcd"]
 
-[ext_resource type="Texture2D" uid="uid://cfr4242x4qruc" path="res://sprites/spritesheets/floor_dragon1-sheet.png" id="1_f3da8"]
-[ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_lm8wg"]
-[ext_resource type="Texture2D" uid="uid://bx06swrbyq4p3" path="res://sprites/floor_spr_blasted.png" id="3_uwdlg"]
-[ext_resource type="Texture2D" uid="uid://cs8gwisgy5tff" path="res://sprites/floor_tomb_fill4.png" id="3_x3ct2"]
-[ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="4_2pykt"]
-[ext_resource type="Texture2D" uid="uid://dqeynkdlvcmqy" path="res://sprites/floor_tomb_fill5.png" id="4_7qh7x"]
-[ext_resource type="Texture2D" uid="uid://cvgek1xj28trv" path="res://sprites/fireball_box.png" id="5_mjvrt"]
-[ext_resource type="Texture2D" uid="uid://ccl7ndrpf8wk7" path="res://sprites/floor_tomb_fill.png" id="5_yk470"]
-[ext_resource type="Script" path="res://scenes/levels/room.gd" id="6_kxtb7"]
-[ext_resource type="Texture2D" uid="uid://i4s6on6v0134" path="res://sprites/spritesheets/floor_tomb1-sheet.png" id="6_y3k54"]
-[ext_resource type="Texture2D" uid="uid://df54v3r31ay8h" path="res://sprites/stair_v1_2.png" id="7_jpxt4"]
-[ext_resource type="Texture2D" uid="uid://do6cdrp48wgi8" path="res://sprites/stair_v1.png" id="8_a4ouv"]
-[ext_resource type="Texture2D" uid="uid://bm5n0nel4n2bp" path="res://sprites/stair_v1_1.png" id="9_5llhn"]
-[ext_resource type="PackedScene" uid="uid://bfmdje7uoppc1" path="res://scenes/levels/prisoner_marker.tscn" id="9_ppe73"]
-[ext_resource type="Texture2D" uid="uid://cy1314x4uh7m1" path="res://sprites/floor_tomb_fill1.png" id="10_m4e8n"]
-[ext_resource type="PackedScene" uid="uid://c4vd4vxwdwdqh" path="res://scenes/levels/enemy_marker.tscn" id="10_sopqm"]
-[ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="11_q273c"]
-[ext_resource type="Texture2D" uid="uid://cp4wcwrlp5l3c" path="res://sprites/floor_tomb_fill2.png" id="11_shvrr"]
-[ext_resource type="PackedScene" uid="uid://q767q018lep8" path="res://scenes/exit_door.tscn" id="12_elegl"]
-[ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="13_i2roa"]
-[ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="14_h775n"]
-[ext_resource type="PackedScene" uid="uid://c1hauk6vcsonh" path="res://scenes/Item.tscn" id="15_j5w82"]
-[ext_resource type="Texture2D" uid="uid://c2hy23gccntv2" path="res://sprites/floor_tomb_fill3.png" id="15_nkdj3"]
-[ext_resource type="PackedScene" uid="uid://c2hr571lqpqmf" path="res://scenes/Fireball_holder.tscn" id="16_jeyk5"]
-[ext_resource type="PackedScene" uid="uid://cv3n3jd3p3yty" path="res://scenes/Lamp.tscn" id="17_3prsj"]
-[ext_resource type="PackedScene" uid="uid://ccrniksfhd6lb" path="res://scenes/moving_plat.tscn" id="18_lbefu"]
-[ext_resource type="PackedScene" uid="uid://p5eml6qhty71" path="res://scenes/LampMed.tscn" id="23_ijhgj"]
+[ext_resource type="Texture2D" uid="uid://i4s6on6v0134" path="res://sprites/spritesheets/floor_tomb1-sheet.png" id="1_402il"]
+[ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_7t5ut"]
+[ext_resource type="Texture2D" uid="uid://cs8gwisgy5tff" path="res://sprites/floor_tomb_fill4.png" id="3_jhwr4"]
+[ext_resource type="Texture2D" uid="uid://dqeynkdlvcmqy" path="res://sprites/floor_tomb_fill5.png" id="4_6r0nr"]
+[ext_resource type="Texture2D" uid="uid://ccl7ndrpf8wk7" path="res://sprites/floor_tomb_fill.png" id="5_fcow1"]
+[ext_resource type="Texture2D" uid="uid://bx06swrbyq4p3" path="res://sprites/floor_spr_blasted.png" id="6_31lkw"]
+[ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="7_niajf"]
+[ext_resource type="Texture2D" uid="uid://cfr4242x4qruc" path="res://sprites/spritesheets/floor_dragon1-sheet.png" id="8_m8bcv"]
+[ext_resource type="Texture2D" uid="uid://cvgek1xj28trv" path="res://sprites/fireball_box.png" id="9_3825i"]
+[ext_resource type="Texture2D" uid="uid://df54v3r31ay8h" path="res://sprites/stair_v1_2.png" id="10_1h7rg"]
+[ext_resource type="Texture2D" uid="uid://do6cdrp48wgi8" path="res://sprites/stair_v1.png" id="11_jvprm"]
+[ext_resource type="Texture2D" uid="uid://bm5n0nel4n2bp" path="res://sprites/stair_v1_1.png" id="12_4vdej"]
+[ext_resource type="Texture2D" uid="uid://cy1314x4uh7m1" path="res://sprites/floor_tomb_fill1.png" id="13_hwcgk"]
+[ext_resource type="Texture2D" uid="uid://cp4wcwrlp5l3c" path="res://sprites/floor_tomb_fill2.png" id="14_0gh6l"]
+[ext_resource type="Texture2D" uid="uid://c2hy23gccntv2" path="res://sprites/floor_tomb_fill3.png" id="15_bu25w"]
+[ext_resource type="Script" path="res://scenes/levels/room.gd" id="16_gftr3"]
+[ext_resource type="PackedScene" uid="uid://bfmdje7uoppc1" path="res://scenes/levels/prisoner_marker.tscn" id="17_iorgk"]
+[ext_resource type="PackedScene" uid="uid://c4vd4vxwdwdqh" path="res://scenes/levels/enemy_marker.tscn" id="18_xltst"]
+[ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="19_821w2"]
+[ext_resource type="PackedScene" uid="uid://q767q018lep8" path="res://scenes/exit_door.tscn" id="20_jtvgh"]
+[ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="21_p3yfy"]
+[ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="22_kmhkr"]
+[ext_resource type="PackedScene" uid="uid://c1hauk6vcsonh" path="res://scenes/Item.tscn" id="23_aeydv"]
+[ext_resource type="PackedScene" uid="uid://c2hr571lqpqmf" path="res://scenes/Fireball_holder.tscn" id="24_0fo02"]
+[ext_resource type="PackedScene" uid="uid://cv3n3jd3p3yty" path="res://scenes/Lamp.tscn" id="25_bhen2"]
+[ext_resource type="PackedScene" uid="uid://ccrniksfhd6lb" path="res://scenes/moving_plat.tscn" id="26_1jrbv"]
+[ext_resource type="PackedScene" uid="uid://p5eml6qhty71" path="res://scenes/LampMed.tscn" id="27_wm3cj"]
+[ext_resource type="PackedScene" uid="uid://6vtli52iv4o2" path="res://scenes/enemy_spider_container.tscn" id="28_sjmqh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rqm65"]
-texture = ExtResource("6_y3k54")
+texture = ExtResource("1_402il")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -63,35 +64,35 @@ texture_region_size = Vector2i(32, 32)
 14:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qr43o"]
-texture = ExtResource("2_lm8wg")
+texture = ExtResource("2_7t5ut")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6nj3l"]
-texture = ExtResource("3_x3ct2")
+texture = ExtResource("3_jhwr4")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j8hrr"]
-texture = ExtResource("4_7qh7x")
+texture = ExtResource("4_6r0nr")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_beium"]
-texture = ExtResource("5_yk470")
+texture = ExtResource("5_fcow1")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5f8m4"]
-texture = ExtResource("3_uwdlg")
+texture = ExtResource("6_31lkw")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
-texture = ExtResource("4_2pykt")
+texture = ExtResource("7_niajf")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -125,7 +126,7 @@ texture_region_size = Vector2i(32, 32)
 10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6c8e6"]
-texture = ExtResource("1_f3da8")
+texture = ExtResource("8_m8bcv")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -159,40 +160,40 @@ texture_region_size = Vector2i(32, 32)
 14:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ba0bd"]
-texture = ExtResource("5_mjvrt")
+texture = ExtResource("9_3825i")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c7isb"]
-texture = ExtResource("7_jpxt4")
+texture = ExtResource("10_1h7rg")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1owk0"]
-texture = ExtResource("8_a4ouv")
+texture = ExtResource("11_jvprm")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gk75l"]
-texture = ExtResource("9_5llhn")
+texture = ExtResource("12_4vdej")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t5a8q"]
-texture = ExtResource("10_m4e8n")
+texture = ExtResource("13_hwcgk")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a4hnc"]
-texture = ExtResource("11_shvrr")
+texture = ExtResource("14_0gh6l")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cygrn"]
-texture = ExtResource("15_nkdj3")
+texture = ExtResource("15_bu25w")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -221,135 +222,135 @@ sources/12 = SubResource("TileSetAtlasSource_beium")
 tile_set = SubResource("TileSet_4lr5i")
 format = 2
 layer_0/tile_data = PackedInt32Array(1114127, 131072, 0, 1048592, 3, 0, 1048593, 196608, 0, 1048594, 196608, 0, 1048595, 196608, 0, 1048596, 196608, 0, 1048597, 65536, 0, 1048601, 131072, 0, 1048602, 196608, 0, 1048603, 65536, 0, 1048608, 131072, 0, 1048609, 196608, 0, 1048610, 196608, 0, 1048611, 65536, 0, 1114147, 851968, 0, 1179683, 851968, 0, 1245219, 393216, 0, 1245184, 458752, 0, 1245186, 393216, 0, 1245191, 458752, 0, 1179662, 131072, 0, 1179669, 851968, 0, 1114139, 851968, 0, 1114142, 131072, 0, 1114143, 196608, 0, 1245215, 458752, 0, 1245211, 393216, 0, 1245209, 458752, 0, 1245206, 589824, 0, 1245198, 458752, 0, 1179655, 131072, 0, 1179656, 65536, 0, 1114133, 851968, 0, 1179675, 851968, 0, 1179678, 458752, 0, 131076, 458752, 0, 196614, 524288, 0, 131080, 393216, 0, 65545, 393216, 0, 9, 65536, 0, 196615, 393216, 0, 65539, 524288, 0, 65538, 524288, 0, 65537, 458752, 0, 0, 655360, 0, 196613, 458752, 0, 17, 655360, 0, 18, 720896, 0, 327700, 393216, 0, 393235, 327680, 0, 22, 65536, 0, 23, 1, 0, 65559, 1, 0, 35, 65536, 0, 65571, 851968, 0, 131107, 393216, 0, 196642, 851968, 0, 262179, 65536, 0, 327715, 851968, 0, 393251, 851968, 0, 65568, 131072, 0, 131104, 786432, 0, 196640, 786432, 0, 262176, 786432, 0, 327712, 458752, 0, 393249, 786432, 0, 458785, 458752, 0, 458787, 851968, 0, 524323, 393216, 0, 524322, 786432, 0, 589858, 917504, 0, 655394, 917504, 0, 1310743, 1, 0, 1245207, 1, 0, 1179671, 1, 0, 1114135, 1, 0, 1048599, 1, 0, 983063, 1, 0, 917527, 1, 0, 851991, 1, 0, 786455, 1, 0, 720919, 1, 0, 655383, 1, 0, 262167, 1, 0, 196631, 1, 0, 131095, 1, 0, 1245213, 1, 0, 1179677, 1, 0, 1114141, 1, 0, 1048605, 1, 0, 983069, 1, 0, 917533, 1, 0, 851997, 1, 0, 786461, 1, 0, 720925, 1, 0, 655389, 1, 0, 589853, 1, 0, 524317, 1, 0, 458781, 1, 0, 393245, 1, 0, 327709, 1, 0, 262173, 1, 0, 196637, 1, 0, 131101, 1, 0, 65565, 1, 0, 29, 1, 0, 1310730, 1, 0, 1245194, 1, 0, 1114122, 1, 0, 1048586, 1, 0, 983050, 1, 0, 917514, 1, 0, 851978, 1, 0, 786442, 1, 0, 720906, 1, 0, 655370, 1, 0, 589834, 1, 0, 524298, 1, 0, 458762, 1, 0, 393226, 1, 0, 327690, 1, 0, 262154, 1, 0, 196618, 1, 0, 131082, 1, 0, 65546, 1, 0, 10, 1, 0, 1179658, 1, 0, 1245185, 524288, 0, 1245192, 393216, 0, 34, 196608, 0, 33, 131072, 0, 1, 196608, 0, 2, 196608, 0, 3, 196608, 0, 4, 196608, 0, 5, 196608, 0, 6, 196608, 0, 7, 196608, 0, 8, 196608, 0, 19, 720896, 0, 20, 720896, 0, 21, 196608, 0, 786466, 327680, 0, 720930, 917504, 0, 1245216, 524288, 0, 1245217, 524288, 0, 1245218, 524288, 0, 1245210, 524288, 0, 1245199, 524288, 0, 1245200, 524288, 0, 1245201, 524288, 0, 1245202, 524288, 0, 1245203, 524288, 0, 1245204, 524288, 0, 1245205, 524288, 0, 327699, 786432, 0, 1310749, 1, 0, 262163, 131072, 0, 262165, 524288, 0, 262166, 393216, 0, 196630, 851968, 0, 131094, 851968, 0, 65558, 851968, 0, 65557, 786432, 0, 131093, 786432, 0, 262164, 196608, 0, 196629, 786432, 0, 1179649, 196608, 0, 1179648, 131072, 0, 1179650, 65536, 0, 65540, 262144, 0, 65541, 262144, 0, 65542, 8, 0, 65543, 262144, 0, 65544, 262144, 0, 131077, 262144, 0, 131078, 262144, 0, 131079, 262144, 0, 262178, 262144, 0, 262177, 262144, 0, 196641, 262144, 0, 131105, 7, 0, 65570, 262144, 0, 65569, 262144, 0, 131106, 262144, 0, 327714, 262144, 0, 327713, 262144, 0, 393250, 262144, 0, 458786, 262144, 0, 1114128, 262144, 0, 1114129, 11, 0, 1114130, 262144, 0, 1114131, 262144, 0, 1114132, 262144, 0, 1179668, 262144, 0, 1179667, 262144, 0, 1179666, 262144, 0, 1179665, 262144, 0, 1179664, 8, 0, 1179663, 262144, 0, 1114138, 11, 0, 1179674, 10, 0, 1179679, 262144, 0, 1179680, 262144, 0, 1179681, 262144, 0, 1179682, 7, 0, 1114146, 262144, 0, 1114145, 11, 0, 1114144, 262144, 0, 1179672, 458752, 0, 1114136, 131072, 0, 1114137, 262144, 0)
-script = ExtResource("6_kxtb7")
+script = ExtResource("16_gftr3")
 
-[node name="prisoner_marker" parent="." instance=ExtResource("9_ppe73")]
+[node name="prisoner_marker" parent="." instance=ExtResource("17_iorgk")]
 position = Vector2(653, 496)
 
-[node name="enemy_marker" parent="." instance=ExtResource("10_sopqm")]
+[node name="enemy_marker" parent="." instance=ExtResource("18_xltst")]
 position = Vector2(1074, 496)
 selected_enemy = "enemy"
 
-[node name="enemy_marker4" parent="." instance=ExtResource("10_sopqm")]
+[node name="enemy_marker4" parent="." instance=ExtResource("18_xltst")]
 position = Vector2(207, 145)
 selected_enemy = "enemy_bat"
 
-[node name="enemy_marker7" parent="." instance=ExtResource("10_sopqm")]
+[node name="enemy_marker7" parent="." instance=ExtResource("18_xltst")]
 position = Vector2(100, 80)
 selected_enemy = "enemy_bat"
 
-[node name="enemy_marker5" parent="." instance=ExtResource("10_sopqm")]
+[node name="enemy_marker5" parent="." instance=ExtResource("18_xltst")]
 position = Vector2(704, 176)
 selected_enemy = "enemy_bat"
 
-[node name="enemy_marker6" parent="." instance=ExtResource("10_sopqm")]
+[node name="enemy_marker6" parent="." instance=ExtResource("18_xltst")]
 position = Vector2(1072, 272)
 selected_enemy = "enemy_bat"
 
-[node name="enemy_marker2" parent="." instance=ExtResource("10_sopqm")]
+[node name="enemy_marker2" parent="." instance=ExtResource("18_xltst")]
 position = Vector2(783, 528)
 selected_enemy = "enemy"
 
-[node name="enemy_marker3" parent="." instance=ExtResource("10_sopqm")]
+[node name="enemy_marker3" parent="." instance=ExtResource("18_xltst")]
 position = Vector2(257, 560)
 selected_enemy = "enemy"
 
-[node name="player_marker" parent="." instance=ExtResource("11_q273c")]
+[node name="player_marker" parent="." instance=ExtResource("19_821w2")]
 position = Vector2(79, 560)
 
-[node name="ExitDoor" parent="." instance=ExtResource("12_elegl")]
+[node name="ExitDoor" parent="." instance=ExtResource("20_jtvgh")]
 position = Vector2(819, 512)
 
-[node name="Stair" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("13_i2roa")]
+[node name="Stair" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("21_p3yfy")]
 position = Vector2(752, 672)
 scale = Vector2(1, 11)
 tilemap = NodePath("..")
 whatiam = 1
 
-[node name="Stair4" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("13_i2roa")]
+[node name="Stair4" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("21_p3yfy")]
 position = Vector2(752, 160)
 scale = Vector2(1, 5)
 tilemap = NodePath("..")
 whatiam = 1
 
-[node name="Stair3" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("13_i2roa")]
+[node name="Stair3" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("21_p3yfy")]
 position = Vector2(336, 672)
 scale = Vector2(1, 21)
 tilemap = NodePath("..")
 whatiam = 1
 
-[node name="Stair2" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("13_i2roa")]
+[node name="Stair2" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("21_p3yfy")]
 position = Vector2(944, 672)
 scale = Vector2(1, 21)
 tilemap = NodePath("..")
 whatiam = 1
 
-[node name="qdtector" parent="." instance=ExtResource("14_h775n")]
+[node name="qdtector" parent="." instance=ExtResource("22_kmhkr")]
 visible = false
 
-[node name="Item2" parent="." instance=ExtResource("15_j5w82")]
+[node name="Item2" parent="." instance=ExtResource("23_aeydv")]
 position = Vector2(21, 576)
 
-[node name="Item6" parent="." instance=ExtResource("15_j5w82")]
+[node name="Item6" parent="." instance=ExtResource("23_aeydv")]
 position = Vector2(642, 128)
 
-[node name="Item3" parent="." instance=ExtResource("15_j5w82")]
+[node name="Item3" parent="." instance=ExtResource("23_aeydv")]
 position = Vector2(465, 576)
 
-[node name="Item4" parent="." instance=ExtResource("15_j5w82")]
+[node name="Item4" parent="." instance=ExtResource("23_aeydv")]
 position = Vector2(719, 608)
 
-[node name="Item5" parent="." instance=ExtResource("15_j5w82")]
+[node name="Item5" parent="." instance=ExtResource("23_aeydv")]
 position = Vector2(988, 544)
 
-[node name="FireballHolder2" parent="." instance=ExtResource("16_jeyk5")]
+[node name="FireballHolder2" parent="." instance=ExtResource("24_0fo02")]
 position = Vector2(528, 529)
 
-[node name="Lamp" parent="." instance=ExtResource("17_3prsj")]
+[node name="Lamp" parent="." instance=ExtResource("25_bhen2")]
 position = Vector2(62, 70)
 
-[node name="Lamp2" parent="." instance=ExtResource("17_3prsj")]
+[node name="Lamp2" parent="." instance=ExtResource("25_bhen2")]
 position = Vector2(1039, 198)
 
-[node name="Lamp4" parent="." instance=ExtResource("17_3prsj")]
+[node name="Lamp4" parent="." instance=ExtResource("25_bhen2")]
 position = Vector2(274, 102)
 
-[node name="moving_plat" parent="." instance=ExtResource("18_lbefu")]
+[node name="moving_plat" parent="." instance=ExtResource("26_1jrbv")]
 z_index = 1000
 z_as_relative = false
 position = Vector2(109, 296)
 
-[node name="moving_plat2" parent="." instance=ExtResource("18_lbefu")]
+[node name="moving_plat2" parent="." instance=ExtResource("26_1jrbv")]
 z_index = 1000
 z_as_relative = false
 position = Vector2(656, 412)
 
-[node name="LampMed" parent="." instance=ExtResource("23_ijhgj")]
+[node name="LampMed" parent="." instance=ExtResource("27_wm3cj")]
 position = Vector2(51, 646)
 
-[node name="LampMed2" parent="." instance=ExtResource("23_ijhgj")]
+[node name="LampMed2" parent="." instance=ExtResource("27_wm3cj")]
 position = Vector2(495, 646)
 
-[node name="LampMed3" parent="." instance=ExtResource("23_ijhgj")]
+[node name="LampMed3" parent="." instance=ExtResource("27_wm3cj")]
 position = Vector2(661, 646)
 
-[node name="LampMed4" parent="." instance=ExtResource("23_ijhgj")]
+[node name="LampMed4" parent="." instance=ExtResource("27_wm3cj")]
 position = Vector2(846, 646)
 
-[node name="LampMed5" parent="." instance=ExtResource("23_ijhgj")]
+[node name="LampMed5" parent="." instance=ExtResource("27_wm3cj")]
 position = Vector2(1011, 646)
 
-[node name="LampMed6" parent="." instance=ExtResource("23_ijhgj")]
+[node name="LampMed6" parent="." instance=ExtResource("27_wm3cj")]
 position = Vector2(1135, 646)
 
-[node name="Lamp6" parent="." instance=ExtResource("17_3prsj")]
+[node name="Lamp6" parent="." instance=ExtResource("25_bhen2")]
 position = Vector2(623, 230)
 
-[node name="Lamp3" parent="." instance=ExtResource("17_3prsj")]
-position = Vector2(256, 646)
+[node name="EnemySpiderContainer" parent="." instance=ExtResource("28_sjmqh")]
+position = Vector2(259, 645)
 
-[node name="Lamp5" parent="." instance=ExtResource("17_3prsj")]
-position = Vector2(585, 646)
+[node name="EnemySpiderContainer3" parent="." instance=ExtResource("28_sjmqh")]
+position = Vector2(1072, 645)
 
-[node name="Lamp7" parent="." instance=ExtResource("17_3prsj")]
-position = Vector2(1072, 646)
+[node name="EnemySpiderContainer2" parent="." instance=ExtResource("28_sjmqh")]
+position = Vector2(594, 645)

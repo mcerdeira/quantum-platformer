@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://6vtli52iv4o2"]
+
+[ext_resource type="Script" path="res://scenes/levels/enemy_spider.gd" id="1_am7fm"]
+[ext_resource type="Texture2D" uid="uid://qfo23pulni7s" path="res://sprites/spider_spr_0.png" id="2_aag4l"]
+[ext_resource type="Texture2D" uid="uid://cxdnk7u4rg2ol" path="res://sprites/spider_spr_1.png" id="3_rulj3"]
+[ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="4_ya7lw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eaicl"]
+radius = 17.2627
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_smrjh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_aag4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rulj3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_k8fva"]
+resource_name = "killing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, -1), Vector2(1, -1.5), Vector2(1.5, -0.8), Vector2(1, -1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b5rsm"]
+_data = {
+"killing": SubResource("Animation_k8fva")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1pex"]
+size = Vector2(20, 26)
+
+[node name="EnemySpiderContainer" type="Node2D"]
+position = Vector2(180, 418)
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, -5, 0, 0)
+width = 5.0
+
+[node name="enemy_spider" type="Area2D" parent="." node_paths=PackedStringArray("Web", "Stair")]
+position = Vector2(0, 36)
+script = ExtResource("1_am7fm")
+Web = NodePath("../Line2D")
+Stair = NodePath("Stair")
+
+[node name="Stair" parent="enemy_spider" instance=ExtResource("4_ya7lw")]
+position = Vector2(0, -4)
+
+[node name="collider" type="CollisionShape2D" parent="enemy_spider"]
+position = Vector2(-1, -17)
+shape = SubResource("CircleShape2D_eaicl")
+
+[node name="sprite" type="AnimatedSprite2D" parent="enemy_spider"]
+scale = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_smrjh")
+autoplay = "default"
+frame_progress = 0.775969
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="enemy_spider"]
+libraries = {
+"": SubResource("AnimationLibrary_b5rsm")
+}
+speed_scale = 2.0
+
+[node name="FloorNotify" type="Area2D" parent="enemy_spider"]
+
+[node name="collider" type="CollisionShape2D" parent="enemy_spider/FloorNotify"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_a1pex")
+
+[connection signal="body_entered" from="enemy_spider" to="enemy_spider" method="_on_body_entered"]
+[connection signal="body_shape_entered" from="enemy_spider/FloorNotify" to="enemy_spider" method="_on_floor_notify_body_shape_entered"]

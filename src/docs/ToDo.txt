@@ -34,6 +34,7 @@
 ==================================================================================================================
 
 IN_PROGRESS:       
+- Panal de abejas en mermaid, no son lámparas y al caer salen abejas
 
 
 BUGS/Ajustes:
@@ -43,9 +44,6 @@ BUGS/Ajustes:
 
 Features:
 - Bonus verion 2: Enemigo que te persigue por cañería
-- Enemigo araña
-- Enemigo murcielago o volador
-- Panal de abejas en mermaid, no son lámparas y al caer salen abejas
 
 - Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
   - Alinear los discos para forma la figura, llama al bote.
@@ -78,7 +76,14 @@ Features:
 - Decoraciones: Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- Enemigo araña
+- Enemigo murcielago o volador
 - Enemigo que te revolea Bombas
+- Terminar puzzle con el agua en mermaid
+- El mapa funciona mal, muestra tipitos donde no los hay
+- De alguna forma sucedio que volvimos a entrar al nivel 1: al volver del boss 1, hablar con el npc e ir al monolito, apretar para arriba tomó (asumo) el evento de entrar a la puerta, que además está cerrada...
+  (en realidad el monolito no tenia nada que ver, fue porque el NPC es el mismo que se usa en el boss, y al cabo de un rato redirecciona y acá redireccionó al TerminalNumber)
+- Al no poderse jugar los niveles para siempre, estos items te los debería dar cada JEFE
 - Matar al mini boss nos tiene que dar algo (monedas?) 
 - El mini boss del nivel 1 se tiene que poder "matar" 
 - Hacer que la bomba de humo sea más simple 
@@ -329,11 +334,6 @@ Features:
 - Ver como se une el tema de las lapidas y la historia de por que tenemos que hacer lo que tenemos que hacer
   - Las puertas deben cerrarse y no dejar jugar niveles viejos
   - Algun NPC te manda a explorar las tumbas
-- Terminar puzzle con el agua en mermaid
-- El mapa funciona mal, muestra tipitos donde no los hay
-- De alguna forma sucedio que volvimos a entrar al nivel 1: al volver del boss 1, hablar con el npc e ir al monolito, apretar para arriba tomó (asumo) el evento de entrar a la puerta, que además está cerrada...
-  (en realidad el monolito no tenia nada que ver, fue porque el NPC es el mismo que se usa en el boss, y al cabo de un rato redirecciona y acá redireccionó al TerminalNumber)
-- Al no poderse jugar los niveles para siempre, estos items te los debería dar cada JEFE
 
 --------------------------------- CANCELADO ---------------------------------
 - Enemigo torreta que dispara 
