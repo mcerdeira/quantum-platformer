@@ -33,6 +33,8 @@ var WhooshSFX = null
 var TombHitSFX = null
 var TombBrokeSFX = null
 var GhostBossHitSFX = null
+var BeesSFX = null
+var BeesAngrySFX = null
 
 var ButtonSFX = null
 var RetroTheme = null
@@ -874,6 +876,9 @@ func load_sfx():
 	GhostBossHitSFX = load("res://sfx/GhostBossHit.wav")
 	ThunderSFX = load("res://sfx/thunder.wav") 
 	
+	BeesSFX = load("res://sfx/bees_sfx.wav")
+	BeesAngrySFX = load("res://sfx/bees_angry.wav")
+	
 	bomb_tutorial = load("res://video/bomb_tutorial.ogv")
 	clone_tutorial = load("res://video/clone_tutorial.ogv")
 	muffin_tutorial = load("res://video/muffin_tutorial.ogv")
@@ -881,6 +886,7 @@ func load_sfx():
 	smoke_tutorial = load("res://video/smoke_tutorial.ogv")
 	spring_tutorial = load("res://video/spring_tutorial.ogv")
 	teleport_tutorial = load("res://video/teleport_tutorial.ogv")
+	
 	
 	video_tutorials = [bomb_tutorial, clone_tutorial, muffin_tutorial, plant_tutorial, smoke_tutorial, spring_tutorial, teleport_tutorial]
 	

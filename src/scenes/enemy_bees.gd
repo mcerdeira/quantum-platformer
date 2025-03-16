@@ -5,6 +5,7 @@ var jump_speed = -300.0
 @export var direction = "right"
 var total_friction = 0.6
 var friction = total_friction
+var playing = false
 var moving = false
 var buff = 0
 var in_air = false
@@ -35,6 +36,14 @@ func is_on_floor_custom():
 	
 func _physics_process(delta):
 	delay -= 1 * delta 
+	if position.distance_to(Global.player_obj.position) <= 250:
+		if !Bees.is_playing():
+			playing = true
+			Bees.play(Global.BeesSFX)
+	else:
+		if playing and Bees.is_playing():
+			Bees.stop()
+	
 	if delay <= 0:
 		speed = total_speed
 		if is_on_floor():
@@ -45,7 +54,7 @@ func _physics_process(delta):
 		else:
 			in_air = true
 			buff -= 1 * delta
-			
+					
 		if fire_obj and is_instance_valid(fire_obj):
 			var current = fire_obj.get_parent()
 			if current:
@@ -133,7 +142,6 @@ func jump(delta):
 func _on_area_body_entered(body):
 	if !dead and blowed <= 0 and delay <= 0:
 		if body and body.is_in_group("players"):
-			Global.play_sound(Global.EnemyChewingSFX, {}, global_position)
 			body.kill()
 			killing = total_killing
 			if global_position.x > body.global_position.x:

@@ -27,7 +27,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yyehc"]
-radius = 25.9422
+radius = 24.3516
 
 [node name="LampLongWasp" type="Node2D"]
 z_index = 4094
@@ -54,12 +54,13 @@ position = Vector2(0, 262)
 script = ExtResource("4_vk530")
 
 [node name="LampArea" type="Area2D" parent="LampDown"]
+position = Vector2(0, -11)
 collision_layer = 33
 collision_mask = 33
 
 [node name="Lamp" type="Sprite2D" parent="LampDown/LampArea"]
 position = Vector2(0, 35)
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_as6vi")
 
 [node name="BeesSprite" type="AnimatedSprite2D" parent="LampDown/LampArea"]
@@ -69,7 +70,7 @@ autoplay = "default"
 frame_progress = 0.835292
 
 [node name="collider" type="CollisionShape2D" parent="LampDown/LampArea"]
-position = Vector2(3, 32)
+position = Vector2(1, 36)
 shape = SubResource("CircleShape2D_yyehc")
 
 [connection signal="body_entered" from="LampDown/LampArea" to="LampPivot" method="_on_lamp_area_body_entered"]

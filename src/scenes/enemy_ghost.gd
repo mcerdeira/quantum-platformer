@@ -27,7 +27,7 @@ func _ready():
 	add_to_group("enemies")
 	$sprite.animation = "idle"
 	if Global.BOSS_ROOM:
-		total_speed = 20.0
+		total_speed = 15.0
 		speed = total_speed
 	
 func is_on_floor_custom():

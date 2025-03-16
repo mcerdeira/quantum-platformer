@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://dwdbd4mb0x24f"]
+
+[ext_resource type="Script" path="res://scenes/big_fish.gd" id="1_r21jw"]
+[ext_resource type="Texture2D" uid="uid://ium05akcns7p" path="res://sprites/horu/images/big_fish2.png" id="2_s413c"]
+[ext_resource type="Texture2D" uid="uid://p7abgdhauajt" path="res://sprites/horu/images/big_fish3.png" id="3_yryxn"]
+[ext_resource type="Texture2D" uid="uid://2wjm1sok4qva" path="res://sprites/horu/images/big_fish1.png" id="4_ymcso"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_73phg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s413c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_s413c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_s413c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_s413c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yryxn")
+}],
+"loop": false,
+"name": &"attacking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ymcso")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yryxn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_s413c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_s413c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_s413c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ymcso")
+}],
+"loop": false,
+"name": &"desattacking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfhxd"]
+size = Vector2(37, 111)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htb1l"]
+size = Vector2(660, 120)
+
+[node name="BigFish" type="Area2D"]
+z_index = 99
+position = Vector2(-408, -17)
+script = ExtResource("1_r21jw")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_73phg")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(13.5, 150)
+shape = SubResource("RectangleShape2D_qfhxd")
+
+[node name="Radar" type="Area2D" parent="."]
+
+[node name="collider" type="CollisionShape2D" parent="Radar"]
+position = Vector2(8, 11)
+shape = SubResource("RectangleShape2D_htb1l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
+[connection signal="body_entered" from="Radar" to="." method="_on_radar_body_entered"]

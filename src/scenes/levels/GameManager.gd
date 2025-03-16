@@ -6,6 +6,7 @@ var game_ended = false
 var player_turn = true
 
 func _ready():
+	Bees.stop()
 	Ambience.stop()
 	Music.play(Global.RetroTheme)
 	update_score()

@@ -14,7 +14,9 @@ const BossExplosionShader_Ghost = preload("res://scenes/BossExplosionShader_Ghos
 var brokens = []
 @export var pos : Array[Marker2D]
 @export var Anim : AnimationPlayer
-@export var CinematicPos = Marker2D
+@export var CinematicPos : Marker2D
+@export var CinematicPos2 : Marker2D
+@export var Effect : ColorRect
 
 func _ready():
 	Global.BOSS_DEAD = false
@@ -57,17 +59,28 @@ func hit():
 func die():
 	Global.ARTIFACT_PER_LEVEL[Global.TerminalNumber] = true
 	Ambience.stop()
+	Bees.stop()
 	Music.stop()
 	dead = true
+	Global.player_obj.locked_ctrls = true
 	var p = BossExplosionShader_Ghost.instantiate()
 	var parent = get_parent()
-	p.CinematicPos = CinematicPos
-	p.global_position = global_position
+	var pos1 = CinematicPos.global_position.distance_to(Global.player_obj.global_position)
+	var pos2 = CinematicPos2.global_position.distance_to(Global.player_obj.global_position)
+	var FinalCinematic = null
+	if abs(pos1) < abs(pos2):
+		FinalCinematic = CinematicPos
+	else:
+		FinalCinematic = CinematicPos2
+	
+	p.CinematicPos = FinalCinematic
+	p.global_position = FinalCinematic.global_position
 	parent.add_child(p)
 	current_anim.track_set_enabled(2, false)
 	current_anim.track_set_enabled(3, false)
 	$boss_enemy_2.visible = false
 	$AnimationPlayer.stop()
+	Effect.visible = false
 	Global.LEAF_STATUS = false
 	Global.TOMB_STATUS = false
 	Global.MERMAID_STATUS = true
@@ -78,12 +91,29 @@ func die():
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	for e in enemies:
 		e.kill_fall()
+	await get_tree().create_timer(2.1).timeout
+	enemies = get_tree().get_nodes_in_group("enemies")
+	for e in enemies:
+		e.kill_fall()
 
 func force_kill():
 	LIFE = 0.0
 	die()
 	
 func _physics_process(delta):
+	if dead:
+		var enemies = get_tree().get_nodes_in_group("enemies")
+		for e in enemies:
+			e.kill_fall()
+			
+		var fireballholder = get_tree().get_nodes_in_group("fireballholder")
+		for e in fireballholder:
+			e.queue_free()
+			
+		var fireball = get_tree().get_nodes_in_group("fireball")
+		for e in fireball:
+			e.queue_free()
+		
 	if active:
 		Global.boss_bar.calc_life_bar(TOTAL_LIFE, LIFE)
 		if Global.player_obj:
@@ -113,6 +143,7 @@ func activate():
 	Global.player_obj.force_lookup = false
 	$boss_enemy_2/GhostBossLaugh.visible = false
 	Ambience.stop()
+	Bees.stop()
 	Music.stop()
 	Anim.play("new_animation")
 	visible = true

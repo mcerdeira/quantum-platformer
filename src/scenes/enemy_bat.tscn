@@ -193,7 +193,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2v3k"]
-size = Vector2(221, 97)
+size = Vector2(378, 71)
 
 [node name="EnemyBat" type="CharacterBody2D"]
 collision_layer = 134217728
@@ -239,10 +239,9 @@ autoplay = "default"
 frame_progress = 0.742572
 
 [node name="Radar" type="Area2D" parent="."]
-visible = false
 
 [node name="collider" type="CollisionShape2D" parent="Radar"]
-position = Vector2(-1.5, 38.5)
+position = Vector2(3, 25.5)
 shape = SubResource("RectangleShape2D_a2v3k")
 
 [node name="lbl_status" type="Label" parent="."]

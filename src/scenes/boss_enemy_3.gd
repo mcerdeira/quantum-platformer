@@ -160,6 +160,7 @@ func start_jump():
 		first_coso = false
 		Global.boss_bar.showme("GUSANON")
 		Ambience.stop()
+		Bees.stop()
 		Music.stop()
 		Music.play(Global.BossTheme)
 	

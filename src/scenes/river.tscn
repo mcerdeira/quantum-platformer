@@ -20,6 +20,7 @@ tile_size = Vector2i(32, 32)
 sources/7 = SubResource("TileSetAtlasSource_uilkp")
 
 [node name="River" type="Node2D"]
+z_index = 700
 position = Vector2(-279, -210)
 script = ExtResource("1_sfu42")
 

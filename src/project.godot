@@ -23,6 +23,7 @@ boot_splash/use_filter=false
 Global="*res://scripts/Global.gd"
 Music="*res://scripts/Music.gd"
 Ambience="*res://scripts/Music.gd"
+Bees="*res://scripts/Music.gd"
 
 [display]
 

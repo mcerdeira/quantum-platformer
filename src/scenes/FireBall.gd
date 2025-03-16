@@ -5,6 +5,7 @@ var fires = preload("res://scenes/Fires.tscn")
 var ttl = 0.0
 
 func _ready():
+	add_to_group("fireball")
 	if Global.BOSS_ROOM:
 		ttl = 0.8
 		$PointLight2D.color = Color(1, 1, 1)

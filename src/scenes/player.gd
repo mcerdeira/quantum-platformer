@@ -716,6 +716,16 @@ func process_player(delta):
 func teleported():
 	pass
 	
+func lookleft():
+	direction = "left"
+	$sprite.flip_h = true
+	$sprite_eyes.flip_h = $sprite.flip_h
+	
+func lookright():
+	direction = "right"
+	$sprite.flip_h = false
+	$sprite_eyes.flip_h = $sprite.flip_h
+	
 func check_shake(current_time):
 	if (fire_obj != null and is_instance_valid(fire_obj)) or (enemy_attached != null and is_instance_valid(enemy_attached)):
 		if direction == "left" and Input.is_action_pressed("right") and (current_time - last_input_time) <= shake_timeout:
@@ -826,6 +836,13 @@ func kill_fall():
 	dead_fall = true
 
 func kill():
+	dead = true
+	bleed(45)
+	await get_tree().create_timer(2).timeout
+	bleed(25)
+	
+func eated():
+	visible = false
 	dead = true
 	bleed(45)
 	await get_tree().create_timer(2).timeout

@@ -34,12 +34,9 @@
 ==================================================================================================================
 
 IN_PROGRESS:       
-- SFX de abejas
 
 BUGS/Ajustes:
 - Hay niveles de bonus que son inaccesibles
-- Tiene que haber un mini boss pez en mermaid, hay que hacerle comer la bomba
-- Tiene que haber un mini boss zombie o algo en el cementerio 
 
 Features:
 - Bonus verion 2: Enemigo que te persigue por cañería
@@ -75,6 +72,8 @@ Features:
 - Decoraciones: Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
+- Tiene que haber un mini boss pez en mermaid
+- SFX de abejas
 - Panal de abejas en mermaid, no son lámparas y al caer salen abejas
 - Enemigo araña
 - Enemigo murcielago o volador
@@ -344,3 +343,4 @@ Features:
 - Ver tema de trepar la escalera y como eso hace un salto 
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 - Decoraciones: Splash al caer en la lava
+- Tiene que haber un mini boss zombie o algo en el cementerio 

@@ -29,6 +29,7 @@ func _physics_process(_delta):
 			
 func exit():
 	Music.stop()
+	Bees.stop()
 	Ambience.stop()
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), 0)
 	Global.CurrentState = Global.GameStates.TITLE

@@ -24,7 +24,8 @@ var rooms_top_dragon = [
 ]
 
 var rooms_bottom_mermaid = [
-	preload("res://scenes/levels/mermaid/room_bottom_mermaid.tscn")
+	preload("res://scenes/levels/mermaid/room_bottom_mermaid.tscn"),
+	preload("res://scenes/levels/mermaid/room_bottom_mermaid2.tscn"),
 ]
 var rooms_middle_mermaid = [
 	preload("res://scenes/levels/mermaid/room_middle_mermaid.tscn")
@@ -259,6 +260,7 @@ func _ready():
 	Global.prisoner_counter = 0
 	Global.prisoner_total = 0
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Bees.stop()
 	
 	if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
 		if !Global.TunnelTerminalNumber and !Global.BOSS_ROOM and randi() % 3 == 0:
@@ -285,6 +287,7 @@ func _ready():
 	if Global.CurrentState == Global.GameStates.CHALLENGE:
 		Music.play(Global.SpecialLevelTheme)
 		Ambience.stop()
+		Bees.stop()
 		generate_challenge_horizontal()
 	if Global.CurrentState == Global.GameStates.TITLE:
 		Music.play(Global.MainTheme)

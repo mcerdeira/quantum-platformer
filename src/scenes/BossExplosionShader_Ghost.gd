@@ -54,6 +54,11 @@ func _ready():
 	current_message_count = 18
 
 func _physics_process(delta):
+	if CinematicPos.global_position.x > Global.player_obj.global_position.x:
+		Global.player_obj.lookright()
+	else:
+		Global.player_obj.lookleft()
+	
 	if precoso:
 		$BossExplosionShader.position.x = Global.pick_random([1, -1]) * randi() % 15
 		$BossExplosionShader.position.y = Global.pick_random([1, -1]) * randi() % 15
@@ -92,6 +97,7 @@ func _physics_process(delta):
 			if !current_message:
 				end_ttl -= 1 * delta
 				if end_ttl <= 0:
+					Global.player_obj.locked_ctrls = false
 					Global.scene_next(Global.TerminalNumber, false, false, false, true)
 							
 			if current_message:
@@ -103,7 +109,6 @@ func _physics_process(delta):
 					if !current_message:
 						current_message_count -= 1
 						if current_message_count < 0:
-							Global.player_obj.locked_ctrls = false
 							Global.kill(dialog_sfx)
 							Global.player_obj.dont_camera = false
 							await get_tree().create_timer(1.3).timeout
