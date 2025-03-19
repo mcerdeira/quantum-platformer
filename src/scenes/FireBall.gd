@@ -7,9 +7,14 @@ var ttl = 0.0
 func _ready():
 	add_to_group("fireball")
 	if Global.BOSS_ROOM:
-		ttl = 0.8
-		$PointLight2D.color = Color(1, 1, 1)
-		$sprite.animation = "ghost"
+		if Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
+			ttl = 0.8
+			$PointLight2D.color = Color(1, 1, 1)
+			$sprite.animation = "waterino"
+		else:
+			ttl = 0.8
+			$PointLight2D.color = Color(1, 1, 1)
+			$sprite.animation = "ghost"
 	
 	$sprite.play()
 

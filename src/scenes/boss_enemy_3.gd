@@ -13,13 +13,20 @@ var LIFE = TOTAL_LIFE
 var first_time = true
 var tail_ttl_total = 0.1
 var tail_ttl = tail_ttl_total
-
+var num_bullets = 30
+var attack_duration = 6.5
+var attack_rot = 0
 var jump_duration = 1.5
 var direction: Vector2 = Vector2.ZERO
 var jumping = false
 var falling = false
+var shoot_ttl = 0
+var shoot_ttl_total = 1.2
+var attacking = false
 var original_position
 var first_coso = true
+var backwards = false
+const FireBallHolderShoot = preload("res://scenes/FireBallHolderShoot.tscn")
 
 @export var tail_segments: Array[Node2D]  # Referencia a las partes de la cola
 var previous_positions: Array[Vector2] = []
@@ -28,6 +35,16 @@ func _my_ready():
 	Global.BOSS_DEAD = false
 	add_to_group("bosses")
 	Global.gotoBOSS = true
+	
+func shoot():
+	attack_rot += 10
+	for i in range(num_bullets):
+		var p = FireBallHolderShoot.instantiate()
+		var parent = get_parent()
+		p.global_position = $BossModeShoot/Head.global_position
+		p.direction = Vector2.RIGHT.rotated(360 * (i + attack_rot))
+		parent.add_child(p)
+		Global.emit($BossModeShoot/Head.global_position, 5)
 
 func _ready():
 	Global.CHROM_FX.visible = false
@@ -37,7 +54,23 @@ func _ready():
 	$Timer.start()
 
 func _process(delta):
-	if jumping or falling:
+	if attacking:
+		$water_drops.visible = true
+		if $Head.visible:
+			for _i in tail_segments.size():
+				tail_segments[_i].visible = true
+		$Head.visible = false
+		if Global.player_obj.global_position.x > global_position.x:
+			$BossModeShoot/Head.scale.x = 1
+		else:
+			$BossModeShoot/Head.scale.x = -1
+			
+		shoot_ttl -= 1 * delta
+		if shoot_ttl <= 0:
+			shoot_ttl = shoot_ttl_total
+			shoot()
+	
+	elif jumping or falling:
 		tail_ttl = tail_ttl_total
 		if !$Head.visible:
 			tail_visible()
@@ -143,12 +176,27 @@ func all_tail_invisible():
 			return false
 			
 	return true
+	
+func start_attack():
+	if !all_tail_invisible():
+		return false
+	
+	if jumping or falling or attacking or global_position.y <= 300:
+		return false
+		
+	$BossModeShoot.visible = true
+	$BossModeShoot/AnimationPlayer.play("new_animation")
+	shoot_ttl = 150
+	Global.player_obj.force_thunder()
+	attacking = true
+	$AttackTimer.start(attack_duration) 
+	return true
 
 func start_jump():
 	if !all_tail_invisible():
 		return false
 	
-	if jumping or falling or global_position.y <= 300:
+	if attacking or jumping or falling or global_position.y <= 300:
 		return false
 		
 	if global_position.x > 1152 / 2:
@@ -216,8 +264,12 @@ func die():
 func _on_timer_timeout():
 	if count <= 0:
 		count = count_total
-		if start_jump():
-			$Timer.stop()
+		if !first_coso and randi() % 2 == 0:
+			if start_attack():
+				$Timer.stop()
+		else:
+			if start_jump():
+				$Timer.stop()
 	else:
 		count -= 1
 		pick_new_direction()
@@ -228,3 +280,21 @@ func _on_timer_timeout():
 func _on_jump_timer_timeout():
 	jumping = false
 	falling = true
+
+func _on_attack_timer_timeout():
+	shoot_ttl = 150
+	$AttackTimer.stop()
+	backwards = true
+	$BossModeShoot/AnimationPlayer.play_backwards("new_animation")
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if backwards:
+		backwards = false
+		$BossModeShoot.visible = false
+		shoot_ttl = 0
+		attack_rot = 0
+		attacking = false
+		$Timer.wait_time = randf_range(3, 5)
+		$Timer.start()
+	else:
+		shoot_ttl = 0

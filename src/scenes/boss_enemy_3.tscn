@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://chgeck41w1cmq"]
+[gd_scene load_steps=17 format=3 uid="uid://chgeck41w1cmq"]
 
 [ext_resource type="Script" path="res://scenes/boss_enemy_3.gd" id="1_kxlqv"]
 [ext_resource type="Texture2D" uid="uid://ch0lf7l2ngiiw" path="res://sprites/water_drops1.png" id="2_flx4a"]
+[ext_resource type="Texture2D" uid="uid://dopeluopkggcj" path="res://sprites/horu/images/worm_boss2.png" id="2_joir2"]
 [ext_resource type="Texture2D" uid="uid://bn6g6nehfvf0r" path="res://sprites/water_drops2.png" id="3_jx34e"]
 [ext_resource type="Texture2D" uid="uid://sn202a0d5ilu" path="res://sprites/water_drops3.png" id="4_abtwb"]
 [ext_resource type="Texture2D" uid="uid://b3sbau7bvv0ld" path="res://sprites/water_drops4.png" id="5_psjph"]
@@ -31,6 +32,203 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_ptu44"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4, 98), Vector2(4, -55)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tail:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 98), Vector2(0, -21)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tail2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 98), Vector2(0, 6)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tail3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 98), Vector2(0, 27)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tail4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 98), Vector2(0, 51)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tail5:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 98), Vector2(0, 75)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tail6:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-2.38419e-07, 98), Vector2(0, 93)]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("..")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.0333333, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"splash"
+}, {
+"args": [],
+"method": &"splash"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_tbltg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 98)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tail:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 98)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tail2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 98)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tail3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 98)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tail4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 98)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tail5:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 98)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tail6:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2.38419e-07, 98)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_el4wu"]
+_data = {
+"RESET": SubResource("Animation_tbltg"),
+"new_animation": SubResource("Animation_ptu44")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xljfo"]
 radius = 38.5876
@@ -68,30 +266,80 @@ sprite_frames = SubResource("SpriteFrames_mvde4")
 autoplay = "default"
 frame_progress = 0.690391
 
+[node name="BossModeShoot" type="Node2D" parent="."]
+visible = false
+position = Vector2(-2, -107)
+
+[node name="Tail6" type="Sprite2D" parent="BossModeShoot"]
+position = Vector2(-2.38419e-07, 98)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_joir2")
+
+[node name="Tail5" type="Sprite2D" parent="BossModeShoot"]
+position = Vector2(0, 98)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_joir2")
+
+[node name="Tail4" type="Sprite2D" parent="BossModeShoot"]
+position = Vector2(0, 98)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_joir2")
+
+[node name="Tail3" type="Sprite2D" parent="BossModeShoot"]
+position = Vector2(0, 98)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_joir2")
+
+[node name="Tail2" type="Sprite2D" parent="BossModeShoot"]
+position = Vector2(0, 98)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_joir2")
+
+[node name="Tail" type="Sprite2D" parent="BossModeShoot"]
+position = Vector2(0, 98)
+texture = ExtResource("2_joir2")
+
+[node name="Head" type="Sprite2D" parent="BossModeShoot"]
+position = Vector2(4, 98)
+texture = ExtResource("7_mx4ru")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BossModeShoot"]
+libraries = {
+"": SubResource("AnimationLibrary_el4wu")
+}
+speed_scale = 3.0
+
 [node name="Tail6" parent="." instance=ExtResource("7_f64df")]
+visible = false
 position = Vector2(-86, 70)
 scale = Vector2(0.4, 0.4)
 
 [node name="Tail5" parent="." instance=ExtResource("7_f64df")]
+visible = false
 position = Vector2(-77, 61)
 scale = Vector2(0.5, 0.5)
 
 [node name="Tail4" parent="." instance=ExtResource("7_f64df")]
+visible = false
 position = Vector2(-67, 52)
 
 [node name="Tail3" parent="." instance=ExtResource("7_f64df")]
+visible = false
 position = Vector2(-55, 43)
 scale = Vector2(0.7, 0.7)
 
 [node name="Tail2" parent="." instance=ExtResource("7_f64df")]
+visible = false
 position = Vector2(-42, 33)
 scale = Vector2(0.8, 0.8)
 
 [node name="Tail1" parent="." instance=ExtResource("7_f64df")]
+visible = false
 position = Vector2(-24, 21)
 scale = Vector2(1, 1)
 
 [node name="Head" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("7_mx4ru")
 
 [node name="Head" type="Sprite2D" parent="Head"]
@@ -109,6 +357,8 @@ shape = SubResource("CircleShape2D_xljfo")
 
 [node name="JumpTimer" type="Timer" parent="."]
 
+[node name="AttackTimer" type="Timer" parent="."]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_h8bbs")
@@ -116,5 +366,7 @@ libraries = {
 autoplay = "new_animation"
 speed_scale = 2.3
 
+[connection signal="animation_finished" from="BossModeShoot/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

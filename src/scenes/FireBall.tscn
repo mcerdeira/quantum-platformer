@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bgf6ly14u3fi1"]
+[gd_scene load_steps=18 format=3 uid="uid://bgf6ly14u3fi1"]
 
 [ext_resource type="Script" path="res://scenes/FireBall.gd" id="1_woemw"]
 [ext_resource type="Texture2D" uid="uid://40kemu0h4hvh" path="res://sprites/flame_spr_0.png" id="2_hfhlb"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://btdyde5pw5lu0" path="res://sprites/flame_ghost_spr_1.png" id="7_cwlge"]
 [ext_resource type="Texture2D" uid="uid://b2s1ytwra4exq" path="res://sprites/flame_ghost_spr_2.png" id="8_43gkk"]
 [ext_resource type="Texture2D" uid="uid://i6g5rjoxwesj" path="res://sprites/flame_ghost_spr_3.png" id="9_vg252"]
+[ext_resource type="Texture2D" uid="uid://boohcwu0kthgl" path="res://sprites/waterino1.png" id="10_hfpeu"]
+[ext_resource type="Texture2D" uid="uid://c71rh8tku860w" path="res://sprites/waterino2.png" id="11_8pha3"]
+[ext_resource type="Texture2D" uid="uid://bm5xofu5styfc" path="res://sprites/waterino3.png" id="12_0edxu"]
+[ext_resource type="Texture2D" uid="uid://5uvhe8v7df7m" path="res://sprites/waterino4.png" id="13_4ostc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1ku5o"]
 animations = [{
@@ -45,6 +49,23 @@ animations = [{
 "loop": true,
 "name": &"ghost",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_hfpeu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8pha3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0edxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_4ostc")
+}],
+"loop": true,
+"name": &"waterino",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_24l77"]
@@ -68,6 +89,7 @@ script = ExtResource("1_woemw")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1ku5o")
+animation = &"waterino"
 autoplay = "default"
 
 [node name="collider" type="CollisionShape2D" parent="."]
