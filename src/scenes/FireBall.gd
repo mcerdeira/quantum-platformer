@@ -60,7 +60,10 @@ func _on_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_inde
 						Global.emit(global_position, 5)
 
 func _on_area_entered(area):
-	if free_fireball:
-		if area.is_in_group("qdetector"):
-			if get_parent().master_parent == null:
-				get_parent().master_parent = area.get_parent() 
+	if area and area.is_in_group("players"):
+		area.kill_fire()
+	else:
+		if free_fireball:
+			if area.is_in_group("qdetector"):
+				if get_parent().master_parent == null:
+					get_parent().master_parent = area.get_parent() 

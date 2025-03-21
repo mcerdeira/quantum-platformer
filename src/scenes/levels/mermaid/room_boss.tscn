@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://0vidjg0yiu7i"]
+[gd_scene load_steps=65 format=3 uid="uid://0vidjg0yiu7i"]
 
 [ext_resource type="Texture2D" uid="uid://b0nxv8yj8yswl" path="res://sprites/spritesheets/floor_mermaid-sheet.png" id="1_tsi6p"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_a7c25"]
@@ -388,6 +388,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gc1oj"]
+radius = 13.0
+
 [node name="level" type="TileMap"]
 tile_set = SubResource("TileSet_4lr5i")
 format = 2
@@ -458,7 +461,7 @@ texture = ExtResource("13_mry70")
 position = Vector2(659, 290)
 scale = Vector2(1.5, 1.5)
 
-[node name="PlayerTop" type="Node2D" parent="."]
+[node name="PlayerTop" type="Area2D" parent="."]
 position = Vector2(244, 285)
 script = ExtResource("14_6xcr7")
 
@@ -471,6 +474,10 @@ speed_scale = 2.0
 position = Vector2(0, 4)
 sprite_frames = SubResource("SpriteFrames_mkh27")
 animation = &"idle"
+
+[node name="collider" type="CollisionShape2D" parent="PlayerTop"]
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_gc1oj")
 
 [node name="PlayerReflect" type="Node2D" parent="PlayerTop"]
 z_index = -4096
