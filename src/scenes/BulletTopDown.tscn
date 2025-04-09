@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://hdg3laucnad4"]
+
+[ext_resource type="Script" path="res://scenes/bullet_top_down.gd" id="1_5kq7r"]
+[ext_resource type="Texture2D" uid="uid://40kemu0h4hvh" path="res://sprites/flame_spr_0.png" id="1_xw5jm"]
+[ext_resource type="Texture2D" uid="uid://b6iwbedf8i1c5" path="res://sprites/flame_spr_1.png" id="2_jabqu"]
+[ext_resource type="Texture2D" uid="uid://bktxbukq8l4yn" path="res://sprites/flame_spr_2.png" id="3_xs2j6"]
+[ext_resource type="Texture2D" uid="uid://b6oihqf07nqum" path="res://sprites/flame_spr_3.png" id="4_jus8q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2dpgl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xw5jm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jabqu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xs2j6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jus8q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ontfs"]
+radius = 8.06226
+
+[node name="BulletTopDown" type="Area2D"]
+script = ExtResource("1_5kq7r")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2dpgl")
+autoplay = "default"
+frame_progress = 0.153659
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ontfs")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

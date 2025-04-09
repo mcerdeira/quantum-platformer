@@ -8,12 +8,12 @@ var jumpspeed = 60
 var speed: float = 200.0
 var count_total = 2
 var count = count_total
-var TOTAL_LIFE = 8.0
+var TOTAL_LIFE = 12.0
 var LIFE = TOTAL_LIFE
 var first_time = true
 var tail_ttl_total = 0.1
 var tail_ttl = tail_ttl_total
-var num_bullets = 30
+var num_bullets = 65
 var attack_duration = 6.5
 var attack_rot = 0
 var jump_duration = 1.5
@@ -26,6 +26,7 @@ var attacking = false
 var original_position
 var first_coso = true
 var backwards = false
+var blowed = 0.0
 const FireBallHolderShoot = preload("res://scenes/FireBallHolderShoot.tscn")
 
 @export var tail_segments: Array[Node2D]  # Referencia a las partes de la cola
@@ -54,6 +55,9 @@ func _ready():
 	$Timer.start()
 
 func _process(delta):
+	if blowed > 0:
+		blowed -= 1 * delta
+	
 	if attacking:
 		$water_drops.visible = true
 		if $Head.visible:
@@ -155,6 +159,17 @@ func create_drop(pos):
 		drop.scale.x = 1.906
 		drop.scale.y = 1.906
 		get_parent().add_child(drop)
+		
+func flyaway():
+	if blowed <= 0:
+		LIFE -= 1.0
+		Global.play_sound(Global.BOSS1RoarSFX)
+		if LIFE <= 0.0:
+			force_kill()
+			
+		Global.shaker_obj.shake(3, 0.5)
+		Global.boss_bar.calc_life_bar(TOTAL_LIFE, LIFE)
+		blowed = 3.5
 
 func pick_new_direction():
 	direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://0vidjg0yiu7i"]
+[gd_scene load_steps=67 format=3 uid="uid://0vidjg0yiu7i"]
 
 [ext_resource type="Texture2D" uid="uid://b0nxv8yj8yswl" path="res://sprites/spritesheets/floor_mermaid-sheet.png" id="1_tsi6p"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_a7c25"]
@@ -21,8 +21,10 @@
 [ext_resource type="PackedScene" uid="uid://chgeck41w1cmq" path="res://scenes/boss_enemy_3.tscn" id="16_nbqwu"]
 [ext_resource type="Texture2D" uid="uid://bai8rdtfyncto" path="res://sprites/horu/images/player_spr_invisible.png" id="17_634cp"]
 [ext_resource type="Script" path="res://scenes/levels/room.gd" id="17_h65tp"]
+[ext_resource type="PackedScene" uid="uid://cjmj21xt3ey8i" path="res://scenes/Gun.tscn" id="17_ubac7"]
 [ext_resource type="Texture2D" uid="uid://w8jhkurhs8h2" path="res://sprites/horu/images/player_spr_1.png" id="18_u1eor"]
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="19_6hb3n"]
+[ext_resource type="Texture2D" uid="uid://cpqyvhqmpfacf" path="res://sprites/gun_spr_0.png" id="19_8cvcu"]
 [ext_resource type="Texture2D" uid="uid://dx8ucfq000dy" path="res://sprites/horu/images/player_face_push_spr_0.png" id="20_xg5x1"]
 [ext_resource type="Texture2D" uid="uid://cv8aoaithgb0b" path="res://sprites/horu/images/player_face_idle_spr_0.png" id="21_fvdfy"]
 [ext_resource type="Texture2D" uid="uid://73r6rkoli3fp" path="res://sprites/horu/images/player_face_idle_spr_1.png" id="22_xvpt3"]
@@ -461,9 +463,29 @@ texture = ExtResource("13_mry70")
 position = Vector2(659, 290)
 scale = Vector2(1.5, 1.5)
 
+[node name="Gun" parent="." instance=ExtResource("17_ubac7")]
+position = Vector2(489, 324)
+
 [node name="PlayerTop" type="Area2D" parent="."]
 position = Vector2(244, 285)
 script = ExtResource("14_6xcr7")
+
+[node name="Gun_R" type="Sprite2D" parent="PlayerTop"]
+visible = false
+position = Vector2(30, -2)
+texture = ExtResource("19_8cvcu")
+
+[node name="shoot_point" type="Marker2D" parent="PlayerTop/Gun_R"]
+position = Vector2(14, -4)
+
+[node name="Gun_L" type="Sprite2D" parent="PlayerTop"]
+visible = false
+position = Vector2(-31, -2)
+scale = Vector2(-1, 1)
+texture = ExtResource("19_8cvcu")
+
+[node name="shoot_point" type="Marker2D" parent="PlayerTop/Gun_L"]
+position = Vector2(14, -4)
 
 [node name="sprite" type="AnimatedSprite2D" parent="PlayerTop"]
 sprite_frames = SubResource("SpriteFrames_quo4a")
@@ -494,3 +516,14 @@ speed_scale = 2.0
 position = Vector2(0, 4)
 sprite_frames = SubResource("SpriteFrames_mkh27")
 animation = &"idle"
+
+[node name="Gun_R" type="Sprite2D" parent="PlayerTop/PlayerReflect"]
+visible = false
+position = Vector2(30, -2)
+texture = ExtResource("19_8cvcu")
+
+[node name="Gun_L" type="Sprite2D" parent="PlayerTop/PlayerReflect"]
+visible = false
+position = Vector2(-31, -2)
+scale = Vector2(-1, 1)
+texture = ExtResource("19_8cvcu")
