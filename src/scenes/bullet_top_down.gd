@@ -17,12 +17,19 @@ func _physics_process(delta: float) -> void:
 		else:
 			position.x -= speed * delta
 		
+func ok_hit(body):
+	return body.falling or body.attacking or body.jumping
+		
 func _on_body_entered(body: Node2D) -> void:
-	if body and body.is_in_group("bosses") and body.visible:
+	if body and body.is_in_group("bosses") and ok_hit(body):
 		Global.emit(global_position, 5)
 		body.flyaway()
 
 func _on_area_entered(area: Area2D) -> void:
+	if area and area.is_in_group("bosses"):
+		Global.emit(global_position, 5)
+		area.flyaway()
+	
 	if area and area.is_in_group("fireballholder"):
 		Global.emit(global_position, 5)
 		area.queue_free()

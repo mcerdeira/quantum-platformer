@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://chgeck41w1cmq"]
+[gd_scene load_steps=19 format=3 uid="uid://chgeck41w1cmq"]
 
 [ext_resource type="Script" path="res://scenes/boss_enemy_3.gd" id="1_kxlqv"]
 [ext_resource type="Texture2D" uid="uid://ch0lf7l2ngiiw" path="res://sprites/water_drops1.png" id="2_flx4a"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://0e5cg8cum6i1" path="res://sprites/water_drops5.png" id="6_0eube"]
 [ext_resource type="PackedScene" uid="uid://cdvdlbsrcv1ga" path="res://scenes/tail_4.tscn" id="7_f64df"]
 [ext_resource type="Texture2D" uid="uid://cuhl0vyxapecb" path="res://sprites/horu/images/worm_boss1.png" id="7_mx4ru"]
+[ext_resource type="Script" path="res://scenes/bullet_receive.gd" id="9_xv1u6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mvde4"]
 animations = [{
@@ -230,6 +231,9 @@ _data = {
 "new_animation": SubResource("Animation_ptu44")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cl2jn"]
+size = Vector2(40, 210)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_xljfo"]
 radius = 38.5876
 
@@ -308,6 +312,13 @@ libraries = {
 "": SubResource("AnimationLibrary_el4wu")
 }
 speed_scale = 3.0
+
+[node name="bullet_receive" type="Area2D" parent="BossModeShoot"]
+script = ExtResource("9_xv1u6")
+
+[node name="collider" type="CollisionShape2D" parent="BossModeShoot/bullet_receive"]
+position = Vector2(4, 6)
+shape = SubResource("RectangleShape2D_cl2jn")
 
 [node name="Tail6" parent="." instance=ExtResource("7_f64df")]
 visible = false
