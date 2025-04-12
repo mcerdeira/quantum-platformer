@@ -1,6 +1,6 @@
 extends Area2D
 var moving = false
-var speed = 100
+var speed = 215.0
 var ttl_drop = 0.0
 var rainobj = preload("res://scenes/Rain.tscn")
 var waterdrop = preload("res://scenes/water_drp.tscn")
@@ -10,6 +10,7 @@ var dead_animation = ""
 var has_gun = false
 var direction = "right"
 var shoot_ttl = 0.0
+var shoot_ttl_total = 1.0
 const BulletTopDown = preload("res://scenes/BulletTopDown.tscn")
 
 func _ready():
@@ -33,7 +34,7 @@ func create_drop(pos):
 		
 func shoot():
 	if has_gun and shoot_ttl <= 0:
-		shoot_ttl = 0.1
+		shoot_ttl = shoot_ttl_total
 		var pos = Vector2.ZERO
 		if direction == "right":
 			pos = $Gun_R/shoot_point.global_position
@@ -77,20 +78,26 @@ func _physics_process(delta):
 		$PlayerReflect/Gun_L.visible = $Gun_L.visible
 		
 	else:
+		var shoot_action = false 
+		if has_gun:
+			shoot_action = Input.is_action_pressed("shoot")
+		
 		moving = false
 		ttl_drop -= 1 * delta
 		if Input.is_action_pressed("left"):
-			direction = "left"
+			if !shoot_action:
+				direction = "left"
+				$sprite.scale.x = -1
 			create_drop(global_position)
 			moving = true
 			position.x -= speed * delta
-			$sprite.scale.x = -1
 		elif Input.is_action_pressed("right"):
-			direction = "right"
+			if !shoot_action:
+				direction = "right"
+				$sprite.scale.x = 1
 			create_drop(global_position)
 			moving = true
 			position.x += speed * delta
-			$sprite.scale.x = 1
 		elif Input.is_action_pressed("up"):
 			create_drop(global_position)
 			moving = true
@@ -108,7 +115,7 @@ func _physics_process(delta):
 				$Gun_R.visible = false
 				$Gun_L.visible = true
 				
-			if Input.is_action_pressed("shoot"):
+			if shoot_action:
 				shoot()
 			
 		$PlayerReflect/Gun_R.visible = $Gun_R.visible

@@ -1,7 +1,7 @@
 extends Area2D
 var direction = ""
-var speed = 250.0
-var ttl = 1.1
+var speed = 315.0
+var ttl = 0.7
 
 func _physics_process(delta: float) -> void:
 	ttl -= 1 * delta
