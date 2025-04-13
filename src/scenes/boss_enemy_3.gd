@@ -28,6 +28,15 @@ var first_coso = true
 var backwards = false
 var blowed = 0.0
 const FireBallHolderShoot = preload("res://scenes/FireBallHolderShoot.tscn")
+@export var H_Pos_U : Node2D
+@export var H_Pos_D : Node2D
+@export var V_Pos_L : Node2D
+@export var V_Pos_R : Node2D
+@export var C_Pos : Node2D
+var Pos_Dir = null
+
+var Address_Matrix_Idx = -1
+var Address_Matrix = []
 
 @export var tail_segments: Array[Node2D]  # Referencia a las partes de la cola
 var previous_positions: Array[Vector2] = []
@@ -48,11 +57,10 @@ func shoot():
 		Global.emit($BossModeShoot/Head.global_position, 5)
 
 func _ready():
+	Address_Matrix = [H_Pos_U, C_Pos, V_Pos_R, C_Pos, H_Pos_D, C_Pos, V_Pos_L, C_Pos]
 	Global.CHROM_FX.visible = false
 	_my_ready()
 	pick_new_direction()
-	$Timer.wait_time = randf_range(1, 3)
-	$Timer.start()
 
 func _process(delta):
 	if blowed > 0:
@@ -172,16 +180,17 @@ func flyaway():
 		blowed = 3.5
 
 func pick_new_direction():
-	direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+	Address_Matrix_Idx += 1
+	if Address_Matrix_Idx > 7:
+		Address_Matrix_Idx = 0
+		
+	Pos_Dir = Address_Matrix[Address_Matrix_Idx].get_random_point()
+	direction = global_transform.origin.direction_to(Pos_Dir)
 	
 func check_bounds():
 	var viewport_rect = get_viewport_rect()
-
-	if global_position.x <= 100 or global_position.x + 100 >= viewport_rect.size.x:
-		count -= 1
-		pick_new_direction()
-
-	if global_position.y <= 100 or global_position.y + 100 >= viewport_rect.size.y:
+	var dist = global_position.distance_to(Pos_Dir)
+	if dist <= 10:
 		count -= 1
 		pick_new_direction()
 		
@@ -259,8 +268,6 @@ func apply_jump(delta):
 			falling = false
 			jumping = false
 			$JumpTimer.stop()
-			$Timer.wait_time = randf_range(3, 5)
-			$Timer.start()
 			
 func force_kill():
 	LIFE = 0.0
@@ -281,16 +288,13 @@ func _on_timer_timeout():
 		count = count_total
 		if !first_coso and randi() % 2 == 0:
 			if start_attack():
-				$Timer.stop()
+				pass
 		else:
 			if start_jump():
-				$Timer.stop()
+				pass
 	else:
 		count -= 1
 		pick_new_direction()
-		$Timer.stop()
-		$Timer.wait_time = randf_range(3, 5)
-		$Timer.start()
 
 func _on_jump_timer_timeout():
 	jumping = false
@@ -309,7 +313,5 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		shoot_ttl = 0
 		attack_rot = 0
 		attacking = false
-		$Timer.wait_time = randf_range(3, 5)
-		$Timer.start()
 	else:
 		shoot_ttl = 0

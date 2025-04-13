@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://0vidjg0yiu7i"]
+[gd_scene load_steps=68 format=3 uid="uid://0vidjg0yiu7i"]
 
 [ext_resource type="Texture2D" uid="uid://b0nxv8yj8yswl" path="res://sprites/spritesheets/floor_mermaid-sheet.png" id="1_tsi6p"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_a7c25"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cfr4242x4qruc" path="res://sprites/spritesheets/floor_dragon1-sheet.png" id="9_3fert"]
 [ext_resource type="Texture2D" uid="uid://ddjpinqcpwyw5" path="res://sprites/stair_v2.png" id="9_j4x1g"]
 [ext_resource type="Texture2D" uid="uid://cvgek1xj28trv" path="res://sprites/fireball_box.png" id="10_cgbew"]
+[ext_resource type="Script" path="res://scenes/levels/mermaid/boss_3_pos.gd" id="12_byw5d"]
 [ext_resource type="Shader" path="res://scenes/levels/mermaid/watershader.gdshader" id="12_jltic"]
 [ext_resource type="Texture2D" uid="uid://dsxslgcc1hcb5" path="res://sprites/horu/images/rock_break_spr_0.png" id="12_le3le"]
 [ext_resource type="PackedScene" uid="uid://breiggv80wqpb" path="res://boss_plant_obj.tscn" id="12_vh0e1"]
@@ -404,6 +405,73 @@ visible = false
 collision_layer = 41
 collision_mask = 41
 
+[node name="C_Pos" type="Node2D" parent="."]
+visible = false
+script = ExtResource("12_byw5d")
+
+[node name="mark0" type="Marker2D" parent="C_Pos"]
+position = Vector2(442, 326)
+
+[node name="mark1" type="Marker2D" parent="C_Pos"]
+position = Vector2(635, 363)
+
+[node name="mark2" type="Marker2D" parent="C_Pos"]
+position = Vector2(541, 266)
+
+[node name="mark3" type="Marker2D" parent="C_Pos"]
+position = Vector2(539, 394)
+
+[node name="H_Pos_U" type="Node2D" parent="."]
+script = ExtResource("12_byw5d")
+
+[node name="mark0" type="Marker2D" parent="H_Pos_U"]
+position = Vector2(339, 92)
+
+[node name="mark2" type="Marker2D" parent="H_Pos_U"]
+position = Vector2(559, 106)
+
+[node name="mark3" type="Marker2D" parent="H_Pos_U"]
+position = Vector2(798, 88)
+
+[node name="mark4" type="Marker2D" parent="H_Pos_U"]
+position = Vector2(951, 123)
+
+[node name="H_Pos_D" type="Node2D" parent="."]
+script = ExtResource("12_byw5d")
+
+[node name="mark1" type="Marker2D" parent="H_Pos_D"]
+position = Vector2(367, 557)
+
+[node name="mark6" type="Marker2D" parent="H_Pos_D"]
+position = Vector2(568, 519)
+
+[node name="mark7" type="Marker2D" parent="H_Pos_D"]
+position = Vector2(787, 530)
+
+[node name="V_Pos_L" type="Node2D" parent="."]
+script = ExtResource("12_byw5d")
+
+[node name="mark1" type="Marker2D" parent="V_Pos_L"]
+position = Vector2(176, 158)
+
+[node name="mark2" type="Marker2D" parent="V_Pos_L"]
+position = Vector2(114, 333)
+
+[node name="mark3" type="Marker2D" parent="V_Pos_L"]
+position = Vector2(171, 490)
+
+[node name="V_Pos_R" type="Node2D" parent="."]
+script = ExtResource("12_byw5d")
+
+[node name="mark5" type="Marker2D" parent="V_Pos_R"]
+position = Vector2(1053, 205)
+
+[node name="mark6" type="Marker2D" parent="V_Pos_R"]
+position = Vector2(1017, 349)
+
+[node name="mark7" type="Marker2D" parent="V_Pos_R"]
+position = Vector2(1014, 524)
+
 [node name="RockBreakSpr0" type="Sprite2D" parent="."]
 position = Vector2(180, 67)
 texture = ExtResource("12_le3le")
@@ -425,32 +493,42 @@ position = Vector2(746, 333)
 texture = ExtResource("12_le3le")
 
 [node name="PlantObj" parent="." instance=ExtResource("12_vh0e1")]
+visible = false
 
 [node name="PlantObj10" parent="." instance=ExtResource("12_vh0e1")]
+visible = false
 position = Vector2(277, 235)
 
 [node name="PlantObj2" parent="." instance=ExtResource("12_vh0e1")]
+visible = false
 position = Vector2(877, 474)
 
 [node name="PlantObj3" parent="." instance=ExtResource("12_vh0e1")]
+visible = false
 position = Vector2(177, 482)
 
 [node name="PlantObj4" parent="." instance=ExtResource("12_vh0e1")]
+visible = false
 position = Vector2(843, 147)
 
 [node name="PlantObj5" parent="." instance=ExtResource("12_vh0e1")]
+visible = false
 position = Vector2(1031, 240)
 
 [node name="PlantObj6" parent="." instance=ExtResource("12_vh0e1")]
+visible = false
 position = Vector2(382, 586)
 
 [node name="PlantObj7" parent="." instance=ExtResource("12_vh0e1")]
+visible = false
 position = Vector2(584, 594)
 
 [node name="PlantObj8" parent="." instance=ExtResource("12_vh0e1")]
+visible = false
 position = Vector2(887, 597)
 
 [node name="PlantObj9" parent="." instance=ExtResource("12_vh0e1")]
+visible = false
 position = Vector2(81, 96)
 
 [node name="WaterBig" type="Sprite2D" parent="."]
@@ -459,9 +537,15 @@ position = Vector2(576.5, 316)
 scale = Vector2(9.61719, 5.625)
 texture = ExtResource("13_mry70")
 
-[node name="BossEnemy3" parent="." instance=ExtResource("16_nbqwu")]
+[node name="BossEnemy3" parent="." node_paths=PackedStringArray("H_Pos_U", "H_Pos_D", "V_Pos_L", "V_Pos_R", "C_Pos", "tail_segments") instance=ExtResource("16_nbqwu")]
 position = Vector2(659, 290)
 scale = Vector2(1.5, 1.5)
+H_Pos_U = NodePath("../H_Pos_U")
+H_Pos_D = NodePath("../H_Pos_D")
+V_Pos_L = NodePath("../V_Pos_L")
+V_Pos_R = NodePath("../V_Pos_R")
+C_Pos = NodePath("../C_Pos")
+tail_segments = []
 
 [node name="Gun" parent="." instance=ExtResource("17_ubac7")]
 position = Vector2(489, 324)
