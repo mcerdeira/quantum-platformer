@@ -406,7 +406,7 @@ collision_layer = 41
 collision_mask = 41
 
 [node name="C_Pos" type="Node2D" parent="."]
-visible = false
+position = Vector2(3, 83)
 script = ExtResource("12_byw5d")
 
 [node name="mark0" type="Marker2D" parent="C_Pos"]
@@ -417,9 +417,6 @@ position = Vector2(635, 363)
 
 [node name="mark2" type="Marker2D" parent="C_Pos"]
 position = Vector2(541, 266)
-
-[node name="mark3" type="Marker2D" parent="C_Pos"]
-position = Vector2(539, 394)
 
 [node name="H_Pos_U" type="Node2D" parent="."]
 script = ExtResource("12_byw5d")
@@ -441,9 +438,6 @@ script = ExtResource("12_byw5d")
 
 [node name="mark1" type="Marker2D" parent="H_Pos_D"]
 position = Vector2(367, 557)
-
-[node name="mark6" type="Marker2D" parent="H_Pos_D"]
-position = Vector2(568, 519)
 
 [node name="mark7" type="Marker2D" parent="H_Pos_D"]
 position = Vector2(787, 530)
@@ -537,7 +531,7 @@ position = Vector2(576.5, 316)
 scale = Vector2(9.61719, 5.625)
 texture = ExtResource("13_mry70")
 
-[node name="BossEnemy3" parent="." node_paths=PackedStringArray("H_Pos_U", "H_Pos_D", "V_Pos_L", "V_Pos_R", "C_Pos", "tail_segments") instance=ExtResource("16_nbqwu")]
+[node name="BossEnemy3" parent="." node_paths=PackedStringArray("H_Pos_U", "H_Pos_D", "V_Pos_L", "V_Pos_R", "C_Pos") instance=ExtResource("16_nbqwu")]
 position = Vector2(659, 290)
 scale = Vector2(1.5, 1.5)
 H_Pos_U = NodePath("../H_Pos_U")
@@ -545,7 +539,6 @@ H_Pos_D = NodePath("../H_Pos_D")
 V_Pos_L = NodePath("../V_Pos_L")
 V_Pos_R = NodePath("../V_Pos_R")
 C_Pos = NodePath("../C_Pos")
-tail_segments = []
 
 [node name="Gun" parent="." instance=ExtResource("17_ubac7")]
 position = Vector2(489, 324)

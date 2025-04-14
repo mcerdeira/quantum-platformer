@@ -6,8 +6,6 @@ var moving = true
 var x_direction = 0
 var jumpspeed = 60
 var speed: float = 200.0
-var count_total = 2
-var count = count_total
 var TOTAL_LIFE = 12.0
 var LIFE = TOTAL_LIFE
 var first_time = true
@@ -57,6 +55,7 @@ func shoot():
 		Global.emit($BossModeShoot/Head.global_position, 5)
 
 func _ready():
+	var pepe = tail_segments
 	Address_Matrix = [H_Pos_U, C_Pos, V_Pos_R, C_Pos, H_Pos_D, C_Pos, V_Pos_L, C_Pos]
 	Global.CHROM_FX.visible = false
 	_my_ready()
@@ -191,8 +190,10 @@ func check_bounds():
 	var viewport_rect = get_viewport_rect()
 	var dist = global_position.distance_to(Pos_Dir)
 	if dist <= 10:
-		count -= 1
-		pick_new_direction()
+		if Address_Matrix_Idx % 2 != 0:
+			decide()
+		else:
+			pick_new_direction()
 		
 func all_tail_invisible():
 	for _i in tail_segments.size():
@@ -205,7 +206,7 @@ func start_attack():
 	if !all_tail_invisible():
 		return false
 	
-	if jumping or falling or attacking or global_position.y <= 300:
+	if jumping or falling or attacking:
 		return false
 		
 	$BossModeShoot.visible = true
@@ -220,10 +221,10 @@ func start_jump():
 	if !all_tail_invisible():
 		return false
 	
-	if attacking or jumping or falling or global_position.y <= 300:
+	if attacking or jumping or falling:
 		return false
 		
-	if global_position.x > 1152 / 2:
+	if randi() % 2 == 0:
 		x_direction = -1
 	else:
 		x_direction = 1
@@ -267,6 +268,7 @@ func apply_jump(delta):
 			global_position.y = original_position.y 
 			falling = false
 			jumping = false
+			pick_new_direction()
 			$JumpTimer.stop()
 			
 func force_kill():
@@ -283,18 +285,13 @@ func die():
 	Global.gotoBOSS = false
 	Global.BOSS_DEAD = true
 
-func _on_timer_timeout():
-	if count <= 0:
-		count = count_total
-		if !first_coso and randi() % 2 == 0:
-			if start_attack():
-				pass
-		else:
-			if start_jump():
-				pass
+func decide():
+	if !first_coso and randi() % 2 == 0:
+		if start_attack():
+			pass
 	else:
-		count -= 1
-		pick_new_direction()
+		if start_jump():
+			pass
 
 func _on_jump_timer_timeout():
 	jumping = false
@@ -313,5 +310,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		shoot_ttl = 0
 		attack_rot = 0
 		attacking = false
+		pick_new_direction()
 	else:
 		shoot_ttl = 0
