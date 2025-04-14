@@ -30,10 +30,10 @@ func _on_area_entered(area: Area2D) -> void:
 		Global.emit(global_position, 5)
 		area.flyaway()
 	
-	if area and area.is_in_group("fireballholder"):
-		Global.emit(global_position, 5)
-		area.queue_free()
-		queue_free()
+	#if area and area.is_in_group("fireballholder"):
+		#Global.emit(global_position, 5)
+		#area.queue_free()
+		#queue_free()
 
 func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if body is TileMap:

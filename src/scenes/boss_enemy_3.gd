@@ -19,7 +19,7 @@ var direction: Vector2 = Vector2.ZERO
 var jumping = false
 var falling = false
 var shoot_ttl = 0
-var shoot_ttl_total = 1.2
+var shoot_ttl_total = 2.3
 var attacking = false
 var original_position
 var first_coso = true
@@ -193,7 +193,13 @@ func check_bounds():
 		if Address_Matrix_Idx % 2 != 0:
 			decide()
 		else:
-			pick_new_direction()
+			if Address_Matrix_Idx == 4: #H_Pos_D
+				if randi() % 2 == 0:
+					pick_new_direction()
+				else:
+					start_attack()
+			else:
+				pick_new_direction()
 		
 func all_tail_invisible():
 	for _i in tail_segments.size():
@@ -224,6 +230,14 @@ func start_jump():
 	if attacking or jumping or falling:
 		return false
 		
+	#1 viene de arriba
+	#3 viene de la derecha
+	#5 viene de abajo
+	#7 viene de la izquierda
+	if Address_Matrix_Idx == 3:
+		x_direction = -1
+	elif Address_Matrix_Idx == 7:
+		x_direction = 1
 	if randi() % 2 == 0:
 		x_direction = -1
 	else:

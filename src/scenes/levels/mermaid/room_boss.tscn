@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://0vidjg0yiu7i"]
+[gd_scene load_steps=69 format=3 uid="uid://0vidjg0yiu7i"]
 
 [ext_resource type="Texture2D" uid="uid://b0nxv8yj8yswl" path="res://sprites/spritesheets/floor_mermaid-sheet.png" id="1_tsi6p"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_a7c25"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://73r6rkoli3fp" path="res://sprites/horu/images/player_face_idle_spr_1.png" id="22_xvpt3"]
 [ext_resource type="Texture2D" uid="uid://ppy8i8a16de6" path="res://sprites/horu/images/player_face_idle_spr_2.png" id="23_qepi5"]
 [ext_resource type="Texture2D" uid="uid://b0ihd00aoixu" path="res://sprites/horu/images/player_face_idle_spr_3.png" id="24_rwda0"]
+[ext_resource type="Texture2D" uid="uid://bjafrlvi0tbtf" path="res://sprites/horu/images/player_roll_spr_0.png" id="25_4rmtm"]
 [ext_resource type="Texture2D" uid="uid://bdyf0s8hchasv" path="res://sprites/horu/images/player_face_idle_spr_4.png" id="25_w8tp3"]
 [ext_resource type="Texture2D" uid="uid://ccutwauinmfid" path="res://sprites/horu/images/player_face_idle_spr_5.png" id="26_itnjj"]
 [ext_resource type="Texture2D" uid="uid://d0aifeeydquxp" path="res://sprites/horu/images/player_face_idle_spr_6.png" id="27_aqnra"]
@@ -257,6 +258,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("25_4rmtm")
+}],
+"loop": true,
+"name": &"roll",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("16_d2ety")
 }],
 "loop": true,
@@ -376,6 +385,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("20_xg5x1")
+}],
+"loop": true,
+"name": &"roll",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("41_mqdub")
 }],
 "loop": true,
@@ -487,26 +504,20 @@ position = Vector2(746, 333)
 texture = ExtResource("12_le3le")
 
 [node name="PlantObj" parent="." instance=ExtResource("12_vh0e1")]
-visible = false
 
 [node name="PlantObj10" parent="." instance=ExtResource("12_vh0e1")]
-visible = false
 position = Vector2(277, 235)
 
 [node name="PlantObj2" parent="." instance=ExtResource("12_vh0e1")]
-visible = false
 position = Vector2(877, 474)
 
 [node name="PlantObj3" parent="." instance=ExtResource("12_vh0e1")]
-visible = false
 position = Vector2(177, 482)
 
 [node name="PlantObj4" parent="." instance=ExtResource("12_vh0e1")]
-visible = false
 position = Vector2(843, 147)
 
 [node name="PlantObj5" parent="." instance=ExtResource("12_vh0e1")]
-visible = false
 position = Vector2(1031, 240)
 
 [node name="PlantObj6" parent="." instance=ExtResource("12_vh0e1")]
@@ -514,15 +525,12 @@ visible = false
 position = Vector2(382, 586)
 
 [node name="PlantObj7" parent="." instance=ExtResource("12_vh0e1")]
-visible = false
 position = Vector2(584, 594)
 
 [node name="PlantObj8" parent="." instance=ExtResource("12_vh0e1")]
-visible = false
 position = Vector2(887, 597)
 
 [node name="PlantObj9" parent="." instance=ExtResource("12_vh0e1")]
-visible = false
 position = Vector2(81, 96)
 
 [node name="WaterBig" type="Sprite2D" parent="."]
