@@ -3,10 +3,12 @@ var waterdrop = preload("res://scenes/water_drp.tscn")
 var watersplash = preload("res://scenes/Confeti.tscn")
 var ttl_drop = 0.0
 var moving = true
+var splash_ttl_total = 0.2
+var splash_ttl = 0
 var x_direction = 0
 var jumpspeed = 60
 var speed: float = 200.0
-var TOTAL_LIFE = 12.0
+var TOTAL_LIFE = 1.0 #12.0
 var LIFE = TOTAL_LIFE
 var first_time = true
 var tail_ttl_total = 0.1
@@ -24,6 +26,7 @@ var attacking = false
 var original_position
 var first_coso = true
 var backwards = false
+var dead = false
 var blowed = 0.0
 const FireBallHolderShoot = preload("res://scenes/FireBallHolderShoot.tscn")
 @export var H_Pos_U : Node2D
@@ -55,77 +58,91 @@ func shoot():
 		Global.emit($BossModeShoot/Head.global_position, 5)
 
 func _ready():
-	var pepe = tail_segments
 	Address_Matrix = [H_Pos_U, C_Pos, V_Pos_R, C_Pos, H_Pos_D, C_Pos, V_Pos_L, C_Pos]
 	Global.CHROM_FX.visible = false
 	_my_ready()
 	pick_new_direction()
 
 func _process(delta):
-	if blowed > 0:
-		blowed -= 1 * delta
-	
-	if attacking:
-		$water_drops.visible = true
-		if $Head.visible:
-			for _i in tail_segments.size():
-				tail_segments[_i].visible = true
-		$Head.visible = false
-		if Global.player_obj.global_position.x > global_position.x:
-			$BossModeShoot/Head.scale.x = 1
-		else:
-			$BossModeShoot/Head.scale.x = -1
+	if dead:
+		var fireballholder = get_tree().get_nodes_in_group("fireballholder")
+		for e in fireballholder:
+			e.queue_free()
 			
-		shoot_ttl -= 1 * delta
-		if shoot_ttl <= 0:
-			shoot_ttl = shoot_ttl_total
-			shoot()
-	
-	elif jumping or falling:
-		tail_ttl = tail_ttl_total
-		if !$Head.visible:
-			tail_visible()
-			if first_time:
-				first_time = false
+		var fireball = get_tree().get_nodes_in_group("fireball")
+		for e in fireball:
+			e.queue_free()
 		
-		$Head.visible = true
-		for _i in range(tail_segments.size()):
-			if _i % 2 == 0:
-				tail_segments[_i].rotation_degrees += 10 * delta
-			else:
-				tail_segments[_i].rotation_degrees -= 10 * delta
-		
-		$water_drops.visible = false
-		$Head.flip_h = x_direction == -1
-		$Head/Head.flip_h = x_direction == -1
-		apply_jump(delta)
-		update_tail()
+		if visible:
+			splash_ttl -= 1 * delta
+			if splash_ttl <= 0:
+				splash_ttl = splash_ttl_total
+				splash(0)
 	else:
-		if $Head.visible:
-			if first_time:
-				tail_hide()
-		else:
-			if tail_ttl <= 0:
-				tail_ttl = tail_ttl_total
-				tail_hide_parts()
-			else:
-				tail_ttl -= 1 * delta
-			
-		if $Head.visible:
-			$Head.visible = false
-			if !first_time:
-				Global.player_obj.force_thunder()
+		if blowed > 0:
+			blowed -= 1 * delta
+		
+		if attacking:
+			$water_drops.visible = true
+			if $Head.visible:
 				for _i in tail_segments.size():
-					splash()
+					tail_segments[_i].visible = true
+			$Head.visible = false
+			if Global.player_obj.global_position.x > global_position.x:
+				$BossModeShoot/Head.scale.x = 1
+			else:
+				$BossModeShoot/Head.scale.x = -1
 				
-		$water_drops.visible = true
-		ttl_drop -= 1 * delta
-		if moving:
-			create_drop(global_position)
-			velocity = direction * speed
-			move_and_slide()
+			shoot_ttl -= 1 * delta
+			if shoot_ttl <= 0:
+				shoot_ttl = shoot_ttl_total
+				shoot()
+		
+		elif jumping or falling:
+			tail_ttl = tail_ttl_total
+			if !$Head.visible:
+				tail_visible()
+				if first_time:
+					first_time = false
+			
+			$Head.visible = true
+			for _i in range(tail_segments.size()):
+				if _i % 2 == 0:
+					tail_segments[_i].rotation_degrees += 10 * delta
+				else:
+					tail_segments[_i].rotation_degrees -= 10 * delta
+			
+			$water_drops.visible = false
+			$Head.flip_h = x_direction == -1
+			$Head/Head.flip_h = x_direction == -1
+			apply_jump(delta)
 			update_tail()
-			check_bounds()
+		else:
+			if $Head.visible:
+				if first_time:
+					tail_hide()
+			else:
+				if tail_ttl <= 0:
+					tail_ttl = tail_ttl_total
+					tail_hide_parts()
+				else:
+					tail_ttl -= 1 * delta
+				
+			if $Head.visible:
+				$Head.visible = false
+				if !first_time:
+					Global.player_obj.force_thunder()
+					for _i in tail_segments.size():
+						splash()
+					
+			$water_drops.visible = true
+			ttl_drop -= 1 * delta
+			if moving:
+				create_drop(global_position)
+				velocity = direction * speed
+				move_and_slide()
+				update_tail()
+				check_bounds()
 			
 func tail_visible():
 	for _i in tail_segments.size():
@@ -150,7 +167,7 @@ func tail_hide_parts():
 			
 func update_tail():
 	previous_positions.insert(0, global_position)
-	var segment_spacing = 10.0
+	var segment_spacing = 7.0
 	for i in range(tail_segments.size()):
 		var target_index = (i + 1) * segment_spacing
 		if target_index < previous_positions.size():
@@ -264,11 +281,11 @@ func mini_splash(tail_segment):
 	sp.global_position = Vector2(tail_segment.global_position.x, tail_segment.global_position.y)
 	get_parent().add_child(sp)
 	
-func splash():
+func splash(ajust = 48):
 	var count = randi_range(1, 2)
 	for i in range(count):
 		var sp = watersplash.instantiate()
-		sp.global_position = Vector2(global_position.x, global_position.y + 48)
+		sp.global_position = Vector2(global_position.x, global_position.y + ajust)
 		get_parent().add_child(sp)
 
 func apply_jump(delta):
@@ -287,6 +304,7 @@ func apply_jump(delta):
 			
 func force_kill():
 	LIFE = 0.0
+	dead = true
 	die()
 			
 func die():
@@ -298,7 +316,33 @@ func die():
 	Global.FromPipe = true
 	Global.gotoBOSS = false
 	Global.BOSS_DEAD = true
-
+	Global.shaker_obj.shake(8, 5.1)
+	attacking = false
+	jumping = false
+	falling = false
+	backwards = false
+	$Head.visible = false
+	tail_hide()
+	splash(0)
+	$BossModeShoot.visible = true
+	$BossModeShoot/AnimationPlayer.play("new_animation")
+	Global.player_obj.force_thunder()
+	await get_tree().create_timer(attack_duration).timeout
+	backwards = true
+	$BossModeShoot/AnimationPlayer.play_backwards("new_animation")
+	Global.player_obj.force_thunder()
+	finishup()
+	
+func finishup():
+	splash()
+	Music.stop()
+	Ambience.play(Global.RainAmbienceSFX)
+	visible = false
+	Global.player_obj.locked_ctrls = true
+	Global.player_obj.show_message()
+	await get_tree().create_timer(3.0).timeout
+	Global.player_obj.hide_message()
+	
 func decide():
 	if !first_coso and randi() % 2 == 0:
 		if start_attack():
@@ -318,12 +362,23 @@ func _on_attack_timer_timeout():
 	$BossModeShoot/AnimationPlayer.play_backwards("new_animation")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if backwards:
-		backwards = false
-		$BossModeShoot.visible = false
-		shoot_ttl = 0
-		attack_rot = 0
-		attacking = false
-		pick_new_direction()
+	if !dead:
+		if backwards:
+			backwards = false
+			$BossModeShoot.visible = false
+			shoot_ttl = 0
+			attack_rot = 0
+			attacking = false
+			pick_new_direction()
+		else:
+			shoot_ttl = 0
 	else:
-		shoot_ttl = 0
+		if backwards:
+			$BossModeShoot.visible = false
+			splash()
+
+func _on_eat_area_entered(area: Area2D) -> void:
+	if !dead:
+		if !attacking and $Head.visible:
+			if area and area.is_in_group("players"):
+				area.killeat()

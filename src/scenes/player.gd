@@ -109,7 +109,7 @@ func _ready():
 		Global.shaker_obj.camera = $Camera2D
 		Global.player_obj = self
 		Global.Fader.fade_out()
-		if Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
+		if Global.TerminalNumber == Global.TerminalsEnum.MERMAID and Global.CurrentState != Global.GameStates.OVERWORLD:
 			var rain = rainobj.instantiate()
 			rain.position = Vector2(-431, -467) 
 			add_child(rain)

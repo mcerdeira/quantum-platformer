@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://chgeck41w1cmq"]
+[gd_scene load_steps=20 format=3 uid="uid://chgeck41w1cmq"]
 
 [ext_resource type="Script" path="res://scenes/boss_enemy_3.gd" id="1_kxlqv"]
 [ext_resource type="Texture2D" uid="uid://ch0lf7l2ngiiw" path="res://sprites/water_drops1.png" id="2_flx4a"]
@@ -234,6 +234,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cl2jn"]
 size = Vector2(40, 210)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_poclv"]
+radius = 43.0116
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_xljfo"]
 radius = 38.5876
 
@@ -353,6 +356,12 @@ scale = Vector2(1, 1)
 visible = false
 texture = ExtResource("7_mx4ru")
 
+[node name="eat" type="Area2D" parent="Head"]
+
+[node name="collider" type="CollisionShape2D" parent="Head/eat"]
+position = Vector2(5, -1)
+shape = SubResource("CircleShape2D_poclv")
+
 [node name="Head" type="Sprite2D" parent="Head"]
 z_index = -99
 z_as_relative = false
@@ -376,5 +385,6 @@ autoplay = "new_animation"
 speed_scale = 2.3
 
 [connection signal="animation_finished" from="BossModeShoot/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="Head/eat" to="." method="_on_eat_area_entered"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

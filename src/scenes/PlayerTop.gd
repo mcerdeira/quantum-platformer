@@ -5,6 +5,9 @@ var speed = 215.0
 var ttl_drop = 0.0
 var rainobj = preload("res://scenes/Rain.tscn")
 var waterdrop = preload("res://scenes/water_drp.tscn")
+var watersplash = preload("res://scenes/Confeti.tscn")
+const blood = preload("res://scenes/blood.tscn")
+var locked_ctrls = false
 var rain = null
 var dead = false
 var dead_animation = ""
@@ -14,6 +17,10 @@ var direction = "right"
 var shoot_ttl = 0.0
 var shoot_ttl_total = 0.8
 const BulletTopDown = preload("res://scenes/BulletTopDown.tscn")
+var gosplash = false
+var splash_ttl_total = 0.1
+var splash_ttl = 0
+var goup = false
 
 func _ready():
 	add_to_group("players")
@@ -24,6 +31,14 @@ func _ready():
 	rain.position = Vector2(-431, -267) 
 	add_child(rain)
 	
+func splash():
+	var count = randi_range(1, 2)
+	for i in range(count):
+		var sp = watersplash.instantiate()
+		var aju = randi_range(0, 10) * Global.pick_random([1. -1])
+		sp.global_position = Vector2(global_position.x + aju, global_position.y + 16)
+		get_parent().add_child(sp)
+	
 func get_gun():
 	has_gun = true
 
@@ -33,6 +48,21 @@ func create_drop(pos):
 		var drop = waterdrop.instantiate()
 		drop.position = Vector2(pos.x, pos.y + 16)
 		get_parent().add_child(drop)
+		
+func killeat():
+	dead = true
+	visible = false
+	Global.play_sound(Global.PlayerBleedSFX)
+	await get_tree().create_timer(0.9).timeout
+	bleed(50)
+		
+func bleed(count):
+	Global.play_sound(Global.PlayerBleedSFX)
+	for i in range(count):
+		var blood_instance : Area2D = blood.instantiate()
+		blood_instance.global_position = global_position
+		#get_parent().add_child(blood_instance)
+		get_parent().call_deferred("add_child", blood_instance)
 		
 func shoot():
 	if has_gun and shoot_ttl <= 0:
@@ -60,8 +90,26 @@ func kill_fire():
 		Global.emit(global_position, 10)
 		dead = true
 		dead_animation = "dead_fire"
+		
+func show_message():
+	$display.visible = true
+	$display/back/lbl_item.text = "¿Y ahora... QUE?"
+	
+func hide_message():
+	$display.visible = false
+	gosplash = true
+	$Timer.start()
 
 func _physics_process(delta):
+	if gosplash:
+		if goup:
+			position.y -= (speed * 2) * delta
+		Global.shaker_obj.shake(10, 1.1)
+		splash_ttl -= 1 * delta
+		if splash_ttl <= 0:
+			splash_ttl = splash_ttl_total
+			splash()
+	
 	if shoot_ttl > 0:
 		shoot_ttl -= 1 * delta
 	
@@ -82,12 +130,12 @@ func _physics_process(delta):
 		
 	else:
 		var shoot_action = false 
-		if has_gun and rolling <= 0:
+		if has_gun and rolling <= 0 and !locked_ctrls:
 			shoot_action = Input.is_action_pressed("shoot")
 		
 		moving = false
 		ttl_drop -= 1 * delta
-		if Input.is_action_pressed("left") and rolling <= 0:
+		if Input.is_action_pressed("left") and rolling <= 0 and !locked_ctrls:
 			real_direction = "left"
 			if !shoot_action:
 				direction = "left"
@@ -96,7 +144,7 @@ func _physics_process(delta):
 			moving = true
 			if position.x > 22:
 				position.x -= speed * delta
-		elif Input.is_action_pressed("right") and rolling <= 0:
+		elif Input.is_action_pressed("right") and rolling <= 0 and !locked_ctrls:
 			real_direction = "right"
 			if !shoot_action:
 				direction = "right"
@@ -105,13 +153,13 @@ func _physics_process(delta):
 			moving = true
 			if position.x < 1131:
 				position.x += speed * delta
-		elif Input.is_action_pressed("up") and rolling <= 0:
+		elif Input.is_action_pressed("up") and rolling <= 0 and !locked_ctrls:
 			real_direction = "up"
 			create_drop(global_position)
 			moving = true
 			if position.y > 22:
 				position.y -= speed * delta
-		elif Input.is_action_pressed("down") and rolling <= 0:
+		elif Input.is_action_pressed("down") and rolling <= 0 and !locked_ctrls:
 			real_direction = "down"
 			create_drop(global_position)
 			moving = true
@@ -195,3 +243,10 @@ func _physics_process(delta):
 		$PlayerReflect/sprite_eyes.animation = $sprite_eyes.animation
 		$PlayerReflect/sprite.play()
 		$PlayerReflect/sprite_eyes.play()
+
+
+func _on_timer_timeout() -> void:
+	if !goup:
+		goup = true
+	else:
+		Global.scene_next(Global.TerminalNumber, false, false, false, true)

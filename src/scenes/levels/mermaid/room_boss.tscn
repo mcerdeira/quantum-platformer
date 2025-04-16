@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://0vidjg0yiu7i"]
+[gd_scene load_steps=75 format=3 uid="uid://0vidjg0yiu7i"]
 
 [ext_resource type="Texture2D" uid="uid://b0nxv8yj8yswl" path="res://sprites/spritesheets/floor_mermaid-sheet.png" id="1_tsi6p"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_a7c25"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cfr4242x4qruc" path="res://sprites/spritesheets/floor_dragon1-sheet.png" id="9_3fert"]
 [ext_resource type="Texture2D" uid="uid://ddjpinqcpwyw5" path="res://sprites/stair_v2.png" id="9_j4x1g"]
 [ext_resource type="Texture2D" uid="uid://cvgek1xj28trv" path="res://sprites/fireball_box.png" id="10_cgbew"]
+[ext_resource type="Script" path="res://scenes/levels/mermaid/boss3_camera.gd" id="11_5550k"]
 [ext_resource type="Script" path="res://scenes/levels/mermaid/boss_3_pos.gd" id="12_byw5d"]
 [ext_resource type="Shader" path="res://scenes/levels/mermaid/watershader.gdshader" id="12_jltic"]
 [ext_resource type="Texture2D" uid="uid://dsxslgcc1hcb5" path="res://sprites/horu/images/rock_break_spr_0.png" id="12_le3le"]
@@ -26,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://w8jhkurhs8h2" path="res://sprites/horu/images/player_spr_1.png" id="18_u1eor"]
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="19_6hb3n"]
 [ext_resource type="Texture2D" uid="uid://cpqyvhqmpfacf" path="res://sprites/gun_spr_0.png" id="19_8cvcu"]
+[ext_resource type="Script" path="res://scenes/levels/mermaid/water.gd" id="20_o8ofl"]
 [ext_resource type="Texture2D" uid="uid://dx8ucfq000dy" path="res://sprites/horu/images/player_face_push_spr_0.png" id="20_xg5x1"]
 [ext_resource type="Texture2D" uid="uid://cv8aoaithgb0b" path="res://sprites/horu/images/player_face_idle_spr_0.png" id="21_fvdfy"]
 [ext_resource type="Texture2D" uid="uid://73r6rkoli3fp" path="res://sprites/horu/images/player_face_idle_spr_1.png" id="22_xvpt3"]
@@ -50,6 +52,9 @@
 [ext_resource type="Texture2D" uid="uid://dg4o70al6chat" path="res://sprites/horu/images/player_face_invisible_spr_0.png" id="40_mdv0o"]
 [ext_resource type="Texture2D" uid="uid://bicw8afxnk0yc" path="res://sprites/horu/images/player_face_stunned_spr_0.png" id="41_mqdub"]
 [ext_resource type="Texture2D" uid="uid://dc6uusxchhw1f" path="res://sprites/horu/images/player_face_spr_0.png" id="42_ttdpy"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="51_el2mu"]
+[ext_resource type="Texture2D" uid="uid://cllscniifsnk6" path="res://sprites/waterfallD_spr_0.png" id="53_jogct"]
+[ext_resource type="Texture2D" uid="uid://sypvd2wnhdn7" path="res://sprites/waterfallD_spr_1.png" id="53_jputq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q5sct"]
 texture = ExtResource("1_tsi6p")
@@ -221,6 +226,20 @@ shader_parameter/light_start = 0.2
 shader_parameter/light_end = 0.2
 shader_parameter/noise1 = SubResource("NoiseTexture2D_4je8e")
 shader_parameter/noise2 = SubResource("NoiseTexture2D_te6vv")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bbbvk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("53_jogct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_jputq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_quo4a"]
 animations = [{
@@ -417,6 +436,10 @@ format = 2
 layer_0/tile_data = PackedInt32Array(65572, 917504, 0, 131108, 917504, 0, 196644, 917504, 0, 262180, 917504, 0, 327716, 917504, 0, 393252, 917504, 0, 458788, 917504, 0, 524324, 917504, 0, 589860, 917504, 0, 655396, 917504, 0, 720932, 917504, 0, 786468, 917504, 0, 852004, 917504, 0, 917540, 917504, 0, 983076, 917504, 0, 1048612, 917504, 0, 1114148, 917504, 0, 1179684, 917504, 0, 1310721, 720896, 0, 1310722, 720896, 0, 1310723, 720896, 0, 1310724, 720896, 0, 1310725, 720896, 0, 1310726, 720896, 0, 1310727, 720896, 0, 1310728, 720896, 0, 1310742, 720896, 0, 1310743, 720896, 0, 1310744, 720896, 0, 1310745, 720896, 0, 1310746, 720896, 0, 1310747, 720896, 0, 1310748, 720896, 0, 1310749, 720896, 0, 1310750, 720896, 0, 1310751, 720896, 0, 1310752, 720896, 0, 1310753, 720896, 0, 1310754, 720896, 0, 1310755, 720896, 0, 1310729, 720896, 0, 1310730, 720896, 0, 1310731, 720896, 0, 1310732, 720896, 0, 1310733, 720896, 0, 1310734, 720896, 0, 1310735, 720896, 0, 1310736, 720896, 0, 1310737, 720896, 0, 1310738, 720896, 0, 1310739, 720896, 0, 1310740, 720896, 0, 1310741, 720896, 0, -65535, 720896, 0, -65534, 720896, 0, -65533, 720896, 0, -65532, 720896, 0, -65531, 720896, 0, -65530, 720896, 0, -65529, 720896, 0, -65528, 720896, 0, -65527, 720896, 0, -65526, 720896, 0, -65525, 720896, 0, -65524, 720896, 0, -65523, 720896, 0, -65522, 720896, 0, -65521, 720896, 0, -65520, 720896, 0, -65519, 720896, 0, -65518, 720896, 0, -65517, 720896, 0, -65516, 720896, 0, -65515, 720896, 0, -65514, 720896, 0, -65513, 720896, 0, -65512, 720896, 0, -65511, 720896, 0, -65510, 720896, 0, -65509, 720896, 0, -65508, 720896, 0, -65507, 720896, 0, -65506, 720896, 0, -65505, 720896, 0, -65504, 720896, 0, -65503, 720896, 0, -65502, 720896, 0, -65501, 720896, 0, 65535, 917504, 0, 131071, 917504, 0, 196607, 917504, 0, 262143, 917504, 0, 327679, 917504, 0, 393215, 917504, 0, 458751, 917504, 0, 720895, 917504, 0, 786431, 917504, 0, 851967, 917504, 0, 917503, 917504, 0, 983039, 917504, 0, 1048575, 917504, 0, 1310719, 917504, 0, 1245183, 917504, 0, 1179647, 917504, 0, 1114111, 917504, 0, 524287, 917504, 0, 589823, 917504, 0, 655359, 917504, 0, -65536, 720896, 0, -1, 131072, 0, 1310720, 720896, 0, 1376255, 458752, 0, 1310756, 393216, 0, 1245220, 917504, 0, 36, 917504, 0, -65500, 65536, 0)
 script = ExtResource("17_h65tp")
 
+[node name="BossCamera" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("11_5550k")
+
 [node name="qdtector" parent="." instance=ExtResource("19_6hb3n")]
 visible = false
 collision_layer = 41
@@ -551,9 +574,26 @@ C_Pos = NodePath("../C_Pos")
 [node name="Gun" parent="." instance=ExtResource("17_ubac7")]
 position = Vector2(489, 324)
 
+[node name="water" type="Node2D" parent="."]
+position = Vector2(244, 285)
+scale = Vector2(2, 2)
+script = ExtResource("20_o8ofl")
+
+[node name="sprite" type="AnimatedSprite2D" parent="water"]
+position = Vector2(0, 20.3547)
+scale = Vector2(1, -0.290698)
+sprite_frames = SubResource("SpriteFrames_bbbvk")
+autoplay = "default"
+frame_progress = 0.41484
+offset = Vector2(0, 21)
+
 [node name="PlayerTop" type="Area2D" parent="."]
+z_index = 4096
 position = Vector2(244, 285)
 script = ExtResource("14_6xcr7")
+
+[node name="Timer" type="Timer" parent="PlayerTop"]
+wait_time = 5.3
 
 [node name="Gun_R" type="Sprite2D" parent="PlayerTop"]
 visible = false
@@ -612,3 +652,37 @@ visible = false
 position = Vector2(-31, -2)
 scale = Vector2(-1, 1)
 texture = ExtResource("19_8cvcu")
+
+[node name="display" type="Node2D" parent="PlayerTop"]
+visible = false
+position = Vector2(32, -87)
+
+[node name="back2" type="ColorRect" parent="PlayerTop/display"]
+z_index = 4096
+offset_left = -303.0
+offset_top = -32.0
+offset_right = 247.0
+offset_bottom = 47.0
+metadata/_edit_use_anchors_ = true
+
+[node name="back" type="ColorRect" parent="PlayerTop/display"]
+z_index = 4096
+offset_left = -302.0
+offset_top = -31.0
+offset_right = 246.0
+offset_bottom = 46.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="lbl_item" type="Label" parent="PlayerTop/display/back"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 1.0
+offset_right = 546.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("51_el2mu")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="timeout" from="PlayerTop/Timer" to="PlayerTop" method="_on_timer_timeout"]
