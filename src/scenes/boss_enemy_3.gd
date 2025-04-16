@@ -317,6 +317,10 @@ func die():
 	Global.gotoBOSS = false
 	Global.BOSS_DEAD = true
 	Global.shaker_obj.shake(8, 5.1)
+	var play_anim = false 
+	if !attacking or attacking and backwards:
+		play_anim = true
+	
 	attacking = false
 	jumping = false
 	falling = false
@@ -325,7 +329,9 @@ func die():
 	tail_hide()
 	splash(0)
 	$BossModeShoot.visible = true
-	$BossModeShoot/AnimationPlayer.play("new_animation")
+	if play_anim:
+		$BossModeShoot/AnimationPlayer.play("new_animation")
+		
 	Global.player_obj.force_thunder()
 	await get_tree().create_timer(attack_duration).timeout
 	backwards = true

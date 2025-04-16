@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://chcppb83erest" path="res://sprites/vine_chain.png" id="2_rknsq"]
 [ext_resource type="Texture2D" uid="uid://j82xsj7eg0nj" path="res://sprites/bees3.png" id="3_6vhvf"]
 [ext_resource type="Script" path="res://scenes/lamp_pivothoney.gd" id="3_qius5"]
-[ext_resource type="Script" path="res://scenes/LampDownSpikes.gd" id="4_vk530"]
+[ext_resource type="Script" path="res://scenes/lamp_down_honey.gd" id="4_u1a4f"]
 [ext_resource type="Texture2D" uid="uid://4ciuk1qq06to" path="res://sprites/honeycomb.png" id="5_as6vi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pn8bk"]
@@ -51,7 +51,7 @@ Chain = NodePath("../Line2D")
 
 [node name="LampDown" type="Node2D" parent="."]
 position = Vector2(0, 262)
-script = ExtResource("4_vk530")
+script = ExtResource("4_u1a4f")
 
 [node name="LampArea" type="Area2D" parent="LampDown"]
 position = Vector2(0, -11)

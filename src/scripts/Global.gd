@@ -454,6 +454,7 @@ func scene_next(terminal_number = -1, boss = false, special = false, shop = fals
 			Global.reset_gunz()
 		Global.restore_gunz()
 		Global.CurrentState = Global.GameStates.OVERWORLD
+		Global.TerminalNumber = -1
 	elif Global.CurrentState == Global.GameStates.CHALLENGE:
 		Global.CurrentState = Global.GameStates.OVERWORLD
 	elif Global.CurrentState == Global.GameStates.SHOP:

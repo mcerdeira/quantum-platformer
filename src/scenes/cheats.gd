@@ -4,6 +4,17 @@ func _ready():
 	terminal_trad()
 
 func _physics_process(_delta):
+	if Global.TerminalNumber == -1:
+		$Label3.text = "-1"
+	else:
+		$Label3.text = Global.Terminals[Global.TerminalNumber].name
+	
+	var boss_room = ""
+	if Global.BOSS_ROOM:
+		boss_room = "- BOSS!"
+	
+	$Label5.text = Global.GameStates.keys()[Global.CurrentState] + boss_room
+	
 	if Input.is_action_just_pressed("cheat"):
 		visible = !visible
 		if visible:

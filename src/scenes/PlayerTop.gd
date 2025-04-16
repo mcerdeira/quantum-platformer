@@ -21,6 +21,7 @@ var gosplash = false
 var splash_ttl_total = 0.1
 var splash_ttl = 0
 var goup = false
+@export var water : Node2D
 
 func _ready():
 	add_to_group("players")
@@ -55,6 +56,12 @@ func killeat():
 	Global.play_sound(Global.PlayerBleedSFX)
 	await get_tree().create_timer(0.9).timeout
 	bleed(50)
+	
+func show_message_bonus():
+	pass
+	
+func show_message_death():
+	pass
 		
 func bleed(count):
 	Global.play_sound(Global.PlayerBleedSFX)
@@ -97,6 +104,10 @@ func show_message():
 	
 func hide_message():
 	$display.visible = false
+	var itemfound = load("res://scenes/Item3D.tscn")
+	var p = itemfound.instantiate()
+	p.global_position = Vector2(548, 329)
+	get_parent().add_child(p)
 	gosplash = true
 	$Timer.start()
 
@@ -142,7 +153,7 @@ func _physics_process(delta):
 				$sprite.scale.x = -1
 			create_drop(global_position)
 			moving = true
-			if position.x > 22:
+			if position.x > 22 + 32:
 				position.x -= speed * delta
 		elif Input.is_action_pressed("right") and rolling <= 0 and !locked_ctrls:
 			real_direction = "right"
@@ -151,39 +162,39 @@ func _physics_process(delta):
 				$sprite.scale.x = 1
 			create_drop(global_position)
 			moving = true
-			if position.x < 1131:
+			if position.x < 1131 - 32:
 				position.x += speed * delta
 		elif Input.is_action_pressed("up") and rolling <= 0 and !locked_ctrls:
 			real_direction = "up"
 			create_drop(global_position)
 			moving = true
-			if position.y > 22:
+			if position.y > 22 + 32:
 				position.y -= speed * delta
 		elif Input.is_action_pressed("down") and rolling <= 0 and !locked_ctrls:
 			real_direction = "down"
 			create_drop(global_position)
 			moving = true
-			if position.y < 621:
+			if position.y < 621 - 32:
 				position.y += speed * delta
 				
 		if rolling > 0:
 			if real_direction == "left":
-				if position.x > 22:
+				if position.x > 22 + 32:
 					position.x -= speed * 2 * delta
 				else:
 					rolling = 0
 			elif real_direction == "right":
-				if position.x < 1131:
+				if position.x < 1131 - 32:
 					position.x += speed * 2 * delta
 				else:
 					rolling = 0
 			elif real_direction == "up":
-				if position.y > 22:
+				if position.y > 22 + 32:
 					position.y -= speed * 2 * delta
 				else:
 					rolling = 0
 			elif real_direction == "down":
-				if position.y < 621:
+				if position.y < 621 - 32:
 					position.y += speed * 2 * delta
 				else:
 					rolling = 0
@@ -247,6 +258,8 @@ func _physics_process(delta):
 
 func _on_timer_timeout() -> void:
 	if !goup:
+		water.global_position = global_position
+		water.do_start()
 		goup = true
 	else:
 		Global.scene_next(Global.TerminalNumber, false, false, false, true)

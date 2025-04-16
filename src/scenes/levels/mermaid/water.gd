@@ -9,7 +9,8 @@ func splash():
 	for i in range(count):
 		var sp = watersplash.instantiate()
 		var aju = randi_range(0, 10) * Global.pick_random([1. -1])
-		sp.global_position = Vector2(global_position.x + aju, global_position.y + 16)
+		sp.global_position.x = global_position.x + aju
+		sp.global_position.y = $sprite.global_position.y + 15
 		get_parent().add_child(sp)
 		
 func do_start():
@@ -18,6 +19,9 @@ func do_start():
 
 func _physics_process(delta: float) -> void:
 	if started:
+		$sprite.scale.y -= 50 * delta
+		if $sprite.scale.y <= -25:
+			$sprite.scale.y = -25
 		splash_ttl -= 1 * delta
 		if splash_ttl <= 0:
 			splash_ttl = splash_ttl_total
