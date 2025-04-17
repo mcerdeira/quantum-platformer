@@ -1,16 +1,40 @@
 extends AnimatableBody2D
 var move = false
 var up = false
+var active = false
+var watersplash = preload("res://scenes/Confeti.tscn")
+var explodeloop = null
+
+func _ready() -> void:
+	visible = Global.BoatUnlocked
+	active = Global.BoatUnlocked
+	Global.BoatObj = self
+	
+func activate():
+	explodeloop = Global.play_sound(Global.ExplodeLoopSFX)
+	visible = true
+	$"../AnimationPlayer".play("new_animation")
+	
+func splash():
+	explodeloop.stop()
+	Global.play_sound(Global.ExplosionsndSXF)
+	active = true
+	var count = randi_range(1, 2)
+	for i in range(count):
+		var sp = watersplash.instantiate()
+		var aju = randi_range(0, 10) * Global.pick_random([1. -1])
+		sp.global_position = Vector2(global_position.x + aju, global_position.y + 16)
+		get_parent().add_child(sp)
 
 func _physics_process(delta):
-
-	if move:
-		position.x += 300 * delta 
-	else:
-		if up:
-			position.y += 10 * delta
-		else:	
-			position.y -= 10 * delta
+	if active:
+		if move:
+			position.x += 300 * delta 
+		else:
+			if up:
+				position.y += 10 * delta
+			else:	
+				position.y -= 10 * delta
 	
 func _on_timer_timeout():
 	move = !move

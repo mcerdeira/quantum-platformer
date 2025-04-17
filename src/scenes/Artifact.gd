@@ -39,6 +39,7 @@ func _physics_process(delta):
 func get_item():
 	Global.play_sound(Global.InteractSFX)
 	if has_artifact:
+		Global.play_sound(Global.AltarSFX)
 		var p = itemfound.instantiate()
 		add_child(p)
 		$display.visible = false
@@ -46,7 +47,6 @@ func get_item():
 		$display/back/lbl_item.text = "HAY 4 RANURAS... ¿PARA QUE SON?"
 		$display/back/sprite.animation = "monolith"
 		
-
 func _on_body_entered(body):
 	if !opened and body.is_in_group("players") and !body.is_in_group("prisoners"):
 		body.dont_camera = true

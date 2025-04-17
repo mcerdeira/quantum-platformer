@@ -27,6 +27,7 @@ var gotoBOSS = false
 var BOSS_DEAD = false
 var total_water_particles = 0
 var PauseStop = false
+var BoatObj = null
 
 var SpecialLevelTheme = null
 var WhooshSFX = null
@@ -35,6 +36,14 @@ var TombBrokeSFX = null
 var GhostBossHitSFX = null
 var BeesSFX = null
 var BeesAngrySFX = null
+var ExplosionsndSXF = null
+var ExplodeLoopSFX = null
+
+var AltarSFX = null
+var Item3DSFX = null
+var ShotGunSFX = null
+var RollingSFX = null
+var PropSFX = null
 
 var ButtonSFX = null
 var RetroTheme = null
@@ -108,6 +117,13 @@ var PauseSFX = null
 var GhostBossLaughSFX = null
 var BossThemeGhost = null
 var GurgleSFX = null
+var Gusanote1SFX = null
+var Gusanote2SFX = null
+var Gusanote3SFX = null
+var CombinationOKSFX = null
+var BoatUnlockedSFX = null
+var BoatUnlocked = false
+var combinatoryOK = false
 
 var video_tutorials = []
 
@@ -627,6 +643,7 @@ func save_game():
 		saved_game.store_var(Global.first_time_spring)
 		saved_game.store_var(Global.gunz_equiped_real)
 		saved_game.store_var(Global.gotoBOSS)
+		saved_game.store_var(Global.BoatUnlocked)
 	
 		saved_game.close()
 	
@@ -663,6 +680,7 @@ func load_game():
 			var _first_time_spring = saved_game.get_var()
 			var _gunz_equiped_real = saved_game.get_var()
 			var _gotoBOSS = saved_game.get_var()
+			var _BoatUnlocked = saved_game.get_var()
 			
 			if cur_state != null:
 				Global.FirstState = cur_state
@@ -721,6 +739,8 @@ func load_game():
 					Global.gunz_equiped_real = _gunz_equiped_real
 				if _gotoBOSS != null:
 					Global.gotoBOSS = _gotoBOSS
+				if _BoatUnlocked != null:
+					Global.BoatUnlocked = _BoatUnlocked
 				
 	else:
 		Global.FirstState =  GameStates.HOME
@@ -871,6 +891,10 @@ func load_sfx():
 	GhostBossLaughSFX = load("res://sfx/ghost_boss_laugh.mp3")
 	GurgleSFX = load("res://sfx/gurgle.wav")
 	
+	Gusanote1SFX = load("res://sfx/Gusanote1SFX.wav")
+	Gusanote2SFX = load("res://sfx/Gusanote2SFX.wav")
+	Gusanote3SFX = load("res://sfx/Gusanote3SFX.wav")
+	
 	WhooshSFX = load("res://sfx/Whoosh.wav")
 	TombHitSFX = load("res://sfx/TombHit.wav")
 	TombBrokeSFX = load("res://sfx/TombBroke.wav")
@@ -879,7 +903,17 @@ func load_sfx():
 	
 	BeesSFX = load("res://sfx/bees_sfx.wav")
 	BeesAngrySFX = load("res://sfx/bees_angry.wav")
+	ExplosionsndSXF = load("res://sprites/horu/audio/explosion_snd.wav")
+	ExplodeLoopSFX = load("res://sfx/explode_loop.wav")
 	
+	AltarSFX = load("res://sfx/AltarSfx.wav")
+	Item3DSFX = load("res://sfx/Item3D.wav")
+	ShotGunSFX = load("res://sfx/ShotGunSfx.wav")
+	RollingSFX = load("res://sfx/rolling.wav")
+	PropSFX = load("res://sfx/PropsSfx.wav")
+	CombinationOKSFX = load("res://sfx/CombinationOK.wav")
+	BoatUnlockedSFX = load("res://sfx/BoatUnlocked.wav")
+
 	bomb_tutorial = load("res://video/bomb_tutorial.ogv")
 	clone_tutorial = load("res://video/clone_tutorial.ogv")
 	muffin_tutorial = load("res://video/muffin_tutorial.ogv")

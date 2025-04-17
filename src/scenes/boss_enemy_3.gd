@@ -184,10 +184,15 @@ func create_drop(pos):
 		drop.scale.y = 1.906
 		get_parent().add_child(drop)
 		
+func roar():
+	var options = {"pitch_scale": 0.5}
+	var roar = Global.pick_random([Global.Gusanote1SFX, Global.Gusanote2SFX, Global.Gusanote3SFX])
+	Global.play_sound(roar, options)
+		
 func flyaway():
 	if blowed <= 0:
 		LIFE -= 1.0
-		Global.play_sound(Global.BOSS1RoarSFX)
+		roar()
 		if LIFE <= 0.0:
 			force_kill()
 			
@@ -335,6 +340,7 @@ func die():
 	Global.player_obj.force_thunder()
 	await get_tree().create_timer(attack_duration).timeout
 	backwards = true
+	roar()
 	$BossModeShoot/AnimationPlayer.play_backwards("new_animation")
 	Global.player_obj.force_thunder()
 	finishup()
@@ -380,6 +386,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			shoot_ttl = 0
 	else:
 		if backwards:
+			roar()
 			$BossModeShoot.visible = false
 			splash()
 

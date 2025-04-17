@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready():
+	Global.play_sound(Global.Item3DSFX)
 	Global.PauseStop = true
 	get_tree().paused = true
 	var material = $SubViewport/Node3D/MeshInstance3D.get_active_material(0)

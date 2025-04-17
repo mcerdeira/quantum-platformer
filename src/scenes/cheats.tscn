@@ -19,7 +19,7 @@ color = Color(0.0901961, 0, 0.52549, 1)
 [node name="Label" type="Label" parent="."]
 offset_right = 624.0
 offset_bottom = 23.0
-text = "==================== CHEATS ==================== "
+text = "================================== CHEATS =================================="
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -38,18 +38,11 @@ offset_bottom = 121.0
 text = "Plant"
 
 [node name="bnt_spring" type="Button" parent="."]
-offset_left = 104.0
+offset_left = 88.0
 offset_top = 90.0
-offset_right = 175.0
+offset_right = 159.0
 offset_bottom = 121.0
 text = "Spring"
-
-[node name="bnt_level" type="Button" parent="."]
-offset_left = 197.0
-offset_top = 90.0
-offset_right = 268.0
-offset_bottom = 121.0
-text = "LevelUp"
 
 [node name="bnt_muffin" type="Button" parent="."]
 offset_left = 119.0
@@ -101,10 +94,10 @@ offset_bottom = 288.0
 text = "Reset"
 
 [node name="txt_terminal" type="TextEdit" parent="."]
-offset_left = 347.0
-offset_top = 118.0
-offset_right = 466.0
-offset_bottom = 149.0
+offset_left = 173.0
+offset_top = 91.0
+offset_right = 241.0
+offset_bottom = 122.0
 text = "1"
 
 [node name="txt_coin" type="TextEdit" parent="."]
@@ -115,16 +108,16 @@ offset_bottom = 65.0
 text = "1"
 
 [node name="lbl_terminal" type="Label" parent="."]
-offset_left = 477.0
-offset_top = 118.0
-offset_right = 562.0
-offset_bottom = 146.0
+offset_left = 248.0
+offset_top = 92.0
+offset_right = 333.0
+offset_bottom = 120.0
 
 [node name="chk_boss" type="CheckBox" parent="."]
-offset_left = 344.0
-offset_top = 155.0
-offset_right = 368.0
-offset_bottom = 179.0
+offset_left = 170.0
+offset_top = 128.0
+offset_right = 244.0
+offset_bottom = 159.0
 text = "BOSS!"
 
 [node name="btn_liberate" type="Button" parent="."]
@@ -135,10 +128,10 @@ offset_bottom = 176.0
 text = "Free Prisoners"
 
 [node name="btn_killboss" type="Button" parent="."]
-offset_left = 421.0
-offset_top = 155.0
-offset_right = 490.0
-offset_bottom = 186.0
+offset_left = 247.0
+offset_top = 128.0
+offset_right = 316.0
+offset_bottom = 159.0
 text = "< KILL"
 
 [node name="btn_demoroom" type="Button" parent="."]
@@ -189,10 +182,44 @@ offset_top = 342.0
 offset_right = 295.0
 offset_bottom = 365.0
 
+[node name="Label6" type="Label" parent="."]
+offset_left = 391.0
+offset_top = 80.0
+offset_right = 533.0
+offset_bottom = 103.0
+text = "ARTIFACTS"
+
+[node name="check1" type="CheckBox" parent="."]
+offset_left = 384.0
+offset_top = 102.0
+offset_right = 466.0
+offset_bottom = 133.0
+text = "Level 1"
+
+[node name="check2" type="CheckBox" parent="."]
+offset_left = 384.0
+offset_top = 126.0
+offset_right = 466.0
+offset_bottom = 157.0
+text = "Level 2"
+
+[node name="check3" type="CheckBox" parent="."]
+offset_left = 384.0
+offset_top = 150.0
+offset_right = 466.0
+offset_bottom = 181.0
+text = "Level 3"
+
+[node name="check4" type="CheckBox" parent="."]
+offset_left = 384.0
+offset_top = 174.0
+offset_right = 466.0
+offset_bottom = 205.0
+text = "Level 4"
+
 [connection signal="pressed" from="bnt_coin" to="." method="_on_bnt_coin_pressed"]
 [connection signal="pressed" from="bnt_plant" to="." method="_on_bnt_plant_pressed"]
 [connection signal="pressed" from="bnt_spring" to="." method="_on_bnt_spring_pressed"]
-[connection signal="pressed" from="bnt_level" to="." method="_on_bnt_level_pressed"]
 [connection signal="pressed" from="bnt_muffin" to="." method="_on_bnt_muffin_pressed"]
 [connection signal="pressed" from="bnt_clone" to="." method="_on_bnt_clone_pressed"]
 [connection signal="pressed" from="bnt_teleport" to="." method="_on_bnt_teleport_pressed"]
@@ -207,3 +234,7 @@ offset_bottom = 365.0
 [connection signal="pressed" from="btn_demoroom" to="." method="_on_btn_demoroom_pressed"]
 [connection signal="pressed" from="btn_shop" to="." method="_on_btn_shop_pressed"]
 [connection signal="pressed" from="btn_challenge" to="." method="_on_btn_challenge_pressed"]
+[connection signal="pressed" from="check1" to="." method="_on_check_1_pressed"]
+[connection signal="pressed" from="check2" to="." method="_on_check_2_pressed"]
+[connection signal="pressed" from="check3" to="." method="_on_check_3_pressed"]
+[connection signal="pressed" from="check4" to="." method="_on_check_4_pressed"]

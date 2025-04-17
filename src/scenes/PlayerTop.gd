@@ -21,6 +21,7 @@ var gosplash = false
 var splash_ttl_total = 0.1
 var splash_ttl = 0
 var goup = false
+var explodeloop = null
 @export var water : Node2D
 
 func _ready():
@@ -73,6 +74,7 @@ func bleed(count):
 		
 func shoot():
 	if has_gun and shoot_ttl <= 0:
+		Global.play_sound(Global.ShotGunSFX)
 		shoot_ttl = shoot_ttl_total
 		var pos = Vector2.ZERO
 		if direction == "right":
@@ -85,8 +87,8 @@ func shoot():
 		p.global_position = pos
 		p.direction = direction
 		parent.add_child(p)
-		Global.emit(pos, 5)
-		Global.shaker_obj.shake(2.2, 0.5)
+		Global.emit(pos, 25)
+		Global.shaker_obj.shake(3.2, 0.5)
 		
 func force_thunder():
 	rain.force_thunder()
@@ -113,13 +115,16 @@ func hide_message():
 
 func _physics_process(delta):
 	if gosplash:
+		if !explodeloop:
+			explodeloop = Global.play_sound(Global.ExplodeLoopSFX)
 		if goup:
 			position.y -= (speed * 2) * delta
 		Global.shaker_obj.shake(10, 1.1)
-		splash_ttl -= 1 * delta
-		if splash_ttl <= 0:
-			splash_ttl = splash_ttl_total
-			splash()
+		if goup:
+			splash_ttl -= 1 * delta
+			if splash_ttl <= 0:
+				splash_ttl = splash_ttl_total
+				splash()
 	
 	if shoot_ttl > 0:
 		shoot_ttl -= 1 * delta
@@ -214,6 +219,7 @@ func _physics_process(delta):
 				$sprite_eyes.animation = $sprite.animation
 				
 		if Input.is_action_just_pressed("jump") and rolling <= 0:
+			Global.play_sound(Global.RollingSFX)
 			rolling = 0.4
 			shoot_ttl = 0.0
 			
@@ -261,5 +267,7 @@ func _on_timer_timeout() -> void:
 		water.global_position = global_position
 		water.do_start()
 		goup = true
+		explodeloop.stop()
+		Global.play_sound(Global.ExplosionsndSXF)
 	else:
 		Global.scene_next(Global.TerminalNumber, false, false, false, true)

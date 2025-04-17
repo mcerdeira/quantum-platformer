@@ -2,6 +2,9 @@ extends Node2D
 
 func _ready():
 	terminal_trad()
+	for i in range(1, 5):
+		var chk = get_node("check" + str(i))
+		chk.button_pressed = Global.ARTIFACT_PER_LEVEL[i]
 
 func _physics_process(_delta):
 	if Global.TerminalNumber == -1:
@@ -116,3 +119,15 @@ func _on_btn_shop_pressed():
 func _on_btn_challenge_pressed():
 	Global.CurrentState = Global.GameStates.CHALLENGE
 	get_tree().reload_current_scene()
+
+func _on_check_1_pressed() -> void:
+	Global.ARTIFACT_PER_LEVEL[1] = $check1.button_pressed
+
+func _on_check_2_pressed() -> void:
+	Global.ARTIFACT_PER_LEVEL[2] = $check2.button_pressed
+
+func _on_check_3_pressed() -> void:
+	Global.ARTIFACT_PER_LEVEL[3] = $check3.button_pressed
+
+func _on_check_4_pressed() -> void:
+	Global.ARTIFACT_PER_LEVEL[4] = $check4.button_pressed
