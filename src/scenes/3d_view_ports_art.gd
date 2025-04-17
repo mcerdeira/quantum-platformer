@@ -23,17 +23,10 @@ func evaluateCombi():
 			
 	if okcount >= 4:
 		Global.combinatoryOK = true
+		Global.play_sound(Global.BoatUnlockedSFX)
+		await get_tree().create_timer(1.4).timeout
 		Global.play_sound(Global.CombinationOKSFX)
 		
-func rotationOK(r, n):
-	return true
-	#var node = get_node("Node3D/art3d_part" + str(n))
-	#var rot = node.rotation_degrees.y + (90 * r)
-	#if rot < 360 and rot >= 0:
-		#return true
-	#else:
-		#return false
-
 func rotation_set(r, n):
 	var node = get_node("Node3D/art3d_part" + str(n))
 	if node.visible:

@@ -11,14 +11,20 @@ func _ready() -> void:
 	Global.BoatObj = self
 	
 func activate():
+	Global.player_obj.locked_ctrls = true
+	Global.shaker_obj.shake(10, 4.5)
 	explodeloop = Global.play_sound(Global.ExplodeLoopSFX)
 	visible = true
 	$"../AnimationPlayer".play("new_animation")
 	
-func splash():
+func final_splash():
+	active = true
 	explodeloop.stop()
 	Global.play_sound(Global.ExplosionsndSXF)
-	active = true
+	splash()
+	Global.player_obj.locked_ctrls = false
+	
+func splash():
 	var count = randi_range(1, 2)
 	for i in range(count):
 		var sp = watersplash.instantiate()
@@ -41,6 +47,7 @@ func _on_timer_timeout():
 
 func _on_detector_body_entered(body):
 	if body and body.is_in_group("players"):
+		Global.player_obj.locked_ctrls = true
 		$Timer.start()
 
 func _on_timer_2_timeout():

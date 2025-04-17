@@ -135,6 +135,7 @@ sources/5 = SubResource("TileSetAtlasSource_5x0v5")
 
 [sub_resource type="Animation" id="Animation_lek5q"]
 resource_name = "new_animation"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -142,10 +143,10 @@ tracks/0/path = NodePath("Boat:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(2054, 1323), Vector2(2054, 610)]
+"values": [Vector2(2054, 3133), Vector2(2054, 610)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -154,11 +155,14 @@ tracks/1/path = NodePath("Boat")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(2.9, 3),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
 "method": &"splash"
+}, {
+"args": [],
+"method": &"final_splash"
 }]
 }
 

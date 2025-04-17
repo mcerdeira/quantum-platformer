@@ -14,7 +14,6 @@ func _physics_process(delta):
 			if Global.combinatoryOK and !Global.BoatUnlocked:
 				Global.BoatUnlocked = true
 				Global.BoatObj.activate()
-				Global.play_sound(Global.BoatUnlockedSFX)
 				
 			queue_free()
 			
@@ -32,22 +31,18 @@ func _physics_process(delta):
 		
 		if Input.is_action_just_pressed("left"):
 			var node = $SubViewport
-			if node.rotationOK(-1, active_number):
-				moving = true
-				await node.rotation_set(-1, active_number).finished
-				bounds_check()
-					
-				moving = false
-				$SubViewport.evaluateCombi()
+			moving = true
+			await node.rotation_set(-1, active_number).finished
+			bounds_check()
+			moving = false
+			$SubViewport.evaluateCombi()
 		elif Input.is_action_just_pressed("right"):
 			var node = $SubViewport 
-			if node.rotationOK(1, active_number):
-				moving = true
-				await node.rotation_set(1, active_number).finished
-				bounds_check()
-				
-				moving = false
-				$SubViewport.evaluateCombi()
+			moving = true
+			await node.rotation_set(1, active_number).finished
+			bounds_check()
+			moving = false
+			$SubViewport.evaluateCombi()
 
 func bounds_check():
 	var node3d = get_node("SubViewport/Node3D/art3d_part" + str(active_number))
