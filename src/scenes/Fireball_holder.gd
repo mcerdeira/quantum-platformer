@@ -1,6 +1,6 @@
 extends Node2D
-@export var fixed = false
-@export var speed = 1.0
+@export var fixed = false 
+var speed = 0.3
 
 func _ready():
 	if !fixed:

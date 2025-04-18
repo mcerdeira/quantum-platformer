@@ -10,7 +10,7 @@ func _ready():
 	if Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
 		killme = true
 	else:
-		if Global.TerminalNumber == Global.TerminalsEnum.TOMB:
+		if Global.TerminalNumber == Global.TerminalsEnum.TOMB or Global.TerminalNumber == Global.TerminalsEnum.SALAMANDER:
 			fixed = true
 		
 		if !fixed:

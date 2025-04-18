@@ -8,7 +8,8 @@ func thunder_sound():
 	Global.play_sound(Global.ThunderSFX)
 
 func delete_player():
-	$player_marker.nope = true
+	if $player_marker:
+		$player_marker.nope = true
 	
 func assign_door(_terminal_number):
 	if $ExitDoor:

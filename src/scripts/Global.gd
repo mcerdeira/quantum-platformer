@@ -52,6 +52,7 @@ var ShopTheme = null
 var MainThemeShort = null
 var BossTheme = null
 var ThunderSFX = null
+var FireAmbienceSFX = null
 var RainAmbienceSFX = null
 var CaveAmbienceSFX = null 
 var TombAmbienceSFX = null
@@ -829,6 +830,8 @@ func load_sfx():
 	HouseAmbienceSFX = load("res://sfx/house_ambience.mp3")
 	RainAmbienceSFX = load("res://sfx/rain_ambience.wav")
 	ExteriorAmbienceSFX = load("res://sfx/exterior_ambience.mp3")
+	FireAmbienceSFX = load("res://sfx/FireAmbienceSFX.wav")
+	
 	PressStartSFX = load("res://sfx/press_start.wav")
 	InteractSFX = load("res://sfx/interact_snd.wav")
 	TelephoneRingSFX = load("res://sfx/telephone_ring.wav")

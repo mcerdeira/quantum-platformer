@@ -15,7 +15,7 @@ func _physics_process(delta):
 			if ttl <= 0:
 				Global.play_sound(Global.SpringSFX, {}, global_position)
 			body.super_jump()
-			if Global.TerminalNumber == Global.TerminalsEnum.TOMB or Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
+			if Global.TerminalNumber == Global.TerminalsEnum.SALAMANDER or Global.TerminalNumber == Global.TerminalsEnum.TOMB or Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
 				Global.emit($"../marker_cloud".global_position, 5)
 				Global.emit($"../marker_cloud2".global_position, 5)
 			else:

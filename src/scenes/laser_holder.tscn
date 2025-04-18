@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqfg2ax5fm0fv"]
 
-[ext_resource type="Script" path="res://scenes/Fireball_holder.gd" id="1_jgwpt"]
+[ext_resource type="Script" path="res://scenes/laser_holder.gd" id="1_5don8"]
 [ext_resource type="PackedScene" uid="uid://b4lwufhu6l7tk" path="res://scenes/fire_emiter.tscn" id="2_ak2ld"]
 
 [node name="LaserHolder" type="Node2D"]
-script = ExtResource("1_jgwpt")
+script = ExtResource("1_5don8")
 
 [node name="fire_emiter" parent="." instance=ExtResource("2_ak2ld")]
 position = Vector2(-1, -37)

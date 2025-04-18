@@ -796,7 +796,6 @@ vertical_alignment = 1
 environment = SubResource("Environment_pu2uo")
 
 [node name="Lava" parent="." instance=ExtResource("24_nijr5")]
-visible = false
 z_index = 700
 position = Vector2(1093, 2616)
 

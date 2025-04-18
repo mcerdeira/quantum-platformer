@@ -41,20 +41,10 @@ BUGS/Ajustes:
 Features:
 - Bonus verion 2: Enemigo que te persigue por cañería
 
-- Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
-  - Alinear los discos para forma la figura, llama al bote.
-  - Si giramos los discos, atrás se forma el QR del manual
-
   - JEFE: cuando subimos al bote para ir al jefe final, aparece un mini boss en el bote de una serpiente marina
 
 - Terminales: se pueden desactivar variables para el final, pero ese comando necesita password (está en el manual, en el teléfono de GROTTO SOFT)
 
-- [Armar zona Mermaid] Fondo más claro, piso negro, lluvia y truenos. La mecánica principal son unas canillas que abrimos para inundar o no lugares 
-  - Cascadas   
-  - Cadenas para colgarse
-  - Puzzles que nos haga usar el clone o el teleport
-  - Canillas: que hacen desaparecer las cascadas y la lluvia
-  - JEFE: Es top down 2D
 
 - [Armar zona Dragon] Estilo volcanico, lava por todos lados, lasers. La mecánica principal es... ?????
   - Geisers
@@ -333,6 +323,15 @@ Features:
 - Ver como se une el tema de las lapidas y la historia de por que tenemos que hacer lo que tenemos que hacer
   - Las puertas deben cerrarse y no dejar jugar niveles viejos
   - Algun NPC te manda a explorar las tumbas
+- Armar el artefacto en el overworld donde ponemos los items 3D que vamos encontrando y que alineamos para encontrar el QR.
+  - Alinear los discos para forma la figura, llama al bote.
+  - Si giramos los discos, atrás se forma el QR del manual
+- [Armar zona Mermaid] Fondo más claro, piso negro, lluvia y truenos. La mecánica principal son unas canillas que abrimos para inundar o no lugares 
+  - Cascadas   
+  - Cadenas para colgarse
+  - Puzzles que nos haga usar el clone o el teleport
+  - Canillas: que hacen desaparecer las cascadas y la lluvia
+  - JEFE: Es top down 2D
 
 --------------------------------- CANCELADO ---------------------------------
 - Enemigo torreta que dispara 
