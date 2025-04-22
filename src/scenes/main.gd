@@ -14,7 +14,8 @@ var room_demo = preload("res://scenes/levels/room_demo.tscn")
 var room_shop = preload("res://scenes/levels/room_shop.tscn")
 
 var rooms_bottom_dragon = [
-	preload("res://scenes/levels/dragon/room_bottom_dragon.tscn")
+	preload("res://scenes/levels/dragon/room_bottom_dragon.tscn"),
+	preload("res://scenes/levels/dragon/room_bottom_dragon1.tscn")
 ]
 var rooms_middle_dragon = [
 	preload("res://scenes/levels/dragon/room_middle_dragon.tscn")
@@ -184,7 +185,7 @@ func generate_level():
 		_rooms_top = list_rooms_top[Global.TerminalNumber]
 		_rooms_middle1 = list_rooms_middle1[Global.TerminalNumber]
 		_rooms_middle2 = list_rooms_middle2[Global.TerminalNumber]
-		_rooms_bottom = list_rooms_bottom [Global.TerminalNumber]
+		_rooms_bottom = list_rooms_bottom[Global.TerminalNumber]
 
 	for h in range(total_h):
 		for w in range(total_w):
@@ -204,7 +205,13 @@ func generate_level():
 			
 			if h == 3:
 				if _rooms_bottom:
-					room = Global.pick_random(_rooms_bottom)
+					if Global.TerminalNumber == Global.TerminalsEnum.SALAMANDER:
+						if w == 3:
+							room = _rooms_bottom[0]
+						else:
+							room = _rooms_bottom[1]
+					else:
+						room = Global.pick_random(_rooms_bottom)
 				
 			if room:
 				var r = room.instantiate()
