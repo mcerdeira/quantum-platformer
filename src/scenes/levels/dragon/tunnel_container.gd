@@ -1,11 +1,12 @@
 extends Node2D
 var tunnel_obj = load("res://scenes/levels/tunnel.tscn")
+@export var fake_player : Node2D
 
 func _physics_process(delta: float) -> void:
 	if Global.player_obj and is_instance_valid(Global.player_obj):
-		if global_position.distance_to(Global.player_obj.global_position) <= 500:
+		if global_position.distance_to(Global.player_obj.global_position) <= 850:
 			Global.shaker_obj.shake(15, 3)
-		elif global_position.distance_to(Global.player_obj.global_position) <= 1000:
+		elif global_position.distance_to(Global.player_obj.global_position) <= 1200:
 			Global.shaker_obj.shake(5, 3)
 
 func _ready() -> void:
@@ -31,3 +32,11 @@ func _ready() -> void:
 		add_child(tunnel_i)
 		
 		tunnel_i.position = Vector2(0, 0)
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body and body.is_in_group("players"):
+		body.locked_ctrls = true
+		body.visible = false
+		fake_player.destination = global_position
+		fake_player.global_position = body.global_position
+		fake_player.visible = true
