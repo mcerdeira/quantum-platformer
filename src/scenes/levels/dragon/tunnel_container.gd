@@ -3,11 +3,12 @@ var tunnel_obj = load("res://scenes/levels/tunnel.tscn")
 @export var fake_player : Node2D
 
 func _physics_process(delta: float) -> void:
-	if Global.player_obj and is_instance_valid(Global.player_obj):
-		if global_position.distance_to(Global.player_obj.global_position) <= 850:
-			Global.shaker_obj.shake(15, 3)
-		elif global_position.distance_to(Global.player_obj.global_position) <= 1200:
-			Global.shaker_obj.shake(5, 3)
+	if fake_player:
+		if Global.player_obj and is_instance_valid(Global.player_obj):
+			if global_position.distance_to(Global.player_obj.global_position) <= 850:
+				Global.shaker_obj.shake(15, 3)
+			elif global_position.distance_to(Global.player_obj.global_position) <= 1200:
+				Global.shaker_obj.shake(5, 3)
 
 func _ready() -> void:
 	var calc_depth = 1.0
