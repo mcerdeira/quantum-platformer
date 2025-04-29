@@ -14,7 +14,12 @@ func _physics_process(_delta):
 			Global.lava_FX.set_intensity(0.0, 0.0)
 			queue_free()
 	elif Global.TerminalNumber == Global.TerminalsEnum.SALAMANDER:
-		Global.lava_FX.set_intensity(0.089, 0.9)
+		if first_time:
+			first_time = false
+			if !Global.BOSS_ROOM:
+				Global.lava_FX.set_intensity(0.089, 0.9)
+			else:
+				Global.lava_FX.set_intensity(0.0, 0.0)
 	elif Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
 		if first_time:
 			first_time = false

@@ -10,6 +10,7 @@ func delete_door():
 	pass
 	
 func _physics_process(delta):
+	Global.lava_FX.set_intensity(0.0, 0.0)
 	ttl -= 1 * delta
 	if ttl <= 0:
 		ttl = 100 

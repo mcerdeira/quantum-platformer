@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 			if scale.x <= 0:
 				scale.x = 0
 				scale.y = 0
-				Global.scene_next()
+				Global.scene_next(Global.TerminalNumber, true, false, false)

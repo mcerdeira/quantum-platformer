@@ -70,6 +70,7 @@ var rooms_bosses = [
 	[preload("res://scenes/levels/leaf/room_boss.tscn")],
 	[preload("res://scenes/levels/tomb/room_boss.tscn")],
 	[preload("res://scenes/levels/mermaid/room_boss.tscn")],
+	[preload("res://scenes/levels/dragon/room_boss.tscn")],
 ]
 
 var rooms_challenge_horizontal = [
