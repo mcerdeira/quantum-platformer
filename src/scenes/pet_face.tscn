@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://b10641td85qi1"]
+
+[ext_resource type="Texture2D" uid="uid://cykicgnhr3ojp" path="res://sprites/horu/images/pet1.png" id="1_bendl"]
+[ext_resource type="Script" path="res://scenes/pet_face.gd" id="1_i84ej"]
+[ext_resource type="Texture2D" uid="uid://btxspjx88sugq" path="res://sprites/horu/images/pet2.png" id="2_7vyxw"]
+[ext_resource type="Texture2D" uid="uid://buyi5kind5agu" path="res://sprites/horu/images/pet3.png" id="3_g5f4p"]
+[ext_resource type="Texture2D" uid="uid://bvmm71s6kh1ss" path="res://sprites/pet_face1.png" id="5_yh8i4"]
+[ext_resource type="Texture2D" uid="uid://dh454v8ntohql" path="res://sprites/pet_face2.png" id="6_uwlea"]
+[ext_resource type="Texture2D" uid="uid://b2go6tsh4htlh" path="res://sprites/pet_face3.png" id="7_s1syn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lnu06"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bendl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7vyxw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_g5f4p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_yh8i4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uwlea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_s1syn")
+}],
+"loop": false,
+"name": &"persecution",
+"speed": 5.0
+}]
+
+[node name="pet_face" type="Node2D"]
+script = ExtResource("1_i84ej")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lnu06")
+autoplay = "persecution"

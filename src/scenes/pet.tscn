@@ -80,5 +80,6 @@ shape = SubResource("RectangleShape2D_rod64")
 libraries = {
 "": SubResource("AnimationLibrary_enbab")
 }
+speed_scale = 4.0
 
 [connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]

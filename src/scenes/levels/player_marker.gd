@@ -2,7 +2,7 @@ extends Marker2D
 var player_clone = load("res://scenes/player.tscn")
 var prisoner_obj = preload("res://scenes/prisoner.tscn")
 var done = false
-var nope = false
+@export var nope = false
 @export var direction = "right"
 @export var force_lookup = false
 @export var gravityon = true
