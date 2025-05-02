@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://evskswf05b50"]
+[gd_scene load_steps=76 format=3 uid="uid://evskswf05b50"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_u3t4v"]
 [ext_resource type="Texture2D" uid="uid://capc1hdlw0gpl" path="res://sprites/horu/images/stars1.png" id="2_iinm7"]
@@ -45,6 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://bxxnil47g3mnu" path="res://sprites/horu/images/player_face_idle_spr_15.png" id="32_okow2"]
 [ext_resource type="Texture2D" uid="uid://b87j4kr7qc6q6" path="res://sprites/horu/images/player_face_idle_spr_16.png" id="33_bpw2c"]
 [ext_resource type="Texture2D" uid="uid://bx020p5ppko2a" path="res://sprites/horu/images/player_face_idle_spr_17.png" id="34_7tp0g"]
+[ext_resource type="Texture2D" uid="uid://pao1yfa5c10q" path="res://sprites/horu/images/player_face_scared.png" id="35_8yon5"]
 [ext_resource type="Texture2D" uid="uid://gvlg00iy8hqq" path="res://sprites/horu/images/player_face_idle_spr_18.png" id="35_f11c7"]
 [ext_resource type="Texture2D" uid="uid://dc6uusxchhw1f" path="res://sprites/horu/images/player_face_spr_0.png" id="37_ntmvv"]
 [ext_resource type="Texture2D" uid="uid://cog7sk80ykf4o" path="res://sprites/bomb.png" id="44_5mkf2"]
@@ -268,6 +269,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"invisible",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("35_8yon5")
+}],
+"loop": true,
+"name": &"scared",
 "speed": 5.0
 }, {
 "frames": [{

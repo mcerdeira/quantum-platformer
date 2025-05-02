@@ -12,6 +12,7 @@ var messages = [
 	"PEPITO...",
 	"¿PEPITO?",
 	"¡¡¡¡ P E P I T O !!!!",
+	"¡¡¡¡ P E P I T O !!!!",
 ]
 var cursor = 0
 
@@ -22,14 +23,16 @@ func _physics_process(delta: float) -> void:
 func _on_area_body_entered(body: Node2D) -> void:
 	if !actived and body and body.is_in_group("players"):
 		body.locked_ctrls = true
+		body.velocity.x = 0
+		body.direction = "left"
 		actived = true
 		$Timer.start()
 
 func _on_timer_timeout() -> void:
-	Global.player_obj.show_message_custom(messages[cursor], 2.0)
-	cursor += 1
-	if cursor > messages.size():
-		Global.player_obj.locked_ctrls = false
-		$Timer.stop()
-		persecution = true
-		$pet_face.start()
+	if !persecution:
+		Global.player_obj.show_message_custom(messages[cursor], 2.0)
+		cursor += 1
+		if cursor == messages.size():
+			$Timer.stop()
+			persecution = true
+			$pet_face.started()

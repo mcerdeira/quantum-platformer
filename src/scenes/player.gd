@@ -8,6 +8,7 @@ var jump_speed = jump_speed_original
 var locked_ctrls = false
 var force_lookup = false
 var rainobj = preload("res://scenes/Rain.tscn")
+var faceoverride = ""
 
 @export var direction = "right"
 var has_hammer = false
@@ -156,6 +157,9 @@ func show_message_custom(_msg, override_time = null):
 	
 	await get_tree().create_timer(timeout).timeout
 	$display.visible = false 
+	
+func face_override(str):
+	faceoverride = str
 	
 func show_message_bonus():
 	if Global.CurrentState == Global.GameStates.OVERWORLD:
@@ -380,6 +384,8 @@ func _physics_process(delta):
 		
 	process_player(delta)
 	move_and_slide()
+	if faceoverride != "":
+		$sprite_eyes.animation = faceoverride
 	
 func enable_camera(val):
 	$Camera2D.enabled = val 
