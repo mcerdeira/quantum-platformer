@@ -11,7 +11,7 @@ var messages = [
 	"...",
 	"PEPITO...",
 	"¿PEPITO?",
-	"¡¡¡¡ P E P I T O !!!!",
+	"¡¡PEPITO!!",
 	"¡¡¡¡ P E P I T O !!!!",
 ]
 var cursor = 0

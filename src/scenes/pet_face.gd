@@ -12,9 +12,10 @@ func started():
 	is_started = true
 	$sprite.animation = "persecution"
 	$sprite.play("persecution")
-	Global.player_obj.show_message_custom("¡¡¡AHHHHH!!!", 2.0)
 	Global.player_obj.face_override("scared")
-
+	await get_tree().create_timer(2.1).timeout
+	Global.player_obj.show_message_custom("¡¡¡AHHHHH!!!", 2.0)
+	
 func _on_sprite_animation_finished() -> void:
 	$sprite.visible = false
 	$PetMonster.visible = true
