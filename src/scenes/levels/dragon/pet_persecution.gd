@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 			add_tail_point()
 		
 		if speed > speed_total:
-			speed -= 10 * delta
+			speed -= 20 * delta
 			if speed <= speed_total:
 				speed = speed_total
 	

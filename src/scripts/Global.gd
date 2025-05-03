@@ -1,4 +1,5 @@
 extends Node
+var AlreadySEEN = false
 var FULLSCREEN = false
 var SAVED_GAME = false
 var particle = preload("res://scenes/particle2.tscn")
@@ -645,7 +646,7 @@ func save_game():
 		saved_game.store_var(Global.gunz_equiped_real)
 		saved_game.store_var(Global.gotoBOSS)
 		saved_game.store_var(Global.BoatUnlocked)
-	
+		saved_game.store_var(Global.AlreadySEEN)
 		saved_game.close()
 	
 func load_game():
@@ -682,6 +683,7 @@ func load_game():
 			var _gunz_equiped_real = saved_game.get_var()
 			var _gotoBOSS = saved_game.get_var()
 			var _BoatUnlocked = saved_game.get_var()
+			var _AlreadySEEN = saved_game.get_var()
 			
 			if cur_state != null:
 				Global.FirstState = cur_state
@@ -742,6 +744,8 @@ func load_game():
 					Global.gotoBOSS = _gotoBOSS
 				if _BoatUnlocked != null:
 					Global.BoatUnlocked = _BoatUnlocked
+				if _AlreadySEEN != null:
+					Global.AlreadySEEN = _AlreadySEEN
 				
 	else:
 		Global.FirstState =  GameStates.HOME
@@ -770,6 +774,8 @@ func load_game():
 		Global.first_time_spring = true
 		Global.gunz_equiped_real = []
 		Global.gotoBOSS = false
+		Global.BoatUnlocked = false
+		Global.AlreadySEEN = false
 		
 	sync_terminals()
 	

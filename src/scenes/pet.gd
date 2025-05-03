@@ -4,6 +4,10 @@ var speed = 518
 var ttl = 6.7
 var msgs = ["¡¡PEPITO!!", "¿DONDE VAS?", "¡NO! ¡VOLVE!"]
 
+func _ready() -> void:
+	if Global.AlreadySEEN:
+		queue_free()
+
 func _physics_process(delta: float) -> void:
 	if active:
 		position.x += (speed * scale.x) * delta

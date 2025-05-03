@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnfjurg8f0oqe"]
+
+[ext_resource type="Texture2D" uid="uid://dtccd8i2ldgvb" path="res://sprites/ice_cube_spr_0.png" id="1_wco4a"]
+[ext_resource type="Script" path="res://scenes/fallingrock.gd" id="2_nghgn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vck2j"]
+size = Vector2(20, 155)
+
+[node name="fallingrock" type="Node2D"]
+script = ExtResource("2_nghgn")
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(1, -1)
+texture = ExtResource("1_wco4a")
+
+[node name="area" type="Area2D" parent="."]
+
+[node name="collider" type="CollisionShape2D" parent="area"]
+position = Vector2(0, 67.5)
+shape = SubResource("RectangleShape2D_vck2j")

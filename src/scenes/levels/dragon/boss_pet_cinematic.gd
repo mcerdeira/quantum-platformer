@@ -16,6 +16,10 @@ var messages = [
 ]
 var cursor = 0
 
+func _ready() -> void:
+	if Global.AlreadySEEN:
+		cursor = 8
+
 func _physics_process(delta: float) -> void:
 	if actived and !persecution:
 		Global.player_obj.idle_time = 0

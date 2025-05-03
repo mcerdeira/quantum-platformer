@@ -9,6 +9,7 @@ func _physics_process(delta: float) -> void:
 		Global.shaker_obj.shake(5, 1.1)
 
 func started():
+	Global.AlreadySEEN = true
 	is_started = true
 	$sprite.animation = "persecution"
 	$sprite.play("persecution")
