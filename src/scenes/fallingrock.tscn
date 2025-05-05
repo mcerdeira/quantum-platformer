@@ -1,20 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnfjurg8f0oqe"]
+[gd_scene load_steps=7 format=3 uid="uid://bnfjurg8f0oqe"]
 
-[ext_resource type="Texture2D" uid="uid://dtccd8i2ldgvb" path="res://sprites/ice_cube_spr_0.png" id="1_wco4a"]
 [ext_resource type="Script" path="res://scenes/fallingrock.gd" id="2_nghgn"]
+[ext_resource type="Texture2D" uid="uid://cdylcd48oh822" path="res://sprites/fallingice_cube_spr_0.png" id="2_p8roc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vck2j"]
-size = Vector2(20, 155)
+size = Vector2(29, 106)
+
+[sub_resource type="Animation" id="Animation_toqvh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fk0jf"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 60)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fwjxb"]
+_data = {
+"RESET": SubResource("Animation_toqvh"),
+"new_animation": SubResource("Animation_fk0jf")
+}
 
 [node name="fallingrock" type="Node2D"]
 script = ExtResource("2_nghgn")
 
 [node name="sprite" type="Sprite2D" parent="."]
-scale = Vector2(1, -1)
-texture = ExtResource("1_wco4a")
+texture = ExtResource("2_p8roc")
 
 [node name="area" type="Area2D" parent="."]
 
 [node name="collider" type="CollisionShape2D" parent="area"]
-position = Vector2(0, 67.5)
+position = Vector2(0.5, 43)
 shape = SubResource("RectangleShape2D_vck2j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fwjxb")
+}
+speed_scale = 15.0
+
+[connection signal="area_entered" from="area" to="." method="_on_area_area_entered"]

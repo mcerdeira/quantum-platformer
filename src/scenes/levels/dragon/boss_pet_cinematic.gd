@@ -40,3 +40,5 @@ func _on_timer_timeout() -> void:
 			$Timer.stop()
 			persecution = true
 			$pet_face.started()
+			Music.stop()
+			Music.play(Global.BossTheme)
