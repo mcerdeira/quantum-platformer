@@ -24,7 +24,14 @@ func _on_sprite_animation_finished() -> void:
 
 func _on_pet_monster_animation_finished() -> void:
 	if $PetMonster.animation == "default":
+		$kill/collider.set_deferred("disabled", false)
 		$PetMonster.animation == "wait"
 		$PetMonster.play("wait")
 		Global.player_obj.locked_ctrls = false
 		Global.player_obj.face_override("idle")
+
+func _on_kill_body_entered(body: Node2D) -> void:
+	if body and body.is_in_group("players"):
+		body.kill()
+		$PetMonster.animation == "wait_eat"
+		$PetMonster.play("wait_eat")

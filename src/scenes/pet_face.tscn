@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b10641td85qi1"]
+[gd_scene load_steps=39 format=3 uid="uid://b10641td85qi1"]
 
 [ext_resource type="Texture2D" uid="uid://cykicgnhr3ojp" path="res://sprites/horu/images/pet1.png" id="1_bendl"]
 [ext_resource type="Script" path="res://scenes/pet_face.gd" id="1_i84ej"]
@@ -31,6 +31,10 @@
 [ext_resource type="Texture2D" uid="uid://ck6f8gd63757r" path="res://sprites/pet_monster22.png" id="29_en15i"]
 [ext_resource type="Texture2D" uid="uid://cgl5vslkolhm7" path="res://sprites/pet_monster23.png" id="30_e8ytb"]
 [ext_resource type="Texture2D" uid="uid://datq2841w32du" path="res://sprites/pet_monster24.png" id="31_j2xip"]
+[ext_resource type="Texture2D" uid="uid://cevnnnffxymw7" path="res://sprites/pet_monster_wait_eat1.png" id="32_rwbvn"]
+[ext_resource type="Texture2D" uid="uid://d4b7keh6r4lkm" path="res://sprites/pet_monster_wait_eat2.png" id="33_nd10y"]
+[ext_resource type="Texture2D" uid="uid://ckotu6e415w3" path="res://sprites/pet_monster_wait_eat3.png" id="34_7cs41"]
+[ext_resource type="Texture2D" uid="uid://dms8sf81mn0fu" path="res://sprites/pet_monster_wait_eat4.png" id="35_8vjjl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lnu06"]
 animations = [{
@@ -158,7 +162,27 @@ animations = [{
 "loop": true,
 "name": &"wait",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_rwbvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_nd10y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_7cs41")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_8vjjl")
+}],
+"loop": true,
+"name": &"wait_eat",
+"speed": 5.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rm056"]
+radius = 38.0
 
 [node name="pet_face" type="Node2D"]
 script = ExtResource("1_i84ej")
@@ -171,5 +195,13 @@ visible = false
 position = Vector2(80, -128)
 sprite_frames = SubResource("SpriteFrames_a0x82")
 
+[node name="kill" type="Area2D" parent="."]
+
+[node name="collider" type="CollisionShape2D" parent="kill"]
+position = Vector2(299, -25)
+shape = SubResource("CircleShape2D_rm056")
+disabled = true
+
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="animation_finished" from="PetMonster" to="." method="_on_pet_monster_animation_finished"]
+[connection signal="body_entered" from="kill" to="." method="_on_kill_body_entered"]
