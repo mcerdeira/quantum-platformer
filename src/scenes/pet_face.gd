@@ -9,13 +9,20 @@ func _physics_process(delta: float) -> void:
 		Global.shaker_obj.shake(5, 1.1)
 
 func started():
-	Global.AlreadySEEN = true
+	if !Global.AlreadySEEN:
+		Global.AlreadySEEN = true
+		Global.save_game()
 	is_started = true
 	$sprite.animation = "persecution"
 	$sprite.play("persecution")
 	Global.player_obj.face_override("scared")
 	await get_tree().create_timer(2.1).timeout
+	growl()
 	Global.player_obj.show_message_custom("¡¡¡AHHHHH!!!", 2.0)
+	
+func growl():
+	var options = {"pitch_scale": Global.pick_random([1, 0.9, 0.8])}
+	Global.play_sound(Global.PersecutionBossSFX, options)
 	
 func _on_sprite_animation_finished() -> void:
 	$sprite.visible = false

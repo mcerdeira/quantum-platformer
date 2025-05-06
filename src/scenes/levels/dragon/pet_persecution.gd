@@ -4,11 +4,13 @@ var follower = null
 var speed_total = 195
 var speed = speed_total
 var dead = false
+var speedo_ttl = 3.0
+var changui_count = 3
 const blood = preload("res://scenes/blood.tscn")
-@export var point_interval := 0.02  # cada cuántos segundos se agrega un punto
-@export var max_points := 550  # largo máximo de la cola
+@export var point_interval = 0.02  # cada cuántos segundos se agrega un punto
+@export var max_points = 550  # largo máximo de la cola
 
-var time_accumulator := 0.0
+var time_accumulator = 0.0
 @export var line: Line2D
 
 func add_tail_point():
@@ -36,6 +38,11 @@ func bleed(count):
 		get_parent().call_deferred("add_child", blood_instance)
 
 func _physics_process(delta: float) -> void:
+	if speedo_ttl > 0:
+		speedo_ttl -= 1 * delta
+		if speedo_ttl <= 0:
+			speedo_ttl = 0
+	
 	if dead:
 		speed = 0
 	else:
@@ -65,6 +72,7 @@ func _on_activator_body_entered(body: Node2D) -> void:
 				
 func activation():
 	if !visible:
+		growl()
 		following = true
 		visible = true
 		$"../../../boss".visible = false
@@ -75,3 +83,26 @@ func _on_body_entered(body: Node2D) -> void:
 			if body and body.is_in_group("players"):
 				speed = 0
 				body.kill()
+
+func _on_sound_area_body_entered(body: Node2D) -> void:
+	if !dead and visible:
+		if body and body.is_in_group("players"):
+			changui_count -= 1
+			growl()
+			if changui_count > 0:
+				boost_speed(0.7)
+			
+func boost_speed(mult):
+	speed *= mult
+			
+func _on_visible_notifier_screen_exited() -> void:
+	if !dead and visible:
+		if speedo_ttl <= 0:
+			speedo_ttl = 3.0
+			growl()
+			if global_position.distance_to(Global.player_obj.global_position) > 50:
+				boost_speed(1.7)
+
+func growl():
+	var options = {"pitch_scale": Global.pick_random([1, 0.9, 0.8])}
+	Global.play_sound(Global.PersecutionBossSFX, options)

@@ -3,8 +3,6 @@ var q = 0
 @export var pre_final_scene = false
 
 func _ready():
-	Global.AlreadySEEN = true
-	
 	Global.save_game()
 	if pre_final_scene:
 		if Global.AlreadySEEN:

@@ -16,4 +16,3 @@ void fragment() {
 	vec4 screen_col = texture(SCREEN_TEXTURE, SCREEN_UV + distortion_strength * vec2(depth));
 	COLOR = screen_col * tone_color;
 }
-

@@ -124,6 +124,7 @@ var Gusanote2SFX = null
 var Gusanote3SFX = null
 var CombinationOKSFX = null
 var BoatUnlockedSFX = null
+var PersecutionBossSFX = null
 var BoatUnlocked = false
 var combinatoryOK = false
 
@@ -922,6 +923,7 @@ func load_sfx():
 	PropSFX = load("res://sfx/PropsSfx.wav")
 	CombinationOKSFX = load("res://sfx/CombinationOK.wav")
 	BoatUnlockedSFX = load("res://sfx/BoatUnlocked.wav")
+	PersecutionBossSFX = load("res://sfx/boss_persecution.wav")
 
 	bomb_tutorial = load("res://video/bomb_tutorial.ogv")
 	clone_tutorial = load("res://video/clone_tutorial.ogv")
