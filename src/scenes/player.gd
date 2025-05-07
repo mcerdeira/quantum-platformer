@@ -164,6 +164,7 @@ func face_override(str):
 func show_message_bonus():
 	if Global.CurrentState == Global.GameStates.OVERWORLD:
 		if Global.FromBonus:
+			Global.FromBonus = false
 			$display.visible = true
 			if randi() % 2 == 0:
 				$display/back/lbl_item.text = "Interesante... y ¡RARO!"
@@ -172,6 +173,9 @@ func show_message_bonus():
 				
 			await get_tree().create_timer(message_timeout).timeout
 			$display.visible = false
+			
+func showing_message():
+	return $display.visible
 	
 func show_message_death():
 	if Global.CurrentState == Global.GameStates.OVERWORLD:
@@ -551,7 +555,8 @@ func process_player(delta):
 						shoot_mode = true
 		else:
 			if !iam_clone:
-				Global.player_obj.show_message_custom("No quiero usar eso aqui.")
+				if !showing_message():
+					Global.player_obj.show_message_custom("No quiero usar eso aqui.")
 		
 	check_shoot_released(delta)
 		

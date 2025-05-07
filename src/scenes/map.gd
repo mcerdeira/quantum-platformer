@@ -10,12 +10,13 @@ func _physics_process(_delta):
 		visible = false
 	else:
 		if Global.fade_finished and enabled: 
-			if Input.is_action_just_pressed("map"):
+			if Input.is_action_just_pressed("map") and !Global.BOSS_ROOM:
 				if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
 					Global.play_sound(Global.MapSFX)
 					visible = !visible
 				else:
-					Global.player_obj.show_message_custom("No puedo usar el mapa aqui.")
+					if !Global.player_obj.showing_message():
+						Global.player_obj.show_message_custom("No puedo usar el mapa aqui.")
 
 func notify_map(q):
 	var qq = get_node("q" + str(q))
