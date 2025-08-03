@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://q5jba1wlplcx"]
+[gd_scene load_steps=29 format=3 uid="uid://q5jba1wlplcx"]
 
 [ext_resource type="Texture2D" uid="uid://cwiafy02tr7dy" path="res://sprites/gravestone_spr_0.png" id="1_16odb"]
 [ext_resource type="Script" path="res://scenes/Tomb.gd" id="1_onnxa"]
+[ext_resource type="Texture2D" uid="uid://c2q3s5v6yp4o3" path="res://sprites/tomb_boss_spr_4.png" id="2_2e2jy"]
 [ext_resource type="Texture2D" uid="uid://bmjy1jkwima0m" path="res://sprites/gravestone_spr_1.png" id="2_a0p5i"]
 [ext_resource type="Texture2D" uid="uid://dp75s2t7pnhpr" path="res://sprites/gravestone_spr_3.png" id="4_wmt0x"]
 [ext_resource type="Texture2D" uid="uid://b1sq8wju3n8o0" path="res://sprites/gravestone_spr_4.png" id="5_4gq4g"]
@@ -27,6 +28,14 @@ size = Vector2(31, 10)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f8jax"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2e2jy")
+}],
+"loop": true,
+"name": &"broken",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_16odb")

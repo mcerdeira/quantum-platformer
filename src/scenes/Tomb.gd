@@ -48,6 +48,7 @@ func liberate():
 	opened = true
 	active = false
 	Global.emit(global_position, 5)
+	$sprite.animation = "broken"
 	get_item()
 			
 func get_item():

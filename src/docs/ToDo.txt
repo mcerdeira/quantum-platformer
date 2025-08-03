@@ -36,15 +36,10 @@
 IN_PROGRESS:       
 
 BUGS/Ajustes:
-- Hay niveles de bonus que son inaccesibles
 
 Features:
-- Bonus verion 2: Enemigo que te persigue por cañería
 
   - JEFE: cuando subimos al bote para ir al jefe final, aparece un mini boss en el bote de una serpiente marina
-
-- Terminales: se pueden desactivar variables para el final, pero ese comando necesita password (está en el manual, en el teléfono de GROTTO SOFT)
-
 
 - [Armar zona Dragon] Estilo volcanico, lava por todos lados, lasers. La mecánica principal es... ?????
   - Geisers
@@ -58,8 +53,6 @@ Features:
 - Menu de opciones
 - Armar manual que se imprime y subirlos a drive y generar los QR: https://new.express.adobe.com/tools/generate-qr-code
                https://drive.google.com/file/d/1S8vxbmv_BJ105wv-vcsFPzTaY0lo-Ayk/view?usp=drive_link
-
-- Decoraciones: Backgrounds con parallax
 
 --------------------------------- DONE ---------------------------------
 - Tiene que haber un mini boss pez en mermaid
@@ -332,6 +325,8 @@ Features:
   - Puzzles que nos haga usar el clone o el teleport
   - Canillas: que hacen desaparecer las cascadas y la lluvia
   - JEFE: Es top down 2D
+- Hay niveles de bonus que son inaccesibles
+- El nivel del Cementerio o no tiene ninguna tumba, o no funcionaría el mapa.
 
 --------------------------------- CANCELADO ---------------------------------
 - Enemigo torreta que dispara 

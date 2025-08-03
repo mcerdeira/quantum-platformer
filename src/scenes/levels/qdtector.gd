@@ -27,6 +27,7 @@ func _on_area_entered(area):
 	if area and area.is_in_group("prisoners"):
 		area.q = get_parent().q
 		area.level_parent = get_parent()
+		Global.map_obj.notify_prisoner(get_parent().q)
 			
 	if area and area.get_parent() and area.get_parent().is_in_group("prisoners"):
 		if !area.get_parent().free:

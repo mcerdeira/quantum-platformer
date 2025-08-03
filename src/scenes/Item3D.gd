@@ -8,6 +8,6 @@ func _ready():
 	material.albedo_texture = load("res://sprites/qr/artifact_parts"+str(Global.TerminalNumber)+".png")
 
 func _physics_process(_delta):
-	if Input.is_action_just_pressed("quit"):
+	if Input.is_action_just_pressed("quit") or Input.is_action_just_pressed("start"):
 		get_tree().paused = false
 		queue_free()

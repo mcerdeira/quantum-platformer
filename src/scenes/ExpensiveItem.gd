@@ -65,6 +65,12 @@ func _physics_process(delta):
 				active = true
 				opened = true 
 				ttl = 1.1
+				
+func replacekey(text):
+	text = text.replace("{MAPKEY}", Global.MAPKEY[Global.gamepad])
+	text = text.replace("{RADARKEY}", Global.RADARKEY[Global.gamepad])
+	text = text.replace("{BINOCULARKEY}", Global.BINOCULARKEY[Global.gamepad])
+	return text
 
 func _on_body_entered(body):
 	if !opened and body.is_in_group("players") and !body.is_in_group("prisoners"):
@@ -75,7 +81,7 @@ func _on_body_entered(body):
 		active = true
 		player = body
 		if !NO_STOCK:
-			$display/back/lbl_item.text = "== " + current_item.friendly_name.to_upper() + " ==" + "\n" + current_item.description
+			$display/back/lbl_item.text = "== " + current_item.friendly_name.to_upper() + " ==" + "\n" + replacekey(current_item.description)
 			$display/back/sprite.animation = current_item_name
 		else:
 			$display/back/lbl_item.text = "== AGOTADO =="

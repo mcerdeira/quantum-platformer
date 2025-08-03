@@ -739,9 +739,9 @@ func lookright():
 	
 func check_shake(current_time):
 	if (fire_obj != null and is_instance_valid(fire_obj)) or (enemy_attached != null and is_instance_valid(enemy_attached)):
-		if direction == "left" and Input.is_action_pressed("right") and (current_time - last_input_time) <= shake_timeout:
+		if direction == "left" and (Input.is_action_pressed("right") or Input.is_action_pressed("up")) and (current_time - last_input_time) <= shake_timeout:
 			shake_count += 1
-		elif direction == "right" and Input.is_action_pressed("left") and (current_time - last_input_time) <= shake_timeout:
+		elif direction == "right" and (Input.is_action_pressed("left") or Input.is_action_pressed("up")) and (current_time - last_input_time) <= shake_timeout:
 			shake_count += 1
 		else:
 			shake_count = 0

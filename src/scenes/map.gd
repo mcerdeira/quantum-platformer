@@ -9,7 +9,7 @@ func _physics_process(_delta):
 	if Global.GAMEOVER:
 		visible = false
 	else:
-		if Global.fade_finished and enabled: 
+		if enabled: 
 			if Input.is_action_just_pressed("map") and !Global.BOSS_ROOM:
 				if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
 					Global.play_sound(Global.MapSFX)

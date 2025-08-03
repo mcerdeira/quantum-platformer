@@ -11,6 +11,11 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mtsnf"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"broken",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_qcyhu")
@@ -48,6 +53,7 @@ offset = Vector2(0.5, -11)
 position = Vector2(1, -1)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_mtsnf")
+animation = &"broken"
 offset = Vector2(0, -11)
 
 [node name="collider" type="CollisionShape2D" parent="."]

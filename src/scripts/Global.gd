@@ -146,6 +146,10 @@ var first_time_muffin = true
 var first_time_bomb = true
 var first_time_spring = true
 var video_tutorial = null
+var gamepad = 0
+var RADARKEY = ["'R'", "'RT'"]
+var MAPKEY = ["'M'", "'LT'"]
+var BINOCULARKEY = ["'H'", "'Y'"]
 
 #CHEST ITEMS 
 
@@ -263,7 +267,7 @@ var radar = {
 	"name": "radar",
 	"dialog": "EPA!",
 	"friendly_name": "Radar",
-	"description": "Apunta a la salida. Presiona 'R' para acceder.",
+	"description": "Apunta a la salida. Presiona {RADARKEY} para acceder.",
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
@@ -274,7 +278,7 @@ var map = {
 	"name": "map",
 	"dialog": "EPA!",
 	"friendly_name": "Mapa",
-	"description": "Presiona 'M' para acceder.",
+	"description": "Presiona {MAPKEY} para acceder.",
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
@@ -307,7 +311,7 @@ var invisibility = {
 	"name": "invisibility",
 	"dialog": "EPA!",
 	"friendly_name": "Invisibilidad",
-	"description": "Ahora me ves, ahora no.",
+	"description": "Si te quedas quieto, no te veran.",
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
@@ -318,7 +322,7 @@ var binocular = {
 	"name": "binocular",
 	"dialog": "EPA!",
 	"friendly_name": "Binoculares",
-	"description": "Perspectiva. Presiona 'H' para acceder.",
+	"description": "Perspectiva. Presiona {BINOCULARKEY} para acceder.",
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,

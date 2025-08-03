@@ -8,6 +8,9 @@ func _ready():
 func _physics_process(_delta):
 	velocity = Input.get_last_mouse_velocity()
 	global_position = get_global_mouse_position()
+	if Input.is_action_just_pressed("start_gamepad"):
+		Global.gamepad = 1
+	
 	if Input.is_action_just_pressed("start"):
 		if !started:
 			started = true
