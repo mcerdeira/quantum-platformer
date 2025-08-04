@@ -136,12 +136,15 @@ func restart_camera(_camera_prev_status, show_3ditem = false):
 	if show_3ditem:
 		show_current_item3D()
 	
-func show_current_item3D():
+func show_current_item3D(forceitem = -1):
 	var itemfound = load("res://scenes/Item3D.tscn")
 	await get_tree().create_timer(5.0).timeout
 	var p = itemfound.instantiate()
-	p.position.y = -150
-	add_child(p)
+	p.global_position.y = 150
+	p.global_position.x = Global.pauseobj.global_position.x
+	p.forceitem = forceitem
+	var parent = Global.pauseobj.get_parent()
+	parent.add_child(p)
 
 func show_message_demo():
 	await get_tree().create_timer(4).timeout

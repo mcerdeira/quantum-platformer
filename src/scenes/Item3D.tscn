@@ -19,7 +19,7 @@ z_index = 4096
 script = ExtResource("1_x667o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(9.5, 9.5)
+position = Vector2(9.5, 57.5)
 scale = Vector2(1.03711, 1.03711)
 texture = SubResource("ViewportTexture_bwg3g")
 
@@ -40,7 +40,7 @@ fov = 50.0
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/Node3D"]
 
 [node name="display" type="Node2D" parent="."]
-position = Vector2(37, -83)
+position = Vector2(31, 325)
 
 [node name="back2" type="ColorRect" parent="display"]
 z_index = 4096
@@ -66,7 +66,7 @@ offset_top = 2.0
 offset_right = 547.0
 offset_bottom = 64.0
 theme_override_fonts/font = ExtResource("18_iwylu")
-text = "== ARTEFACTO MISTERIOSO =="
+text = "Encontraste un artefacto misterioso..."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

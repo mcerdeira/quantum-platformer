@@ -39,6 +39,19 @@ func _process(_delta):
 				if Global.CameFromShop:
 					global_position = $"../player_marker_shop".global_position
 					Global.CameFromShop = false
+				if Global.FromLastBoss:
+					Global.FromLastBoss = false
+					global_position = $"../player_marker_lastboss".global_position
+					Global.player_obj.locked_ctrls = true
+					Global.player_obj.show_message_custom("Estoy devastado... Pobre pepito...", 2.0)
+					await get_tree().create_timer(2.0).timeout
+					Global.player_obj.show_message_custom("Al menos encontré el camino de vuelta.", 2.0)
+					await get_tree().create_timer(2.0).timeout
+					Global.player_obj.show_message_custom("Y por el camino encontré otro de estos", 2.0)
+					await get_tree().create_timer(2.0).timeout
+					Global.player_obj.show_current_item3D(Global.TerminalsEnum.SALAMANDER)
+					Global.player_obj.locked_ctrls = false
+					
 				if Global.FromPipe:
 					global_position = $"../player_marker_pipe".global_position
 					Global.FromPipe = false

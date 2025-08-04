@@ -431,7 +431,7 @@ libraries = {
 [node name="Pause" type="Node2D" parent="CanvasLayer"]
 process_mode = 3
 position = Vector2(436.154, 163.846)
-scale = Vector2(1, 1e-05)
+scale = Vector2(1e-05, 1e-05)
 script = ExtResource("9_wpesn")
 
 [node name="pause_color" type="ColorRect" parent="CanvasLayer/Pause"]

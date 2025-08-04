@@ -29,6 +29,7 @@ var BOSS_DEAD = false
 var total_water_particles = 0
 var PauseStop = false
 var BoatObj = null
+var pauseobj = null
 
 var SpecialLevelTheme = null
 var WhooshSFX = null
@@ -369,6 +370,7 @@ var GOLD_PER_LEVEL = [0, 10, 25, 50, 125, 200, 220]
 var perks_equiped = [null, null, null, null, null, null, null]
 var FromPipe = false
 var FromBonus = false
+var FromLastBoss = false
 
 var LASERS = true
 var GHOSTS = true

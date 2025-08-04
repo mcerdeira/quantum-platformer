@@ -506,6 +506,9 @@ multi = -1
 position = Vector2(2629, 876)
 multi = -1
 
+[node name="Boost23" parent="." instance=ExtResource("17_bp6el")]
+position = Vector2(2582, 306)
+
 [node name="Boost22" parent="." instance=ExtResource("17_bp6el")]
 position = Vector2(2129, 838)
 multi = -1
@@ -703,9 +706,10 @@ multi = -1
 position = Vector2(751, 1046)
 multi = -1
 
-[node name="fallingrock" parent="." instance=ExtResource("26_j6qow")]
+[node name="fallingrock" parent="." node_paths=PackedStringArray("petface") instance=ExtResource("26_j6qow")]
 z_index = 999
 position = Vector2(1424, 224)
+petface = NodePath("../boss/pet_face")
 
 [connection signal="body_entered" from="endstage" to="endstage" method="_on_body_entered"]
 [connection signal="body_entered" from="activator" to="path_persecution/pet_follower/pet_persecution" method="_on_activator_body_entered"]

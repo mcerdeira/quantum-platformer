@@ -438,6 +438,9 @@ position = Vector2(1872, 576)
 [node name="player_marker_shop" type="Marker2D" parent="."]
 position = Vector2(1622, 592)
 
+[node name="player_marker_lastboss" type="Marker2D" parent="."]
+position = Vector2(601, 368)
+
 [node name="player_marker_pipe" type="Marker2D" parent="."]
 position = Vector2(1392, 141)
 

@@ -5,6 +5,7 @@ var paused = false
 func _ready():
 	paused = false
 	visible = false
+	Global.pauseobj = self
 
 func _physics_process(_delta):
 	if Global.CurrentState != Global.GameStates.TITLE and !Global.TunnelTerminalNumber:
