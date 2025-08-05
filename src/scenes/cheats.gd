@@ -1,4 +1,5 @@
 extends Node2D
+var parent_visible = null
 
 func _ready():
 	terminal_trad()
@@ -20,6 +21,15 @@ func _physics_process(_delta):
 	
 	if Input.is_action_just_pressed("cheat"):
 		visible = !visible
+		if visible and parent_visible == null:
+			if !get_parent().visible:
+				parent_visible = false
+			else:
+				parent_visible = true
+				
+		if parent_visible == false:
+			get_parent().visible = visible
+		
 		if visible:
 			if special_rooms():
 				get_parent().visible = true
@@ -105,6 +115,10 @@ func _on_btn_liberate_pressed():
 
 func _on_btn_killboss_pressed():
 	var bosses = get_tree().get_nodes_in_group("bosses")
+	for b in bosses:
+		b.force_kill()
+		
+	bosses = get_tree().get_nodes_in_group("boss_persecution")
 	for b in bosses:
 		b.force_kill()
 

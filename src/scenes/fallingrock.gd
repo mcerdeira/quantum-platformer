@@ -26,10 +26,15 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		petface.is_started = false
 		Music.stop()
 		Ambience.play(Global.FallingAmbienceSFX)
+		await get_tree().create_timer(3.0).timeout
+		Global.player_obj.show_message_custom("AHHHHHH!!!!!!!!!!!!!!!!!!!!!!!", 2.0)
+		await get_tree().create_timer(3.0).timeout
 		Global.player_obj.show_message_custom("NOOO!! PEPITO!!!!", 2.0)
 		await get_tree().create_timer(2.0).timeout
 		Global.player_obj.show_message_custom("...", 2.0)
 		await get_tree().create_timer(2.0).timeout
 		Global.player_obj.show_message_custom("Tengo que ver como salir de aca...", 2.0)
+		await get_tree().create_timer(2.0).timeout
+		Global.player_obj.show_message_custom("...", 2.0)
 		await get_tree().create_timer(2.0).timeout
 		Global.scene_next(Global.TerminalNumber, false, false, false, true)

@@ -9,6 +9,7 @@ var locked_ctrls = false
 var force_lookup = false
 var rainobj = preload("res://scenes/Rain.tscn")
 var faceoverride = ""
+var do_dialog_final_boss = false
 
 @export var direction = "right"
 var has_hammer = false
@@ -136,9 +137,10 @@ func restart_camera(_camera_prev_status, show_3ditem = false):
 	if show_3ditem:
 		show_current_item3D()
 	
-func show_current_item3D(forceitem = -1):
+func show_current_item3D(forceitem = -1, wait = true):
 	var itemfound = load("res://scenes/Item3D.tscn")
-	await get_tree().create_timer(5.0).timeout
+	if wait:
+		await get_tree().create_timer(5.0).timeout
 	var p = itemfound.instantiate()
 	p.global_position.y = 150
 	p.global_position.x = Global.pauseobj.global_position.x
@@ -466,8 +468,32 @@ func inv_move_left():
 func refresh_item():
 	#Solo para el cheats
 	$Selector.refresh_item()
+	
+func start_dialog_final_boss():
+	locked_ctrls = true
+	face_override("scared")
+	idle_time = -10
+	await get_tree().create_timer(3.5).timeout
+	show_message_custom("Estoy devastado... pobre pepito...", 3.0)
+	await get_tree().create_timer(3.0).timeout
+	show_message_custom("Al menos encontre como volver.", 3.0)
+	await get_tree().create_timer(3.0).timeout
+	show_message_custom("Y por el camino me tope con otro de estos...", 3.0)
+	await get_tree().create_timer(3.0).timeout
+	show_message_custom("...", 3.0)
+	await get_tree().create_timer(3.0).timeout
+	show_message_custom("Ya tengo... ¿Cuatro?", 3.0)
+	await get_tree().create_timer(3.0).timeout
+	show_current_item3D(Global.TerminalsEnum.SALAMANDER, false)
+	face_override("")
+	locked_ctrls = false
+	idle_time = 0
 
 func process_player(delta):
+	if do_dialog_final_boss:
+		do_dialog_final_boss = false
+		start_dialog_final_boss()
+		
 	moving = false
 	if dead:
 		velocity.x = 0
@@ -729,6 +755,9 @@ func process_player(delta):
 		
 func teleported():
 	pass
+	
+func start_dialog_finalboss():
+	do_dialog_final_boss = true
 	
 func lookleft():
 	direction = "left"

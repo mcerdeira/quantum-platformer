@@ -23,6 +23,12 @@ func _ready() -> void:
 	visible = false
 	follower = get_parent()
 	
+func force_kill():
+	Global.player_obj.global_position = Vector2(1424, 310)
+	follower.progress_ratio = 0.99
+	await get_tree().create_timer(2).timeout
+	activation()
+	
 func die():
 	dead = true
 	$sprite.animation = "dead"

@@ -28,7 +28,7 @@ func _on_area_body_entered(body: Node2D) -> void:
 	if !actived and body and body.is_in_group("players"):
 		body.locked_ctrls = true
 		body.velocity.x = 0
-		body.direction = "left"
+		body.lookleft()
 		actived = true
 		$Timer.start()
 
