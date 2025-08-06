@@ -12,6 +12,7 @@ var room_overworld = preload("res://scenes/levels/room_overworld.tscn")
 var room_tunnel = preload("res://scenes/levels/room_tunnel.tscn")
 var room_demo = preload("res://scenes/levels/room_demo.tscn")
 var room_shop = preload("res://scenes/levels/room_shop.tscn")
+var room_overworld_ending = preload("res://scenes/levels/room_overworld_ending.tscn")
 
 var rooms_bottom_dragon = [
 	preload("res://scenes/levels/dragon/room_bottom_dragon.tscn"),
@@ -287,6 +288,9 @@ func _ready():
 				
 			Global.TunnelTerminalNumber = false
 			generate_level()
+			
+	if Global.CurrentState == Global.GameStates.OVERWORLD_ENDING:
+		generate_fixed_level(room_overworld_ending, true)
 	
 	if Global.CurrentState == Global.GameStates.DEMO:
 		generate_fixed_level(room_demo, false)

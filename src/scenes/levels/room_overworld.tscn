@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://owqspaw5kj07"]
+[gd_scene load_steps=41 format=3 uid="uid://owqspaw5kj07"]
 
 [ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="1_aus13"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_omadn"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://c30c81wrrb650" path="res://scenes/Artifact.tscn" id="17_hfakf"]
 [ext_resource type="PackedScene" uid="uid://bjgnj03ujp5bk" path="res://scenes/Boat.tscn" id="19_u07g3"]
 [ext_resource type="Texture2D" uid="uid://b0fkov5rhypsi" path="res://sprites/horu/images/pipe_spr.png" id="21_d5swg"]
+[ext_resource type="Script" path="res://scenes/levels/goto_ending.gd" id="23_3fhm6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
 texture = ExtResource("1_aus13")
@@ -186,6 +187,9 @@ _data = {
 "RESET": SubResource("Animation_kcpba"),
 "new_animation": SubResource("Animation_lek5q")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvs35"]
+size = Vector2(206, 4427)
 
 [node name="level" type="TileMap"]
 tile_set = SubResource("TileSet_4lr5i")
@@ -422,6 +426,7 @@ scale = Vector2(0.5, 1)
 texture = ExtResource("15_tbb2n")
 
 [node name="Boat" parent="." instance=ExtResource("19_u07g3")]
+z_index = -4096
 position = Vector2(2054, 1323)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -448,3 +453,13 @@ position = Vector2(1392, 141)
 z_index = 4095
 position = Vector2(1392, 128)
 texture = ExtResource("21_d5swg")
+
+[node name="GotoEnding" type="Area2D" parent="."]
+position = Vector2(5933, 739)
+script = ExtResource("23_3fhm6")
+
+[node name="collider" type="CollisionShape2D" parent="GotoEnding"]
+position = Vector2(93, -695.5)
+shape = SubResource("RectangleShape2D_uvs35")
+
+[connection signal="body_entered" from="GotoEnding" to="GotoEnding" method="_on_body_entered"]

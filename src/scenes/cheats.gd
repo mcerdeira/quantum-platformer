@@ -145,3 +145,7 @@ func _on_check_3_pressed() -> void:
 
 func _on_check_4_pressed() -> void:
 	Global.ARTIFACT_PER_LEVEL[4] = $check4.button_pressed
+
+func _on_btn_boat_pressed() -> void:
+	Global.BoatUnlocked = true
+	Global.BoatObj.activate()

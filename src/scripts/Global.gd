@@ -448,6 +448,7 @@ enum GameStates {
 	DEMO,#No se usa en el juego, es para grabar videos
 	CHALLENGE,
 	SHOP,
+	OVERWORLD_ENDING,
 }
 
 var CurrentState : GameStates = GameStates.TITLE

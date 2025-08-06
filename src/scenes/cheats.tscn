@@ -156,6 +156,13 @@ offset_right = 572.0
 offset_bottom = 287.0
 text = "Challenge"
 
+[node name="btn_boat" type="Button" parent="."]
+offset_left = 579.0
+offset_top = 233.0
+offset_right = 684.0
+offset_bottom = 287.0
+text = "Boat"
+
 [node name="Label2" type="Label" parent="."]
 offset_left = 8.0
 offset_top = 310.0
@@ -234,6 +241,7 @@ text = "Level 4"
 [connection signal="pressed" from="btn_demoroom" to="." method="_on_btn_demoroom_pressed"]
 [connection signal="pressed" from="btn_shop" to="." method="_on_btn_shop_pressed"]
 [connection signal="pressed" from="btn_challenge" to="." method="_on_btn_challenge_pressed"]
+[connection signal="pressed" from="btn_boat" to="." method="_on_btn_boat_pressed"]
 [connection signal="pressed" from="check1" to="." method="_on_check_1_pressed"]
 [connection signal="pressed" from="check2" to="." method="_on_check_2_pressed"]
 [connection signal="pressed" from="check3" to="." method="_on_check_3_pressed"]

@@ -48,6 +48,7 @@ func _on_timer_timeout():
 func _on_detector_body_entered(body):
 	if body and body.is_in_group("players"):
 		Global.player_obj.locked_ctrls = true
+		Global.player_obj.lookright()
 		$Timer.start()
 
 func _on_timer_2_timeout():
