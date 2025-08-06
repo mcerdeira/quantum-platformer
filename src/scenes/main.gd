@@ -50,7 +50,6 @@ var rooms_middle_tomb2 = [
 var rooms_top_tomb = [
 	preload("res://scenes/levels/tomb/room_top_tomb.tscn")
 ]
-
 var rooms_top = [
 	preload("res://scenes/levels/leaf/room_top1.tscn"),
 	preload("res://scenes/levels/leaf/room_top2.tscn")
@@ -65,7 +64,6 @@ var rooms_bottom = [
 	preload("res://scenes/levels/leaf/room_bottom0.tscn"),
 	preload("res://scenes/levels/leaf/room_bottom1.tscn")
 ]
-
 var rooms_bosses = [
 	null,
 	[preload("res://scenes/levels/leaf/room_boss.tscn")],
@@ -73,13 +71,11 @@ var rooms_bosses = [
 	[preload("res://scenes/levels/mermaid/room_boss.tscn")],
 	[preload("res://scenes/levels/dragon/room_boss.tscn")],
 ]
-
 var rooms_challenge_horizontal = [
 	preload("res://scenes/levels/challenge/room_challenge_horizontal1.tscn"),
 	preload("res://scenes/levels/challenge/room_challenge_horizontal2.tscn"),
 	preload("res://scenes/levels/challenge/room_challenge_horizontal3.tscn"),
 ]
-
 var list_rooms_top = [
 	null,
 	rooms_top,
@@ -290,6 +286,8 @@ func _ready():
 			generate_level()
 			
 	if Global.CurrentState == Global.GameStates.OVERWORLD_ENDING:
+		Music.stop()
+		Ambience.play(Global.CaveAmbienceSFX)
 		generate_fixed_level(room_overworld_ending, true)
 	
 	if Global.CurrentState == Global.GameStates.DEMO:
@@ -307,7 +305,7 @@ func _ready():
 		Music.play(Global.MainTheme)
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		generate_fixed_level(room_title, false)
-	if Global.CurrentState == Global.GameStates.HOME:
+	if Global.CurrentState == Global.GameStates.HOME or Global.CurrentState == Global.GameStates.PRE_ENDING:
 		Music.play(Global.MainThemeShort)
 		Ambience.play(Global.HouseAmbienceSFX)
 		generate_fixed_level(room_home, false)

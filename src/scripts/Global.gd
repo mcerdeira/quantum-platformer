@@ -449,6 +449,7 @@ enum GameStates {
 	CHALLENGE,
 	SHOP,
 	OVERWORLD_ENDING,
+	PRE_ENDING,
 }
 
 var CurrentState : GameStates = GameStates.TITLE

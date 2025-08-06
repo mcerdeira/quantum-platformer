@@ -77,4 +77,7 @@ func _process(_delta):
 				pclone.enable_camera(false)
 			Main.add_child(pclone)
 			done = true
+			if Global.CurrentState == Global.GameStates.PRE_ENDING:
+				pclone.locked_ctrls = true
+			
 		queue_free()
