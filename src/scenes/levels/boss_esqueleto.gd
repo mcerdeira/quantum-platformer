@@ -1,13 +1,17 @@
 extends Node2D
 var speed = 100
 var dir = 1
-var ttl_change_dir = 5.0
+
+func _ready() -> void:
+	if Global.TerminalNumber != Global.TerminalsEnum.TOMB:
+		visible = false
+		queue_free() 
 
 func _physics_process(delta: float) -> void:
-	ttl_change_dir -= 1 * delta
-	if ttl_change_dir <= 0:
-		ttl_change_dir = 5.0
-		dir *= -1
+	if global_position.x <= -408 and dir == -1:
+		dir = 1
+	if global_position.x >= 4608 and dir == 1: 
+		dir = -1
 		
 	if dir == 1:
 		position.x += speed * delta

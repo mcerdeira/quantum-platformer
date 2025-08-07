@@ -518,7 +518,7 @@ func parser(_cmd, gamepad):
 		current_message += calc_progress_percent() + "\n"
 		current_message +=  "LISTO\n"
 	elif found != -1 and _cmd == "JUEGO":
-		current_message = "INICIANDO..."
+		current_message = "\n" + "INICIANDO..."
 		Global.CameFromConsole = true
 		await get_tree().create_timer(1.5).timeout
 		get_tree().change_scene_to_file("res://scenes/levels/room_retro_game.tscn")

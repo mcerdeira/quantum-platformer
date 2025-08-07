@@ -168,7 +168,7 @@ var smoke_bomb = {
 }
 var plant = {
 	"name": "plant",
-	"dialog": "VAMOS!",
+	"dialog": "¡VAMOS!",
 	"friendly_name": "Plantita",
 	"description": "¡Crece y crece!",
 	"tutorial": "Lanza una pequeña planta que se extiende verticalmete funcionando como una escalera.",
@@ -180,7 +180,7 @@ var plant = {
 }
 var clone = {
 	"name": "clone",
-	"dialog": "EPA!",
+	"dialog": "¡EPA!",
 	"friendly_name": "Clonador",
 	"description": "Genera una copia tuya.",
 	"tutorial": "Genera copias de vos mismo, pero cuidado: ¡no abusar!.",
@@ -192,7 +192,7 @@ var clone = {
 }
 var teleport = {
 	"name": "teleport",
-	"dialog": "EPA!",
+	"dialog": "¡NOS VIMO!",
 	"friendly_name": "Teletransportador",
 	"description": "Viaje instantaneo en el espacio.",
 	"tutorial": "Muy util teletransportación instantánea.",
@@ -205,7 +205,7 @@ var teleport = {
 
 var spikeball = {
 	"name": "spikeball",
-	"dialog": "EPA!",
+	"dialog": "¡EPA!",
 	"friendly_name": "Bola Pinchuda",
 	"description": "¡Ouch!",
 	"tutorial": "",
@@ -218,7 +218,7 @@ var spikeball = {
 
 var muffin = {
 	"name": "muffin",
-	"dialog": "RICO!!",
+	"dialog": "¡RICO!",
 	"friendly_name": "Golosina",
 	"description": "¡Que rico!",
 	"tutorial": "Si algun enemigo come esta golosina, se va a quedar dormido.",
@@ -230,7 +230,7 @@ var muffin = {
 }
 var bomb = {
 	"name": "bomb",
-	"dialog": "PUMMM!!",
+	"dialog": "¡PUMMM!!",
 	"friendly_name": "Bomba",
 	"description": "¡Bum!",
 	"tutorial": "Al explotar knockea a los enemigos... pero no los mata.",
@@ -242,7 +242,7 @@ var bomb = {
 }
 var coin = {
 	"name": "coin",
-	"dialog": "EPA!",
+	"dialog": "¡EPA!",
 	"friendly_name": "Moneda",
 	"description": "Gruta-Monedas",
 	"tutorial": "",
@@ -253,7 +253,7 @@ var coin = {
 }
 var spring = {
 	"name": "spring",
-	"dialog": "EPA!",
+	"dialog": "¡ESA!",
 	"friendly_name": "Resorte",
 	"description": "¡Toing! ¡Toing!",
 	"tutorial": "Lanza este item para usarlo como catapulta para saltar mucho mas alto.",

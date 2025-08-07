@@ -27,6 +27,9 @@ func _on_timer_timeout():
 			$AnimationPlayer.stop()
 			$Computer.stop()
 			
+func stop_ringing():
+	$Timer.stop()
+			
 func _physics_process(delta):
 	$back2.visible = $back.visible 
 	if !active and opened:

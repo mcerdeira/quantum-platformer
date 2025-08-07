@@ -26,6 +26,12 @@ func _on_body_entered(body: Node2D) -> void:
 		Global.player_obj.show_message_custom("pasar por todo esto... por vos...", 2.0)
 		await get_tree().create_timer(2.0).timeout
 		Global.player_obj.show_message_custom("...", 2.0)
-		Global.player_obj.show_message_custom("Pepito...", 2.0)
+		await get_tree().create_timer(2.0).timeout
+		Global.player_obj.show_message_custom("Te voy a extrañar...", 2.0)
+		await get_tree().create_timer(2.0).timeout
+		Global.player_obj.show_message_custom("...", 2.0)
+		await get_tree().create_timer(2.0).timeout
+		Global.player_obj.show_message_custom("Pepito...", 3.5)
+		await get_tree().create_timer(3.5).timeout
 		Global.CurrentState = Global.GameStates.PRE_ENDING
 		Global.scene_next()

@@ -48,6 +48,9 @@ func _on_btn_resumir_pressed():
 	resume()
 
 func pause_unpause():
+	if Global.CurrentState == Global.GameStates.PRE_ENDING:
+		return
+	
 	if Global.PauseStop:
 		Global.PauseStop = false
 		return
