@@ -39,6 +39,7 @@ BUGS/Ajustes:
 - Es raro hablar con los NPC y que estén superpuestos los personajes
 - Post primer boss, al bajar del tubo, no deberíamos poder entrar a la tienda
 - Cuando el coso con pinches le pega al primer boss, agregar algo mas visual de feedback
+- Remover el QR del "print" de la compu
 
 
 - Menu de opciones
