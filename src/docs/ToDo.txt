@@ -36,19 +36,10 @@
 IN_PROGRESS:       
 
 BUGS/Ajustes:
+- Es raro hablar con los NPC y que estén superpuestos los personajes
+- Post primer boss, al bajar del tubo, no deberíamos poder entrar a la tienda
+- Cuando el coso con pinches le pega al primer boss, agregar algo mas visual de feedback
 
-Features:
-
-  - JEFE: cuando subimos al bote para ir al jefe final, aparece un mini boss en el bote de una serpiente marina
-
-- [Armar zona Dragon] Estilo volcanico, lava por todos lados, lasers. La mecánica principal es... ?????
-  - Geisers
-  - Es una zona falsa, es directamente el jefe
-  - JEFE: Objeto 3D que nos dispara  
-
-- [FINAL]
-- JEFE FINAL (la mascota): Pelea carrera donde nos alargamos como serpientes hacia el cielo vs el boss
-                           Momento shmup
 
 - Menu de opciones
 - Armar manual que se imprime y subirlos a drive y generar los QR: https://new.express.adobe.com/tools/generate-qr-code
