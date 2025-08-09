@@ -5,7 +5,7 @@ var player = null
 var delay_camera = 0.2
 var current_message = "" 
 var ttl = 0
-var ttl_total_normal = 0.05
+var ttl_total_normal = 0.02
 var ttl_total = ttl_total_normal
 var CMD : TextEdit
 var cursor = "▶"
@@ -162,6 +162,7 @@ var terminal_commands = [
 		EXIT,
 	],
 ]
+var cam = null
 
 func _ready():
 	if terminal_number == -1:
@@ -172,6 +173,12 @@ func _ready():
 	$Info.global_position = InfoPosition.global_position
 
 func _physics_process(delta):
+	if !cam:
+		cam = get_viewport().get_camera_2d()
+	else:
+		var size = $display/Terminal.size
+		$display/Terminal.global_position = cam.global_position - (size / 2)
+		
 	if $collider.disabled:
 		if Global.fade_finished:
 			$collider.set_deferred("disabled", false)
@@ -196,7 +203,7 @@ func _physics_process(delta):
 				$display/back/arrows.visible = false
 				$display/Terminal.visible = true
 				current_message = "BIENVENIDO A LA GRUTA TERMINAL #" + str(terminal_number) + " " + Global.Terminals[terminal_number].name.strip_edges() + "# \n"
-				current_message += "ESCRIBA LOS COMANDOS O USE LAS FLECHAS (↑↓→) PARA INTERACTUAR CON ELLOS\n"
+				current_message += "ESCRIBA LOS COMANDOS O USE LAS FLECHAS (↑↓) PARA INTERACTUAR CON ELLOS\n"
 				current_message += "LISTO\n"
 				Global.player_obj.terminal_mode = true
 				Global.player_obj.visible = false

@@ -6,6 +6,8 @@ var game_ended = false
 var player_turn = true
 
 func _ready():
+	$lbl_result/Label.text = "(presiona para reiniciar)" 
+	
 	Bees.stop()
 	Ambience.stop()
 	Music.play(Global.RetroTheme)
@@ -30,7 +32,7 @@ func _physics_process(delta):
 		get_tree().change_scene_to_file("res://scenes/main.tscn")	
 	
 	if game_ended:
-		if Input.is_action_pressed("restart"):
+		if Input.is_action_pressed("shoot") or Input.is_action_pressed("jump"):
 			get_tree().reload_current_scene()
 	
 func update_score():

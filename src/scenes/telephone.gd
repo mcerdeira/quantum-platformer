@@ -55,6 +55,7 @@ func _physics_process(delta):
 	
 	if active and !opened:
 		if Input.is_action_just_pressed("up"):
+			Global.player_obj.locked_ctrls = true
 			Global.kill(ring_sfx)
 			Global.play_sound(Global.InteractSFX)
 			Global.play_sound(Global.TelephoneUpSFX)
@@ -75,7 +76,6 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	if !opened and body.is_in_group("players") and !body.is_in_group("prisoners"):
 		body.dont_camera = true
-		body.locked_ctrls = true
 		$back.visible = true
 		active = true
 		player = body
