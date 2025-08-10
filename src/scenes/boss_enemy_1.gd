@@ -201,7 +201,7 @@ func flyaway():
 		Global.play_sound(Global.BOSS1RoarSFX)
 		if LIFE <= 0.0:
 			force_kill()
-			
+		$Hit.play("new_animation")
 		total_speed *= 1.8
 		speed = total_speed
 		Global.shaker_obj.shake(3, 0.5)

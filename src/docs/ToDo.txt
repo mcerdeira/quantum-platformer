@@ -36,10 +36,6 @@
 IN_PROGRESS:       
 
 BUGS/Ajustes:
-- Es raro hablar con los NPC y que estén superpuestos los personajes
-- Post primer boss, al bajar del tubo, no deberíamos poder entrar a la tienda
-- Cuando el coso con pinches le pega al primer boss, agregar algo mas visual de feedback
-- Remover el QR del "print" de la compu
 
 
 - Menu de opciones
@@ -330,3 +326,6 @@ BUGS/Ajustes:
 - Enemigo tipo escarabajo que camina circular (tiene bugs)
 - Decoraciones: Splash al caer en la lava
 - Tiene que haber un mini boss zombie o algo en el cementerio 
+- Es raro hablar con los NPC y que estén superpuestos los personajes
+- Post primer boss, al bajar del tubo, no deberíamos poder entrar a la tienda
+- Cuando el coso con pinches le pega al primer boss, agregar algo mas visual de feedback

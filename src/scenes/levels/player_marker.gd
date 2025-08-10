@@ -49,11 +49,15 @@ func _process(_delta):
 					global_position = $"../player_marker_pipe".global_position
 					Global.FromPipe = false
 					if Global.TOMB_STATUS and !Global.FromBonus:
+						$"../ExitDoor5".reallyclose()
+						$"../ExitDoor2".notyet = true
 						var pri = prisoner_obj.instantiate()
 						pri.global_position = Vector2(global_position.x + 5, global_position.y - 16)
 						get_parent().add_child(pri)
 						pri.convert_into_npc()
 						pri.delay_fall = 2.3
+						pri.door_to_open = $"../ExitDoor5"
+						pri.door_notyet = $"../ExitDoor2"
 					
 			var Main = get_node("/root/Main")
 			var pclone = player_clone.instantiate()

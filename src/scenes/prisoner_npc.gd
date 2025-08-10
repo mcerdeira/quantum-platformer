@@ -12,6 +12,8 @@ var dialog_sfx = null
 @export var uncle = false
 var end_ttl = 5
 var change_ttl = 0
+var door_to_open = null
+var door_notyet = null
 
 func _ready():
 	for i in range(20):
@@ -64,6 +66,11 @@ func _physics_process(delta):
 			if !current_message:
 				current_message_count -= 1
 				if current_message_count < 0:
+					if door_to_open:
+						door_to_open.open(true, true)
+					if door_notyet:
+						door_notyet.notyet = false
+						
 					Global.player_obj.locked_ctrls = false
 					Global.kill(dialog_sfx)
 					Global.player_obj.dont_camera = false
@@ -77,6 +84,8 @@ func _physics_process(delta):
 	
 	if active and !opened:
 		if Input.is_action_just_pressed("up"):
+			Global.player_obj.lookright()
+			Global.player_obj.global_position.x = $talk_pos.global_position.x
 			Global.player_obj.locked_ctrls = true
 			Global.play_sound(Global.InteractSFX)
 			opened = true

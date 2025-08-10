@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://bveav6ctdlmbu"]
+[gd_scene load_steps=66 format=3 uid="uid://bveav6ctdlmbu"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_tvtda"]
 [ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="2_6led8"]
@@ -46,7 +46,6 @@
 [ext_resource type="Texture2D" uid="uid://ytl3s67gkq0y" path="res://sprites/cosito3.png" id="30_mxdic"]
 [ext_resource type="PackedScene" uid="uid://bm27sx6y5d26" path="res://scenes/river.tscn" id="31_3m334"]
 [ext_resource type="PackedScene" uid="uid://dwdbd4mb0x24f" path="res://scenes/big_fish.tscn" id="40_3bssv"]
-[ext_resource type="PackedScene" uid="uid://dk57vpsjcw72s" path="res://scenes/levels/boss_esqueleto.tscn" id="41_g8agq"]
 [ext_resource type="PackedScene" uid="uid://bhoti11gyh17k" path="res://scenes/waterfall.tscn" id="46_v8l5n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qr43o"]
@@ -802,10 +801,6 @@ position = Vector2(1093, 2616)
 
 [node name="BigFish" parent="." instance=ExtResource("40_3bssv")]
 position = Vector2(-408, 2578)
-
-[node name="BossEsqueleto" parent="." instance=ExtResource("41_g8agq")]
-z_index = 4095
-position = Vector2(-398, 1163)
 
 [node name="River" parent="." instance=ExtResource("31_3m334")]
 position = Vector2(-172, 2595)

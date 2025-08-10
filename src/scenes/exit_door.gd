@@ -8,6 +8,7 @@ var opening_tl = 0.5
 var offset = 0.0
 var entering = false
 var target = null
+var notyet = false
 @export var terminal_number = -1
 @export var gotoBOSS = true
 @export var special_door = false 
@@ -66,6 +67,10 @@ func _physics_process(delta):
 			for body in overlapping_bodies:
 				if body.is_in_group("players") and !body.is_in_group("prisoners"):
 					if !body.in_air:
+						if notyet:
+							Global.player_obj.show_message_custom("Aun no, quiero hablar con mi amigo primero...")
+							return
+							
 						if special_door:
 							Global.FromPipe = true
 							Global.FromBonus = true
@@ -90,9 +95,9 @@ func assign(_terminal_number):
 		terminal_number = _terminal_number
 		Global.exit_door = self
 
-func open(with_sound = false):
+func open(with_sound = false, forced = false):
 	if !opening:
-		if (gotoBOSS or with_sound) and !special_door and !shop_door:
+		if forced or ((gotoBOSS or with_sound) and !special_door and !shop_door):
 			opening = true
 			$Timer.start()
 			$sprite_open.visible = true

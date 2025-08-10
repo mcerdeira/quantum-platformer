@@ -47,6 +47,8 @@ var scaping = false
 var scaping_ttl = 3
 var var_convert_into_npc = false
 var delay_fall = 0
+var door_to_open = null
+var door_notyet = null
 
 func _ready():
 	add_to_group("players")
@@ -124,6 +126,8 @@ func _physics_process(delta):
 					var npc = npc_obj.instantiate()
 					npc.global_position = global_position + Vector2(0, 16)
 					npc.boss_1_npc = true
+					npc.door_to_open = door_to_open
+					npc.door_notyet = door_notyet
 					get_parent().add_child(npc)
 					queue_free()
 					
