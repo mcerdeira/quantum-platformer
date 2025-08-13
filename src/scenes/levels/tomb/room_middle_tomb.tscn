@@ -232,18 +232,22 @@ selected_enemy = "enemy"
 
 [node name="enemy_marker4" parent="." instance=ExtResource("10_sopqm")]
 position = Vector2(207, 145)
+chance_int = 3
 selected_enemy = "enemy_bat"
 
 [node name="enemy_marker7" parent="." instance=ExtResource("10_sopqm")]
 position = Vector2(100, 80)
+chance_int = 3
 selected_enemy = "enemy_bat"
 
 [node name="enemy_marker5" parent="." instance=ExtResource("10_sopqm")]
 position = Vector2(704, 176)
+chance_int = 3
 selected_enemy = "enemy_bat"
 
 [node name="enemy_marker6" parent="." instance=ExtResource("10_sopqm")]
 position = Vector2(1072, 272)
+chance_int = 3
 selected_enemy = "enemy_bat"
 
 [node name="enemy_marker2" parent="." instance=ExtResource("10_sopqm")]
@@ -258,7 +262,7 @@ selected_enemy = "enemy"
 position = Vector2(79, 560)
 
 [node name="ExitDoor" parent="." instance=ExtResource("12_elegl")]
-position = Vector2(819, 512)
+position = Vector2(568, 512)
 
 [node name="Stair" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("13_i2roa")]
 position = Vector2(752, 672)

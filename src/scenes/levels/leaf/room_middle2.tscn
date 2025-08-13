@@ -163,7 +163,7 @@ position = Vector2(432, 624)
 position = Vector2(304, 624)
 
 [node name="ExitDoor" parent="." instance=ExtResource("11_8nlu6")]
-position = Vector2(819, 512)
+position = Vector2(544, 512)
 
 [node name="Stair" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("12_4n3gp")]
 position = Vector2(752, 672)

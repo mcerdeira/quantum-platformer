@@ -43,18 +43,17 @@ size = Vector2(31, 34.6667)
 [node name="tomb_boss" type="Area2D"]
 script = ExtResource("6_v2b6m")
 
+[node name="tomb" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -1)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_mtsnf")
+offset = Vector2(0, -11)
+
 [node name="tomb_ghost" type="Sprite2D" parent="."]
 position = Vector2(0, -1)
 scale = Vector2(2, 2)
 texture = ExtResource("2_wdgoa")
 offset = Vector2(0.5, -11)
-
-[node name="tomb" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -1)
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_mtsnf")
-animation = &"broken"
-offset = Vector2(0, -11)
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -16.6667)

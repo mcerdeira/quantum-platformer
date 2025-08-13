@@ -14,10 +14,6 @@ func kill():
 	Global.emit($Marker2D2.global_position, 10)
 	$tomb.frame = 4
 	active = false
-	var parent = get_parent()
-	var p = ghost.instantiate()
-	parent.add_child(p)
-	p.global_position = global_position
 
 func _physics_process(delta):
 	if active and Global.player_obj and is_instance_valid(Global.player_obj) and Global.player_obj.has_hammer:

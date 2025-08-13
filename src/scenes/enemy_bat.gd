@@ -1,5 +1,5 @@
 extends CharacterBody2D
-var total_speed = 50.0
+var total_speed = 30.0
 var speed = total_speed
 var jump_speed = -300.0
 @export var direction = "right"

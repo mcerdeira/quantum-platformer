@@ -341,20 +341,25 @@ selected_enemy = "enemy_bat"
 
 [node name="enemy_marker8" parent="." instance=ExtResource("11_a71v8")]
 position = Vector2(399, 144)
+chance_int = 3
 selected_enemy = "enemy_bat"
 
 [node name="enemy_marker9" parent="." instance=ExtResource("11_a71v8")]
 position = Vector2(550, 112)
+chance_int = 3
 selected_enemy = "enemy_bat"
 
 [node name="enemy_marker10" parent="." instance=ExtResource("11_a71v8")]
 position = Vector2(1071, 112)
+chance_int = 3
 selected_enemy = "enemy_bat"
 
 [node name="enemy_marker11" parent="." instance=ExtResource("11_a71v8")]
 position = Vector2(1027, 336)
+chance_int = 3
 selected_enemy = "enemy_bat"
 
 [node name="enemy_marker12" parent="." instance=ExtResource("11_a71v8")]
 position = Vector2(436, 368)
+chance_int = 3
 selected_enemy = "enemy_bat"

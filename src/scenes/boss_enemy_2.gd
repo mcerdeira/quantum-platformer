@@ -19,6 +19,7 @@ var brokens = []
 @export var Effect : ColorRect
 
 func _ready():
+	Effect.visible = false
 	Global.BOSS_DEAD = false
 	add_to_group("bosses")
 	$boss_enemy_2/GhostBossLaugh.visible = false

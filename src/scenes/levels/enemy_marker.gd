@@ -7,7 +7,7 @@ var enemy_slime = load("res://scenes/enemy_slime.tscn")
 var enemy_flyer = load("res://scenes/enemy_flyer.tscn")
 var enemy_bomber = load("res://scenes/enemy_bomber.tscn")
 var enemy_bat = load("res://scenes/enemy_bat.tscn")
-
+@export var chance_int = 2
 @export var selected_enemy: String 
 @export var by_chance : bool = true
 
@@ -21,7 +21,7 @@ func _process(_delta):
 		var eobj
 		var rand = 0
 		if by_chance:
-			rand = randi() % 2
+			rand = randi() % chance_int
 		
 		if selected_enemy or rand == 0: 
 			var Main = get_node("/root/Main")
