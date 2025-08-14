@@ -88,6 +88,10 @@ func _physics_process(delta):
 				if Global.CurrentState == Global.GameStates.OVERWORLD:
 					gotoBOSS = Global.gotoBOSS
 				
+				if Global.AlreadySEEN:
+					Global.gotoBOSS = true
+					gotoBOSS = true
+				
 				Global.scene_next(terminal_number, gotoBOSS, special_door, shop_door)
 
 func assign(_terminal_number):
