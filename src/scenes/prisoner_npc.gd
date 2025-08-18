@@ -146,7 +146,7 @@ func _physics_process(delta):
 					current_messages[8] = "(...)"
 					current_messages[7] = "¡YA SE! Por que no te adentras al cementerio y..."
 					current_messages[6] = "profanas algunas tumbas, no son tantas..."
-					current_messages[5] = "¡Estoy seguro que asi lo haremos salir!"
+					current_messages[5] = "¡Estoy seguro de que asi lo haremos salir!"
 					current_messages[4] = "MI PLAN NO TIENE FALLAS"
 					current_messages[3] = "(...)"
 					current_messages[2] = "(espero que no se enoje mucho)"

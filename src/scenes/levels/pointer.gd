@@ -11,7 +11,7 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("start_gamepad"):
 		Global.gamepad = 1
 	
-	if Input.is_action_just_pressed("start"):
+	if Input.is_action_just_pressed("start") or Input.is_action_just_pressed("jump"):
 		if !started:
 			started = true
 			Global.play_sound(Global.PressStartSFX)
