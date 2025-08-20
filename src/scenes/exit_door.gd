@@ -72,7 +72,7 @@ func _physics_process(delta):
 							return
 							
 						if special_door:
-							Global.FromPipe = true
+							Global.FromPipe = false
 							Global.FromBonus = true
 							
 						target = body
