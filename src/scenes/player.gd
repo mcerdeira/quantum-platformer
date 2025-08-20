@@ -169,6 +169,7 @@ func face_override(str):
 func show_message_bonus():
 	if Global.CurrentState == Global.GameStates.OVERWORLD:
 		if Global.FromBonus:
+			Global.OverWorldFromGameOver = false
 			Global.FromBonus = false
 			$display.visible = true
 			if randi() % 2 == 0:
@@ -187,6 +188,7 @@ func show_message_death():
 		if Global.OverWorldFromGameOver:
 			$display.visible = true
 			Global.OverWorldFromGameOver = false
+			Global.FromBonus = false
 			if Global.FirstDeath:
 				$display/back/lbl_item.text = "¿Que fue eso?\n\n¿Acaso morí?"
 				await get_tree().create_timer(message_timeout).timeout

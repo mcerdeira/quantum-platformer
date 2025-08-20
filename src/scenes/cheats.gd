@@ -132,6 +132,7 @@ func _on_btn_shop_pressed():
 
 func _on_btn_challenge_pressed():
 	Global.CurrentState = Global.GameStates.CHALLENGE
+	Global.FromBonus = true
 	get_tree().reload_current_scene()
 
 func _on_check_1_pressed() -> void:
