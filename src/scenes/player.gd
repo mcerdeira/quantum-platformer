@@ -312,12 +312,7 @@ func _physics_process(delta):
 		if Input.is_action_just_released("zoomin"):
 			if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
 				Global.play_sound(Global.BinocularSFX)
-				$Camera2D.enabled = !$Camera2D.enabled
-				Global.global_camera.enabled = !Global.global_camera.enabled
-				if Global.global_camera.enabled:
-					Engine.time_scale = 0.01
-				else:
-					Engine.time_scale = 1.0
+				Global.BinocularFade.blink()
 			else:
 				Global.player_obj.show_message_custom("No puedo usar eso aqui.")
 		
@@ -400,6 +395,9 @@ func _physics_process(delta):
 	
 func enable_camera(val):
 	$Camera2D.enabled = val 
+	
+func swap_camera():
+	$Camera2D.enabled = !$Camera2D.enabled
 	
 func attached(_enemy_attached):
 	enemy_attached = _enemy_attached

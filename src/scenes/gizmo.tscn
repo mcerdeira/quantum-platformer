@@ -307,6 +307,24 @@ position = Vector2(77, -158)
 [node name="Marker2D16" type="Marker2D" parent="explosions"]
 position = Vector2(185, -18)
 
+[node name="Marker2D35" type="Marker2D" parent="explosions"]
+position = Vector2(-38, -101)
+
+[node name="Marker2D36" type="Marker2D" parent="explosions"]
+position = Vector2(-124, -130)
+
+[node name="Marker2D37" type="Marker2D" parent="explosions"]
+position = Vector2(-130, 111)
+
+[node name="Marker2D38" type="Marker2D" parent="explosions"]
+position = Vector2(141, -126)
+
+[node name="Marker2D39" type="Marker2D" parent="explosions"]
+position = Vector2(-22, 59)
+
+[node name="Marker2D40" type="Marker2D" parent="explosions"]
+position = Vector2(-55, 17)
+
 [node name="Marker2D17" type="Marker2D" parent="explosions"]
 position = Vector2(-42, -42)
 

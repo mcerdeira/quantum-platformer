@@ -91,7 +91,6 @@ func process_player(delta):
 		$stars_stunned.visible = false
 		return
 		
-				
 	if killing > 0:
 		killing -= 1 * delta 
 		if $sprite.animation != "killing":
@@ -105,15 +104,16 @@ func process_player(delta):
 			$sprite.animation = "idle"
 			killing = 0
 	else:
-		var direction = global_position.direction_to(Global.player_obj.global_position)
-		velocity = direction * speed
-		
-		if global_position.x > Global.player_obj.global_position.x:
-			direction = "left"
-			$sprite.flip_h = true
-		else:
-			direction = "right"
-			$sprite.flip_h = false
+		if blowed <= 0:
+			var direction = global_position.direction_to(Global.player_obj.global_position)
+			velocity = direction * speed
+			
+			if global_position.x > Global.player_obj.global_position.x:
+				direction = "left"
+				$sprite.flip_h = true
+			else:
+				direction = "right"
+				$sprite.flip_h = false
 	
 	if killing <= 0:
 		if moving:

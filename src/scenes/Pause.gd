@@ -25,7 +25,7 @@ func _physics_process(_delta):
 					resume()
 		
 		if Input.is_action_just_pressed("quit"):
-			if !$"../VideoContainer".visible:
+			if !$"../VideoContainer".visible and !$"../../GlobalCamera/BinocularCircle".visible:
 				pause_unpause()
 			
 func exit():

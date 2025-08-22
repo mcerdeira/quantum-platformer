@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://bveav6ctdlmbu"]
+[gd_scene load_steps=71 format=3 uid="uid://bveav6ctdlmbu"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_tvtda"]
 [ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="2_6led8"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ba2tdpbkss4pb" path="res://scenes/shaker.tscn" id="2_ybhrg"]
 [ext_resource type="Texture2D" uid="uid://cog7sk80ykf4o" path="res://sprites/bomb.png" id="3_gqofx"]
 [ext_resource type="Texture2D" uid="uid://c3wmt7870xukn" path="res://sprites/teleporter_box.png" id="3_ma848"]
+[ext_resource type="Texture2D" uid="uid://co41bevapwqir" path="res://sprites/binocular_circle.png" id="3_mbg8s"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="3_n8kdd"]
 [ext_resource type="Texture2D" uid="uid://bx06swrbyq4p3" path="res://sprites/floor_spr_blasted.png" id="4_21lft"]
 [ext_resource type="Texture2D" uid="uid://dym5qjnbis6di" path="res://sprites/floor_no_destruct.png" id="4_gd61u"]
@@ -46,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://ytl3s67gkq0y" path="res://sprites/cosito3.png" id="30_mxdic"]
 [ext_resource type="PackedScene" uid="uid://bm27sx6y5d26" path="res://scenes/river.tscn" id="31_3m334"]
 [ext_resource type="PackedScene" uid="uid://dwdbd4mb0x24f" path="res://scenes/big_fish.tscn" id="40_3bssv"]
+[ext_resource type="Script" path="res://scenes/binocular_fade.gd" id="46_sw70b"]
 [ext_resource type="PackedScene" uid="uid://bhoti11gyh17k" path="res://scenes/waterfall.tscn" id="46_v8l5n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qr43o"]
@@ -354,6 +356,56 @@ shader_parameter/heatPhaseShift = 8.0
 shader_parameter/heatUpperLimit = 10.0
 shader_parameter/coldFXStrength = 0.0
 
+[sub_resource type="Animation" id="Animation_i7meb"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 15), Vector2(1, 15), Vector2(1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.766667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"blonk"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_unlvt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_thjti"]
+_data = {
+"RESET": SubResource("Animation_unlvt"),
+"new_animation": SubResource("Animation_i7meb")
+}
+
 [sub_resource type="Animation" id="Animation_8d1w7"]
 resource_name = "new_animation"
 length = 1.5
@@ -379,10 +431,16 @@ _data = {
 script = ExtResource("1_tvtda")
 
 [node name="GlobalCamera" type="Camera2D" parent="."]
-anchor_mode = 0
+process_mode = 3
 enabled = false
-zoom = Vector2(0.2, 0.2)
+zoom = Vector2(0.5, 0.5)
 script = ExtResource("2_l3o6v")
+
+[node name="BinocularCircle" type="Sprite2D" parent="GlobalCamera"]
+visible = false
+z_index = 4096
+scale = Vector2(25, 25)
+texture = ExtResource("3_mbg8s")
 
 [node name="Shaker" parent="." instance=ExtResource("2_ybhrg")]
 
@@ -669,7 +727,7 @@ control = NodePath("..")
 [node name="Map" parent="CanvasLayer/Control" instance=ExtResource("10_wiiij")]
 visible = false
 modulate = Color(1, 1, 1, 0.741176)
-position = Vector2(432.308, 240.769)
+position = Vector2(195.385, 159.231)
 scale = Vector2(5, 5)
 
 [node name="PrisonerHead" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
@@ -688,7 +746,6 @@ offset_top = -4.10256
 offset_right = 56.4103
 offset_bottom = 18.8974
 theme_override_fonts/font = ExtResource("7_2v1dk")
-horizontal_alignment = 2
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -833,6 +890,21 @@ offset_top = -553.0
 offset_right = 6536.0
 offset_bottom = 3812.0
 color = Color(0, 0, 0, 0.862745)
+
+[node name="BinocularFade" type="ColorRect" parent="."]
+process_mode = 3
+z_index = 4096
+offset_left = -1266.0
+offset_top = -1017.0
+offset_right = 6614.0
+offset_bottom = -593.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("46_sw70b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BinocularFade"]
+libraries = {
+"": SubResource("AnimationLibrary_thjti")
+}
 
 [node name="FADE" type="ColorRect" parent="."]
 visible = false

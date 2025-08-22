@@ -377,6 +377,7 @@ var GHOSTS = true
 var WATERFALLS = true
 var FIREBALLS = true
 var global_camera = null
+var BinocularFade = null
 
 enum TerminalsEnum {
 	EYE = 0,

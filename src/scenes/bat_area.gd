@@ -3,8 +3,10 @@ extends Area2D
 
 func _ready() -> void:
 	add_to_group("bat_area")
+	add_to_group("bats")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func flyaway(dir):
+	get_parent().flyaway(dir)
+	
+func kill_fire():
+	get_parent().kill_fire()
