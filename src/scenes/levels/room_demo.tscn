@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b5ta7xpckn1ia"]
+[gd_scene load_steps=24 format=3 uid="uid://b5ta7xpckn1ia"]
 
 [ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="1_x3dy5"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_h54sa"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="9_p0oux"]
 [ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="10_r8dlq"]
 [ext_resource type="PackedScene" uid="uid://dammqq876uu3j" path="res://scenes/LampLongWasp.tscn" id="11_m50a7"]
+[ext_resource type="PackedScene" uid="uid://btd5sxsoknjld" path="res://scenes/valve.tscn" id="12_wy6ww"]
+[ext_resource type="PackedScene" uid="uid://kab1tbkymscc" path="res://scenes/rotating_plat.tscn" id="13_wocth"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
 texture = ExtResource("1_x3dy5")
@@ -121,3 +123,10 @@ position = Vector2(372, 528)
 
 [node name="LampLongWasp" parent="." instance=ExtResource("11_m50a7")]
 position = Vector2(765, 197)
+
+[node name="Valve" parent="." node_paths=PackedStringArray("platform") instance=ExtResource("12_wy6ww")]
+position = Vector2(116, 586)
+platform = NodePath("../rotating_plat2")
+
+[node name="rotating_plat2" parent="." instance=ExtResource("13_wocth")]
+position = Vector2(199, 482)

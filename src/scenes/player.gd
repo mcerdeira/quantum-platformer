@@ -8,6 +8,7 @@ var jump_speed = jump_speed_original
 var locked_ctrls = false
 var force_lookup = false
 var rainobj = preload("res://scenes/Rain.tscn")
+var rain = null
 var faceoverride = ""
 var do_dialog_final_boss = false
 
@@ -112,7 +113,7 @@ func _ready():
 		Global.player_obj = self
 		Global.Fader.fade_out()
 		if Global.TerminalNumber == Global.TerminalsEnum.MERMAID and Global.CurrentState != Global.GameStates.OVERWORLD:
-			var rain = rainobj.instantiate()
+			rain = rainobj.instantiate()
 			rain.position = Vector2(-431, -467) 
 			add_child(rain)
 			

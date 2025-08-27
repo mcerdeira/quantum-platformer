@@ -93,9 +93,9 @@ var list_rooms_middle1 = [
 var list_rooms_middle2  = [
 	null,
 	rooms_middle2,
-	rooms_middle_tomb2, #2 #TODO
-	rooms_middle_mermaid,#2
-	rooms_middle_dragon#2
+	rooms_middle_tomb2,
+	rooms_middle_mermaid,
+	rooms_middle_dragon
 ]
 var list_rooms_bottom  = [
 	null,
@@ -155,6 +155,9 @@ func generate_challenge_horizontal():
 func generate_level():
 	var player_room = Vector2(randi() % 4, 0)
 	var door_room = Vector2(randi() % 4, randi() % 4)
+	if Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
+		door_room = Vector2(randi() % 4, Global.pick_random([1, 2]))
+		
 	var size = Vector2(1152, 640) #TODO: Cambiar
 	var room_pos = Vector2.ZERO
 	var total_h = 4
@@ -328,6 +331,23 @@ func _ready():
 		
 	Global.GizmoWatcher = self
 	setHUD(false, true)
+	
+	
+#func get_action_display_name(action: String) -> String:
+	#var eidx = 0
+	#if Input.get_connected_joypads():
+		#eidx = 1
+		#
+	#var events = InputMap.action_get_events(action)
+	#if events.size() > 0:
+		#var ev = events[eidx]  # tomo el primero (o elegís según el caso)
+		#if ev is InputEventKey:
+			#return OS.get_keycode_string(ev.physical_keycode)
+		#elif ev is InputEventJoypadButton:
+			#return "Botón " + str(ev.button_index) # o un diccionario a nombres tipo Xbox/PS
+		#elif ev is InputEventMouseButton:
+			#return "Mouse " + str(ev.button_index)
+	#return "?"
 
 func setHUD(only_gold = false, first_time = false):
 	var lbl_coin = get_node("CanvasLayer/Control/coin_slot2/lbl_stock")
@@ -371,7 +391,7 @@ func _process(delta):
 	pass
 	#print("FPS " + str(Engine.get_frames_per_second()))
 
-func _physics_process(delta):
+func _physics_process(delta):	
 	$CanvasLayer/Control/lbl_gameover.visible = Global.GAMEOVER
 	
 	if Global.GAMEOVER:

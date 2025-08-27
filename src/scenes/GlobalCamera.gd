@@ -22,6 +22,11 @@ func _physics_process(delta: float) -> void:
 				global_position.x -= speed * delta
 			elif Input.is_action_pressed("right"):
 				global_position.x += speed * delta
+				
+			if global_position.y > 2351:
+				global_position.y = 2351
+			if global_position.y < 239:
+				global_position.y = 239
 	else:
 		$BinocularCircle.visible = false
 		positionted = false

@@ -14,7 +14,7 @@ func _physics_process(delta):
 			$sprite.rotation_degrees += 100 * delta
 			$display.visible = false
 		
-		if Input.is_action_just_pressed("up"):
+		if Input.is_action_just_pressed("up") or Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("shoot") or Input.is_action_just_pressed("quit_soft"):
 			Global.play_sound(Global.InteractSFX)
 			$display/back/lbl_item.text = "== VALVULA =="
 			opened = false

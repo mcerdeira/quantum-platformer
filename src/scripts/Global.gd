@@ -30,6 +30,7 @@ var total_water_particles = 0
 var PauseStop = false
 var BoatObj = null
 var pauseobj = null
+var FogObj = null
 
 var SpecialLevelTheme = null
 var WhooshSFX = null
@@ -148,9 +149,9 @@ var first_time_bomb = true
 var first_time_spring = true
 var video_tutorial = null
 var gamepad = 0
-var RADARKEY = ["'R'", "'RT'"]
-var MAPKEY = ["'M'", "'LT'"]
-var BINOCULARKEY = ["'H'", "'Y'"]
+var RADARKEY = ["'R'", "'Y'"]
+var MAPKEY = ["'M'", "'RT'"]
+var BINOCULARKEY = ["'H'", "'LT'"]
 
 #CHEST ITEMS 
 

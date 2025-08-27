@@ -167,7 +167,7 @@ offset_left = -84.0
 offset_right = 92.0
 offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("11_a43u4")
-text = "PRESS START"
+text = "EMPEZAR"
 horizontal_alignment = 1
 vertical_alignment = 1
 
