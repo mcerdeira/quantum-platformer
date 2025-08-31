@@ -8,9 +8,11 @@ var jump_speed = jump_speed_original
 var locked_ctrls = false
 var force_lookup = false
 var rainobj = preload("res://scenes/Rain.tscn")
+var itemfound = preload("res://scenes/Item3D.tscn")
 var rain = null
 var faceoverride = ""
 var do_dialog_final_boss = false
+var block_looking = false
 
 @export var direction = "right"
 var has_hammer = false
@@ -87,6 +89,9 @@ func calc_perks():
 		lifes = 2
 
 func _ready():
+	if Global.TerminalNumber == Global.TerminalsEnum.SALAMANDER and Global.BOSS_ROOM:
+		block_looking = true
+	
 	calc_perks()
 	last_safe_position = global_position
 	
@@ -139,15 +144,16 @@ func restart_camera(_camera_prev_status, show_3ditem = false):
 		show_current_item3D()
 	
 func show_current_item3D(forceitem = -1, wait = true):
-	var itemfound = load("res://scenes/Item3D.tscn")
+	locked_ctrls = true
 	if wait:
-		await get_tree().create_timer(5.0).timeout
+		await get_tree().create_timer(2.0).timeout
 	var p = itemfound.instantiate()
 	p.global_position.y = 150
 	p.global_position.x = Global.pauseobj.global_position.x
 	p.forceitem = forceitem
 	var parent = Global.pauseobj.get_parent()
 	parent.add_child(p)
+	locked_ctrls = false
 
 func show_message_demo():
 	await get_tree().create_timer(4).timeout
@@ -640,8 +646,9 @@ func process_player(delta):
 					sp = 0.01
 				else:
 					sp = 0.1
-		
-				$Camera2D.position.y = lerp($Camera2D.position.y, 150.0, sp)
+				
+				if !block_looking:
+					$Camera2D.position.y = lerp($Camera2D.position.y, 150.0, sp)
 			
 		if force_lookup or (!shoot_mode and Input.is_action_pressed("up") and !locked_ctrls):
 			if force_lookup:
@@ -654,7 +661,9 @@ func process_player(delta):
 					sp = 0.01
 				else:
 					sp = 0.1
-				$Camera2D.position.y = lerp($Camera2D.position.y, -250.0, sp)
+					
+				if !block_looking:
+					$Camera2D.position.y = lerp($Camera2D.position.y, -250.0, sp)
 		
 		if !shoot_mode and Input.is_action_pressed("up") and !locked_ctrls:
 			idle_play = idle_play_total

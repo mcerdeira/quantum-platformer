@@ -26,6 +26,7 @@ func _physics_process(delta):
 			
 func liberate():
 	Global.play_sound(Global.InteractSFX)
+	Global.play_sound(Global.FaucetSFX)
 	trapped = false
 	opened = true
 	active = false

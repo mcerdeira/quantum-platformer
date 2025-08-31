@@ -29,7 +29,7 @@ position = Vector2(-1127, 59)
 script = ExtResource("1_deox7")
 
 [node name="collider" type="CollisionShape2D" parent="water"]
-position = Vector2(7203, 323)
+position = Vector2(7203, 337)
 shape = SubResource("RectangleShape2D_rw54y")
 
 [node name="TileMap" type="TileMap" parent="."]

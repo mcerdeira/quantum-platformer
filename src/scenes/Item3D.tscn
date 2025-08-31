@@ -24,6 +24,7 @@ scale = Vector2(1.03711, 1.03711)
 texture = SubResource("ViewportTexture_bwg3g")
 
 [node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
 transparent_bg = true
 
 [node name="Node3D" type="Node3D" parent="SubViewport"]

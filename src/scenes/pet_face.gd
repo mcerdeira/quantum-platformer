@@ -12,6 +12,7 @@ func started():
 	if !Global.AlreadySEEN:
 		Global.AlreadySEEN = true
 		Global.save_game()
+		
 	is_started = true
 	$sprite.animation = "persecution"
 	$sprite.play("persecution")

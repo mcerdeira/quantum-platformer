@@ -63,6 +63,7 @@ var HouseAmbienceSFX = null
 var ExteriorAmbienceSFX = null
 var FallingAmbienceSFX = null
 var PressStartSFX = null
+var FaucetSFX = null
 var InteractSFX = null
 var TelephoneRingSFX = null
 var TelephoneUpSFX = null
@@ -273,7 +274,7 @@ var radar = {
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
-	"price": 500,
+	"price": 250,
 	"idx": 3,
 }
 var map = {
@@ -284,7 +285,7 @@ var map = {
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
-	"price": 0.1,
+	"price": 10,
 	"idx": 1,
 }
 var double_jump = {
@@ -306,7 +307,7 @@ var resurrect = {
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
-	"price": 2200,
+	"price": 1200,
 	"idx": 6,
 }
 var invisibility = {
@@ -317,7 +318,7 @@ var invisibility = {
 	"has_action": false,
 	"pasive": true,
 	"full_scale": false,
-	"price": 1250,
+	"price": 900,
 	"idx": 4,
 }
 var binocular = {
@@ -509,40 +510,7 @@ func find_item(find_name):
 		if itm != null:
 			if itm.name == find_name:
 				return itm
-
-#func donate(qty):
-	#if Global.Gold < qty or qty == 0:
-		#return null
-	#else:
-		#Global.GoldDonation += qty
-		#Global.Gold -= qty
-		#var result = levelup()
-		#save_game()
-		#Global.GizmoWatcher.setHUD(true)
-		#return result
-		
-#func levelup():
-	#var new_level = 0
-	#for l in range(Global.GOLD_PER_LEVEL.size()):
-		#if Global.CurrentLevel < l:
-			#if Global.GoldDonation >= Global.GOLD_PER_LEVEL[l]:
-				#new_level += 1
-			#else:
-				#break
-			#
-	#if new_level > 0:
-		#var perks_equiped_prev = [] + Global.perks_equiped
-		#Global.CurrentLevel += new_level
-		#set_current_perks()
-		#Global.player_obj.calc_perks()
-		#return perks_equiped_prev
-	#else:
-		#return Global.perks_equiped
-	
-#func set_current_perks():
-	#for i in range(Global.CurrentLevel + 1):
-		#Global.perks_equiped[i] = Global.UNLOCKS_PER_LEVEL[i]
-		
+						
 func buy_item_perk(item, qty, idx):
 	if Global.Gold < qty or qty == 0:
 		return false
@@ -925,6 +893,7 @@ func load_sfx():
 	BeesAngrySFX = load("res://sfx/bees_angry.wav")
 	ExplosionsndSXF = load("res://sprites/horu/audio/explosion_snd.wav")
 	ExplodeLoopSFX = load("res://sfx/explode_loop.wav")
+	FaucetSFX = load("res://sfx/faucet.wav")
 	
 	AltarSFX = load("res://sfx/AltarSfx.wav")
 	Item3DSFX = load("res://sfx/Item3D.wav")
@@ -942,7 +911,6 @@ func load_sfx():
 	smoke_tutorial = load("res://video/smoke_tutorial.ogv")
 	spring_tutorial = load("res://video/spring_tutorial.ogv")
 	teleport_tutorial = load("res://video/teleport_tutorial.ogv")
-	
 	
 	video_tutorials = [bomb_tutorial, clone_tutorial, muffin_tutorial, plant_tutorial, smoke_tutorial, spring_tutorial, teleport_tutorial]
 	

@@ -15,8 +15,9 @@ var has_gun = false
 var real_direction = "right"
 var direction = "right"
 var shoot_ttl = 0.0
-var shoot_ttl_total = 0.8
+var shoot_ttl_total = 0.7
 const BulletTopDown = preload("res://scenes/BulletTopDown.tscn")
+var itemfound = preload("res://scenes/Item3D.tscn")
 var gosplash = false
 var splash_ttl_total = 0.1
 var splash_ttl = 0
@@ -106,7 +107,6 @@ func show_message():
 	
 func hide_message():
 	$display.visible = false
-	var itemfound = load("res://scenes/Item3D.tscn")
 	var p = itemfound.instantiate()
 	p.global_position = Vector2(548, 329)
 	get_parent().add_child(p)
@@ -169,7 +169,7 @@ func _physics_process(delta):
 			moving = true
 			if position.x < 1131 - 32:
 				position.x += speed * delta
-		elif Input.is_action_pressed("up") and rolling <= 0 and !locked_ctrls:
+		if Input.is_action_pressed("up") and rolling <= 0 and !locked_ctrls:
 			real_direction = "up"
 			create_drop(global_position)
 			moving = true

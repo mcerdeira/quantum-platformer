@@ -1,6 +1,7 @@
 extends CharacterBody2D
 var waterdrop = preload("res://scenes/water_drp.tscn")
 var watersplash = preload("res://scenes/Confeti.tscn")
+const FireBallHolderShoot = preload("res://scenes/FireBallHolderShoot.tscn")
 var ttl_drop = 0.0
 var moving = true
 var splash_ttl_total = 0.2
@@ -8,7 +9,7 @@ var splash_ttl = 0
 var x_direction = 0
 var jumpspeed = 60
 var speed: float = 200.0
-var TOTAL_LIFE = 12.0
+var TOTAL_LIFE = 30.0
 var LIFE = TOTAL_LIFE
 var first_time = true
 var tail_ttl_total = 0.1
@@ -28,7 +29,7 @@ var first_coso = true
 var backwards = false
 var dead = false
 var blowed = 0.0
-const FireBallHolderShoot = preload("res://scenes/FireBallHolderShoot.tscn")
+var bounds_timer = 0.0
 @export var H_Pos_U : Node2D
 @export var H_Pos_D : Node2D
 @export var V_Pos_L : Node2D
@@ -142,7 +143,7 @@ func _process(delta):
 				velocity = direction * speed
 				move_and_slide()
 				update_tail()
-				check_bounds()
+				check_bounds(delta)
 			
 func tail_visible():
 	for _i in tail_segments.size():
@@ -198,20 +199,22 @@ func flyaway():
 			
 		Global.shaker_obj.shake(3, 0.5)
 		Global.boss_bar.calc_life_bar(TOTAL_LIFE, LIFE)
-		blowed = 3.5
+		blowed = 1.2
 
 func pick_new_direction():
 	Address_Matrix_Idx += 1
-	if Address_Matrix_Idx > 7:
+	if Address_Matrix_Idx >= 7:
 		Address_Matrix_Idx = 0
 		
 	Pos_Dir = Address_Matrix[Address_Matrix_Idx].get_random_point()
 	direction = global_transform.origin.direction_to(Pos_Dir)
 	
-func check_bounds():
+func check_bounds(delta):
 	var viewport_rect = get_viewport_rect()
 	var dist = global_position.distance_to(Pos_Dir)
-	if dist <= 10:
+	bounds_timer += 1 * delta
+	if dist <= 50 or bounds_timer >= 3.0:
+		bounds_timer = 0.0
 		if Address_Matrix_Idx % 2 != 0:
 			decide()
 		else:

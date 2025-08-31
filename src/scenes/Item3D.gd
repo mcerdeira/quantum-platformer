@@ -2,6 +2,7 @@ extends Node2D
 var forceitem = -1
 
 func _ready():
+	add_to_group("item_3d")
 	Global.play_sound(Global.Item3DSFX)
 	Global.PauseStop = true
 	get_tree().paused = true

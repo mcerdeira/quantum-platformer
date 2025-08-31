@@ -88,7 +88,7 @@ func _physics_process(delta):
 				if Global.CurrentState == Global.GameStates.OVERWORLD:
 					gotoBOSS = Global.gotoBOSS
 				
-				if Global.AlreadySEEN:
+				if Global.AlreadySEEN and !special_door and !shop_door:
 					Global.gotoBOSS = true
 					gotoBOSS = true
 				
