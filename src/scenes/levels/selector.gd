@@ -10,9 +10,22 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if $"../../char".is_ready:
+		if Input.is_action_just_pressed("start") or Input.is_action_just_pressed("jump"):
+			Global.play_sound(Global.InteractSFX)
+			if pos_ix == 0:
+				pass
+			elif pos_ix == 1:
+				$"..".visible = false
+				$"../../Options/AnimationPlayer".play("new_animation")
+				get_tree().paused = true
+			elif pos_ix == 2:
+				get_tree().quit()
+		
 		if Input.is_action_just_pressed("down"):
+			Global.play_sound(Global.InteractSFX)
 			go_down()
 		elif Input.is_action_just_pressed("up"):
+			Global.play_sound(Global.InteractSFX)
 			go_up()
 
 func go_up():

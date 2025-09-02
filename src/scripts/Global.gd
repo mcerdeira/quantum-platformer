@@ -593,6 +593,24 @@ func flyaway(direction, jump_speed):
 func erase_game():
 	DirAccess.remove_absolute("user://savegame.save")
 	
+func save_options():
+	var saved_options = FileAccess.open("user://options.save", FileAccess.WRITE)
+	saved_options.store_var(Global.FULLSCREEN)
+	saved_options.close()
+	
+func load_options():
+	var f_exists = FileAccess.file_exists("user://options.save")
+	if f_exists:
+		var saved_options = FileAccess.open("user://options.save", FileAccess.READ)
+		if saved_options:
+			var fullscreen = saved_options.get_var()
+			Global.FULLSCREEN = fullscreen
+			if Global.FULLSCREEN:
+				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+			else:
+				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			
+	
 func save_game():
 	if Global.CurrentState != Global.GameStates.TITLE:
 		var saved_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
@@ -797,6 +815,7 @@ func sync_this_terminal(terminal_number):
 func init_game():
 	load_sfx()
 	load_game()
+	load_options()
 	#set_current_perks()
 	init()
 

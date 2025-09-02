@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b8h5mg4l80k31"]
+[gd_scene load_steps=34 format=3 uid="uid://b8h5mg4l80k31"]
 
 [ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="1_0qil7"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_ytwuc"]
@@ -7,9 +7,9 @@
 [ext_resource type="Script" path="res://scenes/levels/room.gd" id="5_phe78"]
 [ext_resource type="Texture2D" uid="uid://dw02vd8s8wsrw" path="res://sprites/vines.png" id="6_escif"]
 [ext_resource type="Texture2D" uid="uid://dpcrtwqa2mio7" path="res://sprites/vines_burn.png" id="7_c5g7g"]
+[ext_resource type="Script" path="res://scenes/levels/options.gd" id="8_bbbef"]
 [ext_resource type="Script" path="res://scenes/levels/pointer.gd" id="10_cvs85"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="11_a43u4"]
-[ext_resource type="Script" path="res://scenes/levels/p_start.gd" id="11_v06ge"]
 [ext_resource type="Script" path="res://scenes/levels/lbl_version.gd" id="12_cnle4"]
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="12_j5g7b"]
 [ext_resource type="Script" path="res://scenes/levels/selector.gd" id="13_h2kom"]
@@ -95,22 +95,43 @@ physics_layer_0/collision_mask = 128
 sources/4 = SubResource("TileSetAtlasSource_1nakb")
 sources/5 = SubResource("TileSetAtlasSource_g20sr")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7a1ax"]
-
-[sub_resource type="Animation" id="Animation_kqbeb"]
+[sub_resource type="Animation" id="Animation_tie5b"]
 resource_name = "new_animation"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../PStart:modulate")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Vector2(0, 0), Vector2(1, 0.1), Vector2(1, 1)]
 }
+
+[sub_resource type="Animation" id="Animation_e7ck8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sq6dk"]
+_data = {
+"RESET": SubResource("Animation_e7ck8"),
+"new_animation": SubResource("Animation_tie5b")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7a1ax"]
 
 [sub_resource type="Animation" id="Animation_1u1wl"]
 length = 0.001
@@ -125,6 +146,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kqbeb"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PStart:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_14ve3"]
@@ -160,6 +196,151 @@ script = ExtResource("5_phe78")
 tile_set = SubResource("TileSet_cmcrj")
 format = 2
 layer_0/tile_data = PackedInt32Array(196608, 4, 0, 262144, 4, 0, 327680, 4, 0, 393216, 4, 0, 458752, 4, 0, 524288, 4, 0, 524289, 4, 0, 589825, 4, 0, 655361, 4, 0, 720897, 4, 0, 720898, 4, 0, 720899, 4, 0, 720900, 4, 0, 720901, 4, 0, 786437, 4, 0, 786438, 4, 0, 786439, 4, 0, 851975, 4, 0, 917511, 4, 0, 917512, 4, 0, 983048, 4, 0, 1048584, 4, 0, 1114120, 4, 0, 1179656, 4, 0, 1179655, 4, 0, 1179654, 4, 0, 1179653, 4, 0, 1179652, 4, 0, 1179651, 4, 0, 1179650, 4, 0, 1179649, 4, 0, 1179657, 4, 0, 1179658, 4, 0, 1179659, 4, 0, 1179660, 4, 0, 1179661, 4, 0, 1179662, 4, 0, 1179670, 4, 0, 1179671, 4, 0, 1179672, 4, 0, 1179673, 4, 0, 1179674, 4, 0, 1179675, 4, 0, 1179676, 4, 0, 1179677, 4, 0, 1179678, 4, 0, 1179679, 4, 0, 1179680, 4, 0, 1179681, 4, 0, 1179682, 4, 0, 1179683, 4, 0, 720908, 4, 0, 720909, 4, 0, 786447, 4, 0, 786448, 4, 0, 851984, 4, 0, 851985, 4, 0, 720913, 4, 0, 720914, 4, 0, 720915, 4, 0, 720916, 4, 0, 786452, 4, 0, 786453, 4, 0, 851989, 4, 0, 589846, 4, 0, 655382, 4, 0, 720918, 4, 0, 720919, 4, 0, 720920, 4, 0, 786456, 4, 0, 851992, 4, 0, 917528, 4, 0, 983064, 4, 0, 1048600, 4, 0, 1114136, 4, 0, 1114137, 4, 0, 786459, 4, 0, 851995, 4, 0, 851996, 4, 0, 917532, 4, 0, 917533, 4, 0, 983069, 4, 0, 983070, 4, 0, 1048606, 4, 0, 1114142, 4, 0, 720926, 4, 0, 720927, 4, 0, 720928, 4, 0, 720929, 4, 0, 786465, 4, 0, 852001, 4, 0, 917537, 4, 0, 983073, 4, 0, 983074, 4, 0, 1048610, 4, 0, 1114146, 4, 0, 1114126, 4, 0, 1048590, 4, 0, 983054, 4, 0, 983055, 4, 0, 983056, 4, 0, 983057, 4, 0, 983058, 4, 0, 983059, 4, 0, 983060, 4, 0, 983061, 4, 0, 983062, 4, 0, 1048598, 4, 0, 1114134, 4, 0, 917521, 4, 0, 917524, 4, 0, 1179648, 4, 0, 655393, 4, 0, 655394, 4, 0, 589858, 4, 0, 524322, 4, 0, 458786, 4, 0, 393251, 4, 0, 327715, 4, 0, 262179, 4, 0, 196643, 4, 0, 196642, 4, 0, 131106, 4, 0, 65570, 4, 0, 131105, 4, 0, 131104, 4, 0, 65568, 4, 0, 131081, 4, 0, 131082, 4, 0, 131083, 4, 0, 196619, 4, 0, 131084, 4, 0, 131085, 4, 0, 131086, 4, 0, 131087, 4, 0, 131088, 4, 0, 65552, 4, 0, 262155, 4, 0, 262156, 4, 0, 262157, 4, 0, 327693, 4, 0, 327694, 4, 0, 393230, 4, 0, 393231, 4, 0, 524310, 4, 0, 458774, 4, 0, 458773, 4, 0, 393237, 4, 0, 327701, 4, 0, 327702, 4, 0, 262166, 4, 0, 196631, 4, 0, 131095, 4, 0, 65559, 4, 0, 458771, 4, 0, 458772, 4, 0, 524292, 4, 0, 458758, 4, 0, 524294, 4, 0, 524293, 4, 0, 458756, 4, 0, 393220, 4, 0, 327684, 4, 0, 327685, 4, 0, 327686, 4, 0, 327687, 4, 0, 327688, 4, 0, 393224, 4, 0, 458760, 4, 0, 458761, 4, 0, 524297, 4, 0, 589833, 4, 0, 655369, 4, 0, 720905, 4, 0, 720906, 4, 0, 786443, 4, 0, 851979, 4, 0, 917515, 4, 0, 983052, 4, 0, 1048588, 4, 0, 1114123, 4, 0, 720923, 4, 0, 720922, 4, 0, 196641, 4, 0, 196640, 4, 0, 262176, 4, 0, 262175, 4, 0, 262174, 4, 0, 196638, 4, 0, 131102, 4, 0, 131101, 4, 0, 65565, 4, 0, 65564, 4, 0, 524315, 4, 0, 589851, 4, 0, 655387, 4, 0, 393243, 4, 0, 458779, 4, 0, 327707, 4, 0, 327708, 4, 0, 262172, 4, 0, 196636, 4, 0, 131100, 4, 0, 786434, 4, 0, 851970, 4, 0, 983042, 4, 0, 1048578, 4, 0, 1048577, 4, 0, 1114113, 4, 0, 917507, 4, 0, 720911, 4, 0, 655372, 4, 0, 589836, 4, 0, 524300, 4, 0, 720910, 4, 0, 655374, 4, 0, 589838, 4, 0, 524302, 4, 0)
+
+[node name="Options" type="Node2D" parent="."]
+process_mode = 3
+z_index = 4096
+position = Vector2(548, 130)
+scale = Vector2(1e-05, 1e-05)
+script = ExtResource("8_bbbef")
+
+[node name="pause_color2" type="ColorRect" parent="Options"]
+offset_left = -563.0
+offset_top = -145.0
+offset_right = 626.0
+offset_bottom = 526.0
+color = Color(0, 0, 0.12549, 0.878431)
+
+[node name="lbl_lenguaje" type="Label" parent="Options/pause_color2"]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 154.0
+offset_right = 495.0
+offset_bottom = 177.0
+theme_override_fonts/font = ExtResource("11_a43u4")
+text = "Lenguaje"
+horizontal_alignment = 2
+
+[node name="opt" type="OptionButton" parent="Options/pause_color2/lbl_lenguaje"]
+layout_mode = 0
+offset_left = 237.0
+offset_top = -8.0
+offset_right = 476.0
+offset_bottom = 23.0
+selected = 0
+item_count = 1
+popup/item_0/text = "Español"
+
+[node name="lbl_lenguaje2" type="Label" parent="Options/pause_color2"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 202.0
+offset_right = 496.0
+offset_bottom = 225.0
+theme_override_fonts/font = ExtResource("11_a43u4")
+text = "Pantalla completa"
+horizontal_alignment = 2
+
+[node name="chk" type="CheckButton" parent="Options/pause_color2/lbl_lenguaje2"]
+layout_mode = 0
+offset_left = 275.0
+offset_top = -2.0
+offset_right = 319.0
+offset_bottom = 22.0
+
+[node name="lbl_lenguaje3" type="Label" parent="Options/pause_color2"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 250.0
+offset_right = 496.0
+offset_bottom = 273.0
+theme_override_fonts/font = ExtResource("11_a43u4")
+text = "Reducir destellos"
+horizontal_alignment = 2
+
+[node name="chk" type="CheckButton" parent="Options/pause_color2/lbl_lenguaje3"]
+layout_mode = 0
+offset_left = 275.0
+offset_top = -2.0
+offset_right = 319.0
+offset_bottom = 22.0
+
+[node name="lbl_lenguaje6" type="Label" parent="Options/pause_color2"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 293.0
+offset_right = 496.0
+offset_bottom = 316.0
+theme_override_fonts/font = ExtResource("11_a43u4")
+text = "Modo aracnofobia"
+horizontal_alignment = 2
+
+[node name="chk" type="CheckButton" parent="Options/pause_color2/lbl_lenguaje6"]
+layout_mode = 0
+offset_left = 275.0
+offset_top = -2.0
+offset_right = 319.0
+offset_bottom = 22.0
+
+[node name="lbl_lenguaje4" type="Label" parent="Options/pause_color2"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 341.0
+offset_right = 496.0
+offset_bottom = 364.0
+theme_override_fonts/font = ExtResource("11_a43u4")
+text = "Musica"
+horizontal_alignment = 2
+
+[node name="HSlider" type="HSlider" parent="Options/pause_color2/lbl_lenguaje4"]
+layout_mode = 0
+offset_left = 280.0
+offset_right = 435.0
+offset_bottom = 16.0
+value = 100.0
+
+[node name="lbl_lenguaje5" type="Label" parent="Options/pause_color2"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 381.0
+offset_right = 496.0
+offset_bottom = 404.0
+theme_override_fonts/font = ExtResource("11_a43u4")
+text = "Efectos de sonido"
+horizontal_alignment = 2
+
+[node name="HSlider" type="HSlider" parent="Options/pause_color2/lbl_lenguaje5"]
+offset_left = 280.0
+offset_right = 435.0
+offset_bottom = 16.0
+value = 100.0
+
+[node name="lbl" type="Label" parent="Options"]
+offset_left = -548.0
+offset_top = -86.0
+offset_right = 604.0
+offset_bottom = -49.0
+theme_override_fonts/font = ExtResource("11_a43u4")
+theme_override_font_sizes/font_size = 32
+text = "OPCIONES
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btn_salir" type="Button" parent="Options"]
+offset_left = -20.0
+offset_top = 472.0
+offset_right = 88.0
+offset_bottom = 504.0
+theme_override_fonts/font = ExtResource("11_a43u4")
+theme_override_font_sizes/font_size = 16
+text = "SALIR"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options"]
+libraries = {
+"": SubResource("AnimationLibrary_sq6dk")
+}
+speed_scale = 10.0
 
 [node name="qdtector" parent="." instance=ExtResource("12_j5g7b")]
 visible = false
@@ -200,11 +381,11 @@ root_node = NodePath("../char")
 libraries = {
 "": SubResource("AnimationLibrary_14ve3")
 }
+speed_scale = 5.0
 
 [node name="PStart" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(590, 567)
-script = ExtResource("11_v06ge")
 
 [node name="Label" type="Label" parent="PStart"]
 offset_left = -84.0
@@ -263,5 +444,10 @@ text = "v 1.0"
 horizontal_alignment = 2
 script = ExtResource("12_cnle4")
 
+[connection signal="pressed" from="Options/pause_color2/lbl_lenguaje2/chk" to="Options" method="_on_chk_pressed"]
+[connection signal="pressed" from="Options/pause_color2/lbl_lenguaje3/chk" to="Options" method="_on_chk_pressed"]
+[connection signal="pressed" from="Options/pause_color2/lbl_lenguaje6/chk" to="Options" method="_on_chk_pressed"]
+[connection signal="pressed" from="Options/btn_salir" to="Options" method="_on_btn_salir_pressed"]
+[connection signal="animation_finished" from="Options/AnimationPlayer" to="Options" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer" to="char" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="char" method="_on_animation_player_animation_finished"]
