@@ -29,6 +29,7 @@ func _physics_process(_delta):
 				pause_unpause()
 			
 func exit():
+	Global.save_game()
 	Music.stop()
 	Bees.stop()
 	Ambience.stop()

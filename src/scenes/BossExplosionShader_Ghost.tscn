@@ -120,15 +120,15 @@ script = ExtResource("1_v8o1f")
 
 [node name="LightBossGhost" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, 2.00003)
-scale = Vector2(1, 2.01276)
+scale = Vector2(1, 4.85714)
 sprite_frames = SubResource("SpriteFrames_1ad4j")
 frame_progress = 0.898415
 offset = Vector2(-15, 196)
 
 [node name="LightBossGhost6" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, 2.00003)
-rotation = -2.68432
-scale = Vector2(1, 2.01276)
+rotation = 2.47488
+scale = Vector2(1, 4.27199)
 sprite_frames = SubResource("SpriteFrames_1ad4j")
 frame = 1
 offset = Vector2(-15, 196)
@@ -136,7 +136,7 @@ offset = Vector2(-15, 196)
 [node name="LightBossGhost7" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, 2.00003)
 rotation = -5.61298
-scale = Vector2(1, 2.01276)
+scale = Vector2(1, 4.91941)
 sprite_frames = SubResource("SpriteFrames_1ad4j")
 frame = 1
 offset = Vector2(-15, 196)
@@ -144,7 +144,7 @@ offset = Vector2(-15, 196)
 [node name="LightBossGhost8" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, 2.00003)
 rotation = -4.22544
-scale = Vector2(1, 2.01276)
+scale = Vector2(1, 4.88694)
 sprite_frames = SubResource("SpriteFrames_1ad4j")
 frame = 1
 offset = Vector2(-15, 196)
@@ -152,15 +152,14 @@ offset = Vector2(-15, 196)
 [node name="LightBossGhost5" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, 2.00003)
 rotation = -0.975639
-scale = Vector2(1, 2.01276)
+scale = Vector2(1, 5.74817)
 sprite_frames = SubResource("SpriteFrames_1ad4j")
-frame = 1
 offset = Vector2(-15, 196)
 
 [node name="LightBossGhost2" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, 2.00003)
 rotation = 1.34216
-scale = Vector2(1, 2.01276)
+scale = Vector2(1, 5.94942)
 sprite_frames = SubResource("SpriteFrames_1ad4j")
 frame_progress = 0.28543
 offset = Vector2(-15, 196)
@@ -168,7 +167,15 @@ offset = Vector2(-15, 196)
 [node name="LightBossGhost3" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, 2.00003)
 rotation = -1.83085
-scale = Vector2(1, 2.01276)
+scale = Vector2(1, 6.21468)
+sprite_frames = SubResource("SpriteFrames_1ad4j")
+frame_progress = 0.597911
+offset = Vector2(-15, 196)
+
+[node name="LightBossGhost9" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, 2.00003)
+rotation = -2.51153
+scale = Vector2(1, 6.21468)
 sprite_frames = SubResource("SpriteFrames_1ad4j")
 frame_progress = 0.597911
 offset = Vector2(-15, 196)
@@ -176,7 +183,7 @@ offset = Vector2(-15, 196)
 [node name="LightBossGhost4" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, 2.00003)
 rotation = -3.58665
-scale = Vector2(1, 2.01276)
+scale = Vector2(1, 5.67229)
 sprite_frames = SubResource("SpriteFrames_1ad4j")
 frame_progress = 0.572504
 offset = Vector2(-15, 196)
@@ -184,6 +191,7 @@ offset = Vector2(-15, 196)
 [node name="BossExplosionShader" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_hkrjh")
 sprite_frames = SubResource("SpriteFrames_ir3tq")
+animation = &"dialog"
 autoplay = "default"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

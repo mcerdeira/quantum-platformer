@@ -1,6 +1,53 @@
 extends Node2D
 var parent_visible = null
 
+var cheat_code = [
+	"up", "down",
+	"left", "right",
+	"up", "down",
+	"left", "right",
+]
+
+var input_buffer: Array = []
+
+func _input(event):
+	if event.is_action_pressed("up"):
+		_register_input("up")
+	elif event.is_action_pressed("down"):
+		_register_input("down")
+	elif event.is_action_pressed("left"):
+		_register_input("left")
+	elif event.is_action_pressed("right"):
+		_register_input("right")
+
+func _register_input(action: String):
+	input_buffer.append(action)
+	if input_buffer.size() > cheat_code.size():
+		input_buffer.pop_front()
+	
+	if input_buffer == cheat_code:
+		_on_cheat_activated(true)
+
+func _on_cheat_activated(val):
+	visible = val
+	if visible and parent_visible == null:
+		if !get_parent().visible:
+			parent_visible = false
+		else:
+			parent_visible = true
+			
+	if parent_visible == false:
+		get_parent().visible = visible
+
+	if visible:
+		if special_rooms():
+			get_parent().visible = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		if special_rooms():
+			get_parent().visible = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
 func _ready():
 	terminal_trad()
 	for i in range(1, 5):
@@ -19,26 +66,6 @@ func _physics_process(_delta):
 	
 	$Label5.text = Global.GameStates.keys()[Global.CurrentState] + boss_room
 	
-	if Input.is_action_just_pressed("cheat"):
-		visible = !visible
-		if visible and parent_visible == null:
-			if !get_parent().visible:
-				parent_visible = false
-			else:
-				parent_visible = true
-				
-		if parent_visible == false:
-			get_parent().visible = visible
-		
-		if visible:
-			if special_rooms():
-				get_parent().visible = true
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		else:
-			if special_rooms():
-				get_parent().visible = false
-			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-			
 func special_rooms():
 	return Global.CurrentState == Global.GameStates.SHOP or Global.CurrentState == Global.GameStates.DEMO or Global.CurrentState == Global.GameStates.HOME or Global.CurrentState == Global.GameStates.FALLING or Global.CurrentState == Global.GameStates.OUTSIDE
 
@@ -150,3 +177,6 @@ func _on_check_4_pressed() -> void:
 func _on_btn_boat_pressed() -> void:
 	Global.BoatUnlocked = true
 	Global.BoatObj.activate()
+
+func _on_btn_close_pressed() -> void:
+	_on_cheat_activated(false)

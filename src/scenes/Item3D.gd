@@ -12,6 +12,6 @@ func _ready():
 	material.albedo_texture = load("res://sprites/qr/artifact_parts"+str(forceitem)+".png")
 
 func _physics_process(_delta):
-	if Input.is_action_just_pressed("quit") or Input.is_action_just_pressed("start"):
+	if Input.is_action_just_pressed("quit") or Input.is_action_just_pressed("start") or Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("shoot") or Input.is_action_just_pressed("quit_soft"):
 		get_tree().paused = false
 		queue_free()

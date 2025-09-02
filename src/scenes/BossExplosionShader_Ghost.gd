@@ -28,6 +28,7 @@ func _ready():
 	$LightBossGhost2.play()
 	$LightBossGhost3.play()
 	$LightBossGhost4.play()
+	$LightBossGhost9.play()
 	
 	for i in range(20):
 		current_messages.append("")
@@ -79,6 +80,7 @@ func _physics_process(delta):
 			$LightBossGhost2.visible = false
 			$LightBossGhost3.visible = false
 			$LightBossGhost4.visible = false
+			$LightBossGhost9.visible = false
 	else:
 		if !cinematic:
 			if ttl > 0:
@@ -128,11 +130,14 @@ func _on_animation_player_animation_finished(anim_name):
 	if forward:
 		forward = false
 		$Timer.start()
+	else:
+		$BossExplosionShader.animation = "dialog"
+		$back2.visible = true
+		$back.visible = true
 
 func _on_timer_timeout():
+	Global.player_obj.show_current_item3D(Global.TerminalsEnum.TOMB, false)
 	global_position = CinematicPos.global_position
 	$AnimationPlayer.play_backwards("new_animation")
 	cinematic = true
-	$back2.visible = true
-	$back.visible = true
-	$BossExplosionShader.animation = "dialog"
+	

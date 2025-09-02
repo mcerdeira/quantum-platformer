@@ -8,7 +8,7 @@ func _ready():
 		
 func _physics_process(delta):
 	if !moving:
-		if Input.is_action_just_pressed("quit") or Input.is_action_just_pressed("start"):
+		if Input.is_action_just_pressed("quit") or Input.is_action_just_pressed("start") or Input.is_action_just_pressed("quit_soft"):
 			Global.play_sound(Global.InteractSFX)
 			get_tree().paused = false
 			if Global.combinatoryOK and !Global.BoatUnlocked:

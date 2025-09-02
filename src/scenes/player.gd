@@ -9,6 +9,7 @@ var locked_ctrls = false
 var force_lookup = false
 var rainobj = preload("res://scenes/Rain.tscn")
 var itemfound = preload("res://scenes/Item3D.tscn")
+var watersplash = preload("res://scenes/Confeti.tscn")
 var rain = null
 var faceoverride = ""
 var do_dialog_final_boss = false
@@ -887,6 +888,8 @@ func kill_fall():
 	dead = true
 	visible = false
 	dead_fall = true
+	if Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
+		splash()
 
 func kill():
 	dead = true
@@ -910,6 +913,14 @@ func dead_fire():
 			Global.play_sound(Global.LavaFallSFX)
 			dead = true
 			dead_animation = "dead_fire"
+			
+func splash():
+	var count = randi_range(1, 2)
+	for i in range(count):
+		var sp = watersplash.instantiate()
+		var aju = randi_range(0, 10) * Global.pick_random([1. -1])
+		sp.global_position = Vector2(global_position.x + aju, global_position.y + 16)
+		get_parent().add_child(sp)
 	
 func reset_to_last():
 	Global.play_sound(Global.PlayerHurtSFX)

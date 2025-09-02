@@ -1,15 +1,10 @@
 Features:
 Menú de opciones (fullscreen, volumen)
-Que se pueda salir de "momentos 3D" igual o similar a como quedó en las valvulas
+Menu con nuevo, continuar y salir
 Traducción a inglés
 Mejores indicadores de mapping, botones
 
 Bugs:
-Salir al title desde un boss inicia de cero?
-No salió el item 3D en el fantasma
-Muy difícil el cementerio
-Fácil el del agua
-Cambiar forma de acceder al cheat, muy facil el F1
 
 
 Trailer:

@@ -227,17 +227,8 @@ script = ExtResource("16_gftr3")
 [node name="prisoner_marker" parent="." instance=ExtResource("17_iorgk")]
 position = Vector2(653, 496)
 
-[node name="enemy_marker" parent="." instance=ExtResource("18_xltst")]
-position = Vector2(1074, 496)
-selected_enemy = "enemy"
-
 [node name="enemy_marker4" parent="." instance=ExtResource("18_xltst")]
 position = Vector2(207, 145)
-chance_int = 3
-selected_enemy = "enemy_bat"
-
-[node name="enemy_marker7" parent="." instance=ExtResource("18_xltst")]
-position = Vector2(100, 80)
 chance_int = 3
 selected_enemy = "enemy_bat"
 
@@ -253,10 +244,6 @@ selected_enemy = "enemy_bat"
 
 [node name="enemy_marker2" parent="." instance=ExtResource("18_xltst")]
 position = Vector2(897, 496)
-selected_enemy = "enemy"
-
-[node name="enemy_marker3" parent="." instance=ExtResource("18_xltst")]
-position = Vector2(257, 559)
 selected_enemy = "enemy"
 
 [node name="player_marker" parent="." instance=ExtResource("19_821w2")]

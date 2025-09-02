@@ -218,6 +218,7 @@ func force_kill():
 	Global.gotoBOSS = false
 	Global.shaker_obj.shake(3, 0.5)
 	Global.BOSS_DEAD = true
+	Global.player_obj.locked_ctrls = true
 			
 func super_jump():
 	pass

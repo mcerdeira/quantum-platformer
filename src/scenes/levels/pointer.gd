@@ -1,5 +1,6 @@
 extends CharacterBody2D
 var started = false
+var is_ready = false
 
 func _ready():
 	add_to_group("interactuable")
@@ -15,9 +16,10 @@ func _physics_process(_delta):
 		if !started:
 			started = true
 			Global.play_sound(Global.PressStartSFX)
-			
-		$"../PStart/AnimationPlayer".speed_scale = 10
-		$"../Timer".start()
+			$"../AnimationPlayer".play("new_animation")
 
 func _on_timer_timeout():
 	Global.scene_next()
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	is_ready = true

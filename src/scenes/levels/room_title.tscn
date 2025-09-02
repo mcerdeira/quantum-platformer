@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b8h5mg4l80k31"]
+[gd_scene load_steps=31 format=3 uid="uid://b8h5mg4l80k31"]
 
 [ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="1_0qil7"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_ytwuc"]
@@ -9,8 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://dpcrtwqa2mio7" path="res://sprites/vines_burn.png" id="7_c5g7g"]
 [ext_resource type="Script" path="res://scenes/levels/pointer.gd" id="10_cvs85"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="11_a43u4"]
+[ext_resource type="Script" path="res://scenes/levels/p_start.gd" id="11_v06ge"]
 [ext_resource type="Script" path="res://scenes/levels/lbl_version.gd" id="12_cnle4"]
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="12_j5g7b"]
+[ext_resource type="Script" path="res://scenes/levels/selector.gd" id="13_h2kom"]
+[ext_resource type="Texture2D" uid="uid://dsq1qbrwmy7u3" path="res://sprites/cosito1.png" id="13_htijn"]
+[ext_resource type="Texture2D" uid="uid://chgbadtf8x5k6" path="res://sprites/cosito2.png" id="14_ekdew"]
+[ext_resource type="Texture2D" uid="uid://ytl3s67gkq0y" path="res://sprites/cosito3.png" id="15_6uwb4"]
 [ext_resource type="PackedScene" uid="uid://cv3n3jd3p3yty" path="res://scenes/Lamp.tscn" id="15_u4n48"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
@@ -92,27 +97,58 @@ sources/5 = SubResource("TileSetAtlasSource_g20sr")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7a1ax"]
 
-[sub_resource type="Animation" id="Animation_6d83e"]
+[sub_resource type="Animation" id="Animation_kqbeb"]
 resource_name = "new_animation"
-length = 2.0
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Label:visible")
+tracks/0/path = NodePath("../PStart:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_b55p5"]
-_data = {
-"new_animation": SubResource("Animation_6d83e")
+[sub_resource type="Animation" id="Animation_1u1wl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PStart:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_14ve3"]
+_data = {
+"RESET": SubResource("Animation_1u1wl"),
+"new_animation": SubResource("Animation_kqbeb")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_txbwe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_htijn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ekdew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_6uwb4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="level" type="TileMap"]
 tile_set = SubResource("TileSet_4lr5i")
@@ -159,24 +195,62 @@ script = ExtResource("10_cvs85")
 [node name="collider" type="CollisionShape2D" parent="char"]
 shape = SubResource("CircleShape2D_7a1ax")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../char")
+libraries = {
+"": SubResource("AnimationLibrary_14ve3")
+}
+
 [node name="PStart" type="Node2D" parent="."]
-position = Vector2(590, 563)
+modulate = Color(1, 1, 1, 0)
+position = Vector2(590, 567)
+script = ExtResource("11_v06ge")
 
 [node name="Label" type="Label" parent="PStart"]
 offset_left = -84.0
+offset_top = -16.0
 offset_right = 92.0
-offset_bottom = 23.0
+offset_bottom = 7.0
 theme_override_fonts/font = ExtResource("11_a43u4")
-text = "EMPEZAR"
+text = "INICIAR"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PStart"]
-libraries = {
-"": SubResource("AnimationLibrary_b55p5")
-}
-autoplay = "new_animation"
-speed_scale = 3.0
+[node name="Label2" type="Label" parent="PStart"]
+offset_left = -84.0
+offset_top = 8.0
+offset_right = 92.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("11_a43u4")
+text = "OPCIONES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="PStart"]
+offset_left = -84.0
+offset_top = 30.0
+offset_right = 92.0
+offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("11_a43u4")
+text = "SALIR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="selector" type="Node2D" parent="PStart"]
+script = ExtResource("13_h2kom")
+
+[node name="sprite" type="AnimatedSprite2D" parent="PStart/selector"]
+position = Vector2(91, -5)
+rotation = 1.5708
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_txbwe")
+
+[node name="sprite2" type="AnimatedSprite2D" parent="PStart/selector"]
+position = Vector2(-77, -5)
+rotation = 4.71239
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_txbwe")
+frame_progress = 0.624249
 
 [node name="lbl_version" type="Label" parent="."]
 offset_left = 878.0
@@ -190,3 +264,4 @@ horizontal_alignment = 2
 script = ExtResource("12_cnle4")
 
 [connection signal="timeout" from="Timer" to="char" method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="char" method="_on_animation_player_animation_finished"]

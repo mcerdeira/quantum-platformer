@@ -214,9 +214,13 @@ position = Vector2(1074, 496)
 
 [node name="enemy_marker2" parent="." instance=ExtResource("11_yr0li")]
 position = Vector2(720, 528)
+selected_enemy = "enemy_bomber"
 
 [node name="enemy_marker3" parent="." instance=ExtResource("11_yr0li")]
 position = Vector2(784, 560)
+
+[node name="enemy_marker4" parent="." instance=ExtResource("11_yr0li")]
+position = Vector2(120, 528)
 
 [node name="player_marker" parent="." instance=ExtResource("12_8inwb")]
 position = Vector2(181, 528)

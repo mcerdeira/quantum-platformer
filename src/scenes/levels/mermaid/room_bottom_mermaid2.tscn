@@ -224,6 +224,9 @@ position = Vector2(720, 528)
 [node name="enemy_marker3" parent="." instance=ExtResource("15_6yco6")]
 position = Vector2(784, 560)
 
+[node name="enemy_marker4" parent="." instance=ExtResource("15_6yco6")]
+position = Vector2(115, 528)
+
 [node name="player_marker" parent="." instance=ExtResource("16_g7asv")]
 position = Vector2(181, 528)
 

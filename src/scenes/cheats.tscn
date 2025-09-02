@@ -19,9 +19,16 @@ color = Color(0.0901961, 0, 0.52549, 1)
 [node name="Label" type="Label" parent="."]
 offset_right = 624.0
 offset_bottom = 23.0
-text = "================================== CHEATS =================================="
+text = "================================== CHEATS =============================="
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="btn_close" type="Button" parent="."]
+offset_left = 657.0
+offset_top = 3.0
+offset_right = 699.0
+offset_bottom = 44.0
+text = "X"
 
 [node name="bnt_coin" type="Button" parent="."]
 offset_left = 8.0
@@ -224,6 +231,7 @@ offset_right = 466.0
 offset_bottom = 205.0
 text = "Level 4"
 
+[connection signal="pressed" from="btn_close" to="." method="_on_btn_close_pressed"]
 [connection signal="pressed" from="bnt_coin" to="." method="_on_bnt_coin_pressed"]
 [connection signal="pressed" from="bnt_plant" to="." method="_on_bnt_plant_pressed"]
 [connection signal="pressed" from="bnt_spring" to="." method="_on_bnt_spring_pressed"]
