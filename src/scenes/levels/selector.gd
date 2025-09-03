@@ -13,7 +13,9 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("start") or Input.is_action_just_pressed("jump"):
 			Global.play_sound(Global.InteractSFX)
 			if pos_ix == 0:
-				pass
+				$"..".visible = false
+				$"../../NewGame/AnimationPlayer".play("new_animation")
+				get_tree().paused = true
 			elif pos_ix == 1:
 				$"..".visible = false
 				$"../../Options/AnimationPlayer".play("new_animation")

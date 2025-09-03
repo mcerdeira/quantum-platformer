@@ -154,6 +154,11 @@ var RADARKEY = ["'R'", "'Y'"]
 var MAPKEY = ["'M'", "'RT'"]
 var BINOCULARKEY = ["'H'", "'LT'"]
 
+var Aracnofobia = false
+var ReducirDestellos = false
+var MusicVolume = 100
+var SfxVolume = 100
+
 #CHEST ITEMS 
 
 var smoke_bomb = {
@@ -596,6 +601,10 @@ func erase_game():
 func save_options():
 	var saved_options = FileAccess.open("user://options.save", FileAccess.WRITE)
 	saved_options.store_var(Global.FULLSCREEN)
+	saved_options.store_var(Global.Aracnofobia)
+	saved_options.store_var(Global.ReducirDestellos)
+	saved_options.store_var(Global.MusicVolume)
+	saved_options.store_var(Global.SfxVolume)
 	saved_options.close()
 	
 func load_options():
@@ -605,11 +614,45 @@ func load_options():
 		if saved_options:
 			var fullscreen = saved_options.get_var()
 			Global.FULLSCREEN = fullscreen
-			if Global.FULLSCREEN:
-				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-			else:
-				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			apply_fullscreen()
 			
+			var aracno = saved_options.get_var()
+			Global.Aracnofobia = aracno
+			
+			var deste = saved_options.get_var()
+			Global.ReducirDestellos = deste
+			
+			var musicv = saved_options.get_var()
+			Global.MusicVolume = musicv
+			apply_music_volume()
+			
+			var sfxv = saved_options.get_var()
+			Global.SfxVolume = sfxv
+			apply_sfx_volume()
+				
+	
+func apply_sfx_volume():
+	var SFX = -4.8
+	var music_bus_index = AudioServer.get_bus_index("SFX")
+	AudioServer.set_bus_volume_db(music_bus_index, log_volume(Global.SfxVolume, SFX))
+	
+func apply_music_volume():
+	var MUSIC = -8.0
+	var music_bus_index = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(music_bus_index, log_volume(Global.MusicVolume, MUSIC))
+	
+func log_volume(value, base_volume_db):
+	var percent = value / 100.0
+	var linear_scale = max(0.0001, percent)
+	var db_scale = linear_to_db(linear_scale)
+	var new_db = base_volume_db + db_scale
+	return new_db
+	
+func apply_fullscreen():
+	if Global.FULLSCREEN:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	
 func save_game():
 	if Global.CurrentState != Global.GameStates.TITLE:
