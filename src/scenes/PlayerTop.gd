@@ -53,6 +53,7 @@ func create_drop(pos):
 		get_parent().add_child(drop)
 		
 func killeat():
+	Global.DEATHS += 1
 	dead = true
 	visible = false
 	Global.play_sound(Global.PlayerBleedSFX)
@@ -99,6 +100,7 @@ func kill_fire():
 		Global.play_sound(Global.LavaFallSFX)
 		Global.emit(global_position, 10)
 		dead = true
+		Global.DEATHS += 1
 		dead_animation = "dead_fire"
 		
 func show_message():

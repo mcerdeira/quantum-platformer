@@ -18,8 +18,5 @@ func _physics_process(_delta):
 			Global.play_sound(Global.PressStartSFX)
 			$"../AnimationPlayer".play("new_animation")
 
-func _on_timer_timeout():
-	Global.scene_next()
-
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	is_ready = true

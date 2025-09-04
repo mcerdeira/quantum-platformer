@@ -258,6 +258,7 @@ func _physics_process(delta):
 			lifes -= 1
 			if lifes <= 0:
 				dead = true
+				Global.DEATHS += 1
 			else:
 				Global.shaker_obj.shake(3, 2.1)
 				ghost_inst = ghost.instantiate()
@@ -888,11 +889,13 @@ func kill_fall():
 	dead = true
 	visible = false
 	dead_fall = true
+	Global.DEATHS += 1
 	if Global.TerminalNumber == Global.TerminalsEnum.MERMAID:
 		splash()
 
 func kill():
 	dead = true
+	Global.DEATHS += 1
 	bleed(45)
 	await get_tree().create_timer(2).timeout
 	bleed(25)
@@ -900,6 +903,7 @@ func kill():
 func eated():
 	visible = false
 	dead = true
+	Global.DEATHS += 1
 	bleed(45)
 	await get_tree().create_timer(2).timeout
 	bleed(25)
@@ -912,6 +916,7 @@ func dead_fire():
 		else:
 			Global.play_sound(Global.LavaFallSFX)
 			dead = true
+			Global.DEATHS += 1
 			dead_animation = "dead_fire"
 			
 func splash():

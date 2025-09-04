@@ -15,6 +15,8 @@ func _on_animation_player_animation_finished(_anim_name):
 	Global.fade_finished = true
 	if !Global.TunnelTerminalNumber:
 		if Global.FromBonus:
-			Global.player_obj.show_message_bonus()
+			if Global.player_obj:
+				Global.player_obj.show_message_bonus()
 		elif Global.OverWorldFromGameOver:
-			Global.player_obj.show_message_death()
+			if Global.player_obj:
+				Global.player_obj.show_message_death()

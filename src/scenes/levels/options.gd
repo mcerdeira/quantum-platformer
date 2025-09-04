@@ -22,12 +22,14 @@ func _on_btn_salir_pressed() -> void:
 	Global.save_options()
 	
 func _on_chk_pressed() -> void:
+	Global.play_sound(Global.InteractSFX)
 	Global.FULLSCREEN = $pause_color2/lbl_lenguaje2/chk.button_pressed
 	Global.apply_fullscreen()
 
 func _on_musicsl_value_changed(value: float) -> void:
-	Global.MusicVolume = $pause_color2/lbl_lenguaje4/musicsl.value
-	Global.apply_music_volume()
+	if !updating_slider:
+		Global.MusicVolume = $pause_color2/lbl_lenguaje4/musicsl.value
+		Global.apply_music_volume()
 
 func _on_sfxsl_value_changed(value: float) -> void:
 	if !updating_slider:

@@ -158,6 +158,7 @@ var Aracnofobia = false
 var ReducirDestellos = false
 var MusicVolume = 100
 var SfxVolume = 100
+var DEATHS = 0
 
 #CHEST ITEMS 
 
@@ -687,6 +688,7 @@ func save_game():
 		saved_game.store_var(Global.gotoBOSS)
 		saved_game.store_var(Global.BoatUnlocked)
 		saved_game.store_var(Global.AlreadySEEN)
+		saved_game.store_var(Global.DEATHS)
 		saved_game.close()
 	
 func load_game():
@@ -724,6 +726,7 @@ func load_game():
 			var _gotoBOSS = saved_game.get_var()
 			var _BoatUnlocked = saved_game.get_var()
 			var _AlreadySEEN = saved_game.get_var()
+			var _deaths = saved_game.get_var()
 			
 			if cur_state != null:
 				Global.FirstState = cur_state
@@ -786,6 +789,8 @@ func load_game():
 					Global.BoatUnlocked = _BoatUnlocked
 				if _AlreadySEEN != null:
 					Global.AlreadySEEN = _AlreadySEEN
+				if _deaths != null:
+					Global.DEATHS = _deaths
 				
 	else:
 		Global.FirstState =  GameStates.HOME
@@ -816,6 +821,7 @@ func load_game():
 		Global.gotoBOSS = false
 		Global.BoatUnlocked = false
 		Global.AlreadySEEN = false
+		Global.DEATHS = 0
 		
 	sync_terminals()
 	
