@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://blaceikwtqvlx"]
+[gd_scene load_steps=44 format=3 uid="uid://blaceikwtqvlx"]
 
 [ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="1_5pwbn"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_n6lpo"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dsuwqj0ce3lci" path="res://scenes/LampLong.tscn" id="19_liafp"]
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="20_05fxs"]
 [ext_resource type="PackedScene" uid="uid://b6ji8x3ssrxwe" path="res://scenes/LampLongSpikes.tscn" id="22_4hltv"]
+[ext_resource type="Texture2D" uid="uid://b5tybvkp60wb3" path="res://sprites/spritesheets/back.png" id="23_rgu5o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
 texture = ExtResource("1_5pwbn")
@@ -362,5 +363,12 @@ position = Vector2(1783, -370)
 
 [node name="LampLongSpikes5" parent="." instance=ExtResource("22_4hltv")]
 position = Vector2(1455, -274)
+
+[node name="Back" type="Sprite2D" parent="."]
+modulate = Color(0.286275, 0.12549, 0.352941, 0.105882)
+z_index = -4096
+position = Vector2(785, 179.5)
+scale = Vector2(1.88646, 0.630859)
+texture = ExtResource("23_rgu5o")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="CameraZoomer" method="_on_animation_player_animation_finished"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://bveav6ctdlmbu"]
+[gd_scene load_steps=76 format=3 uid="uid://bveav6ctdlmbu"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_tvtda"]
 [ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="2_6led8"]
@@ -49,6 +49,10 @@
 [ext_resource type="PackedScene" uid="uid://dwdbd4mb0x24f" path="res://scenes/big_fish.tscn" id="40_3bssv"]
 [ext_resource type="Script" path="res://scenes/binocular_fade.gd" id="46_sw70b"]
 [ext_resource type="PackedScene" uid="uid://bhoti11gyh17k" path="res://scenes/waterfall.tscn" id="46_v8l5n"]
+[ext_resource type="Script" path="res://scenes/back_ground_cave.gd" id="51_m0fa5"]
+[ext_resource type="Texture2D" uid="uid://df0cjt0eax638" path="res://sprites/spritesheets/back_trees.png" id="52_o3h4b"]
+[ext_resource type="Script" path="res://scenes/back_trees.gd" id="53_q8tfa"]
+[ext_resource type="Texture2D" uid="uid://b5tybvkp60wb3" path="res://sprites/spritesheets/back.png" id="55_pliwv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qr43o"]
 texture = ExtResource("3_n8kdd")
@@ -1062,6 +1066,23 @@ position = Vector2(1261, 181)
 [node name="Waterfall4" parent="." instance=ExtResource("46_v8l5n")]
 z_index = -4096
 position = Vector2(559, 399)
+
+[node name="BackGroundCave" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.286275, 0.12549, 0.352941, 0.105882)
+z_index = -4096
+position = Vector2(2327.34, 1663.27)
+rotation = 4.71239
+scale = Vector2(1.94626, 2.36902)
+texture = ExtResource("55_pliwv")
+script = ExtResource("51_m0fa5")
+
+[node name="BackTrees" type="Sprite2D" parent="."]
+modulate = Color(0.286275, 1, 0.352941, 0.0352941)
+z_index = -4096
+position = Vector2(2668, 1904)
+texture = ExtResource("52_o3h4b")
+script = ExtResource("53_q8tfa")
 
 [connection signal="animation_finished" from="CanvasLayer/VideoContainer/AnimationPlayer" to="CanvasLayer/VideoContainer" method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="CanvasLayer/Pause/btn_salir" to="CanvasLayer/Pause" method="_on_btn_salir_pressed"]
