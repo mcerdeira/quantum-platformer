@@ -1,5 +1,6 @@
 extends Node2D
 var updating_slider = true
+var playing_back = false
 
 func _ready() -> void:
 	$pause_color2/lbl_lenguaje3/chk.button_pressed = Global.ReducirDestellos
@@ -13,13 +14,29 @@ func _ready() -> void:
 	Global.apply_sfx_volume()
 	updating_slider = false
 	
-func _on_btn_salir_pressed() -> void:
+func _physics_process(delta: float) -> void:
+	if scale.x == 1:
+		if Input.is_action_just_pressed("quit_soft"):
+			salir()
+		
+func initial_focus():
+	visible = true
+	$pause_color2/lbl_lenguaje/opt.grab_focus()
+	
+func release_all_focus():
+	get_viewport().gui_release_focus()
+		
+func salir():
 	Global.play_sound(Global.InteractSFX)
-	$btn_salir.release_focus()
 	get_tree().paused = false
+	playing_back = true
 	$AnimationPlayer.play_backwards("new_animation")
 	$"../PStart".visible = true
 	Global.save_options()
+	release_all_focus()
+	
+func _on_btn_salir_pressed() -> void:
+	salir()
 	
 func _on_chk_pressed() -> void:
 	Global.play_sound(Global.InteractSFX)
@@ -36,3 +53,10 @@ func _on_sfxsl_value_changed(value: float) -> void:
 		Global.SfxVolume = $pause_color2/lbl_lenguaje5/sfxsl.value
 		Global.apply_sfx_volume()
 		Global.play_sound(Global.InteractSFX)
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if playing_back:
+		playing_back = false
+		visible = false
+	else:
+		initial_focus()

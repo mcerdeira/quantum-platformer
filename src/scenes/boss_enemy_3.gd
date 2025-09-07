@@ -186,9 +186,8 @@ func create_drop(pos):
 		get_parent().add_child(drop)
 		
 func roar():
-	var options = {"pitch_scale": 0.5}
 	var roar = Global.pick_random([Global.Gusanote1SFX, Global.Gusanote2SFX, Global.Gusanote3SFX])
-	Global.play_sound(roar, options)
+	Global.play_sound(roar)
 		
 func flyaway():
 	if blowed <= 0:

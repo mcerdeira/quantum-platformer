@@ -25,10 +25,12 @@ func _physics_process(_delta):
 					resume()
 		
 		if Input.is_action_just_pressed("quit"):
-			if !$"../VideoContainer".visible and !$"../../GlobalCamera/BinocularCircle".visible:
+			if !$"../VideoContainer".visible and !$"../../GlobalCamera/BinocularCircle".visible and !Global.GAMEOVER:
 				pause_unpause()
 			
 func exit():
+	if Global.CHROM_FX:
+		Global.CHROM_FX.resetdistor()
 	Global.save_game()
 	Music.stop()
 	Bees.stop()

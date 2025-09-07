@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://bveav6ctdlmbu"]
+[gd_scene load_steps=78 format=3 uid="uid://bveav6ctdlmbu"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_tvtda"]
 [ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="2_6led8"]
@@ -49,6 +49,8 @@
 [ext_resource type="PackedScene" uid="uid://dwdbd4mb0x24f" path="res://scenes/big_fish.tscn" id="40_3bssv"]
 [ext_resource type="Script" path="res://scenes/binocular_fade.gd" id="46_sw70b"]
 [ext_resource type="PackedScene" uid="uid://bhoti11gyh17k" path="res://scenes/waterfall.tscn" id="46_v8l5n"]
+[ext_resource type="PackedScene" uid="uid://3ipmo8ql25xa" path="res://scenes/trees.tscn" id="50_mnffl"]
+[ext_resource type="Script" path="res://scenes/parallax_layer.gd" id="50_uujtt"]
 [ext_resource type="Script" path="res://scenes/back_ground_cave.gd" id="51_m0fa5"]
 [ext_resource type="Texture2D" uid="uid://df0cjt0eax638" path="res://sprites/spritesheets/back_trees.png" id="52_o3h4b"]
 [ext_resource type="Script" path="res://scenes/back_trees.gd" id="53_q8tfa"]
@@ -1067,9 +1069,46 @@ position = Vector2(1261, 181)
 z_index = -4096
 position = Vector2(559, 399)
 
+[node name="ParallaxBackground" type="Node2D" parent="."]
+
+[node name="ParallaxLayer" type="Node2D" parent="ParallaxBackground" node_paths=PackedStringArray("foreground_tree")]
+script = ExtResource("50_uujtt")
+foreground_tree = NodePath("Trees")
+fg_factor = 0.8
+
+[node name="Trees" type="Node2D" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color(0.0646965, 0.0646965, 0.0646965, 1)
+z_index = 4095
+position = Vector2(0, 207)
+scale = Vector2(10, 10)
+
+[node name="Trees" parent="ParallaxBackground/ParallaxLayer/Trees" instance=ExtResource("50_mnffl")]
+position = Vector2(44.1, 228)
+
+[node name="Trees2" parent="ParallaxBackground/ParallaxLayer/Trees" instance=ExtResource("50_mnffl")]
+position = Vector2(98.5, 237.1)
+
+[node name="Trees3" parent="ParallaxBackground/ParallaxLayer/Trees" instance=ExtResource("50_mnffl")]
+position = Vector2(174.8, 243.1)
+
+[node name="Trees4" parent="ParallaxBackground/ParallaxLayer/Trees" instance=ExtResource("50_mnffl")]
+position = Vector2(241.6, 250)
+
+[node name="Trees5" parent="ParallaxBackground/ParallaxLayer/Trees" instance=ExtResource("50_mnffl")]
+position = Vector2(298.9, 262.5)
+
+[node name="Trees6" parent="ParallaxBackground/ParallaxLayer/Trees" instance=ExtResource("50_mnffl")]
+position = Vector2(353.2, 239.1)
+
+[node name="Trees7" parent="ParallaxBackground/ParallaxLayer/Trees" instance=ExtResource("50_mnffl")]
+position = Vector2(432.4, 239.4)
+
+[node name="Trees8" parent="ParallaxBackground/ParallaxLayer/Trees" instance=ExtResource("50_mnffl")]
+position = Vector2(517.6, 242)
+
 [node name="BackGroundCave" type="Sprite2D" parent="."]
 visible = false
-modulate = Color(0.286275, 0.12549, 0.352941, 0.105882)
+modulate = Color(0.286275, 0.12549, 0.352941, 0.231373)
 z_index = -4096
 position = Vector2(2327.34, 1663.27)
 rotation = 4.71239
@@ -1078,6 +1117,7 @@ texture = ExtResource("55_pliwv")
 script = ExtResource("51_m0fa5")
 
 [node name="BackTrees" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0.286275, 1, 0.352941, 0.0352941)
 z_index = -4096
 position = Vector2(2668, 1904)

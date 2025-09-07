@@ -1,8 +1,14 @@
 extends Node2D
 var new_game = false
+var f_exists = false
+var playing_back = false
 
 func _ready() -> void:
-	var f_exists = FileAccess.file_exists("user://savegame.save")
+	#Resetear el distort por si quedo del juego
+	if Global.CHROM_FX and is_instance_valid(Global.CHROM_FX):
+		Global.CHROM_FX.resetdistor()
+	
+	f_exists = FileAccess.file_exists("user://savegame.save")
 	if f_exists:
 		var date = FileAccess.get_modified_time("user://savegame.save")
 		var dict = Time.get_datetime_dict_from_unix_time(date)
@@ -11,22 +17,41 @@ func _ready() -> void:
 			dict.hour, dict.minute
 		]
 		$saved.text = "Partida guardada\n" + fecha_str
+		save_pressed()
 	else:
 		$saved.text = "..."
 		$saved.disabled = true
+		new_pressed()
+		
+func initial_focus():
+	visible = true
+	$btn_start.grab_focus()
+		
+func _physics_process(delta: float) -> void:
+	if scale.x == 1:
+		if Input.is_action_just_pressed("quit_soft"):
+			salir()
 
 func _on_btn_volver_pressed() -> void:
+	salir()
+	
+func release_all_focus():
+	get_viewport().gui_release_focus()
+	
+func salir():
 	Global.play_sound(Global.InteractSFX)
-	$btn_volver.release_focus()
-	$saved.release_focus()
-	$btn_start.release_focus()
 	get_tree().paused = false
+	playing_back = true
 	$AnimationPlayer.play_backwards("new_animation")
 	$"../PStart".visible = true
+	release_all_focus()
 
 func _on_saved_pressed() -> void:
-	new_game = false
 	Global.play_sound(Global.InteractSFX)
+	save_pressed()
+
+func save_pressed():
+	new_game = false
 	var idx = 1
 	if Global.SALAMANDER_STATUS:
 		idx = 4
@@ -49,14 +74,22 @@ func _on_saved_pressed() -> void:
 	text += "Muertes 💀: " + str(Global.DEATHS)
 	
 	$lbl_status.text = text
+	
+func new_pressed():
+	new_game = true
+	$lbl_status.text = "Iniciar partida nueva.\nPERDERAS TODO EL PROGRESO."
 
 func _on_new_pressed() -> void:
-	new_game = true
 	Global.play_sound(Global.InteractSFX)
-	$lbl_status.text = "Iniciar partida nueva.\nPERDERAS TODO EL PROGRESO."
+	new_pressed()
 
 func _on_btn_start_pressed() -> void:
 	Global.play_sound(Global.InteractSFX)
+	$saved.disabled = true
+	$new.disabled = true
+	$btn_volver.disabled = true
+	$btn_start.disabled = true
+	Global.play_sound(Global.Item3DSFX)
 	$Timer.start()
 
 func _on_timer_timeout() -> void:
@@ -73,3 +106,10 @@ func _on_timer_timeout() -> void:
 		Global.init_game()
 		
 	Global.scene_next()
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if playing_back:
+		playing_back = false
+		visible = false
+	else:
+		initial_focus()
