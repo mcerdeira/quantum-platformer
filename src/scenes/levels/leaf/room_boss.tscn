@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bm5n0nel4n2bp" path="res://sprites/stair_v1_1.png" id="9_a1bj8"]
 [ext_resource type="Texture2D" uid="uid://ddjpinqcpwyw5" path="res://sprites/stair_v2.png" id="10_a6cev"]
 [ext_resource type="Texture2D" uid="uid://dtccd8i2ldgvb" path="res://sprites/ice_cube_spr_0.png" id="11_g28hl"]
-[ext_resource type="Script" path="res://scenes/levels/room.gd" id="12_hmf0i"]
+[ext_resource type="Script" uid="uid://dbu25wradvuh1" path="res://scenes/levels/room.gd" id="12_hmf0i"]
 [ext_resource type="Texture2D" uid="uid://dw02vd8s8wsrw" path="res://sprites/vines.png" id="13_nqfsl"]
 [ext_resource type="Texture2D" uid="uid://dp7ucg8qc3iu8" path="res://sprites/horu/images/boss_leaf1.png" id="13_xxaqa"]
 [ext_resource type="Texture2D" uid="uid://dpcrtwqa2mio7" path="res://sprites/vines_burn.png" id="14_65yh5"]
@@ -271,9 +271,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1ixx2"]
 _data = {
-"phase1": SubResource("Animation_piagi"),
-"phase2": SubResource("Animation_nqan6"),
-"phase3": SubResource("Animation_bf0m7")
+&"phase1": SubResource("Animation_piagi"),
+&"phase2": SubResource("Animation_nqan6"),
+&"phase3": SubResource("Animation_bf0m7")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qs527"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2hr571lqpqmf"]
 
-[ext_resource type="Script" path="res://scenes/Fireball_holder.gd" id="1_6r6mo"]
+[ext_resource type="Script" uid="uid://dpwm2cq7l6jcd" path="res://scenes/Fireball_holder.gd" id="1_6r6mo"]
 [ext_resource type="PackedScene" uid="uid://bgf6ly14u3fi1" path="res://scenes/FireBall.tscn" id="1_e87hn"]
 
 [node name="FireballHolder" type="Node2D"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=19 format=3 uid="uid://d12inhoielv3c"]
 
-[ext_resource type="Script" path="res://scenes/BossExplosionShader_Ghost.gd" id="1_v8o1f"]
+[ext_resource type="Script" uid="uid://c0ahufipk5wfk" path="res://scenes/BossExplosionShader_Ghost.gd" id="1_v8o1f"]
 [ext_resource type="Texture2D" uid="uid://dc3b434626601" path="res://sprites/horu/images/light_boss_ghost.png" id="2_7ax61"]
-[ext_resource type="Shader" path="res://scenes/boss_explosion_sprite.gdshader" id="2_jeu5y"]
+[ext_resource type="Shader" uid="uid://ox0gvagvfpaw" path="res://scenes/boss_explosion_sprite.gdshader" id="2_jeu5y"]
 [ext_resource type="Texture2D" uid="uid://cikr25pn1l3fr" path="res://sprites/horu/images/ghost_boss_dead1.png" id="3_y8e0q"]
 [ext_resource type="Texture2D" uid="uid://byml36jufg4fw" path="res://sprites/horu/images/ghost_boss1.png" id="5_w5xw1"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="6_b1bnx"]
@@ -49,10 +49,10 @@ noise = SubResource("FastNoiseLite_5wtc0")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hkrjh"]
 shader = ExtResource("2_jeu5y")
-shader_parameter/progress = 0.0
-shader_parameter/strength = 0.7
 shader_parameter/noise_tex_normal = SubResource("NoiseTexture2D_p1i0l")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_qt8um")
+shader_parameter/progress = 0.0
+shader_parameter/strength = 0.7
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ir3tq"]
 animations = [{
@@ -111,8 +111,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ylbti"]
 _data = {
-"RESET": SubResource("Animation_gyec7"),
-"new_animation": SubResource("Animation_144ah")
+&"RESET": SubResource("Animation_gyec7"),
+&"new_animation": SubResource("Animation_144ah")
 }
 
 [node name="BossExplosionShader_Ghost" type="Node2D"]

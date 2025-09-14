@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dwdbd4mb0x24f"]
 
-[ext_resource type="Script" path="res://scenes/big_fish.gd" id="1_r21jw"]
+[ext_resource type="Script" uid="uid://djsti8sxwiewj" path="res://scenes/big_fish.gd" id="1_r21jw"]
 [ext_resource type="Texture2D" uid="uid://ium05akcns7p" path="res://sprites/horu/images/big_fish2.png" id="2_s413c"]
 [ext_resource type="Texture2D" uid="uid://p7abgdhauajt" path="res://sprites/horu/images/big_fish3.png" id="3_yryxn"]
 [ext_resource type="Texture2D" uid="uid://2wjm1sok4qva" path="res://sprites/horu/images/big_fish1.png" id="4_ymcso"]

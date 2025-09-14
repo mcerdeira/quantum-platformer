@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=3 uid="uid://clrseiglpcx68"]
 
-[ext_resource type="Script" path="res://scenes/enemy_bat.gd" id="1_677ym"]
+[ext_resource type="Script" uid="uid://c1jy0m3yx47q7" path="res://scenes/enemy_bat.gd" id="1_677ym"]
 [ext_resource type="Texture2D" uid="uid://bfmd1soivmlg7" path="res://sprites/dead_fire_spr_0.png" id="3_424bg"]
 [ext_resource type="Texture2D" uid="uid://cxc5th2r8hfpc" path="res://sprites/dead_fire_spr_1.png" id="4_lh50p"]
 [ext_resource type="Texture2D" uid="uid://guig68bsd58x" path="res://sprites/bat_spr_3.png" id="5_pjefn"]
@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c1fa6mp1vngqq" path="res://sprites/horu/images/enemy_danger_spr_0.png" id="15_vsfrp"]
 [ext_resource type="Texture2D" uid="uid://q0bln7b1u2oh" path="res://sprites/horu/images/enemy_danger_spr_1.png" id="16_ygo2s"]
 [ext_resource type="Texture2D" uid="uid://1ybi7osvso8b" path="res://sprites/horu/images/enemy_danger_spr_2.png" id="17_bjqtg"]
-[ext_resource type="Script" path="res://scenes/bat_area.gd" id="18_1w65i"]
+[ext_resource type="Script" uid="uid://bfxg0ofqgbjfj" path="res://scenes/bat_area.gd" id="18_1w65i"]
 [ext_resource type="Texture2D" uid="uid://capc1hdlw0gpl" path="res://sprites/horu/images/stars1.png" id="18_pjmnh"]
 [ext_resource type="Texture2D" uid="uid://caxf4k5okg3cr" path="res://sprites/horu/images/stars2.png" id="19_q0cqs"]
 [ext_resource type="Texture2D" uid="uid://bpaljgkr5iu14" path="res://sprites/horu/images/stars3.png" id="20_8nghy"]
@@ -172,7 +172,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b5rsm"]
 _data = {
-"killing": SubResource("Animation_k8fva")
+&"killing": SubResource("Animation_k8fva")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4xq1w"]

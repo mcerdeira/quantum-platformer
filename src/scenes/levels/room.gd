@@ -3,7 +3,8 @@ var q = 0
 @export var pre_final_scene = false
 
 func _ready():
-	Global.save_game()
+	if q == 0:
+		Global.save_game()
 	if pre_final_scene:
 		if Global.AlreadySEEN:
 			$player_marker.queue_free()

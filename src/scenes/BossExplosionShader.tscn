@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://2t17q8uh38pg"]
 
-[ext_resource type="Script" path="res://scenes/BossExplosionShader.gd" id="1_51u5l"]
-[ext_resource type="Shader" path="res://scenes/boss_explosion_sprite.gdshader" id="1_vgcf1"]
+[ext_resource type="Script" uid="uid://cj0pplobqrdyo" path="res://scenes/BossExplosionShader.gd" id="1_51u5l"]
+[ext_resource type="Shader" uid="uid://ox0gvagvfpaw" path="res://scenes/boss_explosion_sprite.gdshader" id="1_vgcf1"]
 [ext_resource type="Texture2D" uid="uid://d1ntc3x374hru" path="res://sprites/horu/images/boss_leaf_shader.png" id="2_cddep"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_byki3"]
@@ -30,10 +30,10 @@ noise = SubResource("FastNoiseLite_5wtc0")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hkrjh"]
 shader = ExtResource("1_vgcf1")
-shader_parameter/progress = 0.0
-shader_parameter/strength = 0.7
 shader_parameter/noise_tex_normal = SubResource("NoiseTexture2D_p1i0l")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_qt8um")
+shader_parameter/progress = 0.0
+shader_parameter/strength = 0.7
 
 [sub_resource type="Animation" id="Animation_gyec7"]
 length = 0.001
@@ -67,8 +67,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ylbti"]
 _data = {
-"RESET": SubResource("Animation_gyec7"),
-"new_animation": SubResource("Animation_144ah")
+&"RESET": SubResource("Animation_gyec7"),
+&"new_animation": SubResource("Animation_144ah")
 }
 
 [node name="BossExplosionShader" type="Node2D"]

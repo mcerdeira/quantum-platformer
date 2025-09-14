@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://d2o5807fjfxn6"]
 
-[ext_resource type="Script" path="res://scenes/GachaPon.gd" id="1_p6t3q"]
+[ext_resource type="Script" uid="uid://cd5w75pgvhdbx" path="res://scenes/GachaPon.gd" id="1_p6t3q"]
 [ext_resource type="Texture2D" uid="uid://c3wmt7870xukn" path="res://sprites/teleporter_box.png" id="2_0n8jh"]
 [ext_resource type="Texture2D" uid="uid://cog7sk80ykf4o" path="res://sprites/bomb.png" id="2_abijd"]
 [ext_resource type="Texture2D" uid="uid://csp0ardyjl54b" path="res://sprites/spring.png" id="2_alrsi"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://trxeowv3jmbb" path="res://sprites/smoke_bomb.png" id="3_ql0pn"]
 [ext_resource type="Texture2D" uid="uid://b3tca6epdaoix" path="res://sprites/rock.png" id="4_55mgg"]
 [ext_resource type="Texture2D" uid="uid://dlpgs1xdpjh2p" path="res://sprites/gatcha_machine.png" id="9_s6kgy"]
-[ext_resource type="Shader" path="res://scenes/Item.gdshader" id="11_rdlru"]
+[ext_resource type="Shader" uid="uid://dl6p4elpfxi71" path="res://scenes/Item.gdshader" id="11_rdlru"]
 [ext_resource type="Texture2D" uid="uid://c6gf7vjf30biq" path="res://sprites/coin.png" id="12_8x5mk"]
 [ext_resource type="Texture2D" uid="uid://bljcg74u2x5sd" path="res://sprites/invisibility.png" id="13_5llb6"]
 [ext_resource type="Texture2D" uid="uid://cgwhbneb6ejq7" path="res://sprites/no-coin.png" id="14_3k1kh"]
@@ -30,7 +30,7 @@ shader = ExtResource("11_rdlru")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 3.0
 shader_parameter/shine_size = 0.01
-shader_parameter/white = null
+shader_parameter/white = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6pxuf"]
 animations = [{

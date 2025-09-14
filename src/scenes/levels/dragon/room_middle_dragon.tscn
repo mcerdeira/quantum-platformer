@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_djh1l"]
 [ext_resource type="Texture2D" uid="uid://bx06swrbyq4p3" path="res://sprites/floor_spr_blasted.png" id="3_iu1ro"]
 [ext_resource type="Texture2D" uid="uid://cvgek1xj28trv" path="res://sprites/fireball_box.png" id="4_seeca"]
-[ext_resource type="Script" path="res://scenes/levels/room.gd" id="5_ume4r"]
+[ext_resource type="Script" uid="uid://dbu25wradvuh1" path="res://scenes/levels/room.gd" id="5_ume4r"]
 [ext_resource type="Texture2D" uid="uid://dw02vd8s8wsrw" path="res://sprites/vines.png" id="6_ghu16"]
 [ext_resource type="Texture2D" uid="uid://dpcrtwqa2mio7" path="res://sprites/vines_burn.png" id="7_1ii0n"]
 [ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="12_p2ccf"]
@@ -17,8 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://b43qx5u4r184u" path="res://sprites/lava_full_x3.png" id="20_2dhct"]
 [ext_resource type="Texture2D" uid="uid://citp5iuv3vsxk" path="res://sprites/lava_agit_x3.png" id="21_8glho"]
 [ext_resource type="Texture2D" uid="uid://8vk57v5ly4la" path="res://sprites/lava_complete_x3.png" id="22_jk33s"]
-[ext_resource type="Script" path="res://scenes/lava.gd" id="23_6b3ly"]
-[ext_resource type="Script" path="res://scenes/kill_zone.gd" id="24_k3d2q"]
+[ext_resource type="Script" uid="uid://cxwrqws7ciphx" path="res://scenes/lava.gd" id="23_6b3ly"]
+[ext_resource type="Script" uid="uid://3ax6i62r4pmr" path="res://scenes/kill_zone.gd" id="24_k3d2q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6c8e6"]
 texture = ExtResource("1_hk07y")

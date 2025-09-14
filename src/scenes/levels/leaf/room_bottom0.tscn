@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="1_dhvkq"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_sqopp"]
 [ext_resource type="Texture2D" uid="uid://bpklywyo2vuhm" path="res://sprites/stair_v3.png" id="3_2hwdx"]
-[ext_resource type="Script" path="res://scenes/levels/room.gd" id="3_8qptw"]
+[ext_resource type="Script" uid="uid://dbu25wradvuh1" path="res://scenes/levels/room.gd" id="3_8qptw"]
 [ext_resource type="Texture2D" uid="uid://bx06swrbyq4p3" path="res://sprites/floor_spr_blasted.png" id="3_k36tt"]
 [ext_resource type="Texture2D" uid="uid://cvgek1xj28trv" path="res://sprites/fireball_box.png" id="4_062ok"]
 [ext_resource type="Texture2D" uid="uid://cl4yofko80xxp" path="res://sprites/stair_v4.png" id="4_ck4da"]

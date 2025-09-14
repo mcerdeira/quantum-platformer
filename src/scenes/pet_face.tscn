@@ -1,7 +1,7 @@
 [gd_scene load_steps=39 format=3 uid="uid://b10641td85qi1"]
 
 [ext_resource type="Texture2D" uid="uid://cykicgnhr3ojp" path="res://sprites/horu/images/pet1.png" id="1_bendl"]
-[ext_resource type="Script" path="res://scenes/pet_face.gd" id="1_i84ej"]
+[ext_resource type="Script" uid="uid://qsuhi5oysycj" path="res://scenes/pet_face.gd" id="1_i84ej"]
 [ext_resource type="Texture2D" uid="uid://btxspjx88sugq" path="res://sprites/horu/images/pet2.png" id="2_7vyxw"]
 [ext_resource type="Texture2D" uid="uid://buyi5kind5agu" path="res://sprites/horu/images/pet3.png" id="3_g5f4p"]
 [ext_resource type="Texture2D" uid="uid://bvmm71s6kh1ss" path="res://sprites/pet_face1.png" id="5_yh8i4"]

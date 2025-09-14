@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cvgek1xj28trv" path="res://sprites/fireball_box.png" id="8_5he34"]
 [ext_resource type="Texture2D" uid="uid://ddjpinqcpwyw5" path="res://sprites/stair_v2.png" id="9_3gwqr"]
 [ext_resource type="Texture2D" uid="uid://dtccd8i2ldgvb" path="res://sprites/ice_cube_spr_0.png" id="10_wtko6"]
-[ext_resource type="Script" path="res://scenes/levels/room.gd" id="11_g3w6b"]
+[ext_resource type="Script" uid="uid://dbu25wradvuh1" path="res://scenes/levels/room.gd" id="11_g3w6b"]
 [ext_resource type="Texture2D" uid="uid://dw02vd8s8wsrw" path="res://sprites/vines.png" id="12_i03sd"]
 [ext_resource type="Texture2D" uid="uid://dpcrtwqa2mio7" path="res://sprites/vines_burn.png" id="13_vtqdx"]
 [ext_resource type="PackedScene" uid="uid://bfmdje7uoppc1" path="res://scenes/levels/prisoner_marker.tscn" id="14_nyx6w"]

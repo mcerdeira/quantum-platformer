@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_ic7qv"]
 [ext_resource type="Texture2D" uid="uid://bpklywyo2vuhm" path="res://sprites/stair_v3.png" id="3_c2y7f"]
 [ext_resource type="Texture2D" uid="uid://bx06swrbyq4p3" path="res://sprites/floor_spr_blasted.png" id="3_q5pyv"]
-[ext_resource type="Script" path="res://scenes/levels/room.gd" id="3_rxbgx"]
+[ext_resource type="Script" uid="uid://dbu25wradvuh1" path="res://scenes/levels/room.gd" id="3_rxbgx"]
 [ext_resource type="Texture2D" uid="uid://cvgek1xj28trv" path="res://sprites/fireball_box.png" id="4_12f77"]
 [ext_resource type="PackedScene" uid="uid://c4vd4vxwdwdqh" path="res://scenes/levels/enemy_marker.tscn" id="4_v8nfd"]
 [ext_resource type="PackedScene" uid="uid://bfmdje7uoppc1" path="res://scenes/levels/prisoner_marker.tscn" id="5_1vna7"]

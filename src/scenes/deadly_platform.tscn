@@ -1,11 +1,11 @@
 [gd_scene load_steps=20 format=3 uid="uid://b2w80dxra5rut"]
 
-[ext_resource type="Script" path="res://scenes/deadly_platform.gd" id="1_fntm8"]
+[ext_resource type="Script" uid="uid://dhtvmyypo3sip" path="res://scenes/deadly_platform.gd" id="1_fntm8"]
 [ext_resource type="Texture2D" uid="uid://cs6x7nssseykd" path="res://sprites/tetris_die_spr_0.png" id="1_h830m"]
 [ext_resource type="Texture2D" uid="uid://0hgbwe5sqxpy" path="res://sprites/tetris_die_spr_1.png" id="3_rhuff"]
 [ext_resource type="Texture2D" uid="uid://bgr42nspmsgnn" path="res://sprites/tetris_die_spr_2.png" id="4_m52mt"]
-[ext_resource type="Script" path="res://scenes/explosion.gd" id="5_fdiky"]
-[ext_resource type="Script" path="res://scenes/explosions.gd" id="6_7sbsu"]
+[ext_resource type="Script" uid="uid://c60dw06nxodu" path="res://scenes/explosion.gd" id="5_fdiky"]
+[ext_resource type="Script" uid="uid://dkngvf34nfpdb" path="res://scenes/explosions.gd" id="6_7sbsu"]
 [ext_resource type="Texture2D" uid="uid://by1o5rlsqwsfb" path="res://sprites/blast_spr_3.png" id="7_uejul"]
 [ext_resource type="Texture2D" uid="uid://dr1i3x4vvool6" path="res://sprites/blast_spr_4.png" id="8_4ic2u"]
 [ext_resource type="Texture2D" uid="uid://b6od4ayssamtr" path="res://sprites/blast_spr_9.png" id="9_pw1et"]
@@ -113,7 +113,7 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tqwta"]
 _data = {
-"new_animation": SubResource("Animation_h0gkd")
+&"new_animation": SubResource("Animation_h0gkd")
 }
 
 [node name="DeadlyPlatform" type="StaticBody2D"]

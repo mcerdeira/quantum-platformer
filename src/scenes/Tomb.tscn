@@ -1,12 +1,12 @@
 [gd_scene load_steps=29 format=3 uid="uid://q5jba1wlplcx"]
 
 [ext_resource type="Texture2D" uid="uid://cwiafy02tr7dy" path="res://sprites/gravestone_spr_0.png" id="1_16odb"]
-[ext_resource type="Script" path="res://scenes/Tomb.gd" id="1_onnxa"]
+[ext_resource type="Script" uid="uid://de5m6kes4tiof" path="res://scenes/Tomb.gd" id="1_onnxa"]
 [ext_resource type="Texture2D" uid="uid://c2q3s5v6yp4o3" path="res://sprites/tomb_boss_spr_4.png" id="2_2e2jy"]
 [ext_resource type="Texture2D" uid="uid://bmjy1jkwima0m" path="res://sprites/gravestone_spr_1.png" id="2_a0p5i"]
 [ext_resource type="Texture2D" uid="uid://dp75s2t7pnhpr" path="res://sprites/gravestone_spr_3.png" id="4_wmt0x"]
 [ext_resource type="Texture2D" uid="uid://b1sq8wju3n8o0" path="res://sprites/gravestone_spr_4.png" id="5_4gq4g"]
-[ext_resource type="Shader" path="res://scenes/Item.gdshader" id="6_dniun"]
+[ext_resource type="Shader" uid="uid://dl6p4elpfxi71" path="res://scenes/Item.gdshader" id="6_dniun"]
 [ext_resource type="Texture2D" uid="uid://cog7sk80ykf4o" path="res://sprites/bomb.png" id="7_8cckg"]
 [ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="8_udsty"]
 [ext_resource type="Texture2D" uid="uid://c6gf7vjf30biq" path="res://sprites/coin.png" id="9_xlkwx"]
@@ -60,7 +60,7 @@ shader = ExtResource("6_dniun")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 3.0
 shader_parameter/shine_size = 0.01
-shader_parameter/white = null
+shader_parameter/white = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o1tye"]
 animations = [{

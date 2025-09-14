@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cy1314x4uh7m1" path="res://sprites/floor_tomb_fill1.png" id="13_hwcgk"]
 [ext_resource type="Texture2D" uid="uid://cp4wcwrlp5l3c" path="res://sprites/floor_tomb_fill2.png" id="14_0gh6l"]
 [ext_resource type="Texture2D" uid="uid://c2hy23gccntv2" path="res://sprites/floor_tomb_fill3.png" id="15_bu25w"]
-[ext_resource type="Script" path="res://scenes/levels/room.gd" id="16_gftr3"]
+[ext_resource type="Script" uid="uid://dbu25wradvuh1" path="res://scenes/levels/room.gd" id="16_gftr3"]
 [ext_resource type="PackedScene" uid="uid://bfmdje7uoppc1" path="res://scenes/levels/prisoner_marker.tscn" id="17_iorgk"]
 [ext_resource type="PackedScene" uid="uid://c4vd4vxwdwdqh" path="res://scenes/levels/enemy_marker.tscn" id="18_xltst"]
 [ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="19_821w2"]

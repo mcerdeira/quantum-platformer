@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmngwtmohtfn"]
 
-[ext_resource type="Script" path="res://scenes/smoke_obj.gd" id="1_wvj51"]
+[ext_resource type="Script" uid="uid://b7a1ool3wo3ex" path="res://scenes/smoke_obj.gd" id="1_wvj51"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eoi3l"]
 radius = 199.01

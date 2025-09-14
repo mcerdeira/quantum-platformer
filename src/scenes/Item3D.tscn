@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cusnut7c2fjy3"]
 
-[ext_resource type="Script" path="res://scenes/Item3D.gd" id="1_x667o"]
-[ext_resource type="Script" path="res://scenes/MeshInstance3D.gd" id="2_eadms"]
+[ext_resource type="Script" uid="uid://dsegmt8g8dwr7" path="res://scenes/Item3D.gd" id="1_x667o"]
+[ext_resource type="Script" uid="uid://don6h0d6retwj" path="res://scenes/MeshInstance3D.gd" id="2_eadms"]
 [ext_resource type="Texture2D" uid="uid://0m7nv2v35ed" path="res://sprites/qr/artifact_parts1.png" id="2_s3qwg"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="18_iwylu"]
 

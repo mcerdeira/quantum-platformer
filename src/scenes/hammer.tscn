@@ -1,15 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://cxrfysnm3t4eq"]
 
-[ext_resource type="Shader" path="res://scenes/Item.gdshader" id="1_0xd0p"]
+[ext_resource type="Shader" uid="uid://dl6p4elpfxi71" path="res://scenes/Item.gdshader" id="1_0xd0p"]
 [ext_resource type="Texture2D" uid="uid://b15crly7ketnr" path="res://sprites/horu/images/hammer.png" id="1_wubha"]
-[ext_resource type="Script" path="res://scenes/hammer.gd" id="3_ia7wm"]
+[ext_resource type="Script" uid="uid://ni41cnih8vnd" path="res://scenes/hammer.gd" id="3_ia7wm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xfuon"]
 shader = ExtResource("1_0xd0p")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 1.0
 shader_parameter/shine_size = 0.01
-shader_parameter/white = null
+shader_parameter/white = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qflu7"]
 

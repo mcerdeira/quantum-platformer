@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bfmdje7uoppc1"]
 
-[ext_resource type="Script" path="res://scenes/levels/prisoner_marker.gd" id="1_tn7ey"]
+[ext_resource type="Script" uid="uid://deeixkmqek70r" path="res://scenes/levels/prisoner_marker.gd" id="1_tn7ey"]
 [ext_resource type="Texture2D" uid="uid://cjfk1120ldllh" path="res://sprites/sleepy_trap_0.png" id="2_0th4h"]
 
 [node name="prisoner_marker" type="Marker2D"]

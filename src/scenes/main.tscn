@@ -1,9 +1,9 @@
-[gd_scene load_steps=78 format=3 uid="uid://bveav6ctdlmbu"]
+[gd_scene load_steps=85 format=3 uid="uid://bveav6ctdlmbu"]
 
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_tvtda"]
+[ext_resource type="Script" uid="uid://citgbkbjovjq6" path="res://scenes/main.gd" id="1_tvtda"]
 [ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="2_6led8"]
-[ext_resource type="Shader" path="res://scenes/main.gdshader" id="2_82qdg"]
-[ext_resource type="Script" path="res://scenes/GlobalCamera.gd" id="2_l3o6v"]
+[ext_resource type="Shader" uid="uid://cnvxemhob3xav" path="res://scenes/main.gdshader" id="2_82qdg"]
+[ext_resource type="Script" uid="uid://dydkpvrocdiwf" path="res://scenes/GlobalCamera.gd" id="2_l3o6v"]
 [ext_resource type="PackedScene" uid="uid://wyy20tm0bhda" path="res://scenes/cheats.tscn" id="2_pfq3c"]
 [ext_resource type="PackedScene" uid="uid://duq0f6y40fuwc" path="res://scenes/surface.tscn" id="2_pqtrm"]
 [ext_resource type="PackedScene" uid="uid://ba2tdpbkss4pb" path="res://scenes/shaker.tscn" id="2_ybhrg"]
@@ -13,20 +13,20 @@
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="3_n8kdd"]
 [ext_resource type="Texture2D" uid="uid://bx06swrbyq4p3" path="res://sprites/floor_spr_blasted.png" id="4_21lft"]
 [ext_resource type="Texture2D" uid="uid://dym5qjnbis6di" path="res://sprites/floor_no_destruct.png" id="4_gd61u"]
-[ext_resource type="Script" path="res://scenes/levels/room.gd" id="4_t3tcr"]
+[ext_resource type="Script" uid="uid://dbu25wradvuh1" path="res://scenes/levels/room.gd" id="4_t3tcr"]
 [ext_resource type="Texture2D" uid="uid://b3tca6epdaoix" path="res://sprites/rock.png" id="5_v07bx"]
 [ext_resource type="Texture2D" uid="uid://dl25vsjgj24st" path="res://sprites/prisoner_head.png" id="6_rjva8"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="7_2v1dk"]
 [ext_resource type="Texture2D" uid="uid://c2adubgvb8e4q" path="res://sprites/selected.png" id="7_rtry5"]
 [ext_resource type="Texture2D" uid="uid://pm7mhxqnqxtq" path="res://sprites/radar.png" id="8_fdv2s"]
 [ext_resource type="PackedScene" uid="uid://dv6t6lrhdu04u" path="res://scenes/boss_bar.tscn" id="9_acvra"]
-[ext_resource type="Shader" path="res://scenes/FX.gdshader" id="9_l7p0g"]
+[ext_resource type="Shader" uid="uid://b0psv2mjbn6u" path="res://scenes/FX.gdshader" id="9_l7p0g"]
 [ext_resource type="PackedScene" uid="uid://bu7ckbjmd1lhd" path="res://scenes/video_stream_player.tscn" id="9_qiw31"]
-[ext_resource type="Script" path="res://scenes/VideoContainer.gd" id="9_tko05"]
-[ext_resource type="Script" path="res://scenes/Pause.gd" id="9_wpesn"]
-[ext_resource type="Script" path="res://scenes/FX.gd" id="10_agwh5"]
+[ext_resource type="Script" uid="uid://st62tutwk085" path="res://scenes/VideoContainer.gd" id="9_tko05"]
+[ext_resource type="Script" uid="uid://dmk303earxr1k" path="res://scenes/Pause.gd" id="9_wpesn"]
+[ext_resource type="Script" uid="uid://crnmbjur2ob81" path="res://scenes/FX.gd" id="10_agwh5"]
 [ext_resource type="PackedScene" uid="uid://c8j4ld6iulqjl" path="res://scenes/map.tscn" id="10_wiiij"]
-[ext_resource type="Script" path="res://scenes/LavaFX.gd" id="12_wh2nv"]
+[ext_resource type="Script" uid="uid://c8hrl8nlgeblg" path="res://scenes/LavaFX.gd" id="12_wh2nv"]
 [ext_resource type="Texture2D" uid="uid://bljcg74u2x5sd" path="res://sprites/invisibility.png" id="15_7qhek"]
 [ext_resource type="Texture2D" uid="uid://cwiafy02tr7dy" path="res://sprites/gravestone_spr_0.png" id="15_h1amw"]
 [ext_resource type="Texture2D" uid="uid://jwkpmr5n1bns" path="res://sprites/faucet_icon.png" id="15_hmopd"]
@@ -41,19 +41,22 @@
 [ext_resource type="Texture2D" uid="uid://cc6ruwut57x1q" path="res://sprites/resurrect.png" id="24_fxvvi"]
 [ext_resource type="Texture2D" uid="uid://stlndvxp0x7l" path="res://sprites/wings.png" id="24_m12jp"]
 [ext_resource type="PackedScene" uid="uid://yw5hjnyqexic" path="res://scenes/lava.tscn" id="24_nijr5"]
-[ext_resource type="Script" path="res://scenes/FADE.gd" id="26_4o44h"]
+[ext_resource type="Script" uid="uid://bkax5k4d82eqq" path="res://scenes/FADE.gd" id="26_4o44h"]
 [ext_resource type="Texture2D" uid="uid://dsq1qbrwmy7u3" path="res://sprites/cosito1.png" id="28_eqb2r"]
 [ext_resource type="Texture2D" uid="uid://chgbadtf8x5k6" path="res://sprites/cosito2.png" id="29_rgt4v"]
 [ext_resource type="Texture2D" uid="uid://ytl3s67gkq0y" path="res://sprites/cosito3.png" id="30_mxdic"]
 [ext_resource type="PackedScene" uid="uid://bm27sx6y5d26" path="res://scenes/river.tscn" id="31_3m334"]
+[ext_resource type="Texture2D" uid="uid://bwyvpmr16e37t" path="res://sprites/diskette.png" id="40_1v6qk"]
 [ext_resource type="PackedScene" uid="uid://dwdbd4mb0x24f" path="res://scenes/big_fish.tscn" id="40_3bssv"]
-[ext_resource type="Script" path="res://scenes/binocular_fade.gd" id="46_sw70b"]
+[ext_resource type="Script" uid="uid://dvgmh6a17w28q" path="res://scenes/save_sprite.gd" id="41_augu2"]
+[ext_resource type="Script" uid="uid://hxfkrohn8kpk" path="res://scenes/binocular_fade.gd" id="46_sw70b"]
 [ext_resource type="PackedScene" uid="uid://bhoti11gyh17k" path="res://scenes/waterfall.tscn" id="46_v8l5n"]
 [ext_resource type="PackedScene" uid="uid://3ipmo8ql25xa" path="res://scenes/trees.tscn" id="50_mnffl"]
-[ext_resource type="Script" path="res://scenes/parallax_layer.gd" id="50_uujtt"]
-[ext_resource type="Script" path="res://scenes/back_ground_cave.gd" id="51_m0fa5"]
+[ext_resource type="Script" uid="uid://b4laagqhmxuod" path="res://scenes/parallax_layer.gd" id="50_uujtt"]
+[ext_resource type="PackedScene" uid="uid://06q5xk7jbo17" path="res://scenes/chain.tscn" id="51_dnhof"]
+[ext_resource type="Script" uid="uid://b7qr4h54y7svq" path="res://scenes/back_ground_cave.gd" id="51_m0fa5"]
 [ext_resource type="Texture2D" uid="uid://df0cjt0eax638" path="res://sprites/spritesheets/back_trees.png" id="52_o3h4b"]
-[ext_resource type="Script" path="res://scenes/back_trees.gd" id="53_q8tfa"]
+[ext_resource type="Script" uid="uid://bwbboxj8j3mas" path="res://scenes/back_trees.gd" id="53_q8tfa"]
 [ext_resource type="Texture2D" uid="uid://b5tybvkp60wb3" path="res://sprites/spritesheets/back.png" id="55_pliwv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qr43o"]
@@ -123,7 +126,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xhxbh"]
 _data = {
-"new_animation": SubResource("Animation_1ni5f")
+&"new_animation": SubResource("Animation_1ni5f")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yq7gw"]
@@ -241,8 +244,70 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sq6dk"]
 _data = {
-"RESET": SubResource("Animation_e7ck8"),
-"new_animation": SubResource("Animation_tie5b")
+&"RESET": SubResource("Animation_e7ck8"),
+&"new_animation": SubResource("Animation_tie5b")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dnhof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("40_1v6qk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_augu2"]
+resource_name = "new_animation"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SaveSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 1), Vector2(1, 1), Vector2(0, 1), Vector2(1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide_me"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_tm6hj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SaveSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kf5aa"]
+_data = {
+&"RESET": SubResource("Animation_tm6hj"),
+&"new_animation": SubResource("Animation_augu2")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e02py"]
@@ -371,7 +436,7 @@ shader_parameter/amount = 0.1
 shader = ExtResource("2_82qdg")
 shader_parameter/temperatureRange = 4.75e-08
 shader_parameter/hotColor = Color(0.647059, 0.466667, 0.0352941, 0.101961)
-shader_parameter/coldColor = null
+shader_parameter/coldColor = Color(0, 0, 0, 1)
 shader_parameter/heatAmplitude = 0.0
 shader_parameter/heatPeriod = 6.0
 shader_parameter/heatPhaseShift = 8.0
@@ -424,8 +489,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_thjti"]
 _data = {
-"RESET": SubResource("Animation_unlvt"),
-"new_animation": SubResource("Animation_i7meb")
+&"RESET": SubResource("Animation_unlvt"),
+&"new_animation": SubResource("Animation_i7meb")
 }
 
 [sub_resource type="Animation" id="Animation_8d1w7"]
@@ -446,7 +511,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_at5wx"]
 _data = {
-"new_animation": SubResource("Animation_8d1w7")
+&"new_animation": SubResource("Animation_8d1w7")
 }
 
 [node name="Main" type="Node2D"]
@@ -505,7 +570,7 @@ autowrap_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/VideoContainer"]
 libraries = {
-"": SubResource("AnimationLibrary_xhxbh")
+&"": SubResource("AnimationLibrary_xhxbh")
 }
 
 [node name="Pause" type="Node2D" parent="CanvasLayer"]
@@ -720,7 +785,7 @@ text = "CONTINUAR"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Pause"]
 libraries = {
-"": SubResource("AnimationLibrary_sq6dk")
+&"": SubResource("AnimationLibrary_sq6dk")
 }
 speed_scale = 10.0
 
@@ -730,6 +795,22 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 149.0
 metadata/_edit_use_anchors_ = true
+
+[node name="SaveMan" type="Node2D" parent="CanvasLayer/Control"]
+visible = false
+position = Vector2(862.308, 471.538)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("41_augu2")
+
+[node name="SaveSprite" type="AnimatedSprite2D" parent="CanvasLayer/Control/SaveMan"]
+z_index = 4096
+sprite_frames = SubResource("SpriteFrames_dnhof")
+
+[node name="anim" type="AnimationPlayer" parent="CanvasLayer/Control/SaveMan"]
+libraries = {
+&"": SubResource("AnimationLibrary_kf5aa")
+}
+speed_scale = 2.0
 
 [node name="Cheats" parent="CanvasLayer/Control" instance=ExtResource("2_pfq3c")]
 visible = false
@@ -925,7 +1006,7 @@ script = ExtResource("46_sw70b")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BinocularFade"]
 libraries = {
-"": SubResource("AnimationLibrary_thjti")
+&"": SubResource("AnimationLibrary_thjti")
 }
 
 [node name="FADE" type="ColorRect" parent="."]
@@ -941,7 +1022,7 @@ script = ExtResource("26_4o44h")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FADE"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_at5wx")
+&"": SubResource("AnimationLibrary_at5wx")
 }
 speed_scale = 0.5
 
@@ -1071,39 +1152,68 @@ position = Vector2(559, 399)
 
 [node name="ParallaxBackground" type="Node2D" parent="."]
 
-[node name="ParallaxLayer" type="Node2D" parent="ParallaxBackground" node_paths=PackedStringArray("foreground_tree")]
+[node name="ParallaxLayerTomb" type="Node2D" parent="ParallaxBackground" node_paths=PackedStringArray("foreground_tree")]
+visible = false
+script = ExtResource("50_uujtt")
+foreground_tree = NodePath("Chains")
+fg_factor = 0.8
+type = "tomb"
+
+[node name="Chains" type="Node2D" parent="ParallaxBackground/ParallaxLayerTomb"]
+modulate = Color(0.230315, 0.230315, 0.230315, 1)
+z_index = 4096
+position = Vector2(252, 109)
+scale = Vector2(30, 30)
+
+[node name="Chain" parent="ParallaxBackground/ParallaxLayerTomb/Chains" instance=ExtResource("51_dnhof")]
+
+[node name="Chain4" parent="ParallaxBackground/ParallaxLayerTomb/Chains" instance=ExtResource("51_dnhof")]
+position = Vector2(16.8, 0)
+
+[node name="Chain2" parent="ParallaxBackground/ParallaxLayerTomb/Chains" instance=ExtResource("51_dnhof")]
+position = Vector2(59.4333, -1.3)
+
+[node name="Chain3" parent="ParallaxBackground/ParallaxLayerTomb/Chains" instance=ExtResource("51_dnhof")]
+position = Vector2(132.3, -1.3)
+
+[node name="Chain5" parent="ParallaxBackground/ParallaxLayerTomb/Chains" instance=ExtResource("51_dnhof")]
+position = Vector2(115.5, -1.3)
+
+[node name="ParallaxLayerTrees" type="Node2D" parent="ParallaxBackground" node_paths=PackedStringArray("foreground_tree")]
+visible = false
 script = ExtResource("50_uujtt")
 foreground_tree = NodePath("Trees")
 fg_factor = 0.8
+type = "trees"
 
-[node name="Trees" type="Node2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Trees" type="Node2D" parent="ParallaxBackground/ParallaxLayerTrees"]
 modulate = Color(0.0646965, 0.0646965, 0.0646965, 1)
 z_index = 4095
 position = Vector2(0, 207)
 scale = Vector2(10, 10)
 
-[node name="Trees" parent="ParallaxBackground/ParallaxLayer/Trees" instance=ExtResource("50_mnffl")]
+[node name="Trees" parent="ParallaxBackground/ParallaxLayerTrees/Trees" instance=ExtResource("50_mnffl")]
 position = Vector2(44.1, 228)
 
-[node name="Trees2" parent="ParallaxBackground/ParallaxLayer/Trees" instance=ExtResource("50_mnffl")]
+[node name="Trees2" parent="ParallaxBackground/ParallaxLayerTrees/Trees" instance=ExtResource("50_mnffl")]
 position = Vector2(98.5, 237.1)
 
-[node name="Trees3" parent="ParallaxBackground/ParallaxLayer/Trees" instance=ExtResource("50_mnffl")]
+[node name="Trees3" parent="ParallaxBackground/ParallaxLayerTrees/Trees" instance=ExtResource("50_mnffl")]
 position = Vector2(174.8, 243.1)
 
-[node name="Trees4" parent="ParallaxBackground/ParallaxLayer/Trees" instance=ExtResource("50_mnffl")]
+[node name="Trees4" parent="ParallaxBackground/ParallaxLayerTrees/Trees" instance=ExtResource("50_mnffl")]
 position = Vector2(241.6, 250)
 
-[node name="Trees5" parent="ParallaxBackground/ParallaxLayer/Trees" instance=ExtResource("50_mnffl")]
+[node name="Trees5" parent="ParallaxBackground/ParallaxLayerTrees/Trees" instance=ExtResource("50_mnffl")]
 position = Vector2(298.9, 262.5)
 
-[node name="Trees6" parent="ParallaxBackground/ParallaxLayer/Trees" instance=ExtResource("50_mnffl")]
+[node name="Trees6" parent="ParallaxBackground/ParallaxLayerTrees/Trees" instance=ExtResource("50_mnffl")]
 position = Vector2(353.2, 239.1)
 
-[node name="Trees7" parent="ParallaxBackground/ParallaxLayer/Trees" instance=ExtResource("50_mnffl")]
+[node name="Trees7" parent="ParallaxBackground/ParallaxLayerTrees/Trees" instance=ExtResource("50_mnffl")]
 position = Vector2(432.4, 239.4)
 
-[node name="Trees8" parent="ParallaxBackground/ParallaxLayer/Trees" instance=ExtResource("50_mnffl")]
+[node name="Trees8" parent="ParallaxBackground/ParallaxLayerTrees/Trees" instance=ExtResource("50_mnffl")]
 position = Vector2(517.6, 242)
 
 [node name="BackGroundCave" type="Sprite2D" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://co7t0ic7dgox4"]
 
-[ext_resource type="Script" path="res://scenes/prisoner.gd" id="1_e8vj3"]
+[ext_resource type="Script" uid="uid://b2ucde0to31n6" path="res://scenes/prisoner.gd" id="1_e8vj3"]
 [ext_resource type="Texture2D" uid="uid://f4cqdxodmt74" path="res://sprites/horu/images/player_prisoner_fire_spr_0.png" id="2_42st0"]
 [ext_resource type="Texture2D" uid="uid://befkupx1pjfhj" path="res://sprites/horu/images/player_prisoner_dead_spr_0.png" id="2_nndgd"]
 [ext_resource type="Texture2D" uid="uid://cjfk1120ldllh" path="res://sprites/sleepy_trap_0.png" id="4_n5scw"]
@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://caxf4k5okg3cr" path="res://sprites/horu/images/stars2.png" id="11_8qxkh"]
 [ext_resource type="Texture2D" uid="uid://sg4lts8inuoj" path="res://sprites/horu/images/prisoner3.png" id="11_u3fe3"]
 [ext_resource type="Texture2D" uid="uid://bpaljgkr5iu14" path="res://sprites/horu/images/stars3.png" id="12_uifnd"]
-[ext_resource type="Script" path="res://scenes/stairs_test.gd" id="15_lsw7a"]
+[ext_resource type="Script" uid="uid://3rabh7xw847e" path="res://scenes/stairs_test.gd" id="15_lsw7a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ssvs2"]
 animations = [{

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c0spdkief8ynm"]
 
-[ext_resource type="Script" path="res://scenes/levels/prisoner_choose.gd" id="1_m7kke"]
+[ext_resource type="Script" uid="uid://cqxs0004ef346" path="res://scenes/levels/prisoner_choose.gd" id="1_m7kke"]
 
 [node name="prisoner_choose" type="Node2D"]
 script = ExtResource("1_m7kke")

@@ -5,6 +5,7 @@ var playing_back = false
 
 func _ready() -> void:
 	#Resetear el distort por si quedo del juego
+	Global.load_game()
 	if Global.CHROM_FX and is_instance_valid(Global.CHROM_FX):
 		Global.CHROM_FX.resetdistor()
 	

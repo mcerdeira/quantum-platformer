@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cvgek1xj28trv" path="res://sprites/fireball_box.png" id="4_draje"]
 [ext_resource type="Texture2D" uid="uid://dw02vd8s8wsrw" path="res://sprites/vines.png" id="5_m48kl"]
 [ext_resource type="Texture2D" uid="uid://cucuujbtynsrv" path="res://sprites/water1-sheet.png" id="6_636ql"]
-[ext_resource type="Script" path="res://scenes/levels/room.gd" id="6_h8iqh"]
+[ext_resource type="Script" uid="uid://dbu25wradvuh1" path="res://scenes/levels/room.gd" id="6_h8iqh"]
 [ext_resource type="Texture2D" uid="uid://dpcrtwqa2mio7" path="res://sprites/vines_burn.png" id="7_kaylp"]
 [ext_resource type="Texture2D" uid="uid://do6cdrp48wgi8" path="res://sprites/stair_v1.png" id="8_ivcpg"]
 [ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="8_vk4ef"]
@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://c30c81wrrb650" path="res://scenes/Artifact.tscn" id="17_hfakf"]
 [ext_resource type="PackedScene" uid="uid://bjgnj03ujp5bk" path="res://scenes/Boat.tscn" id="19_u07g3"]
 [ext_resource type="Texture2D" uid="uid://b0fkov5rhypsi" path="res://sprites/horu/images/pipe_spr.png" id="21_d5swg"]
-[ext_resource type="Script" path="res://scenes/levels/goto_ending.gd" id="23_3fhm6"]
+[ext_resource type="Script" uid="uid://c0rtw2yjbft1e" path="res://scenes/levels/goto_ending.gd" id="23_3fhm6"]
 [ext_resource type="Texture2D" uid="uid://bsq115rukt01i" path="res://sprites/spritesheets/back_stalact.png" id="24_vvj5s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
@@ -185,8 +185,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ukw2g"]
 _data = {
-"RESET": SubResource("Animation_kcpba"),
-"new_animation": SubResource("Animation_lek5q")
+&"RESET": SubResource("Animation_kcpba"),
+&"new_animation": SubResource("Animation_lek5q")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvs35"]

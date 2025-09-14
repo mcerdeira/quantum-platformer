@@ -1,16 +1,16 @@
 [gd_scene load_steps=9 format=3 uid="uid://bfsvpcnfgl76j"]
 
-[ext_resource type="Script" path="res://scenes/lamp_fallerspikes.gd" id="1_v5c1h"]
+[ext_resource type="Script" uid="uid://1473uddc4w6d" path="res://scenes/lamp_fallerspikes.gd" id="1_v5c1h"]
 [ext_resource type="Texture2D" uid="uid://ckfvyg1tc54kk" path="res://sprites/spike_ball.png" id="2_82jmr"]
-[ext_resource type="Shader" path="res://scenes/Item.gdshader" id="2_cjdkp"]
-[ext_resource type="Script" path="res://scenes/spikeballarea.gd" id="3_qniwy"]
+[ext_resource type="Shader" uid="uid://dl6p4elpfxi71" path="res://scenes/Item.gdshader" id="2_cjdkp"]
+[ext_resource type="Script" uid="uid://cmcmv2mm65a12" path="res://scenes/spikeballarea.gd" id="3_qniwy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_knqf2"]
 shader = ExtResource("2_cjdkp")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 3.5
 shader_parameter/shine_size = 0.01
-shader_parameter/white = null
+shader_parameter/white = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qpfni"]
 animations = [{

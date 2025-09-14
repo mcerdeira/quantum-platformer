@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cy1314x4uh7m1" path="res://sprites/floor_tomb_fill1.png" id="14_lxk8b"]
 [ext_resource type="Texture2D" uid="uid://cp4wcwrlp5l3c" path="res://sprites/floor_tomb_fill2.png" id="15_d8li2"]
 [ext_resource type="Texture2D" uid="uid://dtccd8i2ldgvb" path="res://sprites/ice_cube_spr_0.png" id="16_5n133"]
-[ext_resource type="Script" path="res://scenes/levels/room.gd" id="17_7mji6"]
+[ext_resource type="Script" uid="uid://dbu25wradvuh1" path="res://scenes/levels/room.gd" id="17_7mji6"]
 [ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="22_uuis1"]
 [ext_resource type="AudioStream" uid="uid://djd2y4kc7i1x3" path="res://music/BossGhostLoop.wav" id="23_0v2xg"]
 [ext_resource type="PackedScene" uid="uid://cwhyl7fwuaawq" path="res://scenes/boss_enemy_2.tscn" id="24_mklrq"]
@@ -355,8 +355,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t6qjf"]
 _data = {
-"RESET": SubResource("Animation_8ts3n"),
-"new_animation": SubResource("Animation_pbwju")
+&"RESET": SubResource("Animation_8ts3n"),
+&"new_animation": SubResource("Animation_pbwju")
 }
 
 [node name="level" type="TileMap"]

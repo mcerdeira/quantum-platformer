@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dqbuv142e1lsc"]
 
-[ext_resource type="Script" path="res://scenes/pet.gd" id="1_vtva7"]
+[ext_resource type="Script" uid="uid://rsf0pibrxvkl" path="res://scenes/pet.gd" id="1_vtva7"]
 [ext_resource type="Texture2D" uid="uid://cykicgnhr3ojp" path="res://sprites/horu/images/pet1.png" id="1_wfd78"]
 [ext_resource type="Texture2D" uid="uid://btxspjx88sugq" path="res://sprites/horu/images/pet2.png" id="2_2vdyo"]
 [ext_resource type="Texture2D" uid="uid://buyi5kind5agu" path="res://sprites/horu/images/pet3.png" id="3_uv702"]
@@ -58,8 +58,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_enbab"]
 _data = {
-"RESET": SubResource("Animation_qjng6"),
-"new_animation": SubResource("Animation_rai73")
+&"RESET": SubResource("Animation_qjng6"),
+&"new_animation": SubResource("Animation_rai73")
 }
 
 [node name="Pet" type="Node2D"]

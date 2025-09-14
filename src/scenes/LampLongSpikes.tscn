@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://b6ji8x3ssrxwe"]
 
 [ext_resource type="Texture2D" uid="uid://jmdwjxiq0ful" path="res://sprites/lamp_1.png" id="2_symu1"]
-[ext_resource type="Script" path="res://scenes/LampPivotSpikes.gd" id="3_4am5x"]
+[ext_resource type="Script" uid="uid://dmflty7klghrl" path="res://scenes/LampPivotSpikes.gd" id="3_4am5x"]
 [ext_resource type="Texture2D" uid="uid://du57g6isn7hmc" path="res://sprites/chain.png" id="3_7gtan"]
-[ext_resource type="Script" path="res://scenes/LampDownSpikes.gd" id="5_h365y"]
+[ext_resource type="Script" uid="uid://be0tgepbs0wla" path="res://scenes/LampDownSpikes.gd" id="5_h365y"]
 [ext_resource type="Texture2D" uid="uid://ckfvyg1tc54kk" path="res://sprites/spike_ball.png" id="6_sg750"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yyehc"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://vul133gn10w3"]
 
 [ext_resource type="Texture2D" uid="uid://cdulndte6xg7j" path="res://sprites/lamp.png" id="1_5gu63"]
-[ext_resource type="Script" path="res://scenes/lamp_faller.gd" id="1_wlu64"]
+[ext_resource type="Script" uid="uid://dv4gkfwy2ms1f" path="res://scenes/lamp_faller.gd" id="1_wlu64"]
 [ext_resource type="Texture2D" uid="uid://eeq0ewn5gmt0" path="res://sprites/fire_lamp1.png" id="2_qccrt"]
 [ext_resource type="PackedScene" uid="uid://bgf6ly14u3fi1" path="res://scenes/FireBall.tscn" id="2_sw0qo"]
 [ext_resource type="Texture2D" uid="uid://daah7ix412dc3" path="res://sprites/lamp_boken.png" id="3_4jlm0"]

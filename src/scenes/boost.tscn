@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cuh01x4pv54l5"]
 
-[ext_resource type="Script" path="res://scenes/boss_boost.gd" id="1_m16nw"]
+[ext_resource type="Script" uid="uid://0o71ok31okmh" path="res://scenes/boss_boost.gd" id="1_m16nw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7gtsk"]
 size = Vector2(27, 32)

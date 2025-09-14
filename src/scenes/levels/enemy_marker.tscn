@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4vd4vxwdwdqh"]
 
-[ext_resource type="Script" path="res://scenes/levels/enemy_marker.gd" id="1_t6jhm"]
+[ext_resource type="Script" uid="uid://dtwfpisxhvq3" path="res://scenes/levels/enemy_marker.gd" id="1_t6jhm"]
 [ext_resource type="Texture2D" uid="uid://ceilou14j5ris" path="res://sprites/chest_idle.png" id="2_1ne45"]
 
 [node name="enemy_marker" type="Marker2D"]

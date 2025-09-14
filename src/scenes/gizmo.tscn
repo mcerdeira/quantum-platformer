@@ -1,7 +1,7 @@
 [gd_scene load_steps=42 format=3 uid="uid://ypq32fpaty8e"]
 
-[ext_resource type="Script" path="res://scenes/gizmo.gd" id="1_x7ufw"]
-[ext_resource type="Script" path="res://scenes/explosions.gd" id="2_84bkr"]
+[ext_resource type="Script" uid="uid://b7rfn7umxn7pl" path="res://scenes/gizmo.gd" id="1_x7ufw"]
+[ext_resource type="Script" uid="uid://dkngvf34nfpdb" path="res://scenes/explosions.gd" id="2_84bkr"]
 [ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="2_elark"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="2_j4rai"]
 [ext_resource type="Texture2D" uid="uid://cog7sk80ykf4o" path="res://sprites/bomb.png" id="2_qdwn1"]
@@ -12,15 +12,15 @@
 [ext_resource type="Texture2D" uid="uid://dr1i3x4vvool6" path="res://sprites/blast_spr_4.png" id="4_x3m0h"]
 [ext_resource type="Texture2D" uid="uid://b6od4ayssamtr" path="res://sprites/blast_spr_9.png" id="5_mmojl"]
 [ext_resource type="Texture2D" uid="uid://bfv2xuufigb8t" path="res://sprites/blast_spr_10.png" id="6_5igsc"]
-[ext_resource type="Script" path="res://scenes/explosion.gd" id="7_54k6n"]
-[ext_resource type="Shader" path="res://scenes/gizmo.gdshader" id="8_14h7y"]
+[ext_resource type="Script" uid="uid://c60dw06nxodu" path="res://scenes/explosion.gd" id="7_54k6n"]
+[ext_resource type="Shader" uid="uid://omi0l4vdv4re" path="res://scenes/gizmo.gdshader" id="8_14h7y"]
 [ext_resource type="Texture2D" uid="uid://bljcg74u2x5sd" path="res://sprites/invisibility.png" id="10_r3184"]
 [ext_resource type="Texture2D" uid="uid://csp0ardyjl54b" path="res://sprites/spring.png" id="12_n3chn"]
 [ext_resource type="Texture2D" uid="uid://df545tsy68qs1" path="res://sprites/growing_plant.png" id="13_mn6kf"]
 [ext_resource type="Texture2D" uid="uid://b2qs54x45h05p" path="res://sprites/lines.png" id="13_v2dy3"]
-[ext_resource type="Script" path="res://scenes/Line2D.gd" id="14_cbp3x"]
+[ext_resource type="Script" uid="uid://cmtjuxxdjsrbe" path="res://scenes/Line2D.gd" id="14_cbp3x"]
 [ext_resource type="Texture2D" uid="uid://trxeowv3jmbb" path="res://sprites/smoke_bomb.png" id="14_wv34c"]
-[ext_resource type="Script" path="res://scenes/explosion_mini.gd" id="15_iwgc1"]
+[ext_resource type="Script" uid="uid://de4dxsxmtopdc" path="res://scenes/explosion_mini.gd" id="15_iwgc1"]
 [ext_resource type="Texture2D" uid="uid://ckfvyg1tc54kk" path="res://sprites/spike_ball.png" id="15_ufmve"]
 [ext_resource type="Texture2D" uid="uid://d2m4gpqa0pd84" path="res://sprites/noise.png" id="20_736su"]
 
@@ -51,7 +51,7 @@ shader_parameter/crisis = false
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 3.5
 shader_parameter/shine_size = 0.01
-shader_parameter/white = null
+shader_parameter/white = 0.0
 shader_parameter/gizmomode = false
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3r5gg"]
@@ -212,7 +212,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hg3f8"]
 _data = {
-"shak_": SubResource("Animation_18r8v")
+&"shak_": SubResource("Animation_18r8v")
 }
 
 [sub_resource type="Animation" id="Animation_11jd3"]
@@ -245,7 +245,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pdqxo"]
 _data = {
-"new_animation": SubResource("Animation_11jd3")
+&"new_animation": SubResource("Animation_11jd3")
 }
 
 [sub_resource type="Animation" id="Animation_h0gkd"]
@@ -290,7 +290,7 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tqwta"]
 _data = {
-"new_animation": SubResource("Animation_h0gkd")
+&"new_animation": SubResource("Animation_h0gkd")
 }
 
 [node name="Gizmo" type="CharacterBody2D"]

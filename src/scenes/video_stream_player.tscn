@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bu7ckbjmd1lhd"]
 
-[ext_resource type="Shader" path="res://scenes/VideoStream.gdshader" id="1_di240"]
-[ext_resource type="VideoStream" path="res://video/muffin_tutorial.ogv" id="1_rkhxy"]
-[ext_resource type="Script" path="res://scenes/video_stream_player.gd" id="2_gh1f1"]
+[ext_resource type="Shader" uid="uid://b0fynhkgyre34" path="res://scenes/VideoStream.gdshader" id="1_di240"]
+[ext_resource type="VideoStream" uid="uid://w1nihx7aoygj" path="res://video/muffin_tutorial.ogv" id="1_rkhxy"]
+[ext_resource type="Script" uid="uid://csajxfw44xdr" path="res://scenes/video_stream_player.gd" id="2_gh1f1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3yi7g"]
 shader = ExtResource("1_di240")

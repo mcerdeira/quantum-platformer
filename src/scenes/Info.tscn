@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://bxyls5gbo1c1i"]
 
 [ext_resource type="Texture2D" uid="uid://qi2glke27eqg" path="res://sprites/note_spr_0.png" id="1_0uocc"]
-[ext_resource type="Script" path="res://scenes/Info.gd" id="1_bu07r"]
+[ext_resource type="Script" uid="uid://brlwm2qwi00mx" path="res://scenes/Info.gd" id="1_bu07r"]
 [ext_resource type="Texture2D" uid="uid://df3wc86jxuqv0" path="res://sprites/info.png" id="1_sl63s"]
 [ext_resource type="FontFile" uid="uid://df8tenaf40ylu" path="res://fonts/cour.ttf" id="2_xwgrf"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="5_ccuuj"]
@@ -31,7 +31,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ripyf"]
 _data = {
-"new_animation": SubResource("Animation_tldnd")
+&"new_animation": SubResource("Animation_tldnd")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t4qsr"]

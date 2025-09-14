@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://caxsrqo2tu60c"]
 
-[ext_resource type="Script" path="res://scenes/Rain.gd" id="1_kutrt"]
-[ext_resource type="Shader" path="res://scenes/Rain.gdshader" id="1_mrjlv"]
+[ext_resource type="Script" uid="uid://bsq5pct1bbspu" path="res://scenes/Rain.gd" id="1_kutrt"]
+[ext_resource type="Shader" uid="uid://cpxfn23jhaest" path="res://scenes/Rain.gdshader" id="1_mrjlv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_de8n3"]
 shader = ExtResource("1_mrjlv")
@@ -29,7 +29,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ashqc"]
 _data = {
-"new_animation": SubResource("Animation_cfrgh")
+&"new_animation": SubResource("Animation_cfrgh")
 }
 
 [node name="Rain" type="Node2D"]

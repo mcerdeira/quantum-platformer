@@ -1,8 +1,8 @@
 [gd_scene load_steps=24 format=3 uid="uid://btd5sxsoknjld"]
 
 [ext_resource type="Texture2D" uid="uid://cgd8wudikitjd" path="res://sprites/valve.png" id="1_wtdyv"]
-[ext_resource type="Script" path="res://scenes/Valve.gd" id="2_a0ptf"]
-[ext_resource type="Shader" path="res://scenes/Item.gdshader" id="3_nuhfd"]
+[ext_resource type="Script" uid="uid://csrys4qxnpxaf" path="res://scenes/Valve.gd" id="2_a0ptf"]
+[ext_resource type="Shader" uid="uid://dl6p4elpfxi71" path="res://scenes/Item.gdshader" id="3_nuhfd"]
 [ext_resource type="Texture2D" uid="uid://cog7sk80ykf4o" path="res://sprites/bomb.png" id="4_lrigj"]
 [ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="5_5407a"]
 [ext_resource type="Texture2D" uid="uid://c6gf7vjf30biq" path="res://sprites/coin.png" id="6_a15xs"]
@@ -29,7 +29,7 @@ shader = ExtResource("3_nuhfd")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 3.0
 shader_parameter/shine_size = 0.01
-shader_parameter/white = null
+shader_parameter/white = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oc5dc"]
 animations = [{

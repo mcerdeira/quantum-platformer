@@ -1,13 +1,13 @@
 [gd_scene load_steps=17 format=3 uid="uid://ccrniksfhd6lb"]
 
-[ext_resource type="Script" path="res://scenes/moving_plat.gd" id="1_cwmde"]
-[ext_resource type="Script" path="res://scenes/moving_platform.gd" id="1_y82u2"]
-[ext_resource type="Script" path="res://scenes/area_jump.gd" id="3_aqe71"]
+[ext_resource type="Script" uid="uid://baq8orryamnba" path="res://scenes/moving_plat.gd" id="1_cwmde"]
+[ext_resource type="Script" uid="uid://d3p5rwxpdyoee" path="res://scenes/moving_platform.gd" id="1_y82u2"]
+[ext_resource type="Script" uid="uid://djknfpf88m3od" path="res://scenes/area_jump.gd" id="3_aqe71"]
 [ext_resource type="Texture2D" uid="uid://c286brcfcywi4" path="res://sprites/cloud_block_spr_0.png" id="3_xw1ld"]
-[ext_resource type="Script" path="res://scenes/moving_plat_sprite.gd" id="4_2gm0m"]
+[ext_resource type="Script" uid="uid://bwjmdtnqieltw" path="res://scenes/moving_plat_sprite.gd" id="4_2gm0m"]
 [ext_resource type="Texture2D" uid="uid://cvjfenuq51ej2" path="res://sprites/skull_spr_0.png" id="6_1e5qn"]
 [ext_resource type="Texture2D" uid="uid://cyjtixtqb83dd" path="res://sprites/cloud_block_rain_spr_0.png" id="6_uvduq"]
-[ext_resource type="Shader" path="res://scenes/Rain.gdshader" id="8_wymn5"]
+[ext_resource type="Shader" uid="uid://cpxfn23jhaest" path="res://scenes/Rain.gdshader" id="8_wymn5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hwjf2"]
 size = Vector2(88, 10)
@@ -93,7 +93,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u335w"]
 _data = {
-"new_animation": SubResource("Animation_jyy2v")
+&"new_animation": SubResource("Animation_jyy2v")
 }
 
 [sub_resource type="Animation" id="Animation_yyjow"]
@@ -113,7 +113,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6eaj1"]
 _data = {
-"new_animation": SubResource("Animation_yyjow")
+&"new_animation": SubResource("Animation_yyjow")
 }
 
 [node name="moving_plat" type="Node2D"]

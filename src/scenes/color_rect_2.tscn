@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://cxggfxcj2ieke"]
 
-[ext_resource type="Shader" path="res://scenes/main.gdshader" id="1_cljwc"]
+[ext_resource type="Shader" uid="uid://cnvxemhob3xav" path="res://scenes/main.gdshader" id="1_cljwc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hb6nw"]
 shader = ExtResource("1_cljwc")
 shader_parameter/temperatureRange = 1.0
 shader_parameter/hotColor = Color(1, 1, 1, 0)
-shader_parameter/coldColor = null
+shader_parameter/coldColor = Color(0, 0, 0, 1)
 shader_parameter/heatAmplitude = 0.15
 shader_parameter/heatPeriod = 6.0
 shader_parameter/heatPhaseShift = 8.0

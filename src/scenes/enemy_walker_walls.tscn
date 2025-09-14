@@ -1,6 +1,6 @@
 [gd_scene load_steps=53 format=3 uid="uid://81vub78cngl3"]
 
-[ext_resource type="Script" path="res://scenes/enemy_walker_walls.gd" id="1_53he0"]
+[ext_resource type="Script" uid="uid://b0dodspanuiwk" path="res://scenes/enemy_walker_walls.gd" id="1_53he0"]
 [ext_resource type="Texture2D" uid="uid://cauminoav2qtv" path="res://sprites/horu/images/enemy_wall_spr_0.png" id="2_h33ti"]
 [ext_resource type="Texture2D" uid="uid://bfmd1soivmlg7" path="res://sprites/dead_fire_spr_0.png" id="2_tbwkb"]
 [ext_resource type="Texture2D" uid="uid://de76qjhauiwlw" path="res://sprites/horu/images/enemy_berserk_wall_spr_0.png" id="3_5u07g"]
@@ -22,8 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://capc1hdlw0gpl" path="res://sprites/horu/images/stars1.png" id="17_lq5dc"]
 [ext_resource type="Texture2D" uid="uid://caxf4k5okg3cr" path="res://sprites/horu/images/stars2.png" id="18_3nj8t"]
 [ext_resource type="Texture2D" uid="uid://bpaljgkr5iu14" path="res://sprites/horu/images/stars3.png" id="19_0ghtu"]
-[ext_resource type="Script" path="res://scenes/ItemEnemy.gd" id="23_nhups"]
-[ext_resource type="Shader" path="res://scenes/Item.gdshader" id="24_8mv7n"]
+[ext_resource type="Script" uid="uid://bm56n56ud6m6r" path="res://scenes/ItemEnemy.gd" id="23_nhups"]
+[ext_resource type="Shader" uid="uid://dl6p4elpfxi71" path="res://scenes/Item.gdshader" id="24_8mv7n"]
 [ext_resource type="Texture2D" uid="uid://c6gf7vjf30biq" path="res://sprites/coin.png" id="25_hlv3i"]
 [ext_resource type="Texture2D" uid="uid://cog7sk80ykf4o" path="res://sprites/bomb.png" id="26_0k8g2"]
 [ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="27_454ia"]
@@ -189,7 +189,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b5rsm"]
 _data = {
-"killing": SubResource("Animation_k8fva")
+&"killing": SubResource("Animation_k8fva")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3tn2l"]
@@ -217,7 +217,7 @@ shader = ExtResource("24_8mv7n")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 2.4
 shader_parameter/shine_size = 0.01
-shader_parameter/white = null
+shader_parameter/white = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_44owx"]
 animations = [{
@@ -236,7 +236,7 @@ shader = ExtResource("24_8mv7n")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 3.0
 shader_parameter/shine_size = 0.01
-shader_parameter/white = null
+shader_parameter/white = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x2tlk"]
 animations = [{

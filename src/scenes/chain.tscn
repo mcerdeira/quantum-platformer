@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://06q5xk7jbo17"]
+
+[ext_resource type="Texture2D" uid="uid://du57g6isn7hmc" path="res://sprites/chain.png" id="1_kju67"]
+
+[node name="Chain" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_kju67")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, 16)
+rotation = 1.5708
+texture = ExtResource("1_kju67")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(2.38419e-07, 32)
+rotation = 1.5708
+texture = ExtResource("1_kju67")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(2.38419e-07, 48)
+rotation = 1.5708
+texture = ExtResource("1_kju67")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(2.38419e-07, 64)
+rotation = 1.5708
+texture = ExtResource("1_kju67")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+position = Vector2(2.38419e-07, 80)
+rotation = 1.5708
+texture = ExtResource("1_kju67")
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, 96)
+rotation = 1.5708
+texture = ExtResource("1_kju67")
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, 112)
+rotation = 1.5708
+texture = ExtResource("1_kju67")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dghkfuk6l70pa"]
 
-[ext_resource type="Script" path="res://scenes/levels/mermaid/WaterDrp.gd" id="1_kfcdv"]
+[ext_resource type="Script" uid="uid://ubdovt8yxuv0" path="res://scenes/levels/mermaid/WaterDrp.gd" id="1_kfcdv"]
 [ext_resource type="Texture2D" uid="uid://ch0lf7l2ngiiw" path="res://sprites/water_drops1.png" id="2_pbo20"]
 [ext_resource type="Texture2D" uid="uid://bn6g6nehfvf0r" path="res://sprites/water_drops2.png" id="3_vol1a"]
 [ext_resource type="Texture2D" uid="uid://sn202a0d5ilu" path="res://sprites/water_drops3.png" id="4_k4ju3"]

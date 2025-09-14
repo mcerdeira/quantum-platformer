@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0otpjtodaem7"]
 
 [ext_resource type="Texture2D" uid="uid://bcn7wclq0kq8s" path="res://sprites/arrow.png" id="1_65t03"]
-[ext_resource type="Script" path="res://scenes/Arrow.gd" id="2_uega5"]
+[ext_resource type="Script" uid="uid://dowadcxjroap5" path="res://scenes/Arrow.gd" id="2_uega5"]
 [ext_resource type="Texture2D" uid="uid://cd1t17i8jwu4w" path="res://sprites/notfound.png" id="2_yhjoq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_thlc7"]

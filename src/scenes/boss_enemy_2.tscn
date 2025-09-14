@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://cwhyl7fwuaawq"]
 
-[ext_resource type="Script" path="res://scenes/boss_enemy_2.gd" id="1_jf26j"]
+[ext_resource type="Script" uid="uid://jmso6e04cwju" path="res://scenes/boss_enemy_2.gd" id="1_jf26j"]
 [ext_resource type="Texture2D" uid="uid://byml36jufg4fw" path="res://sprites/horu/images/ghost_boss1.png" id="1_nvobh"]
 [ext_resource type="Texture2D" uid="uid://bqivo8fkubm4f" path="res://sprites/horu/images/ghost_boss2.png" id="2_xtvig"]
 [ext_resource type="Texture2D" uid="uid://clsh1xnpq8tn3" path="res://sprites/horu/images/ghost_boss3.png" id="3_yf8ol"]
@@ -62,7 +62,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ylps5"]
 _data = {
-"new_animation": SubResource("Animation_agw38")
+&"new_animation": SubResource("Animation_agw38")
 }
 
 [node name="BossEnemy2" type="Area2D"]

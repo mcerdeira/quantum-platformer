@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dk57vpsjcw72s"]
 
-[ext_resource type="Script" path="res://scenes/levels/boss_esqueleto.gd" id="1_0a5xd"]
+[ext_resource type="Script" uid="uid://dkanho4xxcojl" path="res://scenes/levels/boss_esqueleto.gd" id="1_0a5xd"]
 [ext_resource type="PackedScene" uid="uid://dv04flhays5wp" path="res://gltf/skeleton_staff.gltf.glb" id="1_kvfsm"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_l675p"]
@@ -39,8 +39,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_od5tu"]
 _data = {
-"RESET": SubResource("Animation_rvy71"),
-"new_animation": SubResource("Animation_hluyh")
+&"RESET": SubResource("Animation_rvy71"),
+&"new_animation": SubResource("Animation_hluyh")
 }
 
 [node name="BossEsqueleto" type="Node2D"]

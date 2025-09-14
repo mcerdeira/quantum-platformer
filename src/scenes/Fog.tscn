@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dtqbrsfnl0dtw"]
 
-[ext_resource type="Shader" path="res://scenes/Fog.gdshader" id="1_bwf73"]
-[ext_resource type="Script" path="res://scenes/Fog.gd" id="1_hdt85"]
+[ext_resource type="Shader" uid="uid://crcu5nfs455d3" path="res://scenes/Fog.gdshader" id="1_bwf73"]
+[ext_resource type="Script" uid="uid://u5rsok38maxb" path="res://scenes/Fog.gd" id="1_hdt85"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_mlt87"]
 frequency = 0.0181
@@ -13,9 +13,9 @@ noise = SubResource("FastNoiseLite_mlt87")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8s4fx"]
 shader = ExtResource("1_bwf73")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_ymck3")
 shader_parameter/density = 0.25
 shader_parameter/speed = Vector2(0.02, 0.01)
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_ymck3")
 
 [node name="Fog" type="ParallaxBackground"]
 layer = 2

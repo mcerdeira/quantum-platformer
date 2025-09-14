@@ -1,9 +1,9 @@
 [gd_scene load_steps=24 format=3 uid="uid://q767q018lep8"]
 
-[ext_resource type="Script" path="res://scenes/exit_door.gd" id="1_0vvlk"]
+[ext_resource type="Script" uid="uid://dva6e3d6nhxl6" path="res://scenes/exit_door.gd" id="1_0vvlk"]
 [ext_resource type="Texture2D" uid="uid://bdtkcki2t0cwe" path="res://sprites/horu/images/bonus1.png" id="2_7f7sj"]
 [ext_resource type="Texture2D" uid="uid://c88m81h0eqi2r" path="res://sprites/horu/images/bonus2.png" id="3_g3yad"]
-[ext_resource type="Shader" path="res://scenes/exit_door.gdshader" id="3_ohfai"]
+[ext_resource type="Shader" uid="uid://6j7ja677eor3" path="res://scenes/exit_door.gdshader" id="3_ohfai"]
 [ext_resource type="Texture2D" uid="uid://fe2jknlm3i6n" path="res://sprites/horu/images/exit_spr_0.png" id="4_186lq"]
 [ext_resource type="Texture2D" uid="uid://r88ulgnxbdg0" path="res://sprites/horu/images/exit_spr_stone_0.png" id="4_hag28"]
 [ext_resource type="Texture2D" uid="uid://dcwiheprlh8k6" path="res://sprites/horu/images/hidden_exit_spr_0.png" id="4_l1025"]
@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b75mbd3rd8k03" path="res://sprites/shop_spr_1.png" id="10_2m2sv"]
 [ext_resource type="Texture2D" uid="uid://py3cnp00g88o" path="res://sprites/horu/images/exit_spr_no_1.png" id="12_1bdxj"]
 [ext_resource type="Texture2D" uid="uid://chfc4wjjp3ms6" path="res://sprites/horu/images/exit_spr_3.png" id="13_bd7jd"]
-[ext_resource type="Script" path="res://scenes/explode_door.gd" id="15_6dkxm"]
+[ext_resource type="Script" uid="uid://b1w7r5xlagoax" path="res://scenes/explode_door.gd" id="15_6dkxm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8806p"]
 animations = [{

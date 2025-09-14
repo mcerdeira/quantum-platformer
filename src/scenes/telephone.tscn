@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bsax38kvmxu7" path="res://sprites/computer2.png" id="1_n8nc0"]
 [ext_resource type="Texture2D" uid="uid://ch7dpggaokml5" path="res://sprites/computer1.png" id="2_rriwl"]
-[ext_resource type="Script" path="res://scenes/telephone.gd" id="3_oguwn"]
+[ext_resource type="Script" uid="uid://3llxlndh55tt" path="res://scenes/telephone.gd" id="3_oguwn"]
 [ext_resource type="Texture2D" uid="uid://buyi5kind5agu" path="res://sprites/horu/images/pet3.png" id="7_qhf5i"]
 [ext_resource type="Texture2D" uid="uid://cykicgnhr3ojp" path="res://sprites/horu/images/pet1.png" id="7_v1qgc"]
 [ext_resource type="Texture2D" uid="uid://btxspjx88sugq" path="res://sprites/horu/images/pet2.png" id="8_r5vts"]
@@ -32,7 +32,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vco7g"]
 _data = {
-"new_animation": SubResource("Animation_g0s8s")
+&"new_animation": SubResource("Animation_g0s8s")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t7d8p"]

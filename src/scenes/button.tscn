@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bi4i4ssvjmq48"]
 
-[ext_resource type="Script" path="res://scenes/button.gd" id="1_avkee"]
-[ext_resource type="Texture2D" uid="uid://dqs4lm62sds1u" path="res://sprites/fire_switch.png" id="1_gomux"]
-[ext_resource type="Texture2D" uid="uid://dbkxb0lpk1jpe" path="res://sprites/fire_switch2.png" id="2_a5iw8"]
+[ext_resource type="Script" uid="uid://1qp3gqo7gws7" path="res://scenes/button.gd" id="1_avkee"]
+[ext_resource type="Texture2D" uid="uid://dbp8o3dq2acym" path="res://sprites/fire_switch.png" id="1_gomux"]
+[ext_resource type="Texture2D" uid="uid://ckrphqe3wqdnl" path="res://sprites/fire_switch2.png" id="2_a5iw8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6jmtn"]
 animations = [{

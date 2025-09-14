@@ -1,30 +1,15 @@
 [gd_scene load_steps=21 format=3 uid="uid://cp3ax6e8ms25q"]
 
-[ext_resource type="Script" path="res://scenes/boss_enemy_1.gd" id="1_brynu"]
-[ext_resource type="Script" path="res://scenes/boss1_explosions.gd" id="2_pg7cj"]
+[ext_resource type="Script" uid="uid://lt3rntwboiig" path="res://scenes/boss_enemy_1.gd" id="1_brynu"]
+[ext_resource type="Script" uid="uid://xgrsbkuh5tpa" path="res://scenes/boss1_explosions.gd" id="2_pg7cj"]
 [ext_resource type="Texture2D" uid="uid://dp7ucg8qc3iu8" path="res://sprites/horu/images/boss_leaf1.png" id="2_ul2u8"]
 [ext_resource type="Texture2D" uid="uid://dv1q1s22geh1a" path="res://sprites/horu/images/boss_leaf2.png" id="3_qb1vl"]
 [ext_resource type="Texture2D" uid="uid://c267uipgbl5i1" path="res://sprites/horu/images/boss_leaf3.png" id="4_3i60c"]
-[ext_resource type="Script" path="res://scenes/explosion_boss1.gd" id="5_2e7le"]
+[ext_resource type="Script" uid="uid://dlrnr7yfg4nkl" path="res://scenes/explosion_boss1.gd" id="5_2e7le"]
 [ext_resource type="Texture2D" uid="uid://capc1hdlw0gpl" path="res://sprites/horu/images/stars1.png" id="10_iwu1p"]
 [ext_resource type="PackedScene" uid="uid://2t17q8uh38pg" path="res://scenes/BossExplosionShader.tscn" id="10_kkfjs"]
 [ext_resource type="Texture2D" uid="uid://caxf4k5okg3cr" path="res://sprites/horu/images/stars2.png" id="11_muud4"]
 [ext_resource type="Texture2D" uid="uid://bpaljgkr5iu14" path="res://sprites/horu/images/stars3.png" id="12_p63ih"]
-
-[sub_resource type="Animation" id="Animation_icow3"]
-resource_name = "new_animation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.2, 0.366667, 0.566667, 0.733333, 0.866667, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.5, 1), Vector2(1, 0.5), Vector2(1.3, 1), Vector2(1, 1.3), Vector2(0.3, 1), Vector2(1, 0.3), Vector2(1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_x7xxi"]
 length = 0.001
@@ -41,10 +26,25 @@ tracks/0/keys = {
 "values": [Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_icow3"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2, 0.366667, 0.566667, 0.733333, 0.866667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 1), Vector2(1, 0.5), Vector2(1.3, 1), Vector2(1, 1.3), Vector2(0.3, 1), Vector2(1, 0.3), Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lkb8u"]
 _data = {
-"RESET": SubResource("Animation_x7xxi"),
-"new_animation": SubResource("Animation_icow3")
+&"RESET": SubResource("Animation_x7xxi"),
+&"new_animation": SubResource("Animation_icow3")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0vk2b"]

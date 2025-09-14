@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://bx06swrbyq4p3" path="res://sprites/floor_spr_blasted.png" id="3_kynjy"]
 [ext_resource type="Texture2D" uid="uid://cvgek1xj28trv" path="res://sprites/fireball_box.png" id="4_iaxck"]
 [ext_resource type="Texture2D" uid="uid://dw02vd8s8wsrw" path="res://sprites/vines.png" id="5_dx6u2"]
-[ext_resource type="Script" path="res://scenes/levels/room.gd" id="6_5lff6"]
+[ext_resource type="Script" uid="uid://dbu25wradvuh1" path="res://scenes/levels/room.gd" id="6_5lff6"]
 [ext_resource type="Texture2D" uid="uid://1h6yv55cegs5" path="res://sprites/glitch.png" id="6_848g0"]
-[ext_resource type="Script" path="res://scenes/levels/retro_game.gd" id="8_5582c"]
+[ext_resource type="Script" uid="uid://dcrjspn7jr2bf" path="res://scenes/levels/retro_game.gd" id="8_5582c"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="8_mr0hg"]
-[ext_resource type="Script" path="res://scenes/levels/GameManager.gd" id="9_f456d"]
+[ext_resource type="Script" uid="uid://b615o2sy65cdn" path="res://scenes/levels/GameManager.gd" id="9_f456d"]
 [ext_resource type="PackedScene" uid="uid://mfjn0x6s8n7s" path="res://scenes/tank.tscn" id="10_xm6sy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
@@ -98,7 +98,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_00wy1"]
 _data = {
-"new_animation": SubResource("Animation_t7cp2")
+&"new_animation": SubResource("Animation_t7cp2")
 }
 
 [node name="level" type="TileMap"]

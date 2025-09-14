@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://bds37m4g5it0o"]
 
-[ext_resource type="Script" path="res://scenes/fake_lamp.gd" id="1_l4xi1"]
+[ext_resource type="Script" uid="uid://djhyh3o8111pi" path="res://scenes/fake_lamp.gd" id="1_l4xi1"]
 [ext_resource type="Texture2D" uid="uid://du57g6isn7hmc" path="res://sprites/chain.png" id="2_2acrm"]
 [ext_resource type="Texture2D" uid="uid://jmdwjxiq0ful" path="res://sprites/lamp_1.png" id="3_j6vif"]
 [ext_resource type="Texture2D" uid="uid://cdulndte6xg7j" path="res://sprites/lamp.png" id="4_btred"]
@@ -78,7 +78,22 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mcocy"]
 _data = {
-"new_animation": SubResource("Animation_ams2q")
+&"new_animation": SubResource("Animation_ams2q")
+}
+
+[sub_resource type="Animation" id="Animation_01quw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LampDown:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(164, 42)]
 }
 
 [sub_resource type="Animation" id="Animation_dc2ac"]
@@ -97,25 +112,10 @@ tracks/0/keys = {
 "values": [Vector2(164, 42), Vector2(164, 22), Vector2(164, 42)]
 }
 
-[sub_resource type="Animation" id="Animation_01quw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LampDown:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(164, 42)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1aprj"]
 _data = {
-"RESET": SubResource("Animation_01quw"),
-"new_animation": SubResource("Animation_dc2ac")
+&"RESET": SubResource("Animation_01quw"),
+&"new_animation": SubResource("Animation_dc2ac")
 }
 
 [node name="Lamp" type="Node2D"]

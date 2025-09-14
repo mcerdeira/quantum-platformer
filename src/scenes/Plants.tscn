@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ba5hq2bchhv8x"]
 
-[ext_resource type="Script" path="res://scenes/Plants.gd" id="1_4f8lo"]
+[ext_resource type="Script" uid="uid://d2w5j8llaowy" path="res://scenes/Plants.gd" id="1_4f8lo"]
 [ext_resource type="Texture2D" uid="uid://c2s1th3ui05eb" path="res://sprites/plant_spr_0.png" id="1_ssjte"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gyyxg"]
@@ -34,7 +34,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ohyj6"]
 _data = {
-"new_animation": SubResource("Animation_s1l04")
+&"new_animation": SubResource("Animation_s1l04")
 }
 
 [node name="Plants" type="Area2D"]

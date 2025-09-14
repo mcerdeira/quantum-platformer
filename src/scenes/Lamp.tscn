@@ -1,19 +1,19 @@
 [gd_scene load_steps=21 format=3 uid="uid://cv3n3jd3p3yty"]
 
 [ext_resource type="Texture2D" uid="uid://jmdwjxiq0ful" path="res://sprites/lamp_1.png" id="1_js1s3"]
-[ext_resource type="Script" path="res://scenes/Lamp.gd" id="1_tg0cb"]
-[ext_resource type="Script" path="res://scenes/LampDown.gd" id="2_808wp"]
+[ext_resource type="Script" uid="uid://44m1eli75sa4" path="res://scenes/Lamp.gd" id="1_tg0cb"]
+[ext_resource type="Script" uid="uid://g6o0rd4nm23v" path="res://scenes/LampDown.gd" id="2_808wp"]
 [ext_resource type="Texture2D" uid="uid://cdulndte6xg7j" path="res://sprites/lamp.png" id="2_g5v2b"]
 [ext_resource type="Texture2D" uid="uid://du57g6isn7hmc" path="res://sprites/chain.png" id="3_clms0"]
 [ext_resource type="Texture2D" uid="uid://eeq0ewn5gmt0" path="res://sprites/fire_lamp1.png" id="3_yta5e"]
-[ext_resource type="Script" path="res://scenes/LampDown2.gd" id="4_mtbgv"]
+[ext_resource type="Script" uid="uid://dqnnv23k7btfy" path="res://scenes/LampDown2.gd" id="4_mtbgv"]
 [ext_resource type="Texture2D" uid="uid://ukbilpjti2eh" path="res://sprites/fire_lamp2.png" id="4_xr7j6"]
 [ext_resource type="Texture2D" uid="uid://b7q6sy88ueyct" path="res://sprites/fire_lamp3.png" id="5_gxw37"]
 [ext_resource type="Texture2D" uid="uid://cs864d7b56jri" path="res://sprites/lamp_bright.png" id="6_jkpmi"]
 [ext_resource type="Texture2D" uid="uid://dbul1fydmllw8" path="res://sprites/fire_lamp4.png" id="6_twntd"]
 [ext_resource type="Texture2D" uid="uid://c7obt61badgu4" path="res://sprites/fire_lamp5.png" id="7_3wmjq"]
 [ext_resource type="Texture2D" uid="uid://b7qlmhoqal3pq" path="res://sprites/fire_lamp6.png" id="8_nfnia"]
-[ext_resource type="Script" path="res://scenes/sprite_control.gd" id="14_jueho"]
+[ext_resource type="Script" uid="uid://citrqu5rd55ob" path="res://scenes/sprite_control.gd" id="14_jueho"]
 
 [sub_resource type="Gradient" id="Gradient_0n1d0"]
 offsets = PackedFloat32Array(0, 0.875433)
@@ -81,7 +81,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mcocy"]
 _data = {
-"new_animation": SubResource("Animation_ams2q")
+&"new_animation": SubResource("Animation_ams2q")
 }
 
 [node name="Lamp" type="Node2D"]

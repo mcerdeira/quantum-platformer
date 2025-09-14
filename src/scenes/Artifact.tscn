@@ -1,8 +1,8 @@
 [gd_scene load_steps=25 format=3 uid="uid://c30c81wrrb650"]
 
-[ext_resource type="Script" path="res://scenes/Artifact.gd" id="1_kw1kc"]
+[ext_resource type="Script" uid="uid://ycgmn5cldoq4" path="res://scenes/Artifact.gd" id="1_kw1kc"]
 [ext_resource type="Texture2D" uid="uid://cgpb467kik2wx" path="res://sprites/artifact.png" id="2_uvc2b"]
-[ext_resource type="Shader" path="res://scenes/Item.gdshader" id="6_1o2ag"]
+[ext_resource type="Shader" uid="uid://dl6p4elpfxi71" path="res://scenes/Item.gdshader" id="6_1o2ag"]
 [ext_resource type="Texture2D" uid="uid://cog7sk80ykf4o" path="res://sprites/bomb.png" id="7_dpdhf"]
 [ext_resource type="Texture2D" uid="uid://cwjka3w6mxat3" path="res://sprites/slots.png" id="8_6gr44"]
 [ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="8_e212i"]
@@ -40,7 +40,7 @@ shader = ExtResource("6_1o2ag")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 3.0
 shader_parameter/shine_size = 0.01
-shader_parameter/white = null
+shader_parameter/white = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o1tye"]
 animations = [{

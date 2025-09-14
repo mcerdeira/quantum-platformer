@@ -1,12 +1,12 @@
 [gd_scene load_steps=19 format=3 uid="uid://cklb77x6u2b12"]
 
-[ext_resource type="Script" path="res://scenes/ExpensiveItem.gd" id="1_7mcex"]
+[ext_resource type="Script" uid="uid://bcir50wwcoq7w" path="res://scenes/ExpensiveItem.gd" id="1_7mcex"]
 [ext_resource type="Texture2D" uid="uid://caixacae0wr0c" path="res://sprites/map_item.png" id="2_08b40"]
 [ext_resource type="Texture2D" uid="uid://d3thnnqfp2f03" path="res://sprites/binocular.png" id="2_g705h"]
 [ext_resource type="Texture2D" uid="uid://stlndvxp0x7l" path="res://sprites/wings.png" id="4_a2603"]
 [ext_resource type="Texture2D" uid="uid://cc6ruwut57x1q" path="res://sprites/resurrect.png" id="6_bmjtl"]
 [ext_resource type="Texture2D" uid="uid://cd1t17i8jwu4w" path="res://sprites/notfound.png" id="7_yrgv7"]
-[ext_resource type="Shader" path="res://scenes/Item.gdshader" id="11_qk6xm"]
+[ext_resource type="Shader" uid="uid://dl6p4elpfxi71" path="res://scenes/Item.gdshader" id="11_qk6xm"]
 [ext_resource type="Texture2D" uid="uid://c6gf7vjf30biq" path="res://sprites/coin.png" id="12_oyiq4"]
 [ext_resource type="Texture2D" uid="uid://bljcg74u2x5sd" path="res://sprites/invisibility.png" id="13_3p5ql"]
 [ext_resource type="Texture2D" uid="uid://cgwhbneb6ejq7" path="res://sprites/no-coin.png" id="14_ve3b2"]
@@ -20,7 +20,7 @@ shader = ExtResource("11_qk6xm")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 1.0
 shader_parameter/shine_size = 0.01
-shader_parameter/white = null
+shader_parameter/white = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ljkth"]
 animations = [{

@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://dm7q5qrqdeljp"]
 
-[ext_resource type="Script" path="res://scenes/enemy_bees.gd" id="1_kxddt"]
+[ext_resource type="Script" uid="uid://dhikyxwkrt5y7" path="res://scenes/enemy_bees.gd" id="1_kxddt"]
 [ext_resource type="PackedScene" uid="uid://ggdou85s6qj0" path="res://scenes/bees_particles.tscn" id="8_gbpix"]
 [ext_resource type="Texture2D" uid="uid://2cvoimmrh44h" path="res://sprites/bees1.png" id="9_nm4ap"]
 [ext_resource type="Texture2D" uid="uid://d1vett6l1nmfl" path="res://sprites/bees2.png" id="10_mlnh2"]
@@ -103,7 +103,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b5rsm"]
 _data = {
-"killing": SubResource("Animation_k8fva")
+&"killing": SubResource("Animation_k8fva")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4xq1w"]

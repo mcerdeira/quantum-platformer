@@ -1,8 +1,8 @@
 [gd_scene load_steps=25 format=3 uid="uid://c1hauk6vcsonh"]
 
 [ext_resource type="Texture2D" uid="uid://cog7sk80ykf4o" path="res://sprites/bomb.png" id="1_1wt4j"]
-[ext_resource type="Script" path="res://scenes/Item.gd" id="1_co2nu"]
-[ext_resource type="Shader" path="res://scenes/Item.gdshader" id="1_udi6n"]
+[ext_resource type="Script" uid="uid://vk74n8wnip5j" path="res://scenes/Item.gd" id="1_co2nu"]
+[ext_resource type="Shader" uid="uid://dl6p4elpfxi71" path="res://scenes/Item.gdshader" id="1_udi6n"]
 [ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="2_ere0c"]
 [ext_resource type="Texture2D" uid="uid://bljcg74u2x5sd" path="res://sprites/invisibility.png" id="3_kgqrp"]
 [ext_resource type="Texture2D" uid="uid://b3tca6epdaoix" path="res://sprites/rock.png" id="4_150gj"]
@@ -48,7 +48,7 @@ shader = ExtResource("1_udi6n")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 3.0
 shader_parameter/shine_size = 0.01
-shader_parameter/white = null
+shader_parameter/white = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jkk80"]
 animations = [{

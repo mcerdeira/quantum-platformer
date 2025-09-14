@@ -1,9 +1,9 @@
 [gd_scene load_steps=26 format=3 uid="uid://5p44cluirckn"]
 
-[ext_resource type="Texture2D" uid="uid://djs78nqy60b6t" path="res://sprites/floor_spr_2.png" id="1_xc7em"]
-[ext_resource type="Texture2D" uid="uid://c0jfkevoydgh3" path="res://sprites/post.png" id="2_5cvhr"]
+[ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="1_xc7em"]
+[ext_resource type="Texture2D" uid="uid://b1yvq3vfd5y0f" path="res://sprites/post.png" id="2_5cvhr"]
 [ext_resource type="PackedScene" uid="uid://bheswcl3ede2p" path="res://scenes/kill_zone.tscn" id="2_ivht4"]
-[ext_resource type="Texture2D" uid="uid://6e6u7tx8wpp5" path="res://sprites/stair.png" id="2_lrem8"]
+[ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_lrem8"]
 [ext_resource type="PackedScene" uid="uid://duq0f6y40fuwc" path="res://scenes/surface.tscn" id="3_q6lgt"]
 [ext_resource type="PackedScene" uid="uid://ba2tdpbkss4pb" path="res://scenes/shaker.tscn" id="3_tbsmr"]
 [ext_resource type="PackedScene" uid="uid://bfmdje7uoppc1" path="res://scenes/levels/prisoner_marker.tscn" id="5_fnoy6"]
@@ -12,10 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="9_f8kah"]
 [ext_resource type="PackedScene" uid="uid://evskswf05b50" path="res://scenes/player.tscn" id="10_uro1m"]
 [ext_resource type="PackedScene" uid="uid://q767q018lep8" path="res://scenes/exit_door.tscn" id="11_78gck"]
-[ext_resource type="Shader" path="res://scenes/FX.gdshader" id="12_nys60"]
-[ext_resource type="Script" path="res://scenes/FX.gd" id="13_1mimv"]
-[ext_resource type="Shader" path="res://scenes/main.gdshader" id="14_xfbpj"]
-[ext_resource type="Script" path="res://scenes/LavaFX.gd" id="15_n1akp"]
+[ext_resource type="Shader" uid="uid://b0psv2mjbn6u" path="res://scenes/FX.gdshader" id="12_nys60"]
+[ext_resource type="Script" uid="uid://crnmbjur2ob81" path="res://scenes/FX.gd" id="13_1mimv"]
+[ext_resource type="Shader" uid="uid://cnvxemhob3xav" path="res://scenes/main.gdshader" id="14_xfbpj"]
+[ext_resource type="Script" uid="uid://c8hrl8nlgeblg" path="res://scenes/LavaFX.gd" id="15_n1akp"]
 [ext_resource type="PackedScene" uid="uid://irdn6sjvaj0e" path="res://scenes/enemy.tscn" id="16_ojypy"]
 [ext_resource type="PackedScene" uid="uid://cy0n7jmrq03or" path="res://scenes/enemy_walker.tscn" id="17_hobjq"]
 [ext_resource type="PackedScene" uid="uid://81vub78cngl3" path="res://scenes/enemy_walker_walls.tscn" id="19_co6cb"]
@@ -25,16 +25,12 @@
 texture = ExtResource("1_xc7em")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qr43o"]
 texture = ExtResource("2_lrem8")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_4lr5i"]
 tile_size = Vector2i(32, 32)
@@ -51,7 +47,7 @@ shader_parameter/amount = 0.1
 shader = ExtResource("14_xfbpj")
 shader_parameter/temperatureRange = 4.75e-08
 shader_parameter/hotColor = Color(0.647059, 0.466667, 0.0352941, 0.101961)
-shader_parameter/coldColor = null
+shader_parameter/coldColor = Color(0, 0, 0, 1)
 shader_parameter/heatAmplitude = 0.0
 shader_parameter/heatPeriod = 6.0
 shader_parameter/heatPhaseShift = 8.0

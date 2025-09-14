@@ -1,6 +1,6 @@
 [gd_scene load_steps=60 format=3 uid="uid://ctfvfhtlw28a7"]
 
-[ext_resource type="Script" path="res://scenes/enemy_flyer.gd" id="1_s28ew"]
+[ext_resource type="Script" uid="uid://boapjr8qvh4en" path="res://scenes/enemy_flyer.gd" id="1_s28ew"]
 [ext_resource type="Texture2D" uid="uid://bfmd1soivmlg7" path="res://sprites/dead_fire_spr_0.png" id="2_7248k"]
 [ext_resource type="Texture2D" uid="uid://cxc5th2r8hfpc" path="res://sprites/dead_fire_spr_1.png" id="3_h60m7"]
 [ext_resource type="Texture2D" uid="uid://deqbcbnajy7k5" path="res://sprites/dead_fire_spr_2.png" id="4_gnqmw"]
@@ -17,12 +17,12 @@
 [ext_resource type="Texture2D" uid="uid://4oo3wlj34det" path="res://sprites/horu/images/nose2.png" id="19_1jw57"]
 [ext_resource type="Texture2D" uid="uid://cwgrq0uuoaf5g" path="res://sprites/horu/images/nose3.png" id="20_ke2du"]
 [ext_resource type="Texture2D" uid="uid://c1fa6mp1vngqq" path="res://sprites/horu/images/enemy_danger_spr_0.png" id="23_nd5yc"]
-[ext_resource type="Script" path="res://scenes/enemy_jump.gd" id="24_l062u"]
+[ext_resource type="Script" uid="uid://dkgv5f1eblrk2" path="res://scenes/enemy_jump.gd" id="24_l062u"]
 [ext_resource type="Texture2D" uid="uid://q0bln7b1u2oh" path="res://sprites/horu/images/enemy_danger_spr_1.png" id="24_ppn4t"]
-[ext_resource type="Script" path="res://scenes/ItemEnemy.gd" id="25_85cgq"]
+[ext_resource type="Script" uid="uid://bm56n56ud6m6r" path="res://scenes/ItemEnemy.gd" id="25_85cgq"]
 [ext_resource type="Texture2D" uid="uid://1ybi7osvso8b" path="res://sprites/horu/images/enemy_danger_spr_2.png" id="25_dkssi"]
 [ext_resource type="Texture2D" uid="uid://da61udeb1h6ll" path="res://sprites/horu/images/wing.png" id="26_d1tvy"]
-[ext_resource type="Shader" path="res://scenes/Item.gdshader" id="26_rimhh"]
+[ext_resource type="Shader" uid="uid://dl6p4elpfxi71" path="res://scenes/Item.gdshader" id="26_rimhh"]
 [ext_resource type="Texture2D" uid="uid://capc1hdlw0gpl" path="res://sprites/horu/images/stars1.png" id="26_ttym4"]
 [ext_resource type="Texture2D" uid="uid://c6gf7vjf30biq" path="res://sprites/coin.png" id="27_isvs2"]
 [ext_resource type="Texture2D" uid="uid://caxf4k5okg3cr" path="res://sprites/horu/images/stars2.png" id="27_t8wec"]
@@ -212,7 +212,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b5rsm"]
 _data = {
-"killing": SubResource("Animation_k8fva")
+&"killing": SubResource("Animation_k8fva")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4xq1w"]
@@ -262,7 +262,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f8xkc"]
 _data = {
-"new_animation": SubResource("Animation_8dsu1")
+&"new_animation": SubResource("Animation_8dsu1")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7qix"]
@@ -276,7 +276,7 @@ shader = ExtResource("26_rimhh")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 2.4
 shader_parameter/shine_size = 0.01
-shader_parameter/white = null
+shader_parameter/white = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7vhq8"]
 animations = [{
@@ -295,7 +295,7 @@ shader = ExtResource("26_rimhh")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 3.0
 shader_parameter/shine_size = 0.01
-shader_parameter/white = null
+shader_parameter/white = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bmekl"]
 animations = [{

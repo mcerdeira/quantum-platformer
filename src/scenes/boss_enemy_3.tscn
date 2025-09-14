@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://chgeck41w1cmq"]
 
-[ext_resource type="Script" path="res://scenes/boss_enemy_3.gd" id="1_kxlqv"]
+[ext_resource type="Script" uid="uid://droi1w30mognq" path="res://scenes/boss_enemy_3.gd" id="1_kxlqv"]
 [ext_resource type="Texture2D" uid="uid://ch0lf7l2ngiiw" path="res://sprites/water_drops1.png" id="2_flx4a"]
 [ext_resource type="Texture2D" uid="uid://dopeluopkggcj" path="res://sprites/horu/images/worm_boss2.png" id="2_joir2"]
 [ext_resource type="Texture2D" uid="uid://bn6g6nehfvf0r" path="res://sprites/water_drops2.png" id="3_jx34e"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://0e5cg8cum6i1" path="res://sprites/water_drops5.png" id="6_0eube"]
 [ext_resource type="PackedScene" uid="uid://cdvdlbsrcv1ga" path="res://scenes/tail_4.tscn" id="7_f64df"]
 [ext_resource type="Texture2D" uid="uid://cuhl0vyxapecb" path="res://sprites/horu/images/worm_boss1.png" id="7_mx4ru"]
-[ext_resource type="Script" path="res://scenes/bullet_receive.gd" id="9_xv1u6"]
+[ext_resource type="Script" uid="uid://o8wv5ab3wr42" path="res://scenes/bullet_receive.gd" id="9_xv1u6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mvde4"]
 animations = [{
@@ -227,8 +227,8 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_el4wu"]
 _data = {
-"RESET": SubResource("Animation_tbltg"),
-"new_animation": SubResource("Animation_ptu44")
+&"RESET": SubResource("Animation_tbltg"),
+&"new_animation": SubResource("Animation_ptu44")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cl2jn"]
@@ -259,7 +259,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h8bbs"]
 _data = {
-"new_animation": SubResource("Animation_fb87s")
+&"new_animation": SubResource("Animation_fb87s")
 }
 
 [node name="BossEnemy3" type="CharacterBody2D" node_paths=PackedStringArray("tail_segments")]

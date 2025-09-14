@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://6vtli52iv4o2"]
 
-[ext_resource type="Script" path="res://scenes/levels/enemy_spider.gd" id="1_am7fm"]
+[ext_resource type="Script" uid="uid://c7g4jgkf38uag" path="res://scenes/levels/enemy_spider.gd" id="1_am7fm"]
 [ext_resource type="Texture2D" uid="uid://qfo23pulni7s" path="res://sprites/spider_spr_0.png" id="2_aag4l"]
 [ext_resource type="Texture2D" uid="uid://cxdnk7u4rg2ol" path="res://sprites/spider_spr_1.png" id="3_rulj3"]
 [ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="4_ya7lw"]
@@ -40,7 +40,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b5rsm"]
 _data = {
-"killing": SubResource("Animation_k8fva")
+&"killing": SubResource("Animation_k8fva")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1pex"]

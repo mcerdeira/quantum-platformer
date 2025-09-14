@@ -1,10 +1,10 @@
 [gd_scene load_steps=22 format=3 uid="uid://dsl8ifjv0hjav"]
 
-[ext_resource type="Script" path="res://scenes/Artifact3D.gd" id="1_6pjhq"]
-[ext_resource type="Script" path="res://scenes/3d_view_ports_art.gd" id="2_3vdyr"]
+[ext_resource type="Script" uid="uid://cl31usi72ft54" path="res://scenes/Artifact3D.gd" id="1_6pjhq"]
+[ext_resource type="Script" uid="uid://bfaep4vj7fjqn" path="res://scenes/3d_view_ports_art.gd" id="2_3vdyr"]
 [ext_resource type="Texture2D" uid="uid://0m7nv2v35ed" path="res://sprites/qr/artifact_parts1.png" id="2_7q6dh"]
 [ext_resource type="Texture2D" uid="uid://cgpb467kik2wx" path="res://sprites/artifact.png" id="2_8miea"]
-[ext_resource type="Script" path="res://scenes/art3d_part.gd" id="3_1u3n8"]
+[ext_resource type="Script" uid="uid://dodvi5ygo7ybc" path="res://scenes/art3d_part.gd" id="3_1u3n8"]
 [ext_resource type="Texture2D" uid="uid://d0hfxvcnnhsmb" path="res://sprites/qr/artifact_parts2.png" id="5_jqpdw"]
 [ext_resource type="Texture2D" uid="uid://dsq1qbrwmy7u3" path="res://sprites/cosito1.png" id="6_eilp8"]
 [ext_resource type="Texture2D" uid="uid://tdvf78scu0tt" path="res://sprites/qr/artifact_parts3.png" id="6_jy86o"]

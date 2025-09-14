@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cao8kgiajlrt1" path="res://sprites/waterfall2_spr_0.png" id="1_7cqsv"]
 [ext_resource type="Texture2D" uid="uid://b1ok1dyle82cx" path="res://sprites/waterfall_spr_0.png" id="1_70wo7"]
-[ext_resource type="Script" path="res://scenes/waterfall.gd" id="1_ebo8q"]
+[ext_resource type="Script" uid="uid://dvnc4llx2mimb" path="res://scenes/waterfall.gd" id="1_ebo8q"]
 [ext_resource type="Texture2D" uid="uid://de6a7trcv6ukp" path="res://sprites/waterfall2_spr_2.png" id="2_3wlp7"]
 [ext_resource type="Texture2D" uid="uid://df7uvkml0qpic" path="res://sprites/waterfall2_spr_1.png" id="2_r6o2j"]
 [ext_resource type="Texture2D" uid="uid://c87fd86yy6dcl" path="res://sprites/waterfall_spr_1.png" id="2_y3224"]

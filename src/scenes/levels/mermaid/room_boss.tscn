@@ -9,25 +9,25 @@
 [ext_resource type="Texture2D" uid="uid://cfr4242x4qruc" path="res://sprites/spritesheets/floor_dragon1-sheet.png" id="9_3fert"]
 [ext_resource type="Texture2D" uid="uid://ddjpinqcpwyw5" path="res://sprites/stair_v2.png" id="9_j4x1g"]
 [ext_resource type="Texture2D" uid="uid://cvgek1xj28trv" path="res://sprites/fireball_box.png" id="10_cgbew"]
-[ext_resource type="Script" path="res://scenes/levels/mermaid/boss3_camera.gd" id="11_5550k"]
-[ext_resource type="Script" path="res://scenes/levels/mermaid/boss_3_pos.gd" id="12_byw5d"]
-[ext_resource type="Shader" path="res://scenes/levels/mermaid/watershader.gdshader" id="12_jltic"]
+[ext_resource type="Script" uid="uid://bv8xsqw7pk4ta" path="res://scenes/levels/mermaid/boss3_camera.gd" id="11_5550k"]
+[ext_resource type="Script" uid="uid://bflir0j47bapr" path="res://scenes/levels/mermaid/boss_3_pos.gd" id="12_byw5d"]
+[ext_resource type="Shader" uid="uid://ce602o38cbh5s" path="res://scenes/levels/mermaid/watershader.gdshader" id="12_jltic"]
 [ext_resource type="Texture2D" uid="uid://dsxslgcc1hcb5" path="res://sprites/horu/images/rock_break_spr_0.png" id="12_le3le"]
 [ext_resource type="PackedScene" uid="uid://breiggv80wqpb" path="res://boss_plant_obj.tscn" id="12_vh0e1"]
 [ext_resource type="Texture2D" uid="uid://d0s0bv48hurgp" path="res://icon.svg" id="13_mry70"]
-[ext_resource type="Script" path="res://scenes/PlayerTop.gd" id="14_6xcr7"]
+[ext_resource type="Script" uid="uid://bq2v4s738cwbd" path="res://scenes/PlayerTop.gd" id="14_6xcr7"]
 [ext_resource type="Texture2D" uid="uid://bwarsmkyb2ekr" path="res://sprites/horu/images/player_dead_spr_0.png" id="14_wj5bk"]
 [ext_resource type="Texture2D" uid="uid://b2ktaq5q0ak3t" path="res://sprites/horu/images/player_dead_fire_spr_0.png" id="15_c3lmb"]
 [ext_resource type="Texture2D" uid="uid://dk13v5x1btxmq" path="res://sprites/horu/images/player_spr_2.png" id="15_waq0b"]
 [ext_resource type="Texture2D" uid="uid://cdp7mhhwwq6yn" path="res://sprites/horu/images/player_spr_0.png" id="16_d2ety"]
 [ext_resource type="PackedScene" uid="uid://chgeck41w1cmq" path="res://scenes/boss_enemy_3.tscn" id="16_nbqwu"]
 [ext_resource type="Texture2D" uid="uid://bai8rdtfyncto" path="res://sprites/horu/images/player_spr_invisible.png" id="17_634cp"]
-[ext_resource type="Script" path="res://scenes/levels/room.gd" id="17_h65tp"]
+[ext_resource type="Script" uid="uid://dbu25wradvuh1" path="res://scenes/levels/room.gd" id="17_h65tp"]
 [ext_resource type="PackedScene" uid="uid://cjmj21xt3ey8i" path="res://scenes/Gun.tscn" id="17_ubac7"]
 [ext_resource type="Texture2D" uid="uid://w8jhkurhs8h2" path="res://sprites/horu/images/player_spr_1.png" id="18_u1eor"]
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="19_6hb3n"]
 [ext_resource type="Texture2D" uid="uid://cpqyvhqmpfacf" path="res://sprites/gun_spr_0.png" id="19_8cvcu"]
-[ext_resource type="Script" path="res://scenes/levels/mermaid/water.gd" id="20_o8ofl"]
+[ext_resource type="Script" uid="uid://dwhw3u1n3h0mo" path="res://scenes/levels/mermaid/water.gd" id="20_o8ofl"]
 [ext_resource type="Texture2D" uid="uid://dx8ucfq000dy" path="res://sprites/horu/images/player_face_push_spr_0.png" id="20_xg5x1"]
 [ext_resource type="Texture2D" uid="uid://cv8aoaithgb0b" path="res://sprites/horu/images/player_face_idle_spr_0.png" id="21_fvdfy"]
 [ext_resource type="Texture2D" uid="uid://b1ok1dyle82cx" path="res://sprites/waterfall_spr_0.png" id="21_qcmkr"]
@@ -220,14 +220,14 @@ noise = SubResource("FastNoiseLite_xwhqi")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hw3b2"]
 shader = ExtResource("12_jltic")
+shader_parameter/noise1 = SubResource("NoiseTexture2D_4je8e")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_te6vv")
 shader_parameter/scroll1 = Vector2(0.05, 0.05)
 shader_parameter/scroll2 = Vector2(0.05, 0.05)
 shader_parameter/distortion_strength = 0.02
 shader_parameter/tone_color = Color(0.145098, 0.376471, 1, 1)
 shader_parameter/light_start = 0.2
 shader_parameter/light_end = 0.2
-shader_parameter/noise1 = SubResource("NoiseTexture2D_4je8e")
-shader_parameter/noise2 = SubResource("NoiseTexture2D_te6vv")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_exrcp"]
 animations = [{

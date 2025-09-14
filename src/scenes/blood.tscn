@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ck8qryxo5fi88"]
 
 [ext_resource type="Texture2D" uid="uid://fa2ehhpaw8ha" path="res://sprites/blood.png" id="1_k27oi"]
-[ext_resource type="Script" path="res://scenes/blood.gd" id="1_o0cl2"]
+[ext_resource type="Script" uid="uid://bywj6e63wxlhl" path="res://scenes/blood.gd" id="1_o0cl2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7m0r7"]
 size = Vector2(2, 2)

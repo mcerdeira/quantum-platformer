@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cs8gwisgy5tff" path="res://sprites/floor_tomb_fill4.png" id="6_mh7vo"]
 [ext_resource type="Texture2D" uid="uid://dtccd8i2ldgvb" path="res://sprites/ice_cube_spr_0.png" id="6_n1hx2"]
 [ext_resource type="Texture2D" uid="uid://do6cdrp48wgi8" path="res://sprites/stair_v1.png" id="7_chnmq"]
-[ext_resource type="Script" path="res://scenes/levels/room.gd" id="7_d6uyi"]
+[ext_resource type="Script" uid="uid://dbu25wradvuh1" path="res://scenes/levels/room.gd" id="7_d6uyi"]
 [ext_resource type="Texture2D" uid="uid://bm5n0nel4n2bp" path="res://sprites/stair_v1_1.png" id="8_a1q8b"]
 [ext_resource type="Texture2D" uid="uid://df54v3r31ay8h" path="res://sprites/stair_v1_2.png" id="9_yabd8"]
 [ext_resource type="PackedScene" uid="uid://bfmdje7uoppc1" path="res://scenes/levels/prisoner_marker.tscn" id="10_4aimf"]

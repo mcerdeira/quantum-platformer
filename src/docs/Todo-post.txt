@@ -1,8 +1,9 @@
 Features:
-Menú de opciones (fullscreen, volumen)
-Menu con nuevo, continuar y salir
 Traducción a inglés
 Mejores indicadores de mapping, botones
+Hacer funcionar menu con gamepad
+Que onda el item del humo?
+Items ocultos por nivel como easter egg
 
 Bugs:
 

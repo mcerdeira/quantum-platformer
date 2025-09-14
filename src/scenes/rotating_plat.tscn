@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://kab1tbkymscc"]
 
-[ext_resource type="Script" path="res://scenes/rotating_plat.gd" id="1_12qr0"]
+[ext_resource type="Script" uid="uid://c4ljsbpe8h1ot" path="res://scenes/rotating_plat.gd" id="1_12qr0"]
 [ext_resource type="Texture2D" uid="uid://stjrg38hrtgr" path="res://sprites/moving_plat_3.png" id="2_f8nvb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3v5is"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://dvlc4ydhtggsb"]
 
-[ext_resource type="Script" path="res://scenes/prisoner_npc.gd" id="1_1mpam"]
+[ext_resource type="Script" uid="uid://uf4ug6aumgvd" path="res://scenes/prisoner_npc.gd" id="1_1mpam"]
 [ext_resource type="Texture2D" uid="uid://i7fh6wo2ambk" path="res://sprites/horu/images/prisoner_cry.png" id="2_a0o5m"]
 [ext_resource type="Texture2D" uid="uid://c0h8avoardet5" path="res://sprites/horu/images/prisoner1.png" id="2_stlm0"]
 [ext_resource type="Texture2D" uid="uid://c1fa6mp1vngqq" path="res://sprites/horu/images/enemy_danger_spr_0.png" id="3_gi0x4"]

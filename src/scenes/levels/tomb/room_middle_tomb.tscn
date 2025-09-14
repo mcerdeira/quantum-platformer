@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dqeynkdlvcmqy" path="res://sprites/floor_tomb_fill5.png" id="4_7qh7x"]
 [ext_resource type="Texture2D" uid="uid://cvgek1xj28trv" path="res://sprites/fireball_box.png" id="5_mjvrt"]
 [ext_resource type="Texture2D" uid="uid://ccl7ndrpf8wk7" path="res://sprites/floor_tomb_fill.png" id="5_yk470"]
-[ext_resource type="Script" path="res://scenes/levels/room.gd" id="6_kxtb7"]
+[ext_resource type="Script" uid="uid://dbu25wradvuh1" path="res://scenes/levels/room.gd" id="6_kxtb7"]
 [ext_resource type="Texture2D" uid="uid://i4s6on6v0134" path="res://sprites/spritesheets/floor_tomb1-sheet.png" id="6_y3k54"]
 [ext_resource type="Texture2D" uid="uid://df54v3r31ay8h" path="res://sprites/stair_v1_2.png" id="7_jpxt4"]
 [ext_resource type="Texture2D" uid="uid://do6cdrp48wgi8" path="res://sprites/stair_v1.png" id="8_a4ouv"]

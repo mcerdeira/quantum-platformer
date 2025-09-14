@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b0nxv8yj8yswl" path="res://sprites/spritesheets/floor_mermaid-sheet.png" id="6_fftef"]
 [ext_resource type="Texture2D" uid="uid://dtccd8i2ldgvb" path="res://sprites/ice_cube_spr_0.png" id="6_gf28l"]
 [ext_resource type="Texture2D" uid="uid://ddjpinqcpwyw5" path="res://sprites/stair_v2.png" id="7_bfe7y"]
-[ext_resource type="Script" path="res://scenes/levels/room.gd" id="7_qpln3"]
+[ext_resource type="Script" uid="uid://dbu25wradvuh1" path="res://scenes/levels/room.gd" id="7_qpln3"]
 [ext_resource type="Texture2D" uid="uid://dw02vd8s8wsrw" path="res://sprites/vines.png" id="8_fgoxl"]
 [ext_resource type="Texture2D" uid="uid://bpklywyo2vuhm" path="res://sprites/stair_v3.png" id="8_mce4t"]
 [ext_resource type="Texture2D" uid="uid://dpcrtwqa2mio7" path="res://sprites/vines_burn.png" id="9_fi5q2"]

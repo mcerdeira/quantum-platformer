@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://4ejbbt3gmq50"]
 
-[ext_resource type="Texture2D" uid="uid://ca383j21hc8e6" path="res://sprites/door.png" id="1_4jfja"]
-[ext_resource type="Script" path="res://scenes/door.gd" id="1_om5xw"]
+[ext_resource type="Texture2D" uid="uid://b7cp1mghpck5r" path="res://sprites/door.png" id="1_4jfja"]
+[ext_resource type="Script" uid="uid://s3b58igjj7o0" path="res://scenes/door.gd" id="1_om5xw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n6l56"]
 animations = [{

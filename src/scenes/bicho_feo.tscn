@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://dydp1vry5wnd3" path="res://sprites/bicho_feo1.png" id="1_8joaw"]
 [ext_resource type="Texture2D" uid="uid://cchn0xjmts5vl" path="res://sprites/bicho_feo2.png" id="2_xdjb2"]
 [ext_resource type="Texture2D" uid="uid://o4a3fh1m6hx1" path="res://sprites/bicho_feo3.png" id="3_s6sp3"]
-[ext_resource type="Script" path="res://scenes/bicho_feo.gd" id="4_l1852"]
-[ext_resource type="Script" path="res://scenes/explosions_bicho.gd" id="5_6fjrs"]
-[ext_resource type="Script" path="res://scenes/areagood.gd" id="5_6ms16"]
+[ext_resource type="Script" uid="uid://cavq20g0a0fa6" path="res://scenes/bicho_feo.gd" id="4_l1852"]
+[ext_resource type="Script" uid="uid://25ggyhw10lwq" path="res://scenes/explosions_bicho.gd" id="5_6fjrs"]
+[ext_resource type="Script" uid="uid://e01ye57hltjf" path="res://scenes/areagood.gd" id="5_6ms16"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k03m1"]
 animations = [{
@@ -54,7 +54,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yrmyh"]
 _data = {
-"new_animation": SubResource("Animation_xtbmi")
+&"new_animation": SubResource("Animation_xtbmi")
 }
 
 [node name="BichoFeo" type="AnimatedSprite2D"]

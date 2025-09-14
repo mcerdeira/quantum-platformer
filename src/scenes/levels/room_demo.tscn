@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cvgek1xj28trv" path="res://sprites/fireball_box.png" id="4_0308w"]
 [ext_resource type="Texture2D" uid="uid://dw02vd8s8wsrw" path="res://sprites/vines.png" id="5_s4og5"]
 [ext_resource type="Texture2D" uid="uid://c3i1rnkssvnsp" path="res://sprites/floor_house.png" id="6_vv13e"]
-[ext_resource type="Script" path="res://scenes/levels/room.gd" id="7_t34nj"]
+[ext_resource type="Script" uid="uid://dbu25wradvuh1" path="res://scenes/levels/room.gd" id="7_t34nj"]
 [ext_resource type="Texture2D" uid="uid://dpcrtwqa2mio7" path="res://sprites/vines_burn.png" id="8_6oyrc"]
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="9_p0oux"]
 [ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="10_r8dlq"]

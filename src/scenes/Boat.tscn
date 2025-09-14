@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bjgnj03ujp5bk"]
 
-[ext_resource type="Script" path="res://scenes/Boat.gd" id="1_4wn8c"]
+[ext_resource type="Script" uid="uid://dw5pak16lqneb" path="res://scenes/Boat.gd" id="1_4wn8c"]
 [ext_resource type="Texture2D" uid="uid://yrgthl8simfd" path="res://sprites/boat.png" id="2_pwn0m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy3d8"]

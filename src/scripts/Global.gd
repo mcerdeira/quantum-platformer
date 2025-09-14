@@ -159,6 +159,7 @@ var ReducirDestellos = false
 var MusicVolume = 100
 var SfxVolume = 100
 var DEATHS = 0
+var save_icon = null
 
 #CHEST ITEMS 
 
@@ -657,6 +658,9 @@ func apply_fullscreen():
 	
 func save_game():
 	if Global.CurrentState != Global.GameStates.TITLE:
+		if Global.save_icon and is_instance_valid(Global.save_icon):
+			Global.save_icon.show_me()
+			
 		var saved_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 		saved_game.store_var(Global.CurrentState)
 		saved_game.store_var(Global.first_time)

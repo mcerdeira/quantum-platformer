@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dtccd8i2ldgvb" path="res://sprites/ice_cube_spr_0.png" id="6_2d2tg"]
 [ext_resource type="Texture2D" uid="uid://ccl7ndrpf8wk7" path="res://sprites/floor_tomb_fill.png" id="6_e4781"]
 [ext_resource type="Texture2D" uid="uid://i4s6on6v0134" path="res://sprites/spritesheets/floor_tomb1-sheet.png" id="6_wea3n"]
-[ext_resource type="Script" path="res://scenes/levels/room.gd" id="7_07fko"]
+[ext_resource type="Script" uid="uid://dbu25wradvuh1" path="res://scenes/levels/room.gd" id="7_07fko"]
 [ext_resource type="Texture2D" uid="uid://df54v3r31ay8h" path="res://sprites/stair_v1_2.png" id="7_na2at"]
 [ext_resource type="Texture2D" uid="uid://do6cdrp48wgi8" path="res://sprites/stair_v1.png" id="8_bw7tg"]
 [ext_resource type="Texture2D" uid="uid://bm5n0nel4n2bp" path="res://sprites/stair_v1_1.png" id="9_ncpg7"]

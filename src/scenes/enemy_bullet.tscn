@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://cwlt1clvornbo"]
 
 [ext_resource type="Texture2D" uid="uid://clr0juhr8h16n" path="res://sprites/horu/images/monkey_spr_0.png" id="1_coiab"]
-[ext_resource type="Script" path="res://scenes/enemy_bullet.gd" id="1_jcpgp"]
+[ext_resource type="Script" uid="uid://bmrrcyrn8tft0" path="res://scenes/enemy_bullet.gd" id="1_jcpgp"]
 [ext_resource type="Texture2D" uid="uid://dxafvwvasfmji" path="res://sprites/horu/images/monkey_awake1.png" id="2_6xtrx"]
 [ext_resource type="Texture2D" uid="uid://bxhiwds7lm0qa" path="res://sprites/horu/images/monkey_face_spr_0.png" id="2_reept"]
 [ext_resource type="Texture2D" uid="uid://dlhhldrfwwxnb" path="res://sprites/horu/images/monkey_face_spr_1.png" id="3_s3pon"]
@@ -12,8 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://capc1hdlw0gpl" path="res://sprites/horu/images/stars1.png" id="9_lpu4s"]
 [ext_resource type="Texture2D" uid="uid://caxf4k5okg3cr" path="res://sprites/horu/images/stars2.png" id="10_gs46t"]
 [ext_resource type="Texture2D" uid="uid://bpaljgkr5iu14" path="res://sprites/horu/images/stars3.png" id="11_8m6mf"]
-[ext_resource type="Script" path="res://scenes/bounce.gd" id="12_fkvj0"]
-[ext_resource type="Script" path="res://scenes/en_bulletexplosions.gd" id="13_k5t3h"]
+[ext_resource type="Script" uid="uid://bsi03gbqsppc" path="res://scenes/bounce.gd" id="12_fkvj0"]
+[ext_resource type="Script" uid="uid://bpsjmi73nyy44" path="res://scenes/en_bulletexplosions.gd" id="13_k5t3h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oeaso"]
 radius = 271.671

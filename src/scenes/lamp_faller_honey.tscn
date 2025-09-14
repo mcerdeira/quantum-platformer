@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bm3ot84ree1bg"]
 
-[ext_resource type="Script" path="res://scenes/lamp_faller_honey.gd" id="1_0nej0"]
+[ext_resource type="Script" uid="uid://cejy6ql7wnd1c" path="res://scenes/lamp_faller_honey.gd" id="1_0nej0"]
 [ext_resource type="Texture2D" uid="uid://chfph0b7cfle3" path="res://sprites/honeycomb_broken.png" id="2_38y2c"]
 [ext_resource type="Texture2D" uid="uid://4ciuk1qq06to" path="res://sprites/honeycomb.png" id="3_lrpv3"]
 [ext_resource type="Texture2D" uid="uid://2cvoimmrh44h" path="res://sprites/bees1.png" id="4_d45fy"]

@@ -5,18 +5,18 @@
 [ext_resource type="Texture2D" uid="uid://bx06swrbyq4p3" path="res://sprites/floor_spr_blasted.png" id="3_8sc3w"]
 [ext_resource type="Texture2D" uid="uid://cvgek1xj28trv" path="res://sprites/fireball_box.png" id="4_p75w4"]
 [ext_resource type="Texture2D" uid="uid://dw02vd8s8wsrw" path="res://sprites/vines.png" id="5_62i63"]
-[ext_resource type="Script" path="res://scenes/levels/room.gd" id="6_3a1uv"]
+[ext_resource type="Script" uid="uid://dbu25wradvuh1" path="res://scenes/levels/room.gd" id="6_3a1uv"]
 [ext_resource type="Texture2D" uid="uid://c3i1rnkssvnsp" path="res://sprites/floor_house.png" id="6_8hwk5"]
 [ext_resource type="Texture2D" uid="uid://dpcrtwqa2mio7" path="res://sprites/vines_burn.png" id="7_eg3eg"]
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="8_5meis"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="8_82s1b"]
-[ext_resource type="Script" path="res://scenes/levels/credits.gd" id="8_c7al2"]
+[ext_resource type="Script" uid="uid://clk0y500nwlec" path="res://scenes/levels/credits.gd" id="8_c7al2"]
 [ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="11_6c4sg"]
 [ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="11_yjbld"]
 [ext_resource type="PackedScene" uid="uid://q767q018lep8" path="res://scenes/exit_door.tscn" id="12_eedce"]
 [ext_resource type="PackedScene" uid="uid://ddh78hbx6awk6" path="res://scenes/telephone.tscn" id="12_qircy"]
 [ext_resource type="PackedScene" uid="uid://b8w8gjucf6srp" path="res://scenes/television.tscn" id="13_mttn6"]
-[ext_resource type="Script" path="res://scenes/levels/pet_face.gd" id="15_0ryoe"]
+[ext_resource type="Script" uid="uid://cis41qggbmpai" path="res://scenes/levels/pet_face.gd" id="15_0ryoe"]
 [ext_resource type="Texture2D" uid="uid://cykicgnhr3ojp" path="res://sprites/horu/images/pet1.png" id="16_obqgb"]
 [ext_resource type="Texture2D" uid="uid://btxspjx88sugq" path="res://sprites/horu/images/pet2.png" id="17_a55rx"]
 [ext_resource type="Texture2D" uid="uid://buyi5kind5agu" path="res://sprites/horu/images/pet3.png" id="18_6exys"]
@@ -94,6 +94,21 @@ sources/3 = SubResource("TileSetAtlasSource_wjy0w")
 sources/4 = SubResource("TileSetAtlasSource_eguy3")
 sources/5 = SubResource("TileSetAtlasSource_ch45v")
 
+[sub_resource type="Animation" id="Animation_4bvam"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../lbl_credits:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 936)]
+}
+
 [sub_resource type="Animation" id="Animation_hmq65"]
 resource_name = "new_animation"
 length = 60.0
@@ -110,25 +125,10 @@ tracks/0/keys = {
 "values": [Vector2(-109, 936), Vector2(-109, -2300)]
 }
 
-[sub_resource type="Animation" id="Animation_4bvam"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../lbl_credits:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 936)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1wl0t"]
 _data = {
-"RESET": SubResource("Animation_4bvam"),
-"new_animation": SubResource("Animation_hmq65")
+&"RESET": SubResource("Animation_4bvam"),
+&"new_animation": SubResource("Animation_hmq65")
 }
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_75di2"]

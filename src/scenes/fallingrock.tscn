@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bnfjurg8f0oqe"]
 
-[ext_resource type="Script" path="res://scenes/fallingrock.gd" id="2_nghgn"]
+[ext_resource type="Script" uid="uid://73n6gb3vo0sb" path="res://scenes/fallingrock.gd" id="2_nghgn"]
 [ext_resource type="Texture2D" uid="uid://cdylcd48oh822" path="res://sprites/fallingice_cube_spr_0.png" id="2_p8roc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vck2j"]
@@ -38,8 +38,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fwjxb"]
 _data = {
-"RESET": SubResource("Animation_toqvh"),
-"new_animation": SubResource("Animation_fk0jf")
+&"RESET": SubResource("Animation_toqvh"),
+&"new_animation": SubResource("Animation_fk0jf")
 }
 
 [node name="fallingrock" type="Node2D"]

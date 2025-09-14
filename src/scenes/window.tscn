@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://be7tyxgihgblc" path="res://sprites/window_spr_1.png" id="1_05srx"]
 [ext_resource type="Texture2D" uid="uid://cp72o0jc4afsg" path="res://sprites/window_spr_0.png" id="2_7y115"]
-[ext_resource type="Script" path="res://scenes/window.gd" id="3_ylw78"]
+[ext_resource type="Script" uid="uid://comrvx807mdbe" path="res://scenes/window.gd" id="3_ylw78"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_drvey"]
 animations = [{

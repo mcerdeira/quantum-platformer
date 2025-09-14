@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bm5n0nel4n2bp" path="res://sprites/stair_v1_1.png" id="9_ri7ko"]
 [ext_resource type="Texture2D" uid="uid://ddjpinqcpwyw5" path="res://sprites/stair_v2.png" id="10_xuf3e"]
 [ext_resource type="Texture2D" uid="uid://dtccd8i2ldgvb" path="res://sprites/ice_cube_spr_0.png" id="11_1fllj"]
-[ext_resource type="Script" path="res://scenes/levels/room.gd" id="12_rp6up"]
+[ext_resource type="Script" uid="uid://dbu25wradvuh1" path="res://scenes/levels/room.gd" id="12_rp6up"]
 [ext_resource type="PackedScene" uid="uid://b7hufagbkuyww" path="res://scenes/bicho_feo.tscn" id="13_clkmd"]
 [ext_resource type="Texture2D" uid="uid://dw02vd8s8wsrw" path="res://sprites/vines.png" id="14_jtgng"]
 [ext_resource type="Texture2D" uid="uid://dpcrtwqa2mio7" path="res://sprites/vines_burn.png" id="15_w461t"]
@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="18_gb7wc"]
 [ext_resource type="PackedScene" uid="uid://c2hr571lqpqmf" path="res://scenes/Fireball_holder.tscn" id="20_a8mny"]
 [ext_resource type="PackedScene" uid="uid://b2w80dxra5rut" path="res://scenes/deadly_platform.tscn" id="22_l5etv"]
-[ext_resource type="Script" path="res://scenes/CoinGroup.gd" id="24_8dd8n"]
+[ext_resource type="Script" uid="uid://blf3opborpaqw" path="res://scenes/CoinGroup.gd" id="24_8dd8n"]
 [ext_resource type="PackedScene" uid="uid://c3hd5xs8u3b15" path="res://scenes/Coin.tscn" id="25_jhre8"]
 [ext_resource type="PackedScene" uid="uid://q767q018lep8" path="res://scenes/exit_door.tscn" id="26_7q0gv"]
 

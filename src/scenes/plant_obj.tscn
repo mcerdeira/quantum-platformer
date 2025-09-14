@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://crr473i00vwtl"]
 
 [ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="1_6n7ab"]
-[ext_resource type="Script" path="res://scenes/plant_obj.gd" id="1_56u4b"]
+[ext_resource type="Script" uid="uid://xie75ko5d2j3" path="res://scenes/plant_obj.gd" id="1_56u4b"]
 [ext_resource type="PackedScene" uid="uid://ba5hq2bchhv8x" path="res://scenes/Plants.tscn" id="2_vf7bl"]
 [ext_resource type="Texture2D" uid="uid://be6m0xxk7pl1s" path="res://sprites/growing_plant1.png" id="3_muev2"]
 [ext_resource type="Texture2D" uid="uid://b7mb4uoq3y2nk" path="res://sprites/growing_plant2.png" id="4_tqqtb"]
