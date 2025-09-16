@@ -450,17 +450,17 @@ material = SubResource("ShaderMaterial_nlsrr")
 position = Vector2(0, 3)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_3r5gg")
-animation = &"teleport"
+animation = &"bomb"
 offset = Vector2(0, -16)
 
 [node name="lbl_count" type="Label" parent="."]
 visible = false
 offset_left = -16.0
-offset_top = -22.0
+offset_top = -28.0
 offset_right = 16.0
-offset_bottom = -14.0
+offset_bottom = -12.0
 theme_override_fonts/font = ExtResource("2_j4rai")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 16
 text = "3"
 horizontal_alignment = 1
 
@@ -506,7 +506,7 @@ texture_mode = 1
 script = ExtResource("14_cbp3x")
 
 [node name="explosion_light" type="PointLight2D" parent="."]
-position = Vector2(-4.49997, -2.49999)
+position = Vector2(-4, -5)
 scale = Vector2(1.01828, 0.992772)
 enabled = false
 color = Color(1, 0.121569, 0.262745, 1)
@@ -554,19 +554,19 @@ disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_hg3f8")
+&"": SubResource("AnimationLibrary_hg3f8")
 }
 speed_scale = 10.0
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_pdqxo")
+&"": SubResource("AnimationLibrary_pdqxo")
 }
 speed_scale = 5.0
 
 [node name="anim_explosion" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_tqwta")
+&"": SubResource("AnimationLibrary_tqwta")
 }
 speed_scale = 5.0
 

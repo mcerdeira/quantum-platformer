@@ -51,8 +51,11 @@ func _physics_process(delta):
 				if !landed:
 					if !action_executed:
 						if current_item.has_action:
-							count_down = 3
-							$lbl_count.visible = true
+							if current_item.name == "bomb" or current_item.name == "smoke":
+								count_down = 3
+								#$lbl_count.visible = true
+							else:
+								count_down = 1.1
 						
 					noise_time = 0.3
 					$AnimationPlayer2.play("new_animation")
@@ -69,7 +72,7 @@ func _physics_process(delta):
 			if current_item.has_action:
 				if count_down > 0:
 					count_down -= 1 * delta
-					$lbl_count.text = str(round(count_down)) 
+					$lbl_count.text = str(int(count_down)) 
 					if count_down < 2:
 						gizmo_mode = true
 						$sprite.material.set_shader_parameter("gizmomode", gizmo_mode)

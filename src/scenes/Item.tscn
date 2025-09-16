@@ -200,7 +200,7 @@ material = SubResource("ShaderMaterial_jtgsv")
 position = Vector2(45, 61)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_jkk80")
-animation = &"teleport"
+animation = &"unknown"
 offset = Vector2(0, -16)
 
 [node name="lbl_item" type="Label" parent="display/back"]
@@ -210,8 +210,8 @@ offset_top = 2.0
 offset_right = 508.0
 offset_bottom = 64.0
 theme_override_fonts/font = ExtResource("10_7feub")
-text = "==CLONE==
-Generates a copy of you. ddhydgasgdsagdsajd"
+text = "== ????? ==
+¿Abrir el cofre?"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

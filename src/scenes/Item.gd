@@ -13,7 +13,7 @@ func _ready():
 	if randi() % 2 == 0 or fixed:
 		current_item = Global.pick_random(Global.gunz_objs_prob)
 		if current_item.name == "bomb":
-			QTY = Global.pick_random([5, 8, 10])
+			QTY = Global.pick_random([1, 2, 3])
 		elif current_item.name == "smoke":
 			QTY = Global.pick_random([5, 8, 10])
 		elif current_item.name == "coin":
@@ -29,12 +29,12 @@ func _ready():
 		elif current_item.name == "plant":
 			QTY = Global.pick_random([5, 8, 10])
 		
-		$display/back/sprite.animation = current_item.name
-		var qty_str = ""
-		if QTY != 1:
-			qty_str = " (x" + str(QTY) + ")"
+		#$display/back/sprite.animation = "unknown"
+		#var qty_str = ""
+		#if QTY != 1:
+		#	qty_str = " (x" + str(QTY) + ")"
 		
-		$display/back/lbl_item.text = "== " + current_item.friendly_name.to_upper() + qty_str + " ==" + "\n" + current_item.description
+		#$display/back/lbl_item.text = "== " + current_item.friendly_name.to_upper() + qty_str + " ==" + "\n" + current_item.description
 	else:
 		queue_free()
 

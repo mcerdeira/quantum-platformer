@@ -1000,7 +1000,7 @@ func init():
 	gunz_objs = []
 	
 	gunz_objs_prob_nocoin = []
-	
+		
 	gunz_objs.append(clone)
 	gunz_objs.append(teleport)
 	gunz_objs.append(coin)
@@ -1010,20 +1010,32 @@ func init():
 	gunz_objs.append(plant)
 	gunz_objs.append(smoke_bomb)
 	
-	gunz_objs_prob = [] + gunz_objs
-	gunz_objs_prob.append(coin)
+	gunz_objs_prob = [] 
 	
-	gunz_objs_prob_nocoin.append(clone)
-	gunz_objs_prob_nocoin.append(teleport)
-	gunz_objs_prob_nocoin.append(muffin)
-	gunz_objs_prob_nocoin.append(bomb)
-	gunz_objs_prob_nocoin.append(spring)
-	gunz_objs_prob_nocoin.append(plant)
-	gunz_objs_prob_nocoin.append(smoke_bomb)
+	add_with_weigth(gunz_objs_prob, 4, clone)
+	add_with_weigth(gunz_objs_prob, 4, teleport)
+	add_with_weigth(gunz_objs_prob, 5, coin)
+	add_with_weigth(gunz_objs_prob, 5, muffin)
+	add_with_weigth(gunz_objs_prob, 2, bomb)
+	add_with_weigth(gunz_objs_prob, 4, spring)
+	add_with_weigth(gunz_objs_prob, 4, plant)
+	add_with_weigth(gunz_objs_prob, 4, smoke_bomb)
+	
+	add_with_weigth(gunz_objs_prob_nocoin, 4, clone)
+	add_with_weigth(gunz_objs_prob_nocoin, 4, teleport)
+	add_with_weigth(gunz_objs_prob_nocoin, 5, muffin)
+	add_with_weigth(gunz_objs_prob_nocoin, 1, bomb)
+	add_with_weigth(gunz_objs_prob_nocoin, 4, spring)
+	add_with_weigth(gunz_objs_prob_nocoin, 4, plant)
+	add_with_weigth(gunz_objs_prob_nocoin, 4, smoke_bomb)
 	
 	Global.restore_gunz()
 	
 	randomize()
+	
+func add_with_weigth(obj, qty, item):
+	for i in range(qty):
+		obj.append(item)
 	
 func restore_gunz():
 	gunz_equiped = []
