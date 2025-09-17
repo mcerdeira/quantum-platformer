@@ -24,6 +24,7 @@ var moving = false
 var buff = 0
 var in_air = false
 var im_invisible = false
+var im_insmoke = false
 var idle_animation = "idle"
 var idle_time = 0
 var shoot_mode = false
@@ -580,7 +581,7 @@ func process_player(delta):
 				Global.play_sound(Global.WhooshSFX, options)
 				$AnimHammer.play("new_animation")
 		
-		if !iam_clone and Global.CurrentState == Global.GameStates.RANDOMLEVEL or Global.BOSS_ROOM:
+		if !iam_clone and Global.CurrentState == Global.GameStates.RANDOMLEVEL or Global.BOSS_ROOM or  Global.CurrentState == Global.GameStates.DEMO:
 			if Global.gunz_equiped.size() > 0:
 				if !Global.gunz_equiped[Global.gunz_index].pasive:
 					if Global.gunz_equiped[Global.gunz_index].stock > 0:

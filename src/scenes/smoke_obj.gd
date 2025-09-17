@@ -54,7 +54,7 @@ func _physics_process(delta):
 			Global.emit(to_kill.global_position, 5)
 			to_kill.queue_free()
 			ttl = 0.3
-			if childs_ref.size() <= 0:
+			if childs_ref.size() <= 4:
 				Global.emit(to_kill.global_position, 10)
 				queue_free()
 	else:
@@ -78,3 +78,15 @@ func create_smoke(pos):
 	add_child(smoke_o)
 	Global.emit(global_position, 10)
 	childs_ref.append(smoke_o)
+
+func _on_body_entered(body: Node2D) -> void:
+	if body and body.is_in_group("players"):
+		body.im_insmoke = true
+	if body and body.is_in_group("enemies"):
+		body.blind = true
+
+func _on_body_exited(body: Node2D) -> void:
+	if body and body.is_in_group("players"):
+		body.im_insmoke = false
+	if body and body.is_in_group("enemies"):
+		body.blind = false

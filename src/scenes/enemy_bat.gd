@@ -23,6 +23,7 @@ var fires = preload("res://scenes/Fires.tscn")
 var dead = false
 var delay = 2
 var sleeping = true
+var blind = false
 
 func _ready():
 	add_to_group("enemies")

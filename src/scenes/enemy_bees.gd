@@ -23,6 +23,7 @@ var level_parent = null
 var fires = preload("res://scenes/Fires.tscn")
 var dead = false
 var delay = 4
+var blind = false
 
 func _ready():
 	add_to_group("enemies")

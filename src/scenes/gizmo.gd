@@ -55,7 +55,7 @@ func _physics_process(delta):
 								count_down = 3
 								#$lbl_count.visible = true
 							else:
-								count_down = 1.1
+								count_down = 0.5
 						
 					noise_time = 0.3
 					$AnimationPlayer2.play("new_animation")

@@ -24,6 +24,7 @@ var dead_frames = 5
 var delay_change_total = 0.5
 var delay_change = 0
 var dead = false
+var blind = false
 var replace_me = preload("res://scenes/enemy_walker.tscn")
 
 var destination_rotation = 0

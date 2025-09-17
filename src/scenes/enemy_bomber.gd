@@ -26,6 +26,7 @@ var dead = false
 var active = false
 var shoot_ttl_total = 10.0
 var shoot_ttl = 3.0
+var blind = false
 
 func _ready():
 	add_to_group("enemies")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://crr473i00vwtl"]
+[gd_scene load_steps=18 format=3 uid="uid://crr473i00vwtl"]
 
 [ext_resource type="PackedScene" uid="uid://d254jydue6c5l" path="res://scenes/stair.tscn" id="1_6n7ab"]
 [ext_resource type="Script" uid="uid://xie75ko5d2j3" path="res://scenes/plant_obj.gd" id="1_56u4b"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://be0sggpo0756b" path="res://sprites/flower2.png" id="10_gstbk"]
 [ext_resource type="Texture2D" uid="uid://bkr8wo61c122p" path="res://sprites/flower3.png" id="11_q4a3c"]
 [ext_resource type="Texture2D" uid="uid://bd71r83500jje" path="res://sprites/flower4.png" id="12_neoci"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dp71l"]
+size = Vector2(20, 10)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vs1pb"]
 animations = [{
@@ -60,8 +63,12 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_l71j0"]
 radius = 3.16228
 
-[node name="PlantObj" type="Node2D"]
+[node name="PlantObj" type="CharacterBody2D"]
 script = ExtResource("1_56u4b")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_dp71l")
 
 [node name="Stair" parent="." instance=ExtResource("1_6n7ab")]
 plant_stair = true

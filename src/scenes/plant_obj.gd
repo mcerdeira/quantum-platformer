@@ -1,8 +1,13 @@
-extends Node2D
+extends CharacterBody2D
 var done = false
+var gravity = 1000.0
 
 func _ready():
 	global_position.y += 16
+	
+func _physics_process(delta: float) -> void:
+	velocity.y += gravity * delta
+	move_and_slide()
 
 func _on_growing_plant_animation_finished():
 	Global.play_sound(Global.PlantGrowSFX)
@@ -17,10 +22,7 @@ func _on_timer_timeout():
 	$Stair.scale.y += 1
 	$flower.global_position.y -= 32
 	Global.emit($flower.global_position, 1)
-	#var pepep : Line2D
-	#pepep.points[0].y = $flower.global_position.y
 	$flowerline.points[0].y = $flower.position.y
-
 
 func _on_detect_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	if body is TileMap:

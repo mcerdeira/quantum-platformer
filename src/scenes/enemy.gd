@@ -33,6 +33,7 @@ var jumper = false
 var sleep = false
 var fires = preload("res://scenes/Fires.tscn")
 var enemy = load("res://scenes/enemy.tscn")
+var blind = false
 
 func _ready():
 	add_to_group("enemies")

@@ -14,6 +14,7 @@ var dead = false
 var count_dead = 10
 var count_kill = 0
 var scalex_sign = 1
+var blind = false
 
 func _ready():
 	add_to_group("enemy_bullet")
