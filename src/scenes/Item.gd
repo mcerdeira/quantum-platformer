@@ -6,14 +6,21 @@ var player = null
 var delay_camera = 0.2
 var QTY = 1
 @export var fixed = false
+@export var bomb = false
 
 func _ready():
 	$display.visible = false
-				
 	if randi() % 2 == 0 or fixed:
-		current_item = Global.pick_random(Global.gunz_objs_prob)
+		if bomb:
+			current_item = Global.bomb
+		else:
+			current_item = Global.pick_random(Global.gunz_objs_prob)
+		
 		if current_item.name == "bomb":
-			QTY = Global.pick_random([1, 2, 3])
+			if bomb:
+				QTY = 1
+			else:
+				QTY = Global.pick_random([1, 2, 3])
 		elif current_item.name == "smoke":
 			QTY = Global.pick_random([5, 8, 10])
 		elif current_item.name == "coin":

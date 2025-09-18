@@ -208,7 +208,7 @@ collision_mask = 41
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_a21rf")
+&"": SubResource("AnimationLibrary_a21rf")
 }
 autoplay = "new_animation"
 speed_scale = 3.0

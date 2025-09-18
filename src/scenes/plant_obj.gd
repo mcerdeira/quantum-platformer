@@ -6,8 +6,9 @@ func _ready():
 	global_position.y += 16
 	
 func _physics_process(delta: float) -> void:
-	velocity.y += gravity * delta
-	move_and_slide()
+	if !is_on_floor():
+		velocity.y += gravity * delta
+		move_and_slide()
 
 func _on_growing_plant_animation_finished():
 	Global.play_sound(Global.PlantGrowSFX)

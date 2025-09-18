@@ -23,8 +23,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fg5sd"]
-size = Vector2(32, 18)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l13eo"]
+size = Vector2(8, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbh2s"]
 size = Vector2(30, 2)
@@ -41,8 +41,8 @@ frame_progress = 0.737259
 speed_scale = 2.0
 
 [node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -9)
-shape = SubResource("RectangleShape2D_fg5sd")
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_l13eo")
 
 [node name="SpringZone" type="Area2D" parent="."]
 position = Vector2(0, -15)

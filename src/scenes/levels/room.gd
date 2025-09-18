@@ -3,6 +3,10 @@ var q = 0
 @export var pre_final_scene = false
 
 func _ready():
+	if Global.CurrentState == Global.GameStates.FALLING:
+		Global.gunz_equiped_real = []
+		Global.gunz_equiped = []
+	
 	if q == 0:
 		Global.save_game()
 	if pre_final_scene:

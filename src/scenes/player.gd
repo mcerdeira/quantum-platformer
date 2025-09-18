@@ -443,7 +443,8 @@ func check_shoot_released(delta):
 				destroy_trayectory()
 				shoot_mode = false
 				shoot(delta)
-				Global.remove_item()
+				if !Global.CurrentState == Global.GameStates.OUTSIDE:
+					Global.remove_item()
 				await get_tree().create_timer(0.3).timeout
 				$collider.set_deferred("disabled", false)
 				gravity = gravity_total
@@ -454,13 +455,6 @@ func inv_move_right():
 		for i in range(Global.gunz_equiped.size() - 1, 0, -1):
 			Global.gunz_equiped[i] = Global.gunz_equiped[i - 1]
 		Global.gunz_equiped[0] = last_element
-		#for i in range(0, Global.gunz_equiped.size()):
-			#if Global.gunz_equiped[i].name == "muffin":
-				#print(Global.gunz_equiped[i].name + "<")
-			#else:
-				#print(Global.gunz_equiped[i].name)
-		#print("-----------")
-		
 	
 func inv_move_left():
 	if Global.gunz_equiped.size() > 0:
@@ -468,12 +462,6 @@ func inv_move_left():
 		for i in range(1, Global.gunz_equiped.size()):
 			Global.gunz_equiped[i - 1] = Global.gunz_equiped[i]
 		Global.gunz_equiped[Global.gunz_equiped.size() - 1] = first_element
-		#for i in range(0, Global.gunz_equiped.size()):
-			#if Global.gunz_equiped[i].name == "muffin":
-				#print(Global.gunz_equiped[i].name + "<")
-			#else:
-				#print(Global.gunz_equiped[i].name)
-		#print("-----------")
 		
 func refresh_item():
 	#Solo para el cheats
@@ -581,7 +569,7 @@ func process_player(delta):
 				Global.play_sound(Global.WhooshSFX, options)
 				$AnimHammer.play("new_animation")
 		
-		if !iam_clone and Global.CurrentState == Global.GameStates.RANDOMLEVEL or Global.BOSS_ROOM or  Global.CurrentState == Global.GameStates.DEMO:
+		if !iam_clone and Global.CurrentState == Global.GameStates.RANDOMLEVEL or Global.BOSS_ROOM or Global.CurrentState == Global.GameStates.OUTSIDE or Global.CurrentState == Global.GameStates.DEMO:
 			if Global.gunz_equiped.size() > 0:
 				if !Global.gunz_equiped[Global.gunz_index].pasive:
 					if Global.gunz_equiped[Global.gunz_index].stock > 0:
@@ -595,7 +583,8 @@ func process_player(delta):
 		else:
 			if !iam_clone:
 				if !showing_message():
-					Global.player_obj.show_message_custom("No quiero usar eso aqui.")
+					if Global.CurrentState != Global.GameStates.FALLING:
+						Global.player_obj.show_message_custom("No quiero usar eso aqui.")
 		
 	check_shoot_released(delta)
 		
@@ -742,13 +731,13 @@ func process_player(delta):
 				ra = $raycastR
 			else:
 				ra = $raycastL
-			if ra and ra.is_colliding():
+			if (ra and ra.is_colliding()):
 				$sprite_eyes.animation = "angry"
 			else:
 				$sprite_eyes.animation = $sprite.animation
 				
 			$sprite.play()
-		else:
+		else:			
 			$sprite.stop()
 			if idle_play <= 0:
 				$sprite_eyes.play()
@@ -761,10 +750,24 @@ func process_player(delta):
 			if idle_time >= 0.3:
 				$sprite.animation = idle_animation
 				$sprite_eyes.animation = $sprite.animation
+				
+			if shoot_mode:
+				shake()
+			else:
+				if $sprite.scale.x != 1:
+					$sprite.scale.x = 1
+					$sprite.scale.y = 1
+					$sprite.rotation_degrees = 0.0
 	else:
 		$sprite.animation = dead_animation
 		$sprite_eyes.animation = $sprite.animation
 		$sprite.play()
+		
+func shake():
+	$sprite_eyes.animation = "angry"
+	$sprite.rotation_degrees = randf_range(10.0, -10.0)
+	$sprite.scale.x = randf_range(0.7, 1.3)
+	$sprite.scale.y = randf_range(0.7, 1.3)
 		
 func teleported():
 	pass
@@ -810,7 +813,7 @@ func shoot(_delta):
 			var parent = get_parent()
 			p.global_position = pos
 			parent.add_child(p)
-			Global.emit(pos, 5)
+			Global.emit(pos, 9)
 			var current_item = Global.gunz_equiped[Global.gunz_index]
 			p.droped(self, $lbl_action, Vector2.from_angle($gun_sprite.rotation) * tspeed, current_item, false)
 	
