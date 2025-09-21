@@ -1,7 +1,7 @@
 extends Area2D
 var active = false
-const CoinExploder = preload("res://scenes/Coinexploder.tscn")
-const FireBallHolderShoot = preload("res://scenes/FireBallHolderShoot.tscn")
+var CoinExploder = load("res://scenes/Coinexploder.tscn")
+var FireBallHolderShoot = load("res://scenes/FireBallHolderShoot.tscn")
 var ttl_total = 9
 var ttl = 0
 var num_bullets = 60

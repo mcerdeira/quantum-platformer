@@ -5,6 +5,7 @@ var opened = false
 var player = null
 var delay_camera = 0.2
 var QTY = 1
+var CoinExploder = load("res://scenes/Coinexploder.tscn")
 @export var fixed = false
 @export var bomb = false
 
@@ -24,7 +25,7 @@ func _ready():
 		elif current_item.name == "smoke":
 			QTY = Global.pick_random([5, 8, 10])
 		elif current_item.name == "coin":
-			QTY = Global.pick_random([1, 5, 8])
+			pass
 		elif current_item.name == "muffin":
 			QTY = Global.pick_random([5, 8, 10])
 		elif current_item.name == "spring":
@@ -36,14 +37,17 @@ func _ready():
 		elif current_item.name == "plant":
 			QTY = Global.pick_random([5, 8, 10])
 		
-		#$display/back/sprite.animation = "unknown"
-		#var qty_str = ""
-		#if QTY != 1:
-		#	qty_str = " (x" + str(QTY) + ")"
-		
-		#$display/back/lbl_item.text = "== " + current_item.friendly_name.to_upper() + qty_str + " ==" + "\n" + current_item.description
 	else:
 		queue_free()
+		
+func drop_coins():
+	var parent = get_parent().get_parent()
+	Global.play_sound(Global.CoinSFX)
+	var coins = Global.pick_random([5, 10, 7])
+	for i in range(coins):
+		var p = CoinExploder.instantiate()
+		p.global_position = $coinpos.global_position
+		parent.add_child(p)
 
 func _physics_process(delta):
 	if !active and opened:
@@ -59,9 +63,12 @@ func _physics_process(delta):
 			Global.play_sound(Global.ChestOpenSFX)
 			opened = true
 			active = false
-			Global.emit(global_position, 5)
-			get_item()
 			var show_video = false
+			Global.emit(global_position, 5)
+			
+			if current_item.name == "coin":
+				drop_coins()
+			
 			if current_item.name == "smoke" and Global.first_time_smoke:
 				Global.first_time_smoke = false
 				show_video = true
@@ -92,7 +99,12 @@ func _physics_process(delta):
 				
 			if show_video:
 				Global.video_tutorial.play(current_item)
-					
+
+			if current_item.name != "coin":
+				get_item()
+				$sprite_anim.animation = current_item.name
+				$anim.play("new_animation")
+
 			$sprite.animation = "open"
 			$display.visible = false
 		

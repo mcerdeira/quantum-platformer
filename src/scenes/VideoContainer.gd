@@ -15,6 +15,7 @@ func _physics_process(delta):
 func play(current_itenm):
 	if current_itenm.tutorial:
 		$lbl_item.text = current_itenm.tutorial
+		$lbl_title.text = current_itenm.friendly_name
 		$AnimationPlayer.play("new_animation")
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -20)
 		visible = true

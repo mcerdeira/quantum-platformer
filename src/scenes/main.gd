@@ -430,17 +430,12 @@ func _physics_process(delta):
 	if sel:
 		sel.text = str(Global.prisoner_total - Global.prisoner_counter) + "/" + str(Global.prisoner_total) 
 		
+	if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
+		$CanvasLayer/Control/PrisonerHead.visible = true
+		
 	if Global.TerminalNumber == Global.TerminalsEnum.SALAMANDER:
 		$CanvasLayer/Control/PrisonerHead.visible = false
 		
 	if Global.BOSS_ROOM or Global.CurrentState == Global.GameStates.OVERWORLD or Global.CurrentState == Global.GameStates.SHOP:
 		$CanvasLayer/Control/PrisonerHead.visible = false
 		
-	#if Input.is_action_just_pressed("toggle_fullscreen"):
-		#Global.FULLSCREEN = !Global.FULLSCREEN
-		#if Global.FULLSCREEN:
-			#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-			#return
-		#else:
-			#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-			#return

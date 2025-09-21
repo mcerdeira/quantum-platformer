@@ -432,7 +432,7 @@ position = Vector2(2054, 1323)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ukw2g")
+&"": SubResource("AnimationLibrary_ukw2g")
 }
 
 [node name="water" parent="." instance=ExtResource("16_llciw")]

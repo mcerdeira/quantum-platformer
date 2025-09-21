@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b5ta7xpckn1ia"]
+[gd_scene load_steps=23 format=3 uid="uid://b5ta7xpckn1ia"]
 
 [ext_resource type="Texture2D" uid="uid://bx8e73y8i626q" path="res://sprites/floor_spr_2.png" id="1_x3dy5"]
 [ext_resource type="Texture2D" uid="uid://rnfv18qx6tmb" path="res://sprites/stair.png" id="2_h54sa"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d0y25v78laocy" path="res://scenes/levels/qdtector.tscn" id="9_p0oux"]
 [ext_resource type="PackedScene" uid="uid://drbtuueponqdc" path="res://scenes/levels/player_marker.tscn" id="10_r8dlq"]
 [ext_resource type="PackedScene" uid="uid://c4vd4vxwdwdqh" path="res://scenes/levels/enemy_marker.tscn" id="11_beswj"]
+[ext_resource type="PackedScene" uid="uid://c1hauk6vcsonh" path="res://scenes/Item.tscn" id="12_585fg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iwogt"]
 texture = ExtResource("1_x3dy5")
@@ -121,5 +122,33 @@ position = Vector2(372, 528)
 
 [node name="enemy_marker" parent="." instance=ExtResource("11_beswj")]
 position = Vector2(899, 624)
-selected_enemy = "enemy"
+selected_enemy = "enemy_bullet"
 by_chance = false
+
+[node name="Item" parent="." instance=ExtResource("12_585fg")]
+position = Vector2(114, 640)
+fixed = true
+
+[node name="Item2" parent="." instance=ExtResource("12_585fg")]
+position = Vector2(524, 640)
+fixed = true
+
+[node name="Item3" parent="." instance=ExtResource("12_585fg")]
+position = Vector2(586, 640)
+fixed = true
+
+[node name="Item4" parent="." instance=ExtResource("12_585fg")]
+position = Vector2(652, 640)
+fixed = true
+
+[node name="Item5" parent="." instance=ExtResource("12_585fg")]
+position = Vector2(714, 640)
+fixed = true
+
+[node name="Item6" parent="." instance=ExtResource("12_585fg")]
+position = Vector2(780, 640)
+fixed = true
+
+[node name="Item7" parent="." instance=ExtResource("12_585fg")]
+position = Vector2(842, 640)
+fixed = true
