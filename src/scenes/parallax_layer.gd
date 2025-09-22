@@ -14,7 +14,7 @@ func _process(_delta):
 		queue_free()
 		return
 	if type == "trees":
-		if Global.TerminalNumber != Global.TerminalsEnum.LEAF or Global.TunnelTerminalNumber:
+		if Global.TerminalNumber != Global.TerminalsEnum.MERMAID or Global.TunnelTerminalNumber:
 			queue_free()
 			return
 	elif type == "tomb":

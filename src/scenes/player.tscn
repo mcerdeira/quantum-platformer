@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://evskswf05b50"]
+[gd_scene load_steps=77 format=3 uid="uid://evskswf05b50"]
 
 [ext_resource type="Script" uid="uid://ql3h6vthm5h6" path="res://scenes/player.gd" id="1_u3t4v"]
 [ext_resource type="Texture2D" uid="uid://capc1hdlw0gpl" path="res://sprites/horu/images/stars1.png" id="2_iinm7"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cdp7mhhwwq6yn" path="res://sprites/horu/images/player_spr_0.png" id="14_p217l"]
 [ext_resource type="Script" uid="uid://cpxd7wivukhcv" path="res://scenes/Line.gd" id="14_w3c12"]
 [ext_resource type="Texture2D" uid="uid://b2ktaq5q0ak3t" path="res://sprites/horu/images/player_dead_fire_spr_0.png" id="15_d1x5y"]
+[ext_resource type="Texture2D" uid="uid://ch18vwyj03h26" path="res://sprites/horu/images/player_clone_face.png" id="15_h7ic4"]
 [ext_resource type="Texture2D" uid="uid://w8jhkurhs8h2" path="res://sprites/horu/images/player_spr_1.png" id="15_tt7ty"]
 [ext_resource type="PackedScene" uid="uid://7oc21gjrycxp" path="res://scenes/gizmo_fake.tscn" id="16_cdixk"]
 [ext_resource type="Texture2D" uid="uid://dk13v5x1btxmq" path="res://sprites/horu/images/player_spr_2.png" id="16_y8dad"]
@@ -183,6 +184,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_h7ic4")
+}],
+"loop": true,
+"name": &"clone",
 "speed": 5.0
 }, {
 "frames": [{

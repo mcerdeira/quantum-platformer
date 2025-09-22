@@ -142,6 +142,8 @@ func droped(_parent, _parent_lbl, direction, _current_item, _simulation = false,
 			$sprite.animation = Global.gunz_equiped[Global.gunz_index].name
 		$Line2D.visible = false
 		$Line2D.queue_free()
+		var options = {"pitch_scale": 2}
+		Global.play_sound(Global.SpitSFX, options)
 	
 func do_action(_player, lbl):
 	$lbl_count.visible = false

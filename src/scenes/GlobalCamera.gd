@@ -1,6 +1,6 @@
 extends Camera2D
 var positionted = false
-var speed = 250
+var speed = 550
 
 func _ready():
 	$BinocularCircle.visible = false
@@ -22,11 +22,19 @@ func _physics_process(delta: float) -> void:
 				global_position.x -= speed * delta
 			elif Input.is_action_pressed("right"):
 				global_position.x += speed * delta
+			elif Input.is_action_pressed("jump") or Input.is_action_pressed("shoot"):
+				if Global.player_obj:
+					global_position = Global.player_obj.global_position
 				
 			if global_position.y > 2351:
 				global_position.y = 2351
 			if global_position.y < 239:
 				global_position.y = 239
+				
+			if global_position.x > 4000:
+				global_position.x = 4000
+			if global_position.x < 200:
+				global_position.x = 200
 	else:
 		$BinocularCircle.visible = false
 		positionted = false

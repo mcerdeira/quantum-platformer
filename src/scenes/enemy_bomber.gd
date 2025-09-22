@@ -244,7 +244,7 @@ func super_jump():
 
 func _on_active_area_body_entered(body):
 	if !dead:
-		if body and body.is_in_group("players") and !body.is_in_group("prisoners"):
+		if body and body.is_in_group("players") and !body.is_in_group("prisoners") and !body.im_insmoke and !body.im_invisible:
 			active = true
 			$lbl_status.visible = true
 			$arms.animation = "default"

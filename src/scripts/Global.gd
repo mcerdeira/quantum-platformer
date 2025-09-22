@@ -122,6 +122,7 @@ var PauseSFX = null
 var GhostBossLaughSFX = null
 var BossThemeGhost = null
 var GurgleSFX = null
+var SpitSFX = null
 var Gusanote1SFX = null
 var Gusanote2SFX = null
 var Gusanote3SFX = null
@@ -975,6 +976,7 @@ func load_sfx():
 	CombinationOKSFX = load("res://sfx/CombinationOK.wav")
 	BoatUnlockedSFX = load("res://sfx/BoatUnlocked.wav")
 	PersecutionBossSFX = load("res://sfx/boss_persecution.wav")
+	SpitSFX = load("res://sfx/spit_sound.wav")
 
 	bomb_tutorial = load("res://video/bomb_tutorial.ogv")
 	clone_tutorial = load("res://video/clone_tutorial.ogv")

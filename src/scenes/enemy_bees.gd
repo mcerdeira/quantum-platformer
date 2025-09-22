@@ -115,10 +115,11 @@ func process_player(delta):
 			$sprite.animation = "idle"
 			killing = 0
 	else:
-		var direction = global_position.direction_to(Global.player_obj.global_position)
+		var player_obj = get_player_obj()
+		var direction = global_position.direction_to(player_obj.global_position)
 		velocity = direction * speed
 		
-		if global_position.x > Global.player_obj.global_position.x:
+		if global_position.x > player_obj.global_position.x:
 			direction = "left"
 			$sprite.flip_h = true
 		else:
@@ -139,6 +140,15 @@ func process_player(delta):
 
 func jump(delta):
 	pass
+	
+func get_player_obj():
+	var clones = get_tree().get_nodes_in_group("clones")
+	if clones.size() > 0:
+		for c in clones:
+			if !c.dead:
+				return c
+				
+	return Global.player_obj
 
 func _on_area_body_entered(body):
 	if !dead and blowed <= 0 and delay <= 0:

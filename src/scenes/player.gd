@@ -14,6 +14,7 @@ var rain = null
 var faceoverride = ""
 var do_dialog_final_boss = false
 var block_looking = false
+var gurgling = null
 
 @export var direction = "right"
 var has_hammer = false
@@ -123,6 +124,8 @@ func _ready():
 			rain = rainobj.instantiate()
 			rain.position = Vector2(-431, -467) 
 			add_child(rain)
+	else:
+		add_to_group("clones")
 			
 	if invisible:
 		set_invisible(true)
@@ -607,7 +610,7 @@ func process_player(delta):
 			idle_play = idle_play_total
 			update_trayectory(delta)
 	
-	if !dead and !shoot_mode and Input.is_action_just_pressed("jump") and !locked_ctrls:
+	if !iam_clone and !dead and !shoot_mode and Input.is_action_just_pressed("jump") and !locked_ctrls:
 		idle_play = idle_play_total
 		if is_on_stairs and grabbed:
 			jumping = false
@@ -629,7 +632,7 @@ func process_player(delta):
 			$Camera2D.position.y  = lerp($Camera2D.position.y, -100.00, 0.1)
 		
 	if !dead:
-		if !shoot_mode and Input.is_action_pressed("down") and !locked_ctrls:
+		if !iam_clone and !shoot_mode and Input.is_action_pressed("down") and !locked_ctrls:
 			look_counter += 1 * delta
 			if is_on_floor_custom() and !dont_camera and look_counter >= look_counter_total:
 				$sprite_eyes.position.y = 8
@@ -657,14 +660,14 @@ func process_player(delta):
 				if !block_looking:
 					$Camera2D.position.y = lerp($Camera2D.position.y, -250.0, sp)
 		
-		if !shoot_mode and Input.is_action_pressed("up") and !locked_ctrls:
+		if !iam_clone and !shoot_mode and Input.is_action_pressed("up") and !locked_ctrls:
 			idle_play = idle_play_total
 			if is_on_stairs:
 				grabbed = true 
 				moving = true
 				idle_time = 0
 				velocity.y = -speed
-		elif !shoot_mode and Input.is_action_pressed("down") and !locked_ctrls:
+		elif !iam_clone and !shoot_mode and Input.is_action_pressed("down") and !locked_ctrls:
 			idle_play = idle_play_total
 			if is_on_stairs:
 				grabbed = true 
@@ -674,7 +677,7 @@ func process_player(delta):
 				
 		var input_time = Time.get_ticks_msec() / 1000.0
 			
-		if !shoot_mode and Input.is_action_pressed("left") and !locked_ctrls:
+		if !iam_clone and !shoot_mode and Input.is_action_pressed("left") and !locked_ctrls:
 			idle_play = idle_play_total
 			check_shake(input_time)
 			direction = "left"
@@ -685,7 +688,7 @@ func process_player(delta):
 			$sprite_eyes.flip_h = $sprite.flip_h
 			$gun_sprite.rotation = initial_rotation - 45
 			
-		elif !shoot_mode and Input.is_action_pressed("right") and !locked_ctrls:
+		elif !iam_clone and !shoot_mode and Input.is_action_pressed("right") and !locked_ctrls:
 			idle_play = idle_play_total
 			check_shake(input_time)
 			direction = "right"
@@ -750,11 +753,16 @@ func process_player(delta):
 			if idle_time >= 0.3:
 				$sprite.animation = idle_animation
 				$sprite_eyes.animation = $sprite.animation
+				if iam_clone:
+					$sprite_eyes.animation = "clone"
 				
 			if shoot_mode:
 				shake()
 			else:
 				if $sprite.scale.x != 1:
+					if gurgling:
+						gurgling.stop()
+					gurgling = null
 					$sprite.scale.x = 1
 					$sprite.scale.y = 1
 					$sprite.rotation_degrees = 0.0
@@ -764,6 +772,10 @@ func process_player(delta):
 		$sprite.play()
 		
 func shake():
+	if gurgling == null:
+		var options = {"pitch_scale": 3}
+		gurgling = Global.play_sound(Global.GurgleSFX, options)
+		
 	$sprite_eyes.animation = "angry"
 	$sprite.rotation_degrees = randf_range(10.0, -10.0)
 	$sprite.scale.x = randf_range(0.7, 1.3)
