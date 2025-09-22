@@ -22,20 +22,11 @@ func _ready():
 	
 func kill():
 	if !dead:
-		drop_coins()
+		Global.drop_coins($shoot_pos.global_position)
 		$explosions.start()
 		$Timer.start()
 		dead = true
 		$sprite_eyes.animation = "dead"
-		
-func drop_coins():
-	Global.play_sound(Global.CoinSFX)
-	var coins = Global.pick_random([25, 15, 35])
-	for i in range(coins):
-		var p = CoinExploder.instantiate()
-		var parent = get_parent()
-		p.global_position = $shoot_pos.global_position
-		parent.add_child(p)
 		
 func hover(delta):
 	if round(initial_position.y + 8 * dir) == round(global_position.y):

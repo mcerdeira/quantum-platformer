@@ -190,7 +190,7 @@ func kill_fire(tt_total = null):
 func dead_fire():
 	if Global.TerminalNumber != Global.TerminalsEnum.MERMAID:
 		if randi() % 2 == 0:
-			$Item.visible = true
+			Global.drop_coins(global_position)
 		dead = true
 		gravity = 10.0
 		$wing2.visible = false

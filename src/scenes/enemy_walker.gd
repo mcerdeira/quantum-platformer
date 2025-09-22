@@ -179,7 +179,7 @@ func kill_fire(tt_total = null):
 
 func dead_fire():
 	if randi() % 2 == 0:
-		$Item.visible = true
+		Global.drop_coins(global_position)
 	dead = true
 	$sprite.animation = "dead_fire" + spr_sufix
 	$sprite.play()

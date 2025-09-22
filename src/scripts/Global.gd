@@ -3,6 +3,7 @@ var AlreadySEEN = false
 var FULLSCREEN = false
 var SAVED_GAME = false
 var particle = preload("res://scenes/particle2.tscn")
+var CoinExploder = preload("res://scenes/Coinexploder.tscn")
 var MUSIC_ENABLED = true
 var MUSIC_PLAYING = false
 var CHROM_FX = null
@@ -554,6 +555,14 @@ func buy_item(item, qty):
 			get_item(itm, qty)
 			save_game()
 			return true
+
+func drop_coins(_global_position):
+	Global.play_sound(Global.CoinSFX, {}, _global_position)
+	var coins = Global.pick_random([5, 10, 7])
+	for i in range(coins):
+		var p = CoinExploder.instantiate()
+		p.global_position = _global_position
+		add_child(p)
 
 func get_item(current_item, qty = 1):
 	var found = false

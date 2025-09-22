@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://81vub78cngl3"]
+[gd_scene load_steps=30 format=3 uid="uid://81vub78cngl3"]
 
 [ext_resource type="Script" uid="uid://b0dodspanuiwk" path="res://scenes/enemy_walker_walls.gd" id="1_53he0"]
 [ext_resource type="Texture2D" uid="uid://cauminoav2qtv" path="res://sprites/horu/images/enemy_wall_spr_0.png" id="2_h33ti"]
@@ -22,23 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://capc1hdlw0gpl" path="res://sprites/horu/images/stars1.png" id="17_lq5dc"]
 [ext_resource type="Texture2D" uid="uid://caxf4k5okg3cr" path="res://sprites/horu/images/stars2.png" id="18_3nj8t"]
 [ext_resource type="Texture2D" uid="uid://bpaljgkr5iu14" path="res://sprites/horu/images/stars3.png" id="19_0ghtu"]
-[ext_resource type="Script" uid="uid://bm56n56ud6m6r" path="res://scenes/ItemEnemy.gd" id="23_nhups"]
-[ext_resource type="Shader" uid="uid://dl6p4elpfxi71" path="res://scenes/Item.gdshader" id="24_8mv7n"]
-[ext_resource type="Texture2D" uid="uid://c6gf7vjf30biq" path="res://sprites/coin.png" id="25_hlv3i"]
-[ext_resource type="Texture2D" uid="uid://cog7sk80ykf4o" path="res://sprites/bomb.png" id="26_0k8g2"]
-[ext_resource type="Texture2D" uid="uid://bej4v4xthspa2" path="res://sprites/box.png" id="27_454ia"]
-[ext_resource type="Texture2D" uid="uid://bljcg74u2x5sd" path="res://sprites/invisibility.png" id="28_eayg7"]
-[ext_resource type="Texture2D" uid="uid://b3tca6epdaoix" path="res://sprites/rock.png" id="29_nqexf"]
-[ext_resource type="Texture2D" uid="uid://df545tsy68qs1" path="res://sprites/growing_plant.png" id="30_3r57n"]
-[ext_resource type="Texture2D" uid="uid://pm7mhxqnqxtq" path="res://sprites/radar.png" id="31_yt30w"]
-[ext_resource type="Texture2D" uid="uid://mpqlvpcht35a" path="res://sprites/simul_box.png" id="32_qdl5y"]
-[ext_resource type="Texture2D" uid="uid://trxeowv3jmbb" path="res://sprites/smoke_bomb.png" id="33_w7xsn"]
-[ext_resource type="Texture2D" uid="uid://csp0ardyjl54b" path="res://sprites/spring.png" id="34_pykeo"]
-[ext_resource type="Texture2D" uid="uid://c3wmt7870xukn" path="res://sprites/teleporter_box.png" id="35_hhtb3"]
-[ext_resource type="Texture2D" uid="uid://cjg71ls267rbj" path="res://sprites/question_mark.png" id="36_wpcxn"]
-[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="37_t6jgr"]
-[ext_resource type="Texture2D" uid="uid://b3n7eech0mndx" path="res://sprites/arrows1.png" id="38_yh8u5"]
-[ext_resource type="Texture2D" uid="uid://dkompgmyj4pmk" path="res://sprites/arrows2.png" id="39_78j7d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0vk2b"]
 animations = [{
@@ -209,148 +192,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pabc"]
-size = Vector2(30, 21)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8o5a0"]
-shader = ExtResource("24_8mv7n")
-shader_parameter/shine_color = Color(1, 1, 1, 1)
-shader_parameter/shine_speed = 2.4
-shader_parameter/shine_size = 0.01
-shader_parameter/white = 0.0
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_44owx"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("25_hlv3i")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6hsh7"]
-resource_local_to_scene = true
-shader = ExtResource("24_8mv7n")
-shader_parameter/shine_color = Color(1, 1, 1, 1)
-shader_parameter/shine_speed = 3.0
-shader_parameter/shine_size = 0.01
-shader_parameter/white = 0.0
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_x2tlk"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("26_0k8g2")
-}],
-"loop": true,
-"name": &"bomb",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("27_454ia")
-}],
-"loop": true,
-"name": &"clone",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("25_hlv3i")
-}],
-"loop": true,
-"name": &"coin",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("28_eayg7")
-}],
-"loop": true,
-"name": &"invisibility",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("29_nqexf")
-}],
-"loop": true,
-"name": &"muffin",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("30_3r57n")
-}],
-"loop": true,
-"name": &"plant",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("31_yt30w")
-}],
-"loop": true,
-"name": &"radar",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("32_qdl5y")
-}],
-"loop": true,
-"name": &"simul",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("33_w7xsn")
-}],
-"loop": true,
-"name": &"smoke",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("34_pykeo")
-}],
-"loop": true,
-"name": &"spring",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("35_hhtb3")
-}],
-"loop": true,
-"name": &"teleport",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("36_wpcxn")
-}],
-"loop": true,
-"name": &"unknown",
-"speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bhp31"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("38_yh8u5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("39_78j7d")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="EnemyWalkerWalls" type="CharacterBody2D"]
 collision_layer = 256
 collision_mask = 256
@@ -379,7 +220,7 @@ shape = SubResource("CircleShape2D_6yeio")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_b5rsm")
+&"": SubResource("AnimationLibrary_b5rsm")
 }
 speed_scale = 2.0
 
@@ -401,68 +242,4 @@ sprite_frames = SubResource("SpriteFrames_3tn2l")
 autoplay = "default"
 frame_progress = 0.742966
 
-[node name="Item" type="Area2D" parent="."]
-visible = false
-position = Vector2(1, 16)
-script = ExtResource("23_nhups")
-
-[node name="collider" type="CollisionShape2D" parent="Item"]
-position = Vector2(0, -10.5)
-shape = SubResource("RectangleShape2D_2pabc")
-
-[node name="sprite" type="AnimatedSprite2D" parent="Item"]
-material = SubResource("ShaderMaterial_8o5a0")
-position = Vector2(-1, -48)
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_44owx")
-
-[node name="display" type="Node2D" parent="Item"]
-visible = false
-position = Vector2(0, -87)
-
-[node name="back2" type="ColorRect" parent="Item/display"]
-z_index = 4096
-offset_left = -303.0
-offset_top = -32.0
-offset_right = 247.0
-offset_bottom = 47.0
-metadata/_edit_use_anchors_ = true
-
-[node name="back" type="ColorRect" parent="Item/display"]
-z_index = 4096
-offset_left = -302.0
-offset_top = -31.0
-offset_right = 246.0
-offset_bottom = 46.0
-color = Color(0, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="sprite" type="AnimatedSprite2D" parent="Item/display/back"]
-material = SubResource("ShaderMaterial_6hsh7")
-position = Vector2(45, 61)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_x2tlk")
-animation = &"invisibility"
-offset = Vector2(0, -16)
-
-[node name="lbl_item" type="Label" parent="Item/display/back"]
-layout_mode = 0
-offset_left = 84.0
-offset_top = 2.0
-offset_right = 508.0
-offset_bottom = 64.0
-theme_override_fonts/font = ExtResource("37_t6jgr")
-text = "==CLONE==
-Generates a copy of you. ddhydgasgdsagdsajd"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="arrows" type="AnimatedSprite2D" parent="Item/display/back"]
-position = Vector2(520, 39)
-sprite_frames = SubResource("SpriteFrames_bhp31")
-autoplay = "default"
-
 [connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
-[connection signal="body_entered" from="Item" to="Item" method="_on_body_entered"]
-[connection signal="body_exited" from="Item" to="Item" method="_on_body_exited"]

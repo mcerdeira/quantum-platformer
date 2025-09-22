@@ -360,7 +360,7 @@ func kill_fall():
 func dead_fire():
 	if Global.TerminalNumber != Global.TerminalsEnum.MERMAID:
 		if randi() % 2 == 0:
-			$Item.visible = true
+			Global.drop_coins(global_position)
 		dead = true
 		$sprite.animation = "dead_fire"
 		$sprite.play()

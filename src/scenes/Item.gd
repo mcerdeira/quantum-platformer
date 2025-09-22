@@ -40,15 +40,6 @@ func _ready():
 	else:
 		queue_free()
 		
-func drop_coins():
-	var parent = get_parent().get_parent()
-	Global.play_sound(Global.CoinSFX)
-	var coins = Global.pick_random([5, 10, 7])
-	for i in range(coins):
-		var p = CoinExploder.instantiate()
-		p.global_position = $coinpos.global_position
-		parent.add_child(p)
-
 func _physics_process(delta):
 	if !active and opened:
 		if player:
@@ -67,7 +58,7 @@ func _physics_process(delta):
 			Global.emit(global_position, 5)
 			
 			if current_item.name == "coin":
-				drop_coins()
+				Global.drop_coins($coinpos.global_position)
 			
 			if current_item.name == "smoke" and Global.first_time_smoke:
 				Global.first_time_smoke = false
