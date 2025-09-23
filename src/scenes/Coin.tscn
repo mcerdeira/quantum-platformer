@@ -10,6 +10,7 @@ shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 5.0
 shader_parameter/shine_size = 0.01
 shader_parameter/white = 0.0
+shader_parameter/on = true
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_clvs6"]
 animations = [{
@@ -26,6 +27,7 @@ animations = [{
 radius = 20.3961
 
 [node name="Coin" type="Area2D"]
+z_index = 200
 script = ExtResource("1_ofwwj")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]

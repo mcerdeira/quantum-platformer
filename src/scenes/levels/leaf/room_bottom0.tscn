@@ -186,6 +186,10 @@ collision_mask = 41
 [node name="Item" parent="." instance=ExtResource("11_sjsi2")]
 position = Vector2(335, 640)
 
+[node name="Item3" parent="." instance=ExtResource("11_sjsi2")]
+position = Vector2(1094, 640)
+supercoin = true
+
 [node name="Item2" parent="." instance=ExtResource("11_sjsi2")]
 position = Vector2(529, 512)
 

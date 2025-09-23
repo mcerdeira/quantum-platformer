@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c1hauk6vcsonh"]
+[gd_scene load_steps=31 format=3 uid="uid://c1hauk6vcsonh"]
 
 [ext_resource type="Texture2D" uid="uid://cog7sk80ykf4o" path="res://sprites/bomb.png" id="1_1wt4j"]
 [ext_resource type="Script" uid="uid://vk74n8wnip5j" path="res://scenes/Item.gd" id="1_co2nu"]
@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://iyty0pio72t1" path="res://sprites/chest.png" id="14_ex0y7"]
 [ext_resource type="Texture2D" uid="uid://cduya7qxpjne4" path="res://sprites/chest_open.png" id="15_5bc42"]
 [ext_resource type="Texture2D" uid="uid://cjg71ls267rbj" path="res://sprites/question_mark.png" id="16_85bpg"]
+[ext_resource type="Texture2D" uid="uid://of3kvbvfwbdg" path="res://sprites/super_chest.png" id="17_jay0n"]
+[ext_resource type="Texture2D" uid="uid://brfxr7m0l2f2j" path="res://sprites/super_chest_open.png" id="18_sefv7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dym6o"]
 size = Vector2(30, 21)
@@ -183,6 +185,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8xrs0"]
+resource_local_to_scene = true
+shader = ExtResource("1_udi6n")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 1.0
+shader_parameter/shine_size = 0.01
+shader_parameter/white = 0.0
+shader_parameter/on = false
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_kipbu"]
 animations = [{
 "frames": [{
@@ -200,6 +211,22 @@ animations = [{
 "loop": true,
 "name": &"open",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_jay0n")
+}],
+"loop": true,
+"name": &"super_default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_sefv7")
+}],
+"loop": true,
+"name": &"super_open",
+"speed": 5.0
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jtgsv"]
@@ -209,6 +236,7 @@ shader_parameter/shine_color = Color(1, 1, 1, 1)
 shader_parameter/shine_speed = 3.0
 shader_parameter/shine_size = 0.01
 shader_parameter/white = 0.0
+shader_parameter/on = true
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2inxc"]
 animations = [{
@@ -247,6 +275,7 @@ animation = &"bomb"
 offset = Vector2(0, -16)
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_8xrs0")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_kipbu")
 

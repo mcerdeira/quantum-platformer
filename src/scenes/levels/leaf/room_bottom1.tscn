@@ -217,6 +217,10 @@ position = Vector2(497, 608)
 [node name="Item2" parent="." instance=ExtResource("12_418db")]
 position = Vector2(752, 640)
 
+[node name="Item5" parent="." instance=ExtResource("12_418db")]
+position = Vector2(122, 544)
+supercoin = true
+
 [node name="Item3" parent="." instance=ExtResource("12_418db")]
 position = Vector2(848, 195)
 

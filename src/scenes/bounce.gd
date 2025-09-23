@@ -2,7 +2,11 @@ extends Area2D
 var parent = get_parent()
 
 func _ready():
+	add_to_group("enemy_bullet_killer")
 	parent = get_parent() 
+	
+func kill():
+	get_parent().kill()
 
 func _process(_delta):
 	var overlapping_bodies = get_overlapping_bodies()

@@ -556,9 +556,14 @@ func buy_item(item, qty):
 			save_game()
 			return true
 
-func drop_coins(_global_position):
+func drop_coins(_global_position, supercoin = false):
 	Global.play_sound(Global.CoinSFX, {}, _global_position)
-	var coins = Global.pick_random([5, 10, 7])
+	var counts = [5, 10, 7]
+	
+	var coins = Global.pick_random(counts)
+	if supercoin:
+		coins *= Global.pick_random([2, 3, 4])
+	
 	for i in range(coins):
 		var p = CoinExploder.instantiate()
 		p.global_position = _global_position

@@ -42,7 +42,7 @@ func explode():
 
 func _on_area_body_entered(body):
 	if !active:
-		if (body.is_in_group("enemies") or body.is_in_group("players") or body.is_in_group("interactuable")):
+		if (body.is_in_group("enemies") or body.is_in_group("interactuable_coin") or body.is_in_group("players") or body.is_in_group("interactuable")):
 			active = true
 			$Timer.start()
 			$sprite.play()

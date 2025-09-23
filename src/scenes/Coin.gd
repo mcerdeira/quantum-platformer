@@ -4,7 +4,7 @@ var delay = 0.0
 
 func _ready() -> void:
 	if coin_exploder:
-		delay = 1.1
+		delay = 0.1
 		
 func _physics_process(delta: float) -> void:
 	if delay > 0:

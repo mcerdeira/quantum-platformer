@@ -7,11 +7,13 @@
 radius = 7.07107
 
 [node name="Coinexploder" type="RigidBody2D"]
+z_index = 4095
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("1_j5270")
 
 [node name="Coin" parent="." instance=ExtResource("2_hbka6")]
+z_index = 4095
 coin_exploder = true
 
 [node name="collider" type="CollisionShape2D" parent="."]

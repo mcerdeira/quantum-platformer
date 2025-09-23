@@ -18,7 +18,7 @@ func _process(_delta):
 				var direction = (area.global_position-parent.global_position).normalized()
 				area.flyaway(direction * 10) 
 				area.kill_fire()
-			elif area != parent and area.is_in_group("enemy_bullet"):
+			elif area != parent and area.is_in_group("enemy_bullet_killer"):
 				area.kill()
 	
 	var overlapping_bodies = get_overlapping_bodies()

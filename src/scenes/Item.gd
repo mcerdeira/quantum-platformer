@@ -1,4 +1,7 @@
 extends Area2D
+@export var fixed = false
+@export var bomb = false
+@export var supercoin = false
 var current_item = null
 var active = false
 var opened = false
@@ -6,13 +9,20 @@ var player = null
 var delay_camera = 0.2
 var QTY = 1
 var CoinExploder = load("res://scenes/Coinexploder.tscn")
-@export var fixed = false
-@export var bomb = false
+var prefix = ""
 
 func _ready():
 	$display.visible = false
+	if supercoin:
+		prefix = "super_"
+		$sprite.material.set_shader_parameter("on", true)
+		
+	$sprite.animation = prefix + "default"
+		
 	if randi() % 2 == 0 or fixed:
-		if bomb:
+		if supercoin:
+			current_item = Global.coin
+		elif bomb:
 			current_item = Global.bomb
 		else:
 			current_item = Global.pick_random(Global.gunz_objs_prob)
@@ -58,7 +68,7 @@ func _physics_process(delta):
 			Global.emit(global_position, 5)
 			
 			if current_item.name == "coin":
-				Global.drop_coins($coinpos.global_position)
+				Global.drop_coins($coinpos.global_position, supercoin)
 			
 			if current_item.name == "smoke" and Global.first_time_smoke:
 				Global.first_time_smoke = false
@@ -96,7 +106,7 @@ func _physics_process(delta):
 				$sprite_anim.animation = current_item.name
 				$anim.play("new_animation")
 
-			$sprite.animation = "open"
+			$sprite.animation = prefix + "open"
 			$display.visible = false
 		
 func get_item():
