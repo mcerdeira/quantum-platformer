@@ -2,10 +2,12 @@ extends StaticBody2D
 var active = false
 var exploded = false
 var explosion_delay = 0
+@export var fixed = false
 
 func _ready():
-	if randi() % 5 != 0:
-		queue_free()
+	if !fixed:
+		if randi() % 5 != 0:
+			queue_free()
 		
 func _physics_process(delta):
 	if active and !exploded:

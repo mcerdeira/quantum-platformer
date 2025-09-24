@@ -265,6 +265,11 @@ func _ready():
 		p.visible = false
 		p.queue_free()
 	
+	var interactuable_coin = get_tree().get_nodes_in_group("interactuable_coin")
+	for p in interactuable_coin:
+		p.visible = false
+		p.queue_free()
+	
 	Global.prisoner_counter = 0
 	Global.prisoner_total = 0
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
