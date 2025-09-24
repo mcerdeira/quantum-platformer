@@ -76,6 +76,10 @@ var rooms_challenge_horizontal = [
 	preload("res://scenes/levels/challenge/room_challenge_horizontal2.tscn"),
 	preload("res://scenes/levels/challenge/room_challenge_horizontal3.tscn"),
 ]
+var rooms_secret = [
+	preload("res://scenes/levels/challenge/room_secret.tscn")
+]
+
 var list_rooms_top = [
 	null,
 	rooms_top,
@@ -122,9 +126,7 @@ func generate_challenge_horizontal():
 	var total_w = 8
 	var room = null
 	var q = 1
-
 	player_room = Vector2(0, 0)
-	
 	$frame.queue_free()
 
 	for w in range(total_w):
@@ -152,6 +154,34 @@ func generate_challenge_horizontal():
 			
 		add_child(r)
 		
+func generate_secret_room():
+	var player_room = Vector2(randi() % 4, 0)
+	var door_room = Vector2(randi() % 4, randi() % 4)
+	var size = Vector2(1152, 640) #TODO: Cambiar
+	var room_pos = Vector2.ZERO
+	var total_w = 8
+	var room = null
+	var q = 1
+	player_room = Vector2(0, 0)
+	$frame.queue_free()
+	room =  Global.pick_random(rooms_secret)
+	var r = room.instantiate()
+	r.global_position = room_pos
+	r.q = q
+	add_child(r)
+		
+func restore_level():
+	for node in Global.current_world:
+		node.set_process(true)
+		node.set_physics_process(true)
+		add_child(node)
+	
+func save_level():
+	for node in Global.current_world:
+		node.set_process(false)
+		node.set_physics_process(false)
+		remove_child(node)
+		
 func generate_level():
 	var player_room = Vector2(randi() % 4, 0)
 	var door_room = Vector2(randi() % 4, randi() % 4)
@@ -169,6 +199,7 @@ func generate_level():
 	var _rooms_middle1 = null
 	var _rooms_middle2 = null
 	var _rooms_bottom = null
+	Global.current_world = []
 	if Global.BOSS_ROOM:
 		Global.reset_gunz()
 		$frame.queue_free()
@@ -216,6 +247,7 @@ func generate_level():
 				
 			if room:
 				var r = room.instantiate()
+				Global.current_world.append(r)
 				r.global_position = room_pos
 				r.q = q
 				q += 1
@@ -260,6 +292,7 @@ func generate_level():
 				_pm.done = true
 		
 func _ready():
+	Global.MainScene = self
 	var particles2 = get_tree().get_nodes_in_group("particles2")
 	for p in particles2:
 		p.visible = false
@@ -308,7 +341,11 @@ func _ready():
 		Music.play(Global.SpecialLevelTheme)
 		Ambience.stop()
 		Bees.stop()
-		generate_challenge_horizontal()
+		if(randi() % 2) == 0:
+			generate_challenge_horizontal()
+		else:
+			generate_secret_room()
+			
 	if Global.CurrentState == Global.GameStates.TITLE:
 		Music.play(Global.MainTheme)
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

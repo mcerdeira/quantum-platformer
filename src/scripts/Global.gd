@@ -32,6 +32,7 @@ var PauseStop = false
 var BoatObj = null
 var pauseobj = null
 var FogObj = null
+var MainScene = null
 
 var SpecialLevelTheme = null
 var WhooshSFX = null
@@ -132,6 +133,7 @@ var BoatUnlockedSFX = null
 var PersecutionBossSFX = null
 var BoatUnlocked = false
 var combinatoryOK = false
+var current_world = []
 
 var video_tutorials = []
 
@@ -501,6 +503,9 @@ func scene_next(terminal_number = -1, boss = false, special = false, shop = fals
 		Global.CurrentState = Global.GameStates.OVERWORLD
 
 	Global.Fader.fade_in()
+	if Global.CurrentState == Global.GameStates.CHALLENGE:
+		Global.MainScene.save_level()
+		
 	get_tree().reload_current_scene()
 
 func remove_item():
