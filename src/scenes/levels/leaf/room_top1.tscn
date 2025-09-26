@@ -266,3 +266,13 @@ position = Vector2(1072, 272)
 position = Vector2(498, 352)
 gotoBOSS = false
 special_door = true
+
+[node name="ExitDoor3" parent="." instance=ExtResource("8_jg5en")]
+position = Vector2(219, 543)
+gotoBOSS = false
+special_door = true
+
+[node name="ExitDoor4" parent="." instance=ExtResource("8_jg5en")]
+position = Vector2(301, 575)
+gotoBOSS = false
+special_door = true

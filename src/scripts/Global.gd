@@ -132,6 +132,7 @@ var CombinationOKSFX = null
 var BoatUnlockedSFX = null
 var PersecutionBossSFX = null
 var BoatUnlocked = false
+var RestoreLevelFlag = false
 var combinatoryOK = false
 var current_world = []
 
@@ -473,6 +474,7 @@ func scene_next(terminal_number = -1, boss = false, special = false, shop = fals
 	Global.gunz_index = 0
 	Global.gunz_index_max = 0
 	BOSS_ROOM = boss
+	Global.RestoreLevelFlag = false
 	Global.TerminalNumber = terminal_number
 	if Global.CurrentState == Global.GameStates.TITLE:
 		Global.CurrentState = FirstState
@@ -497,7 +499,12 @@ func scene_next(terminal_number = -1, boss = false, special = false, shop = fals
 		Global.CurrentState = Global.GameStates.OVERWORLD
 		Global.TerminalNumber = -1
 	elif Global.CurrentState == Global.GameStates.CHALLENGE:
-		Global.CurrentState = Global.GameStates.OVERWORLD
+		if Global.GAMEOVER:
+			Global.CurrentState = Global.GameStates.OVERWORLD
+		else:
+			Global.RestoreLevelFlag = true
+			Global.CurrentState = Global.GameStates.RANDOMLEVEL
+			
 	elif Global.CurrentState == Global.GameStates.SHOP:
 		Global.CameFromShop = true
 		Global.CurrentState = Global.GameStates.OVERWORLD
@@ -505,8 +512,11 @@ func scene_next(terminal_number = -1, boss = false, special = false, shop = fals
 	Global.Fader.fade_in()
 	if Global.CurrentState == Global.GameStates.CHALLENGE:
 		Global.MainScene.save_level()
-		
-	get_tree().reload_current_scene()
+	
+	if Global.RestoreLevelFlag:
+		Global.MainScene.restore_level()
+	else:
+		get_tree().reload_current_scene()
 
 func remove_item():
 	Global.gunz_equiped[0].stock -= 1

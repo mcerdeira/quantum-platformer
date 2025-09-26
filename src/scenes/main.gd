@@ -175,6 +175,9 @@ func restore_level():
 		node.set_process(true)
 		node.set_physics_process(true)
 		add_child(node)
+		
+	Global.RestoreLevelFlag = false
+	Global.Fader.fade_out()
 	
 func save_level():
 	for node in Global.current_world:
@@ -268,12 +271,13 @@ func generate_level():
 		room_pos.y += size.y
 		room_pos.x = 0
 		
-	if !Global.BOSS_ROOM:
-		var special_doors = get_tree().get_nodes_in_group("special_doors")
-		while special_doors.size() > 1:
-			special_doors.shuffle()
-			var t = special_doors.pop_front()
-			t.queue_free()
+	#TODO: Volver a poner, solo para testing se quita
+	#if !Global.BOSS_ROOM:
+		#var special_doors = get_tree().get_nodes_in_group("special_doors")
+		#while special_doors.size() > 1:
+			#special_doors.shuffle()
+			#var t = special_doors.pop_front()
+			#t.queue_free()
 			
 		var color_buttons = get_tree().get_nodes_in_group("color_button")
 		while color_buttons.size() > 1:
@@ -341,7 +345,7 @@ func _ready():
 		Music.play(Global.SpecialLevelTheme)
 		Ambience.stop()
 		Bees.stop()
-		if(randi() % 2) == 0:
+		if(randi() % 2) == 0 and false:
 			generate_challenge_horizontal()
 		else:
 			generate_secret_room()

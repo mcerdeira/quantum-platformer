@@ -22,7 +22,6 @@ func _ready():
 	if special_door:
 		add_to_group("special_doors")
 		$sprite.animation = "special"
-		$bonus.visible = true
 		open(false)
 		
 	if shop_door:
@@ -91,6 +90,9 @@ func _physics_process(delta):
 				if Global.AlreadySEEN and !special_door and !shop_door:
 					Global.gotoBOSS = true
 					gotoBOSS = true
+				
+				if special_door:
+					close(false)
 				
 				Global.scene_next(terminal_number, gotoBOSS, special_door, shop_door)
 
