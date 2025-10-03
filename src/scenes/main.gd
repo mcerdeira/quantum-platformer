@@ -153,6 +153,7 @@ func generate_challenge_horizontal():
 			r.delete_door()
 			
 		add_child(r)
+		Global.TemporalLevels.append(r)
 		
 func generate_secret_room():
 	var player_room = Vector2(randi() % 4, 0)
@@ -169,6 +170,7 @@ func generate_secret_room():
 	r.global_position = room_pos
 	r.q = q
 	add_child(r)
+	Global.TemporalLevels.append(r)
 		
 func restore_level():
 	for node in Global.current_world:
@@ -177,6 +179,14 @@ func restore_level():
 		add_child(node)
 		
 	Global.RestoreLevelFlag = false
+	for level in Global.TemporalLevels:
+		remove_child(level)
+		level.queue_free()
+	
+	Global.player_obj = Global.player_obj_backup
+	Global.player_obj_backup = null
+	Global.player_obj.visible = true
+	Global.TemporalLevels = []
 	Global.Fader.fade_out()
 	
 func save_level():
@@ -294,8 +304,8 @@ func generate_level():
 		for _pm in prisoner_markers:
 			if !_pm.dead:
 				_pm.done = true
-		
-func _ready():
+				
+func main_level_generation():
 	Global.MainScene = self
 	var particles2 = get_tree().get_nodes_in_group("particles2")
 	for p in particles2:
@@ -313,7 +323,7 @@ func _ready():
 	Bees.stop()
 	
 	if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
-		if !Global.TunnelTerminalNumber and !Global.BOSS_ROOM and randi() % 3 == 0:
+		if !Global.TunnelTerminalNumber and !Global.BOSS_ROOM and randi() % 3 == 0 and !Global.RestoreLevelFlag:
 			Global.OverWorldFromGameOver = false
 			Global.TunnelTerminalNumber = true
 			generate_fixed_level(room_tunnel, false)
@@ -377,6 +387,9 @@ func _ready():
 		
 	Global.GizmoWatcher = self
 	setHUD(false, true)
+		
+func _ready():
+	main_level_generation()
 	
 	
 #func get_action_display_name(action: String) -> String:

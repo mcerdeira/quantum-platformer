@@ -9,6 +9,7 @@ var MUSIC_PLAYING = false
 var CHROM_FX = null
 var lava_FX = null
 var player_obj = null
+var player_obj_backup = null
 var retro_game_high_score = 9000
 var SwitchColorActive = "blue"
 var LevelCurrentTerminalNumber = -1
@@ -133,6 +134,7 @@ var BoatUnlockedSFX = null
 var PersecutionBossSFX = null
 var BoatUnlocked = false
 var RestoreLevelFlag = false
+var TemporalLevels = []
 var combinatoryOK = false
 var current_world = []
 
@@ -474,7 +476,6 @@ func scene_next(terminal_number = -1, boss = false, special = false, shop = fals
 	Global.gunz_index = 0
 	Global.gunz_index_max = 0
 	BOSS_ROOM = boss
-	Global.RestoreLevelFlag = false
 	Global.TerminalNumber = terminal_number
 	if Global.CurrentState == Global.GameStates.TITLE:
 		Global.CurrentState = FirstState
@@ -511,12 +512,14 @@ func scene_next(terminal_number = -1, boss = false, special = false, shop = fals
 
 	Global.Fader.fade_in()
 	if Global.CurrentState == Global.GameStates.CHALLENGE:
+		Global.player_obj_backup = Global.player_obj
 		Global.MainScene.save_level()
-	
-	if Global.RestoreLevelFlag:
-		Global.MainScene.restore_level()
+		Global.MainScene.main_level_generation()
 	else:
-		get_tree().reload_current_scene()
+		if Global.RestoreLevelFlag:
+			Global.MainScene.restore_level()
+		else:
+			get_tree().reload_current_scene()
 
 func remove_item():
 	Global.gunz_equiped[0].stock -= 1
