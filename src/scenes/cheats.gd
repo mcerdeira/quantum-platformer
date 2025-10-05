@@ -1,5 +1,6 @@
 extends Node2D
 var parent_visible = null
+var active_enemies = true
 
 var cheat_code = [
 	"up", "down",
@@ -180,3 +181,17 @@ func _on_btn_boat_pressed() -> void:
 
 func _on_btn_close_pressed() -> void:
 	_on_cheat_activated(false)
+
+func _on_btn_boat_2_pressed() -> void:
+	active_enemies = !active_enemies
+
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	for en in enemies:
+		if !active_enemies:
+			en.set_process(false)
+			en.set_physics_process(false)
+			en.process_mode = Node.PROCESS_MODE_DISABLED
+		else:
+			en.set_process(true)
+			en.set_physics_process(true)
+			en.process_mode = Node.PROCESS_MODE_INHERIT

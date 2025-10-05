@@ -5,6 +5,7 @@ var fires = preload("res://scenes/Fires.tscn")
 var kill_me = null
 
 func _ready():
+	add_to_group("fires")
 	if Global.BOSS_ROOM:
 		$PointLight2D.visible = false
 

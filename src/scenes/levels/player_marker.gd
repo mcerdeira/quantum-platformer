@@ -60,7 +60,15 @@ func _process(_delta):
 						pri.door_notyet = $"../ExitDoor2"
 					
 			var Main = get_node("/root/Main")
-			var pclone = player_clone.instantiate()
+			var pclone = null
+			var new_instance = true
+			if Global.player_obj == null or !is_instance_valid(Global.player_obj):
+				new_instance = true
+				pclone = player_clone.instantiate()
+			else:
+				new_instance = false
+				pclone = Global.player_obj
+				
 			pclone.direction = direction
 			pclone.force_lookup = force_lookup
 			pclone.CustomCamera = CustomCamera
@@ -80,6 +88,9 @@ func _process(_delta):
 			if !enablecamera:
 				pclone.enable_camera(false)
 			Main.add_child(pclone)
+			if !new_instance:
+				pclone.initialize_player()
+			
 			done = true
 			if Global.CurrentState == Global.GameStates.PRE_ENDING:
 				pclone.locked_ctrls = true

@@ -92,8 +92,16 @@ func calc_perks():
 		lifes = 2
 
 func _ready():
+	initialize_player(true)
+	
+func initialize_player(from_ready = false):
 	if Global.TerminalNumber == Global.TerminalsEnum.SALAMANDER and Global.BOSS_ROOM:
 		block_looking = true
+		
+	if !from_ready:
+		dont_camera = false
+		show_eyes()
+		modulate.a = 1
 	
 	calc_perks()
 	last_safe_position = global_position

@@ -9,7 +9,6 @@ var MUSIC_PLAYING = false
 var CHROM_FX = null
 var lava_FX = null
 var player_obj = null
-var player_obj_backup = null
 var retro_game_high_score = 9000
 var SwitchColorActive = "blue"
 var LevelCurrentTerminalNumber = -1
@@ -134,6 +133,7 @@ var BoatUnlockedSFX = null
 var PersecutionBossSFX = null
 var BoatUnlocked = false
 var RestoreLevelFlag = false
+var RestorePostition = Vector2.ZERO
 var TemporalLevels = []
 var combinatoryOK = false
 var current_world = []
@@ -472,6 +472,20 @@ enum GameStates {
 var CurrentState : GameStates = GameStates.TITLE
 var FirstState : GameStates = GameStates.HOME
 
+func set_enemies_active(active_enemies):
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	for en in enemies:
+		if !active_enemies:
+			en.set_process(false)
+			en.set_physics_process(false)
+			en.visible = false
+			en.process_mode = Node.PROCESS_MODE_DISABLED
+		else:
+			en.set_process(true)
+			en.set_physics_process(true)
+			en.visible = true
+			en.process_mode = Node.PROCESS_MODE_INHERIT
+
 func scene_next(terminal_number = -1, boss = false, special = false, shop = false, from_boss = false):
 	Global.gunz_index = 0
 	Global.gunz_index_max = 0
@@ -512,12 +526,16 @@ func scene_next(terminal_number = -1, boss = false, special = false, shop = fals
 
 	Global.Fader.fade_in()
 	if Global.CurrentState == Global.GameStates.CHALLENGE:
-		Global.player_obj_backup = Global.player_obj
+		Global.RestorePostition = Global.player_obj.global_position
 		Global.MainScene.save_level()
+		Global.set_enemies_active(false)
 		Global.MainScene.main_level_generation()
 	else:
 		if Global.RestoreLevelFlag:
 			Global.MainScene.restore_level()
+			Global.set_enemies_active(true)
+			Global.player_obj.global_position = Global.RestorePostition
+			Global.player_obj.initialize_player()
 		else:
 			get_tree().reload_current_scene()
 

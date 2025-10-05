@@ -183,8 +183,6 @@ func restore_level():
 		remove_child(level)
 		level.queue_free()
 	
-	Global.player_obj = Global.player_obj_backup
-	Global.player_obj_backup = null
 	Global.player_obj.visible = true
 	Global.TemporalLevels = []
 	Global.Fader.fade_out()
@@ -305,21 +303,38 @@ func generate_level():
 			if !_pm.dead:
 				_pm.done = true
 				
-func main_level_generation():
-	Global.MainScene = self
+func delete_garbage():
 	var particles2 = get_tree().get_nodes_in_group("particles2")
 	for p in particles2:
 		p.visible = false
 		p.queue_free()
-	
+		
+	var fire_particle = get_tree().get_nodes_in_group("fire_particle")
+	for p in fire_particle:
+		p.visible = false
+		p.queue_free()
+		
+	var fires = get_tree().get_nodes_in_group("fires")
+	for p in fires:
+		p.visible = false
+		p.queue_free()
+		
 	var interactuable_coin = get_tree().get_nodes_in_group("interactuable_coin")
 	for p in interactuable_coin:
 		p.visible = false
 		p.queue_free()
+				
+func main_level_generation(from_ready = false):
+	if from_ready:
+		Global.MainScene = self
+		
+	delete_garbage()
 	
-	Global.prisoner_counter = 0
-	Global.prisoner_total = 0
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	if from_ready:
+		Global.prisoner_counter = 0
+		Global.prisoner_total = 0
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		
 	Bees.stop()
 	
 	if Global.CurrentState == Global.GameStates.RANDOMLEVEL:
@@ -389,8 +404,7 @@ func main_level_generation():
 	setHUD(false, true)
 		
 func _ready():
-	main_level_generation()
-	
+	main_level_generation(true)
 	
 #func get_action_display_name(action: String) -> String:
 	#var eidx = 0
